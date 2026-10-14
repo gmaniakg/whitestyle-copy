@@ -51,3 +51,8 @@ next-env.d.ts
 public/images/recovered_valid_tmp/
 
 
+.vercel
+
+*.bak
+live_clean.html
+processed_page.html
