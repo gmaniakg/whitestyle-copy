@@ -1,9 +1,17 @@
-import re, json
+import re
+import json
+import html as html_lib
+from urllib.parse import urlparse, parse_qs
 
+# -------------------------------------------------------------
+# 1. Read Original HTML
+# -------------------------------------------------------------
 with open('e:/antigravity/whitestyle-copy/live_clean.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
-# 1. Replace the hero slider (box_module_Custom_455503_wrap)
+# -------------------------------------------------------------
+# 2. Hero Video Replacement
+# -------------------------------------------------------------
 m0 = html.find('<div class="boxsize ez_box_module box_module_Custom_455503_wrap')
 m1 = html.find('<style class="sg_style">', m0)
 
@@ -28,9 +36,11 @@ hero_video_html = """
 """
 
 new_html = html[:m0] + hero_video_html + html[m1:]
-print(f"Hero slider replaced.")
+print("Hero slider replaced.")
 
-# 2. Add popup suppressor and video style to <head>
+# -------------------------------------------------------------
+# 3. Add Schema & Head Injections
+# -------------------------------------------------------------
 enhanced_schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -188,34 +198,177 @@ extra_head = (
 head_idx = new_html.find('</head>')
 new_html = new_html[:head_idx] + extra_head + new_html[head_idx:]
 
-# 3. Rewrite relative URLs:
-def replace_src(match):
-    path = match.group(1)
-    if path.startswith('/videos/'):
-        return f'src="{path}"'
-    return f'src="https://whitestyle.com{path}"'
+# -------------------------------------------------------------
+# 4. Accurate Next.js URL Mapping Configuration
+# -------------------------------------------------------------
+MIR_CODE_MAP = {
+    '12117': '/about/greeting',                    # 대표원장 인사말 / 병원소개
+    '12118': '/about/doctors',                     # 의료진소개
+    '12119': '/about/tour',                        # 병원둘러보기
+    '12120': '/about/location',                    # 진료시간 / 오시는길
+    '12121': '/treatments/implant',                # 임플란트
+    '12122': '/treatments/implant/bone-graft',     # 뼈이식 임플란트
+    '12123': '/treatments/implant/edentulous',     # 무치악 임플란트
+    '12125': '/treatments/implant/insurance',      # 임플란트 보험
+    '12126': '/treatments/orthodontics',          # 치아교정시스템
+    '12127': '/treatments/orthodontics',          # 교정장치 종류 (필요시 /treatments/orthodontics/types)
+    '12128': '/treatments/general',               # 일반진료 / 보존치료시스템
+    '12129': '/treatments/general/caries',        # 충치치료
+    '12130': '/treatments/general/endo',          # 신경치료
+    '12131': '/treatments/general/scaling',       # 스케일링
+    '12132': '/treatments/general/wisdom-tooth',  # 사랑니
+    '12133': '/treatments/aesthetic/zeroshell',   # 제로쉘 심미보철 / 심미치료
+    '12134': '/treatments/aesthetic/easy-white',  # 이지화이트 (치아미백)
+}
 
-new_html = re.sub(r'src=["\'](/[^"\']+)["\']', replace_src, new_html)
+BOARD_MAP = {
+    'notice': '/board/notice',
+    'report': '/board/report',
+    'review': '/board/review',
+    'withstar': '/board/withstar',
+    'online': '/consult',                         # 온라인상담
+}
 
-def replace_href(match):
-    path = match.group(1)
-    if path.startswith('/videos/') or path.startswith('/llms.txt') or path.startswith('/sitemap.xml') or path.startswith('/robots.txt'):
-        return f'href="{path}"'
-    if path.startswith('/#') or path == '/':
-        return f'href="{path}"'
-    return f'href="https://whitestyle.com{path}"'
+FALLBACK_DOMAIN = 'https://whitestyle.com'
 
-new_html = re.sub(r'href=["\'](/[^"\']+)["\']', replace_href, new_html)
+def map_url_to_nextjs(raw_url: str) -> str:
+    """
+    원본 그누보드 파라미터 및 상대경로를 Next.js 내부 라우트로 변환.
+    내부 라우트가 없는 경우 원본 백엔드 도메인으로 안전하게 fallback.
+    """
+    if not raw_url:
+        return raw_url
+    
+    url = raw_url.strip()
 
+    # 정적 리소스, 프로토콜 및 앵커링크 보존
+    if url.startswith(('/videos/', '/llms.txt', '/sitemap.xml', '/robots.txt', '/fonts/', '/images/')):
+        return url
+    if url.startswith(('tel:', 'mailto:', 'javascript:', '#')):
+        return url
+    if url in ('/', ''):
+        return '/'
+
+    # 프로토콜 오타 교정 (https:/// -> https://)
+    url = re.sub(r'^(https?:)/+', r'\1//', url)
+
+    # URL 파싱
+    if url.startswith(('http://', 'https://')):
+        parsed = urlparse(url)
+        # 외부 타사 도메인 유지 (예: kakao, youtube 등)
+        if parsed.netloc and parsed.netloc not in ('whitestyle.com', 'www.whitestyle.com'):
+            return url
+        path = parsed.path
+        query = parsed.query
+    else:
+        parsed = urlparse(url)
+        path = parsed.path
+        query = parsed.query
+
+    qs = parse_qs(query)
+
+    # 1. mir_code 매핑
+    if 'mir_code' in qs:
+        code = qs['mir_code'][0]
+        if code in MIR_CODE_MAP:
+            return MIR_CODE_MAP[code]
+        return f"{FALLBACK_DOMAIN}{path}?{query}" if query else f"{FALLBACK_DOMAIN}{path}"
+
+    # 2. 일본어 랜딩
+    if qs.get('ld', [''])[0].lower() == 'japanese':
+        return '/about/japan-landing'
+
+    # 3. 로그인 / 회원가입
+    if path.startswith('/bbs/login.php'):
+        return '/login'
+    if path.startswith('/bbs/register.php'):
+        return '/register'
+
+    # 4. 게시판
+    if path.startswith('/bbs/board.php'):
+        bo_table = qs.get('bo_table', [''])[0]
+        wr_id = qs.get('wr_id', [''])[0]
+        if bo_table in BOARD_MAP:
+            base_route = BOARD_MAP[bo_table]
+            if wr_id and bo_table != 'online':
+                return f"{base_route}/{wr_id}"
+            return base_route
+        if bo_table == 'open_price':
+            return f"{FALLBACK_DOMAIN}/bbs/board.php?bo_table=open_price"
+
+    # 5. 이용약관 및 개인정보보호
+    if 'privacy' in qs or path == '/privacy':
+        return f"{FALLBACK_DOMAIN}{path}?{query}" if query else f"{FALLBACK_DOMAIN}{path}"
+
+    # 6. 미구현 PHP 엔드포인트 fallback
+    if path.endswith('.php'):
+        return f"{FALLBACK_DOMAIN}{path}?{query}" if query else f"{FALLBACK_DOMAIN}{path}"
+
+    # 7. 기타 상대경로
+    if path.startswith('/'):
+        return f"{FALLBACK_DOMAIN}{path}"
+
+    return url
+
+# -------------------------------------------------------------
+# 5. Safe Regex Replacements (No Collision with onclick!)
+# -------------------------------------------------------------
+
+# (1) HTML 태그 내 href 속성 치환
+# (?<=\s) 룩비하인드를 사용하여 앞에 공백이 있는 HTML 속성만 선택.
+# location.href= 는 앞에 온점(.)이 있으므로 절대로 매칭되지 않음!
+def replace_tag_href(match):
+    attr_name = match.group(1) # 'href'
+    quote = match.group(2)     # ' or "
+    url = match.group(3)
+    new_url = map_url_to_nextjs(url)
+    return f'{attr_name}={quote}{new_url}{quote}'
+
+new_html = re.sub(r'(?<=\s)(href)=(["\'])(.*?)\2', replace_tag_href, new_html)
+
+# (2) 자바스크립트 location.href 치환
+# 내부 따옴표 스타일(' 또는 ")을 엄격히 보존하여 HTML onclick 속성 파괴 방지
+def replace_js_location_href(match):
+    prefix = match.group(1) # "location.href="
+    quote = match.group(2)  # ' or "
+    url = match.group(3)
+    new_url = map_url_to_nextjs(url)
+    return f'{prefix}{quote}{new_url}{quote}'
+
+new_html = re.sub(r'(location\.href\s*=\s*)(["\'])(.*?)\2', replace_js_location_href, new_html)
+
+# (3) 자바스크립트 window.open 치환
+def replace_js_window_open(match):
+    quote = match.group(1)
+    url = match.group(2)
+    new_url = map_url_to_nextjs(url)
+    return f'window.open({quote}{new_url}{quote}'
+
+new_html = re.sub(r'window\.open\((["\'])(.*?)\1', replace_js_window_open, new_html)
+
+# (4) HTML 태그 내 src 속성 치환 (앞에 공백이 오는 속성만)
+def replace_tag_src(match):
+    quote = match.group(1)
+    path = match.group(2)
+    if path.startswith(('/videos/', 'http://', 'https://', '//', 'data:')):
+        return f'src={quote}{path}{quote}'
+    return f'src={quote}{FALLBACK_DOMAIN}{path}{quote}'
+
+new_html = re.sub(r'(?<=\s)src=(["\'])(/[^"\']*?)\1', replace_tag_src, new_html)
+
+# (5) CSS url() 치환
 def replace_css_url(match):
     quote = match.group(1)
     path = match.group(2)
-    if path.startswith('http') or path.startswith('data:') or path.startswith('//') or path.startswith('/videos/'):
+    if path.startswith(('http://', 'https://', 'data:', '//', '/videos/')):
         return match.group(0)
-    return f"url({quote}https://whitestyle.com{path}{quote})"
+    return f"url({quote}{FALLBACK_DOMAIN}{path}{quote})"
 
 new_html = re.sub(r'url\((["\']?)(/[^)]+?)(["\']?)\)', replace_css_url, new_html)
 
+# -------------------------------------------------------------
+# 6. Save Targets
+# -------------------------------------------------------------
 for p in ['e:/antigravity/whitestyle-copy/processed_page.html', 
           'e:/antigravity/whitestyle-copy/public/processed_page.html',
           'e:/antigravity/whitestyle-copy/public/index.html']:
