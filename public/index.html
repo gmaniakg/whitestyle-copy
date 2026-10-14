@@ -3003,7 +3003,7 @@ $(window).load(function() {
 
     var modal = document.createElement('div');
     modal.id = 'whitestyle-privacy-modal-overlay';
-    modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); backdrop-filter:blur(6px); z-index:99999999; display:flex; align-items:center; justify-content:center; padding:16px; font-family:-apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;';
+    modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); backdrop-filter:blur(6px); z-index:1000000000; display:flex; align-items:center; justify-content:center; padding:16px; font-family:-apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;';
     modal.innerHTML = `
       <div style="background:#ffffff; width:100%; max-width:680px; max-height:85vh; border-radius:20px; box-shadow:0 25px 60px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column;">
         <div style="padding:22px 28px; background:#0f172a; color:#ffffff; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b;">
@@ -3074,28 +3074,57 @@ $(window).load(function() {
     });
   }
 
-  // 2.1 Floating bar styling fix to prevent background text bleed-through
+  // 2.1 Floating bar styling fix to prevent background text bleed-through and z-index overlap
   var styleTag = document.createElement('style');
   styleTag.textContent = `
+    .layout_bottom_q_wrap, .layout_bottom_q_container, #25c77498d12ad9fe80a1bffce2a3ec49 {
+      position: relative !important;
+      z-index: 999999999 !important;
+    }
     #container_25c77498d12ad9fe80a1bffce2a3ec49 {
-      background-color: rgba(30, 41, 59, 0.96) !important;
+      position: fixed !important;
+      left: 0px !important;
+      bottom: 0px !important;
+      width: 100% !important;
+      z-index: 999999999 !important;
+      background-color: rgba(30, 41, 59, 0.98) !important;
       backdrop-filter: blur(16px) !important;
       -webkit-backdrop-filter: blur(16px) !important;
-      box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.35) !important;
+      box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.45) !important;
       border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+      pointer-events: auto !important;
+    }
+    #wrap_25c77498d12ad9fe80a1bffce2a3ec49 {
+      position: relative !important;
+      z-index: 999999999 !important;
+      pointer-events: auto !important;
     }
     #form_25c77498d12ad9fe80a1bffce2a3ec49 input[type="text"] {
       background-color: #ffffff !important;
       color: #0f172a !important;
       font-weight: 600 !important;
       border-radius: 8px !important;
+      border: 1px solid #cbd5e1 !important;
+      padding: 8px 12px !important;
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 999999999 !important;
     }
     #get_db_pva {
       cursor: pointer !important;
       user-select: none !important;
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 999999999 !important;
     }
     #get_db_pva span.chkbtn {
       transition: all 0.2s ease !important;
+    }
+    #submitbtn_25c77498d12ad9fe80a1bffce2a3ec49 {
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 999999999 !important;
     }
   `;
   document.head.appendChild(styleTag);
