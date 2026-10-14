@@ -462,7 +462,49 @@ modern_adapter_script = """
     });
   }
 
-  // Intercept Privacy Button clicks in capturing phase (runs before legacy jQuery)
+  // 2.1 Floating bar styling fix to prevent background text bleed-through
+  var styleTag = document.createElement('style');
+  styleTag.textContent = `
+    #container_25c77498d12ad9fe80a1bffce2a3ec49 {
+      background-color: rgba(30, 41, 59, 0.96) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.35) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+    #form_25c77498d12ad9fe80a1bffce2a3ec49 input[type="text"] {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      font-weight: 600 !important;
+      border-radius: 8px !important;
+    }
+    #get_db_pva {
+      cursor: pointer !important;
+      user-select: none !important;
+    }
+    #get_db_pva span.chkbtn {
+      transition: all 0.2s ease !important;
+    }
+  `;
+  document.head.appendChild(styleTag);
+
+  // Initialize agreement checkbox to checked by default
+  function initAgreeState() {
+    var chk = document.getElementById('agree_pb');
+    var icon = document.querySelector('#get_db_pva .chkbtn');
+    if (chk && icon) {
+      chk.checked = true;
+      icon.textContent = 'check_circle';
+      icon.style.color = '#ff557a';
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAgreeState);
+  } else {
+    initAgreeState();
+  }
+
+  // Intercept Privacy Button clicks & Agreement Checkbox clicks in capturing phase
   document.addEventListener('click', function(e) {
     var target = e.target;
     var privacyBtn = target.closest('#documentcall_privacy') || target.closest('a[href*="privacy"]');
@@ -474,17 +516,22 @@ modern_adapter_script = """
       return false;
     }
 
-    // Toggle agree checkbox when clicking label or icon
-    if (target.matches('label[for="agree_pb"]') || target.matches('.chkbtn')) {
+    // Toggle agree checkbox when clicking anywhere inside #get_db_pva
+    var pvaTarget = target.closest('#get_db_pva');
+    if (pvaTarget) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       var chk = document.getElementById('agree_pb');
+      var icon = pvaTarget.querySelector('.chkbtn');
       if (chk) {
         chk.checked = !chk.checked;
-        var icon = document.querySelector('.chkbtn');
         if (icon) {
           icon.textContent = chk.checked ? 'check_circle' : 'radio_button_unchecked';
-          icon.style.color = chk.checked ? '#3b82f6' : '#ffffff';
+          icon.style.color = chk.checked ? '#ff557a' : '#ffffff';
         }
       }
+      return false;
     }
   }, true);
 
@@ -497,18 +544,10 @@ modern_adapter_script = """
     e.stopPropagation();
     e.stopImmediatePropagation();
 
-    // Check agreement
-    var agreeChk = document.getElementById('agree_pb');
-    if (agreeChk && !agreeChk.checked) {
-      alert('개인정보 수집 및 이용에 동의해 주셔야 상담 신청이 가능합니다.');
-      agreeChk.focus();
-      return false;
-    }
-
     // Find inputs in form container
     var container = document.getElementById('form_25c77498d12ad9fe80a1bffce2a3ec49') || document.body;
-    var nameInput = container.querySelector('input[name*="name"]') || container.querySelector('input[placeholder*="성함"]') || container.querySelector('input[type="text"]');
-    var telInput = container.querySelector('input[name*="tel"]') || container.querySelector('input[placeholder*="연락처"]');
+    var nameInput = container.querySelector('input[name*="name"]') || container.querySelector('input[placeholder*="이름"]') || container.querySelector('input[type="text"]');
+    var telInput = container.querySelector('input[name*="hp"]') || container.querySelector('input[name*="tel"]') || container.querySelector('input[placeholder*="연락처"]');
 
     var nameVal = nameInput ? nameInput.value.trim() : '';
     var telVal = telInput ? telInput.value.trim() : '';
@@ -523,6 +562,21 @@ modern_adapter_script = """
       alert('연락처(휴대폰 번호)를 정확히 입력해 주세요.');
       if (telInput) telInput.focus();
       return false;
+    }
+
+    // Check agreement
+    var agreeChk = document.getElementById('agree_pb');
+    if (agreeChk && !agreeChk.checked) {
+      if (confirm('화이트스타일치과 빠른 상담 신청을 위해 개인정보 수집 및 이용에 동의하시겠습니까?')) {
+        agreeChk.checked = true;
+        var icon = document.querySelector('#get_db_pva .chkbtn');
+        if (icon) {
+          icon.textContent = 'check_circle';
+          icon.style.color = '#ff557a';
+        }
+      } else {
+        return false;
+      }
     }
 
     // Submit loading state
@@ -567,7 +621,7 @@ modern_adapter_script = """
           node: 'mir_processing',
           mode: 'save_append',
           arrset: {
-            secuarr2: JSON.stringify([{ dbinfoAry: [{ name: 'name', value: nameVal }, { name: 'tel', value: telVal }] }])
+            secuarr2: JSON.stringify([{ dbinfoAry: [{ name: 'name', value: nameVal }, { name: 'hpnum', value: telVal }] }])
           }
         })
       }).then(function() {
