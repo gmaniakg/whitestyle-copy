@@ -53,6 +53,7 @@ public/images/recovered_valid_tmp/
 
 .vercel
 
+.data/
 *.bak
 live_clean.html
 processed_page.html

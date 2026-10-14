@@ -442,7 +442,7 @@
 	.gnbActive > ul > li {
 		
 		border-bottom: solid 1px !important;
-		background:  url('https://whitestyle.com/data/file/mir_member/3731727122_8ElZ59dz_20200226_NEWEBA19CEAB3A0_ED8C8CEBB984ECBD98.ico') no-repeat;;
+		background:  url('/data/file/mir_member/3731727122_8ElZ59dz_20200226_NEWEBA19CEAB3A0_ED8C8CEBB984ECBD98.ico') no-repeat;;
 		color: !important;
 	}
 	
@@ -2970,6 +2970,231 @@ $(window).load(function() {
 	$(".tailbtnw100").css({"width":bwidth+"px"});
 	$("script.tgDel").remove();
 });
+</script>
+
+
+<script id="whitestyle-modern-backend-adapter">
+(function() {
+  // 1. Phone number auto-hyphenation
+  document.addEventListener('input', function(e) {
+    var target = e.target;
+    if (target && (
+      (target.name && target.name.indexOf('tel') !== -1) || 
+      (target.placeholder && target.placeholder.indexOf('연락처') !== -1) ||
+      (target.className && target.className.indexOf('tel') !== -1)
+    )) {
+      var val = target.value.replace(/[^0-9]/g, '');
+      if (val.length < 4) {
+        target.value = val;
+      } else if (val.length < 8) {
+        target.value = val.substring(0, 3) + '-' + val.substring(3);
+      } else if (val.length < 11) {
+        target.value = val.substring(0, 3) + '-' + val.substring(3, 7) + '-' + val.substring(7);
+      } else {
+        target.value = val.substring(0, 3) + '-' + val.substring(3, 7) + '-' + val.substring(7, 11);
+      }
+    }
+  });
+
+  // 2. Modern Privacy Policy Modal
+  function showModernPrivacyModal() {
+    var existing = document.getElementById('whitestyle-privacy-modal-overlay');
+    if (existing) { existing.remove(); }
+
+    var modal = document.createElement('div');
+    modal.id = 'whitestyle-privacy-modal-overlay';
+    modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.65); backdrop-filter:blur(6px); z-index:99999999; display:flex; align-items:center; justify-content:center; padding:16px; font-family:-apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;';
+    modal.innerHTML = `
+      <div style="background:#ffffff; width:100%; max-width:680px; max-height:85vh; border-radius:20px; box-shadow:0 25px 60px rgba(0,0,0,0.35); overflow:hidden; display:flex; flex-direction:column;">
+        <div style="padding:22px 28px; background:#0f172a; color:#ffffff; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:22px;">🛡️</span>
+            <h3 style="margin:0; font-size:18px; font-weight:800; color:#ffffff; letter-spacing:-0.02em;">화이트스타일치과의원 개인정보취급방침</h3>
+          </div>
+          <button id="close-privacy-btn" type="button" style="background:transparent; border:none; color:#94a3b8; font-size:28px; cursor:pointer; line-height:1; padding:0 8px;">&times;</button>
+        </div>
+        <div style="padding:28px; overflow-y:auto; line-height:1.75; font-size:14px; color:#334155; flex:1;">
+          <h4 style="margin:0 0 8px 0; font-size:15px; font-weight:700; color:#0f172a;">1. 개인정보의 수집 항목 및 방법</h4>
+          <p style="margin:0 0 16px 0; color:#475569;">화이트스타일치과의원은 원활한 진료 상담 및 예약을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+          - 수집항목: 성명, 연락처(휴대전화번호), 관심 진료항목, 상담내용, 접속 IP<br>
+          - 수집방법: 홈페이지 빠른상담 신청 및 온라인 예약/상담 접수</p>
+
+          <h4 style="margin:0 0 8px 0; font-size:15px; font-weight:700; color:#0f172a;">2. 개인정보의 수집 및 이용 목적</h4>
+          <p style="margin:0 0 16px 0; color:#475569;">- 고객 맞춤형 1:1 진료 상담 및 예약 일정 안내<br>
+          - 상담 결과 및 예약 안내 문자(SMS/알림톡) 발송<br>
+          - 고객 문의 및 불편사항 응대</p>
+
+          <h4 style="margin:0 0 8px 0; font-size:15px; font-weight:700; color:#0f172a;">3. 개인정보의 보유 및 이용 기간</h4>
+          <p style="margin:0 0 16px 0; color:#475569;">원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.<br>
+          - 보유기간: 상담 및 진료 서비스 제공 완료 시까지<br>
+          - 단, 의료법 및 관계 법령에 따라 보존 의무가 있는 경우 해당 법정 기간 동안 안전하게 보관합니다.</p>
+
+          <h4 style="margin:0 0 8px 0; font-size:15px; font-weight:700; color:#0f172a;">4. 개인정보의 파기 절차 및 방법</h4>
+          <p style="margin:0 0 16px 0; color:#475569;">전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제하며, 종이에 출력된 개인정보는 분쇄기로 분쇄하여 파기합니다.</p>
+
+          <h4 style="margin:0 0 8px 0; font-size:15px; font-weight:700; color:#0f172a;">5. 이용자의 권리 및 문의</h4>
+          <p style="margin:0; color:#475569;">이용자는 언제든지 등록된 본인의 개인정보 열람, 정정 및 삭제를 요청할 수 있으며, 병원 대표번호(02-569-7528)로 문의하시면 즉시 조치하겠습니다.</p>
+        </div>
+        <div style="padding:18px 28px; background:#f8fafc; border-top:1px solid #e2e8f0; display:flex; justify-content:flex-end; gap:12px;">
+          <button id="agree-privacy-btn" type="button" style="background:#2563eb; color:#ffffff; border:none; padding:12px 28px; border-radius:10px; font-size:15px; font-weight:700; cursor:pointer; box-shadow:0 4px 14px rgba(37,99,235,0.35);">
+            동의 및 확인 완료
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    var closeModal = function() {
+      modal.remove();
+    };
+
+    document.getElementById('close-privacy-btn').addEventListener('click', closeModal);
+    document.getElementById('agree-privacy-btn').addEventListener('click', function() {
+      var chk = document.getElementById('agree_pb');
+      if (chk) {
+        chk.checked = true;
+        var icon = document.querySelector('.chkbtn');
+        if (icon) {
+          icon.textContent = 'check_circle';
+          icon.style.color = '#3b82f6';
+        }
+      }
+      closeModal();
+    });
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function escHandler(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', escHandler);
+      }
+    });
+  }
+
+  // Intercept Privacy Button clicks in capturing phase (runs before legacy jQuery)
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    var privacyBtn = target.closest('#documentcall_privacy') || target.closest('a[href*="privacy"]');
+    if (privacyBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      showModernPrivacyModal();
+      return false;
+    }
+
+    // Toggle agree checkbox when clicking label or icon
+    if (target.matches('label[for="agree_pb"]') || target.matches('.chkbtn')) {
+      var chk = document.getElementById('agree_pb');
+      if (chk) {
+        chk.checked = !chk.checked;
+        var icon = document.querySelector('.chkbtn');
+        if (icon) {
+          icon.textContent = chk.checked ? 'check_circle' : 'radio_button_unchecked';
+          icon.style.color = chk.checked ? '#3b82f6' : '#ffffff';
+        }
+      }
+    }
+  }, true);
+
+  // 3. Intercept Quick Consultation Submission in capturing phase
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('#submitbtn_25c77498d12ad9fe80a1bffce2a3ec49') || e.target.closest('.dbsubmitbtn');
+    if (!btn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+
+    // Check agreement
+    var agreeChk = document.getElementById('agree_pb');
+    if (agreeChk && !agreeChk.checked) {
+      alert('개인정보 수집 및 이용에 동의해 주셔야 상담 신청이 가능합니다.');
+      agreeChk.focus();
+      return false;
+    }
+
+    // Find inputs in form container
+    var container = document.getElementById('form_25c77498d12ad9fe80a1bffce2a3ec49') || document.body;
+    var nameInput = container.querySelector('input[name*="name"]') || container.querySelector('input[placeholder*="성함"]') || container.querySelector('input[type="text"]');
+    var telInput = container.querySelector('input[name*="tel"]') || container.querySelector('input[placeholder*="연락처"]');
+
+    var nameVal = nameInput ? nameInput.value.trim() : '';
+    var telVal = telInput ? telInput.value.trim() : '';
+
+    if (!nameVal) {
+      alert('성함(이름)을 입력해 주세요.');
+      if (nameInput) nameInput.focus();
+      return false;
+    }
+
+    if (!telVal || telVal.replace(/[^0-9]/g, '').length < 8) {
+      alert('연락처(휴대폰 번호)를 정확히 입력해 주세요.');
+      if (telInput) telInput.focus();
+      return false;
+    }
+
+    // Submit loading state
+    var originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="submittext fs1_2rem fcWhite nxgl1_B">접수 중...</span>';
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.7';
+
+    // Submit to modern API
+    fetch('/api/consult', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: nameVal,
+        phone: telVal,
+        treatment: '빠른상담신청',
+        agreedPrivacy: true,
+        source: 'quick_bar'
+      })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      btn.innerHTML = originalText;
+      btn.style.pointerEvents = 'auto';
+      btn.style.opacity = '1';
+
+      if (data.success) {
+        alert('화이트스타일치과 빠른상담 신청이 정상 접수되었습니다.\n전문 상담 실장이 신속히 연락드리겠습니다.');
+        if (nameInput) nameInput.value = '';
+        if (telInput) telInput.value = '';
+      } else {
+        alert(data.message || '상담 신청 중 오류가 발생하였습니다.');
+      }
+    })
+    .catch(function(err) {
+      console.error('Submission error:', err);
+      // Fallback to legacy compatibility endpoint
+      fetch('/_mir.do.sqlexec.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          node: 'mir_processing',
+          mode: 'save_append',
+          arrset: {
+            secuarr2: JSON.stringify([{ dbinfoAry: [{ name: 'name', value: nameVal }, { name: 'tel', value: telVal }] }])
+          }
+        })
+      }).then(function() {
+        btn.innerHTML = originalText;
+        btn.style.pointerEvents = 'auto';
+        btn.style.opacity = '1';
+        alert('화이트스타일치과 빠른상담 신청이 정상 접수되었습니다.\n전문 상담 실장이 신속히 연락드리겠습니다.');
+        if (nameInput) nameInput.value = '';
+        if (telInput) telInput.value = '';
+      });
+    });
+
+    return false;
+  }, true);
+})();
 </script>
 
 </body></html>

@@ -20,15 +20,19 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    // Only apply proxy rewrites if LEGACY_HOST is explicitly defined to avoid loop when whitestyle.com points to Vercel
-    if (!process.env.LEGACY_HOST) {
-      return [];
-    }
-    return [
+    const internalRewrites = [
       {
         source: "/_mir.do.sqlexec.php",
-        destination: `${LEGACY_HOST}/_mir.do.sqlexec.php`,
+        destination: "/api/sqlexec",
       },
+    ];
+
+    if (!process.env.LEGACY_HOST) {
+      return internalRewrites;
+    }
+
+    return [
+      ...internalRewrites,
       {
         source: "/mrw/:path*",
         destination: `${LEGACY_HOST}/mrw/:path*`,

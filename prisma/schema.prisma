@@ -52,3 +52,21 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Consultation {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String
+  treatment     String?  @default("일반/종합상담")
+  memo          String?
+  agreedPrivacy Boolean  @default(true)
+  source        String?  @default("quick_bar")
+  ip            String?
+  status        String   @default("PENDING") // PENDING, CONTACTED, RESERVED, CANCELLED
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([phone])
+  @@index([createdAt])
+  @@index([status])
+}
