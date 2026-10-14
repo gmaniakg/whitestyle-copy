@@ -1,0 +1,265 @@
+/*! ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ mir_toast ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+.mir_toast_wrap { 
+    position:fixed;
+    z-index: 9999999999;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 10px;
+}
+#mir_toast_bl_wrap { bottom:20px; left:20px; }
+#mir_toast_br_wrap { bottom:20px; right:20px;  }
+#mir_toast_tl_wrap { top:20px; left:20px; }
+#mir_toast_tr_wrap { top:20px; right:20px; }
+#mir_toast_center_wrap { top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.mir_toast.bl { animation-name: mir_toast_leftToRight; animation-duration: 0.3s; }
+.mir_toast.br {  animation-name: mir_toast_RightToleft; animation-duration: 0.3s; }
+.mir_toast.tl {  animation-name: mir_toast_leftToRight; animation-duration: 0.3s; }
+.mir_toast.tr {  animation-name: mir_toast_RightToleft; animation-duration: 0.3s; }
+
+.mir_toast {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 0.333rem;
+    padding: 15px 20px;
+    position: relative;
+    width: 450px;
+    overflow: hidden;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 0px 30px rgb(0 0 0 / 50%);
+    transition: 0.3s;
+    -webkit-transition: 0.2s;
+}
+.mir_toast .mir_toast_icon .material-icons { font-size: 30px; }
+.mir_toast .mir_toast_message { 
+    flex:1 auto; 
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 5px;
+}
+.mir_toast .mir_toast_message .mir_toast_subject {
+    font-size: 18px;
+    font-family: "GmarketSansMedium";
+}
+.mir_toast .mir_toast_message .mir_toast_content {
+    font-size: 15px;
+    line-height: 25px;
+    font-family: "NEXON Lv1 Gothic OTF";
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mir_toast .mir_close_message {
+    font-family: "NEXON Lv1 Gothic OTF";
+    font-size: 14px;
+    position: absolute;
+    top:15px;
+    right:40px;
+}
+.mir_toast .mir_close_process_bar {
+    position: absolute;
+    left:0;
+    bottom:0;
+    height:10px;
+    background-color: rgba(255,255,255,0.5);
+    transition: 0.5s;
+}
+.mir_toast .mir_close_process_bar.animation {
+    animation-name: mir_toast_process_bar; animation-duration: 6s;
+}
+.mir_toast .mir_toast_close {
+    position: absolute;
+    top:10px;
+    right:10px;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+}
+.mir_toast .mir_toast_close:hover { color: #000; }
+.mir_toast.mir_toast_bounce { animation: pulse 1s infinite; }
+@keyframes mir_toast_leftToRight {
+    from {
+        transform: translateX(-100%);
+    } to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes mir_toast_RightToleft {
+    from {
+        transform: translateX(100%);
+    } to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes mir_toast_process_bar {
+    from {
+        width: 0%;
+    } to {
+        width: 100%;
+    }
+}
+
+/*! ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ / mir_toast 끝 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+/*! ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ mir_alert ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+.mir_alert_wrap {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 999999999999999;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap:10px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: center;
+
+}
+.mir_alert_wrap .mir_message_wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap:5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.mir_alert {
+    background: #fff;
+    border-radius: 0.333rem;
+    width: 500px;
+    padding: 20px;
+    box-shadow: 0px 0px 30px rgb(0 0 0 / 50%);
+    color:#222222;
+}
+.mir_alert_wrap .mir_alert .material-icons { font-size:50px; color:#007bff; }
+
+.mir_alert {
+    border-top: 4px solid #007bff;
+}
+.mir_confirm_wrap {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.mir_confirm {
+    width: 25rem;
+    font-family: "NEXON Lv1 Gothic OTF";
+    border-radius: 0.625rem;
+    box-shadow: 0 0.3125 0.9375rem 0 rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+.mir_confirm_title {
+    font-size: 1.25rem;
+    font-family: "NEXON Lv1 Gothic OTF Bold";
+}
+.mir_confirm_text {
+    line-height: 1.5625rem;
+    font-size: 0.9375rem;
+}
+.mir_confirm_btn {
+    width: 100%;
+}
+.mir_confirm_btn button {
+    font-size: 0.9375rem !important;
+    padding: 0.9375rem !important;
+    border: unset !important;
+    border-radius: unset !important;
+    box-shadow: unset !important;
+}
+.mir_confirm_btn_cancle {
+    color: #000 !important;
+    background-color: rgba(0, 0, 0, 0.15) !important;   
+}
+.mir_confirm_btn_ok {
+    color: #fff !important;
+    background-color: #2090fe !important;
+}
+.mir_confirm_btn_custom {
+    color: #fff !important;
+    background-color: #004a99 !important;
+}
+
+.mir_alert_wrap .mir_alert_message {
+    font-family: "NEXON Lv1 Gothic OTF";
+    font-size: 14px;
+    flex:1 auto;
+}
+.mir_alert_wrap .mir_alert_btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap:5px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: flex-end;
+}
+.mir_alert_wrap button {
+    border-radius: 0.333rem;
+    font-size: 12px;
+    font-family: "GmarketSansMedium";
+    padding:8px 12px;
+    transition: 0.2s;
+    border: none;
+    color:#000;
+    border: 1px solid rgba(255,255,255,50%);
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 50%);
+}
+.mir_alert_wrap textarea,
+.mir_alert_wrap input {
+    display: block;
+    width: 90%;
+    padding: 0.375rem 0.75rem;
+    font-size: 15px;
+    line-height: 1.5;
+    font-family: "NEXON Lv1 Gothic OTF";
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: 0.15s;
+    resize: none;
+}
+.mir_alert_wrap textarea:focus,
+.mir_alert_wrap input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%)
+}
+/* .mir_alert_wrap .primary_btn { background: #007bff; } */
+.mir_alert_wrap .danger_btn:hover, .mir_alert_wrap .primary_btn:hover { background: #0062cc; border:1px solid #0062cc; color:#fff; box-shadow: none; }
+/* .mir_alert_wrap .danger_btn { background: #dc3545; color:#fff; }
+.mir_alert_wrap .danger_btn:hover { background: #c82333; border:1px solid #c82333 } */
+
+
+/*! ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ / mir_alert 끝 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */

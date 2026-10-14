@@ -1,0 +1,30 @@
+
+.back-to-top { 
+	position: fixed; 
+	bottom: 180px; 
+	right: 0px; 
+	text-decoration: none; 
+	color: #000000; 
+	background-color: rgba(0, 0, 0, 0.80);
+	font-size: 12px; 
+	padding: 1em; 
+	display: none;
+}
+.back-to-top:hover 
+,.editingsetup:hover 
+{ 
+	background-color: rgba(135, 135, 135, 0.50);
+}
+
+.editingsetup {
+	position: fixed; 
+	bottom: 228px; 
+	right: 0px; 
+	text-decoration: none; 
+	color: #000000; 
+	background-color: rgba(0, 0, 0, 0.80);
+	font-size: 12px; 
+	padding: 1em; 
+	display: none;
+	cursor:pointer;
+}

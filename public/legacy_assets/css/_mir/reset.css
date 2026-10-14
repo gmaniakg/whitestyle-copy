@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+.nanumMy { font-family: 'Nanum Myeongjo','NanumBarunGothic', serif; }
+/*
+ * Hanna (Korean) https://fonts.google.com/earlyaccess
+ */
+.hanna { font-family: 'Hanna','NanumBarunGothic', sans-serif; }
+
+/*
+ * Nanum Pen Script (Korean) https://fonts.google.com/earlyaccess
+ */
+.nanumpenscript { font-family: 'Nanum Pen Script','NanumBarunGothic', cursive; }
+
+/*
+ * Nanum Brush Script (Korean) https://fonts.google.com/earlyaccess
+ */
+.nanumbrush { font-family: 'Nanum Brush Script','NanumBarunGothic', cursive; }
+/*
+ * Nanum Gothic (Korean) https://fonts.google.com/earlyaccess
+ */
+.ng { font-family:'나눔고딕',"NanumGothic", "NanumGothicOTF", "Nanum Gothic", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; } 
+.nbg { font-family:"NanumBarunGothic","Nanum Barun Gothic","나눔바른고딕","Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important; }
+.nns { font-family:"Nanum Square",'NanumBarunGothic',sans-serif; font-weight: 400; }
+.nnsb { font-family:"Nanum Square",'NanumBarunGothic',sans-serif; font-style: bold; font-weight: 700; }
+.nbul { font-family:"NanumBarunGothicUltraLight","Nanum Barun Gothic UltraLight","나눔바른고딕";  }
+.nbgb { font-family:"NanumBarunGothicBold","Nanum Barun Gothic Bold"; }
+.titan { font-family:'Titillium Web','NanumBarunGothic'; }
+.att { font-family:"AritaT",'NanumBarunGothic'; letter-spacing:-1px; }
+.atm { font-family:"AritaM",'NanumBarunGothic'; letter-spacing:-1px; }
+.atl { font-family:"AritaL",'NanumBarunGothic'; letter-spacing:-1px; }
+.atsb { font-family:"AritaSB",'NanumBarunGothic'; letter-spacing:-1px; }
+.atb { font-family:"AritaB",'NanumBarunGothic'; letter-spacing:-1px; }
+.montse { font-family: 'Montserrat Alternates', sans-serif; }
+.saira { font-family: 'Saira','NanumBarunGothic', sans-serif; }
+.nbs { font-family:"NanumSquareR", Helvetica, "Apple SD Gothic Neo",'NanumBarunGothic', Sans-serif; }
+.nf { font-family:Helvetica, STXihei, "Microsoft YaHei", "NanumSquareR", "Apple SD Gothic Neo",'NanumBarunGothic', Sans-serif; }
+.gfsL { font-family:'GmarketSansLight','NanumBarunGothic'; }
+.gfsM { font-family:'GmarketSansMedium','NanumBarunGothic'; }
+.gfsB { font-family:'GmarketSansBold','NanumBarunGothic'; }
+.nxgl1_B { font-family:"NEXON Lv1 Gothic OTF Bold", "Apple SD Gothic Neo", sans-serif !important; }
+.nxgl1_M { font-family:"NEXON Lv1 Gothic OTF", "Apple SD Gothic Neo", sans-serif !important; }
+.nxgl1_L { font-family:"NEXON Lv1 Gothic OTF Light", "Apple SD Gothic Neo", sans-serif !important; }
+.ptd_B { font-family:'Pretendard-Bold',-apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; }
+.ptd_M { font-family:'Pretendard-Medium',-apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; }
+.ptd_SB { font-family:'Pretendard-SemiBold',-apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; }
+
+.wtd { font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; font-weight:400;}
+.wtd_SM { font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; font-weight:500;}
+.wtd_M { font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; font-weight:600;}
+.wtd_B { font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; font-weight:800;}
+.wtd_EB { font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important; font-weight:1000;}
+.ft-rhc {
+  font-family: 'ROEHOE-CHAN';
+}
+
+html {
+	-webkit-text-size-adjust: antialiased; /* 100%*/
+	font-smoothing: antialiased;	
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior:smooth;
+/*    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-stroke: 0.6px;*/
+}
+
+html, body, div, span, applet, object, iframe,
+blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+/*	vertical-align: baseline;*/
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+p {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+*{
+	font-family:"NanumBarunGothic","Nanum Barun Gothic","나눔바른고딕","Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+/*	-webkit-text-size-adjust:none;*/
+}
+body {
+	font-family:"NanumBarunGothic","Nanum Barun Gothic","나눔바른고딕","Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+	line-height: 1;
+	font-size:12px;
+	-webkit-tap-highlight-color:transparent;
+}
+ol, ul {
+	list-style: none;
+	padding:0px;
+	margin:0px;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-spacing: 0;
+}
+
+a {
+	outline:none;
+	select-dummy: expression(this.hideFocus=true);
+}
+select {
+	appearance: none; /* 기본 드롭다운 UI 제거 */
+  -webkit-appearance: none; /* Safari 및 Chrome에서 기본 스타일 제거 */
+  -moz-appearance: none; /* Firefox에서 기본 스타일 제거 */
+}
+b {
+	font-weight:700;
+	font-weight:bold;
+}
+
+strong {
+	font-weight:800;
+}

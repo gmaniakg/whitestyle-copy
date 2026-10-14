@@ -1,0 +1,62 @@
+# Robots.txt for WhiteStyle Dental Clinic (화이트스타일치과의원)
+# Website: https://whitestyle.com
+# LLMs Knowledge Base: https://whitestyle.com/llms.txt
+# LLMs Full Knowledge Base: https://whitestyle.com/llms-full.txt
+
+# Default rule for general web crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# OpenAI Crawlers (ChatGPT & SearchGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI Crawler
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic AI Crawlers (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI & Gemini Extended Crawler
+User-agent: Google-Extended
+Allow: /
+
+# Apple AI & Intelligence Crawler
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon AI Crawler
+User-agent: Amazonbot
+Allow: /
+
+# Microsoft Bing & Copilot Crawler
+User-agent: Bingbot
+Allow: /
+
+# Naver Search Crawler
+User-agent: Yeti
+Allow: /
+
+# Common Crawl & Other Foundational AI Training Crawlers
+User-agent: CCBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+Sitemap: https://whitestyle.com/sitemap.xml

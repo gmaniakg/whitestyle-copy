@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'arrow';
+  src:  url('fonts/arrow.eot?f47nsy');
+  src:  url('fonts/arrow.eot?f47nsy#iefix') format('embedded-opentype'),
+    url('fonts/arrow.ttf?f47nsy') format('truetype'),
+    url('fonts/arrow.woff?f47nsy') format('woff'),
+    url('fonts/arrow.svg?f47nsy#arrow') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="arrow-"], [class*=" arrow-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'arrow' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.arrow-prev10:before {
+  content: "\e900";
+}
+.arrow-next10:before {
+  content: "\e901";
+}
+.arrow-KT_arrow_round_left_24:before {
+  content: "\e902";
+}
+.arrow-KT_arrow_round_right_24:before {
+  content: "\e903";
+}
+.arrow-baseline-chevron_left-24px:before {
+  content: "\e904";
+}
+.arrow-baseline-chevron_right-24px:before {
+  content: "\e905";
+}
+.arrow-baseline-arrow_back-24px:before {
+  content: "\e906";
+}
+.arrow-baseline-arrow_forward-24px:before {
+  content: "\e907";
+}
+.arrow-close1:before {
+  content: "\e908";
+}
+.arrow-open1:before {
+  content: "\e909";
+}
+.arrow-close2:before {
+  content: "\e90a";
+}
+.arrow-open2:before {
+  content: "\e90b";
+}
+.arrow-backward21:before {
+  content: "\ea21";
+}
+.arrow-forward31:before {
+  content: "\ea22";
+}
+.arrow-arrow-right1:before {
+  content: "\ea35";
+}
+.arrow-arrow-left1:before {
+  content: "\ea39";
+}
+.arrow-arrow-right21:before {
+  content: "\ea3d";
+}
+.arrow-arrow-left21:before {
+  content: "\ea41";
+}
+.arrow-close3:before {
+  content: "\ea42";
+}
+.arrow-circle-right1:before {
+  content: "\ea43";
+}
+.arrow-open3:before {
+  content: "\ea44";
+}
+.arrow-circle-left1:before {
+  content: "\ea45";
+}
+.arrow-arrow_right-24px-1:before {
+  content: "\e90c";
+}
+.arrow-arrow_left-24px-1:before {
+  content: "\e90d";
+}
+.arrow-arrow_drop_up-24px:before {
+  content: "\e90e";
+}
+.arrow-arrow_drop_down-24px:before {
+  content: "\e90f";
+}

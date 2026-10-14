@@ -1,0 +1,180 @@
+.sg_sidebar_wrap {
+    width: 360px;
+    background: #ffffff;
+    left: -360px;
+    top: 0;
+    z-index: 9999;
+    transition: 0.2s;
+}
+.sg_sidebar_wrap.active {
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    left: 0px;
+}
+.sg_sidebar_wrap .lds-ring {
+    margin-top: 0px;
+}
+
+/* g 스타일그룹 사이드바 상단 */
+.sg_sidebar_top {
+    background: var(--mir-primary-color);
+}
+.sg_sidebar_top .mir_sub_title,
+.sg_sidebar_top .material-icons {
+    color: var(--mir-primary-text-color);
+}
+
+/* * 스타일그룹 사이드바 탭 */
+.sg_sidebar_tab {
+    gap: 10px;
+}
+.sg_sidebar_tab_btn {
+    background: var(--mir-primary-color-ml);
+    color: #000000;
+    border-radius: 0.5rem;
+    transition: 0.2s;
+}
+.sg_sidebar_tab_btn:hover,
+.sg_sidebar_tab_btn.active {
+    background: var(--mir-primary-color);
+    color: var(--mir-primary-text-color);
+}
+
+.sg_sidebar_save_btn {
+    background: var(--mir-primary-color-ml);
+    color: #000000;
+    border-radius: 0.5rem;
+    transition: 0.2s;
+}
+.sg_sidebar_save_btn:hover,
+.sg_sidebar_save_btn.active {
+    background: var(--mir-hover-color);
+    /* color: var(--mir-primary-text-color); */
+}
+
+/* * 스타일그룹 설정영역 */
+.sg_list_wrap {
+    display: none;
+}
+.sg_list_wrap.active {
+    display: block;
+}
+
+
+/* g 스타일그룹 리스트 */
+.sg_color_list_inner {
+    min-height: 160px;
+    overflow: hidden;
+    border: 1px solid #000;
+}
+.sg_text_list_inner {
+    height: calc(100vh - 240px);
+}
+.sg_module_padding_save_btn,
+.sg_module_width_save_btn {
+    padding: 8px 12px;
+}
+.sg_space_list_inner {
+    height: calc(100vh - 750px);
+}
+
+/* g 스타일그룹 아이템 */
+.sg_item.mirroring:not(.color) {
+    border: 2px solid var(--mir-red);
+}
+.sg_item.color {
+    width: 25%;
+    height: 80px;
+    overflow: hidden;
+    border: none;
+}
+.sg_item:hover:not(.mirroring):not(.color) {
+    border: 2px solid var(--mir-primary-color);
+}
+.sg_item.active .accordian_btn {
+    transform: rotate(180deg);
+}
+.sg_mirroring_display {
+    border: 2px solid var(--mir-red);
+    background: var(--mir-red);
+    color: #ffffff;
+    right: 0;
+    top: -15px;
+}
+.sg_item.color .sg_mirroring_display {
+    left: 4px;
+    right: unset;
+    top: 4px;
+}
+.color_mirroring_control_btn {
+    padding: 4px;
+    border-radius: 50%;
+    background: var(--mir-primary-color);
+    color: var(--mir-primary-text-color);
+    right: 10px;
+    bottom: 10px;
+}
+
+/* g 스타일그룹 수정모달 */
+.sg_edit_modal_inner {
+    width: 720px;
+    height: 480px;
+    background: #ffffff;
+}
+.sg_edit_modal_container {
+    width: 50%;
+}
+.sg_edit_modal_container:first-child {
+    border-right: 1px solid #ddd;
+}
+.sg_edit_modal_setting_wrap  {
+    height: 370px;
+}
+.sg_edit_modal_setting_wrap .mir_common_select_click {
+    width: 100%;
+}
+.sg_edit_modal_preview_item.struct {
+    width: 100px;
+    height: 100px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* g 스타일 수정영역 accordian */
+.sg_edit_modal_setting_container.accordian .accordian_item {
+    display: none;
+}
+.sg_edit_modal_setting_container.accordian.active .accordian_title .material-icons {
+    transform: rotate(180deg);
+}
+.sg_edit_modal_setting_container.accordian.active .accordian_item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/* g text-align, border, 텍스트스타일 설정영역 */
+.ta_input:checked + label .ta_input_label, 
+.bd_input:checked + label .bd_input_label,
+.ts_input:checked + label .ts_input_label  {
+    background: var(--mir-primary-color);
+    color: var(--mir-primary-text-color);
+}
+.ta_input_label,
+.bd_input_label,
+.ts_input_label {
+    background: #ddd;
+    border-radius: 0.5rem;
+}
+.sg_edit_modal_setting_container .sp-add-on{
+    width: 40px !important;
+}
+
+/* g border-radius 설정영역 */
+.border_radius_setting_wrap .mir_small_input {
+    width: 40px;
+}
+
+/* g 색상 수정 모달 */
+.color_sg_edit_modal_inner {
+    width: 300px;
+    background: #ffffff;
+}

@@ -1,0 +1,37 @@
+.box_module_box_add {
+	height:auto;
+	clear:both;
+}
+
+.box_module_box_add .modulekey_box_add {
+	height:auto;
+	clear:both;
+}
+
+.module_subobj_box_add > div > ul > li {
+
+}
+
+.module_subobj_box_add .mobj {
+	float:left;
+}
+
+.module_subobj_box_add .content_img {
+	line-height:0;
+}
+
+@media \0screen {
+	.module_subobj_box_add .content_img > img {
+		width: inherit;  /* Make images fill their parent's space. Solves IE8. */
+		max-width: 100%; /* Add !important if needed. */
+		height:auto;
+	}
+}
+
+@media \9screen {
+	.module_subobj_box_add .content_img > img {
+		width: inherit;  /* Make images fill their parent's space. Solves IE8. */
+		max-width: 100%; /* Add !important if needed. */
+		height:auto;
+	}
+}

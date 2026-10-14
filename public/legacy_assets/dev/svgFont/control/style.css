@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'control';
+  src:  url('fonts/control.eot?gc0tmg');
+  src:  url('fonts/control.eot?gc0tmg#iefix') format('embedded-opentype'),
+    url('fonts/control.ttf?gc0tmg') format('truetype'),
+    url('fonts/control.woff?gc0tmg') format('woff'),
+    url('fonts/control.svg?gc0tmg#control') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="control-"], [class*=" control-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'control' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.control-play_arrow-24px:before {
+  content: "\e900";
+}
+.control-pause-24px:before {
+  content: "\e901";
+}
+.control-play_circle_filled-24px:before {
+  content: "\e902";
+}
+.control-pause_circle_filled-24px:before {
+  content: "\e903";
+}
+.control-play_circle_outline-24px:before {
+  content: "\e904";
+}
+.control-pause_circle_outline-24px:before {
+  content: "\e905";
+}

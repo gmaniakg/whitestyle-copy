@@ -1,0 +1,13 @@
+.mainBox_guide { 
+	width:1200px;
+	margin:0 auto;
+	position:relative;
+}
+.mainBox {
+	position:relative;
+	overflow:hidden;
+}
+.mainBox_guide div.mainbox {
+	position:absolute;
+	overflow:hidden;
+}

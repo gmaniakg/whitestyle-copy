@@ -1,0 +1,47 @@
+.footer_sitemap > UL > LI, .copyright > UL > LI, .public_docu > UL > LI{
+	*display: inline !important;
+	zoom: 1;
+}
+
+.public_docu > UL > LI, .copyright > UL > LI{
+	float: left;
+}
+.footer_sitemap > UL > LI{
+	margin: 50px 26px 0px 0px !important;
+}
+.layout_content UL LI{
+	left: 0px;
+}
+.main_viWrap .bx-pager{
+	left: 0px;
+}
+.mir_menu_wrap{
+	z-index: 9999;
+}
+.mir_menu > UL > LI > DIV{
+	padding: 0px 5px 0px 5px !important;
+	/*padding: 0px 23px 0px 24px !important;*/
+}
+.tdTitle_div A I{
+	display: none;
+}
+.text_2_div {
+	padding: 0px !important;
+}
+.text_2_div .titleBox_div, .contentWrap_div P{
+	padding-left: 724px;
+}
+.contentWrap_div > DIV > DIV{
+	max-width:1280px;
+	width: expression((document.body.clientWidth > 1280)? "1280px" : "auto");
+}
+.fRight{
+	float: right;
+}
+.hBox{
+	width: 343px !important;
+	height: 75px !important;
+}
+#quickTab_div > UL > LI{
+margin-top: -4px;
+}

@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  /* Premium White & Blue Palette */
+  --color-primary: #0056b3;
+  --color-primary-light: #4dabf7;
+  --color-secondary: #e7f5ff;
+  --color-background: #f8fafc; /* Very light slate/blue-ish white */
+  --color-surface: #ffffff;
+  --color-text-main: #1e293b;
+  --color-text-muted: #64748b;
+  
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 86, 179, 0.05);
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-text-main);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  /* Subtle animated gradient background for the premium feel */
+  background-image: radial-gradient(circle at 15% 50%, rgba(77, 171, 247, 0.08), transparent 25%),
+                    radial-gradient(circle at 85% 30%, rgba(0, 86, 179, 0.05), transparent 25%);
+  background-attachment: fixed;
+}
+
+/* Glassmorphism Utility Class */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 1.5rem;
+}
+
+/* Smooth Transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 1023px) {
+  .desktop-navbar {
+    display: none !important;
+  }
+  .desktop-auth {
+    display: none !important;
+  }
+  .mobile-hamburger {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-navbar {
+    display: block !important;
+  }
+  .desktop-auth {
+    display: flex !important;
+  }
+  .mobile-hamburger {
+    display: none !important;
+  }
+}
