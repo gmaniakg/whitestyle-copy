@@ -19,6 +19,34 @@ const nextConfig: NextConfig = {
       'node_modules/typescript',
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        has: [
+          {
+            type: 'query',
+            key: 'ld',
+            value: 'Japanese',
+          },
+        ],
+        destination: '/about/japan-landing',
+        permanent: false,
+      },
+      {
+        source: '/',
+        has: [
+          {
+            type: 'query',
+            key: 'ld',
+            value: 'japanese',
+          },
+        ],
+        destination: '/about/japan-landing',
+        permanent: false,
+      },
+    ];
+  },
   async rewrites() {
     if (!process.env.LEGACY_HOST) {
       return [];
