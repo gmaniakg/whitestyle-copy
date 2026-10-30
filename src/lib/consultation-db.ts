@@ -8,6 +8,10 @@ export interface ConsultationRecord {
   treatment: string;
   memo: string;
   agreedPrivacy: boolean;
+  agreedSensitive: boolean;
+  agreedMarketing: boolean;
+  consentAt: string;
+  privacyPolicyVersion: string;
   source: string;
   ip?: string;
   status: 'PENDING' | 'CONTACTED' | 'RESERVED' | 'CANCELLED';
@@ -77,7 +81,10 @@ export async function createConsultation(data: {
   phone: string;
   treatment?: string;
   memo?: string;
-  agreedPrivacy?: boolean;
+  agreedPrivacy: boolean;
+  agreedSensitive: boolean;
+  agreedMarketing?: boolean;
+  privacyPolicyVersion: string;
   source?: string;
   ip?: string;
 }): Promise<ConsultationRecord> {
@@ -90,7 +97,11 @@ export async function createConsultation(data: {
     phone: data.phone.trim(),
     treatment: data.treatment || '일반/종합상담',
     memo: data.memo || '',
-    agreedPrivacy: data.agreedPrivacy ?? true,
+    agreedPrivacy: data.agreedPrivacy,
+    agreedSensitive: data.agreedSensitive,
+    agreedMarketing: data.agreedMarketing ?? false,
+    consentAt: now.toISOString(),
+    privacyPolicyVersion: data.privacyPolicyVersion,
     source: data.source || 'quick_bar',
     ip: data.ip || '',
     status: 'PENDING',
@@ -108,6 +119,10 @@ export async function createConsultation(data: {
           treatment: newRecord.treatment,
           memo: newRecord.memo,
           agreedPrivacy: newRecord.agreedPrivacy,
+          agreedSensitive: newRecord.agreedSensitive,
+          agreedMarketing: newRecord.agreedMarketing,
+          consentAt: now,
+          privacyPolicyVersion: newRecord.privacyPolicyVersion,
           source: newRecord.source,
           ip: newRecord.ip,
           status: newRecord.status,
@@ -117,9 +132,11 @@ export async function createConsultation(data: {
       });
       return {
         ...created,
+        consentAt: (created.consentAt ?? now).toISOString(),
         createdAt: created.createdAt.toISOString(),
         updatedAt: created.updatedAt.toISOString(),
       };
+
     } catch (err) {
       console.warn('[consultation-db] Prisma create failed, falling back to JSON:', err);
     }

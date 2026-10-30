@@ -43,6 +43,7 @@ const MENUS = {
       { name: '의료진소개', href: '/about/doctors' },
       { name: '병원둘러보기', href: '/about/tour' },
       { name: '진료시간/오시는길', href: '/about/location' },
+      { name: '日本語案内 (KONEST公式)', href: '/about/japan-landing' },
     ]
   },
   implant: {
@@ -84,13 +85,10 @@ const MENUS = {
     ]
   },
   community: {
-    title: '커뮤니티/후기',
-    mainHref: '/board/review',
+    title: '공지사항',
+    mainHref: '/board/notice',
     items: [
       { name: '공지사항', href: '/board/notice' },
-      { name: '고객감동', href: '/board/report' },
-      { name: '자필후기', href: '/board/review' },
-      { name: '화스스타', href: '/board/withstar' },
     ]
   }
 };

@@ -17,17 +17,14 @@ export async function GET(req: NextRequest) {
     case 'notice':
       destination = wrId ? `/board/notice/${wrId}` : '/board/notice';
       break;
+    // 후기·경험담·연예인 게시판은 의료법 제56조 검토에 따라 삭제됨 → 공지로 이동
     case 'review':
     case 'case':
-      destination = wrId ? `/board/review/${wrId}` : '/board/review';
-      break;
     case 'report':
     case 'column':
     case 'youtube':
-      destination = wrId ? `/board/report/${wrId}` : '/board/report';
-      break;
     case 'withstar':
-      destination = wrId ? `/board/withstar/${wrId}` : '/board/withstar';
+      destination = '/board/notice';
       break;
     case 'open_price':
       destination = '/consult';

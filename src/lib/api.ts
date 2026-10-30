@@ -17,6 +17,22 @@ export interface LegacyPost {
 // ─── 인메모리 캐시 (프로세스 생애 동안 metadata.json 을 1회만 읽음) ───
 let _postsCache: LegacyPost[] | null = null;
 
+// 의료광고 규제 준수: 노출 차단 게시판 타입 (원본 데이터는 보존, 로더에서만 제외)
+const BLOCKED_TYPES = new Set(['board_review', 'board_report', 'board_withstar']);
+
+// board_notice 는 허용 목록(운영 안내성 공지)만 노출. 비급여 수가표(32557) 포함.
+const ALLOWED_NOTICE_IDS = new Set(['26079', '28312', '30902', '32557']);
+
+function isExposable(p: LegacyPost): boolean {
+  if (BLOCKED_TYPES.has(p.type)) return false;
+  if (p.type === 'board_notice') {
+    const fileId = (p.local_path.split('/').pop() ?? '').split('_')[0];
+    const urlId = p.url.match(/[?&]wr_id=(\d+)/)?.[1];
+    return ALLOWED_NOTICE_IDS.has(fileId) || (!!urlId && ALLOWED_NOTICE_IDS.has(urlId));
+  }
+  return true;
+}
+
 // 전체 메타데이터 로드 (캐시 우선)
 export function getAllPosts(): LegacyPost[] {
   if (_postsCache) return _postsCache;
@@ -24,7 +40,7 @@ export function getAllPosts(): LegacyPost[] {
   try {
     if (!fs.existsSync(METADATA_FILE)) return [];
     const raw = fs.readFileSync(METADATA_FILE, 'utf8');
-    _postsCache = JSON.parse(raw) as LegacyPost[];
+    _postsCache = (JSON.parse(raw) as LegacyPost[]).filter(isExposable);
     return _postsCache;
   } catch (err) {
     console.error('[api] metadata.json 로드 실패:', err);

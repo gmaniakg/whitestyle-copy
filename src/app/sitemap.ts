@@ -77,13 +77,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 추출된 포스트 및 상세 진료 페이지 동적 매핑
   let dynamicRoutes: MetadataRoute.Sitemap = [];
   try {
-    const posts = getAllPosts();
+    const posts = getAllPosts().filter(
+      (p) => p.type === 'static_page' || p.type === 'board_notice'
+    );
     dynamicRoutes = posts.slice(0, 300).map((p) => {
       const filename = p.local_path.split('/').pop() ?? '';
       const fileId = filename.split('_')[0];
       const urlPath = p.type === 'static_page'
         ? `/treatments/${fileId}`
-        : `/board/${p.type}/${fileId}`;
+        : `/board/notice/${fileId}`;
 
       return {
         url: `${baseUrl}${urlPath}`,

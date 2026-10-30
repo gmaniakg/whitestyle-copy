@@ -20,19 +20,11 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    const internalRewrites = [
-      {
-        source: "/_mir.do.sqlexec.php",
-        destination: "/api/sqlexec",
-      },
-    ];
-
     if (!process.env.LEGACY_HOST) {
-      return internalRewrites;
+      return [];
     }
 
     return [
-      ...internalRewrites,
       {
         source: "/mrw/:path*",
         destination: `${LEGACY_HOST}/mrw/:path*`,

@@ -7,6 +7,14 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /game
+Disallow: /bbs
+Disallow: /board/review
+Disallow: /board/report
+Disallow: /board/withstar
 
 # OpenAI Crawlers (ChatGPT & SearchGPT)
 User-agent: GPTBot
@@ -60,3 +68,4 @@ User-agent: Diffbot
 Allow: /
 
 Sitemap: https://whitestyle.com/sitemap.xml
+

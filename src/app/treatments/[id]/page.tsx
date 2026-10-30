@@ -1,7 +1,6 @@
 import React from 'react';
 import TreatmentLayout from '@/components/TreatmentLayout';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
-import ClinicalCasesGallery from '@/components/ClinicalCasesGallery';
 import { getPostByPartialTitle } from '@/lib/api';
 
 export default async function TreatmentPage({ params }: { params: { id: string } }) {
@@ -44,11 +43,6 @@ export default async function TreatmentPage({ params }: { params: { id: string }
         {/* 실제 크롤링된 본문을 렌더링 (이미지 포함) */}
         <MarkdownRenderer content={mdContent} />
       </div>
-
-      {/* 임플란트 관련 페이지에 임상 사례 갤러리 노출 */}
-      {['12121', '12122', '12123', '12125'].includes(id) && (
-        <ClinicalCasesGallery />
-      )}
     </TreatmentLayout>
   );
 }

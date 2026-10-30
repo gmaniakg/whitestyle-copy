@@ -30,18 +30,19 @@ const questions = {
 const results = {
   case1: {
     title: "전악 임플란트 (무치악/풀마우스)",
-    desc: "치아가 하나도 없는 상태에서 다수의 임플란트를 식립하여 전체 교합을 재건하는 고난도 전악 케이스입니다.",
+    desc: "치아가 없는 상태에서 다수의 임플란트를 식립하여 전체 교합을 회복하는 전악 임플란트 케이스 유형입니다.",
     tags: ["#무치악", "#전악재건", "#틀니대체"]
   },
   case2: {
     title: "심미 앞니 임플란트",
-    desc: "잇몸 라인과 투명도, 주변 치아와의 조화까지 완벽하게 고려하여 자연치아와 구분할 수 없는 심미성이 요구되는 앞니 임플란트 케이스입니다.",
-    tags: ["#앞니", "#심미보철", "#자연스러움"]
+    desc: "잇몸 라인, 주변 치아와의 조화 등 심미적 요소를 함께 고려하는 앞니 임플란트 케이스 유형입니다. 결과는 개인의 구강 상태에 따라 다를 수 있습니다.",
+    tags: ["#앞니", "#심미보철"]
   },
   case3: {
-    title: "일반 / 원데이 임플란트",
-    desc: "잇몸뼈가 충분하여 발치 후 즉시 임플란트를 식립하고, 빠르면 당일 임시치아까지 완성할 수 있는 원데이 임플란트 케이스입니다.",
-    tags: ["#원데이", "#당일식립", "#빠른치료"]
+    title: "일반 / 즉시 식립 임플란트",
+    desc: "잇몸뼈 상태가 충분한 경우 발치 후 즉시 식립을 고려할 수 있는 케이스 유형입니다. 즉시 식립·임시치아 가능 여부와 기간은 진단 결과에 따라 달라집니다.",
+    tags: ["#즉시식립", "#임시치아"]
+
   },
   case4: {
     title: "동시 식립 GBR (뼈이식)",
@@ -49,9 +50,9 @@ const results = {
     tags: ["#뼈이식", "#동시식립", "#GBR"]
   },
   case5: {
-    title: "고난도 지연 식립 GBR (뼈이식)",
-    desc: "잇몸뼈가 거의 소실되어, 먼저 뼈이식술(골형성)을 크게 진행한 뒤 뼈가 단단해지는 3~6개월을 기다렸다가 임플란트를 식립하는 최고난이도 케이스입니다.",
-    tags: ["#뼈이식", "#지연식립", "#고난이도"]
+    title: "지연 식립 GBR (뼈이식)",
+    desc: "잇몸뼈의 소실이 큰 경우, 먼저 뼈이식술을 진행하고 뼈가 안정되는 기간(개인차 있음, 통상 3~6개월)을 기다린 뒤 임플란트를 식립하는 케이스 유형입니다. 실제 치료 계획은 진단 후 개인별로 달라질 수 있습니다.",
+    tags: ["#뼈이식", "#지연식립"]
   }
 } as const;
 
@@ -64,7 +65,9 @@ export default function ImplantCaseFinder() {
   // Kakao Form State
   const [showForm, setShowForm] = useState(false);
   const [phone, setPhone] = useState('');
-  const [consent, setConsent] = useState(false);
+  const [agreedPrivacy, setAgreedPrivacy] = useState(false);
+  const [agreedSensitive, setAgreedSensitive] = useState(false);
+  const [agreedMarketing, setAgreedMarketing] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -91,12 +94,15 @@ export default function ImplantCaseFinder() {
     setShowForm(false);
     setSuccess(false);
     setPhone('');
-    setConsent(false);
+    setAgreedPrivacy(false);
+    setAgreedSensitive(false);
+    setAgreedMarketing(false);
   };
 
   const handleKakaoSubmit = async () => {
     if (!phone) return alert('전화번호를 입력해주세요.');
-    if (!consent) return alert('개인정보 수집 및 마케팅 활용에 동의하셔야 합니다.');
+    if (!agreedPrivacy) return alert('개인정보 수집·이용 동의(필수)가 필요합니다.');
+    if (!agreedSensitive) return alert('민감정보(건강정보) 처리 동의(필수)가 필요합니다.');
     
     setLoading(true);
     try {
@@ -106,13 +112,16 @@ export default function ImplantCaseFinder() {
         body: JSON.stringify({
           phone,
           resultTitle: rData?.title,
-          resultDesc: rData?.desc
+          resultDesc: rData?.desc,
+          agreedPrivacy,
+          agreedSensitive,
+          agreedMarketing
         })
       });
       if (res.ok) {
         setSuccess(true);
       } else {
-        alert('발송에 실패했습니다. 잠시 후 다시 시도해주세요.');
+        alert('접수에 실패했습니다. 잠시 후 다시 시도해주세요.');
       }
     } catch (e) {
       alert('오류가 발생했습니다.');
@@ -120,6 +129,7 @@ export default function ImplantCaseFinder() {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="w-full max-w-4xl mx-auto my-16 p-8 md:p-12 bg-gradient-to-br from-slate-50 to-blue-50 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white relative overflow-hidden">
@@ -237,19 +247,20 @@ export default function ImplantCaseFinder() {
                       className="w-full py-5 px-6 bg-[#FEE500] hover:bg-[#FADA0A] text-[#191919] font-bold rounded-2xl transition-all shadow-md flex items-center justify-center gap-3 text-lg"
                     >
                       <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M12 3c-5.523 0-10 3.52-10 7.864 0 2.827 1.947 5.305 4.908 6.643-.376 1.348-1.42 5.127-1.455 5.385-.044.321.118.324.25.234.103-.07 1.637-1.127 3.59-2.525 1.554.407 3.2.627 4.907.627 5.523 0 10-3.52 10-7.864C22 6.52 17.523 3 12 3z"/></svg>
-                      '나의 치아 가장 안전한 해결책' 3초내에 내게 카톡으로 보내기
+                      결과를 카카오톡으로 받아보기
                     </button>
                   ) : success ? (
                     <div className="bg-green-50 text-green-700 p-6 rounded-2xl border border-green-200">
                       <h5 className="font-bold text-lg mb-2 flex items-center justify-center gap-2">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                        카카오톡 알림톡 발송 완료!
+                        접수되었습니다
                       </h5>
-                      <p className="text-sm">입력하신 번호로 진단 결과가 전송되었습니다.</p>
+                      <p className="text-sm">상담 담당자가 확인 후 입력하신 번호로 연락드리겠습니다.</p>
                     </div>
                   ) : (
                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-left animate-in fade-in slide-in-from-top-4 duration-300">
-                      <h5 className="font-bold text-slate-800 mb-4">카카오톡으로 결과 받기</h5>
+                      <h5 className="font-bold text-slate-800 mb-4">상담 결과 접수</h5>
+
                       
                       <div className="mb-4">
                         <label className="block text-sm font-semibold text-slate-700 mb-2">휴대폰 번호 (숫자만 입력)</label>
@@ -262,22 +273,21 @@ export default function ImplantCaseFinder() {
                         />
                       </div>
                       
-                      <div className="mb-6">
-                        <label className="flex items-start gap-3 cursor-pointer group">
-                          <div className="relative flex items-center">
-                            <input 
-                              type="checkbox" 
-                              checked={consent}
-                              onChange={(e) => setConsent(e.target.checked)}
-                              className="peer w-5 h-5 border-2 border-slate-300 rounded focus:ring-blue-200 focus:ring-2 cursor-pointer transition-colors checked:bg-blue-600 checked:border-blue-600 appearance-none"
-                            />
-                            <svg className="absolute w-5 h-5 pointer-events-none opacity-0 peer-checked:opacity-100 text-white transition-opacity duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                          </div>
-                          <span className="text-sm text-slate-600 group-hover:text-slate-800 transition-colors leading-tight pt-0.5">
-                            (필수) 개인정보 수집 및 화이트스타일치과 안내/마케팅 정보 수신에 동의합니다. 수집된 정보는 고객 맞춤형 의료 상담을 위해 사용됩니다.
-                          </span>
+                      <div className="mb-6 space-y-3 text-sm text-slate-600">
+                        <label className="flex items-start gap-2 cursor-pointer">
+                          <input type="checkbox" checked={agreedPrivacy} onChange={(e) => setAgreedPrivacy(e.target.checked)} className="mt-0.5 w-5 h-5 shrink-0" />
+                          <span className="leading-tight">(필수) 개인정보 수집·이용 동의: 연락처를 상담 접수 및 회신 목적으로 수집·이용합니다. 보유기간 등 자세한 내용은 <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">개인정보처리방침</a>을 확인해 주세요.</span>
+                        </label>
+                        <label className="flex items-start gap-2 cursor-pointer">
+                          <input type="checkbox" checked={agreedSensitive} onChange={(e) => setAgreedSensitive(e.target.checked)} className="mt-0.5 w-5 h-5 shrink-0" />
+                          <span className="leading-tight">(필수) 민감정보(건강정보) 처리 동의: 선택하신 구강 상태 관련 응답이 상담 결과 안내에 포함되어 처리됩니다.</span>
+                        </label>
+                        <label className="flex items-start gap-2 cursor-pointer">
+                          <input type="checkbox" checked={agreedMarketing} onChange={(e) => setAgreedMarketing(e.target.checked)} className="mt-0.5 w-5 h-5 shrink-0" />
+                          <span className="leading-tight">(선택) 병원 안내·마케팅 정보 수신 동의: 동의하지 않아도 상담 접수에는 영향이 없습니다.</span>
                         </label>
                       </div>
+
 
                       <div className="flex gap-3">
                         <button 

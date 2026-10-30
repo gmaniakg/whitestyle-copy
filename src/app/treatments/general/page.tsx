@@ -16,7 +16,7 @@ export default function Page() {
         </h1>
         <p className="text-2xl md:text-[28px] text-slate-600 max-w-3xl leading-relaxed mb-16">
           상쾌한 아침의 시작, 건강한 치아부터.<br/>
-          아프지 않은 편안한 진료로 당신의 하루를 가볍게 해드립니다.
+          충치·스케일링 등 일반/예방 진료 안내입니다.
         </p>
 
         <div className="relative w-full max-w-5xl h-[400px] md:h-[600px] rounded-[40px] overflow-hidden shadow-2xl border border-slate-100 mb-16">

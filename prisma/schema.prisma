@@ -59,7 +59,11 @@ model Consultation {
   phone         String
   treatment     String?  @default("일반/종합상담")
   memo          String?
-  agreedPrivacy Boolean  @default(true)
+  agreedPrivacy Boolean  // 개인정보 수집·이용 동의(필수) - 기본값 없음
+  agreedSensitive Boolean // 민감정보(건강정보) 처리 별도 동의(필수) - 기본값 없음
+  agreedMarketing Boolean @default(false) // 마케팅 수신 동의(선택)
+  consentAt     DateTime? // 동의 일시
+  privacyPolicyVersion String? // 동의 시점 방침 버전
   source        String?  @default("quick_bar")
   ip            String?
   status        String   @default("PENDING") // PENDING, CONTACTED, RESERVED, CANCELLED

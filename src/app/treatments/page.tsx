@@ -20,7 +20,7 @@ export default async function TreatmentsPage() {
         <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
           <RevealText text="임상 과목" as="span" />
         </h1>
-        <p className="text-slate-500 max-w-2xl text-lg">최첨단 장비와 수만 건의 임상 경험을 바탕으로, 당신에게 가장 안전하고 정밀한 프리미엄 맞춤 치료를 제공합니다.</p>
+        <p className="text-slate-500 max-w-2xl text-lg">진료 과목별 안내입니다. 치료 방법과 결과는 개인별 상태에 따라 다를 수 있으며, 자세한 내용은 상담을 통해 확인하세요.</p>
       </FadeIn>
 
       <FadeInStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.15}>

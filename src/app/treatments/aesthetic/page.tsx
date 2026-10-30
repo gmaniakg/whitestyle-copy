@@ -15,7 +15,7 @@ export default function AestheticTreatmentPage() {
           심미치료 시스템
         </h1>
         <p className="text-2xl md:text-[28px] text-slate-600 max-w-3xl leading-relaxed mb-16">
-          자연스럽고 눈부신 미소를 완성하는 화이트스타일치과의 맞춤형 프리미엄 심미성형 솔루션입니다.
+          화이트스타일치과의 심미치료 안내입니다. 치료 결과와 부작용은 개인별로 다를 수 있습니다.
         </p>
         
         <div className="relative w-full max-w-5xl h-[400px] md:h-[600px] rounded-[40px] overflow-hidden shadow-2xl border border-slate-100">
@@ -42,7 +42,7 @@ export default function AestheticTreatmentPage() {
             이지화이트 (Easy White)
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            최소 삭제로 치아의 손상을 최소화하면서 가장 맑고 하얀 치아를 연출하는 맞춤형 라미네이트 시술입니다.
+            치아 상태에 맞춰 진행하는 라미네이트 시술입니다. 치아 삭제, 시린 증상 등 부작용이 발생할 수 있습니다.
           </p>
           <span className="inline-flex items-center text-blue-600 font-bold group-hover:translate-x-2 transition-transform">
             자세히 보기 &rarr;
@@ -62,7 +62,7 @@ export default function AestheticTreatmentPage() {
             제로쉘 (ZeroShell) 심미보철
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            무삭제 치아 성형 솔루션으로 마취와 통증 없이 자연스러운 치아 형태와 색상을 완성합니다.
+            치아 형태와 색상을 개선하는 심미보철 시술입니다. 적용 가능 여부와 통증·부작용 정도는 개인별로 다르며 진단 후 상담이 필요합니다.
           </p>
           <span className="inline-flex items-center text-indigo-600 font-bold group-hover:translate-x-2 transition-transform">
             자세히 보기 &rarr;

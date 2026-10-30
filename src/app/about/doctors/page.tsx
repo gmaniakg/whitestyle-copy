@@ -2,6 +2,8 @@ import React from 'react';
 import { FadeIn, FadeInStaggerContainer, FadeInStaggerItem } from '@/components/animations/FadeIn';
 import { RevealText } from '@/components/animations/RevealText';
 
+// TODO(병원 확인): (1) 대표원장 표기 불일치 - 이봉진 '대표원장' vs 김준헌 '병원장' (layout.tsx 푸터/JSON-LD 는 김준헌 대표원장). 확정 필요.
+// TODO(병원 확인): '인정의'·'전문의'·학회 정회원·'우수보철치과의사' 표기는 의료법상 표시 가능 여부/자격증 확인 후 확정 (값 미변경).
 const doctors = [
   {
     name: '이봉진',

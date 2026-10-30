@@ -23,7 +23,12 @@ export default function AdminConsultationsPage() {
   const fetchLeads = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/consult?status=${statusFilter}&search=${encodeURIComponent(search)}`);
+      const res = await fetch(`/api/consult?status=${statusFilter}&search=${encodeURIComponent(search)}&limit=100`);
+      if (res.status === 401 || res.status === 403) {
+        setItems([]);
+        alert('관리자 권한이 필요합니다.');
+        return;
+      }
       const data = await res.json();
       if (data.success) {
         setItems(data.items || []);
