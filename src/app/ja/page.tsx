@@ -29,7 +29,7 @@ export default function JapaneseLandingPage() {
           </h1>
 
           <p className="text-base sm:text-xl md:text-2xl text-slate-200 max-w-3xl mb-10 leading-relaxed font-medium">
-            ソウル大学校歯科大学出身・臨床30年の金俊憲（キム・ジュンホン）代表院長が直接執刀。<br className="hidden sm:inline" />
+            ソウル大学校歯科大学出身・臨床33年の金俊憲（キム・ジュンホン）代表院長が直接執刀。<br className="hidden sm:inline" />
             専任の日本語医療通訳スタッフ3名が常駐し、カウンセリングから日本帰国後のLINEアフターケアまで完全サポートいたします。
           </p>
 
@@ -103,7 +103,7 @@ export default function JapaneseLandingPage() {
             <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center font-black text-lg mb-5">
               02
             </div>
-            <h3 className="text-xl font-extrabold text-slate-900 mb-3">ソウル大出身・臨床30年の代表院長</h3>
+            <h3 className="text-xl font-extrabold text-slate-900 mb-3">ソウル大出身・臨床33年の代表院長</h3>
             <p className="text-slate-600 leading-relaxed text-sm">
               ソウル大学校歯科大学卒業・歯医学博士の金俊憲（キム・ジュンホン）代表院長が、流れ作業ではなくお一人おひとりを直接診断・執刀いたします。
             </p>
@@ -154,7 +154,7 @@ export default function JapaneseLandingPage() {
               金 俊憲（キム・ジュンホン / Dr. Jun-Heon Kim）
             </h2>
             <p className="text-amber-200 text-sm md:text-base font-semibold mb-6">
-              ソウル大学校 歯科大学卒業 ｜ 檀国大学校 歯科矯正学 歯医学博士 ｜ 臨床経験30年以上（累計62,000症例以上）
+              ソウル大学校 歯科大学卒業 ｜ 檀国大学校 歯科矯正学 歯医学博士 ｜ 臨床経験33年以上（累計62,000症例以上）
             </p>
 
             <ul className="space-y-2 text-sm text-slate-200 leading-relaxed mb-6">

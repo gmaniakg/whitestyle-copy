@@ -24,7 +24,7 @@ export default async function TreatmentPage({ params }: { params: { id: string }
     title: post.title.split(' ')[0] || "진료과목", // 원본 제목에서 핵심 키워드 추출
     description: "화이트스타일치과의 전문 진료 안내입니다.",
     authorName: "김준헌 대표원장",
-    authorTitle: "치의학 박사 35년 임상 경력",
+    authorTitle: "치의학 박사 33년 임상 경력",
     lastUpdated: new Date().toISOString().split('T')[0],
     faqs: [] // 향후 AI 스킬(brunch-skills) 연동을 통해 FAQ 자동 생성 가능
   };

@@ -192,7 +192,7 @@ export default function TourPage() {
                   <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-black text-lg">김</div>
                   <div>
                     <div className="font-extrabold text-white text-lg">김준헌 대표원장</div>
-                    <div className="text-slate-400 text-sm">화이트스타일치과 · 강남역 30년 전통</div>
+                    <div className="text-slate-400 text-sm">화이트스타일치과 · 강남역 33년 전통</div>
                   </div>
                 </div>
               </div>
