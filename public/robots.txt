@@ -1,71 +1,31 @@
-# Robots.txt for WhiteStyle Dental Clinic (화이트스타일치과의원)
-# Website: https://whitestyle.com
-# LLMs Knowledge Base: https://whitestyle.com/llms.txt
-# LLMs Full Knowledge Base: https://whitestyle.com/llms-full.txt
-
-# Default rule for general web crawlers
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /admin
-Disallow: /login
-Disallow: /register
-Disallow: /game
-Disallow: /bbs
-Disallow: /board/review
-Disallow: /board/report
-Disallow: /board/withstar
+Disallow: /adm/
+Disallow: /admin/
+Disallow: /install/
+Disallow: /bbs/password.php
+Disallow: /bbs/login.php
+Disallow: /bbs/write.php
+Disallow: /*sca=*
+Disallow: /*branch_sca=*
 
-# OpenAI Crawlers (ChatGPT & SearchGPT)
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-# Perplexity AI Crawler
-User-agent: PerplexityBot
-Allow: /
-
-# Anthropic AI Crawlers (Claude)
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-# Google AI & Gemini Extended Crawler
+# 검색엔진 및 AI 답변 엔진 크롤러 명시적 허용
+User-agent: Googlebot
+User-agent: Googlebot-Image
 User-agent: Google-Extended
-Allow: /
-
-# Apple AI & Intelligence Crawler
-User-agent: Applebot-Extended
-Allow: /
-
-# Amazon AI Crawler
-User-agent: Amazonbot
-Allow: /
-
-# Microsoft Bing & Copilot Crawler
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Yeti
+User-agent: Daum
 User-agent: Bingbot
 Allow: /
+Allow: /data/
+Disallow: /adm/
+Disallow: /admin/
+Disallow: /install/
 
-# Naver Search Crawler
-User-agent: Yeti
-Allow: /
-
-# Common Crawl & Other Foundational AI Training Crawlers
-User-agent: CCBot
-Allow: /
-
-User-agent: Cohere-ai
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: Diffbot
-Allow: /
-
-Sitemap: https://whitestyle.com/sitemap.xml
-
+Sitemap: https://www.whitestyle.com/sitemap.xml

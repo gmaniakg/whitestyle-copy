@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1994년 개원 33년 전통 화이트스타일치과의원의 한일 환자 맞춤형 치아교정·임플란트·라미네이트 인터랙티브 진료 플래너입니다.">
+  <title>화이트스타일치과의원: 한일 맞춤형 진료 프로토콜 플래너</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700&family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://www.whitestyle.com" class="brand-title">화이트스타일치과의원 인터랙티브 진료 플래너</a>
+      <div class="header-meta">
+        <span>since 1994 (33 years)</span>
+        <span>創業33年 ソウル江南 ホワイトスタイル歯科</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-stage" aria-labelledby="planner-heading">
+      <div class="container hero-grid">
+        <div class="hero-intro">
+          <h1 id="planner-heading" class="hero-headline">나에게 맞는 33년 전통 1:1 맞춤 진료 설계 안내</h1>
+          <div class="hero-aside">
+            <p class="hero-lead">희망 진료 과목과 방한 및 내원 일정을 선택하면 김준헌 대표병원장(치의학박사)의 3D 정밀 진단 프로토콜과 예상 일정을 즉시 확인합니다.</p>
+            <div class="hero-actions">
+              <button type="button" id="btn-lang-ko" class="btn btn--primary" onclick="setPlannerCase('ortho')">교정 프로토콜</button>
+              <button type="button" id="btn-lang-im" class="btn btn--secondary" onclick="setPlannerCase('implant')">임플란트 프로토콜</button>
+              <button type="button" id="btn-lang-la" class="btn btn--secondary" onclick="setPlannerCase('laminate')">심미보철 (日本語併記)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="register-tray" role="region" aria-label="맞춤형 처방 시뮬레이션 결과">
+          <article class="register-compartment">
+            <div class="rx-sheet">
+              <div class="rx-header">
+                <span class="rx-code" id="rx-code-kr">맞춤 진료 안내 01 · 3D 정밀 치아교정</span>
+                <span class="rx-stamp" id="rx-stamp-kr">3단계 무통 시스템</span>
+              </div>
+              <h2 class="rx-title" id="rx-title-kr">세라믹 및 클리피씨 3D 정밀 치아교정 플랜</h2>
+              <p class="rx-desc" id="rx-desc-kr">파노라마 및 3D 세팔로 골격 계측을 통해 불필요한 발치를 줄이고, 45도 브라켓 미세모 관리와 치근 보호 역학으로 안정적인 교합을 완성합니다.</p>
+              <div class="rx-footer">
+                <span id="rx-visit-kr">당일 정밀진단 가능 (약 60분)</span>
+                <span>담당: 김준헌 대표병원장 (치의학박사)</span>
+              </div>
+            </div>
+            <div class="rx-sheet">
+              <div class="rx-header">
+                <span class="rx-code">내원 전후 안심 체크리스트</span>
+                <span class="rx-stamp">1994 개원 33년 전통</span>
+              </div>
+              <h2 class="rx-title">내원 전 핵심 준비 및 사후 보증 프로토콜</h2>
+              <p class="rx-desc">강남역 11번 출구 도보 1분 본원에서 3D CT 촬영부터 대표원장 1:1 분석, 전담 치과위생사 예방 스케일링까지 원스톱으로 진행됩니다.</p>
+              <div class="rx-footer">
+                <span>무통 가글 및 표면 도포 마취 기본 적용</span>
+                <span>whitestyle.com</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="register-compartment">
+            <div class="rx-sheet">
+              <div class="rx-header">
+                <span class="rx-code" id="rx-code-jp">일본 방한 환자 전담 안내 · 短期集中プラン</span>
+                <span class="rx-stamp" id="rx-stamp-jp">日本語通訳常駐</span>
+              </div>
+              <h2 class="rx-title" id="rx-title-jp">日本からご来院の患者様向け 短期集中＆精密診断プラン</h2>
+              <p class="rx-desc" id="rx-desc-jp">渡韓スケジュール（日帰り・1泊2日）に合わせ、3D精密検査から装置装着・インプラント埋入・審美補綴まで日本語通訳スタッフが全過程を同行サポートします。</p>
+              <div class="rx-footer">
+                <span id="rx-visit-jp">LINE事前相談: whitestyle1</span>
+                <span>@whitestylejp</span>
+              </div>
+            </div>
+            <div class="rx-sheet">
+              <div class="rx-header">
+                <span class="rx-code">동종골 치조골 이식 · 골유착 과학</span>
+                <span class="rx-stamp">국제 학술 근거</span>
+              </div>
+              <h2 class="rx-title">골형성 단백질(BMP-2) 및 동종골 치조골 재생 근거</h2>
+              <p class="rx-desc">잇몸뼈가 부족한 재수술·난케이스에서도 동종골 이식과 골유도 단백질(BMP-2) 신호전달 원리를 기반으로 자연골에 가까운 골유착을 유도합니다.</p>
+              <div class="rx-footer">
+                <span>PDB 3BMP / PubMed 학술 근거 기반</span>
+                <span>whinish.com</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const PLANS = {
+      ortho: {
+        codeKr: "맞춤 진료 안내 01 · 3D 정밀 치아교정",
+        stampKr: "3단계 무통 시스템",
+        titleKr: "세라믹 및 클리피씨 3D 정밀 치아교정 플랜",
+        descKr: "파노라마 및 3D 세팔로 골격 계측을 통해 불필요한 발치를 줄이고, 45도 브라켓 미세모 관리와 치근 보호 역학으로 안정적인 교합을 완성합니다.",
+        visitKr: "당일 정밀진단 및 브라켓 장착 가능",
+        titleJp: "3Dセファロ分析に基づく精密歯列矯正プラン",
+        descJp: "セラミックおよびクリッピーC装置を用い、抜歯を最小限に抑えながら正面・側面のEラインと咬合バランスを精密に改善します。"
+      },
+      implant: {
+        codeKr: "rx plan 02 / digital guided implant",
+        stampKr: "동종골 치조골이식",
+        titleKr: "디지털 가이드 무통 임플란트 및 뼈이식 프로토콜",
+        descKr: "3D CT로 치조골 밀도와 신경관을 정밀 계측하고, 골형성 단백질(BMP-2) 및 동종골 이식술로 잇몸뼈가 약한 분들도 단단한 저작력을 회복합니다.",
+        visitKr: "당일 발치 후 즉시 식립 상담 가능",
+        titleJp: "3Dガイドインプラント＆自家骨・同種骨移植プラン",
+        descJp: "3D CTで骨密度と神経位置を精密に把握し、痛みを抑えた3段階麻酔システムと徹底した術後歯周管理で長期安定を実現します。"
+      },
+      laminate: {
+        codeKr: "맞춤 진료 안내 03 · 최소삭제 심미 라미네이트",
+        stampKr: "법랑질 보존 설계",
+        titleKr: "자연치아를 아끼는 무삭제·최소삭제 심미 라미네이트",
+        descKr: "구강 스캐너와 전담 기공소의 정밀 세라믹 레이어링으로 치아 삭제를 최소화하면서 자연스러운 투명도와 스마일 라인을 디자인합니다.",
+        visitKr: "방한 일정 맞춘 원데이/단기 완성 지원",
+        titleJp: "天然歯を守る最小削除ラミネートベニア＆美白プラン",
+        descJp: "専属歯科技工士との連携により、歯を削る量を最小限に抑えながら顔立ちに調和する白さと透明感を短期間でデザインします。"
+      }
+    };
+    function setPlannerCase(key) {
+      const p = PLANS[key];
+      if (!p) return;
+      document.getElementById("rx-code-kr").textContent = p.codeKr;
+      document.getElementById("rx-stamp-kr").textContent = p.stampKr;
+      document.getElementById("rx-title-kr").textContent = p.titleKr;
+      document.getElementById("rx-desc-kr").textContent = p.descKr;
+      document.getElementById("rx-visit-kr").textContent = p.visitKr;
+      document.getElementById("rx-title-jp").textContent = p.titleJp;
+      document.getElementById("rx-desc-jp").textContent = p.descJp;
+    }
+  </script>
+</body>
+</html>

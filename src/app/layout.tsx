@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "화이트스타일치과 | 강남역 임플란트·치아교정·심미치료",
     template: "%s | 화이트스타일치과"
   },
-  description: "강남역 인근 치과. 임플란트, 라미네이트, 치아교정, 치아미백 진료. 치료 결과와 부작용(통증, 출혈, 감염 등)은 개인별로 다를 수 있으니 상담 후 결정하세요.",
+  description: "1994년 개원 33년 전통 강남역 화이트스타일치과의원. 치의학박사 김준헌 병원장·이봉진 대표원장·박선혜 원장(치주과 전문의) 3인 책임 협진, 3단계 통증 완화 시스템, 일본어 전담 코디네이터 3명 상주. 대표상담 1577-7287 / 02-569-7528",
   keywords: ["화이트스타일치과", "강남치과", "강남역치과", "강남임플란트", "강남치아교정", "강남치아미백"],
   openGraph: {
     title: "화이트스타일치과 | 강남역 임플란트 & 치아교정",
@@ -60,14 +60,14 @@ export default function RootLayout({
                   "logo": "https://whitestyle.com/images/병원-로고.png",
                   "image": "https://whitestyle.com/images/og-image.jpg",
                   "description": "강남역 11번·12번 출구 인근 치과. 임플란트, 라미네이트, 인비절라인 치아교정, 치아미백 진료.",
-                  "telephone": "02-569-7528",
+                  "telephone": "+82-1577-7287",
                   "priceRange": "$$",
                   "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "강남대로 92길 17 대승빌딩 1,2층",
+                    "streetAddress": "강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층",
                     "addressLocality": "강남구",
                     "addressRegion": "서울특별시",
-                    "postalCode": "06129",
+                    "postalCode": "06134",
                     "addressCountry": "KR"
                   },
                   "geo": {
