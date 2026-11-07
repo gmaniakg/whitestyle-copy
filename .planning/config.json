@@ -1,0 +1,19 @@
+{
+  "mode": "yolo",
+  "depth": "comprehensive",
+  "parallelization": true,
+  "commit_docs": true,
+  "model_profile": "balanced",
+  "workflow": {
+    "research": true,
+    "plan_check": true,
+    "verifier": true,
+    "auto_advance": false
+  },
+  "orchestration": {
+    "boss_agent": "Antigravity (Gemini 4 Argon)",
+    "execution_subagent": "Claude Code CLI + Local Strata (http://127.0.0.1:8080)",
+    "decision_oracle": "laya MCP (laya_decide / laya_predict)",
+    "codebase_graph": "graphify (zero-token AST graph.json)"
+  }
+}

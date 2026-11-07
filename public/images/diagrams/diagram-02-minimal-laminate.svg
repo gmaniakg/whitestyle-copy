@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1000 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagram-02-minimal-laminate-title diagram-02-minimal-laminate-desc" id="diagram-02-minimal-laminate-root">
+        <title id="diagram-02-minimal-laminate-title">0.1~0.3mm 최소삭제 라미네이트 및 자연치아 보존 프로토콜</title>
+        <desc id="diagram-02-minimal-laminate-desc">정밀 교합 분석과 0.1~0.3mm 법랑질 미세 다듬기, 맞춤형 세라믹 본딩 및 교합 사후관리로 이어지는 심미보철 체계도입니다.</desc>
+        <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #diagram-02-minimal-laminate-root { color-scheme: light;
+      --color-paper:       #f4f6f8;
+      --color-paper-2:     #eaeef2;
+      --color-ink:         #1e222b;
+      --color-muted:       #465061;
+      --color-soft:        #556073;
+      --color-rule:        rgba(30,34,43,0.12);
+      --color-rule-solid:  #b8c0cc;
+      --color-accent:      #9e472a;
+      --color-accent-ink:  #f4f6f8;
+      --color-accent-tint: rgba(158,71,42,0.08);
+      --color-link:        #234b82;
+      --font-sans:   'Noto Sans KR', 'Noto Sans JP', system-ui, sans-serif;
+      --font-serif:  'Noto Serif KR', 'Noto Serif', serif;
+      --font-mono:   'Noto Sans Mono CJK KR', ui-monospace, monospace; }
+      #diagram-02-minimal-laminate-root ::selection { background: var(--color-accent-tint); color: var(--color-ink); }
+      #diagram-02-minimal-laminate-root :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+      #diagram-02-minimal-laminate-root a:active, #diagram-02-minimal-laminate-root .summary-block:active { transform: translateY(1px); }
+      #diagram-02-minimal-laminate-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #diagram-02-minimal-laminate-root .container { max-width: 1120px; margin: 0 auto; }
+      #diagram-02-minimal-laminate-root .header-eyebrow { font-family: var(--font-sans);
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 0.6rem; }
+      #diagram-02-minimal-laminate-root .subtitle { font-family: var(--font-sans);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      color: var(--color-muted);
+      max-width: 68ch; }
+      #diagram-02-minimal-laminate-root .diagram-container { background: transparent;
+      border: none;
+      padding: 0;
+      overflow-x: auto; }
+      @media print {
+#diagram-02-minimal-laminate-root .diagram-container { overflow-x: visible; }
+}
+      #diagram-02-minimal-laminate-root .summary-grid { display: grid;
+      grid-template-columns: 1.15fr 1fr 0.95fr;
+      gap: 1.25rem;
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-rule); }
+      @media (max-width: 860px) {
+#diagram-02-minimal-laminate-root .summary-grid { grid-template-columns: 1fr; }
+}
+      #diagram-02-minimal-laminate-root .summary-block { background: var(--color-paper-2);
+      border-radius: 6px;
+      border: 1px solid var(--color-rule);
+      padding: 1.15rem; }
+      #diagram-02-minimal-laminate-root .summary-header { margin-bottom: 0.75rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--color-rule); }
+      #diagram-02-minimal-laminate-root .summary-block h2 { font-family: var(--font-sans);
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--color-ink); }
+      #diagram-02-minimal-laminate-root .summary-block ul { list-style: none;
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      line-height: 1.65; }
+      #diagram-02-minimal-laminate-root .summary-block li { margin-bottom: 0.35rem;
+      padding-left: 0.9rem;
+      position: relative; }
+      #diagram-02-minimal-laminate-root .summary-block li::before { content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--color-soft); }
+      #diagram-02-minimal-laminate-root .jp-section { margin-top: 2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--color-rule-solid); }
+      #diagram-02-minimal-laminate-root .jp-title { font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: 0.5rem; }
+      #diagram-02-minimal-laminate-root .jp-lead { font-family: var(--font-sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--color-muted); }</style>
+          <marker id="diagram-02-minimal-laminate-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#465061"/>
+          </marker>
+          <marker id="diagram-02-minimal-laminate-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#9e472a"/>
+          </marker>
+          <marker id="diagram-02-minimal-laminate-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#234b82"/>
+          </marker>
+        </defs>
+
+        <rect x="0" y="0" width="1000" height="440" fill="#f4f6f8"/>
+
+        <rect x="24" y="36" width="952" height="300" rx="8" fill="none" stroke="#1e222b" stroke-width="1" stroke-dasharray="6,4" stroke-opacity="0.12"/>
+        <text x="40" y="56" fill="#465061" font-size="8" font-weight="500" font-family="'Noto Sans Mono CJK KR', monospace" letter-spacing="0.16em">ENAMEL-PRESERVING MINIMAL PREP CERAMIC PROTOCOL / 0.1-0.3MM</text>
+
+        <!-- Arrows First -->
+        <line x1="216" y1="184" x2="276" y2="184" stroke="#234b82" stroke-width="1.2" marker-end="url(#diagram-02-minimal-laminate-arrow-link)"/>
+        <rect x="228" y="164" width="36" height="12" fill="#f4f6f8"/>
+        <text x="246" y="172" fill="#234b82" font-size="8" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.06em">SCAN</text>
+
+        <line x1="468" y1="184" x2="528" y2="184" stroke="#9e472a" stroke-width="1.2" marker-end="url(#diagram-02-minimal-laminate-arrow-accent)"/>
+        <rect x="480" y="164" width="36" height="12" fill="#f4f6f8"/>
+        <text x="498" y="172" fill="#9e472a" font-size="8" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.06em">0.1MM</text>
+
+        <line x1="712" y1="184" x2="772" y2="184" stroke="#9e472a" stroke-width="1.2" marker-end="url(#diagram-02-minimal-laminate-arrow-accent)"/>
+        <rect x="724" y="164" width="36" height="12" fill="#f4f6f8"/>
+        <text x="742" y="172" fill="#9e472a" font-size="8" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.06em">BOND</text>
+
+        <!-- Node 1: 정밀 교합 · 미소 라인 분석 -->
+        <rect x="48" y="136" width="168" height="96" rx="6" fill="#f4f6f8"/>
+        <rect x="48" y="136" width="168" height="96" rx="6" fill="#465061" stroke="#556073" stroke-width="1" fill-opacity="0.10"/>
+        <rect x="56" y="144" width="44" height="12" rx="2" fill="none" stroke="#556073" stroke-width="0.8"/>
+        <text x="78" y="153" fill="#556073" font-size="7" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.08em">DESIGN</text>
+        <text x="132" y="180" fill="#1e222b" font-size="12" font-weight="600" font-family="'Noto Sans KR', sans-serif" text-anchor="middle">정밀 교합 및 스마일 진단</text>
+        <text x="132" y="198" fill="#465061" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">Occlusion &amp; Smile Line</text>
+        <text x="132" y="214" fill="#556073" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">1:1 Face Ratio Check</text>
+
+        <!-- Node 2: 0.1~0.3mm 법랑질 미세 다듬기 (Focal #1) -->
+        <rect x="276" y="136" width="192" height="96" rx="6" fill="#f4f6f8"/>
+        <rect x="276" y="136" width="192" height="96" rx="6" fill="#9e472a" stroke="#9e472a" stroke-width="1.2" fill-opacity="0.08"/>
+        <rect x="284" y="144" width="48" height="12" rx="2" fill="none" stroke="#9e472a" stroke-width="0.8"/>
+        <text x="308" y="153" fill="#9e472a" font-size="7" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.08em">ENAMEL</text>
+        <text x="372" y="180" fill="#1e222b" font-size="12" font-weight="600" font-family="'Noto Sans KR', sans-serif" text-anchor="middle">0.1~0.3mm 법랑질 보존</text>
+        <text x="372" y="198" fill="#465061" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">Enamel-Only Micro Prep</text>
+        <text x="372" y="214" fill="#9e472a" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">Dentin &amp; Nerve Intact</text>
+
+        <!-- Node 3: 고강도 맞춤형 세라믹 화학적 결합 (Focal #2) -->
+        <rect x="528" y="136" width="184" height="96" rx="6" fill="#f4f6f8"/>
+        <rect x="528" y="136" width="184" height="96" rx="6" fill="#9e472a" stroke="#9e472a" stroke-width="1.2" fill-opacity="0.08"/>
+        <rect x="536" y="144" width="52" height="12" rx="2" fill="none" stroke="#9e472a" stroke-width="0.8"/>
+        <text x="562" y="153" fill="#9e472a" font-size="7" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.08em">CERAMIC</text>
+        <text x="620" y="180" fill="#1e222b" font-size="12" font-weight="600" font-family="'Noto Sans KR', sans-serif" text-anchor="middle">맞춤 세라믹 법랑질 본딩</text>
+        <text x="620" y="198" fill="#465061" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">High-Bond Enamel Adhesion</text>
+        <text x="620" y="214" fill="#556073" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">Natural Translucency</text>
+
+        <!-- Node 4: 교합 밸런스 검진 및 사후 보증 -->
+        <rect x="772" y="136" width="180" height="96" rx="6" fill="#f4f6f8"/>
+        <rect x="772" y="136" width="180" height="96" rx="6" fill="#1e222b" stroke="#465061" stroke-width="1" fill-opacity="0.05"/>
+        <rect x="780" y="144" width="44" height="12" rx="2" fill="none" stroke="#465061" stroke-width="0.8"/>
+        <text x="802" y="153" fill="#465061" font-size="7" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle" letter-spacing="0.08em">VERIFY</text>
+        <text x="862" y="180" fill="#1e222b" font-size="12" font-weight="600" font-family="'Noto Sans KR', sans-serif" text-anchor="middle">정기 교합 체크 및 보증</text>
+        <text x="862" y="198" fill="#465061" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">6-Month Occlusal Care</text>
+        <text x="862" y="214" fill="#556073" font-size="9" font-family="'Noto Sans Mono CJK KR', monospace" text-anchor="middle">Long-Term Warranty</text>
+
+        <!-- Legend Strip -->
+        <line x1="24" y1="364" x2="976" y2="364" stroke="#1e222b" stroke-width="1" stroke-opacity="0.12"/>
+        <text x="24" y="392" fill="#1e222b" font-size="8" font-weight="500" font-family="'Noto Sans Mono CJK KR', monospace" letter-spacing="0.14em">LEGEND</text>
+
+        <rect x="96" y="382" width="16" height="12" rx="2" fill="#465061" stroke="#556073" stroke-width="1" fill-opacity="0.10"/>
+        <text x="120" y="392" fill="#465061" font-size="12" font-weight="500" font-family="'Noto Sans KR', sans-serif">사전 교합 및 스마일 라인 계측</text>
+
+        <rect x="336" y="382" width="16" height="12" rx="2" fill="#9e472a" stroke="#9e472a" stroke-width="1.2" fill-opacity="0.08"/>
+        <text x="360" y="392" fill="#465061" font-size="12" font-weight="500" font-family="'Noto Sans KR', sans-serif">0.1~0.3mm 법랑질 보존 및 세라믹 결합</text>
+
+        <rect x="652" y="382" width="16" height="12" rx="2" fill="#1e222b" stroke="#465061" stroke-width="1" fill-opacity="0.05"/>
+        <text x="676" y="392" fill="#465061" font-size="12" font-weight="500" font-family="'Noto Sans KR', sans-serif">6개월 주기 교합 및 잇몸 사후관리</text>
+      </svg>
