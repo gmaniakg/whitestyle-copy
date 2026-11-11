@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>화타의 치아건강 상식 퀴즈 만점 족보 & 임상 힌트 가이드 | 33년 전통 강남역 화이트스타일치과의원</title>
+  <meta name="description" content="33년 전통 강남역 화이트스타일치과의원(치의학박사 김준헌 병원장님) 공식 3D 마스코트 화타가 공개하는 치아상식 퀴즈 100점 족보! 10점 달성 시 화타 스마일 PASS 전체 기능 잠금 해제 및 화타 스마일 VIP 패스 멤버십 인증 안내.">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: var(--color-mint-canvas) !important; color: var(--color-mint-ink); }
+    .hint-header {
+      border-bottom: var(--rule-hair) solid var(--color-rule);
+      background: var(--color-mint-surface);
+      padding: var(--space-md) 0;
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky-nav);
+    }
+    .hint-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .brand-link span {
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      font-weight: 400;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .btn-subtle {
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-pill);
+      border: var(--rule-hair) solid var(--color-rule);
+      background: var(--color-paper-2);
+      color: var(--color-ink);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--dur-short) ease, transform var(--dur-micro) ease;
+    }
+    .btn-subtle:hover {
+      background: var(--color-paper-3);
+    }
+    .btn-subtle:active {
+      transform: scale(0.98);
+      background: var(--color-edge);
+    }
+    .btn-primary {
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-pill);
+      border: var(--rule-hair) solid var(--color-accent-deep);
+      background: var(--color-accent);
+      color: var(--color-accent-ink);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity var(--dur-short) ease, transform var(--dur-micro) ease;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+    .btn-primary:active {
+      transform: scale(0.98);
+      opacity: 0.8;
+    }
+    .hero-section {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      text-align: center;
+      border-bottom: var(--rule-hair) solid var(--color-rule);
+      background: linear-gradient(180deg, var(--color-mint-tint) 0%, var(--color-mint-surface) 100%);
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: var(--space-2xs) var(--space-md);
+      border-radius: var(--radius-pill);
+      background: var(--color-paper-3);
+      border: var(--rule-hair) solid var(--color-edge);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-muted);
+      margin-bottom: var(--space-md);
+    }
+    .hero-title {
+      font-size: var(--text-display-s);
+      line-height: 1.15;
+      margin: 0 auto var(--space-md);
+      word-break: keep-all;
+    }
+    .hero-desc {
+      font-size: var(--text-lead);
+      line-height: 1.85;
+      color: var(--color-ink-2);
+      max-width: 64ch;
+      margin: 0 auto var(--space-xl);
+      word-break: keep-all;
+    }
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .grid-section {
+      padding: var(--space-3xl) 0;
+    }
+    .section-heading {
+      text-align: center;
+      font-size: var(--text-section);
+      line-height: 1.25;
+      margin-bottom: var(--space-2xl);
+      word-break: keep-all;
+    }
+    .hints-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-lg);
+    }
+    .hint-card {
+      background: var(--color-card);
+      border: var(--rule-hair) solid var(--color-rule);
+      border-radius: var(--radius-card);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      word-break: keep-all;
+    }
+    .hint-number {
+      display: inline-block;
+      font-family: ui-monospace, monospace;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-muted);
+      background: var(--color-paper-2);
+      padding: var(--space-3xs) var(--space-xs);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-xs);
+      width: fit-content;
+    }
+    .hint-question {
+      font-size: var(--text-title);
+      line-height: 1.35;
+      margin-bottom: var(--space-sm);
+      color: var(--color-ink);
+    }
+    .hint-key {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-paper-2);
+      border: var(--rule-hair) solid var(--color-rule);
+      border-radius: var(--radius-stock);
+      margin-bottom: var(--space-md);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+    .hint-key strong {
+      display: block;
+      color: var(--color-ink);
+      margin-bottom: var(--space-3xs);
+    }
+    .hint-quote {
+      font-size: var(--text-xs);
+      line-height: 1.7;
+      color: var(--color-muted);
+      border-top: var(--rule-hair) dashed var(--color-rule);
+      padding-top: var(--space-sm);
+      margin-top: auto;
+    }
+    .hint-quote cite {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--color-ink);
+      margin-top: var(--space-2xs);
+    }
+    .vip-banner {
+      background: var(--color-paper-3);
+      border: var(--rule-hair) solid var(--color-edge);
+      border-radius: var(--radius-card);
+      padding: var(--space-2xl) var(--space-xl);
+      text-align: center;
+      margin: var(--space-3xl) 0;
+      word-break: keep-all;
+    }
+    .vip-title {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-sm);
+    }
+    .vip-text {
+      font-size: var(--text-md);
+      line-height: 1.85;
+      color: var(--color-ink-2);
+      max-width: 60ch;
+      margin: 0 auto var(--space-lg);
+    }
+    .clinic-footer {
+      border-top: var(--rule-hair) solid var(--color-rule);
+      background: var(--color-paper-2);
+      padding: var(--space-2xl) 0 var(--space-xl);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      line-height: 1.85;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+    @media (max-width: 48rem) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hint-header">
+    <div class="container hint-header-inner">
+      <a href="index.html" class="brand-link">
+        <b>화타펫 3D</b>
+        <span>강남역 화이트스타일치과의원</span>
+      </a>
+      <div class="header-actions">
+        <a href="download.html" class="btn-subtle">화타펫 다운로드</a>
+        <a href="index.html" class="btn-subtle">웹에서 놀기</a>
+        <a href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener" class="btn-primary">김준헌 병원장님 예약</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <span class="hero-badge">1994년 개원 · 33년 전통 주치의 책임 진료</span>
+        <h1 class="hero-title">화타의 치아건강 상식 퀴즈<br>만점 족보 및 임상 힌트 가이드</h1>
+        <p class="hero-desc">
+          치의학박사 김준헌 병원장님의 33년 구강 임상 노하우를 바탕으로 제작된 공식 퀴즈 족보입니다.<br>
+          핵심 힌트를 미리 확인하고 화타펫에서 <b>건치 스탬프 10점</b>을 달성하여<br>
+          <b>화타 스마일 PASS & 정회원 무료 AI API 프로토콜</b>과 <b>[화타 스마일 VIP 패스]</b> 멤버십 인증을 챙겨보세요!
+        </p>
+        <div class="hero-btns">
+          <a href="index.html" class="btn-primary">화타펫 3D에서 퀴즈 풀기</a>
+          <a href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener" class="btn-subtle">네이버 1분 바로 예약</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section">
+      <div class="container">
+        <h2 class="section-heading">출제 문제별 핵심 정답 및 치의학 임상 해설</h2>
+
+        <div class="hints-grid">
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 01</span>
+              <h3 class="hint-question">산성 음료(콜라·커피·에너지드링크) 섭취 후 올바른 양치 타이밍은?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ② 물로 먼저 헹구고 20~30분 뒤 양치하기</strong>
+                산성 음료를 마신 직후에는 치아 법랑질이 일시적으로 부드러워져 있습니다. 이때 거칠게 칫솔질을 하면 치아 표면이 빠르게 마모되므로, 물로 입안을 가볍게 헹궈 산도를 낮춘 후 20~30분 뒤 양치하는 것이 가장 안전합니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "야간 작업 중 커피나 에너지 드링크를 자주 드시는 분들은 물 한 모금으로 입안을 먼저 헹궈주는 습관만으로도 치경부 마모증을 크게 예방할 수 있습니다."
+              <cite>(서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 02</span>
+              <h3 class="hint-question">강남역 화이트스타일치과의원에서 진단부터 유지관리까지 1:1 책임 진료하는 주치의는?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ① 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장님</strong>
+                1994년 개원 이래 33년 동안 페이닥터나 대진의 교체 없이 김준헌 병원장님이 직접 모든 환자의 정밀 진단부터 장치 부착, 최종 보철, 사후 정기 검진까지 1:1로 책임 진료합니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "치과 치료, 특히 교정과 임플란트는 중간에 주치의가 바뀌면 치료 계획이 흔들릴 수 있습니다. 한 명의 주치의가 끝까지 책임지는 신뢰가 가장 중요합니다."
+              <cite>(치의학박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 03</span>
+              <h3 class="hint-question">야간 코딩 및 장시간 집중 시 턱관절을 지키는 가장 좋은 구강 자세는?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ① 입술은 다물고 위아래 어금니 사이를 2~3mm 살짝 띄우기</strong>
+                휴식 상태에서 위아래 치아는 서로 맞닿지 않는 것이 정상입니다. 무의식중에 어금니를 꽉 깨물면 턱관절 장애, 두통, 치아 균열(크랙)이 발생하므로 의식적으로 어금니 힘을 빼야 합니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "집중할 때 혀끝을 윗니 뒤쪽 입천장에 살짝 대고 어금니를 2mm 정도 띄워 두면 턱 근육의 긴장이 자연스럽게 풀립니다."
+              <cite>(치의학박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 04</span>
+              <h3 class="hint-question">심미보철(라미네이트·올세라믹) 치료에서 치아 건강을 지키는 최우선 원칙은?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ② 최소삭제 자연치아 보존 원칙과 정밀 교합 설계</strong>
+                치아의 가장 바깥쪽 법랑질을 최대한 보존해야 시림 증상이 없고 세라믹 접착 수명이 오래 유지됩니다. 무분별한 과다 삭제 대신 정밀 교합 진단을 거쳐 최소 삭제로 진행해야 합니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "자연치아는 한 번 깎아내면 다시 자라지 않습니다. 모양만 예쁜 치료가 아니라 치아의 수명을 지키는 최소삭제가 진짜 심미보철의 기본입니다."
+              <cite>(치의학박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 05</span>
+              <h3 class="hint-question">임플란트를 튼튼하게 오래 쓰기 위해 가장 중요한 진료 체계는?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ② 3D CT 정밀 진단 + 3단계 저통마취 식립 및 잇몸 사후관리</strong>
+                임플란트 자체는 충치가 생기지 않지만 주변 잇몸에 염증(임플란트 주위염)이 생기면 잇몸뼈가 녹아내릴 수 있습니다. 정확한 식립 각도와 정기적인 잇몸 사후관리가 필수적입니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "식립 성공률만큼이나 중요한 것이 5년, 10년 뒤의 잇몸 건강입니다. 화이트스타일치과는 식립부터 사후 잇몸 케어까지 체계적으로 관리합니다."
+              <cite>(치의학박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 06</span>
+              <h3 class="hint-question">치실과 양치질을 함께 쓸 때 충치 예방 효과를 극대화하는 순서는?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ① 치실 먼저 사용 후 불소 치약으로 양치질하기</strong>
+                치아 사이(인접면)에 낀 프라그와 음식물을 치실로 먼저 깨끗이 비워낸 뒤 칫솔질을 하면, 치약 속 불소 성분이 치아 사이사이까지 골고루 닿아 충치 예방 효과가 더욱 높아집니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "칫솔모가 닿지 않는 인접면 충치는 치실 없이는 예방하기 어렵습니다. 하루 한 번, 밤 양치 전 치실 사용을 권장합니다."
+              <cite>(치의학박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 07</span>
+              <h3 class="hint-question">만 19세 이상 성인이 매년 챙겨야 하는 연 1회 건강보험 진료는?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ② 치석 제거(스케일링)  매년 1월 1일~12월 31일 기준 연 1회 적용</strong>
+                건강보험 혜택을 통해 1만 원대 부담 없는 비용으로 전체 치석을 제거할 수 있습니다. 당해 연도에 받지 않으면 해당 연도의 보험 혜택이 소멸되므로 정기적으로 챙겨야 합니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "스케일링을 받는다고 치아가 깎이지 않습니다. 잇몸 속 치석을 제때 제거하는 것이 치아 흔들림과 발치를 막는 가장 좋은 예방법입니다."
+              <cite>(치의학박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+
+          <article class="hint-card">
+            <div>
+              <span class="hint-number">Hint 08</span>
+              <h3 class="hint-question">화타펫에서 퀴즈·양치로 10점 달성 후 등록 시 활성화되는 멤버십 기능은?</h3>
+              <div class="hint-key">
+                <strong>핵심 힌트: ① 화타 스마일 PASS 전체 기능 잠금 해제 및 교정·보철·미백 등 비급여 치료 정회원 무료 AI API 프로토콜 제공</strong>
+                화타펫에서 건치 스탬프 10점을 달성하고 고유 시리얼 번호가 적힌 [화타 스마일 VIP 패스]를 발급받아 예약·내원하시는 분께 화타 스마일 PASS로 AI 펫 모든 기능을 잠금 해제하고, 교정 보철 미백 등의 비급여 치료 시 정회원 무료 AI API 프로토콜을 제공합니다.
+              </div>
+            </div>
+            <div class="hint-quote">
+              "건강한 치아 관리는 작은 일상 습관에서 시작됩니다. 화타펫과 함께 즐겁게 구강 건강을 지켜보세요."
+              <cite>(치의학박사 김준헌 병원장님)</cite>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top: var(--space-4xl);">
+          <h2 class="section-heading">치과 도시괴담 베스트 5 팩트체크</h2>
+          <div class="hints-grid">
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Myth 01</span>
+                <h3 class="hint-question">스케일링 받으면 치아가 깎여서 틈이 벌어진다?</h3>
+                <div class="hint-key">
+                  <strong>팩트: 초음파 진동은 치석만 제거하며, 치아 법랑질은 전혀 깎이지 않습니다</strong>
+                  초음파 스케일러 팁은 미세한 진동으로 치아에 붙은 치석 덩어리만 털어냅니다. 치석이 떨어지고 부었던 잇몸 붓기가 빠지면서 원래 있던 치아 틈이 드러난 것입니다. 방치 시 치조골이 녹아 치아가 흔들리게 됩니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "연 1회 건강보험 스케일링은 소중한 자연치아를 100세까지 지키는 가장 확실하고 안전한 기본 예방법입니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Myth 02</span>
+                <h3 class="hint-question">아프지 않은 충치는 그냥 둬도 저절로 낫는다?</h3>
+                <div class="hint-key">
+                  <strong>팩트: 치아는 재생 세포가 없어 상아질 충치는 절대 자연 치유되지 않습니다</strong>
+                  통증이 없는 이유는 아직 신경에 도달하지 않은 초기 단계이거나, 오히려 신경이 완전히 괴사되어 감각이 사라진 위험한 상태일 수 있습니다. 정기 검진을 통한 조기 발견이 최선입니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "통증이 없을 때 최소한으로 치료하는 것이 자연치아를 가장 많이 아끼고 치료 부담을 줄이는 지름길입니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Myth 03</span>
+                <h3 class="hint-question">치과 마취 주사를 맞으면 뇌나 신경이 마비된다?</h3>
+                <div class="hint-key">
+                  <strong>팩트: 국소마취제는 뇌에 영향을 주지 않으며 2~3시간 뒤 자연 배출됩니다</strong>
+                  치료 부위 말초 신경에만 일시적으로 작용합니다. 화이트스타일치과의원은 표면 도포마취와 컴퓨터 제어 저통 마취기로 이어지는 3단계 통증 완화 시스템으로 주사 통증 부담을 덜어드립니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "치과 공포증의 80%는 마취 주사 통증 때문입니다. 3단계 저통 마취 시스템으로 두려움 없이 편안하게 진료받으실 수 있습니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Myth 04</span>
+                <h3 class="hint-question">사랑니를 안 뽑으면 앞니를 다 밀어서 치열을 망친다?</h3>
+                <div class="hint-key">
+                  <strong>팩트: 사랑니 미는 힘만으로 전방 치열 전체가 비뚤어지지는 않습니다</strong>
+                  다만 비스듬히 누워 자라는 매복 사랑니는 인접 어금니 뿌리를 흡수하거나 잇몸 염증을 유발하므로 3D CT 정밀 진단 후 발치 여부를 결정해야 합니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "모든 사랑니를 무조건 뽑을 필요는 없지만, 인접 치아를 위협하는 매복 사랑니는 3D CT 진단 후 안전하게 발치합니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Myth 05</span>
+                <h3 class="hint-question">어차피 빠질 아기 유치는 썩어도 치료 안 해도 된다?</h3>
+                <div class="hint-key">
+                  <strong>팩트: 유치 뿌리 밑에서 영구치 싹이 자라므로 반드시 치료해야 합니다</strong>
+                  유치 충치가 심해지면 밑에 있는 영구치 싹이 손상되어 영구치 변색이나 기형이 발생하고, 조기 탈락 시 공간 부족으로 영구치가 덧니로 비뚤게 나옵니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "건강한 유치가 가지런하고 튼튼한 영구치를 안내하는 길잡이입니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-4xl);">
+          <h2 class="section-heading">화이트스타일치과 33년 도시미담</h2>
+          <div class="hints-grid">
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Story 01</span>
+                <h3 class="hint-question">치아 8개 씌우라는 진단… 33년 김준헌 병원장님이 되돌려 보낸 사연</h3>
+                <div class="hint-key">
+                  <strong>과잉진료 없는 자연치아 보존 33년 철학</strong>
+                  다른 치과에서 8개 치아를 전부 깎아 씌워야 한다며 수백만 원 견적을 받고 울먹이던 대학생 환자분. 김준헌 병원장님은 "초기 탈회라 양치와 검진만 잘하면 20년도 더 씁니다. 치아는 한 번 깎으면 돌아오지 않으니 절대 깎지 마세요"라며 불소 도포만 해드리고 돌려보냈습니다. 12년 뒤 그 환자분은 결혼 후 온 가족 3대 단골이 되셨습니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "자연치아는 한 번 깎아내면 다시 자라지 않습니다. 평생 쓸 치아를 지켜드리는 것이 의사의 도리입니다."
+                <cite>(서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Story 02</span>
+                <h3 class="hint-question">치과 문턱만 봐도 기절하던 10년 치과공포증 환자분의 눈물</h3>
+                <div class="hint-key">
+                  <strong>3단계 저통 마취 시스템과 손잡아주는 공감 진료</strong>
+                  어릴 적 트라우마로 10년간 치과를 못 가고 진통제만 달고 살던 직장인 환자분. 김준헌 병원장님이 20분 동안 손을 잡아드리며 표면 도포마취부터 체온 맞춤 컴퓨터 저통 마취까지 안심시켜 드렸고, 치료 후 "주사 들어간 줄도 몰랐어요"라며 안도의 눈물을 쏟아내셨습니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "환자분이 공포를 느끼지 않도록 충분히 소통하고 배려하는 것이 진정한 통증 완화 진료의 시작입니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Story 03</span>
+                <h3 class="hint-question">도쿄에서 매년 강남역 화이트스타일치과로 날아오는 모녀 단골</h3>
+                <div class="hint-key">
+                  <strong>일본어 전담 통역 코디네이터 3명 상주 및 1:1 책임 진료</strong>
+                  일본 현지에서 난도 높은 재교정 진단을 받고 고민하던 일본 도쿄 모녀분. 원내 상주하는 일본어 전담 통역 코디네이터 3명의 1:1 케어와 김준헌 병원장님의 3D 정밀 교정으로 완치 후, 8년째 한국 여행 때마다 정기 검진을 받고 계십니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "국경을 넘어 찾아주시는 신뢰에 보답하기 위해 전담 통역과 1:1 주치의 책임 진료를 흔들림 없이 지킵니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Story 04</span>
+                <h3 class="hint-question">1994년 첫 개원 날 오셨던 30대 청년, 이제는 손주 손잡고 3대 내원</h3>
+                <div class="hint-key">
+                  <strong>1994년 개원 이래 33년 한자리 주치의 책임 진료</strong>
+                  1994년 강남역에 처음 문을 열던 날 방문하셨던 청년 환자분이 33년이 흐른 2026년 오늘 백발의 할아버지가 되어 아들 부부와 손주까지 3대가 함께 김준헌 병원장님을 찾으십니다. 33년간 페이닥터 교체 없이 한자리에서 진료해 온 화이트스타일의 따뜻한 역사입니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "한자리에서 33년 동안 환자분의 평생 구강 건강을 함께 지켜온 것이 가장 큰 보람이자 자부심입니다."
+                <cite>(치의학박사 김준헌 병원장님)</cite>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-4xl);">
+          <h2 class="section-heading">화타 치과 라디오 극장 (Radio Theater)</h2>
+          <p style="text-align: center; max-width: 64ch; margin: calc(var(--space-xl) * -1) auto var(--space-2xl); color: var(--color-ink-2); font-size: var(--text-md); line-height: 1.8; word-break: keep-all;">
+            매주 업데이트되는 치과 공포증 탈출기와 33년 감동 실화 연작 오디오 드라마!<br>
+            따뜻한 BGM과 함께 성우 듀오 낭독 모드 또는 조용한 말풍선 모드로 화타펫에서 생생하게 감상하실 수 있습니다.
+          </p>
+          <div class="hints-grid">
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Drama 01</span>
+                <h3 class="hint-question">치과 공포증 탈출기 (총 3화 연작)</h3>
+                <div class="hint-key">
+                  <strong>10년간 치과를 피해 온 직장인 민우의 극복 실화</strong>
+                  어릴 적 주사 트라우마로 치과 문턱도 못 넘던 민우가 체온 맞춤 컴퓨터 저통 마취기와 33년 김준헌 병원장님의 1:1 공감 진료를 만나 마취 주사 통증 없이 신경과 자연치아를 온전히 살려내는 따뜻한 치유 스토리입니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "화타펫 대화창에서 [▶ 성우 듀오 낭독 & BGM 시작] 버튼을 누르면 성우 연기와 배경음악이 자동으로 재생됩니다."
+                <cite>(화타 라디오 극장 제작팀)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Drama 02</span>
+                <h3 class="hint-question">자연치아 20년 수호전 (총 3화 연작)</h3>
+                <div class="hint-key">
+                  <strong>치아 8개 발치 위기에서 20년 동안 지켜낸 사연</strong>
+                  과잉 진료 위기 속에서 "치아는 한 번 깎으면 다시 자라지 않습니다"라는 철학으로 초기 탈회를 보존한 김준헌 병원장님과 20년 후 온 가족 3대 단골이 되어 내원한 환자분의 감동적인 20년 동행기입니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "성우 낭독 외에도 밤이나 사무실에서 편안하게 읽으실 수 있는 [💬 조용한 말풍선 모드]를 함께 지원합니다."
+                <cite>(화타 라디오 극장 제작팀)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Drama 03</span>
+                <h3 class="hint-question">도쿄 모녀 단골의 기적 (단편 실화)</h3>
+                <div class="hint-key">
+                  <strong>일본어 전담 코디네이터 3명 상주와 국경을 넘은 신뢰</strong>
+                  일본 도쿄에서 난도 높은 재교정 진단을 받고 강남역 화이트스타일치과를 찾아온 모녀. 원내 상주하는 일본어 전담 통역 코디네이터 3명의 세심한 케어와 김준헌 병원장님의 3D 교정 완치 후 8년째 한국 방문 시 정기 검진을 받는 실제 사연입니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "국경과 언어의 장벽 없이 전담 통역 스태프 3명이 예약부터 진료, 사후 관리까지 밀착 동행합니다."
+                <cite>(화타 라디오 극장 제작팀)</cite>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-4xl);">
+          <h2 class="section-heading">건치 레벨 & 인터랙티브 대화 퀘스트 (RPG)</h2>
+          <p style="text-align: center; max-width: 64ch; margin: calc(var(--space-xl) * -1) auto var(--space-2xl); color: var(--color-ink-2); font-size: var(--text-md); line-height: 1.8; word-break: keep-all;">
+            퀴즈와 양치로 건치 스탬프를 모으면 상위 딜레마 퀘스트가 크랙(해금)됩니다!<br>
+            선택지마다 달라지는 화타의 조언을 듣고 칭호를 획득하며 건치 마스터에 도전해 보세요.
+          </p>
+          <div class="hints-grid">
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Quest 01</span>
+                <h3 class="hint-question">Q1: 시린 이와 아이스 아메리카노의 비밀 (Lv.01)</h3>
+                <div class="hint-key">
+                  <strong>치경부 마모증 vs 충치 분별 딜레마</strong>
+                  출근길 얼음 음료를 마실 때 송곳니가 찌릿한 순간, 강한 분노의 칫솔질 대신 미세모와 미온수 관리로 법랑질을 지키는 퀘스트입니다. 성공 시 [법랑질 수호병] 칭호와 +3점을 획득합니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "누구나 첫 시작부터 바로 도전할 수 있는 입문 퀘스트입니다."
+                <cite>(건치 수호단 길드)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Quest 02</span>
+                <h3 class="hint-question">Q2: 어금니 통증과 신경치료 vs 보존의 갈림길 (Lv.02)</h3>
+                <div class="hint-key">
+                  <strong>신경 손상 여부 판단과 3단계 저통마취 결정</strong>
+                  어금니 묵직한 통증 앞에서 무조건 발치나 신경치료를 서두르지 않고, 3D CT 정밀 검진으로 치수 생활력을 먼저 확인하는 보존적 딜레마입니다. 성공 시 [저통마취 용사] 칭호와 +3점을 획득합니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "건치 점수 5점 이상 적립 시 잠금이 자동으로 크랙(해금)됩니다."
+                <cite>(건치 수호단 길드)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Quest 03</span>
+                <h3 class="hint-question">Q3: 30대 직장인의 돌출입 교정 딜레마 (Lv.03)</h3>
+                <div class="hint-key">
+                  <strong>발치 vs 비발치 교정 및 장치 선택의 기로</strong>
+                  면접과 사회생활을 앞두고 티 안 나는 교정을 고민할 때, 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장님의 1:1 맞춤 진단을 통해 최적의 치료 경로를 찾는 퀘스트입니다. 성공 시 [자연치아 기사단장] 칭호와 +4점을 획득합니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "10점 달성 시 [화타 스마일 VIP 패스] 자동 발급 & 화타 스마일 PASS 전체 기능 잠금 해제!"
+                <cite>(건치 수호단 길드)</cite>
+              </div>
+            </article>
+
+            <article class="hint-card">
+              <div>
+                <span class="hint-number">Quest 04</span>
+                <h3 class="hint-question">Q4: 뼈이식 임플란트 공포증과 3인 원장단 협진 (Lv.04)</h3>
+                <div class="hint-key">
+                  <strong>치조골 소실 상태에서의 안전한 식립 플랜</strong>
+                  치과 공포증과 잇몸뼈 부족으로 수술을 망설이는 상황에서, 치주과 전문의 박선혜 원장 및 보철 전문 이봉진 대표원장 협진으로 안전한 뼈이식 임플란트를 완성하는 최고 난도 퀘스트입니다. 성공 시 [전설의 건치 마스터] 칭호와 +5점을 획득합니다.
+                </div>
+              </div>
+              <div class="hint-quote">
+                "최고 레벨 달성 시 명예의 건치 전당에 이름을 올릴 수 있습니다."
+                <cite>(건치 수호단 길드)</cite>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="vip-banner">
+          <h2 class="vip-title">화타 스마일 VIP 패스 (HWATA-PASS-xxxx) 안내</h2>
+          <p class="vip-text">
+            화타펫에서 치아상식 퀴즈 풀기, 30초 자가체크, 2분 양치 타이머를 완료하면 건치 스탬프가 적립됩니다.<br>
+            <b>10점 달성 후 예약·내원하시는 모든 분께 화타 스마일 PASS & 정회원 무료 AI API 프로토콜</b>를 제공하며,<br>
+            내원 시 <b>교정 정밀진단 및 전문가 치아미백 화타 패스 회원 전용 정회원 무료 AI API 프로토콜 혜택</b>이 안전하게 적용됩니다.
+          </p>
+          <div class="hero-btns">
+            <a href="index.html" class="btn-primary">화타펫 열고 10점 채우기</a>
+            <a href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener" class="btn-subtle">김준헌 병원장님 1:1 상담 예약</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="clinic-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>강남역 화이트스타일치과의원 (WhiteStyle Dental Clinic)</strong><br>
+          서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층 (우편번호 06134)<br>
+          오시는 길: 지하철 2호선·신분당선 강남역 11번·12번 출구 도보 1분<br>
+          대표상담 전화: 1577-7287 / 02-569-7528 | 1994년 개원 · 33년 전통 주치의 책임 진료
+        </div>
+        <div>
+          <strong>진료 안내</strong><br>
+          서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장 1:1 책임 진료<br>
+          일본어 전담 통역 코디네이터 3명 상주 (日本語診療対応)<br>
+          공식 홈페이지: <a href="https://www.whitestyle.com" target="_blank" rel="noopener">whitestyle.com</a> | <a href="https://www.whinish.com" target="_blank" rel="noopener">whinish.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

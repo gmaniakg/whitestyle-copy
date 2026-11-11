@@ -57,3 +57,4 @@ public/images/recovered_valid_tmp/
 *.bak
 live_clean.html
 processed_page.html
+.env*.local

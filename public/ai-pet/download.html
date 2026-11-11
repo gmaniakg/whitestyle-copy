@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function(){
+      var d=document.documentElement, u=navigator.userAgent||'', s=null;
+      d.classList.add('js');
+      try { s = localStorage.getItem('hwata-view'); } catch(e){}
+      if (/Android|iPhone|iPad|iPod|Mobile/i.test(u) || (/Mac/.test(u) && navigator.maxTouchPoints > 1)) d.dataset.phone = '1';
+      var set = function(){ d.dataset.view = s === 'mobile' || s === 'desktop' ? s : (Math.min(innerWidth||9999, screen.width||9999) <= 760 ? 'mobile' : 'desktop'); };
+      set();
+      if (d.dataset.view === 'desktop' && screen.width && screen.width <= 760) {
+        var m = document.querySelector('meta[name=viewport]');
+        if (m) m.content = 'width=1100';
+      }
+      if (!s) addEventListener('resize', set);
+    })();
+  </script>
+  <title>화타펫 (HwataPet / 하야니) : AI와 일할수록 미소가 밝아지는 데스크톱 펫 | 화이트스타일치과의원</title>
+  <meta name="description" content="Claude Code, Codex, Cursor, 브라우저의 Claude, ChatGPT, Gemini를 쓸수록 자라는 AI 데스크톱 펫 화타펫(하야니). 50분 집중 시 턱관절 이완, 식후 물 가글과 2분 양치 시간, 1994년 개원 33년 전통 치아 고민 상담과 스마일 Pass 혜택까지 다정하게 챙겨줘요.">
+  <meta property="og:title" content="화타펫 (HwataPet / 하야니) : AI와 일할수록 미소가 밝아지는 데스크톱 펫">
+  <meta property="og:description" content="코딩과 문서작업에 지친 일상에 건강한 미소를 선물하는 AI 데스크톱 펫. 6종 동물 친구들과 함께하는 하루 미소 케어. 100% 무료.">
+  <meta property="og:image" content="./assets3d/hwata_3d_brush.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whinish.com/ai-pet">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="화타펫 (HwataPet) by 화이트스타일치과의원">
+  <meta name="theme-color" content="#f4f6f3">
+  <link rel="canonical" href="https://whinish.com/ai-pet">
+  <link rel="alternate" hreflang="ko" href="https://whinish.com/ai-pet">
+  <link rel="alternate" hreflang="ja" href="https://whinish.com/ai-pet/ja/">
+  <link rel="icon" href="./assets3d/hwata_3d_idle.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css">
+  <link rel="stylesheet" href="./download.css?v=20261112">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Dentist", "MedicalClinic"],
+        "@id": "https://www.whitestyle.com/#dentist",
+        "name": "화이트스타일치과의원",
+        "alternateName": ["WhiteStyle Dental Clinic", "ホワイトスタイル歯科医院"],
+        "foundingDate": "1994",
+        "url": "https://www.whitestyle.com",
+        "telephone": ["+82-1577-7287", "+82-2-569-7528"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "강남대로92길 17 (역삼동 819-10) 대승빌딩 B1, 1, 2층",
+          "addressLocality": "강남구",
+          "addressRegion": "서울특별시",
+          "postalCode": "06134",
+          "addressCountry": "KR"
+        },
+        "medicalSpecialty": ["Orthodontics", "Prosthodontics", "Implantology", "Periodontics"],
+        "availableLanguage": ["Korean", "Japanese", "English"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "화타펫 (HwataPet / 하야니 / Hayani AI Companion)",
+        "operatingSystem": "Windows 10, Windows 11, Web Browser, Chrome Extension",
+        "applicationCategory": "HealthAndFitnessApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        },
+        "publisher": {
+          "@id": "https://www.whitestyle.com/#dentist"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "제 대화 내용이나 코딩 기록을 치과나 외부로 전송하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "아닙니다. 모든 대화와 작업 기록은 사용자 로컬 PC 내에서만 안전하게 처리되며, 사용자가 직접 화타 바로 예약이나 스마일 Pass를 제출한 경우에만 예약 접수를 위해 암호화 전송됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "화타펫(하야니)의 모든 기능과 무료 AI API 프로토콜은 어떻게 이용하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "화타 스마일 Pass에 등록하시면 AI 펫 하야니의 모든 기능(6종 3D 동물 변신, 6종 3D 코스튬, 360도 회전 뷰, 91종 모션)을 이용하실 수 있습니다. 또한 whitestyle.com 또는 whinish.com에 회원 등록하고 강남역 화이트스타일치과의원에서 교정 보철 미백 등의 비급여 치료를 받으신 분에게는 전 세계 무료 AI API를 내 컴퓨터에 끌어다 쓸 수 있는 전용 OpenAI 호환 프로토콜(https://whinish.com/api/v1)을 제공합니다."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- 상단 네비게이션 헤더 -->
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./index.html">
+      <img src="./assets3d/hwata_3d_idle.png" alt="화타펫 아이콘">
+      <span>화타펫 (HwataPet)</span>
+      <span class="brand-badge">1994년 개원 33년 전통</span>
+    </a>
+    <nav class="nav" aria-label="메인 메뉴">
+      <a href="#play">놀아 보기</a>
+      <a href="#talk">대화</a>
+      <a href="#gallery">3d 모션과 코스튬</a>
+      <a href="#more">할 거리</a>
+      <a href="#clinical-care">4대 핵심 진료</a>
+      <a href="#clinic">Pass 등록</a>
+      <a href="#api-protocol">무료 AI 프로토콜</a>
+      <a href="#download" class="nav-badge">다운로드</a>
+    </nav>
+    <a class="lang" href="./ja/index.html">日本語</a>
+    <button type="button" class="lang view" data-view-toggle title="모바일 및 데스크톱 보기 전환">
+      <span class="to-mobile">모바일 뷰 (Mobile)</span>
+      <span class="to-desktop">데스크톱 뷰 (Desktop)</span>
+    </button>
+    <a class="btn primary sm" href="#download">받기</a>
+  </div>
+</header>
+
+<!-- 히어로 섹션 -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <a class="news" href="#talk">
+          <b>New v2.1</b>
+          <span>3d 화타와 6종 동물 친구들, Claude Code, Codex, Cursor, 웹 AI 대화 지원</span>
+        </a>
+        <h1>AI와 일할수록 미소가 밝아지는<br>화타펫 : 하야니 (Hayani)</h1>
+        <span class="eyebrow">강남역 11번, 12번 출구 도보 1분 / 1994년 개원 33년 전통 화이트스타일치과의원 공식 AI Companion</span>
+        <p class="lead">
+          토큰을 먹고 자라는 6종의 작은 동물 친구(Hayani)가 화면 구석에서 같이 일해요.<br>
+          50분 집중 코딩 시 턱관절 이완을 챙겨주고, 식후와 커피 후엔 물 한 모금 가글과 2분 양치 시간을 알려줘요.<br>
+          지치거나 궁금할 땐 김준헌 병원장님의 33년 임상 노하우로 치아 고민 상담과 화타 스마일 Pass 전체 기능 잠금 해제, 교정·보철·미백 등 비급여 치료 정회원 무료 AI Api 로컬 프로토콜까지 지원해요.
+        </p>
+
+        <div class="ctas">
+          <a class="btn primary" href="#download" data-dl="win">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>
+            윈도우용 받기 <small>무료 v2.1</small>
+          </a>
+          <a class="cta-link" href="#download" data-dl="ext">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>
+            브라우저 확장 받기 <small>(Chrome, Whale, Edge)</small>
+          </a>
+          <a class="cta-link" href="#talk">
+            하야니와 대화해 보기 <small>(무설치)</small>
+          </a>
+        </div>
+
+        <p class="meta">
+          윈도우 10 / 11 (64비트), macOS 웹 플레이어 호환, 대화 내용은 내 컴퓨터에만 저장돼요 (v2.1.0 최신 배포)
+        </p>
+
+        <div class="mobile-note">
+          화타펫은 데스크톱(Windows) 및 브라우저 확장(Chrome, Edge, Whale)으로 쓰는 앱이에요. 주소를 복사해 두었다가 컴퓨터에서 열어 보세요.
+          <button type="button" data-copy data-done="주소를 복사했어요!">주소 복사</button>
+        </div>
+      </div>
+
+      <!-- 오른쪽: 레트로 모니터 목업 -->
+      <div>
+        <div class="monitor">
+          <div class="mon-screen">
+            <div class="app">
+              <div class="bar">
+                <i></i><i></i><i></i>
+                <span>화타 AI 세션 (치과 상담과 미소 케어)</span>
+              </div>
+              <div class="app-body">
+                <div class="app-side">
+                  <b id="app-new-chat" role="button" tabindex="0" title="클릭하면 다음 상담 시나리오를 확인해요">+ 새 상담</b>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="app-main">
+                  <div class="app-log" id="app-log"></div>
+                  <div class="app-input" id="app-input-bar" role="button" tabindex="0" title="클릭해서 아래 맛보기 대화창으로 이동하기">
+                    <span id="app-input" class="ph">무엇이든 물어보세요</span>
+                    <i>^</i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 모니터 하단 작업표시줄 위를 걷는 펫 -->
+            <div class="stage" id="hero-stage">
+              <div class="pet" id="hero-pet" title="클릭해 쓰다듬거나 위로 들어 올려 보세요!">
+                <div class="bubble show" id="hero-bubble">치카치카 칫솔질 준비 완료!</div>
+                <img id="hero-pet-img" src="./assets3d/hwata_3d_brush.png" alt="3d 화타 칫솔질">
+              </div>
+            </div>
+
+            <div class="taskbar" aria-hidden="true">
+              <i></i><i></i><i></i>
+              <span>화타펫 v2.1</span>
+              <span class="taskbar-status">미소 충전 98%</span>
+            </div>
+          </div>
+          <div class="mon-neck" aria-hidden="true"></div>
+          <div class="mon-foot" aria-hidden="true"></div>
+        </div>
+        <p class="hint"><b>Tip:</b> 화면 속 하야니를 눌러 쓰다듬거나 마우스로 위로 들어 올려 보세요</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 툴 연결 섹션 -->
+<section class="alt" id="tools">
+  <div class="wrap center">
+    <h2>내가 쓰는 도구에 맞춰 가볍게 연결해요</h2>
+    <span class="eyebrow">어떤 AI, 어떤 작업 환경이든 1분 연결 (Web, CLI, Desktop)</span>
+    <p class="lead">터미널에서 코딩하든 브라우저에서 작업하든 괜찮아요.<br>처음 켤 때 쓰는 환경을 고르면 연결 방법을 한 단계씩 친절히 안내해요.</p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <div class="tool-icon" aria-hidden="true">Web</div>
+          <div>
+            <h3>Claude, ChatGPT, Gemini</h3>
+            <span class="where">브라우저에서 (Chrome, Whale, Edge)</span>
+          </div>
+        </div>
+        <p>작은 확장 프로그램을 넣으면 웹에서 작업할 때 함께 자라요.<br>50분 집중 시 어금니 이완 알림과 2분 양치 타이머가 함께해요.</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <div class="tool-icon" aria-hidden="true">CLI</div>
+          <div>
+            <h3>Claude Code, Codex, Cursor</h3>
+            <span class="where">터미널과 IDE 환경에서</span>
+          </div>
+        </div>
+        <p>대화 및 세션 기록으로 자라고, 긴 작업 완료 시 경쾌하게 종을 울려요.<br>배포 성공 시엔 하늘로 로켓 세레머니를 쏘아 올려요.</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <div class="tool-icon" aria-hidden="true">App</div>
+          <div>
+            <h3>데스크톱 단독 앱 (WhitePup)</h3>
+            <span class="where">바탕화면 작업표시줄 어디서나</span>
+          </div>
+        </div>
+        <p>작업표시줄 위를 조용히 걸어 다니며, 식후 양치 시간, 커피 후 물 헹굼, 심야 취침 전 치실 체크까지 당신의 미소를 곁에서 지켜줘요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 기능 소개 섹션 -->
+<section id="features">
+  <div class="wrap center">
+    <h2>그냥 귀엽기만 한 게 아니에요</h2>
+    <span class="eyebrow">AI와 함께 일하는 개발자와 직장인을 위한 데일리 구강 케어 (Daily Care)</span>
+    <p class="lead">작업 흐름을 방해하지 않으면서 하루의 건강한 미소 습관을 길러주는 단짝이에요.</p>
+
+    <div class="grid g3">
+      <div class="card feature">
+        <figure class="sp-box">
+          <img src="./assets3d/hwata_3d_brush.png" alt="양치질 레벨업">
+        </figure>
+        <h3>토큰과 양치질로 자라요</h3>
+        <p>보낸 프롬프트와 2분 양치 타이머 완료로 경험치가 쌓여 레벨이 오르고, 코인으로 의사 가운과 왕관, 간식을 사요.</p>
+      </div>
+
+      <div class="card feature">
+        <figure class="sp-box">
+          <img src="./assets3d/hwata_3d_type1.png" alt="같이 일하고 알림">
+        </figure>
+        <h3>같이 일하고 제때 알려 줘요</h3>
+        <p>작업 중엔 노트북으로 타닥타닥 같이 일하고, 식후 30분엔 칫솔을 들고 깡총 뛰며, 긴 답변이 끝나면 종을 울려요.</p>
+      </div>
+
+      <div class="card feature">
+        <figure class="sp-box">
+          <img src="./assets3d/hwata_3d_wave.png" alt="미소 건강 케어">
+        </figure>
+        <h3>치아 건강과 미소를 챙겨 줘요</h3>
+        <p>커피 후 착색 방지 물 가글, 심야 1시 수면 전 치실 알림, 2시간 집중 시 턱관절 힘 빼기 스트레칭까지 다정하게 챙겨요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 직접 해 보기 (Play Stage) -->
+<section class="alt" id="play">
+  <div class="wrap center">
+    <h2>펫이랑 놀아 보세요</h2>
+    <span class="eyebrow">웹에서 바로 체험하는 인터랙티브 놀이터 (Interactive Stage)</span>
+    <p class="lead">앱에서와 똑같이 움직여요.<br>펫을 쓰다듬거나 마우스로 들어 올리고, 밥을 주고, 치카치카 양치질을 시켜 보세요.</p>
+
+    <div class="play-box">
+      <!-- PASS 등록 상태 배너 -->
+      <div class="pass-gate-bar" id="pass-gate-bar">
+        <span id="pass-gate-text">화타 스마일 Pass에 등록하셔야 AI 펫(하야니)의 모든 기능(6종 3d 동물 변신, 6종 3d 코스튬, 360도 회전 뷰, 전체 모션)을 이용하실 수 있습니다.</span>
+        <div class="pass-gate-actions">
+          <button type="button" class="btn small primary" id="btn-jump-pass">Pass 등록하기</button>
+          <button type="button" class="btn small gold" id="btn-quick-pass">1클릭 Pass 즉시 발급</button>
+          <button type="button" class="btn small mint" id="btn-jump-api">정회원 무료 AI Api</button>
+          <button type="button" class="btn small" id="btn-reset-pass" hidden>잠금 상태 초기화</button>
+        </div>
+      </div>
+
+      <div class="species-pills" id="species-revert-bar" aria-label="반려동물 복귀" hidden>
+        <button type="button" class="species-pill active" data-species="dog">대표 마스코트 강아지 하야니(Dog)로 돌아가기</button>
+      </div>
+
+      <div class="render-mode-bar" id="render-mode-bar" role="group" aria-label="렌더링 뷰 모드 선택">
+        <button type="button" class="render-mode-btn active" data-render-mode="studio3d">3d 스튜디오 뷰</button>
+        <button type="button" class="render-mode-btn" data-render-mode="turntable">360도 입체 회전 뷰 (Drag)</button>
+        <button type="button" class="render-mode-btn" data-render-mode="pixel">48x48 레트로 도트 뷰</button>
+      </div>
+
+      <div class="play-stage" id="play-stage">
+        <div class="pet" id="play-pet" title="클릭해 쓰다듬거나 위로 들어 올려 보세요!">
+          <div class="bubble show" id="play-bubble">멍멍! 반가워요! 무엇을 해볼까요?</div>
+          <img id="play-pet-img" src="./assets3d/hwata_3d_species_dog.png" alt="플레이 펫">
+          <canvas id="play-pet-canvas" width="48" height="48" hidden aria-label="6종 도트 동물 친구 애니메이션 캔버스"></canvas>
+        </div>
+      </div>
+
+      <div class="play-actions">
+        <button type="button" class="btn" data-action="feed">밥 주기</button>
+        <button type="button" class="btn primary" data-action="brush">치카치카 양치질</button>
+        <button type="button" class="btn gold" data-action="smile">미소 거울 체크</button>
+        <button type="button" class="btn mint" data-action="gargle">커피 후 물 가글</button>
+        <button type="button" class="btn" data-action="work">일 시키기</button>
+        <button type="button" class="btn" data-action="toy">장난감 꺼내기</button>
+        <button type="button" class="btn" data-action="sleep">재우기</button>
+        <button type="button" class="btn" data-action="open-friends-gallery">파트너 옷장</button>
+        <button type="button" class="btn" data-action="fortune">미소 운세</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 대화 데모 & 성격 섹션 (KitCommit #talk 완벽 구현) -->
+<section id="talk">
+  <div class="wrap">
+    <div class="talk-grid">
+      <div class="talk-copy">
+        <h2>이제 펫과 대화해요</h2>
+        <span class="eyebrow">New Companion / 치의학 단짝 친구 하야니</span>
+        <p class="lead">
+          내가 쓰는 AI를 연결하면 펫이 진짜로 대답해요.<br>
+          수다, 고민 상담, 치아 질문에 같이 하는 끝말잇기, 스무고개, 밸런스 게임, 초성 퀴즈, 별자리 미소 운세까지.<br>
+          딱딱한 일 비서가 아니라 매일 내 미소를 챙겨주는 친구예요.
+        </p>
+
+        <ul class="talk-points">
+          <li>
+            <span class="ico" aria-hidden="true">01</span>
+            <div>
+              <h3>성격 7가지</h3>
+              <p>다정한 하야니, 츤데레 냥이, 장난꾸러기 디노, 닥터 화타(33년 김준헌 병원장님 모드), 꼼꼼한 치과위생사, 애늙은이 철학자, 스마트 코더 파이톤. 말풍선도 선택한 성격으로 말해요.</p>
+            </div>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true">02</span>
+            <div>
+              <h3>기억하고 챙겨 줘요</h3>
+              <p>기억 노트에 내 얘기를 적어 두고, "30분 뒤에 양치하라고 알려줘" 하면 진짜로 알려 줘요. 50분 집중 타이머와 커피 후 물 가글 알림도 있어요.</p>
+            </div>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true">03</span>
+            <div>
+              <h3>언제든 부르고 치과 고민도 물어봐요</h3>
+              <p><b>Ctrl+Alt+K</b> (macOS는 Cmd+Option+K), 트레이, 하야니에 마우스를 올리면 뜨는 "말 걸기"로 열어요. 치아교정, 최소삭제 심미보철, 임플란트 궁금증도 바로 답해 줘요.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="connect">
+          <h3>연결은 셋 중 하나면 돼요</h3>
+          <ol>
+            <li>
+              <b>화이트스타일 정회원 키</b>
+              whinish.com/api/v1 평생 무료 라우팅
+            </li>
+            <li>
+              <b>Claude / ChatGPT 구독</b>
+              Claude Code나 Codex에 로그인돼 있으면 키 없이
+            </li>
+            <li>
+              <b>Gemini 무료 키</b>
+              구독이 없어도 무료로 카드 없이 시작
+            </li>
+          </ol>
+          <p class="note">Anthropic, OpenAI API 키도 돼요. 대화는 이 컴퓨터에 저장되고, 내가 연결한 AI로만 가요.</p>
+        </div>
+
+        <p class="talk-cta">
+          <a class="btn primary" href="#download">앱 받고 대화해 보기</a>
+          <span class="talk-cta-note">AI를 연결하지 않아도 하야니는 100% 정상 작동하며 자라요</span>
+        </p>
+      </div>
+
+      <!-- 우측: 인터랙티브 맛보기 대화창 -->
+      <div class="talk-demo-wrap">
+        <div class="chatdemo" id="chatdemo">
+          <div class="cd-head">
+            <img src="./assets3d/hwata_3d_idle.png" alt="화타 아바타">
+            <canvas id="cd-head-canvas" width="48" height="48" aria-hidden="true"></canvas>
+            <div>
+              <b>화타펫 (하야니)</b>
+              <span>맛보기 대화창 (Live Demo)</span>
+            </div>
+          </div>
+
+          <div class="cd-persona" role="radiogroup" aria-label="성격 선택">
+            <span>성격:</span>
+            <button type="button" role="radio" aria-checked="true" class="active" data-persona="angel">다정한</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="tsundere">츤데레</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="playful">장난꾸러기</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="doctor">닥터 화타</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="hygiene">위생사</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="sage">애늙은이 철학자</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="python">코더</button>
+          </div>
+
+          <div class="cd-log" id="cd-log" aria-live="polite">
+            <div class="cd-msg pet">[다정한 하야니] 왔구나! 오늘 하루 어땠어? 아래 말놀이 버튼을 눌러 보거나 궁금한 걸 자유롭게 물어봐!</div>
+            <div class="cd-msg sys">말풍선도 이 말투예요: “점심시간이닷!! 바빠도 밥 꼭 챙겨 먹고 30분 뒤 치카치카 잊지 마!”</div>
+          </div>
+
+          <div class="cd-chips">
+            <button type="button" data-game="wordchain">끝말잇기</button>
+            <button type="button" data-game="twenty">스무고개</button>
+            <button type="button" data-game="balance">밸런스</button>
+            <button type="button" data-game="chosung">초성 퀴즈</button>
+            <button type="button" data-game="fortune">미소 운세</button>
+            <button type="button" data-game="booking">화타 바로 예약</button>
+          </div>
+
+          <form class="cd-input" id="cd-form">
+            <input type="text" id="cd-input" placeholder="예: 커피 마셨는데 치아 관리 어떻게 해?" autocomplete="off" aria-label="하야니에게 메시지 보내기">
+            <button type="submit">보내기</button>
+          </form>
+        </div>
+        <p class="talk-demo-note">별자리 미소 운세, 초성 퀴즈, 밸런스 게임, 끝말잇기, 스무고개, 실시간 AI 상담이 여기서도 진짜로 작동해요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 미소의 하루 (Day Routine) -->
+<section class="alt" id="day">
+  <div class="wrap center">
+    <h2>화타펫과 함께하는 하루</h2>
+    <span class="eyebrow">출근부터 심야 코딩까지 시간대별 루틴 케어 (Daily Timeline)</span>
+    <p class="lead">AI가 일하는 흐름과 당신의 식사 및 휴식 루틴에 맞춰 펫이 움직여요.<br>카드를 클릭하면 해당 시간대 모션을 위 놀이터에서 바로 체험해 볼 수 있어요.</p>
+
+    <div class="day-scroll">
+      <div class="moment" data-day-action="smile">
+        <span class="time">09:00</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">오늘도 환한 미소로 출근! 파이팅~</div>
+            <img src="./assets3d/hwata_3d_wave.png" alt="출근 세션">
+          </figure>
+          <h3>세션 시작</h3>
+          <p>오늘의 할 일을 열며 기분 좋은 하루를 시작해요.</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="feed">
+        <span class="time">11:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">점심 맛나게 드세요! 식후 30분 양치 대기 중</div>
+            <img src="./assets3d/hwata_3d_sit.png" alt="점심시간">
+          </figure>
+          <h3>점심시간</h3>
+          <p>맛있는 점심을 챙기고 30분 뒤 양치 타이머를 예약해요.</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="brush">
+        <span class="time">12:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">2분 동안 구석구석 칫솔질! 미소가 반짝여요</div>
+            <img src="./assets3d/hwata_3d_brush.png" alt="치카치카">
+          </figure>
+          <h3>치카치카 양치질</h3>
+          <p>2분 양치 타이머를 완주하고 레벨업 경험치를 획득해요.</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="gargle">
+        <span class="time">14:15</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">커피 뒤엔 맑은 물 한 모금 가글로 착색 예방!</div>
+            <img src="./assets3d/hwata_3d_stand4_a.png" alt="커피 가글">
+          </figure>
+          <h3>커피 타임 가글</h3>
+          <p>커피를 마신 직후 맑은 물로 헹궈 착색을 원천 차단해요.</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="work">
+        <span class="time">15:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">2시간 집중! 어금니 꽉 물지 말고 힘 빼기</div>
+            <img src="./assets3d/hwata_3d_type1.png" alt="턱관절 이완">
+          </figure>
+          <h3>턱관절 스트레칭</h3>
+          <p>어금니를 떼고 입술을 다문 채 턱관절 긴장을 풀어요.</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="smile">
+        <span class="time">18:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">강남역 11번, 12번 출구 지날 때 정기검진 들르면 딱!</div>
+            <img src="./assets3d/hwata_3d_wave.png" alt="퇴근길">
+          </figure>
+          <h3>퇴근 및 정기검진</h3>
+          <p>퇴근길 강남역 화이트스타일치과에서 1분 빠른 정기 검진.</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="sleep">
+        <span class="time">01:10</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">새벽 1시야… 양치하고 치실 한 번 하고 자자!</div>
+            <img src="./assets3d/hwata_3d_sit_blink.png" alt="심야 취침">
+          </figure>
+          <h3>심야 수면 케어</h3>
+          <p>취침 전 치실 사용을 챙기고 편안하게 잠자리에 들어요.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 갤러리 섹션 -->
+<section id="gallery">
+  <div class="wrap center">
+    <h2>매일 다른 모습</h2>
+    <span class="eyebrow">모션 91종, 코스튬 320종, 6종 동물 파트너 (3d &amp; Pixel Wardrobe)</span>
+    <p class="lead">상황마다 모션을 고르고, 양치와 코딩으로 모은 코인으로 의사 가운과 왕관을 입혀요.<br>원하는 카드를 클릭해 바로 적용해 보세요!</p>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab-btn on" data-tab="motions" data-note="치카치카 칫솔질, 거울 미소 체크, 커피 가글 등 매일의 건강 루틴 3d 모션이에요. 카드를 클릭하면 바로 실행돼요!">모션 <i>18 / 91</i></button>
+      <button type="button" class="tab-btn" data-tab="costumes" data-note="화타 의사 가운, 치과 위생사 유니폼, 황금빛 왕관 망토까지 3d 입체 코스튬으로 코디해요. 카드를 클릭해 입혀 보세요!">코스튬 <i>10 / 320</i></button>
+      <button type="button" class="tab-btn" data-tab="friends" data-note="강아지 하야니부터 코끼리, 공룡, 파이톤, 앵무새, 고양이까지 6종의 3d 단짝 친구들이에요. 클릭하면 즉시 변신해요!">6종 동물 파트너</button>
+      <button type="button" class="tab-btn" data-tab="showcase" data-note="6종 동물 친구들과 시그니처 코스튬을 한눈에 감상하는 고화질 3d 모션 쇼케이스 영상이에요!">3d 쇼케이스 영상</button>
+    </div>
+
+    <p class="tab-note" id="tab-note">치카치카 칫솔질, 거울 미소 체크, 커피 가글 등 매일의 건강 루틴 3d 모션이에요. 카드를 클릭하면 바로 실행돼요!</p>
+
+    <!-- 모션 패널 -->
+    <div class="grid g6" data-panel="motions">
+      <div class="tile" role="button" tabindex="0" data-tile-motion="brush"><img src="./assets3d/hwata_3d_motion_brush.png" alt="양치"><b>치카치카 칫솔질</b><small>클릭해 실행</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="smile"><img src="./assets3d/hwata_3d_motion_smile.png" alt="미소"><b>거울 미소 체크</b><small>클릭해 실행</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="gargle"><img src="./assets3d/hwata_3d_motion_gargle.png" alt="가글"><b>커피 후 물 가글</b><small>클릭해 실행</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="work"><img src="./assets3d/hwata_3d_motion_work.png" alt="타이핑"><b>노트북 타닥타닥</b><small>클릭해 실행</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="toy"><img src="./assets3d/hwata_3d_motion_dance.png" alt="축하댄스"><b>합격 축하 댄스</b><small>클릭해 실행</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="sleep"><img src="./assets3d/hwata_3d_motion_sleep.png" alt="꿀잠루틴"><b>꿀잠 치실 루틴</b><small>클릭해 실행</small></div>
+    </div>
+
+    <!-- 코스튬 패널 -->
+    <div class="grid g6" data-panel="costumes" hidden>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="doctor"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_costume_doctor.png" alt="화타 의사 가운"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="doctor" width="48" height="48" aria-hidden="true"></canvas></div><b>화타 의사 가운</b><small>클릭해 입히기</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="hygiene"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_costume_hygiene.png" alt="미소 수호 위생사"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="hygiene" width="48" height="48" aria-hidden="true"></canvas></div><b>미소 수호 위생사</b><small>클릭해 입히기</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="crown"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_costume_crown.png" alt="황금빛 미소 왕관"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="crown" width="48" height="48" aria-hidden="true"></canvas></div><b>황금빛 미소 왕관</b><small>클릭해 입히기</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="beret"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_costume_beret.png" alt="강남 산책 베레모"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="beret" width="48" height="48" aria-hidden="true"></canvas></div><b>강남 산책 베레모</b><small>클릭해 입히기</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="coder"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_costume_coder.png" alt="월요일 배포 개발자"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="coder" width="48" height="48" aria-hidden="true"></canvas></div><b>월요일 배포 개발자</b><small>클릭해 입히기</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="angel"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_costume_angel.png" alt="치카치카 수호천사"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="angel" width="48" height="48" aria-hidden="true"></canvas></div><b>치카치카 수호천사</b><small>클릭해 입히기</small></div>
+    </div>
+
+    <!-- 동물 친구들 패널 -->
+    <div class="grid g6" data-panel="friends" hidden>
+      <div class="tile" role="button" tabindex="0" data-tile-species="dog"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_species_dog.png" alt="강아지 하야니"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="dog" width="48" height="48" aria-hidden="true"></canvas></div><b>강아지 하야니</b><small>클릭해 변신</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="elephant"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_species_elephant.png" alt="아기 코끼리 코코"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="elephant" width="48" height="48" aria-hidden="true"></canvas></div><b>아기 코끼리 코코</b><small>클릭해 변신</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="dino"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_species_dino.png" alt="아기 공룡 디노"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="dino" width="48" height="48" aria-hidden="true"></canvas></div><b>아기 공룡 디노</b><small>클릭해 변신</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="python"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_species_python.png" alt="황금 파이톤 파이"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="python" width="48" height="48" aria-hidden="true"></canvas></div><b>황금 파이톤 파이</b><small>클릭해 변신</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="parrot"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_species_parrot.png" alt="오색 앵무새 코코아"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="parrot" width="48" height="48" aria-hidden="true"></canvas></div><b>오색 앵무새 코코아</b><small>클릭해 변신</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="cat"><div class="tile-media-wrap"><img src="./assets3d/hwata_3d_species_cat.png" alt="고양이 치즈"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="cat" width="48" height="48" aria-hidden="true"></canvas></div><b>고양이 치즈</b><small>클릭해 변신</small></div>
+    </div>
+
+    <!-- 3D 모션 쇼케이스 비디오 패널 -->
+    <div class="showcase-video-panel" data-panel="showcase" hidden>
+      <div class="showcase-video-card">
+        <video id="showcase-video" src="./assets3d/hwata_3d_showcase.mp4" poster="./assets3d/hwata_3d_costume_crown.png" autoplay loop muted playsinline controls></video>
+        <div class="showcase-video-bar">
+          <span>6종 3d 동물 친구들과 6종 입체 코스튬 하이라이트 쇼케이스</span>
+          <button type="button" class="btn small primary" id="btn-replay-showcase">처음부터 다시 재생</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 모으고 꾸미고 (#more : KitCommit 시그니처 섹션) -->
+<section class="alt" id="more">
+  <div class="wrap center">
+    <h2>쓸수록 할 게 많아져요</h2>
+    <span class="eyebrow">모으고 꾸미는 재미 (Collect &amp; Customize)</span>
+    <p class="lead">레벨이 오르면 새 물건이 열리고, 놀 거리와 모을 거리가 계속 생겨요.</p>
+
+    <div class="stats">
+      <div class="stat"><b>91</b><span>모션</span></div>
+      <div class="stat"><b>320</b><span>코스튬</span></div>
+      <div class="stat"><b>6</b><span>동물 파트너</span></div>
+      <div class="stat"><b>55</b><span>밥과 간식</span></div>
+      <div class="stat"><b>36</b><span>장난감</span></div>
+      <div class="stat"><b>175</b><span>업적</span></div>
+    </div>
+
+    <div class="todo">
+      <div class="card">
+        <span class="ico" aria-hidden="true">01</span>
+        <div>
+          <h3>게임과 장난감 36가지</h3>
+          <p>칫솔 배틀, 가위바위보, 줄다리기 같은 미니게임에 비눗방울, 공 던지기, 치실 공방까지. 하야니와 친구들이 진짜로 쫓아다녀요.</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">02</span>
+        <div>
+          <h3>깜짝 보물과 공방</h3>
+          <p>2분 양치 타이머를 완주하면 하야니가 보물을 물어 와요. 38가지 재료를 모아 공방 전용 코스튬 24벌을 만들어요.</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">03</span>
+        <div>
+          <h3>퀘스트와 업적 175개</h3>
+          <p>식후 물 가글, 턱관절 스트레칭, 밤 1시 전 치실 체크 등 일일 퀘스트 3개와 업적 175개를 깨면 경험치와 코인을 받아요.</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">04</span>
+        <div>
+          <h3>내 맘대로 미소 자랑 카드</h3>
+          <p>기본, RPG 상태창, 진단서 영수증 세 가지 모양에 칭호 13가지. 기간, 양치 횟수, 코딩 토큰, 하야니 자세를 이미지 한 장으로 저장해요.</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">05</span>
+        <div>
+          <h3>Lv80 다음은 별 상점</h3>
+          <p>최고 레벨을 찍은 뒤에도 끝이 아니에요. 쌓이는 별로만 사는 전설의 화타 왕관 코스튬과 황금빛 오라가 기다려요.</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">06</span>
+        <div>
+          <h3>컴퓨터를 바꿔도 그대로</h3>
+          <p>기록을 파일 하나로 내보내고 새 컴퓨터에서 그대로 가져와요. 하루 한 번 로컬 자동 백업도 지원해요.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 화이트스타일 4대 핵심 진료 기준표 (#clinical-care) -->
+<section id="clinical-care">
+  <div class="wrap">
+    <div class="center">
+      <h2>33년 전통 3인 원장단 협진 4대 핵심 진료 기준</h2>
+      <span class="eyebrow">강남역 11번, 12번 출구 도보 1분 화이트스타일치과의원 (Clinical Standards)</span>
+      <p class="lead">
+        강남역 화이트스타일치과의원 치아교정은 1994년 개원(33년 전통) 이래 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장이 정밀 진단부터 장치 부착, 사후 유지관리까지 1:1로 직접 책임 진료합니다.
+      </p>
+    </div>
+
+    <div class="clinical-table-wrap">
+      <table class="clinical-table">
+        <thead>
+          <tr>
+            <th scope="col">진료 분야</th>
+            <th scope="col">담당 원장단 및 협진 체계</th>
+            <th scope="col">핵심 임상 원칙 및 통증 완화 시스템</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>치아교정 (클리피씨 / 투명교정)</strong></td>
+            <td>김준헌 병원장 (서울대졸, 단국대 외래교수, 교정학 박사) 1:1 전담</td>
+            <td>정밀 교합 진단부터 장치 부착, 사후 유지관리까지 주치의 변경 없는 1:1 직접 책임 진료</td>
+          </tr>
+          <tr>
+            <td><strong>최소삭제 심미보철</strong></td>
+            <td>김준헌 병원장, 이봉진 대표원장, 박선혜 원장 (치주과 전문의) 협진</td>
+            <td>강남역 화이트스타일치과의원의 최소삭제 심미보철은 자연치아 보존을 최우선 원칙으로 삼아, 정밀 교합 진단 후 치아 삭제량을 최소화한 맞춤형 세라믹 디자인과 체계적인 사후 보증 관리를 제공합니다.</td>
+          </tr>
+          <tr>
+            <td><strong>3d CT 디지털 임플란트</strong></td>
+            <td>김준헌 병원장, 이봉진 대표원장, 박선혜 원장 (보건복지부 인증 치주과 전문의) 3인 협진</td>
+            <td>강남역 화이트스타일치과의원 임플란트는 3d CT 정밀 진단과 3단계 통증 완화 마취 시스템을 바탕으로, 치의학박사 김준헌 병원장, 이봉진 대표원장, 박선혜 원장(치주과 전문의) 3인 원장단 협진을 통해 식립부터 최종 보철과 정기 검진까지 안전하게 진행합니다.</td>
+          </tr>
+          <tr>
+            <td><strong>일본어 전담 글로벌 진료</strong></td>
+            <td>3인 원장단 협진 및 일본어 전담 통역 코디네이터 3명 상주</td>
+            <td>사전 온라인 상담(LINE ID: whitestyle1)부터 내원 접수, 정밀 진단, 사후 보증까지 1:1 일본어 전담 케어</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 화이트스타일 33년 협진 & 화타 스마일 PASS 등록 -->
+<section class="alt" id="clinic">
+  <div class="wrap">
+    <div class="clinic-card">
+      <div class="clinic-grid">
+        <div>
+          <div class="clinic-badge-row">
+            <span class="clinic-pill highlight">1994년 개원 33년 전통</span>
+            <span class="clinic-pill">서울대졸, 단국대 외래교수, 교정학 박사 1:1 책임진료</span>
+            <span class="clinic-pill">3단계 무통 마취</span>
+            <span class="clinic-pill">일본어 통역 코디네이터 3명 상주</span>
+          </div>
+          <h2>화타 스마일 Pass 및 정회원 멤버십 안내</h2>
+          <p class="lead">
+            강남역 11번, 12번 출구 도보 1분(대승빌딩 B1, 1, 2층)에 위치한 화이트스타일치과의원은<br>
+            치의학박사 김준헌 병원장(서울대졸, 단국대 외래교수, 교정학 박사), 이봉진 대표원장, 박선혜 원장(치주과 전문의) 3인 원장단 협진으로<br>
+            치아교정, 자연치아를 보존하는 최소삭제 심미보철, 3d CT 저통 임플란트, 정기 스케일링을 안전하게 진료합니다.
+          </p>
+          <ul class="membership-rules-list">
+            <li><b>1단계, 화타 스마일 Pass 등록:</b> 우측 Pass에 등록하셔야 AI 펫 하야니의 <b>모든 기능(6종 3d 동물 변신, 6종 3d 코스튬 옷장, 360도 입체 회전 뷰, 91종 모션, 7종 페르소나 대화)</b>을 이용하실 수 있습니다.</li>
+            <li><b>2단계, 화이트스타일 정회원 등록 (무료 AI Api 프로토콜):</b> <b>whitestyle.com</b> 또는 <b>whinish.com</b> 회원 등록 후, <b>본원에 내원하여 교정 보철 미백 등의 비급여 치료</b>를 받으신 분에게는 전 세계 모든 무료 AI Api를 내 컴퓨터에 끌어다 쓸 수 있는 <b>전용 프로토콜</b>을 제공합니다.</li>
+            <li><b>3단계, 하야니 상시 동행 및 배우자, 가족, 친지, 지인 확산 프로토콜 (Maintenance-Free):</b> AI 펫 하야니를 계속 켜두고 이용(쓰다듬기, 양치 체크, 대화)하셔야 무료 AI Api 혜택이 유지되며, 정회원 1명당 <b>배우자, 가족, 친지 동반 패밀리 키 2장(<code>sk-hwata-fam-...</code>)</b>과 <b>지인 72시간 체험 키 3장(<code>sk-hwata-trial-72h-...</code>)</b>이 함께 발급됩니다.</li>
+          </ul>
+          <div class="clinic-actions-row">
+            <a class="btn small mint" href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener">네이버 빠른 예약 (1분 완료)</a>
+            <a class="btn small gold" href="https://pf.kakao.com/_xaxlNxb" target="_blank" rel="noopener">카카오톡 1:1 비용 및 기간 상담</a>
+            <a class="btn small" href="./ja/index.html">LINE 日本語直通相談 (ID: whitestyle1)</a>
+          </div>
+        </div>
+
+        <div>
+          <form class="vip-pass-form" id="vip-form">
+            <h3>화타 스마일 Pass 등록</h3>
+            <p>스마일 Pass에 등록하셔야 AI 펫 하야니(Hayani)의 모든 3d 동물 변신, 코스튬, 모션 기능을 이용하실 수 있습니다.</p>
+            <input type="text" id="vip-name" placeholder="성함 (예: 홍길동)" aria-label="성함" required>
+            <input type="tel" id="vip-phone" placeholder="연락처 (예: 010-1234-5678)" aria-label="연락처" required>
+            <select id="vip-treatment" aria-label="관심 진료 분야 선택">
+              <option value="심미보철">관심 진료: 최소삭제 심미보철 / 라미네이트 (정회원 자격 진료)</option>
+              <option value="임플란트">관심 진료: 3d CT 저통 임플란트 (정회원 자격 진료)</option>
+              <option value="크라운보철">관심 진료: 지르코니아, 올세라믹, 인레이 보철 (정회원 자격 진료)</option>
+              <option value="교정">관심 진료: 치아교정 (1:1 정밀 진단 · 정회원 자격 진료)</option>
+              <option value="미백">관심 진료: 전문가 치아미백 프로그램 (정회원 자격 진료)</option>
+              <option value="스케일링">관심 진료: 정기 구강검진 및 스케일링</option>
+              <option value="일본어진료">관심 진료: 일본어 진료 상담 (日本語相談)</option>
+            </select>
+            <button type="submit" class="btn primary">Pass 등록 및 하야니 전체 기능 잠금 해제</button>
+            <div class="vip-pass-status" id="vip-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 화이트스타일 교정·보철·미백 등 비급여 치료 정회원 전용 무료 AI API 로컬 프로토콜 섹션 -->
+<section id="api-protocol">
+  <div class="wrap">
+    <div class="center">
+      <h2>내 컴퓨터에 끌어다 쓰는 무료 AI API 프로토콜</h2>
+      <span class="eyebrow">정회원 전용 전 세계 무료 AI Api 통합 게이트웨이 (OpenAI Compatible)</span>
+      <p class="lead">
+        <b>whitestyle.com</b> 또는 <b>whinish.com</b> 회원 등록 후, 강남역 화이트스타일치과의원에 내원하여<br>
+        <b>교정 보철 미백 등의 비급여 치료</b>를 받으신 분에게만 제공됩니다.
+      </p>
+    </div>
+
+    <div class="protocol-grid">
+      <!-- 좌측: 정회원 자격 검증 & API 키 발급 폼 -->
+      <div class="protocol-card">
+        <div class="clinic-badge-row">
+          <span class="clinic-pill highlight">교정 · 보철 · 미백 등 비급여 치료 정회원</span>
+          <span class="clinic-pill">whitestyle.com / whinish.com 정회원</span>
+        </div>
+        <h3>화이트스타일 정회원 등록 및 API Key 발급</h3>
+        <p class="protocol-desc">
+          본원에서 교정 보철 미백 등의 비급여 치료를 받으신 분만 정회원 등록이 가능하며, 인증 즉시 내 컴퓨터의 Cursor, VS Code, Claude Code, Python, Node.js에서 끌어다 쓸 수 있는 전용 키(<code>sk-hwata-vip-...</code>)가 발급됩니다.
+        </p>
+
+        <form class="vip-pass-form" id="regular-member-form">
+          <div class="form-row-2">
+            <select id="rm-site" aria-label="가입 사이트 선택">
+              <option value="whitestyle.com">whitestyle.com 회원</option>
+              <option value="whinish.com">whinish.com 회원</option>
+            </select>
+            <input type="text" id="rm-member-id" placeholder="회원 아이디 또는 이메일" aria-label="회원 아이디 또는 이메일" required>
+          </div>
+          <div class="form-row-2">
+            <input type="text" id="rm-name" placeholder="환자 성함 (예: 홍길동)" aria-label="환자 성함" required>
+            <input type="tel" id="rm-phone" placeholder="환자 연락처 (예: 010-1234-5678)" aria-label="환자 연락처" required>
+          </div>
+          <select id="rm-treatment" aria-label="본원 교정·보철·미백 등 비급여 치료 내역 선택" required>
+            <option value="ortho_noninsured">치아교정 (클리피씨 / 인비절라인 / 설측 / 부분교정 등 비급여 치료)</option>
+            <option value="prosthodontic_laminate">최소삭제 심미보철 / 라미네이트 (비급여 보철 치료)</option>
+            <option value="prosthodontic_ceramic">지르코니아 / 올세라믹 크라운 보철 (비급여 보철 치료)</option>
+            <option value="prosthodontic_inlay">세라믹 인레이 / 온레이 보철 (비급여 보철 치료)</option>
+            <option value="implant_3dct">3d CT 디지털 임플란트 (비급여 치료)</option>
+            <option value="whitening_noninsured">전문가 치아미백 / 심미 미백 프로그램 (비급여 치료)</option>
+            <option value="none">아직 비급여 치료 전 (내원 치료 후 정회원 등록 가능)</option>
+          </select>
+          <div class="form-row-2">
+            <input type="number" id="rm-count" min="1" max="28" value="1" placeholder="비급여 치료 건수 (최소 1건)" aria-label="비급여 치료 건수" required>
+            <input type="text" id="rm-auth-code" placeholder="정품 보증서 / 정회원 인증번호 (예: WS-202601)" aria-label="정회원 인증번호" required>
+          </div>
+          <div class="protocol-helper-row">
+            <button type="button" class="btn small" id="btn-fill-demo-auth">정회원 샘플 입력</button>
+            <a class="btn small mint" href="#clinic">교정·보철·미백 진료 상담 신청</a>
+          </div>
+          <button type="submit" class="btn primary" id="btn-submit-rm">정회원 인증 및 무료 AI Api 발급</button>
+          <div class="vip-pass-status" id="rm-status"></div>
+        </form>
+
+        <!-- 하야니 상시 동행 하트비트 유지 게이지 -->
+        <div class="warranty-cert-box" id="heartbeat-guard-box">
+          <div class="warranty-cert-head">
+            <span class="warranty-badge">하야니 상시 동행 프로토콜 (혜택 유지 조건)</span>
+            <strong id="hb-status-badge">동행 하트비트 활성 (7d 자동 연장)</strong>
+          </div>
+          <p class="protocol-desc">
+            AI 펫 <b>하야니를 계속 이용(쓰다듬기, 양치 체크, 대화, 브라우저 및 데스크톱 실행)</b>하셔야 본인 정회원 마스터 키와 배우자, 가족, 친지, 지인 공유 키 혜택이 계속 유지됩니다.
+          </p>
+          <div class="clinic-actions-row">
+            <button type="button" class="btn small mint" id="btn-charge-heartbeat">하야니 쓰다듬고 7d 혜택 유지 충전</button>
+            <button type="button" class="btn small" id="btn-expire-heartbeat">미사용(만료) 시뮬레이션 테스트</button>
+          </div>
+        </div>
+
+        <!-- 디지털 보철 정품 보증서 -->
+        <div class="warranty-cert-box" id="digital-warranty-card" hidden>
+          <div class="warranty-cert-head">
+            <span class="warranty-badge">화이트스타일 디지털 보철 정품 보증서 및 정회원 인증서</span>
+            <strong id="wc-serial">ws-warranty-2026-0000</strong>
+          </div>
+          <div class="warranty-cert-body">
+            <div><span>환자 성함 / 회원 ID:</span> <b id="wc-member">-</b></div>
+            <div><span>인증 보철 진료 내역:</span> <b id="wc-treatment">-</b></div>
+            <div><span>책임 보증 의료진:</span> <b>김준헌 병원장, 이봉진 대표원장, 박선혜 원장 (3인 원장단 협진)</b></div>
+            <div><span>평생 무료 AI Api Key:</span> <code id="wc-apikey">sk-hwata-vip-...</code></div>
+          </div>
+          <div class="clinic-actions-row">
+            <button type="button" class="btn small primary" id="btn-copy-vip-key">정회원 평생 무료 AI Api Key 복사</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 내 컴퓨터 연동 프로토콜 & 실시간 테스트 콘솔 -->
+      <div class="protocol-card" id="protocol-console">
+        <div class="clinic-badge-row">
+          <span class="clinic-pill highlight">OpenAI 호환 표준 프로토콜</span>
+          <span class="clinic-pill">Gemini Free, OpenRouter Free, Groq Free 통합</span>
+        </div>
+        <h3>내 컴퓨터에 끌어다 쓰는 무료 AI API 프로토콜</h3>
+        <p class="protocol-desc">
+          전 세계에 존재하는 모든 주요 무료 AI Api를 단일 엔드포인트(<code>https://whinish.com/api/v1</code>)로 묶어 24시간 자동 폴백 및 라우팅합니다. 정회원 인증 시 아래 프로토콜에 전용 키가 자동으로 삽입됩니다.
+        </p>
+
+        <div class="proto-tabs" role="tablist" aria-label="연동 프로토콜 선택">
+          <button type="button" class="proto-tab active" data-proto-tab="cursor">1. Cursor / VS Code</button>
+          <button type="button" class="proto-tab" data-proto-tab="localbridge">2. 내 PC 로컬 프록시</button>
+          <button type="button" class="proto-tab" data-proto-tab="python">3. Python / Node SDK</button>
+          <button type="button" class="proto-tab" data-proto-tab="curl">4. cURL 터미널</button>
+        </div>
+
+        <pre class="proto-code-box" id="proto-code-box"><code># [1] Cursor / VS Code (Continue, Cline) OpenAI 호환 프로토콜 설정
+Base URL : https://whinish.com/api/v1
+API Key  : sk-hwata-vip-정회원인증후자동발급됩니다
+Model ID : hwata-omni-free   (코딩 특화: hwata-coder-free / 추론 특화: hwata-reasoning-free)</code></pre>
+
+        <div class="proto-actions">
+          <button type="button" class="btn small primary" id="btn-copy-protocol">프로토콜 설정 복사</button>
+          <a class="btn small mint" id="btn-dl-protocol" href="./downloads/hwata-free-ai-protocol.mjs" download="hwata-free-ai-protocol.mjs">로컬 프록시 프로토콜(.mjs) 받기</a>
+          <button type="button" class="btn small gold" id="btn-test-protocol">무료 AI Api 실시간 호출 테스트</button>
+        </div>
+        <div class="proto-test-output" id="proto-test-output" hidden></div>
+
+        <!-- 정회원 배우자·가족·친지 동반 패밀리 키 2장 & 지인 72시간 체험 토큰 3장 발급 박스 -->
+        <div class="referral-tokens-box" id="referral-tokens-box" hidden>
+          <h4>[확산 프로토콜 1] 배우자, 직계가족, 친지 동반 패밀리 키 2장 (하야니 동행 시 상시 무료)</h4>
+          <p>배우자, 부모님, 자녀, 친지도 자기 컴퓨터에 <b>AI 펫 하야니를 켜두는 조건</b>으로 함께 무료 AI Api(1일 200회)를 계속 쓸 수 있는 가족 전용 키입니다.</p>
+          <div class="referral-token-list" id="family-token-list"></div>
+
+          <h4>[확산 프로토콜 2] 지인, 동료 공유용 72시간 무료 AI Api 체험 키 3장</h4>
+          <p>직장 동료와 지인에게 아래 1클릭 자동등록 초대장을 선물하세요! (72시간 1일 30회 무료, 하야니 동행 시 보너스 연장, 본원 교정 보철 미백 등의 비급여 치료 시 본인 평생 정회원 승격)</p>
+          <div class="referral-token-list" id="referral-token-list"></div>
+        </div>
+
+        <!-- 배우자·가족 패밀리키 및 지인 72시간 체험 토큰 활성화 입력창 -->
+        <div class="trial-redeem-box" id="trial-redeem-box">
+          <div class="trial-redeem-head">
+            <b>배우자 및 가족 [패밀리 키] 또는 지인 [72시간 체험 키]를 받으셨나요?</b>
+            <div class="pass-gate-actions">
+              <button type="button" class="btn small" id="btn-fill-demo-family">배우자 및 가족키 샘플</button>
+              <button type="button" class="btn small" id="btn-fill-demo-trial">지인 체험키 샘플</button>
+            </div>
+          </div>
+          <div class="trial-redeem-row">
+            <input type="text" id="trial-token-input" placeholder="패밀리키(sk-hwata-fam-...) 또는 지인 체험키(sk-hwata-trial-72h-...)" aria-label="패밀리키 또는 72시간 체험 토큰 입력">
+            <button type="button" class="btn small mint" id="btn-apply-trial">패밀리 및 체험 프로토콜 활성화</button>
+          </div>
+          <div class="vip-pass-status" id="trial-status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 다운로드 섹션 -->
+<section id="download">
+  <div class="wrap center">
+    <h2>지금 받기</h2>
+    <span class="eyebrow">무료 배포 (Free Release v2.1.0)</span>
+    <p class="lead">설치는 1분이면 끝나요. v2.1.0 최신 버전</p>
+
+    <div class="dl-grid">
+      <!-- 윈도우 데스크톱 앱 -->
+      <div class="dl-card" id="dl-card-win">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>
+          윈도우 데스크톱
+        </h3>
+        <ol>
+          <li>포터블 실행 파일이나 간편 배치 실행기를 받아요.</li>
+          <li>Windows PC 보호 창이 뜨면 <b>추가 정보 및 실행</b>을 눌러요.</li>
+          <li>작업표시줄 위를 조용히 걸어 다니며 하루를 함께해요.</li>
+        </ol>
+        <a class="btn primary" id="dl-btn-win" href="./downloads/run-whitepup.bat" download="run-whitepup.bat">
+          윈도우용 간편 실행기 받기 <small>무료 v2.1</small>
+        </a>
+        <div class="sha-box" data-sha="b0e1a44c66afdc49bd37459ecd1eae644974816d446dbc4fe68b77a928fe344b" title="클릭하여 SHA-256 체크섬 복사">SHA-256: b0e1a44c66afdc49bd37459ecd1eae644974816d446dbc4fe68b77a928fe344b</div>
+      </div>
+
+      <!-- 브라우저 확장 프로그램 -->
+      <div class="dl-card" id="dl-card-ext">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>
+          브라우저 확장
+        </h3>
+        <ol>
+          <li>Zip 파일을 받아 원하는 폴더에 압축을 풀어요.</li>
+          <li>브라우저 주소창에 <b>chrome://extensions</b> 입력.</li>
+          <li><b>개발자 모드</b> 켜고 <b>압축해제된 확장 로드</b> 클릭!</li>
+        </ol>
+        <a class="btn mint" id="dl-btn-ext" href="./hwatapet-extension.zip" download="hwatapet-extension.zip">
+          크롬, 웨일, 엣지 확장 받기 <small>zip (1.5mb)</small>
+        </a>
+        <div class="sha-box" data-sha="27a64e6fbe345c30af1fdf20a2b860e7caf9c0f70b53de261d2bd94b1df99283" title="클릭하여 SHA-256 체크섬 복사">SHA-256: 27a64e6fbe345c30af1fdf20a2b860e7caf9c0f70b53de261d2bd94b1df99283</div>
+      </div>
+
+      <!-- 웹 플레이어 -->
+      <div class="dl-card" id="dl-card-web">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2zm4 0h-2V8h2z"/></svg>
+          웹 실시간 체험
+        </h3>
+        <ol>
+          <li>설치 없이 브라우저에서 바로 만나볼 수 있어요.</li>
+          <li>macOS, Linux, 모바일 스마트폰에서도 작동해요.</li>
+          <li>320종 의상과 6종 동물을 즉시 갈아입혀요.</li>
+        </ol>
+        <a class="btn" id="dl-btn-web" href="#play">
+          웹에서 바로 플레이하기 <small>무설치 v2.1</small>
+        </a>
+        <div class="sha-box" data-sha="Web Player v2.1.0 (Chrome / Safari / Edge / Whale / Mobile)" title="클릭하여 환경 정보 복사">환경: Chrome, Safari, Edge, Whale, 모바일 웹 브라우저</div>
+      </div>
+    </div>
+
+    <div class="official">
+      <b>공식 다운로드는 본 사이트(whinish.com/ai-pet)와 화이트스타일 공식 웹에서만 배포됩니다.</b><br>
+      받으신 파일의 무결성은 위 체크섬 박스를 클릭해 복사하여 즉시 검증하실 수 있습니다.
+    </div>
+  </div>
+</section>
+
+<!-- 자주 묻는 질문 (FAQ) -->
+<section class="alt" id="faq">
+  <div class="wrap center">
+    <h2>자주 묻는 질문</h2>
+    <span class="eyebrow">궁금한 점을 확인해 보세요 (FAQ)</span>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>제 대화 내용이나 코딩 기록을 치과로 전송하나요?</summary>
+        <p>절대 아닙니다. Claude Code, Codex, 브라우저 작업 기록은 이 컴퓨터 안에서만 토큰 수와 시간만 세어 경험치로 환산하며, 대화 내용은 외부로 유출되지 않습니다. 사용자가 직접 스마일 Pass나 진료 예약을 신청했을 때만 해당 신청 정보가 암호화되어 안전하게 전송됩니다.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>하야니와 대화하려면 별도 비용이 드나요?</summary>
+        <p>화이트스타일 보철 및 임플란트 정회원은 무료 AI Api 프로토콜(<code>https://whinish.com/api/v1</code>)로 평생 무료 대화와 코딩을 이용할 수 있습니다. 일반 사용자도 Claude, ChatGPT 구독이나 Gemini 무료 키를 연결해 사용할 수 있으며, 별자리 미소 운세와 초성 퀴즈, 밸런스 게임은 AI 연결 없이도 100% 작동합니다.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>AI 펫(하야니)의 모든 기능을 쓰려면 어떻게 해야 하나요?</summary>
+        <p>페이지 내 <b>화타 스마일 Pass</b>에 등록하시면 고유 Pass 코드(<code>HWATA-PASS-XXXX</code>)가 즉시 발급되며, AI 펫 하야니의 6종 3d 동물 변신, 6종 3d 코스튬 옷장, 360도 입체 회전 뷰, 91종 모션, 7종 페르소나 등 모든 기능을 제한 없이 이용하실 수 있습니다.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>컴퓨터 리소스를 많이 차지하거나 작업에 방해되지 않나요?</summary>
+        <p>가벼운 경량 엔진으로 CPU 점유율이 0.1% 미만이며, 작업표시줄 위에서 조용히 걸어 다닙니다. 클릭 영역은 펫 몸체 위에서만 반응하며, 크기 조절, 음소거, 1시간 숨기기, 집중 방해 금지 모드를 지원합니다.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>강남역 화이트스타일치과의원 진료 및 예약은 어떻게 진행되나요?</summary>
+        <p>강남역 11번, 12번 출구 도보 1분 거리(대승빌딩 B1, 1, 2층)에 위치해 있으며, 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장님의 1:1 책임 진료와 3단계 저통 마취 시스템을 갖추고 있습니다. 화타펫 사용자 전용 스마일 Pass를 신청하시거나 네이버 빠른 예약, 대표전화(1577-7287 / 02-569-7528)로 편리하게 예약하실 수 있습니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 마무리 CTA -->
+<section class="cta-sec">
+  <div class="wrap center">
+    <h2>오늘부터 내 바탕화면 미소 파트너</h2>
+    <p class="lead">작은 동물 친구 한 마리가 당신의 하루를 더 밝고 건강하게 만들어 줄 거예요.</p>
+    <div class="ctas center-ctas">
+      <a class="btn primary" href="#download" data-dl="win">윈도우 데스크톱 받기 <small>무료 v2.1</small></a>
+      <a class="cta-link" href="#download" data-dl="ext">브라우저 확장 받기 <small>(Chrome, Whale, Edge)</small></a>
+      <a class="cta-link" href="#talk">하야니와 대화해 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="./index.html">화타펫 홈</a>
+      <a href="./download.html">화타펫 릴리스</a>
+      <a href="./quiz-hints.html">치아상식 퀴즈 족보</a>
+      <a href="https://www.whitestyle.com" target="_blank" rel="noopener">화이트스타일치과의원 공식 홈페이지</a>
+      <a href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener">네이버 빠른 예약 (1분 완료)</a>
+      <a href="https://pf.kakao.com/_xaxlNxb" target="_blank" rel="noopener">카카오톡 1:1 비용 및 기간 상담</a>
+      <a href="./ja/index.html">LINE 日本語直通相談 (ID: whitestyle1) / 日本語</a>
+    </div>
+
+    <div class="footer-facts">
+      <strong>의료기관 정보:</strong> 서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1, 1, 2층 화이트스타일치과의원 (우편번호 06134) /
+      강남역 11번, 12번 출구 도보 1분 / 대표전화: <strong>1577-7287</strong>, <strong>02-569-7528</strong> /
+      1994년 개원 33년 전통 / 치의학박사 김준헌 병원장, 이봉진 대표원장, 박선혜 원장(치주과 전문의) 3인 원장단 협진 / 일본어 통역 코디네이터 3명 상주
+    </div>
+
+    <div>
+      화타펫(HwataPet / 하야니)은 화이트스타일치과의원의 공식 AI 데스크톱 마스코트입니다.
+      Claude는 Anthropic의, ChatGPT는 OpenAI의, Gemini는 Google의 상표입니다.
+    </div>
+    <div>
+      © 1994-2026 WhiteStyle Dental Clinic (whitestyle.com &amp; whinish.com).
+    </div>
+  </div>
+</footer>
+
+<!-- 48x48 Pixel Art & 6-Species Engine -->
+<script src="./engine/pixelart.js"></script>
+<script src="./engine/sprite.js?v=20261112"></script>
+<script src="./engine/motions.js"></script>
+<script src="./engine/accessories.js"></script>
+<script src="./engine/accessories-head6.js"></script>
+<script src="./engine/accessories-hand6.js"></script>
+<script src="./engine/accessories-back6.js"></script>
+<script src="./engine/accessories-fx6.js"></script>
+<script src="./engine/accessories-sets6.js"></script>
+<script src="./engine/accessories-7.js"></script>
+<script src="./engine/accessories-star.js"></script>
+<script src="./download.js?v=20261112"></script>
+</body>
+</html>
+

@@ -105,7 +105,7 @@ export default function JapaneseLandingPage() {
             </div>
             <h3 className="text-xl font-extrabold text-slate-900 mb-3">ソウル大出身・臨床33年の代表院長</h3>
             <p className="text-slate-600 leading-relaxed text-sm">
-              ソウル大学校歯科大学卒業・歯医学博士の金俊憲（キム・ジュンホン）代表院長が、流れ作業ではなくお一人おひとりを直接診断・執刀いたします。
+              ソウル大卒、檀国大外来教授、矯正学博士の金俊憲（キム・ジュンホン）代表院長が、流れ作業ではなくお一人おひとりを直接診断・執刀いたします。
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export default function JapaneseLandingPage() {
               金 俊憲（キム・ジュンホン / Dr. Jun-Heon Kim）
             </h2>
             <p className="text-amber-200 text-sm md:text-base font-semibold mb-6">
-              ソウル大学校 歯科大学卒業 ｜ 檀国大学校 歯科矯正学 歯医学博士 ｜ 臨床経験33年以上（累計62,000症例以上）
+              ソウル大卒、檀国大外来教授、矯正学博士 ｜ 臨床経験33年以上（累計62,000症例以上）
             </p>
 
             <ul className="space-y-2 text-sm text-slate-200 leading-relaxed mb-6">
