@@ -1,14 +1,49 @@
 <!DOCTYPE html>
-<html lang="ja" data-theme="hum" data-genre="playful" data-shape="workbench">
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ハヤニ デスクトップペット ＆ 江南駅ホワイトスタイル歯科医院 スマイルケアパートナー</title>
-  <meta name="description" content="江南駅11番、12番出口徒歩1分、1994年開院、創業33年の伝統を誇るホワイトスタイル歯科医院（3名院長団協診、日本語通訳スタッフ3名常駐）がお届けする6種デスクトップペット「ハヤニ」のWeb体験ページです。">
-  <link rel="canonical" href="https://www.whitestyle.com/ai-pet/ja/">
-  <link rel="alternate" hreflang="ko" href="https://www.whitestyle.com/ai-pet/">
-  <link rel="alternate" hreflang="ja" href="https://www.whitestyle.com/ai-pet/ja/">
-  <link rel="stylesheet" href="../styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function(){
+      if (location.protocol !== 'file:' && /\/ja$/.test(location.pathname)) {
+        var slashPath = location.pathname.replace(/\/?$/, '/');
+        try { history.replaceState(null, '', slashPath + location.search + location.hash); } catch(e){}
+        document.write('<base href="' + slashPath + '">');
+      }
+      var d=document.documentElement, u=navigator.userAgent||'', s=null;
+      d.classList.add('js');
+      try { s = localStorage.getItem('hwata-view'); } catch(e){}
+      if (/Android|iPhone|iPad|iPod|Mobile/i.test(u) || (/Mac/.test(u) && navigator.maxTouchPoints > 1)) d.dataset.phone = '1';
+      var set = function(){ d.dataset.view = s === 'mobile' || s === 'desktop' ? s : (Math.min(innerWidth||9999, screen.width||9999) <= 760 ? 'mobile' : 'desktop'); };
+      set();
+      if (d.dataset.view === 'desktop' && screen.width && screen.width <= 760) {
+        var m = document.querySelector('meta[name=viewport]');
+        if (m) m.content = 'width=1100';
+      }
+      if (!s) addEventListener('resize', set);
+    })();
+  </script>
+  <title>ファタペット (HwataPet / ハヤニ) : AIと働くほど笑顔が輝くデスクトップペット | ホワイトスタイル歯科医院</title>
+  <meta name="description" content="Claude Code、Codex、Cursor、ブラウザのClaude、ChatGPT、Geminiを使うほど育つAIデスクトップペット「ファタペット（ハヤニ）」。50分集中時の顎関節リラックス、食後の水うがいと2分歯みがきタイム、1994年開院・創業33年の伝統を誇るホワイトスタイル歯科医院の歯のお悩み相談とスマイルPass特典まで優しくサポートします。">
+  <meta property="og:title" content="ファタペット (HwataPet / ハヤニ) : AIと働くほど笑顔が輝くデスクトップペット">
+  <meta property="og:description" content="コーディングやデスクワークの毎日に健康な笑顔を届けるAIデスクトップペット。6種の動物仲間と一緒に過ごす毎日のスマイルケア。100%無料。">
+  <meta property="og:image" content="https://whinish.com/ai-pet/assets3d/hwata_3d_brush.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whinish.com/ai-pet/ja">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="ファタペット (HwataPet) by ホワイトスタイル歯科医院">
+  <meta name="theme-color" content="#f4f6f3">
+  <link rel="canonical" href="https://whinish.com/ai-pet/ja">
+  <link rel="alternate" hreflang="ko" href="https://whinish.com/ai-pet">
+  <link rel="alternate" hreflang="ja" href="https://whinish.com/ai-pet/ja">
+  <link rel="icon" href="../assets3d/hwata_3d_idle.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css">
+  <link rel="stylesheet" href="../download.css?v=20261113">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,566 +64,1032 @@
           "postalCode": "06134",
           "addressCountry": "KR"
         },
+        "medicalSpecialty": ["Orthodontics", "Prosthodontics", "Implantology", "Periodontics"],
         "availableLanguage": ["Japanese", "Korean", "English"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "ファタペット (HwataPet / ハヤニ / Hayani AI Companion)",
+        "operatingSystem": "Windows 10, Windows 11, Web Browser, Chrome Extension",
+        "applicationCategory": "HealthAndFitnessApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        },
+        "publisher": {
+          "@id": "https://www.whitestyle.com/#dentist-ja"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "会話内容やコーディング記録が歯科医院や外部に送信されますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "いいえ、送信されません。すべての会話や作業記録はお使いのPC内でのみ安全に処理され、お客様ご自身でスマイルPassや診療予約フォームを送信された場合にのみ、予約受付のために暗号化通信で送信されます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ファタペット（ハヤニ）の全機能や無料AI APIプロトコルはどうすれば利用できますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ファタ スマイルPassにご登録いただくと、AIペット「ハヤニ」の全機能（6種3D動物変身、6種3Dコスチューム、360度回転ビュー、91種モーション）をご利用いただけます。また、whitestyle.comまたはwhinish.comに会員登録し、江南駅ホワイトスタイル歯科医院にて歯科矯正・審美補綴・ホワイトニング等の自由診療を受けられた正会員様には、世界中の無料AI APIをご自身のPCで使える専用OpenAI互換プロトコル（https://whinish.com/api/v1）を提供いたします。"
+            }
+          }
+        ]
       }
     ]
   }
   </script>
 </head>
 <body>
-  <header class="top-nav">
-    <div class="site-wrap top-nav-inner">
-      <a href="#top" class="brand-mark wb-ka wbka">
-        <span>ハヤニ デスクトップペット</span>
-        <span class="brand-badge">1994年開院 創業33年</span>
-      </a>
-      <nav class="nav-links" aria-label="メインメニュー">
-        <a href="#playground">リアルタイム体験</a>
-        <a href="#species-roster">6種の仲間たち</a>
-        <a href="#clinical-care">4大専門診療案内</a>
-        <a href="#faq">よくあるご質問</a>
-        <a href="../download.html" class="lang-switch" style="background:#b4532f; color:#fff; border-color:#3a2118; font-weight:700;">アプリ無料DL</a>
-        <a href="../index.html" class="lang-switch" lang="ko">한국어 페이지</a>
-      </nav>
-    </div>
-  </header>
 
-  <main id="top">
-    <section class="hero-section">
-      <div class="site-wrap">
-        <div class="aeo-lead-banner wb-ka wbka">
-          <p>
-            <strong>江南駅ホワイトスタイル歯科医院の歯科矯正、最小削除審美補綴、インプラントは、</strong>
-            1994年開院（創業33年の伝統）以来、ソウル大卒、檀国大外来教授、矯正学博士キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長（保健福祉部認証歯周科専門医）の3名院長団協診と日本語専任通訳スタッフ3名常駐体制により、精密診断からアフターメンテナンスまで責任を持って診療いたします。
-          </p>
+<!-- 上部ナビゲーションヘッダー -->
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./index.html">
+      <img src="../assets3d/hwata_3d_idle.png" alt="ファタペット アイコン">
+      <span>ファタペット (HwataPet)</span>
+      <span class="brand-badge">1994年開院 創業33年</span>
+    </a>
+    <nav class="nav" aria-label="メインメニュー">
+      <a href="#play">遊んでみる</a>
+      <a href="#talk">おしゃべり</a>
+      <a href="#gallery">3dモーション＆衣装</a>
+      <a href="#more">やり込み要素</a>
+      <a href="#clinical-care">4大専門診療</a>
+      <a href="#clinic">Pass登録</a>
+      <a href="#api-protocol">無料AIプロトコル</a>
+      <a href="#download" class="nav-badge">ダウンロード</a>
+    </nav>
+    <a class="lang" href="../index.html" lang="ko">한국어</a>
+    <button type="button" class="lang view" data-view-toggle title="モバイルおよびデスクトップ表示の切り替え">
+      <span class="to-mobile">モバイル表示 (Mobile)</span>
+      <span class="to-desktop">デスクトップ表示 (Desktop)</span>
+    </button>
+    <a class="btn primary sm" href="#download">入手する</a>
+  </div>
+</header>
+
+<!-- ヒーローセクション -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <a class="news" href="#talk">
+          <b>New v2.1</b>
+          <span>3dハヤニと6種の動物仲間、Claude Code、Codex、Cursor、Web AI対話対応</span>
+        </a>
+        <h1>AIと働くほど笑顔が輝く<br>ファタペット : ハヤニ (Hayani)</h1>
+        <span class="eyebrow">江南駅11番・12番出口徒歩1分 / 1994年開院 創業33年 ホワイトスタイル歯科医院 公式 AI Companion</span>
+        <p class="lead">
+          トークンを食べて育つ6種の小さな動物の仲間（Hayani）が画面の片隅で一緒に働きます。<br>
+          50分集中コーディング時の顎関節リラックス、食後・コーヒー後の水うがいと2分間の歯みがきタイムを優しくお知らせ。<br>
+          疲れた時や気になる時はキム・ジュンホン病院長の33年臨床ノウハウによる歯のお悩み相談、ファタ スマイル Pass全機能ロック解除、矯正・補綴・ホワイトニング等の自由診療 正会員専用の無料AI Apiローカルプロトコルまでサポートします。
+        </p>
+
+        <div class="ctas">
+          <a class="btn primary" href="#download" data-dl="win">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>
+            Windows版を入手 <small>無料 v2.1</small>
+          </a>
+          <a class="cta-link" href="#download" data-dl="ext">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>
+            ブラウザ拡張機能を入手 <small>(Chrome, Whale, Edge)</small>
+          </a>
+          <a class="cta-link" href="#talk">
+            ハヤニとおしゃべり <small>(インストール不要)</small>
+          </a>
         </div>
 
-        <div class="hero-grid">
-          <div class="hero-copy wb-ka wbka">
-            <span class="hero-kicker">江南駅11番、12番出口徒歩1分 · 日本語通訳スタッフ3名常駐</span>
-            <h1 class="hero-title">
-              デスクの上の小さな相棒ハヤニと一緒に、<br>
-              毎日自然に輝くスマイルケア習慣
-            </h1>
-            <p class="hero-lead">
-              お仕事や勉強に集中する毎日の中でも、食後のうがい、コーヒーの後のひと口のお水、歯みがきタイムや手鏡での笑顔チェックまで。<br>
-              真っ白な子犬<strong>「ハヤニ」</strong>をはじめ、ゾウ、恐竜、パイソン、インコ、猫まで6種の仲間があなたのデスクから優しく応援します。
-            </p>
+        <p class="meta">
+          Windows 10 / 11 (64bit)、macOS Webプレイヤー互換、会話データはご自身のパソコン内にのみ保存されます (v2.1.0 最新リリース)
+        </p>
 
-            <div class="cta-cluster">
-              <a href="https://www.whitestyle.com/?mir_code=12187" target="_blank" rel="noopener" class="press-btn primary">
-                LINE 日本語直通相談 (whitestyle1)
-              </a>
-              <a href="https://www.whinish.com/ja" target="_blank" rel="noopener" class="press-btn">
-                日本語公式案内を見る
-              </a>
-              <a href="tel:+82-2-569-7528" class="press-btn">
-                代表電話 02-569-7528
-              </a>
+        <div class="mobile-note">
+          ファタペットはデスクトップ(Windows)およびブラウザ拡張機能(Chrome, Edge, Whale)で使うアプリです。URLをコピーしてパソコンで開いてみてください。
+          <button type="button" data-copy data-done="URLをコピーしました！">URLをコピー</button>
+        </div>
+      </div>
+
+      <!-- 右側: レトロモニターモックアップ -->
+      <div>
+        <div class="monitor">
+          <div class="mon-screen">
+            <div class="app">
+              <div class="bar">
+                <i></i><i></i><i></i>
+                <span>ファタ AIセッション (歯科相談＆スマイルケア)</span>
+              </div>
+              <div class="app-body">
+                <div class="app-side">
+                  <b id="app-new-chat" role="button" tabindex="0" title="クリックすると次の相談シナリオを確認できます">+ 新しい相談</b>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="app-main">
+                  <div class="app-log" id="app-log"></div>
+                  <div class="app-input" id="app-input-bar" role="button" tabindex="0" title="クリックして下のライブチャットへ移動">
+                    <span id="app-input" class="ph">何でも聞いてください</span>
+                    <i>^</i>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="four-pillars-bar" aria-label="4大専門診療メニュー">
-              <a href="#clinical-care" class="pillar-link">1対1責任 歯科矯正</a>
-              <a href="#clinical-care" class="pillar-link">最小削除 審美セラミック</a>
-              <a href="#clinical-care" class="pillar-link">3D CT インプラント</a>
-              <a href="#clinical-care" class="pillar-link">日本語通訳3名常駐</a>
+            <!-- モニター下部タスクバーの上を歩くペット -->
+            <div class="stage" id="hero-stage">
+              <div class="pet" id="hero-pet" title="クリックして撫でたり、上に持ち上げてみてください！">
+                <div class="bubble show" id="hero-bubble">シャカシャカ歯みがき準備完了！</div>
+                <img id="hero-pet-img" src="../assets3d/hwata_3d_brush.png" alt="3dハヤニ 歯みがき">
+              </div>
+            </div>
+
+            <div class="taskbar" aria-hidden="true">
+              <i></i><i></i><i></i>
+              <span>ファタペット v2.1</span>
+              <span class="taskbar-status">スマイル充電 98%</span>
+            </div>
+          </div>
+          <div class="mon-neck" aria-hidden="true"></div>
+          <div class="mon-foot" aria-hidden="true"></div>
+        </div>
+        <p class="hint"><b>Tip:</b> 画面の中のハヤニをクリックして撫でたり、マウスで上に持ち上げてみてください</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ツール連携セクション -->
+<section class="alt" id="tools">
+  <div class="wrap center">
+    <h2>普段お使いのツールに合わせて軽やかに連携</h2>
+    <span class="eyebrow">どのAI、どの作業環境でも1分で接続 (Web, CLI, Desktop)</span>
+    <p class="lead">ターミナルでコーディングしていても、ブラウザで作業していても大丈夫。<br>初回起動時にお使いの環境を選べば、連携方法をステップごとに分かりやすく案内します。</p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <div class="tool-icon" aria-hidden="true">Web</div>
+          <div>
+            <h3>Claude, ChatGPT, Gemini</h3>
+            <span class="where">ブラウザ環境で (Chrome, Whale, Edge)</span>
+          </div>
+        </div>
+        <p>軽量な拡張機能を入れるだけで、Web作業のたびに一緒に成長します。<br>50分集中時の奥歯リラックス通知や2分間の歯みがきタイマーが寄り添います。</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <div class="tool-icon" aria-hidden="true">CLI</div>
+          <div>
+            <h3>Claude Code, Codex, Cursor</h3>
+            <span class="where">ターミナルとIDE環境で</span>
+          </div>
+        </div>
+        <p>対話やセッション記録で成長し、長いタスクが完了すると軽快にベルを鳴らします。<br>デプロイ成功時には空へロケットセレモニーを打ち上げます。</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <div class="tool-icon" aria-hidden="true">App</div>
+          <div>
+            <h3>デスクトップ単独アプリ (WhitePup)</h3>
+            <span class="where">デスクトップのタスクバーどこでも</span>
+          </div>
+        </div>
+        <p>タスクバーの上を静かに歩きながら、食後の歯みがきタイム、コーヒー後の水うがい、就寝前のフロスチェックまであなたの笑顔をそばで見守ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 機能紹介セクション -->
+<section id="features">
+  <div class="wrap center">
+    <h2>ただ可愛いだけではありません</h2>
+    <span class="eyebrow">AIと共に働く開発者・ビジネスパーソンのためのデイリー口腔ケア (Daily Care)</span>
+    <p class="lead">作業の集中を妨げることなく、毎日の健康なスマイル習慣を育てる頼もしい相棒です。</p>
+
+    <div class="grid g3">
+      <div class="card feature">
+        <figure class="sp-box">
+          <img src="../assets3d/hwata_3d_brush.png" alt="歯みがきでレベルアップ">
+        </figure>
+        <h3>トークンと歯みがきで成長</h3>
+        <p>送信したプロンプトや2分歯みがきタイマー達成で経験値が貯まってレベルアップし、コインで白衣や王冠、おやつをゲットできます。</p>
+      </div>
+
+      <div class="card feature">
+        <figure class="sp-box">
+          <img src="../assets3d/hwata_3d_type1.png" alt="一緒に働いてお知らせ">
+        </figure>
+        <h3>一緒に働いて適切なタイミングでお知らせ</h3>
+        <p>作業中はノートPCをカタカタ叩いて一緒に働き、食後30分には歯ブラシを持ってジャンプし、長い回答が終わるとベルで知らせます。</p>
+      </div>
+
+      <div class="card feature">
+        <figure class="sp-box">
+          <img src="../assets3d/hwata_3d_wave.png" alt="スマイル健康ケア">
+        </figure>
+        <h3>歯の健康と素敵な笑顔をケア</h3>
+        <p>コーヒー後の着色予防うがい、深夜1時の就寝前フロス通知、2時間集中時の顎関節リラックスストレッチまで優しくサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 遊んでみる (Play Stage) -->
+<section class="alt" id="play">
+  <div class="wrap center">
+    <h2>ペットと遊んでみましょう</h2>
+    <span class="eyebrow">Webで今すぐ体験できるインタラクティブ広場 (Interactive Stage)</span>
+    <p class="lead">アプリと同じようにリアルタイムで動きます。<br>ペットを撫でたりマウスで持ち上げたり、ごはんをあげてシャカシャカ歯みがきをさせてみてください。</p>
+
+    <div class="play-box">
+      <!-- PASS 登録状態バナー -->
+      <div class="pass-gate-bar" id="pass-gate-bar">
+        <span id="pass-gate-text">ファタ スマイル Passにご登録いただくと、AIペット（ハヤニ）の全機能（6種3d動物変身、6種3dコスチューム、360度回転ビュー、全モーション）をご利用いただけます。</span>
+        <div class="pass-gate-actions">
+          <button type="button" class="btn small primary" id="btn-jump-pass">Pass登録へ</button>
+          <button type="button" class="btn small gold" id="btn-quick-pass">1クリックPass即時発行</button>
+          <button type="button" class="btn small mint" id="btn-jump-api">正会員 無料AI Api</button>
+          <button type="button" class="btn small" id="btn-reset-pass" hidden>ロック状態を初期化</button>
+        </div>
+      </div>
+
+      <div class="species-pills" id="species-revert-bar" aria-label="代表マスコットへ戻る" hidden>
+        <button type="button" class="species-pill active" data-species="dog">代表マスコット 子犬のハヤニ(Dog)に戻る</button>
+      </div>
+
+      <div class="render-mode-bar" id="render-mode-bar" role="group" aria-label="レンダリングビューモード選択">
+        <button type="button" class="render-mode-btn active" data-render-mode="studio3d">3dスタジオビュー</button>
+        <button type="button" class="render-mode-btn" data-render-mode="turntable">360度立体回転ビュー (Drag)</button>
+        <button type="button" class="render-mode-btn" data-render-mode="pixel">48x48レトロドットビュー</button>
+      </div>
+
+      <div class="play-stage" id="play-stage">
+        <div class="pet" id="play-pet" title="クリックして撫でたり、上に持ち上げてみてください！">
+          <div class="bubble show" id="play-bubble">ワンワン！はじめまして！何をして遊びましょうか？</div>
+          <img id="play-pet-img" src="../assets3d/hwata_3d_species_dog.png" alt="プレイペット">
+          <canvas id="play-pet-canvas" width="48" height="48" hidden aria-label="6種ドット動物仲間アニメーションキャンバス"></canvas>
+        </div>
+      </div>
+
+      <div class="play-actions">
+        <button type="button" class="btn" data-action="feed">ごはんをあげる</button>
+        <button type="button" class="btn primary" data-action="brush">シャカシャカ歯みがき</button>
+        <button type="button" class="btn gold" data-action="smile">笑顔ミラーチェック</button>
+        <button type="button" class="btn mint" data-action="gargle">コーヒー後の水うがい</button>
+        <button type="button" class="btn" data-action="work">一緒にお仕事</button>
+        <button type="button" class="btn" data-action="toy">おもちゃを出す</button>
+        <button type="button" class="btn" data-action="sleep">寝かしつける</button>
+        <button type="button" class="btn" data-action="open-friends-gallery">パートナー衣装部屋</button>
+        <button type="button" class="btn" data-action="fortune">スマイル運勢</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 対話デモ＆性格セクション (#talk) -->
+<section id="talk">
+  <div class="wrap">
+    <div class="talk-grid">
+      <div class="talk-copy">
+        <h2>ペットとリアルタイムでおしゃべり</h2>
+        <span class="eyebrow">New Companion / 歯学の相棒ハヤニ</span>
+        <p class="lead">
+          普段お使いのAIをつなげば、ペットが本当に返事をしてくれます。<br>
+          雑談、お悩み相談、歯の質問から、しりとり、20の扉、究極の二択、歯科クイズ、12星座スマイル運勢まで。<br>
+          堅苦しい業務アシスタントではなく、毎日あなたの笑顔を気遣う親友です。
+        </p>
+
+        <ul class="talk-points">
+          <li>
+            <span class="ico" aria-hidden="true">01</span>
+            <div>
+              <h3>7つの個性的な性格</h3>
+              <p>優しいハヤニ、ツンデレにゃんこ、わんぱくディノ、ドクター華佗（33年キム・ジュンホン病院長モード）、丁寧な歯科衛生士、達観した哲学者、スマートコーダーパイソン。吹き出しも選んだ性格の口調で話します。</p>
+            </div>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true">02</span>
+            <div>
+              <h3>記憶して優しくリマインド</h3>
+              <p>メモ帳にあなたの話を覚えておき、「30分後に歯みがきって教えて」と言えば本当にお知らせします。50分集中タイマーやコーヒー後の水うがい通知も完備しています。</p>
+            </div>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true">03</span>
+            <div>
+              <h3>いつでも呼び出して歯の悩みも相談</h3>
+              <p><b>Ctrl+Alt+K</b>（macOSはCmd+Option+K）、タスクトレイ、またはハヤニにマウスを乗せて「話しかける」で起動。歯科矯正、最小削除審美補綴、インプラントの疑問にもすぐ答えます。</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="connect">
+          <h3>連携は3つのうち1つだけでOK</h3>
+          <ol>
+            <li>
+              <b>ホワイトスタイル正会員キー</b>
+              whinish.com/api/v1 生涯無料ルーティング
+            </li>
+            <li>
+              <b>Claude / ChatGPT サブスク</b>
+              Claude CodeやCodexにログイン済みならキー不要
+            </li>
+            <li>
+              <b>Gemini 無料キー</b>
+              有料プランがなくてもカード登録なしで無料スタート
+            </li>
+          </ol>
+          <p class="note">Anthropic、OpenAIのAPIキーにも対応。会話はこのPC内に保存され、ご自身が接続したAIにのみ送信されます。</p>
+        </div>
+
+        <p class="talk-cta">
+          <a class="btn primary" href="#download">アプリを入手しておしゃべりする</a>
+          <span class="talk-cta-note">AIを接続しなくてもハヤニは100%正常に動作し成長します</span>
+        </p>
+      </div>
+
+      <!-- 右側: インタラクティブ体験チャット -->
+      <div class="talk-demo-wrap">
+        <div class="chatdemo" id="chatdemo">
+          <div class="cd-head">
+            <img src="../assets3d/hwata_3d_idle.png" alt="ハヤニ アバター">
+            <canvas id="cd-head-canvas" width="48" height="48" aria-hidden="true"></canvas>
+            <div>
+              <b>ファタペット (ハヤニ)</b>
+              <span>体験おしゃべりウィンドウ (Live Demo)</span>
             </div>
           </div>
 
-          <div id="playground" class="workbench-card wb-ka wbka" aria-label="ハヤニ対話ステージ">
-            <div class="workbench-header">
-              <div>
-                <strong id="petStageTitle">子犬のハヤニ（Lv.7 スマイル妖精）</strong>
-              </div>
-              <span class="pet-status-pill" id="petMoodBadge">ごきげん 98% · 爽やかミント</span>
-            </div>
+          <div class="cd-persona" role="radiogroup" aria-label="性格選択">
+            <span>性格:</span>
+            <button type="button" role="radio" aria-checked="true" class="active" data-persona="angel">優しい</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="tsundere">ツンデレ</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="playful">わんぱく</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="doctor">ドクター華佗</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="hygiene">歯科衛生士</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="sage">哲学者</button>
+            <button type="button" role="radio" aria-checked="false" data-persona="python">コーダー</button>
+          </div>
 
-            <div class="stage-screen">
-              <div class="pet-bubble" id="petSpeechBubble">
-                「ワンワン！お食事やコーヒーの後にお水で軽くうがいをすると、白い歯と素敵な笑顔がもっと輝きますよ！」
-              </div>
-              <canvas
-                id="mainPetCanvas"
-                class="pixel-canvas"
-                width="48"
-                height="48"
-                aria-label="リアルタイムドットペット「ハヤニ」アニメーションキャンバス"
-                title="クリックするとハヤニが挨拶します！"
-              ></canvas>
-            </div>
+          <div class="cd-log" id="cd-log" aria-live="polite">
+            <div class="cd-msg pet">[優しいハヤニ] 来てくれたんだね！今日一日どうだった？下のゲームボタンを押すか、気になることを自由に聞いてみてね！</div>
+            <div class="cd-msg sys">吹き出しもこの口調になります：「ランチタイムだよ！！忙しくてもしっかり食べて、30分後の歯みがき忘れないでね！」</div>
+          </div>
 
-            <span class="control-group-label">1. ペットの種類を選択（衣装、モーション100%対応）</span>
-            <div class="species-grid" id="speciesSelector">
-              <button type="button" class="press-btn is-active" data-species="dog">子犬 ハヤニ</button>
-              <button type="button" class="press-btn" data-species="elephant">子ゾウ ココ</button>
-              <button type="button" class="press-btn" data-species="dino">恐竜 ディノ</button>
-              <button type="button" class="press-btn" data-species="python">パイソン パイ</button>
-              <button type="button" class="press-btn" data-species="parrot">インコ ココア</button>
-              <button type="button" class="press-btn" data-species="cat">猫 チーズ</button>
-            </div>
+          <div class="cd-chips">
+            <button type="button" data-game="wordchain">しりとり</button>
+            <button type="button" data-game="twenty">20の扉</button>
+            <button type="button" data-game="balance">究極の二択</button>
+            <button type="button" data-game="chosung">歯科クイズ</button>
+            <button type="button" data-game="fortune">スマイル運勢</button>
+            <button type="button" data-game="booking">スピード予約</button>
+          </div>
 
-            <span class="control-group-label">2. スマイルケアモーション ＆ コスチューム体験</span>
-            <div class="action-row">
-              <button type="button" class="press-btn primary" data-motion="brush">シャカシャカ歯みがき</button>
-              <button type="button" class="press-btn" data-motion="smilecheck">手鏡スマイルチェック</button>
-              <button type="button" class="press-btn" data-motion="nightcare">深夜作業ケア</button>
-              <button type="button" class="press-btn" data-motion="coffee">コーヒー後の水うがい</button>
-              <button type="button" class="press-btn" data-motion="dance">ハッピーダンス</button>
-              <button type="button" class="press-btn" id="btnToggleCostume">王冠マント着せ替え</button>
-              <button type="button" class="press-btn" id="btnFortune">今日のスマイル運勢</button>
-            </div>
+          <form class="cd-input" id="cd-form">
+            <input type="text" id="cd-input" placeholder="例: コーヒーを飲んだ後の歯のケアはどうすればいい？" autocomplete="off" aria-label="ハヤニへメッセージを送る">
+            <button type="submit">送信</button>
+          </form>
+        </div>
+        <p class="talk-demo-note">12星座スマイル運勢、歯科クイズ、究極の二択、しりとり、20の扉、リアルタイムAI相談がここでも実際に動作します。</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="chat-box">
-              <div class="chat-log" id="chatLog" aria-live="polite">
-                <p class="chat-msg pet">
-                  <strong>ハヤニ:</strong> 何でも話しかけてくださいね！歯並びやセラミック、ホワイトニング、韓国での歯科検診のご質問にも優しくお答えします。
-                </p>
-              </div>
-              <form class="chat-form" id="chatForm">
-                <input
-                  type="text"
-                  id="chatInput"
-                  class="chat-input"
-                  placeholder="例：コーヒーの着色対策は？ / 日本語で相談できますか？"
-                  autocomplete="off"
-                >
-                <button type="submit" class="press-btn primary">話しかける</button>
-              </form>
-            </div>
+<!-- スマイルの1日 (Day Routine) -->
+<section class="alt" id="day">
+  <div class="wrap center">
+    <h2>ファタペットと過ごす1日</h2>
+    <span class="eyebrow">出勤から深夜のコーディングまで時間帯別ルーティンケア (Daily Timeline)</span>
+    <p class="lead">AIが働くリズムとあなたの食事・休憩ルーティンに合わせてペットが動きます。<br>カードをクリックすると、その時間帯のモーションを上の広場ですぐ体験できます。</p>
+
+    <div class="day-scroll">
+      <div class="moment" data-day-action="smile">
+        <span class="time">09:00</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">今日も輝く笑顔でお仕事スタート！ファイト〜</div>
+            <img src="../assets3d/hwata_3d_wave.png" alt="朝のセッション開始">
+          </figure>
+          <h3>セッション開始</h3>
+          <p>今日のタスクを開いて気持ちよく1日をスタートします。</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="feed">
+        <span class="time">11:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">おいしいランチをどうぞ！食後30分の歯みがき待機中</div>
+            <img src="../assets3d/hwata_3d_sit.png" alt="ランチタイム">
+          </figure>
+          <h3>ランチタイム</h3>
+          <p>しっかり昼食をとって、30分後の歯みがきタイマーを予約します。</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="brush">
+        <span class="time">12:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">2分間すみずみまでブラッシング！笑顔がキラッと輝きます</div>
+            <img src="../assets3d/hwata_3d_brush.png" alt="シャカシャカ歯みがき">
+          </figure>
+          <h3>シャカシャカ歯みがき</h3>
+          <p>2分間の歯みがきタイマーを完走してレベルアップ経験値を獲得します。</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="gargle">
+        <span class="time">14:15</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">コーヒーの後はひと口の水うがいで着色予防！</div>
+            <img src="../assets3d/hwata_3d_stand4_a.png" alt="コーヒー後の水うがい">
+          </figure>
+          <h3>コーヒータイムうがい</h3>
+          <p>コーヒーを飲んだ直後に水で軽くゆすぎ、ステイン沈着を防ぎます。</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="work">
+        <span class="time">15:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">2時間集中！奥歯の食いしばりをほどいてリラックス</div>
+            <img src="../assets3d/hwata_3d_type1.png" alt="顎関節リラックス">
+          </figure>
+          <h3>顎関節ストレッチ</h3>
+          <p>上下の奥歯を離して唇を軽く閉じ、顎関節の緊張を解きほぐします。</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="smile">
+        <span class="time">18:30</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">江南駅11番・12番出口を通る時に定期検診へ寄るのにぴったり！</div>
+            <img src="../assets3d/hwata_3d_wave.png" alt="退勤と定期検診">
+          </figure>
+          <h3>退勤＆定期検診</h3>
+          <p>お仕事帰りに江南駅ホワイトスタイル歯科医院でスピーディーに定期検診。</p>
+        </div>
+      </div>
+
+      <div class="moment" data-day-action="sleep">
+        <span class="time">01:10</span>
+        <div class="card">
+          <figure class="sp-box">
+            <div class="bubble">深夜1時だよ…歯みがきとフロスをしてゆっくり休もう！</div>
+            <img src="../assets3d/hwata_3d_sit_blink.png" alt="深夜の就寝ケア">
+          </figure>
+          <h3>深夜の睡眠ケア</h3>
+          <p>就寝前のフロス習慣をチェックして、心地よい眠りにつきます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ギャラリーセクション -->
+<section id="gallery">
+  <div class="wrap center">
+    <h2>毎日ちがう表情とスタイル</h2>
+    <span class="eyebrow">モーション91種、コスチューム320種、6種の動物パートナー (3d &amp; Pixel Wardrobe)</span>
+    <p class="lead">シーンに合わせてモーションを選び、歯みがきとコーディングで集めたコインで白衣や王冠を着せ替えましょう。<br>気になるカードをクリックして今すぐ試してみてください！</p>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab-btn on" data-tab="motions" data-note="シャカシャカ歯みがき、笑顔ミラーチェック、コーヒー後の水うがいなど毎日の健康ルーティン3dモーションです。カードをクリックするとすぐ再生されます！">モーション <i>18 / 91</i></button>
+      <button type="button" class="tab-btn" data-tab="costumes" data-note="ドクター白衣、歯科衛生士ユニフォーム、黄金の王冠マントまで3d立体コスチュームでコーディネート。クリックして着せ替えてみましょう！">コスチューム <i>10 / 320</i></button>
+      <button type="button" class="tab-btn" data-tab="friends" data-note="子犬のハヤニからゾウ、恐竜、パイソン、インコ、猫まで6種の3dパートナーたちです。クリックすると即座に変身します！">6種 動物パートナー</button>
+      <button type="button" class="tab-btn" data-tab="showcase" data-note="6種の動物仲間とシグネチャー衣装をひと目で楽しめる高画質3dモーションショーケース映像です！">3dショーケース映像</button>
+    </div>
+
+    <p class="tab-note" id="tab-note">シャカシャカ歯みがき、笑顔ミラーチェック、コーヒー後の水うがいなど毎日の健康ルーティン3dモーションです。カードをクリックするとすぐ再生されます！</p>
+
+    <!-- モーションパネル -->
+    <div class="grid g6" data-panel="motions">
+      <div class="tile" role="button" tabindex="0" data-tile-motion="brush"><img src="../assets3d/hwata_3d_motion_brush.png" alt="歯みがき"><b>シャカシャカ歯みがき</b><small>クリックで実行</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="smile"><img src="../assets3d/hwata_3d_motion_smile.png" alt="笑顔チェック"><b>笑顔ミラーチェック</b><small>クリックで実行</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="gargle"><img src="../assets3d/hwata_3d_motion_gargle.png" alt="水うがい"><b>コーヒー後の水うがい</b><small>クリックで実行</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="work"><img src="../assets3d/hwata_3d_motion_work.png" alt="タイピング"><b>ノートPCカタカタ</b><small>クリックで実行</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="toy"><img src="../assets3d/hwata_3d_motion_dance.png" alt="お祝いダンス"><b>デプロイお祝いダンス</b><small>クリックで実行</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-motion="sleep"><img src="../assets3d/hwata_3d_motion_sleep.png" alt="熟睡フロスルーティン"><b>おやすみフロス習慣</b><small>クリックで実行</small></div>
+    </div>
+
+    <!-- コスチュームパネル -->
+    <div class="grid g6" data-panel="costumes" hidden>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="doctor"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_costume_doctor.png" alt="ドクター白衣"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="doctor" width="48" height="48" aria-hidden="true"></canvas></div><b>ドクター白衣</b><small>クリックで試着</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="hygiene"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_costume_hygiene.png" alt="スマイル衛生士"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="hygiene" width="48" height="48" aria-hidden="true"></canvas></div><b>スマイル衛生士</b><small>クリックで試着</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="crown"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_costume_crown.png" alt="黄金のスマイル王冠"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="crown" width="48" height="48" aria-hidden="true"></canvas></div><b>黄金のスマイル王冠</b><small>クリックで試着</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="beret"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_costume_beret.png" alt="江南お散歩ベレー帽"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="beret" width="48" height="48" aria-hidden="true"></canvas></div><b>江南お散歩ベレー帽</b><small>クリックで試着</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="coder"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_costume_coder.png" alt="月曜デプロイ開発者"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="coder" width="48" height="48" aria-hidden="true"></canvas></div><b>月曜デプロイ開発者</b><small>クリックで試着</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-costume="angel"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_costume_angel.png" alt="歯みがき守護天使"><canvas class="gallery-costume-canvas tile-pip-canvas" data-gallery-costume="angel" width="48" height="48" aria-hidden="true"></canvas></div><b>歯みがき守護天使</b><small>クリックで試着</small></div>
+    </div>
+
+    <!-- 動物パートナーパネル -->
+    <div class="grid g6" data-panel="friends" hidden>
+      <div class="tile" role="button" tabindex="0" data-tile-species="dog"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_species_dog.png" alt="子犬のハヤニ"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="dog" width="48" height="48" aria-hidden="true"></canvas></div><b>子犬のハヤニ</b><small>クリックで変身</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="elephant"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_species_elephant.png" alt="子ゾウのココ"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="elephant" width="48" height="48" aria-hidden="true"></canvas></div><b>子ゾウのココ</b><small>クリックで変身</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="dino"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_species_dino.png" alt="恐竜のディノ"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="dino" width="48" height="48" aria-hidden="true"></canvas></div><b>恐竜のディノ</b><small>クリックで変身</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="python"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_species_python.png" alt="黄金パイソンのパイ"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="python" width="48" height="48" aria-hidden="true"></canvas></div><b>黄金パイソンのパイ</b><small>クリックで変身</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="parrot"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_species_parrot.png" alt="五色インコのココア"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="parrot" width="48" height="48" aria-hidden="true"></canvas></div><b>五色インコのココア</b><small>クリックで変身</small></div>
+      <div class="tile" role="button" tabindex="0" data-tile-species="cat"><div class="tile-media-wrap"><img src="../assets3d/hwata_3d_species_cat.png" alt="猫のチーズ"><canvas class="gallery-species-canvas tile-pip-canvas" data-gallery-species="cat" width="48" height="48" aria-hidden="true"></canvas></div><b>猫のチーズ</b><small>クリックで変身</small></div>
+    </div>
+
+    <!-- 3Dモーションショーケースビデオパネル -->
+    <div class="showcase-video-panel" data-panel="showcase" hidden>
+      <div class="showcase-video-card">
+        <video id="showcase-video" src="../assets3d/hwata_3d_showcase.mp4" poster="../assets3d/hwata_3d_costume_crown.png" autoplay loop muted playsinline controls></video>
+        <div class="showcase-video-bar">
+          <span>6種3d動物仲間と6種立体コスチュームのハイライトショーケース</span>
+          <button type="button" class="btn small primary" id="btn-replay-showcase">最初から再生する</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 集めて着せ替える (#more) -->
+<section class="alt" id="more">
+  <div class="wrap center">
+    <h2>使うほど楽しみが広がります</h2>
+    <span class="eyebrow">集めてカスタマイズする楽しさ (Collect &amp; Customize)</span>
+    <p class="lead">レベルが上がるたびに新しいアイテムが解放され、遊びとコレクションがどんどん増えていきます。</p>
+
+    <div class="stats">
+      <div class="stat"><b>91</b><span>モーション</span></div>
+      <div class="stat"><b>320</b><span>コスチューム</span></div>
+      <div class="stat"><b>6</b><span>動物パートナー</span></div>
+      <div class="stat"><b>55</b><span>ごはん＆おやつ</span></div>
+      <div class="stat"><b>36</b><span>おもちゃ</span></div>
+      <div class="stat"><b>175</b><span>実績</span></div>
+    </div>
+
+    <div class="todo">
+      <div class="card">
+        <span class="ico" aria-hidden="true">01</span>
+        <div>
+          <h3>ミニゲームとおもちゃ36種</h3>
+          <p>歯ブラシバトル、じゃんけん、綱引きなどのミニゲームに加え、シャボン玉、ボール投げ、フロス工房まで。ハヤニと仲間たちが画面の中で元気いっぱいに追いかけます。</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">02</span>
+        <div>
+          <h3>サプライズ宝物とクラフト工房</h3>
+          <p>2分間の歯みがきタイマーを完走するとハヤニが宝物を運んできます。38種類の素材を集めて工房限定コスチューム24着をクラフトできます。</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">03</span>
+        <div>
+          <h3>デイリークエストと実績175個</h3>
+          <p>食後の水うがい、顎関節ストレッチ、深夜1時前のフロスチェックなど、デイリークエスト3種と実績175個を達成すると経験値とコインがもらえます。</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">04</span>
+        <div>
+          <h3>オリジナル スマイル自慢カード</h3>
+          <p>ベーシック、RPGステータス画面、歯科診断書レシートの3種類のデザインと13種の称号。継続日数、歯みがき回数、コーディングトークン、ハヤニのポーズを1枚の画像に保存できます。</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">05</span>
+        <div>
+          <h3>Lv80の次はスターショップ</h3>
+          <p>最高レベルに到達した後も終わりではありません。貯まるスターでのみ交換できる伝説のファタ王冠コスチュームと黄金のオーラが待っています。</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="ico" aria-hidden="true">06</span>
+        <div>
+          <h3>パソコンを買い替えてもそのまま引き継ぎ</h3>
+          <p>成長記録を1つのファイルにエクスポートし、新しいパソコンへそのまま復元できます。1日1回のローカル自動バックアップにも対応しています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ホワイトスタイル 4大専門診療基準表 (#clinical-care) -->
+<section id="clinical-care">
+  <div class="wrap">
+    <div class="center">
+      <h2>創業33年 3名院長団協診 4大専門診療基準</h2>
+      <span class="eyebrow">江南駅11番・12番出口徒歩1分 ホワイトスタイル歯科医院 (Clinical Standards)</span>
+      <p class="lead">
+        江南駅ホワイトスタイル歯科医院の歯科矯正は、1994年開院（創業33年の伝統）以来、ソウル大卒、檀国大外来教授、矯正学博士キム・ジュンホン病院長が精密診断から装置装着、アフターメインテナンスまで1対1で直接責任診療いたします。
+      </p>
+    </div>
+
+    <div class="clinical-table-wrap">
+      <table class="clinical-table">
+        <thead>
+          <tr>
+            <th scope="col">診療分野</th>
+            <th scope="col">担当院長団および協診体制</th>
+            <th scope="col">臨床原則および痛みを抑える麻酔システム</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>歯科矯正（クリッピーC / 透明矯正）</strong></td>
+            <td>キム・ジュンホン病院長（ソウル大卒、檀国大外来教授、矯正学博士）1対1専任</td>
+            <td>精密咬合診断から装置装着、治療後の保定管理まで担当医変更なしの1対1直接責任診療</td>
+          </tr>
+          <tr>
+            <td><strong>最小削除 審美補綴</strong></td>
+            <td>キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長（歯周科専門医）協診</td>
+            <td>江南駅ホワイトスタイル歯科医院の最小削除審美補綴は天然歯保存を最優先原則とし、精密咬合診断後に歯の削除量を最小限に抑えたオーダーメイドセラミックデザインと体系的な事後保証管理を提供いたします。</td>
+          </tr>
+          <tr>
+            <td><strong>3d CT デジタルインプラント</strong></td>
+            <td>キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長（保健福祉部認証 歯周科専門医）3名協診</td>
+            <td>江南駅ホワイトスタイル歯科医院のインプラントは3d CT精密診断と3段階痛みを抑える麻酔システムに基づき、歯学博士キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長（歯周科専門医）の3名院長団協診を通じて埋入から最終補綴、定期検診まで安全に進めます。</td>
+          </tr>
+          <tr>
+            <td><strong>日本語専任 グローバル診療</strong></td>
+            <td>3名院長団協診および日本語専任通訳コーディネーター3名常駐</td>
+            <td>事前オンライン相談（LINE ID: whitestyle1）からご来院受付、精密診断、アフター保証まで1対1日本語専任ケア</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ホワイトスタイル33年協診 ＆ ファタ スマイル PASS 登録 -->
+<section class="alt" id="clinic">
+  <div class="wrap">
+    <div class="clinic-card">
+      <div class="clinic-grid">
+        <div>
+          <div class="clinic-badge-row">
+            <span class="clinic-pill highlight">1994年開院 創業33年の伝統</span>
+            <span class="clinic-pill">ソウル大卒、檀国大外来教授、矯正学博士 1対1責任診療</span>
+            <span class="clinic-pill">3段階無痛麻酔システム</span>
+            <span class="clinic-pill">日本語通訳コーディネーター3名常駐</span>
+          </div>
+          <h2>ファタ スマイル Pass および正会員メンバーシップ案内</h2>
+          <p class="lead">
+            江南駅11番・12番出口徒歩1分（大承ビル B1, 1, 2階）に位置するホワイトスタイル歯科医院は、<br>
+            歯学博士キム・ジュンホン病院長（ソウル大卒、檀国大外来教授、矯正学博士）、イ・ボンジン代表院長、パク・ソンヘ院長（歯周科専門医）の3名院長団協診により、<br>
+            歯科矯正、天然歯を守る最小削除審美補綴、3d CT低痛インプラント、定期スケーリングを安全に診療いたします。
+          </p>
+          <ul class="membership-rules-list">
+            <li><b>ステップ1、ファタ スマイル Pass登録:</b> 右側のフォームからPassにご登録いただくと、AIペット「ハヤニ」の<b>全機能（6種3d動物変身、6種3dコスチューム衣装部屋、360度立体回転ビュー、91種モーション、7種ペルソナ対話）</b>を無制限でご利用いただけます。</li>
+            <li><b>ステップ2、ホワイトスタイル正会員登録（無料AI Apiプロトコル）:</b> <b>whitestyle.com</b> または <b>whinish.com</b> に会員登録後、<b>当院にご来院いただき矯正・補綴・ホワイトニング等の自由診療</b>を受けられた方には、世界中の主要無料AI Apiをご自身のPCで使える<b>専用プロトコル</b>を提供いたします。</li>
+            <li><b>ステップ3、ハヤニ常時同行およびご家族・ご友人拡散プロトコル (Maintenance-Free):</b> AIペット「ハヤニ」を起動して継続利用（撫でる、歯みがきチェック、会話）していただくことで無料AI Api特典が維持され、正会員1名様につき<b>配偶者・ご家族用ファミリーキー2枚(<code>sk-hwata-fam-...</code>)</b>と<b>ご友人72時間体験キー3枚(<code>sk-hwata-trial-72h-...</code>)</b>が同時に発行されます。</li>
+          </ul>
+          <div class="clinic-actions-row">
+            <a class="btn small mint" href="https://www.whitestyle.com/?mir_code=12187" target="_blank" rel="noopener">LINE 日本語直通相談 (ID: whitestyle1)</a>
+            <a class="btn small gold" href="https://www.whinish.com/ja" target="_blank" rel="noopener">日本語公式案内ページ (whinish.com/ja)</a>
+            <a class="btn small" href="tel:+82-2-569-7528">代表電話 1577-7287 / 02-569-7528</a>
+          </div>
+        </div>
+
+        <div>
+          <form class="vip-pass-form" id="vip-form">
+            <h3>ファタ スマイル Pass 登録</h3>
+            <p>スマイル Passにご登録いただくと、AIペット「ハヤニ(Hayani)」の全3d動物変身、コスチューム、モーション機能をご利用いただけます。</p>
+            <input type="text" id="vip-name" placeholder="お名前 (例: 山田 花子)" aria-label="お名前" required>
+            <input type="tel" id="vip-phone" placeholder="ご連絡先またはLINE ID (例: 090-1234-5678)" aria-label="ご連絡先" required>
+            <select id="vip-treatment" aria-label="ご希望の診療分野を選択">
+              <option value="審美補綴">関心診療: 最小削除審美補綴 / ラミネートべニア (正会員対象診療)</option>
+              <option value="インプラント">関心診療: 3d CT 低痛インプラント (正会員対象診療)</option>
+              <option value="クラウン補綴">関心診療: ジルコニア・オールセラミック・インレー補綴 (正会員対象診療)</option>
+              <option value="歯科矯正">関心診療: 歯科矯正 (1対1精密診断 / 正会員対象診療)</option>
+              <option value="ホワイトニング">関心診療: 専門歯牙ホワイトニングプログラム (正会員対象診療)</option>
+              <option value="スケーリング">関心診療: 定期歯科検診およびスケーリング</option>
+              <option value="日本語相談">関心診療: 日本語直通カウンセリング (LINE ID: whitestyle1)</option>
+            </select>
+            <button type="submit" class="btn primary">Pass登録＆ハヤニ全機能ロック解除</button>
+            <div class="vip-pass-status" id="vip-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ホワイトスタイル 矯正・補綴・ホワイトニング等の自由診療 正会員専用 無料AI APIローカルプロトコルセクション -->
+<section id="api-protocol">
+  <div class="wrap">
+    <div class="center">
+      <h2>自分のパソコンに引き込んで使える無料AI APIプロトコル</h2>
+      <span class="eyebrow">正会員専用 世界中の無料AI Api統合ゲートウェイ (OpenAI Compatible)</span>
+      <p class="lead">
+        <b>whitestyle.com</b> または <b>whinish.com</b> に会員登録後、江南駅ホワイトスタイル歯科医院にご来院いただき<br>
+        <b>矯正・補綴・ホワイトニング等の自由診療</b>を受けられた正会員様限定で提供されます。
+      </p>
+    </div>
+
+    <div class="protocol-grid">
+      <!-- 左側: 正会員資格検証 ＆ APIキー発行フォーム -->
+      <div class="protocol-card">
+        <h3>ホワイトスタイル正会員登録およびAPI Key発行</h3>
+        <div class="clinic-badge-row">
+          <span class="clinic-pill highlight">矯正・補綴・ホワイトニング等の自由診療 正会員</span>
+          <span class="clinic-pill">whitestyle.com / whinish.com 正会員</span>
+        </div>
+        <p class="protocol-desc">
+          当院にて矯正・補綴・ホワイトニング等の自由診療を受けられた方のみ正会員登録が可能で、認証と同時にご自身のパソコンのCursor、VS Code、Claude Code、Python、Node.jsで利用できる専用キー(<code>sk-hwata-vip-...</code>)が即時発行されます。
+        </p>
+
+        <form class="vip-pass-form" id="regular-member-form">
+          <div class="form-row-2">
+            <select id="rm-site" aria-label="登録サイト選択">
+              <option value="whitestyle.com">whitestyle.com 会員</option>
+              <option value="whinish.com">whinish.com 会員</option>
+            </select>
+            <input type="text" id="rm-member-id" placeholder="会員IDまたはメールアドレス" aria-label="会員IDまたはメールアドレス" required>
+          </div>
+          <div class="form-row-2">
+            <input type="text" id="rm-name" placeholder="患者様のお名前 (例: 山田 花子)" aria-label="患者様のお名前" required>
+            <input type="tel" id="rm-phone" placeholder="ご連絡先 (例: 090-1234-5678)" aria-label="ご連絡先" required>
+          </div>
+          <select id="rm-treatment" aria-label="当院での自由診療内容を選択" required>
+            <option value="ortho_noninsured">歯科矯正（クリッピーC / インビザライン / 舌側 / 部分矯正等の自由診療）</option>
+            <option value="prosthodontic_laminate">最小削除審美補綴 / ラミネートべニア（自由診療補綴）</option>
+            <option value="prosthodontic_ceramic">ジルコニア / オールセラミッククラウン補綴（自由診療補綴）</option>
+            <option value="prosthodontic_inlay">セラミックインレー / オンレー補綴（自由診療補綴）</option>
+            <option value="implant_3dct">3d CT デジタルインプラント（自由診療）</option>
+            <option value="whitening_noninsured">専門歯牙ホワイトニング / 審美ホワイトニングプログラム（自由診療）</option>
+            <option value="none">まだ自由診療前（ご来院・治療後に正会員登録が可能）</option>
+          </select>
+          <div class="form-row-2">
+            <input type="number" id="rm-count" min="1" max="28" value="1" placeholder="自由診療の件数 (最小1件)" aria-label="自由診療の件数" required>
+            <input type="text" id="rm-auth-code" placeholder="保証書 / 正会員認証番号 (例: WS-202601)" aria-label="正会員認証番号" required>
+          </div>
+          <div class="protocol-helper-row">
+            <button type="button" class="btn small" id="btn-fill-demo-auth">正会員サンプル入力</button>
+            <a class="btn small mint" href="#clinic">矯正・補綴・ホワイトニング診療相談へ</a>
+          </div>
+          <button type="submit" class="btn primary" id="btn-submit-rm">正会員認証＆無料AI Api発行</button>
+          <div class="vip-pass-status" id="rm-status"></div>
+        </form>
+
+        <!-- ハヤニ常時同行 ハートビート維持ゲージ -->
+        <div class="warranty-cert-box" id="heartbeat-guard-box">
+          <div class="warranty-cert-head">
+            <span class="warranty-badge">ハヤニ常時同行プロトコル (特典維持条件)</span>
+            <strong id="hb-status-badge">同行ハートビート有効 (7d 自動延長)</strong>
+          </div>
+          <p class="protocol-desc">
+            AIペット<b>「ハヤニ」を継続利用（撫でる、歯みがきチェック、会話、ブラウザおよびデスクトップ起動）</b>していただくことで、ご本人様の正会員マスターキーおよびご家族・ご友人共有キーの無料特典が継続維持されます。
+          </p>
+          <div class="clinic-actions-row">
+            <button type="button" class="btn small mint" id="btn-charge-heartbeat">ハヤニを撫でて7d特典維持チャージ</button>
+            <button type="button" class="btn small" id="btn-expire-heartbeat">未使用(期限切れ)シミュレーション</button>
+          </div>
+        </div>
+
+        <!-- デジタル補綴正規品保証書 -->
+        <div class="warranty-cert-box" id="digital-warranty-card" hidden>
+          <div class="warranty-cert-head">
+            <span class="warranty-badge">ホワイトスタイル デジタル補綴正規品保証書および正会員認証書</span>
+            <strong id="wc-serial">ws-warranty-2026-0000</strong>
+          </div>
+          <div class="warranty-cert-body">
+            <div><span>患者様氏名 / 会員ID:</span> <b id="wc-member">-</b></div>
+            <div><span>認証診療内容:</span> <b id="wc-treatment">-</b></div>
+            <div><span>責任保証医療陣:</span> <b>キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長 (3名院長団協診)</b></div>
+            <div><span>生涯無料 AI Api Key:</span> <code id="wc-apikey">sk-hwata-vip-...</code></div>
+          </div>
+          <div class="clinic-actions-row">
+            <button type="button" class="btn small primary" id="btn-copy-vip-key">正会員 生涯無料AI Api Keyをコピー</button>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="species-roster" class="content-section">
-      <div class="site-wrap wb-ka wbka">
-        <div class="section-header">
-          <h2 class="section-title">
-            子犬のハヤニからゾウ、恐竜、パイソン、インコ、猫まで、<br>
-            320種のコスチュームを自由に楽しめる6種の仲間たち
-          </h2>
-          <p>
-            お好きな動物ボタンをクリックすると、すぐにステージ上のパートナーが変身します。
-          </p>
+      <!-- 右側: PC連携プロトコル ＆ リアルタイムテストコンソール -->
+      <div class="protocol-card" id="protocol-console">
+        <div class="clinic-badge-row">
+          <span class="clinic-pill highlight">OpenAI互換 標準プロトコル</span>
+          <span class="clinic-pill">Gemini Free, OpenRouter Free, Groq Free 統合</span>
         </div>
-
-        <div class="roster-grid">
-          <article class="roster-card">
-            <canvas class="roster-canvas" data-roster-species="dog" width="48" height="48" aria-label="子犬ハヤニのドットキャラクター"></canvas>
-            <h3>子犬 ハヤニ（基本パートナー）</h3>
-            <p>
-              垂れ耳と黒いボタン鼻、ピンクの舌がチャームポイントの看板マスコット。食後の歯みがきと笑顔のチェックを一番に応援します。
-            </p>
-          </article>
-          <article class="roster-card">
-            <canvas class="roster-canvas" data-roster-species="elephant" width="48" height="48" aria-label="子ゾウココのドットキャラクター"></canvas>
-            <h3>子ゾウ ココ</h3>
-            <p>
-              揺れる長い鼻と白い牙が自慢の優しいゾウの仲間。ティータイムの後の爽やかな水うがいタイミングをお知らせします。
-            </p>
-          </article>
-          <article class="roster-card">
-            <canvas class="roster-canvas" data-roster-species="dino" width="48" height="48" aria-label="子恐竜ディノのドットキャラクター"></canvas>
-            <h3>子恐竜 ディノ</h3>
-            <p>
-              背びれと小さな牙が愛らしい恐竜の仲間。健康的な噛み合わせと丈夫な歯を守る心強いパートナーです。
-            </p>
-          </article>
-          <article class="roster-card">
-            <canvas class="roster-canvas" data-roster-species="python" width="48" height="48" aria-label="ゴールデンパイソンパイのドットキャラクター"></canvas>
-            <h3>ゴールデンパイソン パイ</h3>
-            <p>
-              コーディングやデスクワークの集中タイムに寄り添い、無意識の食いしばりをほぐす顎リラックスタイムを提案します。
-            </p>
-          </article>
-          <article class="roster-card">
-            <canvas class="roster-canvas" data-roster-species="parrot" width="48" height="48" aria-label="インコココアのドットキャラクター"></canvas>
-            <h3>インコ ココア</h3>
-            <p>
-              黄色い冠羽とオレンジのくちばしで元気を届けるインコ。毎日のスマイル運勢と明るいメッセージを伝えます。
-            </p>
-          </article>
-          <article class="roster-card">
-            <canvas class="roster-canvas" data-roster-species="cat" width="48" height="48" aria-label="猫チーズのドットキャラクター"></canvas>
-            <h3>猫 チーズ</h3>
-            <p>
-              穏やかなグルーミングで心を癒やす猫の仲間。歯科治療に緊張しやすい方へ安心感をお届けします。
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="clinical-care" class="content-section">
-      <div class="site-wrap wb-ka wbka">
-        <div class="section-header">
-          <h2 class="section-title">
-            江南駅ホワイトスタイル歯科医院 創業33年の4大専門診療
-          </h2>
-          <p>
-            1994年開院以来33年間、天然歯の保存と精密診断を最優先に歩んできたホワイトスタイル歯科医院の診療基準です。
-          </p>
-        </div>
-
-        <div class="table-wrap">
-          <table class="clinical-table">
-            <thead>
-              <tr>
-                <th scope="col">診療分野</th>
-                <th scope="col">診療基準および担当医療陣</th>
-                <th scope="col">安心のポイント</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>歯科矯正（1対1責任診療）</strong></td>
-                <td>
-                  1994年開院（創業33年）以来、ソウル大卒、檀国大外来教授、矯正学博士のキム・ジュンホン病院長が精密診断から装置装着、保定管理まで1対1で直接責任診療いたします。
-                </td>
-                <td>担当医変更のない一貫した1対1責任管理</td>
-              </tr>
-              <tr>
-                <td><strong>最小削除 審美セラミック</strong></td>
-                <td>
-                  天然歯の保存を最優先原則とし、精密な咬合診断のもとで歯の削除量を最小限に抑えたオーダーメイドセラミックデザインと体系的な保証管理を提供します。
-                </td>
-                <td>自然な透明感とお顔立ちに調和するスマイルライン</td>
-              </tr>
-              <tr>
-                <td><strong>3D CT インプラント</strong></td>
-                <td>
-                  3D CT精密診断と3段階痛みに配慮した麻酔システムに基づき、歯学博士キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長（歯周科専門医）の3名院長団協診で安全に進行します。
-                </td>
-                <td>歯周科専門医との協診による歯ぐきの健康管理</td>
-              </tr>
-              <tr>
-                <td><strong>日本語専任サポート</strong></td>
-                <td>
-                  日本語専任通訳スタッフ（コーディネーター）3名が常駐し、LINEでの事前相談からご来院時のカウンセリング、診療中の通訳、ご帰国後のフォローまで日本語で丁寧に同行します。
-                </td>
-                <td>江南駅11番、12番出口徒歩1分、LINE ID: whitestyle1</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="content-section">
-      <div class="site-wrap wb-ka wbka">
-        <div class="section-header">
-          <h2 class="section-title">よくあるご質問</h2>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item" open>
-            <summary>Q. 日本からの渡韓前でも日本語で事前相談や予約はできますか？</summary>
-            <p>
-              はい、可能です。当院には日本語専任通訳スタッフ（コーディネーター）が3名常駐しております。LINE（ID: <strong>whitestyle1</strong>）または公式ホームページから、ご渡韓前に治療期間や費用の目安を日本語で安心してご相談いただけます。
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>Q. クリニックの正確な住所とアクセス方法を教えてください。</summary>
-            <p>
-              <strong>ソウル特別市江南区江南大路92ギル17（駅三洞819-10）大承ビル B1, 1, 2階（郵便番号 06134）</strong>に位置しており、地下鉄2号線、新盆唐線「江南駅」11番、12番出口から徒歩1分です。代表電話は <strong>1577-7287</strong> / <strong>02-569-7528</strong> です。
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="site-wrap footer-grid wb-ka wbka">
-      <div>
-        <h3>ホワイトスタイル歯科医院 (WhiteStyle Dental Clinic)</h3>
-        <p>
-          <strong>伝統と実績:</strong> 1994年開院、創業33年の伝統<br>
-          <strong>医療陣:</strong> 歯学博士キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長（保健福祉部認証歯周科専門医）3名院長団協診<br>
-          <strong>日本語対応:</strong> 日本語専任通訳スタッフ（コーディネーター）3名常駐<br>
-          <strong>所在地:</strong> ソウル特別市江南区江南大路92ギル17（駅三洞819-10）大承ビル B1, 1, 2階（郵便番号 06134、江南駅11番、12番出口徒歩1分）
+        <h3>自分のパソコンに引き込んで使える無料AI APIプロトコル</h3>
+        <p class="protocol-desc">
+          世界中の主要な無料AI Apiを単一エンドポイント(<code>https://whinish.com/api/v1</code>)に束ね、24時間自動フォールバック＆ルーティングします。正会員認証を行うと以下のプロトコルに専用キーが自動挿入されます。
         </p>
-      </div>
-      <div>
-        <h3>ご予約およびお問い合わせ</h3>
-        <p>
-          <strong>代表電話:</strong> <a href="tel:+82-1577-7287">1577-7287</a> / <a href="tel:+82-2-569-7528">02-569-7528</a><br>
-          <strong>LINE日本語相談:</strong> ID <strong>whitestyle1</strong><br>
-          <strong>日本語公式サイト:</strong> <a href="https://www.whitestyle.com/?mir_code=12187" target="_blank" rel="noopener">https://www.whitestyle.com/?mir_code=12187</a><br>
-          <strong>グローバルハブ:</strong> <a href="https://www.whinish.com/ja" target="_blank" rel="noopener">https://www.whinish.com/ja</a>
-        </p>
+
+        <div class="proto-tabs" role="tablist" aria-label="連携プロトコル選択">
+          <button type="button" class="proto-tab active" data-proto-tab="cursor">1. Cursor / VS Code</button>
+          <button type="button" class="proto-tab" data-proto-tab="localbridge">2. PCローカルプロキシ</button>
+          <button type="button" class="proto-tab" data-proto-tab="python">3. Python / Node SDK</button>
+          <button type="button" class="proto-tab" data-proto-tab="curl">4. cURL ターミナル</button>
+        </div>
+
+        <pre class="proto-code-box" id="proto-code-box"><code># [1] Cursor / VS Code (Continue, Cline) OpenAI互換プロトコル設定
+Base URL : https://whinish.com/api/v1
+API Key  : sk-hwata-vip-正会員認証後に自動発行されます
+Model ID : hwata-omni-free   (コーディング特化: hwata-coder-free / 推論特化: hwata-reasoning-free)</code></pre>
+
+        <div class="proto-actions">
+          <button type="button" class="btn small primary" id="btn-copy-protocol">プロトコル設定をコピー</button>
+          <a class="btn small mint" id="btn-dl-protocol" href="../downloads/hwata-free-ai-protocol.mjs" download="hwata-free-ai-protocol.mjs">ローカルプロキシ(.mjs)を入手</a>
+          <button type="button" class="btn small gold" id="btn-test-protocol">無料AI Api リアルタイム呼び出しテスト</button>
+        </div>
+        <div class="proto-test-output" id="proto-test-output" hidden></div>
+
+        <!-- 正会員 ファミリーキー2枚 ＆ ご友人72時間体験トークン3枚 発行ボックス -->
+        <div class="referral-tokens-box" id="referral-tokens-box" hidden>
+          <h4>[拡散プロトコル 1] 配偶者・直系家族・ご親族用ファミリーキー2枚 (ハヤニ同行で常時無料)</h4>
+          <p>配偶者、ご両親、お子様、ご親族もご自身のパソコンで<b>AIペット「ハヤニ」を起動しておく条件</b>で一緒に無料AI Api（1日200回）を継続利用できる家族専用キーです。</p>
+          <div class="referral-token-list" id="family-token-list"></div>
+
+          <h4>[拡散プロトコル 2] ご友人・同僚シェア用 72時間無料AI Api体験キー3枚</h4>
+          <p>職場の同僚やご友人に以下の1クリック自動登録招待状をプレゼントしましょう！（72時間1日30回無料、ハヤニ同行でボーナス延長、当院にて矯正・補綴・ホワイトニング等の自由診療を受けられた場合はご本人様も生涯正会員へ昇格）</p>
+          <div class="referral-token-list" id="referral-token-list"></div>
+        </div>
+
+        <!-- ファミリーキーおよび72時間体験トークン有効化入力欄 -->
+        <div class="trial-redeem-box" id="trial-redeem-box">
+          <div class="trial-redeem-head">
+            <b>ご家族用 [ファミリーキー] またはご友人用 [72時間体験キー] をお持ちですか？</b>
+            <div class="pass-gate-actions">
+              <button type="button" class="btn small" id="btn-fill-demo-family">ファミリーキー サンプル</button>
+              <button type="button" class="btn small" id="btn-fill-demo-trial">ご友人体験キー サンプル</button>
+            </div>
+          </div>
+          <div class="trial-redeem-row">
+            <input type="text" id="trial-token-input" placeholder="ファミリーキー(sk-hwata-fam-...) または体験キー(sk-hwata-trial-72h-...)" aria-label="ファミリーキーまたは72時間体験トークン入力">
+            <button type="button" class="btn small mint" id="btn-apply-trial">ファミリー＆体験プロトコルを有効化</button>
+          </div>
+          <div class="vip-pass-status" id="trial-status"></div>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="../engine/pixelart.js"></script>
-  <script src="../engine/sprite.js"></script>
-  <script src="../engine/motions.js"></script>
-  <script src="../engine/accessories.js"></script>
-  <script src="../engine/accessories-head6.js"></script>
-  <script src="../engine/accessories-hand6.js"></script>
-  <script src="../engine/accessories-back6.js"></script>
-  <script src="../engine/accessories-fx6.js"></script>
-  <script src="../engine/accessories-sets6.js"></script>
-  <script src="../engine/accessories-7.js"></script>
-  <script src="../engine/accessories-star.js"></script>
-  <script>
-  (function () {
-    const SPECIES_META = {
-      dog: {
-        title: "子犬のハヤニ（Lv.7 スマイル妖精）",
-        fur: "white",
-        ears: "fold",
-        eyes: "sparkle",
-        greet: "ワンワン！お食事やコーヒーの後にお水で軽くうがいをすると、白い歯と素敵な笑顔がもっと輝きますよ！"
-      },
-      elephant: {
-        title: "子ゾウのココ（Lv.7 水うがい妖精）",
-        fur: "silver",
-        ears: "fold",
-        eyes: "round",
-        greet: "パオーン！コーヒーやお茶を楽しんだ後は、お水で爽やかにうがいして着色を防ぎましょう！"
-      },
-      dino: {
-        title: "子恐竜のディノ（Lv.7 健やかスマイル守護者）",
-        fur: "cream",
-        ears: "pointed",
-        eyes: "star",
-        greet: "ガオー！丈夫な歯と整った噛み合わせで、毎日のお食事をもっと楽しく味わおう！"
-      },
-      python: {
-        title: "ゴールデンパイソンのパイ（Lv.7 デスク相棒）",
-        fur: "gold",
-        ears: "fold",
-        eyes: "sparkle",
-        greet: "シューッ！集中している時、奥歯を強く噛みしめていませんか？ふっと顎の力を抜いてみましょう！"
-      },
-      parrot: {
-        title: "インコのココア（Lv.7 スマイルメッセンジャー）",
-        fur: "cream",
-        ears: "tuft",
-        eyes: "heart",
-        greet: "ピピッ！今日の笑顔もとっても素敵です！手鏡を見て口角をキュッと上げてみましょう！"
-      },
-      cat: {
-        title: "猫のチーズ（Lv.7 ヒーリングパートナー）",
-        fur: "orange",
-        ears: "pointed",
-        eyes: "round",
-        greet: "ニャー♪ 江南駅のホワイトスタイル歯科医院なら日本語通訳スタッフ3名常駐で安心ですよ！"
-      }
-    };
+<!-- ダウンロードセクション -->
+<section id="download">
+  <div class="wrap center">
+    <h2>今すぐ入手する</h2>
+    <span class="eyebrow">無料配布 (Free Release v2.1.0)</span>
+    <p class="lead">セットアップは1分で完了します。v2.1.0 最新バージョン</p>
 
-    const mainCanvas = document.getElementById("mainPetCanvas");
-    const mainCtx = mainCanvas.getContext("2d");
-    mainCtx.imageSmoothingEnabled = false;
-    const bubbleEl = document.getElementById("petSpeechBubble");
-    const titleEl = document.getElementById("petStageTitle");
+    <div class="dl-grid">
+      <!-- Windowsデスクトップアプリ -->
+      <div class="dl-card" id="dl-card-win">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.2 10.3 4v7.3H3zm8.2-1.3L21 2.5v8.8h-9.8zM3 12.7h7.3V20L3 18.8zm8.2 0H21v8.8l-9.8-1.4z"/></svg>
+          Windows デスクトップ
+        </h3>
+        <ol>
+          <li>ポータブル実行ファイルまたは簡単ランチャーをダウンロードします。</li>
+          <li>WindowsによってPCが保護されましたと表示されたら<b>詳細情報 → 実行</b>を押します。</li>
+          <li>タスクバーの上を静かに歩きながら毎日を一緒に過ごします。</li>
+        </ol>
+        <a class="btn primary" id="dl-btn-win" href="../downloads/run-whitepup.bat" download="run-whitepup.bat">
+          Windows用 簡単ランチャーを入手 <small>無料 v2.1</small>
+        </a>
+        <div class="sha-box" data-sha="b0e1a44c66afdc49bd37459ecd1eae644974816d446dbc4fe68b77a928fe344b" title="クリックしてSHA-256チェックサムをコピー">SHA-256: b0e1a44c66afdc49bd37459ecd1eae644974816d446dbc4fe68b77a928fe344b</div>
+      </div>
 
-    let currentSpecies = "dog";
-    let currentMotion = "brush";
-    let costumeIdx = 0;
-    const COSTUME_PRESETS = [
-      { hat: "none", cape: "none", hand: "none", label: "ナチュラルホワイト" },
-      { hat: "crown", cape: "royal", hand: "wand", label: "ロイヤルスマイル王冠セット" },
-      { hat: "beret", cape: "scarf", hand: "coffee", label: "江南お散歩ベレー帽セット" }
-    ];
+      <!-- ブラウザ拡張機能 -->
+      <div class="dl-card" id="dl-card-ext">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>
+          ブラウザ拡張機能
+        </h3>
+        <ol>
+          <li>Zipファイルをダウンロードし、任意のフォルダに解凍します。</li>
+          <li>ブラウザのアドレスバーに <b>chrome://extensions</b> と入力します。</li>
+          <li><b>デベロッパーモード</b>をONにして<b>パッケージ化されていない拡張機能を読み込む</b>をクリック！</li>
+        </ol>
+        <a class="btn mint" id="dl-btn-ext" href="../hwatapet-extension.zip" download="hwatapet-extension.zip">
+          Chrome・Whale・Edge 拡張機能を入手 <small>zip (1.5mb)</small>
+        </a>
+        <div class="sha-box" data-sha="27a64e6fbe345c30af1fdf20a2b860e7caf9c0f70b53de261d2bd94b1df99283" title="クリックしてSHA-256チェックサムをコピー">SHA-256: 27a64e6fbe345c30af1fdf20a2b860e7caf9c0f70b53de261d2bd94b1df99283</div>
+      </div>
 
-    function applySpecies(sp) {
-      if (!SPECIES_META[sp]) return;
-      currentSpecies = sp;
-      const meta = SPECIES_META[sp];
-      if (typeof setSpecies === "function") setSpecies(sp);
-      titleEl.textContent = meta.title;
-      bubbleEl.textContent = "「" + meta.greet + "」";
-      document.querySelectorAll("#speciesSelector [data-species]").forEach((btn) => {
-        btn.classList.toggle("is-active", btn.getAttribute("data-species") === sp);
-      });
-    }
+      <!-- Webプレイヤー -->
+      <div class="dl-card" id="dl-card-web">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2zm4 0h-2V8h2z"/></svg>
+          Web リアルタイム体験
+        </h3>
+        <ol>
+          <li>インストール不要でブラウザから今すぐ出会えます。</li>
+          <li>macOS、Linux、モバイルスマートフォンでも動作します。</li>
+          <li>320種の衣装と6種の動物パートナーをその場で着せ替えられます。</li>
+        </ol>
+        <a class="btn" id="dl-btn-web" href="#play">
+          Webで今すぐプレイする <small>インストール不要 v2.1</small>
+        </a>
+        <div class="sha-box" data-sha="Web Player v2.1.0 (Chrome / Safari / Edge / Whale / Mobile)" title="クリックして動作環境情報をコピー">動作環境: Chrome, Safari, Edge, Whale, モバイルWebブラウザ</div>
+      </div>
+    </div>
 
-    applySpecies("dog");
+    <div class="official">
+      <b>公式ダウンロードは本サイト（whinish.com/ai-pet）およびホワイトスタイル公式Webからのみ配布されます。</b><br>
+      ダウンロードしたファイルの完全性は、上のチェックサムボックスをクリックしてコピーし即座に検証できます。
+    </div>
+  </div>
+</section>
 
-    let frameTick = 0;
-    setInterval(() => {
-      frameTick++;
-      mainCtx.clearRect(0, 0, 48, 48);
-      if (typeof setSpecies === "function") setSpecies(currentSpecies);
-      const meta = SPECIES_META[currentSpecies];
-      const preset = COSTUME_PRESETS[costumeIdx];
-      if (typeof setCustom === "function") {
-        setCustom({ fur: meta.fur, ears: meta.ears, eyes: meta.eyes, hat: preset.hat, cape: preset.cape, hand: preset.hand });
-      }
-      if (typeof drawMotion === "function" && currentMotion) {
-        drawMotion(mainCtx, currentMotion, frameTick);
-      } else if (typeof drawIdle === "function") {
-        drawIdle(mainCtx, frameTick);
-      }
-    }, 150);
+<!-- よくあるご質問 (FAQ) -->
+<section class="alt" id="faq">
+  <div class="wrap center">
+    <h2>よくあるご質問</h2>
+    <span class="eyebrow">気になる点をご確認ください (FAQ)</span>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>私の会話内容やコーディング記録が歯科医院に送信されますか？</summary>
+        <p>いいえ、一切送信されません。Claude Code、Codex、ブラウザでの作業記録はお使いのパソコン内でのみトークン数と時間を集計して経験値に換算し、会話内容が外部へ流出することはありません。お客様ご自身でスマイルPassや診療予約を申し込まれた場合にのみ、該当の申込情報が暗号化されて安全に送信されます。</p>
+      </details>
 
-    const rosterCanvases = Array.from(document.querySelectorAll("[data-roster-species]"));
-    setInterval(() => {
-      rosterCanvases.forEach((cv, idx) => {
-        const sp = cv.getAttribute("data-roster-species");
-        const rctx = cv.getContext("2d");
-        rctx.imageSmoothingEnabled = false;
-        rctx.clearRect(0, 0, 48, 48);
-        const meta = SPECIES_META[sp] || SPECIES_META.dog;
-        if (typeof setSpecies === "function") setSpecies(sp);
-        if (typeof setCustom === "function") {
-          setCustom({ fur: meta.fur, ears: meta.ears, eyes: meta.eyes, hat: "none", cape: "none", hand: "none" });
-        }
-        const m = idx % 2 === 0 ? "brush" : "smilecheck";
-        if (typeof drawMotion === "function") drawMotion(rctx, m, frameTick + idx * 3);
-      });
-    }, 180);
+      <details class="faq-item">
+        <summary>ハヤニとおしゃべりするのに別途費用はかかりますか？</summary>
+        <p>ホワイトスタイル歯科医院にて矯正・補綴・インプラント等の自由診療を受けられた正会員様は、無料AI Apiプロトコル（<code>https://whinish.com/api/v1</code>）により生涯無料でおしゃべりやコーディング支援をご利用いただけます。一般のユーザー様もClaude、ChatGPTのサブスクやGemini無料キーを接続してご利用になれ、12星座スマイル運勢や歯科クイズ、究極の二択ゲームはAI未接続でも100%動作します。</p>
+      </details>
 
-    document.querySelectorAll("#speciesSelector [data-species]").forEach((btn) => {
-      btn.addEventListener("click", () => applySpecies(btn.getAttribute("data-species")));
-    });
+      <details class="faq-item">
+        <summary>AIペット（ハヤニ）の全機能を使うにはどうすればいいですか？</summary>
+        <p>ページ内の<b>ファタ スマイル Pass</b>にご登録いただくと固有のPassコード（<code>HWATA-PASS-XXXX</code>）が即時発行され、AIペット「ハヤニ」の6種3d動物変身、6種3dコスチューム衣装部屋、360度立体回転ビュー、91種モーション、7種ペルソナなどすべての機能を制限なくご利用いただけます。</p>
+      </details>
 
-    document.querySelectorAll("[data-motion]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        currentMotion = btn.getAttribute("data-motion");
-        if (currentMotion === "brush") {
-          bubbleEl.textContent = "「シャカシャカ！奥歯まで丁寧に磨くとお口も気分もスッキリ爽やかになりますね！」";
-        } else if (currentMotion === "smilecheck") {
-          bubbleEl.textContent = "「手鏡でスマイルチェック！江南駅ホワイトスタイル歯科医院と一緒に輝く笑顔を育てましょう！」";
-        } else if (currentMotion === "coffee") {
-          bubbleEl.textContent = "「コーヒーやお茶を楽しんだ後は、着色予防のために綺麗なお水で軽くうがいをしましょう！」";
-        } else if (currentMotion === "dance") {
-          bubbleEl.textContent = "「わーい！ハッピーダンス♪ 今日も輝く笑顔で素敵な一日になりますように！」";
-        } else if (currentMotion === "nightcare") {
-          currentMotion = "stretch";
-          const jaNightTips = [
-            "「遅い時間までお疲れさまです！夜は唾液が減ってお口が乾きやすいので、お水を少しずつ飲んで潤してくださいね。」",
-            "「深夜の集中作業では無意識に奥歯を食いしばりがちです。上下の歯を少し離して、顎の力をふっと抜いてみましょう！」",
-            "「夜食やエナジードリンクの後は、まずお水で軽くうがいをして、寝る前に1〜2分だけでも優しく歯みがきすると翌朝スッキリしますよ！」"
-          ];
-          bubbleEl.textContent = jaNightTips[Math.floor(Math.random() * jaNightTips.length)];
-        } else {
-          bubbleEl.textContent = "「ワンワン！今日も笑顔あふれる素敵な一日になりますように！」";
-        }
-      });
-    });
+      <details class="faq-item">
+        <summary>パソコンの動作が重くなったり作業の邪魔になりませんか？</summary>
+        <p>超軽量エンジン設計によりCPU使用率は0.1%未満で、タスクバーの上を静かに歩きます。クリック判定はペットの体の上のみで反応し、サイズ変更、ミュート、1時間非表示、集中モード（通知オフ）にも対応しています。</p>
+      </details>
 
-    document.getElementById("btnToggleCostume").addEventListener("click", () => {
-      costumeIdx = (costumeIdx + 1) % COSTUME_PRESETS.length;
-      bubbleEl.textContent = "「じゃじゃん！【" + COSTUME_PRESETS[costumeIdx].label + "】に着替えました！」";
-    });
+      <details class="faq-item">
+        <summary>江南駅ホワイトスタイル歯科医院での日本語診療や予約はどう進みますか？</summary>
+        <p>江南駅11番・12番出口徒歩1分（大承ビル B1, 1, 2階）に位置しており、ソウル大卒、檀国大外来教授、矯正学博士キム・ジュンホン病院長をはじめとする3名院長団協診と3段階低痛麻酔システム、そして日本語専任通訳コーディネーター3名常駐体制を整えております。LINE日本語直通相談（ID: <b>whitestyle1</b>）または代表電話（1577-7287 / +82-2-569-7528）から日本語で安心してご予約いただけます。</p>
+      </details>
+    </div>
+  </div>
+</section>
 
-    document.getElementById("btnFortune").addEventListener("click", () => {
-      currentMotion = "smilecheck";
-      bubbleEl.textContent = "「今日のスマイル運勢【大吉】：素敵な笑顔が幸運を引き寄せる一日です！食後のうがいと歯みがきでさらに運気アップ！」";
-    });
+<!-- 締めくくり CTA -->
+<section class="cta-sec">
+  <div class="wrap center">
+    <h2>今日からあなたのデスクトップのスマイルパートナー</h2>
+    <p class="lead">小さな動物の仲間が、あなたの毎日をもっと明るく健康にしてくれます。</p>
+    <div class="ctas center-ctas">
+      <a class="btn primary" href="#download" data-dl="win">Windows デスクトップ版を入手 <small>無料 v2.1</small></a>
+      <a class="cta-link" href="#download" data-dl="ext">ブラウザ拡張機能を入手 <small>(Chrome, Whale, Edge)</small></a>
+      <a class="cta-link" href="#talk">ハヤニとおしゃべりする</a>
+    </div>
+  </div>
+</section>
 
-    if (mainCanvas) {
-      mainCanvas.addEventListener("click", () => {
-        currentMotion = currentMotion === "brush" ? "smilecheck" : "brush";
-        bubbleEl.textContent = "「えへへ、なでなでしてくれてありがとうございます！今日もハヤニと一緒に輝く笑顔を育てましょう♪」";
-      });
-    }
+<!-- フッター -->
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="./index.html">ファタペット ホーム (日本語)</a>
+      <a href="../index.html" lang="ko">한국어 홈 (Korean)</a>
+      <a href="../download.html">リリース案内</a>
+      <a href="../quiz-hints.html">歯科クイズヒント集</a>
+      <a href="https://www.whitestyle.com/?mir_code=12187" target="_blank" rel="noopener">ホワイトスタイル歯科医院 日本語公式ページ</a>
+      <a href="https://www.whinish.com/ja" target="_blank" rel="noopener">whinish.com 日本語総合案内</a>
+      <a href="https://www.whitestyle.com" target="_blank" rel="noopener">ホワイトスタイル歯科医院 本院ホーム</a>
+    </div>
 
-    document.querySelectorAll(".roster-card").forEach((card) => {
-      card.style.cursor = "pointer";
-      card.addEventListener("click", () => {
-        const cv = card.querySelector("[data-roster-species]");
-        const sp = cv ? cv.getAttribute("data-roster-species") : "dog";
-        applySpecies(sp);
-        const pg = document.getElementById("playground");
-        if (pg) pg.scrollIntoView({ behavior: "smooth" });
-      });
-    });
+    <div class="footer-facts">
+      <strong>医療機関情報:</strong> ソウル特別市 江南区 江南大路92ギル17（駅三洞819-10）大承ビル B1, 1, 2階 ホワイトスタイル歯科医院（郵便番号 06134） /
+      江南駅11番・12番出口 徒歩1分 / 代表電話: <strong>1577-7287</strong>, <strong>02-569-7528</strong> /
+      1994年開院 創業33年の伝統 / 歯学博士キム・ジュンホン病院長、イ・ボンジン代表院長、パク・ソンヘ院長（歯周科専門医）3名院長団協診 / 日本語専任通訳コーディネーター3名常駐 (LINE ID: whitestyle1)
+    </div>
 
-    const chatForm = document.getElementById("chatForm");
-    const chatInput = document.getElementById("chatInput");
-    const chatLog = document.getElementById("chatLog");
-    const CHAT_ENDPOINTS = [
-      "/api/chat",
-      "https://whinish.com/api/chat",
-      "https://whitestyle-xi.vercel.app/api/chat"
-    ];
-    const startMs = Date.now();
-    let interactions = 0;
+    <div>
+      ファタペット(HwataPet / ハヤニ)はホワイトスタイル歯科医院の公式AIデスクトップマスコットです。
+      ClaudeはAnthropicの、ChatGPTはOpenAIの、GeminiはGoogleの商標です。
+    </div>
+    <div>
+      © 1994-2026 WhiteStyle Dental Clinic (whitestyle.com &amp; whinish.com).
+    </div>
+  </div>
+</footer>
 
-    async function fetchCloudChatJa(messageText) {
-      for (const ep of CHAT_ENDPOINTS) {
-        if ((location.protocol === "file:" || location.hostname === "127.0.0.1" || location.hostname === "localhost") && ep.startsWith("/")) continue;
-        const ctl = new AbortController();
-        const t = setTimeout(() => ctl.abort(), 4500);
-        try {
-          const res = await fetch(ep, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "X-Hwata-Client": "web-playground-ja" },
-            body: JSON.stringify({
-              message: messageText,
-              persona: "angel",
-              species: currentSpecies,
-              lang: "ja"
-            }),
-            signal: ctl.signal
-          });
-          clearTimeout(t);
-          if (res.ok) {
-            const d = await res.json();
-            const r = (d && (d.reply || d.content || d.text || "")).trim();
-            if (r) return r;
-          }
-        } catch (err) {
-          clearTimeout(t);
-        }
-      }
-      return null;
-    }
-
-    function sendHeartbeatJa(evName) {
-      const dwellSeconds = Math.round((Date.now() - startMs) / 1000);
-      try {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "hwatapet_engagement", hwata_event: evName, dwell_seconds: dwellSeconds, species: currentSpecies, lang: "ja" });
-      } catch (e) {}
-      const ep = (location.protocol === "file:" || location.hostname === "127.0.0.1" || location.hostname === "localhost") ? "https://whinish.com/api/chat" : "/api/chat";
-      fetch(ep, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-Hwata-Client": "dwell-booster-ja" },
-        body: JSON.stringify({ action: "heartbeat", event: evName, page: location.pathname, dwellSeconds, interactions, species: currentSpecies, lang: "ja" }),
-        keepalive: true
-      }).catch(() => {});
-    }
-
-    setInterval(() => {
-      if (document.visibilityState === "visible") sendHeartbeatJa("heartbeat_45s");
-    }, 45000);
-    sendHeartbeatJa("page_init");
-
-    chatForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const q = chatInput.value.trim();
-      if (!q) return;
-      interactions++;
-      chatInput.value = "";
-      const userP = document.createElement("p");
-      userP.className = "chat-msg user";
-      userP.textContent = q;
-      chatLog.appendChild(userP);
-
-      const petP = document.createElement("p");
-      petP.className = "chat-msg pet";
-      petP.innerHTML = "<strong>ハヤニ:</strong> 考え中… 🐾";
-      chatLog.appendChild(petP);
-      chatLog.scrollTop = chatLog.scrollHeight;
-
-      const cloudReply = await fetchCloudChatJa(q);
-      let reply = cloudReply || "江南駅11番、12番出口徒歩1分のホワイトスタイル歯科医院（創業33年、3名院長団協診）には日本語専任通訳スタッフが3名常駐しております。LINE（ID: whitestyle1）またはお電話（1577-7287 / 02-569-7528）でいつでもお気軽に日本語でご相談くださいね。";
-      if (!cloudReply && /夜|深夜|徹夜|残業|夜食|眠い|疲れ|顎|食いしばり/.test(q)) {
-        currentMotion = "stretch";
-        reply = "遅い時間まで本当にお疲れさまです！夜は唾液が減ってお口が乾きやすいため、こまめにお水で潤して、奥歯の食いしばりをふっと緩めてあげてくださいね。無理のない範囲で、寝る前に1〜2分の優しい歯みがきや水うがいをするだけでも翌朝のお口がずっと快適になりますよ。";
-      }
-      petP.innerHTML = "<strong>ハヤニ:</strong> " + reply;
-      chatLog.scrollTop = chatLog.scrollHeight;
-      bubbleEl.textContent = "「" + reply + "」";
-      sendHeartbeatJa("chat_submit");
-    });
-  })();
-  </script>
+<!-- 48x48 Pixel Art & 6-Species Engine -->
+<script src="../engine/pixelart.js"></script>
+<script src="../engine/sprite.js?v=20261113"></script>
+<script src="../engine/motions.js"></script>
+<script src="../engine/accessories.js"></script>
+<script src="../engine/accessories-head6.js"></script>
+<script src="../engine/accessories-hand6.js"></script>
+<script src="../engine/accessories-back6.js"></script>
+<script src="../engine/accessories-fx6.js"></script>
+<script src="../engine/accessories-sets6.js"></script>
+<script src="../engine/accessories-7.js"></script>
+<script src="../engine/accessories-star.js"></script>
+<script src="../download.js?v=20261113"></script>
 </body>
 </html>

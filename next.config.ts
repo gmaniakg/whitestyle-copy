@@ -48,11 +48,35 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
+    const aiPetFallbackRewrites = [
+      {
+        source: "/download.css",
+        destination: "/ai-pet/download.css",
+      },
+      {
+        source: "/download.js",
+        destination: "/ai-pet/download.js",
+      },
+      {
+        source: "/assets3d/:path*",
+        destination: "/ai-pet/assets3d/:path*",
+      },
+      {
+        source: "/engine/:path*",
+        destination: "/ai-pet/engine/:path*",
+      },
+      {
+        source: "/downloads/:path*",
+        destination: "/ai-pet/downloads/:path*",
+      },
+    ];
+
     if (!process.env.LEGACY_HOST) {
-      return [];
+      return aiPetFallbackRewrites;
     }
 
     return [
+      ...aiPetFallbackRewrites,
       {
         source: "/mrw/:path*",
         destination: `${LEGACY_HOST}/mrw/:path*`,
