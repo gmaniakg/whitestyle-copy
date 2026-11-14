@@ -697,6 +697,17 @@ else:
     new_html += modern_adapter_script
 
 # -------------------------------------------------------------
+# 5.5 Sanitize '후기' -> '문의' for public compliance (Medical Law)
+# -------------------------------------------------------------
+new_html = new_html.replace('커뮤니티/후기', '커뮤니티/문의')
+new_html = new_html.replace('자필후기', '자필문의')
+new_html = new_html.replace('"최근 후기"', '"최근 문의"')
+new_html = new_html.replace('기분 좋은 후기', '기분 좋은 말씀')
+new_html = new_html.replace('따뜻한 후기', '따뜻한 말씀')
+new_html = new_html.replace('정성스러운 후기', '정성스러운 말씀')
+new_html = new_html.replace('후기를 남겨주셔서', '의견을 남겨주셔서')
+
+# -------------------------------------------------------------
 # 6. Save Targets
 # -------------------------------------------------------------
 for p in ['e:/antigravity/whitestyle-copy/processed_page.html', 
