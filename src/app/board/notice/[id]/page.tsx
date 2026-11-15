@@ -24,10 +24,15 @@ export default async function NoticeDetailPage({ params }: { params: { id: strin
   }
 
   const { post, content } = postData;
-  const date = post.scraped_at ? post.scraped_at.split('T')[0] : '2026-06-11';
+  const isColumn = post.url.includes('bo_table=column');
+  const date = typeof post.metadata?.date === 'string'
+    ? post.metadata.date
+    : post.scraped_at
+      ? post.scraped_at.split('T')[0]
+      : '2026-06-11';
 
   return (
-    <article className="py-24 px-4 sm:px-8 lg:px-16 xl:px-32 2xl:px-64 w-full mx-auto min-h-[100dvh]">
+    <article className="py-24 px-4 sm:px-8 lg:px-16 xl:px-32 2xl:px-64 w-full mx-auto min-h-[100dvh]" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
       {/* 백버튼 */}
       <Link href="/board/notice" className="inline-flex items-center text-sm font-bold text-slate-400 hover:text-blue-600 mb-10 transition-colors">
         <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,14 +44,14 @@ export default async function NoticeDetailPage({ params }: { params: { id: strin
       {/* 게시글 헤더 */}
       <header className="mb-12 border-b border-slate-200 pb-8">
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-xs font-bold text-blue-500 bg-blue-50 px-3 py-1 rounded-full">
-            공지사항
+          <span className={`text-xs font-bold px-3 py-1 rounded-full ${isColumn ? 'text-emerald-600 bg-emerald-50' : 'text-blue-500 bg-blue-50'}`}>
+            {isColumn ? '임상칼럼' : '공지사항'}
           </span>
           <span className="text-sm text-slate-400 font-medium">
             {date}
           </span>
         </div>
-        <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight wb-ka wbka">
           {post.title.replace(/_/g, ' ')}
         </h1>
       </header>

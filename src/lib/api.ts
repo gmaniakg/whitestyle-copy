@@ -20,16 +20,8 @@ let _postsCache: LegacyPost[] | null = null;
 // 의료광고 규제 준수: 노출 차단 게시판 타입 (원본 데이터는 보존, 로더에서만 제외)
 const BLOCKED_TYPES = new Set(['board_review', 'board_report', 'board_withstar']);
 
-// board_notice 는 허용 목록(운영 안내성 공지)만 노출. 비급여 수가표(32557) 포함.
-const ALLOWED_NOTICE_IDS = new Set(['26079', '28312', '30902', '32557']);
-
 function isExposable(p: LegacyPost): boolean {
   if (BLOCKED_TYPES.has(p.type)) return false;
-  if (p.type === 'board_notice') {
-    const fileId = (p.local_path.split('/').pop() ?? '').split('_')[0];
-    const urlId = p.url.match(/[?&]wr_id=(\d+)/)?.[1];
-    return ALLOWED_NOTICE_IDS.has(fileId) || (!!urlId && ALLOWED_NOTICE_IDS.has(urlId));
-  }
   return true;
 }
 
@@ -72,6 +64,7 @@ export function getPostContent(localPath: string): string | null {
     content = content.replace(/\*\s+\*\*Extracted Date:\*\*.*(\r?\n)+/g, '');
     content = content.replace(/\*\s+\*\*Category:\*\*.*(\r?\n)+/g, '');
     content = content.replace(/\*\s+\*\*Author:\*\*.*(\r?\n)+/g, '');
+    content = content.replace(/\*\s+\*\*Date:\*\*.*(\r?\n)+/g, '');
     content = content.replace(/\*\s+\*\*AEO\/GEO Optimized:\*\*.*(\r?\n)+/g, '');
     content = content.replace(/^---\s*(\r?\n)+/m, '');
     content = content.replace(/^##\s+본문\s*(\r?\n)+/m, '');
@@ -105,22 +98,22 @@ export function getPostByPartialTitle(
 ): { post: LegacyPost; content: string } | null {
   const allPosts = getAllPosts();
 
-  const post = allPosts.find(p => {
-    // 1. 타입 필터링
-    if (type && p.type !== type) return false;
+  const filtered = type ? allPosts.filter(p => p.type === type) : allPosts;
 
-    // 2. 파일명 접두사 (ID) 매칭 (예: 217_배우_짜잔형_최동균님.md -> "217")
+  // 1순위: 파일명 접두사 또는 URL wr_id/id 정확 일치 (부분 매칭 오탐 방지)
+  const exactPost = filtered.find(p => {
     const filename = p.local_path.split('/').pop() ?? '';
     const fileId = filename.split('_')[0];
     if (fileId === keyword) return true;
 
-    // 3. URL 내 wr_id 또는 id 파라미터 매칭 (예: wr_id=217)
     const urlMatch = p.url.match(/[?&](wr_id|id)=(\d+)/);
-    if (urlMatch?.[2] === keyword) return true;
-
-    // 4. 제목이나 기타 경로 부분 매치 (폴백)
-    return p.title.includes(keyword) || p.local_path.includes(keyword);
+    return urlMatch?.[2] === keyword;
   });
+
+  // 2순위: 제목이나 경로 부분 매치 (폴백)
+  const post = exactPost ?? filtered.find(p =>
+    p.title.includes(keyword) || p.local_path.includes(keyword)
+  );
 
   if (!post) return null;
 

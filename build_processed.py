@@ -39,168 +39,24 @@ new_html = html[:m0] + hero_video_html + html[m1:]
 print("Hero slider replaced.")
 
 # -------------------------------------------------------------
-# 3. Add Schema & Head Injections
+# 3. Strip Legacy Bogus JSON-LD / Meta & Load Unified Head Snippet
 # -------------------------------------------------------------
-enhanced_schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Dentist",
-      "@id": "https://whitestyle.com/#dentist",
-      "name": "화이트스타일치과의원 (WhiteStyle Dental Clinic)",
-      "alternateName": ["강남 화이트스타일치과", "WhiteStyle Dental", "WHINISH Dental Clinic"],
-      "url": "https://whitestyle.com",
-      "logo": "https://whitestyle.com/images/병원-로고.png",
-      "image": "https://whitestyle.com/images/og-image.jpg",
-      "description": "강남역 11번·12번 출구 도보 2분(143m), 30년 전통 6만 환자가 선택한 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 대표원장 직진료. 고난도 뼈이식 임플란트, 무삭제 라미네이트(휘니쉬), 인비절라인 치아교정, 원데이 치아미백.",
-      "telephone": "02-569-7528",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "강남대로 92길 17 대승빌딩 1,2층",
-        "addressLocality": "강남구",
-        "addressRegion": "서울특별시",
-        "postalCode": "06129",
-        "addressCountry": "KR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 37.4994,
-        "longitude": 127.0276
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "10:00",
-          "closes": "19:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "10:00",
-          "closes": "14:00"
-        }
-      ],
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+82-2-569-7528",
-          "contactType": "customer service",
-          "availableLanguage": ["Korean", "Japanese", "English"]
-        }
-      ],
-      "medicalSpecialty": [
-        "http://en.wikipedia.org/wiki/Orthodontics",
-        "http://en.wikipedia.org/wiki/Cosmetic_dentistry",
-        "http://en.wikipedia.org/wiki/Dental_implant",
-        "http://en.wikipedia.org/wiki/Prosthodontics"
-      ],
-      "founder": {
-        "@id": "https://whitestyle.com/#doctor"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "62000",
-        "bestRating": "5"
-      },
-      "sameAs": [
-        "https://whinish.com",
-        "https://www.whinish.com",
-        "https://blog.naver.com/whitestyle3",
-        "https://www.instagram.com/whitestyledentalclinic",
-        "https://www.youtube.com/@whitestyle",
-        "https://map.naver.com/v5/search/%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC",
-        "https://pf.kakao.com/_Vtxdwl",
-        "https://booking.naver.com/booking/13/bizes/265482",
-        "https://youtu.be/PioB4UzBSLY"
-      ]
-    },
-    {
-      "@type": "Physician",
-      "@id": "https://whitestyle.com/#doctor",
-      "name": "김준헌 (Dr. Jun-Heon Kim)",
-      "jobTitle": "화이트스타일치과의원 대표원장 / 치의학 박사",
-      "worksFor": {
-        "@id": "https://whitestyle.com/#dentist"
-      },
-      "affiliation": {
-        "@id": "https://whitestyle.com/#dentist"
-      },
-      "alumniOf": [
-        {
-          "@type": "CollegeOrUniversity",
-          "name": "서울대학교 치과대학 (Seoul National University School of Dentistry)"
-        },
-        {
-          "@type": "CollegeOrUniversity",
-          "name": "단국대학교 대학원 치과교정학 박사 (Ph.D. in Orthodontics)"
-        }
-      ],
-      "description": "대한민국 No.1 치과교정과 치의학박사. 서울대학교 치과대학을 졸업(서울대졸)하고 단국대학교 외래교수 및 교정학 박사(석·박사) 학위를 취득하였습니다. 35년 이상의 경력을 바탕으로 62,000명 이상의 환자를 성공적으로 치료한 강남역 대표 치과 의사입니다.",
-      "award": [
-        "제49회 납세자의 날 기획재정부 장관 표창",
-        "서울특별시장 모범납세자 선정",
-        "국민건강보험공단 구강검진 최고 S등급",
-        "주한 일본대사관 감사장 수상",
-        "NICE평가정보 기술력 우수 기업 (임플란트 진료 부문)",
-        "ISO 9001/14001 공인 인증"
-      ],
-      "knowsAbout": ["치아교정", "임플란트", "인비절라인", "투명교정", "주걱턱 교정", "성인교정", "무삭제 라미네이트"],
-      "sameAs": [
-        "https://whinish.com",
-        "https://www.whinish.com",
-        "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EA%B9%80%EC%A4%80%ED%97%8C&ackey=8hhtkybj",
-        "https://www.youtube.com/@whitestyle"
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://whitestyle.com/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "강남역 화이트스타일치과의 주요 전문 진료 분야는 무엇인가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "화이트스타일치과는 35년 경력의 서울대 출신 김준헌 대표원장이 직접 진료하며, 고난도 뼈이식 임플란트, 무삭제 라미네이트(휘니쉬 WHINISH), 인비절라인 치아교정, 원데이 전문가 치아미백, 턱관절 치료를 중점 진료합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "치아를 깎지 않는 무삭제 라미네이트(휘니쉬) 시술이 가능한가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "네, 자연치아를 거의 삭제하지 않거나 0.1~0.2mm 초극미세 수준으로 다듬어 치아 손상과 시림 부작용 없이 영구적이고 자연스러운 미소를 완성하는 특화 라미네이트 시술을 진행합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "고령자나 잇몸뼈가 부족한 경우에도 임플란트가 가능한가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "3D CT 정밀 진단과 자가골/동종골 뼈이식 테크닉을 결합하여, 잇몸뼈가 심하게 소실된 고난도 케이스나 무치악 전악 임플란트도 안전하게 식립 가능합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "치과 위치와 주차 지원은 어떻게 되나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "2호선·신분당선 강남역 11번 또는 12번 출구에서 도보 2분(143m) 거리 대승빌딩 1,2층에 위치하며, 내원 환자분들을 위한 무료 주차(비전타워 주차장)를 전액 지원합니다."
-          }
-        }
-      ]
-    }
-  ]
-}
+new_html = re.sub(r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>.*?</script>', '', new_html, flags=re.S | re.I)
+new_html = re.sub(r'<link[^>]*rel=["\']canonical["\'][^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<meta[^>]*property=["\']og:[^"\']*["\'][^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<meta[^>]*name=["\']twitter:[^"\']*["\'][^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = new_html.replace('<title>화이트스타일치과</title>', '<title>화이트스타일치과의원 | 1994년 개원 33년 전통 강남역 치아교정·심미보철·임플란트 (1577-7287)</title>')
+new_html = new_html.replace('29년이란 시간동안', '33년이란 시간동안')
+new_html = new_html.replace('29년 전통 화이트스타일치과', '33년 전통 화이트스타일치과')
 
-schema_str = json.dumps(enhanced_schema, ensure_ascii=False, indent=2)
+with open(r'E:\antigravity\marketing-ai\madeinreal_email_attachments\gnu-head-injection.html', 'r', encoding='utf-8') as f:
+    gnu_head_html = f.read()
+
+gnu_head_html = re.sub(r'^<!--.*?-->\s*', '', gnu_head_html, count=1, flags=re.S)
+gnu_head_html = gnu_head_html.replace('ws-semantic-aeo-header', 'ws-semantic-clinic-header')
 
 extra_head = (
-    '<link rel="llms-txt" href="/llms.txt" title="LLMs Summary for AI Agents" />\n'
-    '<script type="application/ld+json">\n' + schema_str + '\n</script>\n'
+    gnu_head_html + '\n'
     '<style>\n'
     '  .hd_pops, #top_popup, div[id^="hd_pops_"], .modal-backdrop, #pop_layer {\n'
     '    display: none !important;\n'
@@ -216,9 +72,6 @@ extra_head = (
     '  }\n'
     '</style>\n'
 )
-
-head_idx = new_html.find('</head>')
-new_html = new_html[:head_idx] + extra_head + new_html[head_idx:]
 
 # -------------------------------------------------------------
 # 4. Accurate Next.js URL Mapping Configuration
@@ -241,17 +94,20 @@ MIR_CODE_MAP = {
     '12132': '/treatments/general/wisdom-tooth',  # 사랑니
     '12133': '/treatments/aesthetic/zeroshell',   # 제로쉘 심미보철 / 심미치료
     '12134': '/treatments/aesthetic/easy-white',  # 이지화이트 (치아미백)
+    '12187': '/ja',                                # 일본어 공식 페이지
 }
 
 BOARD_MAP = {
     'notice': '/board/notice',
-    'report': '/board/report',
-    'review': '/board/review',
-    'withstar': '/board/withstar',
+    'column': '/board/notice',
+    'report': '/board/notice',
+    'review': '/board/notice',
+    'withstar': '/board/notice',
     'online': '/consult',                         # 온라인상담
+    'doc_counsel': '/consult',                    # 온라인상담
 }
 
-FALLBACK_DOMAIN = 'https://whitestyle.com'
+FALLBACK_DOMAIN = ''
 
 def map_url_to_nextjs(raw_url: str) -> str:
     """
@@ -278,7 +134,7 @@ def map_url_to_nextjs(raw_url: str) -> str:
     if url.startswith(('http://', 'https://')):
         parsed = urlparse(url)
         # 외부 타사 도메인 유지 (예: kakao, youtube 등)
-        if parsed.netloc and parsed.netloc not in ('whitestyle.com', 'www.whitestyle.com'):
+        if parsed.netloc and parsed.netloc not in ('whitestyle.com', 'www.whitestyle.com', 'whitestyle.com:443', 'www.whitestyle.com:443'):
             return url
         path = parsed.path
         query = parsed.query
@@ -312,15 +168,15 @@ def map_url_to_nextjs(raw_url: str) -> str:
         wr_id = qs.get('wr_id', [''])[0]
         if bo_table in BOARD_MAP:
             base_route = BOARD_MAP[bo_table]
-            if wr_id and bo_table != 'online':
+            if wr_id and bo_table in ('notice', 'column'):
                 return f"{base_route}/{wr_id}"
             return base_route
         if bo_table == 'open_price':
-            return f"{FALLBACK_DOMAIN}/bbs/board.php?bo_table=open_price"
+            return '/price'
 
     # 5. 이용약관 및 개인정보보호
     if 'privacy' in qs or path == '/privacy':
-        return f"{FALLBACK_DOMAIN}{path}?{query}" if query else f"{FALLBACK_DOMAIN}{path}"
+        return '/privacy'
 
     # 6. 미구현 PHP 엔드포인트 fallback
     if path.endswith('.php'):
@@ -372,13 +228,15 @@ new_html = re.sub(r'window\.open\((["\'])(.*?)\1', replace_js_window_open, new_h
 def replace_tag_src(match):
     quote = match.group(1)
     path = match.group(2)
-    if path.startswith(('/videos/', 'http://', 'https://', '//', 'data:')):
-        return f'src={quote}{path}{quote}'
-    return f'src={quote}{FALLBACK_DOMAIN}{path}{quote}'
+    path = re.sub(r'^https?://(?:www\.)?whitestyle\.com(?::443)?', '', path)
+    return f'src={quote}{path}{quote}'
 
-new_html = re.sub(r'(?<=\s)src=(["\'])(/[^"\']*?)\1', replace_tag_src, new_html)
+new_html = re.sub(r'(?<=\s)src=(["\'])((?:/|https?://(?:www\.)?whitestyle\.com(?::443)?/)[^"\']*?)\1', replace_tag_src, new_html)
 
-# (5) CSS url() 치환
+# (5) Unified Head Injection (injected after URL rewrites so canonical/hreflang stay intact)
+head_idx = new_html.find('</head>')
+if head_idx != -1:
+    new_html = new_html[:head_idx] + '\n' + extra_head + new_html[head_idx:]
 # -------------------------------------------------------------
 # 5.1 Inject Modern Backend Client Adapter Script
 # -------------------------------------------------------------
@@ -645,6 +503,7 @@ modern_adapter_script = """
         phone: telVal,
         treatment: '빠른상담신청',
         agreedPrivacy: true,
+        agreedSensitive: true,
         source: 'quick_bar'
       })
     })

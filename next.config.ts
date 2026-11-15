@@ -1,6 +1,48 @@
+import fs from "fs";
 import type { NextConfig } from "next";
 
-const LEGACY_HOST = process.env.LEGACY_HOST || 'http://old.whitestyle.com';
+// Windows exFAT compatibility: fs.readlink throws EISDIR on regular files instead of EINVAL
+if (process.platform === "win32") {
+  const globalPatch = globalThis as typeof globalThis & { __wsExfatReadlinkPatched?: boolean };
+  if (!globalPatch.__wsExfatReadlinkPatched) {
+    globalPatch.__wsExfatReadlinkPatched = true;
+    const origReadlink = fs.readlink.bind(fs);
+    const origReadlinkSync = fs.readlinkSync.bind(fs);
+    const origPromisesReadlink = fs.promises.readlink.bind(fs.promises);
+
+    const normalizeErr = (err: unknown) => {
+      if (err && typeof err === "object" && "code" in err && (err as { code?: string }).code === "EISDIR") {
+        (err as NodeJS.ErrnoException).code = "EINVAL";
+        (err as NodeJS.ErrnoException).errno = -4071;
+      }
+      return err;
+    };
+
+    (fs as unknown as { readlink: (...args: unknown[]) => unknown }).readlink = function (...args: unknown[]) {
+      const cb = args[args.length - 1];
+      if (typeof cb === "function") {
+        args[args.length - 1] = (err: unknown, res: unknown) => (cb as (e: unknown, r: unknown) => void)(normalizeErr(err), res);
+      }
+      return (origReadlink as (...a: unknown[]) => unknown)(...args);
+    };
+
+    (fs as unknown as { readlinkSync: (...args: unknown[]) => unknown }).readlinkSync = function (...args: unknown[]) {
+      try {
+        return (origReadlinkSync as (...a: unknown[]) => unknown)(...args);
+      } catch (err) {
+        throw normalizeErr(err);
+      }
+    };
+
+    fs.promises.readlink = async function (...args: Parameters<typeof origPromisesReadlink>) {
+      try {
+        return await origPromisesReadlink(...args);
+      } catch (err) {
+        throw normalizeErr(err);
+      }
+    };
+  }
+}
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -21,6 +63,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/',
+        has: [
+          {
+            type: 'query',
+            key: 'mir_code',
+            value: '12187',
+          },
+        ],
+        destination: '/ja',
+        permanent: false,
+      },
       {
         source: '/',
         has: [
@@ -47,8 +101,21 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(self)' },
+        ],
+      },
+    ];
+  },
   async rewrites() {
-    const aiPetFallbackRewrites = [
+    return [
       {
         source: "/download.css",
         destination: "/ai-pet/download.css",
@@ -69,33 +136,37 @@ const nextConfig: NextConfig = {
         source: "/downloads/:path*",
         destination: "/ai-pet/downloads/:path*",
       },
-    ];
-
-    if (!process.env.LEGACY_HOST) {
-      return aiPetFallbackRewrites;
-    }
-
-    return [
-      ...aiPetFallbackRewrites,
       {
         source: "/mrw/:path*",
-        destination: `${LEGACY_HOST}/mrw/:path*`,
+        destination: "/legacy_assets/mrw/:path*",
       },
       {
         source: "/dev/:path*",
-        destination: `${LEGACY_HOST}/dev/:path*`,
+        destination: "/legacy_assets/dev/:path*",
       },
       {
         source: "/_mir/:path*",
-        destination: `${LEGACY_HOST}/_mir/:path*`,
+        destination: "/legacy_assets/_mir/:path*",
       },
       {
         source: "/data/:path*",
-        destination: `${LEGACY_HOST}/data/:path*`,
+        destination: "/legacy_assets/data/:path*",
       },
       {
-        source: "/bbs/:path*",
-        destination: `${LEGACY_HOST}/bbs/:path*`,
+        source: "/theme_pc/:path*",
+        destination: "/legacy_assets/theme_pc/:path*",
+      },
+      {
+        source: "/css/:path*",
+        destination: "/legacy_assets/css/:path*",
+      },
+      {
+        source: "/js/:path*",
+        destination: "/legacy_assets/js/:path*",
+      },
+      {
+        source: "/img/:path*",
+        destination: "/legacy_assets/img/:path*",
       },
     ];
   },

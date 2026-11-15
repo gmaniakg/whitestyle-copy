@@ -3,9 +3,12 @@ import Link from 'next/link';
 import { getPostsByType } from '@/lib/api';
 
 export default async function NoticeListPage() {
-  // 메타데이터에서 'board_notice' 타입의 게시글 모두 불러오기
+  // 메타데이터에서 'board_notice' 타입의 게시글 모두 불러오기 (최신 날짜 우선, 동일/미기재 시 ID 내림차순)
   const notices = getPostsByType('board_notice').sort((a, b) => {
-    // 최신순 정렬 (ID 기준 내림차순, 예: 30713 > 28276)
+    const dateA = typeof a.metadata?.date === 'string' ? a.metadata.date : '';
+    const dateB = typeof b.metadata?.date === 'string' ? b.metadata.date : '';
+    if (dateA !== dateB) return dateB.localeCompare(dateA);
+
     const idA = parseInt(a.local_path.split('/').pop()?.split('_')[0] || '0', 10);
     const idB = parseInt(b.local_path.split('/').pop()?.split('_')[0] || '0', 10);
     return idB - idA;
@@ -42,14 +45,25 @@ export default async function NoticeListPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex-1 pr-4">
                         <div className="flex items-center gap-3 mb-4">
-                          <span className="text-sm font-bold text-blue-500 bg-blue-50 px-3 py-1 rounded-md">
-                            공지
+                          <span className={`text-sm font-bold px-3 py-1 rounded-md ${
+                            notice.url.includes('bo_table=column')
+                              ? 'text-emerald-600 bg-emerald-50'
+                              : 'text-blue-500 bg-blue-50'
+                          }`}>
+                            {notice.url.includes('bo_table=column') ? '임상칼럼' : '공지'}
                           </span>
                           <span className="text-sm text-slate-400 font-medium tracking-wide">
-                            {notice.scraped_at ? notice.scraped_at.split('T')[0] : '2026-06-11'}
+                            {typeof notice.metadata?.date === 'string'
+                              ? notice.metadata.date
+                              : notice.scraped_at
+                                ? notice.scraped_at.split('T')[0]
+                                : '2026-06-11'}
                           </span>
                         </div>
-                        <h2 className="text-3xl md:text-[34px] font-bold text-slate-800 group-hover:text-[#0056b3] transition-colors line-clamp-1">
+                        <h2
+                          className="text-3xl md:text-[34px] font-bold text-slate-800 group-hover:text-[#0056b3] transition-colors line-clamp-1 wb-ka wbka"
+                          style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}
+                        >
                           {notice.title.replace(/_/g, ' ')}
                         </h2>
                       </div>

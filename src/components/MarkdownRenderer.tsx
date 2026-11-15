@@ -64,16 +64,19 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   }
 
   return (
-    <div className="prose max-w-none text-left prose-p:text-[#333] prose-h2:text-[#333] prose-h3:text-[#333] prose-img:mx-auto prose-img:my-8 prose-p:my-4 prose-p:leading-relaxed prose-h2:font-bold prose-h3:font-bold break-words" style={{ fontFamily: 'Dotum, sans-serif' }}>
+    <div className="prose max-w-none text-left prose-p:text-[#333] prose-h2:text-[#333] prose-h3:text-[#333] prose-img:mx-auto prose-img:my-8 prose-p:my-4 prose-p:leading-relaxed prose-h2:font-bold prose-h3:font-bold break-words wb-ka wbka" style={{ fontFamily: 'Dotum, sans-serif', wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkBreaks]}
         rehypePlugins={[rehypeRaw]}
         components={{
           // SEO 및 퍼포먼스 최적화를 위해 img 태그를 next/image로 대체
           img: ({ src, alt }) => {
-            if (!src) return null;
-            // 크롤러가 생성한 상대 경로(../assets/...)를 Next.js public 경로(/images/...)로 변환
-            const fixedSrc = src.replace(/^.*\/assets\//, '/images/');
+            if (!src || typeof src !== 'string') return null;
+            // 크롤러가 생성한 상대 경로(../assets/...) 및 구형 도메인 경로를 로컬 경로로 변환
+            const fixedSrc = src
+              .replace(/^.*\/assets\//, '/images/')
+              .replace(/^https?:\/\/(?:www\.)?whitestyle\.com(?::443)?\/data\//i, '/data/')
+              .replace(/^https?:\/\/cdn\.myreal\.co\.kr\/data\//i, '/data/');
             const lowerSrc = fixedSrc.toLowerCase();
             
             

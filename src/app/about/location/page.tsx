@@ -17,7 +17,7 @@ export default function LocationPage() {
           오시는 길 & 진료시간 안내
         </h1>
         <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl">
-          강남역 11번·12번 출구 도보 2분. 편안하고 여유로운 진료 서비스를 약속드립니다.
+          강남역 11번·12번 출구 도보 1분. 편안하고 여유로운 진료 서비스를 약속드립니다.
         </p>
       </FadeIn>
 
@@ -39,11 +39,11 @@ export default function LocationPage() {
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-slate-900">화이트스타일치과의원</h2>
-                  <p className="text-xs text-slate-500 font-medium">강남구 강남대로92길 17 대승빌딩 1층, 2층</p>
+                  <p className="text-xs text-slate-500 font-medium">(06134) 서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층</p>
                 </div>
               </div>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-50 text-emerald-600 border border-emerald-100">
-                강남역 12번출구 2분
+                강남역 11·12번출구 1분
               </span>
             </div>
 
@@ -84,13 +84,13 @@ export default function LocationPage() {
               </a>
 
               <a
-                href="tel:025697528"
+                href="tel:1577-7287"
                 className="py-3.5 px-4 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                전화 문의 (02-569-7528)
+                대표전화 (1577-7287 / 02-569-7528)
               </a>
             </div>
           </div>
@@ -143,8 +143,8 @@ export default function LocationPage() {
                 <h4 className="text-lg font-black text-slate-900">지하철 및 버스</h4>
               </div>
               <p className="text-slate-600 text-sm leading-relaxed pl-4 border-l-2 border-blue-100">
-                <span className="font-bold text-slate-900">2호선·신분당선 강남역 11번·12번 출구</span> 도보 2분거리.<br />
-                국기원 사거리 방향 GS25 골목 안쪽에 위치해 있습니다.
+                <span className="font-bold text-slate-900">2호선·신분당선 강남역 11번·12번 출구</span> 도보 1분거리 (우편번호 06134).<br />
+                강남대로92길 17 대승빌딩 B1·1·2층에 위치해 있습니다.
               </p>
             </div>
 

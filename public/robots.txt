@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /adm/
 Disallow: /admin/
 Disallow: /install/
@@ -9,23 +11,82 @@ Disallow: /bbs/write.php
 Disallow: /*sca=*
 Disallow: /*branch_sca=*
 
-# 검색엔진 및 AI 답변 엔진 크롤러 명시적 허용
+# 주요 검색엔진 및 AI 답변 엔진 크롤러 즉시 수집 허용 (Crawl-delay 해제)
 User-agent: Googlebot
 User-agent: Googlebot-Image
 User-agent: Google-Extended
+User-agent: Yeti
+User-agent: Daum
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: kakaotalk-scrap
 User-agent: GPTBot
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
 User-agent: ClaudeBot
 User-agent: Claude-Web
 User-agent: PerplexityBot
-User-agent: Yeti
-User-agent: Daum
-User-agent: Bingbot
+User-agent: Applebot-Extended
 Allow: /
 Allow: /data/
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /adm/
 Disallow: /admin/
 Disallow: /install/
+Disallow: /bbs/password.php
+Disallow: /bbs/login.php
+Disallow: /bbs/write.php
+Disallow: /*sca=*
+Disallow: /*branch_sca=*
 
-Sitemap: https://www.whitestyle.com/sitemap.xml
+User-agent: kisaBot
+Crawl-delay: 20
+
+User-agent: YandexBot
+Crawl-delay: 20
+
+# 차단 대상 불량 스팸 봇들 (기존 메이드인리얼 차단 정책 유지)
+User-agent: BLEXBot
+User-agent: AhrefsBot
+User-agent: BDCbot
+User-agent: BusinessBot
+User-agent: Dataprovider.com
+User-agent: DialogSearch.com Bot
+User-agent: Digincore crawler bot
+User-agent: DomainSigmaCrawler
+User-agent: Mail.RU_Bot
+User-agent: MediavBot
+User-agent: memoryBot
+User-agent: mfibot
+User-agent: MJ12bot
+User-agent: msnbot-media
+User-agent: NeumobBot
+User-agent: PagesInventory
+User-agent: Plukkie
+User-agent: roboto
+User-agent: rogerbot
+User-agent: RSNBOT
+User-agent: semanticbot
+User-agent: SMTBot
+User-agent: SurveyBot
+User-agent: TurnitinBot
+User-agent: UXCrawlerBot
+User-agent: Wotbox
+User-agent: MauiBot
+User-agent: PetalBot
+User-agent: Amazonbot
+User-agent: CriteoBot/0.1
+Disallow: /
+
+# 동적 사이트맵 전체 목록 (메이드인리얼 시스템 연동 유지)
+Sitemap: https://whitestyle.com/sitemap.xml
+Sitemap: https://whitestyle.com/sitemap_doc_column.xml
+Sitemap: https://whitestyle.com/sitemap_column.xml
+Sitemap: https://whitestyle.com/sitemap_doc_counsel.xml
+Sitemap: https://whitestyle.com/sitemap_notice.xml
+Sitemap: https://whitestyle.com/sitemap_event.xml
+Sitemap: https://whitestyle.com/sitemap_youtube.xml
+Sitemap: https://whitestyle.com/sitemap_media.xml
+Sitemap: https://whitestyle.com/sitemap_case.xml
+Sitemap: https://whitestyle.com/sitemap_online.xml

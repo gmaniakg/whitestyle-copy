@@ -21,13 +21,15 @@ export async function GET(req: NextRequest) {
     case 'review':
     case 'case':
     case 'report':
-    case 'column':
     case 'youtube':
     case 'withstar':
       destination = '/board/notice';
       break;
+    case 'column':
+      destination = wrId ? `/board/notice/${wrId}` : '/board/notice';
+      break;
     case 'open_price':
-      destination = '/consult';
+      destination = '/price';
       break;
     default:
       destination = '/board/notice';

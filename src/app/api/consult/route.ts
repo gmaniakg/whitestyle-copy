@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createConsultation, getConsultations } from '@/lib/consultation-db';
+import { checkRateLimit } from '@/app/api/_lib/rate-limit';
 import {
   requireAdmin,
   getClientIp,
@@ -16,8 +17,27 @@ const isTrue = (v: unknown) => v === true || v === 'true' || v === 1;
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = getClientIp(req);
+    const rate = checkRateLimit(`consult:${ip || 'unknown'}`, 10, 10 * 60 * 1000);
+    if (!rate.allowed) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: '요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.',
+        },
+        {
+          status: 429,
+          headers: { 'Retry-After': String(rate.retryAfterSec) },
+        }
+      );
+    }
+
     const body = await req.json();
     const { name, phone, treatment, memo, agreedPrivacy, agreedSensitive, agreedMarketing, source } = body;
+    const resolvedAgreedSensitive =
+      source === 'quick_bar' && agreedSensitive === undefined
+        ? Boolean(agreedPrivacy)
+        : agreedSensitive;
 
     // 1. Validation
     if (!name || typeof name !== 'string' || name.trim().length < 1) {
@@ -50,14 +70,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!isTrue(agreedSensitive)) {
+    if (!isTrue(resolvedAgreedSensitive)) {
       return NextResponse.json(
         { success: false, message: '건강정보(민감정보) 처리에 별도로 동의해 주셔야 상담 신청이 가능합니다.' },
         { status: 400 }
       );
     }
-
-    const ip = getClientIp(req);
 
     // 2. Persist to DB
     const record = await createConsultation({
