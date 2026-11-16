@@ -6,12 +6,12 @@
 - Unclassified: 182 file(s) not represented in the graph (top: .woff2 94, .css 41, .woff 13)
 
 ## Summary
-- 2749 nodes · 5120 edges · 201 communities (132 shown, 69 thin omitted)
+- 2749 nodes · 5121 edges · 201 communities (132 shown, 69 thin omitted)
 - Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 638 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `96be3263`
+- Built from commit: `687c9a3c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -135,7 +135,7 @@
 - AsyncFromSyncIterator
 - __asyncValues
 - toys.js
-- api.ts
+- ref_fs
 - mir_callDynamicEx
 - postcss.config.mjs
 - add_flatpickr_close_btn
@@ -162,7 +162,7 @@
 - video-config.ts
 - buildInputObject
 - deep_copy_html_el
-- consult/page.tsx
+- ReportClient.tsx
 - dependencies
 - initTabSlider
 - accessories-star.js
@@ -209,14 +209,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `destroy()` --indirect_call--> `styles()`  [INFERRED]
   public/legacy_assets/dev/plugin/splide_core.js → public/legacy_assets/js/_mir/lottie/lottie-player.js
-- `NoticeListPage()` --calls--> `getPostsByType()`  [EXTRACTED]
-  src/app/board/notice/page.tsx → src/lib/api.ts
 - `tube()` --indirect_call--> `K()`  [INFERRED]
   public/ai-pet/engine/accessories-star.js → public/legacy_assets/js/_mir/jquery.dataTables.js
 - `st()` --indirect_call--> `K()`  [INFERRED]
   public/legacy_assets/js/_mir/jquery.1.9.1.min.js → public/legacy_assets/js/_mir/jquery.dataTables.js
-- `ya()` --indirect_call--> `z()`  [INFERRED]
-  public/legacy_assets/js/_mir/jquery.dataTables.js → public/legacy_assets/dev/plugin/Sortable.min.js
+- `Pb()` --indirect_call--> `k()`  [INFERRED]
+  public/legacy_assets/js/_mir/jquery.dataTables.js → public/legacy_assets/js/_mir/jquery.1.9.1.min.js
+- `Pb()` --indirect_call--> `m()`  [INFERRED]
+  public/legacy_assets/js/_mir/jquery.dataTables.js → public/legacy_assets/js/_mir/mir-md5.js
 
 ## Import Cycles
 - None detected.
@@ -256,12 +256,12 @@ Cohesion: 0.15
 Nodes (21): dynamic, encryptLeadPayload(), GET(), isTrue(), maxDuration, POST(), dynamic, inMemoryLeads (+13 more)
 
 ### Community 10 - "next"
-Cohesion: 0.06
+Cohesion: 0.05
 Nodes (11): next, metadata, metadata, CORS_HEADERS, dynamic, metadata, metadata, metadata (+3 more)
 
 ### Community 11 - "react"
 Cohesion: 0.06
-Nodes (5): react, Consultation, NodeId, questions, results
+Nodes (8): react, Consultation, ConsultPage(), FAQItem(), faqs, NodeId, questions, results
 
 ### Community 12 - "Layout"
 Cohesion: 0.13
@@ -280,16 +280,16 @@ Cohesion: 0.12
 Nodes (28): assert(), assign(), child(), children(), closest(), _createClass(), _defineProperties(), Direction() (+20 more)
 
 ### Community 16 - "MarkdownRenderer.tsx"
-Cohesion: 0.16
-Nodes (15): dynamic, NoticeDetailPage(), TREATMENT_META_MAP, TreatmentPage(), InstagramModal(), InstagramModalProps, mockPosts, Post (+7 more)
+Cohesion: 0.15
+Nodes (16): dynamic, NoticeDetailPage(), sitemap(), TREATMENT_META_MAP, TreatmentPage(), MarkdownRenderer(), MarkdownRendererProps, SafeImage() (+8 more)
 
 ### Community 17 - "common.js"
 Cohesion: 0.08
 Nodes (31): check_field(), clear_field(), delete_cookie(), error_field(), font_resize(), get_cookie(), popup_formmail(), popup_window() (+23 more)
 
 ### Community 18 - "FadeIn"
-Cohesion: 0.24
-Nodes (17): framer-motion, doctors, DoctorsPage(), LocationPage(), AboutPage(), allImages, TourPage(), TreatmentsPage() (+9 more)
+Cohesion: 0.21
+Nodes (18): framer-motion, doctors, DoctorsPage(), LocationPage(), AboutPage(), allImages, TourPage(), NoticeListPage() (+10 more)
 
 ### Community 19 - "socket.io.js"
 Cohesion: 0.11
@@ -512,7 +512,7 @@ Cohesion: 0.29
 Nodes (6): initialize$2(), seedRandom(), c(), f(), p(), _typeof$1()
 
 ### Community 79 - "KonestArchiveSection.tsx"
-Cohesion: 0.32
+Cohesion: 0.36
 Nodes (4): JapaneseLandingPage(), JapaneseLandingPage(), KonestArchiveSection(), TabKey
 
 ### Community 80 - "triggerChange"
@@ -639,9 +639,9 @@ Nodes (3): __asyncValues(), i(), __values()
 Cohesion: 0.13
 Nodes (23): back(), bubbles(), circlePts(), disc(), discSpans(), dotAt(), drawPlaced(), front() (+15 more)
 
-### Community 122 - "api.ts"
-Cohesion: 0.11
-Nodes (11): nextConfig, fs, NoticeListPage(), dynamic, sitemap(), BLOCKED_TYPES, EXTRACTED_DATA_DIR, getAllPosts() (+3 more)
+### Community 122 - "ref_fs"
+Cohesion: 0.22
+Nodes (3): nextConfig, fs, dynamic
 
 ### Community 123 - "mir_callDynamicEx"
 Cohesion: 0.67
@@ -655,9 +655,9 @@ Nodes (3): addPropertyDecorator(), extendPrototype(), initialize$1()
 Cohesion: 0.57
 Nodes (7): Elements(), destroy(), getClasses(), init(), mount(), setup(), update()
 
-### Community 164 - "consult/page.tsx"
-Cohesion: 0.67
-Nodes (3): ConsultPage(), FAQItem(), faqs
+### Community 164 - "ReportClient.tsx"
+Cohesion: 0.32
+Nodes (6): InstagramModal(), InstagramModalProps, mockPosts, Post, ReportClient(), ReportPost
 
 ### Community 165 - "dependencies"
 Cohesion: 0.10
@@ -759,17 +759,17 @@ Nodes (3): feather(), front(), straw()
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `destroy()` connect `setAttribute` to `Elements`, `lottie-player.js`, `Slide$1`?**
-  _High betweenness centrality (0.115) - this node is a cross-community bridge._
+- **Why does `styles()` connect `lottie-player.js` to `setAttribute`?**
+  _High betweenness centrality (0.118) - this node is a cross-community bridge._
 - **What connects `RFC-1321` to the rest of the system?**
   _1 weakly-connected nodes found - possible missing edges._
 - **Should `lottie-player.js` be split into smaller, more focused modules?**
   _Cohesion score 0.012103407755581668 - nodes in this community are weakly interconnected._
-- **Why does `styles()` connect `lottie-player.js` to `setAttribute`?**
-  _High betweenness centrality (0.115) - this node is a cross-community bridge._
+- **Why does `destroy()` connect `setAttribute` to `Elements`, `lottie-player.js`, `Slide$1`?**
+  _High betweenness centrality (0.118) - this node is a cross-community bridge._
 - **Should `mir_common.js` be split into smaller, more focused modules?**
   _Cohesion score 0.023529411764705882 - nodes in this community are weakly interconnected._
-- **Why does `r()` connect `a` to `lottie-player.js`, `.frame`, `Sortable.min.js`, `addPropertyDecorator`?**
-  _High betweenness centrality (0.095) - this node is a cross-community bridge._
+- **Why does `G()` connect `.frame` to `Sortable.min.js`, `accessories-fx6.js`, `a`, `.frame`, `splide-extension-video.min.js`?**
+  _High betweenness centrality (0.094) - this node is a cross-community bridge._
 - **Should `Sortable.min.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11025641025641025 - nodes in this community are weakly interconnected._

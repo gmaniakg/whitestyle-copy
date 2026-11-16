@@ -53,7 +53,7 @@ export default function KonestArchiveSection() {
           </div>
 
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight mb-4">
-            日本人患者様が証明した15年の信頼と圧倒的実績<br className="hidden sm:inline" />
+            1994年開院・創業33年の信頼と日本人患者様が証明した圧倒的実績<br className="hidden sm:inline" />
             <span className="text-[#fde68a]">コネスト(KONEST) 公式掲載レコード＆口コミ全集</span>
           </h2>
 
