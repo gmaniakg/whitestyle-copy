@@ -196,10 +196,10 @@ export default function JapaneseLandingPage() {
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
               <h3 className="font-extrabold text-slate-900 text-lg mb-3">📍 所在地・アクセス</h3>
               <p className="text-sm text-slate-700 leading-relaxed mb-2">
-                ソウル特別市 江南区 江南大路92キル 17 デスンビル 1階・2階（駅三洞 819-7）
+                ソウル特別市 江南区 江南大路92キル 17 デスンビル B1・1階・2階（駅三洞 819-10 / 〒06134）
               </p>
               <p className="text-xs text-[#1e3a8a] font-bold">
-                地下鉄2号線・新盆唐線「江南（カンナム）駅」11番・12番出口より徒歩2分
+                地下鉄2号線・新盆唐線「江南（カンナム）駅」11番・12番出口より徒歩1分
               </p>
             </div>
 

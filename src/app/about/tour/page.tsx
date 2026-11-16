@@ -96,11 +96,20 @@ export default function TourPage() {
                     국내외 주요 미술관에 소장되어 있으며, 화이트스타일치과에 전시된 세 폭의 말(馬) 연작은
                     이 대표작들의 초기 원형이 된 작품으로, 미술사적으로도 매우 귀한 의미를 지닙니다.
                   </p>
-                  <p>
-                    화백은 "치유의 공간에 생명력이 약동하는 말을 두고 싶었다"며 본원의 진료 철학에 공감하여
-                    직접 작품을 <strong className="text-slate-800">기증</strong>해 주셨습니다. 지금 이 순간에도 대기실에서
-                    환자분들을 맞이하고 있습니다.
+                  <p style={{ wordBreak: 'keep-all', lineHeight: 1.95 }}>
+                    화백은 화이트스타일치과의원에서 식립받으신 임플란트를 <strong className="text-slate-800">20년이 넘도록 내 치아처럼 너무나 편안하게 잘 사용하고 계신 것에 대한 깊은 신뢰와 감사</strong>, 그리고 &ldquo;치유의 공간에 생명력이 약동하는 말을 두고 싶다&rdquo;는 뜻을 담아 본원에 직접 작품을 <strong className="text-slate-800">기증</strong>해 주셨습니다.
                   </p>
+                  <div className="bg-amber-50 border border-amber-300 rounded-2xl p-6 text-slate-800 shadow-sm" style={{ wordBreak: 'keep-all', lineHeight: 1.95 }}>
+                    <div className="text-xs font-extrabold uppercase tracking-wider text-amber-800 mb-2">
+                      공식 작품 소유권 및 구입 문의 안내
+                    </div>
+                    <p className="text-base font-bold text-slate-900 mb-2">
+                      대기실 및 원내에 전시된 박성태 화백의 작품은 화이트스타일치과의원 소유입니다.
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-700">
+                      작품 소장 또는 구입을 원하시는 분께서는 화이트스타일치과의원(대표전화 <strong className="text-[#0f294a]">1577-7287 / 02-569-7528</strong>) 또는 온라인 상담으로 문의해 주시기 바랍니다.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -248,9 +257,9 @@ export default function TourPage() {
             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
               직접 오셔서 감상하세요
             </h2>
-            <p className="text-xl text-slate-500 leading-relaxed mb-10 max-w-2xl mx-auto">
-              어떤 예약 없이도 방문하셔서 박성태 화백의 원작을 가까이에서 보실 수 있습니다.
-              강남역 11·12번 출구에서 도보 2분입니다.
+            <p className="text-xl text-slate-500 leading-relaxed mb-10 max-w-2xl mx-auto" style={{ wordBreak: 'keep-all', lineHeight: 1.95 }}>
+              어떤 예약 없이도 방문하셔서 박성태 화백의 기증 원작을 가까이에서 감상하실 수 있습니다.
+              강남역 11·12번 출구에서 도보 1분입니다. (작품 구입 문의: 1577-7287 / 02-569-7528)
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

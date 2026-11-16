@@ -567,6 +567,120 @@ new_html = new_html.replace('정성스러운 후기', '정성스러운 말씀')
 new_html = new_html.replace('후기를 남겨주셔서', '의견을 남겨주셔서')
 
 # -------------------------------------------------------------
+# 5.6 Inject Latest Notice (#32596) in Main Notice Widget & Add Park Sung-tae Waiting Room Art Gallery Section
+# -------------------------------------------------------------
+old_notice_block = (
+    '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/board/notice/32557" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
+    'onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=notice&amp;wr_id=32557\', \'뉴이지 게시판 위젯 클릭\', \'\');">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 비급여 수가표</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.10.14</div></a>'
+    '<a href="/bbs/board.php?bo_table=notice&amp;wr_id=32143" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
+    'onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=notice&amp;wr_id=32143\', \'뉴이지 게시판 위젯 클릭\', \'\');">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">나의 치아건강을 지켜라!! 알파버전이 출시!</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">25.12.28</div></a>'
+)
+
+new_notice_block = (
+    '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/board/notice/32596" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 박성태 화백 기증 철망 회화 전시 및 구입 문의</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.16</div></a>'
+    '<a href="/board/notice/32595" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[언론보도] 구강건강 치료 확대와 정기검진 중요성 강조</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.15</div></a>'
+    '<a href="/board/notice/32557" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 비급여 수가표</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.10.14</div></a>'
+)
+
+if old_notice_block in new_html:
+    new_html = new_html.replace(old_notice_block, new_notice_block, 1)
+    print("Updated main notice widget with 32596 & 32595.")
+
+park_section_html = """
+<section id="ws-park-sung-tae-gallery" style="background:#f8fafc;padding:72px 20px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;font-family:'Pretendard','Malgun Gothic',sans-serif;word-break:keep-all;overflow-wrap:break-word;">
+  <style>
+    #ws-park-sung-tae-gallery * { box-sizing: border-box; word-break: keep-all; overflow-wrap: break-word; }
+    .ws-pst-wrap { max-width: 1200px; margin: 0 auto; }
+    .ws-pst-card { background:#ffffff; border:1px solid #e2e8f0; border-radius:24px; padding:40px 36px; box-shadow:0 12px 32px rgba(15,23,42,0.06); }
+    .ws-pst-grid { display:flex; flex-wrap:wrap; gap:36px; align-items:center; }
+    .ws-pst-left { flex:1 1 520px; min-width:280px; }
+    .ws-pst-right { flex:1 1 440px; min-width:280px; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; }
+    .ws-pst-badge { display:inline-block; background:#eff6ff; color:#1d4ed8; border:1px solid #dbeafe; border-radius:999px; padding:6px 14px; font-size:12px; font-weight:800; letter-spacing:0.08em; margin-bottom:16px; }
+    .ws-pst-title { font-size:32px; font-weight:900; color:#0f172a; line-height:1.35; margin:0 0 18px 0; }
+    .ws-pst-lead { font-size:16px; color:#334155; line-height:1.95; margin:0 0 18px 0; }
+    .ws-pst-notice { background:#fffbeb; border:1px solid #fcd34d; border-left:4px solid #b45309; border-radius:14px; padding:18px 20px; margin:20px 0 24px 0; }
+    .ws-pst-notice-head { font-size:13px; font-weight:800; color:#92400e; margin-bottom:6px; }
+    .ws-pst-notice-body { font-size:15px; font-weight:700; color:#1e293b; line-height:1.85; margin:0; }
+    .ws-pst-btns { display:flex; flex-wrap:wrap; gap:12px; }
+    .ws-pst-btn-primary { display:inline-block; background:#0f294a; color:#ffffff !important; padding:13px 22px; border-radius:12px; font-size:14px; font-weight:800; text-decoration:none; }
+    .ws-pst-btn-secondary { display:inline-block; background:#f1f5f9; color:#0f172a !important; border:1px solid #cbd5e1; padding:13px 22px; border-radius:12px; font-size:14px; font-weight:800; text-decoration:none; }
+    .ws-pst-imgbox { border-radius:16px; overflow:hidden; aspect-ratio:4/3; background:#e2e8f0; border:1px solid #e2e8f0; }
+    .ws-pst-imgbox.wide { grid-column: span 2; aspect-ratio:16/9; }
+    .ws-pst-imgbox img { width:100%; height:100%; object-fit:cover; display:block; }
+    @media (max-width: 768px) {
+      .ws-pst-card { padding:26px 20px; }
+      .ws-pst-title { font-size:24px; }
+    }
+  </style>
+  <div class="ws-pst-wrap">
+    <div class="ws-pst-card">
+      <div class="ws-pst-grid">
+        <div class="ws-pst-left">
+          <span class="ws-pst-badge">ART IN CLINIC · 박성태 화백 기증 대기실 갤러리</span>
+          <h2 class="ws-pst-title">
+            20년이 넘도록 편하게 쓰신 임플란트 인연,<br>
+            <span style="color:#1d4ed8;">박성태 화백이 꾸며 준 화이트스타일치과 대기실</span>
+          </h2>
+          <p class="ws-pst-lead">
+            대한민국 설치미술과 철망 회화의 거장 <strong>박성태 화백</strong>께서는 화이트스타일치과의원에서 식립받으신 임플란트를
+            <strong>20년이 넘도록 내 치아처럼 너무나 편안하게 잘 사용하고 계신 것에 대한 깊은 감사와 신뢰</strong>로,
+            대표작 〈천마도〉와 〈행차도〉의 초기 원형인 말(馬) 연작 세 폭을 본원 대기실에 직접 기증해 주셨습니다.
+          </p>
+          <div class="ws-pst-notice">
+            <div class="ws-pst-notice-head">작품 소유권 및 구입 문의 공식 공지</div>
+            <p class="ws-pst-notice-body">
+              대기실에 전시된 박성태 화백의 작품은 <strong>화이트스타일치과 소유</strong>입니다.<br>
+              작품 구입을 원하시는 분께서는 화이트스타일치과(대표전화 1577-7287 / 02-569-7528)로 문의해 주시기 바랍니다.
+            </p>
+          </div>
+          <div class="ws-pst-btns">
+            <a href="/about/tour" class="ws-pst-btn-primary">대기실 갤러리 13점 전체 보기 &rarr;</a>
+            <a href="/board/notice/32596" class="ws-pst-btn-secondary">[공지] 기증 스토리 및 구입 문의 안내 &rarr;</a>
+          </div>
+        </div>
+        <div class="ws-pst-right">
+          <div class="ws-pst-imgbox wide">
+            <img src="/images/park-sung-tae/KakaoTalk_20260512_163602653.jpg" alt="화이트스타일치과 대기실 박성태 화백 기증 철망 회화 전경" loading="lazy" />
+          </div>
+          <div class="ws-pst-imgbox">
+            <img src="/images/park-sung-tae/KakaoTalk_20260512_163602653_01.jpg" alt="박성태 화백 철망 회화 말 연작 세부" loading="lazy" />
+          </div>
+          <div class="ws-pst-imgbox">
+            <img src="/images/park-sung-tae/KakaoTalk_20260512_163602653_07.jpg" alt="박성태 화백과 김준헌 병원장 작품 설치 및 기증 현장" loading="lazy" />
+          </div>
+          <div class="ws-pst-imgbox">
+            <img src="/images/park-sung-tae/KakaoTalk_20260512_163602653_08.jpg" alt="박성태 화백 기증 작품 인도 장면" loading="lazy" />
+          </div>
+          <div class="ws-pst-imgbox">
+            <img src="/images/park-sung-tae/KakaoTalk_20260512_163602653_12.jpg" alt="화이트스타일치과 진료실 복도 전시 전경" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+"""
+
+quick_anchor = '<div id="mir_quick_menu_line"></div>'
+if quick_anchor in new_html:
+    new_html = new_html.replace(quick_anchor, park_section_html + '\n' + quick_anchor, 1)
+    print("Injected Park Sung-tae waiting room gallery section before quick menu.")
+else:
+    print("WARNING: quick_anchor not found!")
+
+# -------------------------------------------------------------
 # 6. Save Targets
 # -------------------------------------------------------------
 for p in ['e:/antigravity/whitestyle-copy/processed_page.html', 

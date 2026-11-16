@@ -1,17 +1,17 @@
-# Graph Report - whitestyle-copy  (2026-11-16)
+# Graph Report - whitestyle-copy  (2026-11-17)
 
 ## Corpus Check
-- 149 files · ~763,074 words
+- 149 files · ~764,693 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 182 file(s) not represented in the graph (top: .woff2 94, .css 41, .woff 13)
 
 ## Summary
-- 2749 nodes · 5121 edges · 201 communities (132 shown, 69 thin omitted)
+- 2749 nodes · 5122 edges · 201 communities (130 shown, 71 thin omitted)
 - Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 638 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `687c9a3c`
+- Built from commit: `df395137`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -133,9 +133,9 @@
 - parseqs
 - __await
 - AsyncFromSyncIterator
-- __asyncValues
+- createProxyFunction
 - toys.js
-- ref_fs
+- api.ts
 - mir_callDynamicEx
 - postcss.config.mjs
 - add_flatpickr_close_btn
@@ -162,7 +162,7 @@
 - video-config.ts
 - buildInputObject
 - deep_copy_html_el
-- ReportClient.tsx
+- _extends
 - dependencies
 - initTabSlider
 - accessories-star.js
@@ -221,11 +221,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (201 total, 69 thin omitted)
+## Communities (201 total, 71 thin omitted)
 
 ### Community 0 - "lottie-player.js"
 Cohesion: 0.01
-Nodes (45): addDecorator(), _awaitAsyncGenerator(), _AwaitValue(), CanvasRenderer(), CanvasRendererBase(), _checkPrivateRedeclaration(), checkReady(), _classPrivateFieldInitSpec() (+37 more)
+Nodes (43): addDecorator(), _awaitAsyncGenerator(), _AwaitValue(), CanvasRenderer(), CanvasRendererBase(), _checkPrivateRedeclaration(), checkReady(), _classPrivateFieldInitSpec() (+35 more)
 
 ### Community 2 - "Sortable.min.js"
 Cohesion: 0.11
@@ -280,16 +280,16 @@ Cohesion: 0.12
 Nodes (28): assert(), assign(), child(), children(), closest(), _createClass(), _defineProperties(), Direction() (+20 more)
 
 ### Community 16 - "MarkdownRenderer.tsx"
-Cohesion: 0.15
-Nodes (16): dynamic, NoticeDetailPage(), sitemap(), TREATMENT_META_MAP, TreatmentPage(), MarkdownRenderer(), MarkdownRendererProps, SafeImage() (+8 more)
+Cohesion: 0.16
+Nodes (15): dynamic, NoticeDetailPage(), TREATMENT_META_MAP, TreatmentPage(), InstagramModal(), InstagramModalProps, mockPosts, Post (+7 more)
 
 ### Community 17 - "common.js"
 Cohesion: 0.08
 Nodes (31): check_field(), clear_field(), delete_cookie(), error_field(), font_resize(), get_cookie(), popup_formmail(), popup_window() (+23 more)
 
 ### Community 18 - "FadeIn"
-Cohesion: 0.21
-Nodes (18): framer-motion, doctors, DoctorsPage(), LocationPage(), AboutPage(), allImages, TourPage(), NoticeListPage() (+10 more)
+Cohesion: 0.24
+Nodes (17): framer-motion, doctors, DoctorsPage(), LocationPage(), AboutPage(), allImages, TourPage(), TreatmentsPage() (+9 more)
 
 ### Community 19 - "socket.io.js"
 Cohesion: 0.11
@@ -360,8 +360,8 @@ Cohesion: 0.36
 Nodes (10): Clones(), cloneDeep(), computeCloneCount(), destroy(), generate(), mount(), observe(), remount() (+2 more)
 
 ### Community 37 - "a"
-Cohesion: 0.07
-Nodes (46): a(), c(), e(), i(), r(), t(), _applyDecoratedDescriptor(), _asyncGeneratorDelegate() (+38 more)
+Cohesion: 0.06
+Nodes (49): a(), c(), e(), i(), r(), t(), _applyDecoratedDescriptor(), _asyncGeneratorDelegate() (+41 more)
 
 ### Community 38 - "N"
 Cohesion: 0.14
@@ -512,7 +512,7 @@ Cohesion: 0.29
 Nodes (6): initialize$2(), seedRandom(), c(), f(), p(), _typeof$1()
 
 ### Community 79 - "KonestArchiveSection.tsx"
-Cohesion: 0.36
+Cohesion: 0.39
 Nodes (4): JapaneseLandingPage(), JapaneseLandingPage(), KonestArchiveSection(), TabKey
 
 ### Community 80 - "triggerChange"
@@ -631,17 +631,13 @@ Nodes (3): on_manage_asset(), on_remove_asset(), on_restore_asset()
 Cohesion: 0.67
 Nodes (3): __asyncDelegator(), i(), __await()
 
-### Community 120 - "__asyncValues"
-Cohesion: 0.67
-Nodes (3): __asyncValues(), i(), __values()
-
 ### Community 121 - "toys.js"
 Cohesion: 0.13
 Nodes (23): back(), bubbles(), circlePts(), disc(), discSpans(), dotAt(), drawPlaced(), front() (+15 more)
 
-### Community 122 - "ref_fs"
-Cohesion: 0.22
-Nodes (3): nextConfig, fs, dynamic
+### Community 122 - "api.ts"
+Cohesion: 0.11
+Nodes (11): nextConfig, fs, NoticeListPage(), dynamic, sitemap(), BLOCKED_TYPES, EXTRACTED_DATA_DIR, getAllPosts() (+3 more)
 
 ### Community 123 - "mir_callDynamicEx"
 Cohesion: 0.67
@@ -654,10 +650,6 @@ Nodes (3): addPropertyDecorator(), extendPrototype(), initialize$1()
 ### Community 138 - "Elements"
 Cohesion: 0.57
 Nodes (7): Elements(), destroy(), getClasses(), init(), mount(), setup(), update()
-
-### Community 164 - "ReportClient.tsx"
-Cohesion: 0.32
-Nodes (6): InstagramModal(), InstagramModalProps, mockPosts, Post, ReportClient(), ReportPost
 
 ### Community 165 - "dependencies"
 Cohesion: 0.10
@@ -754,22 +746,22 @@ Nodes (3): feather(), front(), straw()
 ## Knowledge Gaps
 - **1 isolated node(s):** `RFC-1321`
   These have ≤1 connection - possible missing edges. (Counts symbols only; 894 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **69 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **71 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `styles()` connect `lottie-player.js` to `setAttribute`?**
-  _High betweenness centrality (0.118) - this node is a cross-community bridge._
+  _High betweenness centrality (0.107) - this node is a cross-community bridge._
 - **What connects `RFC-1321` to the rest of the system?**
   _1 weakly-connected nodes found - possible missing edges._
 - **Should `lottie-player.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.012103407755581668 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.01240024554941682 - nodes in this community are weakly interconnected._
 - **Why does `destroy()` connect `setAttribute` to `Elements`, `lottie-player.js`, `Slide$1`?**
-  _High betweenness centrality (0.118) - this node is a cross-community bridge._
+  _High betweenness centrality (0.107) - this node is a cross-community bridge._
 - **Should `mir_common.js` be split into smaller, more focused modules?**
   _Cohesion score 0.023529411764705882 - nodes in this community are weakly interconnected._
-- **Why does `G()` connect `.frame` to `Sortable.min.js`, `accessories-fx6.js`, `a`, `.frame`, `splide-extension-video.min.js`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+- **Why does `r()` connect `a` to `lottie-player.js`, `.frame`, `Sortable.min.js`, `addPropertyDecorator`?**
+  _High betweenness centrality (0.082) - this node is a cross-community bridge._
 - **Should `Sortable.min.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11025641025641025 - nodes in this community are weakly interconnected._

@@ -102,7 +102,7 @@ export default function KonestArchiveSection() {
             },
             {
               badge: '強み 04',
-              title: '江南駅徒歩2分・緊急対応',
+              title: '江南駅徒歩1分・緊急対応',
               desc: '「韓国出張・旅行中に詰め物が取れた際も、LINE連絡で当日予約が取れ、江南駅すぐの好立地で迅速に対応してもらえました。」',
             },
           ].map((pillar, idx) => (
