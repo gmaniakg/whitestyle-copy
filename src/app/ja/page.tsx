@@ -16,7 +16,7 @@ export default function JapaneseLandingPage() {
               🏆 Yahoo! JAPAN 韓国歯科部門 3年連続 第1位（複数回達成）
             </span>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/25 text-white text-xs sm:text-sm font-bold">
-              📍 韓国・江南駅 徒歩2分 ｜ 日本人来院数 14,800名突破
+              📍 韓国・江南駅11・12番出口 徒歩1分 ｜ 日本人来院数 14,800名突破
             </span>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-300/40 text-emerald-200 text-xs sm:text-sm font-bold">
               🛡️ 韓国健康保険審査評価院(HIRA) 口腔検診 最高「S等級」
@@ -24,7 +24,7 @@ export default function JapaneseLandingPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.15] mb-6">
-            <span className="block text-slate-100 mb-2">15年の信頼と実績が証明する</span>
+            <span className="block text-slate-100 mb-2">1994年開院・創業33年の信頼と実績が証明する</span>
             <span className="text-[#fde68a]">韓国・江南 ホワイトスタイル歯科</span>
           </h1>
 

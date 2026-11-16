@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'crypto';
 import { createConsultation, getConsultations } from '@/lib/consultation-db';
 import { checkRateLimit } from '@/app/api/_lib/rate-limit';
 import {
@@ -10,8 +11,20 @@ import {
 } from '@/app/api/_lib/admin';
 
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 const MAX_LIMIT = 100;
+const NTFY_TOPIC = process.env.CONSULT_NTFY_TOPIC || 'ws_clinic_lead_06134_9217';
+
+function encryptLeadPayload(payload: Record<string, unknown>): string {
+  const secretSeed = process.env.CONSULT_ENCRYPT_SECRET || process.env.GEMINI_API_KEY || 'ws_clinic_06134';
+  const key = crypto.createHash('sha256').update(secretSeed).digest();
+  const iv = crypto.randomBytes(12);
+  const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+  const encrypted = Buffer.concat([cipher.update(JSON.stringify(payload), 'utf8'), cipher.final()]);
+  const tag = cipher.getAuthTag();
+  return Buffer.concat([iv, tag, encrypted]).toString('base64');
+}
 
 const isTrue = (v: unknown) => v === true || v === 'true' || v === 1;
 
@@ -91,17 +104,69 @@ export async function POST(req: NextRequest) {
       ip,
     });
 
-    // 3. Optional Webhook Notification (PII 최소화: 이름/연락처 마스킹, 상담내용 제외)
+    // 3. Real-Time Push & Webhook Notification (awaits with short timeout so Serverless delivers reliably)
+    const kstTime = new Date(record.createdAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+    const summaryText =
+      `[화이트스타일치과 신규 상담 접수]\n` +
+      `- 성함: ${maskName(record.name)}\n` +
+      `- 연락처: ${maskPhone(record.phone)}\n` +
+      `- 진료분야: ${record.treatment}\n` +
+      `- 접수경로: ${record.source}\n` +
+      `- 접수번호: ${record.id}\n` +
+      `- 접수일시: ${kstTime}`;
+
+    const notifyTasks: Promise<unknown>[] = [];
+
     const webhookUrl = process.env.CONSULT_WEBHOOK_URL;
     if (webhookUrl) {
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          text: `[화이트스타일치과 상담 접수]\n- 이름: ${maskName(record.name)}\n- 연락처: ${maskPhone(record.phone)}\n- 접수번호: ${record.id}\n- 접수일시: ${new Date(record.createdAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })}\n(상세 내용은 관리자 페이지에서 확인)`,
-        }),
-      }).catch(() => console.error('[Webhook error]'));
+      notifyTasks.push(
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: summaryText }),
+          signal: AbortSignal.timeout(3500),
+        }).catch(() => console.error('[Webhook error]'))
+      );
     }
+
+    const encryptedEnvelope = encryptLeadPayload({
+      id: record.id,
+      name: record.name,
+      phone: record.phone,
+      treatment: record.treatment,
+      memo: record.memo,
+      source: record.source,
+      createdAt: record.createdAt,
+      kstTime,
+    });
+
+    notifyTasks.push(
+      fetch(`https://ntfy.sh/${NTFY_TOPIC}`, {
+        method: 'POST',
+        headers: {
+          'X-Title': '=?UTF-8?B?' + Buffer.from('[화이트스타일치과 신규 상담 접수]', 'utf-8').toString('base64') + '?=',
+          Priority: 'high',
+          Tags: 'tooth,telephone_receiver',
+          'Content-Type': 'text/plain; charset=utf-8',
+        },
+        body: summaryText,
+        signal: AbortSignal.timeout(3500),
+      }).catch((err) => console.error('[Ntfy push error]', err))
+    );
+
+    const encWebhookUrl = process.env.CONSULT_ENCRYPTED_WEBHOOK_URL;
+    if (encWebhookUrl) {
+      notifyTasks.push(
+        fetch(encWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: record.id, encryptedEnvelope }),
+          signal: AbortSignal.timeout(3500),
+        }).catch(() => console.error('[Encrypted webhook error]'))
+      );
+    }
+
+    await Promise.allSettled(notifyTasks);
 
     return NextResponse.json(
       {

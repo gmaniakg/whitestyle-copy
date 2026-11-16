@@ -12,15 +12,20 @@ export default async function TreatmentsPage() {
   });
 
   return (
-    <div className="py-24 px-4 sm:px-8 lg:px-16 xl:px-24 2xl:px-32 w-full mx-auto min-h-[100dvh]">
+    <div
+      className="py-24 px-4 sm:px-8 lg:px-16 xl:px-24 2xl:px-32 w-full mx-auto min-h-[100dvh]"
+      style={{ wordBreak: 'keep-all', overflowWrap: 'break-word', lineHeight: 1.95 }}
+    >
       <FadeIn direction="down" className="flex flex-col items-center mb-20 text-center">
-        <span className="rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-bold bg-blue-50 text-blue-600 mb-6 border border-blue-100">
-          Treatments
+        <span className="rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.15em] font-bold bg-blue-50 text-blue-700 mb-6 border border-blue-100">
+          1994년 개원 33년 전통 · 3인 원장단 협진
         </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-          <RevealText text="임상 과목" as="span" />
+        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-5">
+          <RevealText text="강남역 화이트스타일치과 진료 과목" as="span" />
         </h1>
-        <p className="text-slate-500 max-w-2xl text-lg">진료 과목별 안내입니다. 치료 방법과 결과는 개인별 상태에 따라 다를 수 있으며, 자세한 내용은 상담을 통해 확인하세요.</p>
+        <p className="text-slate-600 max-w-3xl text-base sm:text-lg leading-[1.95]">
+          강남역 11·12번 출구 도보 1분 거리의 화이트스타일치과의원은 1994년 개원(33년 전통) 이래 서울대졸 · 단국대 외래교수 · 교정학 박사 김준헌 병원장, 이봉진 대표원장, 박선혜 원장(보건복지부 인증 치주과 전문의) 3인 원장단 협진과 3단계 통증 완화 마취 시스템을 바탕으로 치아교정·최소삭제 심미보철·임플란트를 책임 진료합니다.
+        </p>
       </FadeIn>
 
       <FadeInStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.15}>
@@ -46,8 +51,8 @@ export default async function TreatmentsPage() {
                   </h2>
                   
                   <div className="mt-8 flex items-center justify-between">
-                    <span className="text-sm font-bold text-blue-500 group-hover:text-blue-100 transition-colors duration-500 uppercase tracking-wider">
-                      Explore
+                    <span className="text-sm font-bold text-blue-600 group-hover:text-blue-100 transition-colors duration-500">
+                      진료 기준·기간·과정 확인하기
                     </span>
                     <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-white/20 group-hover:text-white text-slate-400 transition-all duration-500 group-hover:translate-x-2">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

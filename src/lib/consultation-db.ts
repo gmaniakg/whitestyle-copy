@@ -19,7 +19,9 @@ export interface ConsultationRecord {
   updatedAt: string;
 }
 
-const DATA_DIR = path.join(process.cwd(), '.data');
+const DATA_DIR = process.env.VERCEL
+  ? path.join('/tmp', '.data')
+  : path.join(process.cwd(), '.data');
 const DATA_FILE = path.join(DATA_DIR, 'consultations.json');
 
 // Ensure storage directory and file exist

@@ -57,7 +57,10 @@ export default function TreatmentLayout({
   } : null;
 
   return (
-    <article className="w-full px-4 sm:px-8 lg:px-16 xl:px-32 2xl:px-64 py-12 mx-auto">
+    <article
+      className="w-full px-4 sm:px-8 lg:px-16 xl:px-32 2xl:px-64 py-12 mx-auto"
+      style={{ wordBreak: 'keep-all', overflowWrap: 'break-word', lineHeight: 1.95 }}
+    >
       {/* JSON-LD Schema 주입 */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       {faqSchema && (
@@ -103,11 +106,11 @@ export default function TreatmentLayout({
         </FadeInStaggerContainer>
       </div>
 
-      {/* GEO 최적화 답변 블록 (134~167 단어 권장) - AI가 그대로 긁어가기 좋은 형태 */}
+      {/* 핵심 답변 블록 */}
       <FadeIn direction="up" delay={0.4}>
         <section className="bg-gray-50 p-6 rounded-lg mb-10 border-l-4 border-blue-500">
-          <h2 className="text-xl font-semibold mb-3">빠른 핵심 답변 (TL;DR)</h2>
-          <p className="text-gray-800 leading-relaxed">
+          <h2 className="text-xl font-semibold mb-3">진료 핵심 요약</h2>
+          <p className="text-gray-800 leading-[1.95]">
             {description}
           </p>
         </section>
