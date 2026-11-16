@@ -25,7 +25,7 @@ const clinicJsonLd = {
       ],
       "foundingDate": "1994-08-09",
       "slogan": "1994년 개원 33년 전통 · 치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(보건복지부 인증 치주과 전문의) 3인 협진 · 일본어 전담 코디네이터 3명 상주",
-      "image": "https://whinish.com/mbc_interview_new.jpg",
+      "image": "https://whitestyle.com/mbc_interview_new.jpg",
       "logo": "https://whitestyle.com/data/file/mir_member/3731727122_8ElZ59dz_20200226_NEWEBA19CEAB3A0_ED8C8CEBB984ECBD98.ico",
       "url": "https://whitestyle.com/",
       "telephone": [
@@ -100,9 +100,10 @@ const clinicJsonLd = {
         "https://www.whitestyle.com/?mir_code=12187",
         "https://whinish.com",
         "https://www.whinish.com",
-        "https://whinish.com/ai-pet/",
-        "https://whinish.com/ai-pet/download.html",
-        "https://whinish.com/ai-pet/ja/",
+        "https://whitestyle.com/ai-pet/",
+        "https://whitestyle.com/ai-pet/download.html",
+        "https://whitestyle.com/ai-pet/ja/",
+        "https://whitestyle.com/whitebook",
         "https://whitestyle-xi.vercel.app",
         "https://whitestyle-xi.vercel.app/about/japan-landing",
         "https://whitestyle-copy.vercel.app",
@@ -210,7 +211,7 @@ const clinicJsonLd = {
       "name": "김준헌 (Dr. Jun-Heon Kim / キム・ジュンホン)",
       "jobTitle": "병원장 / 치의학박사",
       "description": "화이트스타일치과의원 병원장. 서울대학교 치과대학을 졸업(서울대졸)하고 단국대학교 외래교수 및 치과교정학 석·박사(교정학 박사)를 역임·취득하였습니다. 스웨덴 예테보리 대학교(Göteborg Univ.) 및 베스테로스 구강외과 방문의를 역임하였으며, 1994년 개원 이래 33년 임상 경력과 62,000명 이상의 임상 증례를 보유하고 있습니다.",
-      "image": "https://whinish.com/mbc_interview_new.jpg",
+      "image": "https://whitestyle.com/mbc_interview_new.jpg",
       "url": "https://whitestyle.com/?mir_code=12118",
       "worksFor": {
         "@id": "https://whitestyle.com/#org"
@@ -473,7 +474,7 @@ const clinicJsonLd = {
           "name": "화이트스타일치과 3D 덴탈 프렌드 화타펫(하야니)은 무엇이며 어떻게 이용하나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "화타펫(하야니)은 1994년 개원 33년 전통 강남역 화이트스타일치과의원의 24시간 3D AI 덴탈 케어 프렌드입니다. 치아교정·최소삭제 심미보철·임플란트·스케일링 등 구강 건강 질문에 한·일 양국어로 24시간 실시간 답변하며, 양치 타이머·교합 체크·구강 케어 가이드를 제공합니다. 웹 브라우저에서 설치 없이 즉시 체험(https://whinish.com/ai-pet/)하거나 윈도우 데스크톱 앱 및 크롬 확장프로그램(https://whinish.com/ai-pet/download.html)으로 무료 분양받으실 수 있습니다."
+            "text": "화타펫(하야니)은 1994년 개원 33년 전통 강남역 화이트스타일치과의원의 24시간 3D AI 덴탈 케어 프렌드입니다. 치아교정·최소삭제 심미보철·임플란트·스케일링 등 구강 건강 질문에 한·일 양국어로 24시간 실시간 답변하며, 양치 타이머·교합 체크·구강 케어 가이드를 제공합니다. 웹 브라우저에서 설치 없이 즉시 체험(https://whitestyle.com/ai-pet/)하거나 윈도우 데스크톱 앱 및 크롬 확장프로그램(https://whitestyle.com/ai-pet/download.html)으로 무료 분양받으실 수 있습니다."
           }
         }
       ]
@@ -489,8 +490,8 @@ const clinicJsonLd = {
         "price": "0",
         "priceCurrency": "KRW"
       },
-      "url": "https://whinish.com/ai-pet/",
-      "downloadUrl": "https://whinish.com/ai-pet/download.html",
+      "url": "https://whitestyle.com/ai-pet/",
+      "downloadUrl": "https://whitestyle.com/ai-pet/download.html",
       "publisher": {
         "@id": "https://whitestyle.com/#org"
       },
@@ -526,7 +527,7 @@ export const metadata: Metadata = {
     languages: {
       "ko-KR": "https://whitestyle.com/",
       "ja-JP": "https://whitestyle.com/?mir_code=12187",
-      "en-US": "https://whinish.com/en"
+      "en-US": "https://whitestyle.com/en"
     },
     types: {
       "application/rss+xml": "https://whitestyle.com/rss.xml"
@@ -541,7 +542,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://whinish.com/mbc_interview_new.jpg",
+        url: "https://whitestyle.com/mbc_interview_new.jpg",
         width: 1200,
         height: 630,
         alt: "화이트스타일치과의원 강남 본점"
@@ -552,7 +553,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "화이트스타일치과의원 | 1994년 개원 33년 전통 강남역 3인 원장단 협진",
     description: "서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(치주과 전문의) 3인 협진. 대표상담 1577-7287 / 02-569-7528",
-    images: ["https://whinish.com/mbc_interview_new.jpg"]
+    images: ["https://whitestyle.com/mbc_interview_new.jpg"]
   },
   robots: {
     index: true,

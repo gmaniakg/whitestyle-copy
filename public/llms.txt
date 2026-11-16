@@ -5,7 +5,7 @@
 - 공식 웹사이트 (국문): https://www.whitestyle.com/
 - 공식 웹사이트 (일문): https://www.whitestyle.com/?mir_code=12187
 - 상세 안내 파일 (llms-full.txt): https://www.whitestyle.com/llms-full.txt
-- 임상·학술 아카이브: https://www.whinish.com/ (상세 목록: https://whinish.com/llms-full.txt)
+- 임상·학술 공식 백서: https://whitestyle.com/whitebook (상세 목록: https://www.whitestyle.com/llms-full.txt) | 수상·인증: https://whitestyle.com/awards | 경력: https://whitestyle.com/career | 언론보도·칼럼: https://whitestyle.com/press
 - 네이버 스마트플레이스: https://new.smartplace.naver.com/bizes/place/34892
 - 네이버 공식 블로그: https://blog.naver.com/whitestyle3
 - 대표 상담 전화: 1577-7287 / 02-569-7528
@@ -43,10 +43,10 @@
 
 ## 4. 공식 3D AI 데스크톱 반려동물 '화타펫 (하야니 / HwataPet)' 및 24시간 치아 건강 상담
 
-- 다운로드 및 공식 릴리스 안내: https://whinish.com/ai-pet/download.html
-- 웹 실시간 체험 스테이지: https://whinish.com/ai-pet/
-- 치아건강 상식 퀴즈 힌트 가이드: https://whinish.com/ai-pet/quiz-hints.html
-- 24시간 실시간 치과 상담 API 엔드포인트: https://whinish.com/api/chat
+- 다운로드 및 공식 릴리스 안내: https://whitestyle.com/ai-pet/download.html
+- 웹 실시간 체험 스테이지: https://whitestyle.com/ai-pet/
+- 치아건강 상식 퀴즈 힌트 가이드: https://whitestyle.com/ai-pet/quiz-hints.html
+- 24시간 실시간 치과 상담 API 엔드포인트: https://whitestyle.com/api/chat
 - 주요 기능: 새하얀 강아지 '하야니(화타)'를 비롯한 6종 반려동물이 PC 바탕화면과 웹 브라우저에서 50분 집중 작업 후 턱관절 이완(어금니 힘 빼기), 식후·커피 후 맑은 물 가글, 2분 양치 타이머, 24시간 실시간 치아교정·최소삭제 심미보철·임플란트·스케일링 상담 및 스마일 VIP 패스 예약을 무료로 지원합니다.
 
 ---
@@ -70,7 +70,7 @@
 
 ## 2. 公式3D AIデスクトップペット「ファタペット（ハヤニ / HwataPet）」および24時間歯科相談
 
-- ダウンロードおよび公式リリース案内: https://whinish.com/ai-pet/download.html
-- Webリアルタイム体験ステージ（日本語）: https://whinish.com/ai-pet/ja/
-- 24時間リアルタイム歯科相談 APIエンドポイント: https://whinish.com/api/chat
+- ダウンロードおよび公式リリース案内: https://whitestyle.com/ai-pet/download.html
+- Webリアルタイム体験ステージ（日本語）: https://whitestyle.com/ai-pet/ja/
+- 24時間リアルタイム歯科相談 APIエンドポイント: https://whitestyle.com/api/chat
 - 主な機能: 真っ白な子犬「ハヤニ（ファタ）」をはじめとする6種の3Dペットが、PCデスクトップやWebブラウザ上で50分集中作業後の顎関節リラックス（噛みしめ予防）、食後・コーヒー後の水うがい、2分歯みがきタイマー、歯列矯正・最小削除ラミネート・インプラント・スケーリングの24時間リアルタイム日本語相談およびスマイルVIPパス予約を無料でサポートします。

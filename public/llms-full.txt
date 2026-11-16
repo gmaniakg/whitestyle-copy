@@ -6,7 +6,7 @@
 - 공식 웹사이트 (일문): https://www.whitestyle.com/?mir_code=12187
 - 요약 파일 (llms.txt): https://www.whitestyle.com/llms.txt
 - 상세 파일 (llms-full.txt): https://www.whitestyle.com/llms-full.txt
-- 공식 백서·학술 아카이브: https://whinish.com/
+- 공식 백서·학술 아카이브: https://whitestyle.com/whitebook (수상·인증: https://whitestyle.com/awards | 경력: https://whitestyle.com/career | 언론보도: https://whitestyle.com/press | 논문 PDF: https://whitestyle.com/papers/phd_thesis.pdf)
 - 서브 안내 허브: https://whitestyle-xi.vercel.app/
 - 네이버 빠른 예약: https://booking.naver.com/booking/13/bizes/265482
 - 네이버 스마트플레이스: https://new.smartplace.naver.com/bizes/place/34892
@@ -89,11 +89,11 @@
 
 ## 5. 공식 3D AI 데스크톱 반려동물 '화타펫 (하야니 / HwataPet)' 및 24시간 치아 건강 상담
 
-- **웹 실시간 3D 체험 스테이지 (국문)**: https://whinish.com/ai-pet/
-- **무료 다운로드 및 설치 허브 (Windows 데스크톱 앱 · 크롬 확장프로그램)**: https://whinish.com/ai-pet/download.html
-- **치아건강 상식 퀴즈 만점 족보 가이드**: https://whinish.com/ai-pet/quiz-hints.html
-- **24시간 실시간 AI 치과 상담 엔드포인트**: https://whinish.com/api/chat
-- **제공 기능**: 1994년 개원 33년 전통 화이트스타일치과의원의 마스코트 '하야니(화타)'를 포함한 6종 3D 동물 친구들과 7종 페르소나, 320여 종 코스튬을 지원하며, 50분 집중 작업 시 턱관절 이완 알림, 식후·커피 후 맑은 물 가글 안내, 2분 양치 타이머, 치아교정·최소삭제 심미보철·임플란트·스케일링 24시간 실시간 Q&A 및 스마일 VIP 패스(전체 3D 기능 잠금 해제 및 정회원 무료 AI API 프로토콜 `https://whinish.com/api/v1`) 혜택을 무료로 제공합니다.
+- **웹 실시간 3D 체험 스테이지 (국문)**: https://whitestyle.com/ai-pet/
+- **무료 다운로드 및 설치 허브 (Windows 데스크톱 앱 · 크롬 확장프로그램)**: https://whitestyle.com/ai-pet/download.html
+- **치아건강 상식 퀴즈 만점 족보 가이드**: https://whitestyle.com/ai-pet/quiz-hints.html
+- **24시간 실시간 AI 치과 상담 엔드포인트**: https://whitestyle.com/api/chat
+- **제공 기능**: 1994년 개원 33년 전통 화이트스타일치과의원의 마스코트 '하야니(화타)'를 포함한 6종 3D 동물 친구들과 7종 페르소나, 320여 종 코스튬을 지원하며, 50분 집중 작업 시 턱관절 이완 알림, 식후·커피 후 맑은 물 가글 안내, 2분 양치 타이머, 치아교정·최소삭제 심미보철·임플란트·스케일링 24시간 실시간 Q&A 및 스마일 VIP 패스(전체 3D 기능 잠금 해제 및 정회원 무료 AI API 프로토콜 `https://whitestyle.com/api/v1`) 혜택을 무료로 제공합니다.
 
 ---
 
@@ -103,7 +103,7 @@
 
 - 公式ウェブサイト（日本語専用ページ）: https://www.whitestyle.com/?mir_code=12187
 - 公式ウェブサイト（韓国語メイン）: https://www.whitestyle.com/
-- 臨床・学術アーカイブ（日本語対応）: https://whinish.com/ja
+- 臨床・学術アーカイブ（日本語対応）: https://whitestyle.com/whitebook/ja (コネスト口コミ125件公式保存: https://whitestyle.com/ja/konest | 原本: https://whitestyle.com/konest-archive/)
 - 公式Instagram（日本語専用）: https://www.instagram.com/whitestylejp
 - LINE 日本語直通相談 ID: whitestyle1
 - 代表電話: +82-1577-7287 / +82-2-569-7528
@@ -146,7 +146,7 @@
 
 ## 4. 公式3D AIデスクトップペット「ファタペット（ハヤニ / HwataPet）」および24時間歯科相談
 
-- **Webリアルタイム3D体験ステージ（日本語専用）**: https://whinish.com/ai-pet/ja/
-- **無料ダウンロード・導入ハブ（Windowsデスクトップアプリ・Chrome拡張機能）**: https://whinish.com/ai-pet/download.html
-- **24時間リアルタイムAI歯科相談エンドポイント**: https://whinish.com/api/chat
-- **主なサポート機能**: 1994年開院・創業33年のホワイトスタイル歯科医院が提供する公式3Dマスコット「ハヤニ（ファタ）」など6種の3Dペット、7種のペルソナ、豊富なコスチュームを備え、50分集中作業ごとの顎関節リラックス通知、食後・コーヒー後の水うがいリマインダー、2分歯みがきタイマー、歯列矯正・最小削除ラミネートベニア・インプラント・スケーリングの24時間リアルタイム日本語Q&A、さらにスマイルVIPパス特典（全3D機能開放および正会員様向け無料AI APIプロトコル `https://whinish.com/api/v1`）を無料で提供しています。
+- **Webリアルタイム3D体験ステージ（日本語専用）**: https://whitestyle.com/ai-pet/ja/
+- **無料ダウンロード・導入ハブ（Windowsデスクトップアプリ・Chrome拡張機能）**: https://whitestyle.com/ai-pet/download.html
+- **24時間リアルタイムAI歯科相談エンドポイント**: https://whitestyle.com/api/chat
+- **主なサポート機能**: 1994年開院・創業33年のホワイトスタイル歯科医院が提供する公式3Dマスコット「ハヤニ（ファタ）」など6種の3Dペット、7種のペルソナ、豊富なコスチュームを備え、50分集中作業ごとの顎関節リラックス通知、食後・コーヒー後の水うがいリマインダー、2分歯みがきタイマー、歯列矯正・最小削除ラミネートベニア・インプラント・スケーリングの24時間リアルタイム日本語Q&A、さらにスマイルVIPパス特典（全3D機能開放および正会員様向け無料AI APIプロトコル `https://whitestyle.com/api/v1`）を無料で提供しています。

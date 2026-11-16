@@ -4,7 +4,7 @@
  * WhiteStyle Hwata Omni-Free AI Local Pull Protocol (v2.1)
  * ----------------------------------------------------------------------------
  * [정회원 전용 로컬 PC 무료 AI API 브릿지 프로토콜]
- * 강남역 화이트스타일치과의원(1994년 개원 33년 전통)에서 교정 보철 미백 등의 비급여 치료를 받으시고 whitestyle.com / whinish.com 정회원 인증을 마친 분께만
+ * 강남역 화이트스타일치과의원(1994년 개원 33년 전통)에서 교정 보철 미백 등의 비급여 치료를 받으시고 whitestyle.com 정회원 인증을 마친 분께만
  * 발급되는 전용 키(sk-hwata-vip-...)로 내 컴퓨터에서 무료 AI API를 무제한급으로 끌어다 쓰는 표준 프로토콜입니다.
  *
  * 사용법:
@@ -27,7 +27,7 @@ const API_KEY =
   process.env.HWATA_VIP_API_KEY ||
   '';
 const PORT = Number(process.env.HWATA_PROTOCOL_PORT || 11435);
-const GATEWAY_BASE = 'https://whinish.com/api/v1';
+const GATEWAY_BASE = 'https://whitestyle.com/api/v1';
 
 if (
   !API_KEY ||
@@ -39,7 +39,7 @@ if (
     '\n[!] 화이트스타일 정회원 키(sk-hwata-vip-...), 배우자·가족 패밀리 키(sk-hwata-fam-...), 또는 지인 초대 72시간 체험 키(sk-hwata-trial-72h-...)가 필요합니다.'
   );
   console.error('    강남역 화이트스타일치과의원에서 교정 보철 미백 등의 비급여 치료 후');
-  console.error('    https://whinish.com/ai-pet/download.html#api-protocol 에서 정회원 인증을 완료해 주세요.');
+  console.error('    https://whitestyle.com/ai-pet/download.html#api-protocol 에서 정회원 인증을 완료해 주세요.');
   console.error('\n    실행 예시: node hwata-free-ai-protocol.mjs --key sk-hwata-vip-xxxxxxxxxxxx\n');
   process.exit(1);
 }
@@ -48,7 +48,7 @@ if (
 let activeHeartbeatLease = 'Active-LocalBridge-AutoRenew';
 async function pingHayaniHeartbeat() {
   try {
-    const r = await fetch('https://whinish.com/api/ai-pet/verify-member', {
+    const r = await fetch('https://whitestyle.com/api/ai-pet/verify-member', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mode: 'heartbeat', apiKey: API_KEY, action: 'local_bridge_companion' }),

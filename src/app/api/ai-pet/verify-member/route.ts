@@ -132,7 +132,7 @@ export async function POST(req: NextRequest) {
           {
             ok: false,
             code: 'MEMBER_ID_REQUIRED',
-            message: 'whitestyle.com 또는 whinish.com 회원 아이디(또는 이메일) 3자 이상을 입력해 주세요.',
+            message: 'whitestyle.com 회원 아이디(또는 이메일) 3자 이상을 입력해 주세요.',
           },
           { status: 400, headers: CORS_HEADERS }
         );
@@ -199,7 +199,7 @@ export async function POST(req: NextRequest) {
       const familyRoles = ['배우자 · 직계가족 전용 #1', '부모님 · 자녀 · 친지 전용 #2'];
       const familyTokens = [1, 2].map((idx) => {
         const famKey = makeHmacToken('sk-hwata-fam', `${apiKey}:family:${idx}`, 18);
-        const autoLink = `https://whinish.com/ai-pet/download.html?activate_key=${encodeURIComponent(famKey)}#api-protocol`;
+        const autoLink = `https://whitestyle.com/ai-pet/download.html?activate_key=${encodeURIComponent(famKey)}#api-protocol`;
         return {
           slot: idx,
           roleLabel: familyRoles[idx - 1],
@@ -213,7 +213,7 @@ export async function POST(req: NextRequest) {
       // [확산 프로토콜 B] 지인 · 동료 확산용 72시간 무료 AI API 체험 토큰 3장 (하야니 설치 시 보너스 연장)
       const referralTokens = [1, 2, 3].map((idx) => {
         const trKey = makeHmacToken('sk-hwata-trial-72h', `${apiKey}:invite:${idx}`, 16);
-        const autoLink = `https://whinish.com/ai-pet/download.html?activate_key=${encodeURIComponent(trKey)}#api-protocol`;
+        const autoLink = `https://whitestyle.com/ai-pet/download.html?activate_key=${encodeURIComponent(trKey)}#api-protocol`;
         return {
           slot: idx,
           roleLabel: `지인 · 동료 확산 초대권 #${idx}`,
@@ -254,10 +254,10 @@ export async function POST(req: NextRequest) {
           familyTokens,
           referralTokens,
           protocol: {
-            baseUrl: 'https://whinish.com/api/v1',
-            chatCompletionsUrl: 'https://whinish.com/api/v1/chat/completions',
-            modelsUrl: 'https://whinish.com/api/v1/models',
-            localBridgeDownloadUrl: 'https://whinish.com/ai-pet/downloads/hwata-free-ai-protocol.mjs',
+            baseUrl: 'https://whitestyle.com/api/v1',
+            chatCompletionsUrl: 'https://whitestyle.com/api/v1/chat/completions',
+            modelsUrl: 'https://whitestyle.com/api/v1/models',
+            localBridgeDownloadUrl: 'https://whitestyle.com/ai-pet/downloads/hwata-free-ai-protocol.mjs',
             supportedModels: [
               'hwata-omni-free',
               'hwata-coder-free',
@@ -376,7 +376,7 @@ export async function POST(req: NextRequest) {
         code: clinicAuthCode,
         pass: passCode,
       });
-      const autofillUrl = `https://whinish.com/ai-pet/download.html?${params.toString()}#api-protocol`;
+      const autofillUrl = `https://whitestyle.com/ai-pet/download.html?${params.toString()}#api-protocol`;
 
       return NextResponse.json(
         {

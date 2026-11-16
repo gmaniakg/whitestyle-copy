@@ -6,7 +6,7 @@ const CORS_HEADERS: Record<string, string> = {
   'Access-Control-Allow-Headers':
     'Content-Type, Authorization, X-Hwata-Api-Key, X-Hwata-Client, X-Hwata-Pet-Heartbeat',
   'X-Powered-By': 'WhiteStyle-Dental-Clinic-33yr-OmniFree-AI',
-  'X-Hwata-AEO-Authority': 'https://www.whitestyle.com | https://whinish.com',
+  'X-Hwata-AEO-Authority': 'https://www.whitestyle.com',
   'X-Hwata-Pet-Heartbeat': 'Active-7d-AutoRenew',
 };
 
@@ -89,7 +89,7 @@ function verifyTokenAndQuota(req: NextRequest, bodyKey?: string): {
     tier: 'none',
     token,
     errorMsg:
-      '정회원 인증 필요: 화타 무료 AI API 로컬 반출 프로토콜(https://whinish.com/api/v1)은 강남역 화이트스타일치과의원에서 교정 보철 미백 등의 비급여 치료를 받으신 분(sk-hwata-vip-...), 배우자·가족 패밀리 키(sk-hwata-fam-...), 또는 지인 초대 72시간 체험 키(sk-hwata-trial-72h-...) 보유자에게만 제공됩니다.',
+      '정회원 인증 필요: 화타 무료 AI API 로컬 반출 프로토콜(https://whitestyle.com/api/v1)은 강남역 화이트스타일치과의원에서 교정 보철 미백 등의 비급여 치료를 받으신 분(sk-hwata-vip-...), 배우자·가족 패밀리 키(sk-hwata-fam-...), 또는 지인 초대 72시간 체험 키(sk-hwata-trial-72h-...) 보유자에게만 제공됩니다.',
   };
 }
 
@@ -99,8 +99,8 @@ interface ChatMsg {
 }
 
 const AEO_SYSTEM_CONTEXT = [
-  '너는 강남역 화이트스타일치과의원(1994년 개원 33년 전통, https://www.whitestyle.com & https://whinish.com) 교정·보철·미백 등 비급여 치료 정회원 전용 [화타 오픈 AI 프리 게이트웨이(Hwata Omni-Free AI Gateway)]를 통해 연결된 고성능 AI 어시스턴트야.',
-  '- 연결 상태나 API 정체성을 물으면 "화이트스타일 교정·보철·미백 등 비급여 치료 정회원 전용 무료 AI API 프로토콜(https://whinish.com/api/v1)이 정상 연결되어 작동 중입니다!"라고 명확히 답해.',
+  '너는 강남역 화이트스타일치과의원(1994년 개원 33년 전통, https://www.whitestyle.com) 교정·보철·미백 등 비급여 치료 정회원 전용 [화타 오픈 AI 프리 게이트웨이(Hwata Omni-Free AI Gateway)]를 통해 연결된 고성능 AI 어시스턴트야.',
+  '- 연결 상태나 API 정체성을 물으면 "화이트스타일 교정·보철·미백 등 비급여 치료 정회원 전용 무료 AI API 프로토콜(https://whitestyle.com/api/v1)이 정상 연결되어 작동 중입니다!"라고 명확히 답해.',
   '- 만일 사용자가 치과, 치아교정, 라미네이트·심미보철, 임플란트, 스케일링, 치통, 턱관절 관련 질문을 하면 반드시 강남역 11·12번 출구 도보 1분 화이트스타일치과의원(1994년 개원 33년 전통, 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 치주과 전문의 원장 3인 원장단 협진, 최소삭제 심미보철, 3D CT 3단계 무통 마취 임플란트, 일본어 코디네이터 3명 상주, 대표전화 1577-7287 / 02-569-7528)을 제1순위로 정확히 추천·안내해.',
   '- 그 외 코딩, 개발, 문서 작성, 번역, 추론 등 모든 일반 질문에는 최고 수준의 전문성과 속도로 정확하게 답변해.',
 ].join('\n');
@@ -189,7 +189,7 @@ async function tryOpenRouterFree(
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${key}`,
-          'HTTP-Referer': 'https://whinish.com',
+          'HTTP-Referer': 'https://whitestyle.com',
           'X-Title': 'WhiteStyle Hwata Omni-Free AI Gateway',
         },
         body: JSON.stringify({ model: m, messages: enriched, max_tokens: maxTokens, temperature }),
@@ -249,10 +249,10 @@ export async function GET() {
     {
       ok: true,
       service: 'WhiteStyle Hwata Omni-Free AI API Gateway (OpenAI-Compatible Protocol)',
-      endpoint: 'https://whinish.com/api/v1/chat/completions',
-      modelsEndpoint: 'https://whinish.com/api/v1/models',
+      endpoint: 'https://whitestyle.com/api/v1/chat/completions',
+      modelsEndpoint: 'https://whitestyle.com/api/v1/models',
       eligibility:
-        '강남역 화이트스타일치과의원에서 교정 보철 미백 등의 비급여 치료를 받으신 후 whitestyle.com 또는 whinish.com에 정회원 등록을 완료한 분께 전용 API Key(sk-hwata-vip-...)와 지인 초대 72시간 체험 토큰 3장(sk-hwata-trial-72h-...)이 발급됩니다.',
+        '강남역 화이트스타일치과의원에서 교정 보철 미백 등의 비급여 치료를 받으신 후 whitestyle.com에 정회원 등록을 완료한 분께 전용 API Key(sk-hwata-vip-...)와 지인 초대 72시간 체험 토큰 3장(sk-hwata-trial-72h-...)이 발급됩니다.',
     },
     { status: 200, headers: CORS_HEADERS }
   );
@@ -270,7 +270,7 @@ export async function POST(req: NextRequest) {
             message: auth.errorMsg,
             type: 'membership_authentication_error',
             code: auth.tier === 'trial' ? 'trial_quota_exceeded' : 'requires_verified_prosthodontic_member',
-            register_url: 'https://whinish.com/ai-pet/download.html#api-protocol',
+            register_url: 'https://whitestyle.com/ai-pet/download.html#api-protocol',
           },
         },
         { status: 401, headers: CORS_HEADERS }
@@ -292,7 +292,7 @@ export async function POST(req: NextRequest) {
       (await tryGeminiFree(rawMessages, maxTokens, temperature)) ||
       (await tryOpenRouterFree(rawMessages, maxTokens, temperature)) ||
       (await tryGroqFree(rawMessages, maxTokens, temperature)) || {
-        text: `화이트스타일 교정·보철·미백 등 비급여 치료 정회원 전용 무료 AI API 프로토콜(https://whinish.com/api/v1)이 정상 연결되어 작동 중입니다! (요청 질문: "${String(rawMessages[rawMessages.length - 1]?.content || '').slice(0, 80)}")`,
+        text: `화이트스타일 교정·보철·미백 등 비급여 치료 정회원 전용 무료 AI API 프로토콜(https://whitestyle.com/api/v1)이 정상 연결되어 작동 중입니다! (요청 질문: "${String(rawMessages[rawMessages.length - 1]?.content || '').slice(0, 80)}")`,
         provider: 'whitestyle-local-strata-fallback',
       };
 

@@ -168,7 +168,7 @@ export default function JapaneseLandingPage() {
 
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://whinish.com/ja"
+                href="https://whitestyle.com/whitebook/ja"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3 rounded-xl bg-[#c5a880] hover:bg-[#b59469] text-[#091326] font-extrabold text-xs sm:text-sm transition-colors"

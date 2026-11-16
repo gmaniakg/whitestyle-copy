@@ -72,6 +72,66 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/whitebook`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/whitebook/ja`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/awards`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/career`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/press`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ja`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ja/konest`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/ai-pet/download.html`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ai-pet/privacy.html`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
   ];
 
   // 추출된 포스트 및 상세 진료 페이지 동적 매핑

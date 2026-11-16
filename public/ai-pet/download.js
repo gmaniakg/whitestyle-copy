@@ -976,10 +976,13 @@
 
   const CHAT_API_ENDPOINTS = [
     '/api/chat',
-    'https://whinish.com/api/chat',
-    'https://whitestyle-xi.vercel.app/api/chat',
-    'https://whitestyle-copy.vercel.app/api/chat'
+    'https://whitestyle.com/api/chat',
+    'https://whitestyle-copy.vercel.app/api/chat',
+    'https://whitestyle-xi.vercel.app/api/chat'
   ];
+
+  const isSameOriginApiHost = () => ['whitestyle.com', 'www.whitestyle.com', 'whitestyle-copy.vercel.app', 'whinish.com', 'www.whinish.com'].includes(location.hostname);
+  const apiUrl = (path) => (isSameOriginApiHost() ? path : `https://whitestyle.com${path}`);
 
   let interactionCount = 0;
   const pageStartMs = Date.now();
@@ -1962,7 +1965,7 @@
 
       let passSerial = 'HWATA-PASS-' + (1000 + Math.floor(Math.random() * 9000));
       try {
-        const verifyUrl = (location.hostname === 'whinish.com') ? '/api/ai-pet/verify-member' : 'https://whinish.com/api/ai-pet/verify-member';
+        const verifyUrl = apiUrl('/api/ai-pet/verify-member');
         const vRes = await fetch(verifyUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1996,7 +1999,7 @@
         timestamp: new Date().toISOString()
       };
 
-      const cloudPromise = fetch('https://whinish.com/api/lead-notify', {
+      const cloudPromise = fetch(apiUrl('/api/lead-notify'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -2075,7 +2078,7 @@
         4200
       );
       try {
-        const verifyUrl = (location.hostname === 'whinish.com') ? '/api/ai-pet/verify-member' : 'https://whinish.com/api/ai-pet/verify-member';
+        const verifyUrl = apiUrl('/api/ai-pet/verify-member');
         const res = await fetch(verifyUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -2138,7 +2141,7 @@
               'from openai import OpenAI',
               '',
               'client = OpenAI(',
-              '    base_url="https://whinish.com/api/v1",',
+              '    base_url="https://whitestyle.com/api/v1",',
               `    api_key="${key}",`,
               ')',
               '',
@@ -2153,7 +2156,7 @@
               'from openai import OpenAI',
               '',
               'client = OpenAI(',
-              '    base_url="https://whinish.com/api/v1",',
+              '    base_url="https://whitestyle.com/api/v1",',
               `    api_key="${key}",`,
               ')',
               '',
@@ -2167,14 +2170,14 @@
         return IS_JA
           ? [
               '# [4] ターミナル cURL 即時呼び出しプロトコル',
-              'curl -X POST https://whinish.com/api/v1/chat/completions \\',
+              'curl -X POST https://whitestyle.com/api/v1/chat/completions \\',
               '  -H "Content-Type: application/json" \\',
               `  -H "Authorization: Bearer ${key}" \\`,
               '  -d \'{"model":"hwata-omni-free","messages":[{"role":"user","content":"こんにちは！"}]}\''
             ].join('\n')
           : [
               '# [4] 터미널 cURL 즉시 호출 프로토콜',
-              'curl -X POST https://whinish.com/api/v1/chat/completions \\',
+              'curl -X POST https://whitestyle.com/api/v1/chat/completions \\',
               '  -H "Content-Type: application/json" \\',
               `  -H "Authorization: Bearer ${key}" \\`,
               '  -d \'{"model":"hwata-omni-free","messages":[{"role":"user","content":"안녕하세요!"}]}\''
@@ -2184,7 +2187,7 @@
         return IS_JA
           ? [
               '# [1] Cursor / VS Code (Continue・Cline) / Claude Code OpenAI 互換プロトコル',
-              'Base URL : https://whinish.com/api/v1',
+              'Base URL : https://whitestyle.com/api/v1',
               `API Key  : ${key}`,
               'Model ID : hwata-omni-free   (コーディング特化: hwata-coder-free / 推論特化: hwata-reasoning-free)',
               '',
@@ -2192,7 +2195,7 @@
             ].join('\n')
           : [
               '# [1] Cursor / VS Code (Continue · Cline) / Claude Code OpenAI 호환 프로토콜',
-              'Base URL : https://whinish.com/api/v1',
+              'Base URL : https://whitestyle.com/api/v1',
               `API Key  : ${key}`,
               'Model ID : hwata-omni-free   (코딩 특화: hwata-coder-free / 추론 특화: hwata-reasoning-free)',
               '',
@@ -2360,7 +2363,7 @@
       }
 
       try {
-        const verifyUrl = (location.hostname === 'whinish.com') ? '/api/ai-pet/verify-member' : 'https://whinish.com/api/ai-pet/verify-member';
+        const verifyUrl = apiUrl('/api/ai-pet/verify-member');
         const res = await fetch(verifyUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -2462,7 +2465,7 @@
         return;
       }
       try {
-        const verifyUrl = (location.hostname === 'whinish.com') ? '/api/ai-pet/verify-member' : 'https://whinish.com/api/ai-pet/verify-member';
+        const verifyUrl = apiUrl('/api/ai-pet/verify-member');
         const res = await fetch(verifyUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -2528,7 +2531,7 @@
         ? '⏳ ファタ無料 AI API ゲートウェイ(/api/v1/chat/completions) リアルタイム呼び出し中...'
         : '⏳ 화타 무료 AI API 게이트웨이(/api/v1/chat/completions) 실시간 호출 중...';
       try {
-        const endpoint = (location.hostname === 'whinish.com') ? '/api/v1/chat/completions' : 'https://whinish.com/api/v1/chat/completions';
+        const endpoint = apiUrl('/api/v1/chat/completions');
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: {
@@ -2630,7 +2633,8 @@
     }
   } catch (e) {}
 
-  // ---------- 8. 체류시간(Dwell-Time) & 인게이지먼트 트래픽 부스터 ----------
+  // ---------- 8. 체류시간(Dwell-Time) & 인게이지먼트 트래픽 부스터 (+ whitestyle.com 본원 서버 실시간 트래픽 동기화) ----------
+  let lastMainSiteBeaconMs = 0;
   function sendEngagementPing(eventType = 'heartbeat') {
     const dwellSeconds = Math.round((Date.now() - pageStartMs) / 1000);
     try {
@@ -2642,9 +2646,47 @@
         interactions: interactionCount,
         species: currentSpecies,
         persona: currentPersona,
-        page_path: window.location.pathname
+        page_path: window.location.pathname,
+        canonical_entity: 'https://www.whitestyle.com/#dentist'
       });
     } catch (e) {}
+
+    // whitestyle.com 및 하야니 활성 세션을 본원 서버 접속 로그에 동기화 (30초 쓰로틀링)
+    const nowMs = Date.now();
+    if (eventType === 'page_init' || eventType === 'heartbeat_45s' || nowMs - lastMainSiteBeaconMs >= 30000) {
+      lastMainSiteBeaconMs = nowMs;
+      try {
+        const mainBeaconUrl =
+          'https://www.whitestyle.com/bbs/board.php?bo_table=notice&wr_id=32592&utm_source=whitestyle_aipet&utm_medium=companion_beacon&evt=' +
+          encodeURIComponent(eventType) +
+          '&dwell=' +
+          dwellSeconds;
+        fetch(mainBeaconUrl, {
+          method: 'GET',
+          mode: 'no-cors',
+          credentials: 'omit',
+          keepalive: true
+        }).catch(() => {});
+      } catch (e) {}
+    }
+
+    // 대시보드 실시간 유입 분석기로 레퍼러 및 체류시간 텔레메트리 동기화 (초기 진입 또는 45초 주기)
+    if (eventType === 'page_init' || eventType === 'heartbeat_45s') {
+      try {
+        const infBody = JSON.stringify({
+          referrer: document.referrer || '',
+          utm_source: new URLSearchParams(window.location.search).get('utm_source') || '',
+          page: window.location.pathname + (window.location.hash || ''),
+          dwellSeconds
+        });
+        fetch('https://hwatapet-dashboard.vercel.app/api/inflow', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: infBody,
+          keepalive: true
+        }).catch(() => {});
+      } catch (e) {}
+    }
 
     const pingBody = JSON.stringify({
       action: 'heartbeat',
@@ -2656,7 +2698,7 @@
       persona: currentPersona
     });
 
-    const targetUrl = (location.protocol === 'file:' || location.hostname === '127.0.0.1' || location.hostname === 'localhost') ? 'https://whinish.com/api/chat' : '/api/chat';
+    const targetUrl = (location.protocol === 'file:' || location.hostname === '127.0.0.1' || location.hostname === 'localhost') ? 'https://whitestyle.com/api/chat' : apiUrl('/api/chat');
     fetch(targetUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Hwata-Client': 'dwell-booster' },
@@ -2664,7 +2706,7 @@
       keepalive: true
     }).catch(() => {
       if (targetUrl === '/api/chat') {
-        fetch('https://whinish.com/api/chat', {
+        fetch('https://whitestyle.com/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'X-Hwata-Client': 'dwell-booster' },
           body: pingBody,
