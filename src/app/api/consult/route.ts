@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
-import { createConsultation, getConsultations } from '@/lib/consultation-db';
+import { createConsultation, getConsultations, updateConsultationStatus } from '@/lib/consultation-db';
 import { checkRateLimit } from '@/app/api/_lib/rate-limit';
 import {
   requireAdmin,
@@ -13,7 +13,7 @@ import {
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-const MAX_LIMIT = 100;
+const MAX_LIMIT = 200;
 const NTFY_TOPIC = process.env.CONSULT_NTFY_TOPIC || 'ws_clinic_lead_06134_9217';
 
 function encryptLeadPayload(payload: Record<string, unknown>): string {
@@ -202,9 +202,9 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const status = searchParams.get('status') || 'ALL';
     const search = searchParams.get('search') || '';
-    const rawLimit = parseInt(searchParams.get('limit') || '50', 10);
+    const rawLimit = parseInt(searchParams.get('limit') || '100', 10);
     const rawOffset = parseInt(searchParams.get('offset') || '0', 10);
-    const limit = Math.min(Math.max(Number.isFinite(rawLimit) ? rawLimit : 50, 1), MAX_LIMIT);
+    const limit = Math.min(Math.max(Number.isFinite(rawLimit) ? rawLimit : 100, 1), MAX_LIMIT);
     const offset = Math.max(Number.isFinite(rawOffset) ? rawOffset : 0, 0);
 
     const { items, total } = await getConsultations({
@@ -222,12 +222,70 @@ export async function GET(req: NextRequest) {
         limit,
         offset,
       },
-      { headers: { 'Cache-Control': 'no-store' } }
+      {
+        headers: {
+          'Cache-Control': 'no-store',
+          'X-Robots-Tag': 'noindex, nofollow',
+        },
+      }
     );
   } catch (err: any) {
     console.error('[API /api/consult GET error]:', err);
     return NextResponse.json(
       { success: false, message: '상담 내역 조회 중 오류가 발생하였습니다.' },
+      { status: 500 }
+    );
+  }
+}
+
+const VALID_STATUSES = new Set(['PENDING', 'CONTACTED', 'RESERVED', 'CANCELLED']);
+
+export async function PATCH(req: NextRequest) {
+  const admin = await requireAdmin();
+  if (!admin) {
+    return NextResponse.json(
+      { success: false, message: '권한이 없습니다.' },
+      { status: 403 }
+    );
+  }
+
+  try {
+    const body = await req.json();
+    const id = typeof body?.id === 'string' ? body.id.trim() : '';
+    const status = typeof body?.status === 'string' ? body.status.trim().toUpperCase() : '';
+
+    if (!id || !VALID_STATUSES.has(status)) {
+      return NextResponse.json(
+        { success: false, message: '유효하지 않은 상담 ID 또는 상태입니다.' },
+        { status: 400 }
+      );
+    }
+
+    const updated = await updateConsultationStatus(
+      id,
+      status as 'PENDING' | 'CONTACTED' | 'RESERVED' | 'CANCELLED'
+    );
+
+    if (!updated) {
+      return NextResponse.json(
+        { success: false, message: '해당 상담 내역을 찾을 수 없습니다.' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      { success: true, item: updated },
+      {
+        headers: {
+          'Cache-Control': 'no-store',
+          'X-Robots-Tag': 'noindex, nofollow',
+        },
+      }
+    );
+  } catch (err: any) {
+    console.error('[API /api/consult PATCH error]:', err);
+    return NextResponse.json(
+      { success: false, message: '상담 상태 변경 중 오류가 발생하였습니다.' },
       { status: 500 }
     );
   }

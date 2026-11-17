@@ -14,8 +14,10 @@ export async function middleware(req: NextRequest) {
 
   if (!token || !email || !admins.includes(email)) {
     const url = req.nextUrl.clone();
+    const callbackTarget = `${req.nextUrl.pathname}${req.nextUrl.search}`;
     url.pathname = '/login';
     url.search = '';
+    url.searchParams.set('callbackUrl', callbackTarget);
     return NextResponse.redirect(url);
   }
   return NextResponse.next();

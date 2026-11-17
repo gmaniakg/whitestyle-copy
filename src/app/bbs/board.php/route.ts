@@ -4,16 +4,24 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const boTable = searchParams.get('bo_table') || '';
+  const boTable = (searchParams.get('bo_table') || '').toLowerCase();
   const wrId = searchParams.get('wr_id') || '';
 
   let destination = '/';
+  let statusCode: 301 | 307 = 301;
 
-  switch (boTable.toLowerCase()) {
+  switch (boTable) {
     case 'online':
-    case 'doc_counsel':
-      destination = '/consult';
+    case 'feedback':
+    case 'reserve':
+    case 'doc_counsel': {
+      const params = new URLSearchParams();
+      params.set('bo_table', boTable);
+      if (wrId) params.set('wr_id', wrId);
+      destination = `/admin/consultations?${params.toString()}`;
+      statusCode = 307;
       break;
+    }
     case 'notice':
       destination = wrId ? `/board/notice/${wrId}` : '/board/notice';
       break;
@@ -36,5 +44,5 @@ export async function GET(req: NextRequest) {
       break;
   }
 
-  return NextResponse.redirect(new URL(destination, req.url), 301);
+  return NextResponse.redirect(new URL(destination, req.url), statusCode);
 }

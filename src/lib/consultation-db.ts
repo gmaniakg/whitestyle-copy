@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import initialConsultations from '@/data/initial-consultations.json';
 
 export interface ConsultationRecord {
   id: string;
@@ -31,7 +32,7 @@ function ensureStorage() {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
     if (!fs.existsSync(DATA_FILE)) {
-      fs.writeFileSync(DATA_FILE, JSON.stringify([], null, 2), 'utf-8');
+      fs.writeFileSync(DATA_FILE, JSON.stringify(initialConsultations, null, 2), 'utf-8');
     }
   } catch (err) {
     console.error('[consultation-db] ensureStorage error:', err);
@@ -43,11 +44,14 @@ function readLocalRecords(): ConsultationRecord[] {
   ensureStorage();
   try {
     const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(raw) as ConsultationRecord[];
+    const parsed = JSON.parse(raw) as ConsultationRecord[];
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed;
+    }
   } catch (err) {
     console.error('[consultation-db] readLocalRecords error:', err);
-    return [];
   }
+  return initialConsultations as ConsultationRecord[];
 }
 
 // Write records to local JSON fallback
@@ -172,8 +176,10 @@ export async function getConsultations(params?: {
       }
       if (params?.search) {
         where.OR = [
+          { id: { contains: params.search, mode: 'insensitive' } },
           { name: { contains: params.search, mode: 'insensitive' } },
           { phone: { contains: params.search, mode: 'insensitive' } },
+          { treatment: { contains: params.search, mode: 'insensitive' } },
           { memo: { contains: params.search, mode: 'insensitive' } },
         ];
       }
@@ -188,14 +194,17 @@ export async function getConsultations(params?: {
         prisma.consultation.count({ where }),
       ]);
 
-      return {
-        items: items.map((item: any) => ({
-          ...item,
-          createdAt: item.createdAt.toISOString(),
-          updatedAt: item.updatedAt.toISOString(),
-        })),
-        total,
-      };
+      if (total > 0 || params?.search || (params?.status && params.status !== 'ALL')) {
+        return {
+          items: items.map((item: any) => ({
+            ...item,
+            consentAt: item.consentAt ? item.consentAt.toISOString() : item.createdAt.toISOString(),
+            createdAt: item.createdAt.toISOString(),
+            updatedAt: item.updatedAt.toISOString(),
+          })),
+          total,
+        };
+      }
     } catch (err) {
       console.warn('[consultation-db] Prisma query failed, falling back to JSON:', err);
     }
@@ -212,8 +221,10 @@ export async function getConsultations(params?: {
     const q = params.search.toLowerCase();
     records = records.filter(
       r =>
+        r.id.toLowerCase().includes(q) ||
         r.name.toLowerCase().includes(q) ||
         r.phone.includes(q) ||
+        (r.treatment && r.treatment.toLowerCase().includes(q)) ||
         (r.memo && r.memo.toLowerCase().includes(q))
     );
   }
