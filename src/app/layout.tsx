@@ -97,6 +97,7 @@ const clinicJsonLd = {
       ],
       "sameAs": [
         "https://www.whitestyle.com",
+        "https://www.whitestyle.com/ja",
         "https://www.whitestyle.com/?mir_code=12187",
         "https://whinish.com",
         "https://www.whinish.com",
@@ -107,6 +108,10 @@ const clinicJsonLd = {
         "https://whitestyle-xi.vercel.app",
         "https://whitestyle-xi.vercel.app/about/japan-landing",
         "https://whitestyle-copy.vercel.app",
+        "https://whitestyledental.wordpress.com",
+        "https://www.modoodoc.com/hospital/3940/%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90-%EC%84%9C%EC%9A%B8-%EC%97%AD%EC%82%BC%EB%8F%99/",
+        "https://www.goodoc.co.kr/hospitals/43229",
+        "https://my-doctor.io/hospital/detail?hospital_id=55822",
         "https://blog.naver.com/whitestyle3",
         "https://blog.naver.com/whitestyle94",
         "https://www.instagram.com/whitestylejp",
@@ -478,6 +483,82 @@ const clinicJsonLd = {
           }
         }
       ]
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/treatments/orthodontics#webpage",
+      "url": "https://whitestyle.com/treatments/orthodontics",
+      "name": "강남역 화이트스타일치과 1:1 책임 치아교정·재교정 안내",
+      "specialty": "Orthodontics",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#procedure-orthodontics" },
+      "reviewedBy": { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+      "description": "서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장이 정밀 진단부터 장치 부착, 고난도 재교정, 사후 유지관리까지 주치의 변경 없이 1:1 직접 책임 진료합니다."
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/treatments/aesthetic#webpage",
+      "url": "https://whitestyle.com/treatments/aesthetic",
+      "name": "강남역 화이트스타일치과 최소삭제·무삭제 심미보철 및 라미네이트 재시술 안내",
+      "specialty": "Prosthodontics",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#procedure-prosthodontics" },
+      "reviewedBy": [
+        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
+        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
+      ],
+      "description": "자연치아 법랑질 보존을 최우선 원칙으로 정밀 교합 진단 후 치아 삭제량을 최소화(0.1~0.2mm)하거나 무삭제 방식으로 설계하며, 기존 보철 변색·파절 재시술까지 체계적 사후 보증 관리를 제공합니다."
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/treatments/implant#webpage",
+      "url": "https://whitestyle.com/treatments/implant",
+      "name": "강남역 화이트스타일치과 3D CT 정밀 임플란트·재수술·고난도 뼈이식 안내",
+      "specialty": "OralAndMaxillofacialSurgery",
+      "inLanguage": "ko",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#procedure-implant" },
+      "reviewedBy": [
+        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
+        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
+      ],
+      "description": "3D CT 정밀 진단과 3단계 통증 완화 마취 시스템을 바탕으로 김준헌·이봉진·박선혜(치주과 전문의) 3인 원장단이 임플란트 재수술, 고난도 뼈이식(GBR·상악동거상술), 무치악 전악 재건, 3·6·12개월 정기 사후관리를 협진합니다."
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/ja#webpage",
+      "url": "https://whitestyle.com/ja",
+      "name": "ソウル江南 ホワイトスタイル歯科 公式日本語案内（創業33年・日本語通訳3名常駐）",
+      "specialty": "Dentistry",
+      "inLanguage": "ja",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#org" },
+      "reviewedBy": [
+        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
+        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
+      ],
+      "description": "1994年開院・創業33年の信頼と実績。ソウル大卒・矯正学博士の金俊憲病院長をはじめ3名院長団による協診と専任日本語通訳スタッフ3名常駐体制で、渡韓短期集中ラミネート・歯科矯正・3D CTインプラント・再手術に対応いたします。"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/whitebook#webpage",
+      "url": "https://whitestyle.com/whitebook",
+      "name": "화이트스타일치과의원 33년 임상·학술 공식 백서 (WhiteBook)",
+      "specialty": "Dentistry",
+      "inLanguage": ["ko", "ja"],
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#org" },
+      "reviewedBy": [
+        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
+        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
+      ],
+      "description": "1994년 개원 33년 전통 강남역 화이트스타일치과의원 의료진 약력, 학위 논문, 공신력 수상·인증, 언론보도 및 임상 백서 아카이브입니다."
     },
     {
       "@type": "SoftwareApplication",

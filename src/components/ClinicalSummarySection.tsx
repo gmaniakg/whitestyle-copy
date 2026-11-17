@@ -54,11 +54,26 @@ export default function ClinicalSummarySection({
         addressCountry: 'KR',
       },
     },
-    reviewedBy: {
-      '@type': 'Person',
-      name: '김준헌 병원장',
-      jobTitle: '서울대졸 · 단국대 외래교수 · 교정학 박사',
-    },
+    reviewedBy: [
+      {
+        '@type': 'Physician',
+        '@id': 'https://whitestyle.com/#doctor-kim-junheon',
+        name: '김준헌 병원장',
+        jobTitle: '서울대졸 · 단국대 외래교수 · 교정학 박사',
+      },
+      {
+        '@type': 'Physician',
+        '@id': 'https://whitestyle.com/#doctor-lee-bongjin',
+        name: '이봉진 대표원장',
+        jobTitle: '연세대 치과대학 졸업 · 3D CT 임플란트·교합 전담',
+      },
+      {
+        '@type': 'Physician',
+        '@id': 'https://whitestyle.com/#doctor-park-seonhye',
+        name: '박선혜 원장',
+        jobTitle: '보건복지부 인증 치주과 전문의 · 우수보철치과의사',
+      },
+    ],
   };
 
   const faqSchema =
@@ -193,7 +208,7 @@ export default function ClinicalSummarySection({
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <a
-              href="https://m.booking.naver.com/booking/13/bizes/210815"
+              href="https://booking.naver.com/booking/13/bizes/265482"
               target="_blank"
               rel="noreferrer"
               className="py-3.5 px-4 rounded-xl bg-[#03C75A] hover:bg-[#02b351] text-white font-extrabold text-sm text-center shadow-sm transition-colors"

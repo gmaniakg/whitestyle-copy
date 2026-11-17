@@ -5,8 +5,28 @@ import Link from 'next/link';
 import KonestArchiveSection from '@/components/KonestArchiveSection';
 
 export default function JapaneseLandingPage() {
+  const jaMedicalWebPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    name: 'ソウル江南 ホワイトスタイル歯科 公式日本語案内（創業33年・3名院長協診・日本語通訳3名常駐）',
+    url: 'https://whitestyle.com/ja',
+    inLanguage: 'ja',
+    specialty: 'Dentistry',
+    description:
+      '1994年開院・創業33年。ソウル大卒・矯正学博士の金俊憲病院長、李奉珍代表院長、保健福祉部認証 歯周科専門医の朴宣恵院長の3名院長団協診と専任日本語医療通訳スタッフ3名常駐体制をご案内します。',
+    reviewedBy: [
+      { '@type': 'Physician', name: '金俊憲（キム・ジュンホン）病院長', jobTitle: '矯正学博士・歯学博士' },
+      { '@type': 'Physician', name: '李奉珍（イ・ボンジン）代表院長', jobTitle: '延世大歯大出身・インプラント／咬合担当' },
+      { '@type': 'Physician', name: '朴宣恵（パク・ソンヘ）院長', jobTitle: '保健福祉部認証 歯周科専門医' },
+    ],
+  };
+
   return (
-    <div lang="ja" className="w-full min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-amber-100 selection:text-slate-900">
+    <div lang="ja" className="w-full min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-amber-100 selection:text-slate-900 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jaMedicalWebPageJsonLd) }}
+      />
       {/* 1. HERO SECTION (Editorial Navy & Warm Gold, No AI Cliché Gradients) */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#091326] via-[#102347] to-[#162d59] text-white py-20 md:py-28 px-4 sm:px-8 lg:px-16 border-b-4 border-[#c5a880]">
         <div className="relative max-w-6xl mx-auto flex flex-col items-center text-center">
@@ -29,7 +49,7 @@ export default function JapaneseLandingPage() {
           </h1>
 
           <p className="text-base sm:text-xl md:text-2xl text-slate-200 max-w-3xl mb-10 leading-relaxed font-medium">
-            ソウル大学校歯科大学出身・臨床33年の金俊憲（キム・ジュンホン）代表院長が直接執刀。<br className="hidden sm:inline" />
+            ソウル大卒・矯正学博士の金俊憲（キム・ジュンホン）病院長、延世大出身の李奉珍代表院長、保健福祉部認証 歯周科専門医の朴宣恵院長の3名院長団協診。<br className="hidden sm:inline" />
             専任の日本語医療通訳スタッフ3名が常駐し、カウンセリングから日本帰国後のLINEアフターケアまで完全サポートいたします。
           </p>
 
@@ -103,9 +123,9 @@ export default function JapaneseLandingPage() {
             <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center font-black text-lg mb-5">
               02
             </div>
-            <h3 className="text-xl font-extrabold text-slate-900 mb-3">ソウル大出身・臨床33年の代表院長</h3>
+            <h3 className="text-xl font-extrabold text-slate-900 mb-3">創業33年・矯正／補綴／歯周科専門医の3名院長団協診</h3>
             <p className="text-slate-600 leading-relaxed text-sm">
-              ソウル大卒、檀国大外来教授、矯正学博士の金俊憲（キム・ジュンホン）代表院長が、流れ作業ではなくお一人おひとりを直接診断・執刀いたします。
+              ソウル大卒・檀国大外来教授・矯正学博士の金俊憲病院長、李奉珍代表院長、保健福祉部認証 歯周科専門医の朴宣恵院長の3名院長団が、難症例の骨移植インプラント・歯科矯正・無削除ラミネートを協診いたします。
             </p>
           </div>
 
@@ -139,6 +159,54 @@ export default function JapaneseLandingPage() {
             <p className="text-slate-600 leading-relaxed text-sm">
               無理な抜歯や歯を削りすぎる治療を避け、歯をほとんど削らない無削除ラミネート（ゼロシェル・WHINISH）や高強度オールジルコニア補綴を採用しています。
             </p>
+          </div>
+        </div>
+
+        {/* 6-POINT CONFIRMATION MATRIX FOR JAPANESE PATIENTS */}
+        <div className="mt-14 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="px-6 py-5 bg-[#091326] text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <h3 className="text-lg sm:text-xl font-extrabold text-[#fde68a]">
+              日本の患者様がよく確認される6大診療条件まとめ
+            </h3>
+            <span className="text-xs text-slate-300 font-semibold">
+              創業33年・3名院長協診・日本語通訳3名常駐
+            </span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-sm sm:text-base">
+              <thead>
+                <tr className="bg-slate-100 text-slate-900 border-b border-slate-200">
+                  <th className="py-3.5 px-5 font-extrabold w-1/3">ご確認項目</th>
+                  <th className="py-3.5 px-5 font-extrabold">ホワイトスタイル歯科医院（韓国・江南駅）の対応基準</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                <tr>
+                  <td className="py-4 px-5 font-bold text-slate-900">1. 渡韓当日の精密診断・短期集中計画</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">ご来院当日の3D CT・Quick-Ceph・口腔スキャン精密診断により、1DAYホワイトニングから2〜3回集中のラミネート、インプラントまで滞在日程に合わせた治療計画をご案内します。</td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-4 px-5 font-bold text-slate-900">2. 3段階無痛麻酔・痛み緩和ケア</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">うがい麻酔・表面塗布麻酔・温度調節デジタル定圧無痛麻酔器の3段階緩和システムにより、痛みに不安のある方も安心して治療を受けられます。</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-5 font-bold text-slate-900">3. 3名院長団協診・他院再手術対応</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">金俊憲病院長(矯正学博士)・李奉珍代表院長(インプラント／咬合)・朴宣恵院長(歯周科専門医)の3名協診で、難症例インプラント再手術やラミネート再治療・再矯正にも対応します。</td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-4 px-5 font-bold text-slate-900">4. HIRA非給与基準遵守・3/6/12ヶ月LINE定期検診</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">韓国健康保険審査評価院(HIRA)の非給与基準および純正品保証を守り、治療後も3・6・12ヶ月周期のアフターケアとLINE経過フォローを実施します。</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-5 font-bold text-slate-900">5. 専任日本語医療通訳スタッフ3名常駐</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">受付からCT検査、院長診察、費用説明、ご帰国後のLINE直通相談（ID: whitestyle1）まで日本語医療通訳コーディネーター3名がマンツーマンでサポートします。</td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-4 px-5 font-bold text-slate-900">6. 診療時間・休診日・アクセス</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">月・火・水・金 10:00〜19:00（昼休み 13:00〜14:00）／ 土曜 10:00〜14:00（木曜・日曜・韓国祝日休診）｜ 江南駅11番・12番出口 徒歩1分</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -217,7 +285,7 @@ export default function JapaneseLandingPage() {
               <ul className="text-sm text-slate-700 space-y-1.5">
                 <li>・ <strong>LINE ID</strong>：<span className="text-emerald-700 font-extrabold">whitestyle1</span></li>
                 <li>・ <strong>カカオトーク ID</strong>：<span className="text-amber-800 font-extrabold">whitestyle2</span></li>
-                <li>・ <strong>日本語直通電話</strong>：+82-10-3046-5010</li>
+                <li>・ <strong>日本語・国際直通電話</strong>：+82-1577-7287 / +82-2-569-7528</li>
                 <li>・ <strong>Eメール</strong>：white@whitestyle.com</li>
               </ul>
             </div>
