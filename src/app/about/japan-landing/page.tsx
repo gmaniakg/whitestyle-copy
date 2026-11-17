@@ -218,6 +218,89 @@ export default function JapaneseLandingPage() {
         </div>
       </section>
 
+      {/* 3.5 JAPANESE INTERPRETER HERITAGE STORY (室長 イ・ヒョンホ 紹介) */}
+      <section className="py-16 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto">
+        <div className="bg-white rounded-3xl border border-[#c5a880]/60 shadow-lg overflow-hidden">
+          <div className="bg-[#091326] text-white px-6 sm:px-10 py-6 border-b-2 border-[#d97706]">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-[#fde68a] font-extrabold text-xs mb-3">
+              AMEBA患者様実写記録 × 日本の高校・大学野球出身コーディネーター
+            </span>
+            <h2 className="text-xl sm:text-3xl font-black leading-snug text-white">
+              日本人患者様がブログに残した「1枚の名刺」<br className="hidden sm:inline" />
+              <span className="text-[#fde68a]">—— 日本の高校・大学野球出身の室長 イ・ヒョンホ（イヒョンホ）の1対1同行サポート</span>
+            </h2>
+          </div>
+
+          <div className="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5 flex flex-col gap-3">
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-[#faf8f4]">
+                <img
+                  src="/images/leehyunho_ameba_card_heritage.jpg"
+                  alt="ホワイトスタイル歯科 室長 イ・ヒョンホ（イヒョンホ）名刺・直通ホットライン案内"
+                  className="w-full h-auto block"
+                />
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                ※ 在韓日本人ブロガー様が実際の来院体験記（アメーバブログ）に掲載してくださった名刺記録をもとに、現住所（江南駅11・12番出口徒歩1分）および現在の直通電話（+82-10-3046-5010）へ最新化した案内カードです。
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 space-y-5 text-sm sm:text-base text-slate-700 leading-[1.9]">
+              <div className="p-5 rounded-2xl bg-[#faf8f4] border border-[#e5dec9]">
+                <h3 className="font-black text-slate-900 text-base sm:text-lg mb-2">
+                  ⚾ 日本の高校野球・大学野球で培った「礼儀・誠実・最後まで寄り添う責任感」
+                </h3>
+                <p className="text-slate-700 text-sm leading-[1.9]">
+                  日本語専任チームを統括する<strong>イ・ヒョンホ（イヒョンホ）室長</strong>は、<strong>日本の高校野球・大学野球の現場で培った礼儀作法とチームワーク</strong>、そして繊細な日本語ニュアンスへの深い理解をもとに、歯科治療特有の不安（「しみる」「噛み合わせの違和感」「費用への心配」）まで3名院長団へ正確に橋渡しいたします。
+                </p>
+              </div>
+
+              <div className="space-y-2.5 text-sm">
+                <h3 className="font-extrabold text-slate-900 text-base">
+                  📝 実際の日本語患者様ブログ＆15年アーカイブに残された評価
+                </h3>
+                <ul className="space-y-2 text-slate-700">
+                  <li>
+                    ・ <strong>名刺写真付き体験談：</strong>「日本語通訳の男性の方が最初から最後まで1から10まで付きっ切りで対応してくれました」
+                    （<a href="https://ameblo.jp/jmatk-tohojj/entry-12341708257.html" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">アメーバブログ実体験記 ↗</a>）
+                  </li>
+                  <li>
+                    ・ <strong>診察室同行＆帰国後フォロー：</strong>「受付から個室診療まで日本語の出来る男性が横に付き、帰宅後もLINEで大丈夫かと連絡をくれて安心でした」
+                    （<a href="https://ameblo.jp/otonaseoul/entry-12788048958.html" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">otonaseoul様レポ ↗</a> ・ <a href="https://ameblo.jp/brilliant-50/entry-12864559828.html" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">brilliant-50様レポ ↗</a>）
+                  </li>
+                  <li>
+                    ・ <strong>15年間の直筆相談＆公認紹介：</strong>コネスト掲示板での「ホワイトスタイル歯科の相談を担当しているイヒョンホです」実名回答（<a href="https://comm.konest.com/topic/379497" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">KONEST相談記録 ↗</a>）および政府公認医療観光紹介（<a href="https://ameblo.jp/kokorokorea/entry-12972857336.html" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">KOKORO KOREA特集 ↗</a>）でも確認されています。
+                  </li>
+                </ul>
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-1">
+                <a
+                  href="tel:+82-10-3046-5010"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#091326] font-extrabold text-sm transition-colors shadow-sm"
+                >
+                  📞 室長 イ・ヒョンホ直通 (+82-10-3046-5010)
+                </a>
+                <a
+                  href="https://line.me/R/ti/p/~whitestyle1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white font-extrabold text-sm transition-colors shadow-sm"
+                >
+                  💬 LINE相談 (ID: whitestyle1)
+                </a>
+                <Link
+                  href="/board/notice/1901"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-sm transition-colors border border-slate-300"
+                >
+                  📖 ストーリー全文を読む →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 4. CLINIC DIRECTOR PROFILE (代表院長紹介) */}
       <section className="py-16 px-4 sm:px-8 lg:px-16 max-w-6xl mx-auto">
         <div className="bg-[#091326] text-white rounded-3xl p-8 md:p-12 shadow-xl border border-[#c5a880]/40 flex flex-col md:flex-row items-center gap-10">

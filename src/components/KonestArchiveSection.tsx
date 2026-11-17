@@ -118,6 +118,50 @@ export default function KonestArchiveSection() {
           ))}
         </div>
 
+        {/* Dedicated Interpreter Spotlight: Manager Lee Hyun-ho (室長 イ・ヒョンホ) */}
+        <div className="bg-white rounded-3xl border border-[#c5a880]/60 shadow-md p-6 sm:p-8 mb-10 flex flex-col lg:flex-row items-center gap-7">
+          <div className="w-full lg:w-[360px] shrink-0 rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-[#faf8f4]">
+            <img
+              src="/images/leehyunho_ameba_card_heritage.jpg"
+              alt="ホワイトスタイル歯科 室長 イ・ヒョンホ 名刺記録・直通電話番号"
+              className="w-full h-auto block"
+            />
+          </div>
+          <div className="flex-1 text-left space-y-3">
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded-full bg-[#091326] text-[#fde68a] font-extrabold text-xs">
+                日本の高校・大学野球出身 ｜ 専任日本語通訳リーダー
+              </span>
+              <span className="px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 font-bold text-xs">
+                アメーバ実体験＆コネスト15年実名対応
+              </span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900 leading-snug">
+              室長 イ・ヒョンホ（イヒョンホ）—— 125件の口コミを支え続けた1対1日本語コーディネーター
+            </h3>
+            <p className="text-sm text-slate-700 leading-[1.85]">
+              コネスト公式掲示板で「こんにちは＾＾ ホワイトスタイル歯科の相談を担当しているイヒョンホです＾＾」（<a href="https://comm.konest.com/topic/379497" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">相談記録</a>）として多くの日本人患者様に向き合い、アメーバブログの体験談（<a href="https://ameblo.jp/jmatk-tohojj/entry-12341708257.html" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">実名刺掲載記事</a>・<a href="https://ameblo.jp/otonaseoul/entry-12788048958.html" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">診察同行レポ</a>）でも称賛された誠実なサポート体制。現在も専任通訳スタッフ3名体制の中核として直通お電話を承っております。
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs sm:text-sm">
+              <a
+                href="tel:+82-10-3046-5010"
+                className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#091326] font-extrabold transition-colors"
+              >
+                📞 日本語通訳直通 +82-10-3046-5010
+              </a>
+              <span className="font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-xl">
+                💬 LINE ID: whitestyle1
+              </span>
+              <a
+                href="/board/notice/1901"
+                className="font-bold text-[#1e3a8a] hover:underline px-2 py-2"
+              >
+                特集ストーリーを見る →
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Navigation Tabs */}
         <div className="flex overflow-x-auto gap-2 border-b-2 border-slate-200 pb-1 mb-8">
           {[
