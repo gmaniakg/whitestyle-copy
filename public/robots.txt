@@ -46,7 +46,7 @@ Crawl-delay: 20
 User-agent: YandexBot
 Crawl-delay: 20
 
-# 차단 대상 불량 스팸 봇들 (기존 메이드인리얼 차단 정책 유지)
+# 차단 대상 불량 스팸 봇들 (화이트스타일치과의원 스팸 봇 차단 정책)
 User-agent: BLEXBot
 User-agent: AhrefsBot
 User-agent: BDCbot
@@ -79,7 +79,7 @@ User-agent: Amazonbot
 User-agent: CriteoBot/0.1
 Disallow: /
 
-# 동적 사이트맵 전체 목록 (메이드인리얼 시스템 연동 유지)
+# 동적 사이트맵 전체 목록 (화이트스타일치과의원 공식 사이트맵)
 Sitemap: https://whitestyle.com/sitemap.xml
 Sitemap: https://whitestyle.com/sitemap_doc_column.xml
 Sitemap: https://whitestyle.com/sitemap_column.xml
