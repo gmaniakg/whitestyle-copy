@@ -41,7 +41,7 @@ export default function AestheticTreatmentPage() {
           },
           {
             item: '일본어 전담 통역 & 단기 일정',
-            whitestyle: '일본어 코디네이터 3명 상주 (日本語通訳スタッフ3名常駐) · 해외 방한 일정 맞춤 2~3회 집중 완성 가능',
+            whitestyle: '일본어 코디네이터 3명 상주 (일본어 통역 직통 +82-10-3046-5010 · LINE ID: whitestyle1) · 해외 방한 일정 맞춤 2~3회 집중 완성 가능',
             general: '단기 일정 조율 및 일본어 사후 상담 어려움',
           },
           {

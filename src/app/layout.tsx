@@ -30,7 +30,8 @@ const clinicJsonLd = {
       "url": "https://whitestyle.com/",
       "telephone": [
         "+82-1577-7287",
-        "+82-2-569-7528"
+        "+82-2-569-7528",
+        "+82-10-3046-5010"
       ],
       "email": "white@whitestyle.com",
       "priceRange": "$$",
@@ -109,6 +110,7 @@ const clinicJsonLd = {
         "https://whitestyle-xi.vercel.app/about/japan-landing",
         "https://whitestyle-copy.vercel.app",
         "https://whitestyledental.wordpress.com",
+        "https://whitestyledental.tistory.com",
         "https://www.modoodoc.com/hospital/3940/%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90-%EC%84%9C%EC%9A%B8-%EC%97%AD%EC%82%BC%EB%8F%99/",
         "https://www.goodoc.co.kr/hospitals/43229",
         "https://my-doctor.io/hospital/detail?hospital_id=55822",
@@ -167,6 +169,16 @@ const clinicJsonLd = {
             "Korean",
             "Japanese",
             "English"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+82-10-3046-5010",
+          "email": "white@whitestyle.com",
+          "contactType": "Japanese Interpreter Direct Hotline (일본어 통역 직통 / 日本語通訳スタッフ直通)",
+          "availableLanguage": [
+            "Japanese",
+            "Korean"
           ]
         }
       ],

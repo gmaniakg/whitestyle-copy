@@ -39,7 +39,7 @@ export default function Page() {
           },
           {
             item: '일본어 전담 통역 지원',
-            whitestyle: '일본어 전담 통역 코디네이터 3명 상시 상주 (日本語通訳スタッフ3名常駐 · LINE 해외 사후 상담 지원)',
+            whitestyle: '일본어 전담 통역 코디네이터 3명 상시 상주 (일본어 통역 직통 +82-10-3046-5010 · LINE ID: whitestyle1 · 해외 사후 상담 지원)',
             general: '다국어 전담 인력 부재 또는 외부 통역 대동 필요',
           },
           {

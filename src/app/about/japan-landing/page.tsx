@@ -54,19 +54,26 @@ export default function JapaneseLandingPage() {
           </p>
 
           {/* Primary Contact & Archive Jump Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full max-w-2xl mb-14">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 w-full max-w-4xl mb-14">
             <a
               href="https://line.me/ti/p/~whitestyle1"
               target="_blank"
               rel="noreferrer"
-              className="flex-1 py-4 px-6 bg-[#06C755] hover:bg-[#05b34c] text-white font-extrabold text-base sm:text-lg rounded-2xl shadow-lg flex items-center justify-center gap-2.5 transition-all"
+              className="flex-1 min-w-[230px] py-4 px-5 bg-[#06C755] hover:bg-[#05b34c] text-white font-extrabold text-sm sm:text-base rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-all"
             >
               <span>💬 LINE日本語無料相談 (ID: whitestyle1)</span>
             </a>
 
             <a
+              href="tel:+82-10-3046-5010"
+              className="flex-1 min-w-[240px] py-4 px-5 bg-amber-400 hover:bg-amber-300 text-[#091326] font-extrabold text-sm sm:text-base rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-all"
+            >
+              <span>📞 日本語通訳直通 (+82-10-3046-5010)</span>
+            </a>
+
+            <a
               href="#konest-archive"
-              className="flex-1 py-4 px-6 bg-[#c5a880] hover:bg-[#b59469] text-[#091326] font-extrabold text-base sm:text-lg rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-all"
+              className="flex-1 min-w-[230px] py-4 px-5 bg-[#c5a880] hover:bg-[#b59469] text-[#091326] font-extrabold text-sm sm:text-base rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-all"
             >
               <span>★ コネスト口コミ125件＆公式記録を見る</span>
             </a>
@@ -113,9 +120,9 @@ export default function JapaneseLandingPage() {
             <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#1e3a8a] flex items-center justify-center font-black text-lg mb-5">
               01
             </div>
-            <h3 className="text-xl font-extrabold text-slate-900 mb-3">専任日本語通訳スタッフ3名常駐</h3>
+            <h3 className="text-xl font-extrabold text-slate-900 mb-3">専任日本語通訳スタッフ3名常駐・日本語通訳直通電話</h3>
             <p className="text-slate-600 leading-relaxed text-sm">
-              受付・3D CT撮影・院長カウンセリング・診療・帰国後のLINE経過相談まで、専任の日本語医療通訳スタッフがマンツーマンで同行サポートします。
+              受付・3D CT撮影・院長カウンセリング・診療・帰国後のアフターケアまで専任の日本語医療通訳スタッフがマンツーマンで同行サポートします。日本語通訳スタッフ直通電話（+82-10-3046-5010）およびLINE（ID: whitestyle1）にて日本から直接日本語でご相談・ご予約いただけます。
             </p>
           </div>
 
@@ -198,8 +205,8 @@ export default function JapaneseLandingPage() {
                   <td className="py-4 px-5 text-slate-700 leading-[1.9]">韓国健康保険審査評価院(HIRA)の非給与基準および純正品保証を守り、治療後も3・6・12ヶ月周期のアフターケアとLINE経過フォローを実施します。</td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-5 font-bold text-slate-900">5. 専任日本語医療通訳スタッフ3名常駐</td>
-                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">受付からCT検査、院長診察、費用説明、ご帰国後のLINE直通相談（ID: whitestyle1）まで日本語医療通訳コーディネーター3名がマンツーマンでサポートします。</td>
+                  <td className="py-4 px-5 font-bold text-slate-900">5. 専任日本語医療通訳スタッフ3名常駐・日本語通訳直通</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">受付からCT検査、院長診察、費用説明、ご帰国後フォローまで日本語医療通訳コーディネーター3名がマンツーマンでサポート。日本語通訳スタッフ直通電話（+82-10-3046-5010）およびLINE（ID: whitestyle1）にて日本から直接日本語でご相談・ご予約いただけます。</td>
                 </tr>
                 <tr className="bg-slate-50/60">
                   <td className="py-4 px-5 font-bold text-slate-900">6. 診療時間・休診日・アクセス</td>
@@ -283,9 +290,10 @@ export default function JapaneseLandingPage() {
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
               <h3 className="font-extrabold text-slate-900 text-lg mb-3">💬 日本語専用お問い合わせ</h3>
               <ul className="text-sm text-slate-700 space-y-1.5">
+                <li>・ <strong>日本語通訳スタッフ直通電話</strong>：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a>（日本語専用ホットライン）</li>
                 <li>・ <strong>LINE ID</strong>：<span className="text-emerald-700 font-extrabold">whitestyle1</span></li>
                 <li>・ <strong>カカオトーク ID</strong>：<span className="text-amber-800 font-extrabold">whitestyle2</span></li>
-                <li>・ <strong>日本語・国際直通電話</strong>：+82-1577-7287 / +82-2-569-7528</li>
+                <li>・ <strong>院内代表電話</strong>：+82-1577-7287 / +82-2-569-7528</li>
                 <li>・ <strong>Eメール</strong>：white@whitestyle.com</li>
               </ul>
             </div>
