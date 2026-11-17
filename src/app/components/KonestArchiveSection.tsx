@@ -177,6 +177,144 @@ export default function KonestArchiveSection() {
           </div>
         </div>
 
+        {/* Dedicated Interpreter Spotlight: Manager Lee Hyun-ho (室長 イ・ヒョンホ) */}
+        <div
+          className="wb-ka wbka"
+          style={{
+            background: '#ffffff',
+            borderRadius: '24px',
+            border: '1px solid rgba(197, 168, 128, 0.6)',
+            boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)',
+            padding: '1.75rem',
+            marginBottom: '2rem',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: '1.75rem',
+            wordBreak: 'keep-all',
+          }}
+        >
+          <div
+            style={{
+              flex: '0 0 340px',
+              maxWidth: '100%',
+              borderRadius: '16px',
+              overflow: 'hidden',
+              border: '1px solid #e2e8f0',
+              background: '#faf8f4',
+            }}
+          >
+            <img
+              src="/images/leehyunho_ameba_card_heritage.jpg"
+              alt="ホワイトスタイル歯科 室長 イ・ヒョンホ 名刺記録・直通電話番号"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </div>
+          <div style={{ flex: '1 1 320px', textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <span
+                style={{
+                  padding: '0.35rem 0.85rem',
+                  borderRadius: '999px',
+                  background: '#091326',
+                  color: '#fde68a',
+                  fontWeight: 800,
+                  fontSize: '0.75rem',
+                }}
+              >
+                日本の高校・大学野球出身 ｜ 専任日本語通訳リーダー
+              </span>
+              <span
+                style={{
+                  padding: '0.35rem 0.85rem',
+                  borderRadius: '999px',
+                  background: '#fffbeb',
+                  border: '1px solid #fde68a',
+                  color: '#78350f',
+                  fontWeight: 700,
+                  fontSize: '0.75rem',
+                }}
+              >
+                アメーバ実体験＆コネスト15年実名対応
+              </span>
+            </div>
+            <h3
+              style={{
+                fontSize: 'clamp(1.2rem, 2.2vw, 1.55rem)',
+                fontWeight: 900,
+                color: '#0f172a',
+                lineHeight: 1.35,
+                margin: 0,
+              }}
+            >
+              室長 イ・ヒョンホ（イヒョンホ）—— 125件の口コミを支え続けた1対1日本語コーディネーター
+            </h3>
+            <p style={{ fontSize: '0.92rem', color: '#334155', lineHeight: 1.85, margin: 0 }}>
+              日本の高校野球・大学野球部で培った礼儀作法と現場対応力を基盤に、コネスト公式掲示板で「こんにちは＾＾ ホワイトスタイル歯科の相談を担当しているイヒョンホです＾＾」（
+              <a
+                href="https://comm.konest.com/topic/379497"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#1e3a8a', fontWeight: 700, textDecoration: 'underline' }}
+              >
+                相談記録
+              </a>
+              ）として長年日本人患者様に向き合い、アメーバブログの体験談（
+              <a
+                href="https://ameblo.jp/jmatk-tohojj/entry-12341708257.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#1e3a8a', fontWeight: 700, textDecoration: 'underline' }}
+              >
+                名刺掲載記事
+              </a>
+              ・
+              <a
+                href="https://ameblo.jp/otonaseoul/entry-12788048958.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#1e3a8a', fontWeight: 700, textDecoration: 'underline' }}
+              >
+                診察同行レポ
+              </a>
+              ）でも称賛された誠実なサポート体制。現在も専任日本語通訳スタッフ3名体制の中核として直通お電話を承っております。
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem', paddingTop: '0.25rem', fontSize: '0.85rem' }}>
+              <a
+                href="tel:+82-10-3046-5010"
+                style={{
+                  padding: '0.55rem 1rem',
+                  borderRadius: '12px',
+                  background: '#fbbf24',
+                  color: '#091326',
+                  fontWeight: 800,
+                  textDecoration: 'none',
+                }}
+              >
+                📞 日本語通訳直通 +82-10-3046-5010
+              </a>
+              <span
+                style={{
+                  padding: '0.55rem 0.9rem',
+                  borderRadius: '12px',
+                  background: '#ecfdf5',
+                  border: '1px solid #a7f3d0',
+                  color: '#047857',
+                  fontWeight: 700,
+                }}
+              >
+                💬 LINE ID: whitestyle1
+              </span>
+              <a
+                href="/board/notice/1901"
+                style={{ color: '#1e3a8a', fontWeight: 700, textDecoration: 'underline', padding: '0.5rem 0.25rem' }}
+              >
+                特集ストーリーを見る →
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Navigation Tabs */}
         <div
           style={{
