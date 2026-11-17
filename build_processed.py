@@ -571,11 +571,11 @@ new_html = new_html.replace('후기를 남겨주셔서', '의견을 남겨주셔
 # -------------------------------------------------------------
 old_notice_block = (
     '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
-    '<a href="/board/notice/32557" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
+    '<a href="/board/notice" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
     'onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=notice&amp;wr_id=32557\', \'뉴이지 게시판 위젯 클릭\', \'\');">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 비급여 수가표</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.10.14</div></a>'
-    '<a href="/bbs/board.php?bo_table=notice&amp;wr_id=32143" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
+    '<a href="/board/notice" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
     'onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=notice&amp;wr_id=32143\', \'뉴이지 게시판 위젯 클릭\', \'\');">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">나의 치아건강을 지켜라!! 알파버전이 출시!</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">25.12.28</div></a>'
@@ -583,20 +583,48 @@ old_notice_block = (
 
 new_notice_block = (
     '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/board/notice/32597" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[대학저널] 고령화 시대 임플란트 정밀 진단과 사후관리</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.17</div></a>'
     '<a href="/board/notice/32596" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 박성태 화백 기증 철망 회화 전시 및 구입 문의</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.16</div></a>'
     '<a href="/board/notice/32595" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[언론보도] 구강건강 치료 확대와 정기검진 중요성 강조</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.15</div></a>'
-    '<a href="/board/notice/32557" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 비급여 수가표</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.10.14</div></a>'
 )
 
 if old_notice_block in new_html:
     new_html = new_html.replace(old_notice_block, new_notice_block, 1)
-    print("Updated main notice widget with 32596 & 32595.")
+    print("Updated main notice widget with 32597, 32596 & 32595.")
+
+old_online_block = (
+    '<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1036865\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">해외거주자 예약</div><div class="content_455546_8_24_24_ez_widget_board_date">26.09.17</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1032457\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">정말 양심치과 인증! 원장님 짱</div><div class="content_455546_8_24_24_ez_widget_board_date">26.05.26</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1032455\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">오늘 너무 감사합니다ㅜㅜ</div><div class="content_455546_8_24_24_ez_widget_board_date">26.05.26</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1032451\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">앞니 젊어 보이게 만드는  맛집</div><div class="content_455546_8_24_24_ez_widget_board_date">26.05.26</div></a>    </div>'
+)
+
+new_online_block = (
+    '<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 치료 잘 받고 갑니다 강남역 접근성 추천</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.17</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[교정 유지장치 수복 후기] 타병원 교정 유지장치 탈락 당일 재부착</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.15</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 방문 후기] 할머니 깨진 치아 세심하게 치료해주셨어요</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.14</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">해외거주자 예약</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.09.17</div></a>    </div>'
+)
+
+if old_online_block in new_html:
+    new_html = new_html.replace(old_online_block, new_online_block, 1)
+    print("Updated main online widget with latest patient reviews (1038317, 1038316, 1038291).")
 
 park_section_html = """
 <section id="ws-park-sung-tae-gallery" style="background:#f8fafc;padding:72px 20px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;font-family:'Pretendard','Malgun Gothic',sans-serif;word-break:keep-all;overflow-wrap:break-word;">
