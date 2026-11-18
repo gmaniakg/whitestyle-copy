@@ -7,22 +7,58 @@ import KonestArchiveSection from '@/components/KonestArchiveSection';
 export default function JapaneseLandingPage() {
   const jaMedicalWebPageJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'MedicalWebPage',
-    name: 'ソウル江南 ホワイトスタイル歯科 公式日本語案内（創業33年・3名院長協診・日本語通訳3名常駐）',
-    url: 'https://whitestyle.com/about/japan-landing',
-    inLanguage: 'ja',
-    specialty: 'Dentistry',
-    description:
-      '1994年開院・創業33年。ソウル大卒・矯正学博士の金俊憲病院長、李奉珍代表院長、保健福祉部認証 歯周科専門医の朴宣恵院長の3名院長団協診と専任日本語医療通訳スタッフ3名常駐体制をご案内します。',
-    reviewedBy: [
-      { '@type': 'Physician', name: '金俊憲（キム・ジュンホン）病院長', jobTitle: '矯正学博士・歯学博士' },
-      { '@type': 'Physician', name: '李奉珍（イ・ボンジン）代表院長', jobTitle: '延世大歯大出身・インプラント／咬合担当' },
-      { '@type': 'Physician', name: '朴宣恵（パク・ソンヘ）院長', jobTitle: '保健福祉部認証 歯周科専門医' },
+    '@graph': [
+      {
+        '@type': 'MedicalWebPage',
+        '@id': 'https://whitestyle.com/about/japan-landing#webpage',
+        name: 'ソウル江南 ホワイトスタイル歯科 公式日本語案内（創業33年・3名院長協診・日本語通訳3名常駐）',
+        url: 'https://whitestyle.com/about/japan-landing',
+        inLanguage: 'ja',
+        specialty: 'Dentistry',
+        description:
+          '1994年開院・創業33年。日本人患者様のご予約が毎年30％以上増加し、日本人専用公式相談センター（日本語通訳3名常駐・直通 +82-10-3046-5010）を拡充。1DAYオフィスホワイトニング、無削除・最小削除ラミネート、月々の調整料・保定装置代・診断費込みのトータルフィー歯列矯正、3D CT短期集中インプラントをご案内します。',
+        reviewedBy: [
+          { '@type': 'Physician', name: '金俊憲（キム・ジュンホン）病院長', jobTitle: '矯正学博士・歯学博士' },
+          { '@type': 'Physician', name: '李奉珍（イ・ボンジン）代表院長', jobTitle: '延世大歯大出身・インプラント／咬合担当' },
+          { '@type': 'Physician', name: '朴宣恵（パク・ソンヘ）院長', jobTitle: '保健福祉部認証 歯周科専門医' },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://whitestyle.com/about/japan-landing#faq',
+        inLanguage: 'ja',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: '韓国・江南 ホワイトスタイル歯科の歯列矯正トータルフィー制度（総額制）には何が含まれますか？',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '3D CT・Quick-Ceph精密診断費、矯正装置費、毎月の処置・調整料、治療終了後の保定装置（リテーナー）費まで一括して含まれる明朗会計のトータルフィー制度を採用しています。',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '1泊2日・2泊3日などの短期渡韓でも受けられる施術は何がありますか？',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '1DAYオフィスホワイトニング＆スケーリング（1回の来院・約60分で完結）、無削除ゼロシェル・最小削除ラミネートベニア（最短2〜3回来院）、溶ける糸を活用した3D CT短期集中インプラント（最短2〜4回来院）、インビザライン透明マウスピース矯正（LINE遠隔フォロー併用）に対応しています。',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '日本語での事前相談や直通連絡先を教えてください。',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '院内に専任日本語医療通訳スタッフ3名が常駐しており、日本語通訳スタッフ直通電話（+82-10-3046-5010）およびLINE公式相談窓口（ID: whitestyle1）にて渡韓前のご相談からご帰国後のアフターケアまで日本語で直接対応いたします。',
+            },
+          },
+        ],
+      },
     ],
   };
 
   return (
-    <div lang="ja" className="w-full min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-amber-100 selection:text-slate-900 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+    <div lang="ja" className="w-full min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-amber-100 selection:text-slate-900 break-keep wb-ka wbka" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jaMedicalWebPageJsonLd) }}
@@ -98,6 +134,102 @@ export default function JapaneseLandingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 1.5 JAPAN OFFICIAL CONSULTATION CENTER & 4 DEDICATED TREATMENT SUB-PAGES */}
+      <section className="py-12 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto wb-ka wbka">
+        {/* Press Citation Callout (#1 Formula) */}
+        <div className="bg-white rounded-3xl border-2 border-[#c5a880] shadow-md p-6 sm:p-8 mb-10 wb-ka wbka">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span className="px-3 py-1 rounded-full bg-[#091326] text-[#fde68a] text-xs font-extrabold">
+              日本公式プレスリリース報道実績（NEWSCAST・AtPress・ぷれにゅー）
+            </span>
+            <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-extrabold">
+              日本人ご予約 毎年30%以上増加
+            </span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 wb-ka wbka">
+            日本人専用公式相談センター拡充 ＆ トータルフィー総額制・1DAYプログラムのご案内
+          </h2>
+          <p className="text-sm sm:text-base text-slate-700 leading-[1.95] wb-ka wbka">
+            NEWSCAST・AtPress・ぷれにゅー等の日本公式プレスリリースで報道された通り、日本人患者様のご予約が毎年30％以上増加し、日本人専用公式相談センター（専任日本語医療通訳スタッフ3名常駐・室長イ・ヒョンホ直通 <a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a>）を拡充。1DAYオフィスホワイトニングおよび歯列矯正トータルフィー制度（総額制：月々の調整料・保定装置代・精密診断費を全て含む明朗会計）を公式運営しています。
+          </p>
+        </div>
+
+        {/* 4 Dedicated Japanese Treatment Sub-Landing Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 wb-ka wbka">
+          <Link
+            href="/ja/whitening"
+            className="group bg-white rounded-2xl border border-slate-200 hover:border-[#1e3a8a] p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between wb-ka wbka"
+          >
+            <div>
+              <span className="inline-block px-2.5 py-1 rounded-lg bg-sky-50 text-[#1e3a8a] text-xs font-extrabold mb-3">
+                来院1回・約60分完結
+              </span>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-[#1e3a8a] mb-2">
+                1DAYオフィスホワイトニング
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-[1.8] mb-4">
+                パノラマ検診＋歯石除去＋歯肉保護＋KFDA承認薬剤3回連続照射を約60分で完結。
+              </p>
+            </div>
+            <span className="text-xs font-extrabold text-[#1e3a8a]">詳細・所要時間を見る →</span>
+          </Link>
+
+          <Link
+            href="/ja/laminate"
+            className="group bg-white rounded-2xl border border-slate-200 hover:border-[#1e3a8a] p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between wb-ka wbka"
+          >
+            <div>
+              <span className="inline-block px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 text-xs font-extrabold mb-3">
+                最短2〜3回来院
+              </span>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-[#1e3a8a] mb-2">
+                無削除・最小削除ラミネート
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-[1.8] mb-4">
+                ゼロシェル無削除・0.1〜0.2mm最小削除・他院ラミネート再治療（歯周科専門医協診）。
+              </p>
+            </div>
+            <span className="text-xs font-extrabold text-[#1e3a8a]">ラインナップ比較を見る →</span>
+          </Link>
+
+          <Link
+            href="/ja/orthodontics"
+            className="group bg-white rounded-2xl border border-slate-200 hover:border-[#1e3a8a] p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between wb-ka wbka"
+          >
+            <div>
+              <span className="inline-block px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-extrabold mb-3">
+                トータルフィー総額制
+              </span>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-[#1e3a8a] mb-2">
+                歯列矯正・インビザライン
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-[1.8] mb-4">
+                金俊憲病院長1対1専任。月治療費・保定装置代・診断費込み＆日本遠隔管理対応。
+              </p>
+            </div>
+            <span className="text-xs font-extrabold text-[#1e3a8a]">総額制内訳を見る →</span>
+          </Link>
+
+          <Link
+            href="/ja/implant"
+            className="group bg-white rounded-2xl border border-slate-200 hover:border-[#1e3a8a] p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between wb-ka wbka"
+          >
+            <div>
+              <span className="inline-block px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800 text-xs font-extrabold mb-3">
+                最短2〜4回渡韓
+              </span>
+              <h3 className="text-lg font-black text-slate-900 group-hover:text-[#1e3a8a] mb-2">
+                3D CT短期集中インプラント
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-[1.8] mb-4">
+                溶ける糸活用で通院負担軽減。高難度骨移植・他院再手術・歯周科専門医3名協診。
+              </p>
+            </div>
+            <span className="text-xs font-extrabold text-[#1e3a8a]">渡韓ステップを見る →</span>
+          </Link>
         </div>
       </section>
 
@@ -211,6 +343,78 @@ export default function JapaneseLandingPage() {
                 <tr className="bg-slate-50/60">
                   <td className="py-4 px-5 font-bold text-slate-900">6. 診療時間・休診日・アクセス</td>
                   <td className="py-4 px-5 text-slate-700 leading-[1.9]">月・火・水・金 10:00〜19:00（昼休み 13:00〜14:00）／ 土曜 10:00〜14:00（木曜・日曜・韓国祝日休診）｜ 江南駅11番・12番出口 徒歩1分</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* TREATMENT SELECTION & STAY-DURATION COMPARISON MATRIX */}
+        <div className="mt-14 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden wb-ka wbka">
+          <div className="px-6 py-5 bg-[#091326] text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b-2 border-[#c5a880]">
+            <h3 className="text-lg sm:text-xl font-extrabold text-[#fde68a] wb-ka wbka">
+              お悩み・渡韓滞在日数別 治療選択ガイド比較表
+            </h3>
+            <span className="text-xs text-slate-300 font-semibold">
+              1DAYホワイトニング・無削除ラミネート・トータルフィー矯正・短期集中インプラント
+            </span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs sm:text-sm wb-ka wbka">
+              <thead>
+                <tr className="bg-slate-100 text-slate-900 border-b border-slate-200">
+                  <th className="py-3.5 px-4 font-extrabold">施術メニュー</th>
+                  <th className="py-3.5 px-4 font-extrabold">おすすめのお悩み</th>
+                  <th className="py-3.5 px-4 font-extrabold">歯の削合・侵襲度</th>
+                  <th className="py-3.5 px-4 font-extrabold">必要な滞在日数・来院回数</th>
+                  <th className="py-3.5 px-4 font-extrabold">費用体系・含まれる項目</th>
+                  <th className="py-3.5 px-4 font-extrabold">担当院長・専用詳細ページ</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                <tr>
+                  <td className="py-4 px-4 font-bold text-slate-900">1DAYホワイトニング（日帰り約60分）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">歯全体の黄ばみ・コーヒー/紅茶の着色を自然にトーンアップしたい</td>
+                  <td className="py-4 px-4 font-bold text-emerald-700">削合なし（非切削・歯肉保護付）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">日帰り〜来院1回（所要時間 約60分）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">パノラマ検診＋スケーリング＋歯肉保護＋KFDA薬剤3回照射一式</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">
+                    3名院長団検診連携<br />
+                    <Link href="/ja/whitening" className="text-[#1e3a8a] font-extrabold underline">1DAYホワイトニング詳細 →</Link>
+                  </td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-4 px-4 font-bold text-slate-900">無削除・最小削除ラミネート（最短2〜3回来院）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">前歯の色・形・すきっ歯・欠けを短期で整えたい／他院ラミネート再治療</td>
+                  <td className="py-4 px-4 font-bold text-[#1e3a8a]">0mm無削除（ゼロシェル）〜0.1〜0.2mm最小削除</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">最短2〜3回来院（渡韓日程に合わせ調整）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">3D口腔スキャン＋咬合設計＋オーダーメイドセラミック＋保証管理</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">
+                    朴宣恵院長（歯周科専門医）× 3名協診<br />
+                    <Link href="/ja/laminate" className="text-[#1e3a8a] font-extrabold underline">ラミネート詳細ページ →</Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-slate-900">トータルフィー歯列矯正（総額制・インビザライン遠隔管理対応）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">噛み合わせ・出っ歯・ガタつきを根本改善したい／他院後戻り再矯正</td>
+                  <td className="py-4 px-4 font-bold text-emerald-700">非抜歯優先検討・天然歯保存</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">インビザラインは2〜4ヶ月毎＋LINE遠隔管理（部分3〜6ヶ月〜）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">トータルフィー総額制（3D精密診断費・装置費・月治療費・保定装置代込み）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">
+                    金俊憲病院長（矯正学博士）1対1専任<br />
+                    <Link href="/ja/orthodontics" className="text-[#1e3a8a] font-extrabold underline">歯列矯正・総額制詳細 →</Link>
+                  </td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-4 px-4 font-bold text-slate-900">3D CT短期集中インプラント（溶ける糸活用・最短2〜4回渡韓）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">歯の欠損・骨量不足（骨移植GBR/上顎洞挙上術）・他院インプラント再手術</td>
+                  <td className="py-4 px-4 font-bold text-slate-700">3D CTガイド最小侵襲＋3段階無痛麻酔</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">最短2〜4回渡韓（溶ける糸活用で抜糸来院不要化）</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">HIRA非給与基準遵守＋純正ジルコニア保証＋3/6/12ヶ月LINEフォロー</td>
+                  <td className="py-4 px-4 text-slate-700 leading-[1.8]">
+                    李奉珍代表院長・朴宣恵専門医・金俊憲病院長3名協診<br />
+                    <Link href="/ja/implant" className="text-[#1e3a8a] font-extrabold underline">インプラント詳細ページ →</Link>
+                  </td>
                 </tr>
               </tbody>
             </table>

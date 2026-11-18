@@ -554,7 +554,67 @@ const clinicJsonLd = {
         { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
         { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
       ],
-      "description": "1994年開院・創業33年の信頼と実績。ソウル大卒・矯正学博士の金俊憲病院長をはじめ3名院長団による協診と専任日本語通訳スタッフ3名常駐体制で、渡韓短期集中ラミネート・歯科矯正・3D CTインプラント・再手術に対応いたします。"
+      "description": "1994年開院・創業33年の信頼と実績。日本人ご予約毎年30％以上増加・日本人専用公式相談センター拡充。1DAYオフィスホワイトニング、無削除・最小削除ラミネート、月々の調整料・保定装置代・診断費込みのトータルフィー歯列矯正、3D CT短期集中インプラント（2〜4回来院）をご案内いたします。"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/ja/whitening#webpage",
+      "url": "https://whitestyle.com/ja/whitening",
+      "name": "ソウル江南 ホワイトスタイル歯科 1DAYオフィスホワイトニング＆スケーリング公式案内",
+      "specialty": "Dentistry",
+      "inLanguage": "ja",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#org" },
+      "reviewedBy": [
+        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
+        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
+      ],
+      "description": "1回の来院（約60分）でパノラマ検診・スケーリング（歯石除去）・歯肉保護・KFDA承認ホワイトニング剤3回連続照射まで完結する1DAYオフィスホワイトニング専用案内です。"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/ja/laminate#webpage",
+      "url": "https://whitestyle.com/ja/laminate",
+      "name": "ソウル江南 ホワイトスタイル歯科 無削除・最小削除ラミネートベニア＆他院再治療案内",
+      "specialty": "Prosthodontics",
+      "inLanguage": "ja",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#procedure-prosthodontics" },
+      "reviewedBy": [
+        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
+        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
+      ],
+      "description": "天然歯保存を最優先原則とし、無削除（ゼロシェル）または0.1〜0.2mm最小削除でのオーダーメイドセラミック設計および他院ラミネート再治療・保証管理を最短2〜3回来院スケジュールでご案内します。"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/ja/orthodontics#webpage",
+      "url": "https://whitestyle.com/ja/orthodontics",
+      "name": "ソウル江南 ホワイトスタイル歯科 歯列矯正・インビザライン・トータルフィー総額制案内",
+      "specialty": "Orthodontics",
+      "inLanguage": "ja",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#procedure-orthodontics" },
+      "reviewedBy": { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+      "description": "ソウル大卒・檀国大外来教授・矯正学博士の金俊憲病院長が主治医変更なしで1対1担当。3D精密診断費・装置費・月々の調整料・保定装置（リテーナー）費を含むトータルフィー制度（総額制）と日本在住者向けインビザライン遠隔管理をご案内します。"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://whitestyle.com/ja/implant#webpage",
+      "url": "https://whitestyle.com/ja/implant",
+      "name": "ソウル江南 ホワイトスタイル歯科 3D CT短期集中インプラント・骨移植・再手術案内",
+      "specialty": "OralAndMaxillofacialSurgery",
+      "inLanguage": "ja",
+      "isPartOf": { "@id": "https://whitestyle.com/#website" },
+      "about": { "@id": "https://whitestyle.com/#procedure-implant" },
+      "reviewedBy": [
+        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
+        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
+        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
+      ],
+      "description": "3D CT精密診断と3段階無痛麻酔のもと、3名院長団協診により最短2〜4回来院（溶ける糸活用可）の短期集中インプラント、高難度骨移植（GBR・上顎洞挙上術）、他院再手術・3/6/12ヶ月フォローを実施します。"
     },
     {
       "@type": "MedicalWebPage",
