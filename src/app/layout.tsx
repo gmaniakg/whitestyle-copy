@@ -23,6 +23,8 @@ const clinicJsonLd = {
         "ソウル江南 ホワイトスタイル歯科",
         "ホワイトスタイル歯科",
         "WhiteStyle Dental Clinic Gangnam",
+        "WhiteStyle白尚齿科",
+        "白尚齿科",
         "WHINISH Dental Clinic"
       ],
       "foundingDate": "1994-08-09",
@@ -63,6 +65,7 @@ const clinicJsonLd = {
         "https://www.google.com/maps?q=37.4988802,127.0286304",
         "https://www.google.com/maps/search/?api=1&query=WhiteStyle+Dental+Clinic+17+Gangnam-daero+92-gil+Gangnam-gu+Seoul",
         "https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97",
+        "https://api.map.baidu.com/marker?location=37.4988802,127.0286304&title=WhiteStyle%E7%99%BD%E5%B0%9A%E9%BD%BF%E7%A7%91&content=%E9%A6%96%E5%B0%94%E7%89%B9%E5%88%AB%E5%B8%82%E6%B1%9F%E5%8D%97%E5%8C%BA%E6%B1%9F%E5%8D%97%E5%A4%A7%E8%B7%AF92%E8%A1%9717&output=html&coord_type=wgs84",
         "https://map.naver.com/p/entry/place/11566039"
       ],
       "areaServed": [

@@ -13,6 +13,8 @@ const GOOGLE_MAPS_EN =
   'https://www.google.com/maps/search/?api=1&query=WhiteStyle+Dental+Clinic+17+Gangnam-daero+92-gil+Gangnam-gu+Seoul';
 const GOOGLE_MAPS_JA =
   'https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97';
+const BAIDU_MAPS_ZH =
+  'https://api.map.baidu.com/marker?location=37.4988802,127.0286304&title=WhiteStyle%E7%99%BD%E5%B0%9A%E9%BD%BF%E7%A7%91&content=%E9%A6%96%E5%B0%94%E7%89%B9%E5%88%AB%E5%B8%82%E6%B1%9F%E5%8D%97%E5%8C%BA%E6%B1%9F%E5%8D%97%E5%A4%A7%E8%B7%AF92%E8%A1%9717&output=html&coord_type=wgs84';
 
 export interface ClinicalComparisonRow {
   item: string;
@@ -84,7 +86,7 @@ export default function ClinicalSummarySection({
       '@type': 'Dentist',
       '@id': 'https://whitestyle.com/#org',
       name: '화이트스타일치과의원',
-      alternateName: ['WhiteStyle Dental Clinic', 'ホワイトスタイル歯科'],
+      alternateName: ['WhiteStyle Dental Clinic', 'ホワイトスタイル歯科', 'WhiteStyle白尚齿科', '白尚齿科'],
       telephone: '1577-7287',
       address: {
         '@type': 'PostalAddress',
@@ -103,6 +105,7 @@ export default function ClinicalSummarySection({
         'https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90+%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C92%EA%B8%B8+17',
         GOOGLE_MAPS_EN,
         GOOGLE_MAPS_JA,
+        BAIDU_MAPS_ZH,
         NAVER_PLACE_URL,
       ],
     },
