@@ -1,6 +1,6 @@
 # Product Marketing Context
 
-**Document version:** v1.2 (2026-11-19 — 2030 ChatGPT vs 5060 Galaxy Gemini + Ask Maps Dual-Engine Countermeasure)
+**Document version:** v1.3 (2026-11-19 — 2030 ChatGPT + 5060 Galaxy Gemini/Ask Maps + Naver AI Briefing 'AD' & Symptom-Query Targeting)
 
 ## 1. Product / Brand Overview
 - **Brand Name:** 화이트스타일치과의원 (WhiteStyle Dental Clinic / ホワイトスタイル歯科医院)
@@ -40,6 +40,10 @@
     6. *"강남역 11번·12번 출구 근처 토요일에도 진료하는 임플란트·잇몸치료 치과 전화번호 알려줘"* (`서울특별시 강남구 강남대로92길 17 대승빌딩 B1·1·2층`, 토 10:00~14:00, `1577-7287 / 02-569-7528`)
   - **구글 비즈니스 프로필(GBP) & `Schema.org` 직접 결합 원칙:**
     - 다국어 GBP 상호명(`화이트스타일치과의원 | WhiteStyle Dental Clinic | ホワイトスタイル歯科医院`), 4대 전문 카테고리(`치과`, `치아교정 전문의`, `치과 임플란트 및 치주과 전문의`, `심미 치과`), 9대 구조화 서비스, 사전 Q&A 6종, 주간 GBP 소식(`750~1,500자`, 도로명 주소 + `1577-7287 / 02-569-7528`), `hasMap` 다중 지도(Google Maps + Naver Map), `GeoCoordinates(37.4988802, 127.0286304)`, `SpeakableSpecification` JSON-LD를 5060 임플란트·치주 5대 페이지 및 `/board/notice/1905`와 오픈 웹 블로그([워드프레스](https://whitestyledental.wordpress.com) · [티스토리](https://whitestyledental.tistory.com)), 심평원(HIRA) 공공데이터와 100% 일치시킨다.
+- **Segment A-3 (네이버 AI 브리핑 월 3,000만 명 / 전체 검색 20% — '질환·증상·고민 질문' 검색층 & 답변 내 `AD` 태그·블로그·홈페이지 동시 전환 루트):**
+  - **엔진 메커니즘:** 네이버 AI 브리핑은 전체 네이버 검색의 약 20%(월 3,000만 명 이상)에 적용되며, 오가닉 1위 출처인 **네이버 블로그(`39.2~43.0%`)**와 2위 출처인 **병원 공식 홈페이지(`29.3%`)**를 인용하는 동시에 **답변 본문 텍스트 안에 `'AD'` 태그가 부착된 병원/상품 링크를 직접 삽입**한다.
+  - **핵심 트리거 및 전환 검증:** 병원명 직접 검색보다 **"앞니가 벌어졌는데 교정 vs 라미네이트"**, **"어금니 임플란트 통증·붓기"**, **"잇몸 붓고 피남 임플란트 재수술 vs 잇몸치료"** 등 질환·증상·치료 비교 질문에서 노출된다. 실제 성과는 단순 노출이 아니라 **AI 브리핑 내 추천 후기·블로그 링크 클릭 유입**과 **네이버 예약(`265482`)·카카오톡(`_Vtxdwl`)·전화 실예약 전환율(CPA)**로 검증한다.
+  - **타깃 랜딩 및 소재 동기화:** 공식 홈페이지 `/board/notice/1906`, `/treatments/aesthetic/zeroshell`, `/treatments/orthodontics/types`, `/treatments/implant`, `/treatments/implant/bone-graft`, `/treatments/general/scaling` 및 네이버 블로그(`blog.naver.com/whitestyle3`)·파워링크·스마트블록 소재를 **6대 질환·증상 질문형 클러스터** 기준으로 1:1 통일한다.
 - **Segment B (일본 예비환자 — `@whitestylejp`, `/?mir_code=12187`, `whinish.com/ja`, 구글 지도 일본어 표기):**
   - 한국 강남 심미치과(ラミネートベニア, 歯科矯正, 1日ホワイトニング)를 찾는 일본 거주 및 방한 예정 고객.
   - 일본어 전담 코디네이터 3명 상주, 창업 33년 업력, 3인 원장단 협진으로 언어·안전 불안을 해소.
