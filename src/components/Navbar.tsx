@@ -112,7 +112,7 @@ export default function Navbar() {
 
           {/* Left: Contact icons & Language */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <a href="https://pf.kakao.com/_xkxkTdM" target="_blank" rel="noopener noreferrer" title="카카오톡 상담"
+            <a href="https://pf.kakao.com/_Vtxdwl" target="_blank" rel="noopener noreferrer" title="카카오톡 상담"
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#fce000] flex items-center justify-center text-[#3c1e1e] hover:bg-[#ebd000] transition-all shadow-sm">
               <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 4C6.477 4 2 7.502 2 11.823c0 2.766 1.776 5.176 4.464 6.551-.15.525-.49 1.745-.51 1.834-.057.234.075.234.165.176.07-.046 2.052-1.328 2.871-1.874a11.848 11.848 0 0 0 2.99.388c5.523 0 10-3.502 10-7.823S17.523 4 12 4z"/>
@@ -362,7 +362,7 @@ export default function Navbar() {
                 <a href="tel:1577-7287" className="flex-1 py-3 bg-white rounded-xl border border-slate-200 text-sm font-bold text-slate-700 shadow-sm flex items-center justify-center gap-2">
                   📞 전화상담
                 </a>
-                <a href="https://pf.kakao.com/_xkxkTdM" target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-[#fce000] rounded-xl text-sm font-bold text-[#3c1e1e] shadow-sm flex items-center justify-center gap-2">
+                <a href="https://pf.kakao.com/_Vtxdwl" target="_blank" rel="noopener noreferrer" className="flex-1 py-3 bg-[#fce000] rounded-xl text-sm font-bold text-[#3c1e1e] shadow-sm flex items-center justify-center gap-2">
                   💬 카카오톡 상담
                 </a>
               </div>

@@ -549,7 +549,7 @@ export default function GamePage() {
                 <Link href="/consult" className="px-6 py-2 bg-slate-900 text-white rounded-full font-bold text-sm hover:bg-slate-800">
                   온라인 상담하기
                 </Link>
-                <a href="https://pf.kakao.com/_xkxkTdM" target="_blank" rel="noreferrer" className="px-6 py-2 bg-yellow-400 text-yellow-900 rounded-full font-bold text-sm hover:bg-yellow-300">
+                <a href="https://pf.kakao.com/_Vtxdwl" target="_blank" rel="noreferrer" className="px-6 py-2 bg-yellow-400 text-yellow-900 rounded-full font-bold text-sm hover:bg-yellow-300">
                   카카오톡 문의
                 </a>
               </div>
