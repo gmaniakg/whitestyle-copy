@@ -45,6 +45,11 @@ const JAPANESE_ROW: TreatmentCondition = {
   answer: '일본어 전담 통역 코디네이터 3명 상주 · 일본어 통역 직통 +82-10-3046-5010 · LINE ID whitestyle1',
 };
 
+const HOURS_ROW: TreatmentCondition = {
+  label: '진료 시간',
+  answer: '월·화·수·금 10:00~19:00 (점심 13:00~14:00) · 토요일 10:00~14:00 (점심시간 없이 진료) · 목·일·공휴일 휴진',
+};
+
 const IMPLANT: TreatmentConditionProfile = {
   procedureName: '임플란트 · 뼈이식 · 임플란트 재수술',
   procedureType: 'SurgicalProcedure',
@@ -56,6 +61,7 @@ const IMPLANT: TreatmentConditionProfile = {
     { label: '고난도 · 재수술', answer: '타 치과 임플란트 실패·골 소실 시 염증 조직 제거와 동종골 이식(GBR)·상악동거상술 후 재수술을 진행합니다.' },
     { label: '담당 의료진', answer: '이봉진 대표원장 · 박선혜 원장(보건복지부 인증 치주과 전문의) · 김준헌 병원장 3인 원장단 협진' },
     JAPANESE_ROW,
+    HOURS_ROW,
   ],
   naverKeywords: ['임플란트 재수술', '뼈이식 임플란트', '3인 원장단 협진', '치주과 전문의', '임플란트 후기'],
 };
@@ -71,6 +77,7 @@ const ORTHODONTICS: TreatmentConditionProfile = {
     { label: '고난도 · 재교정', answer: '유지장치 탈락 재발·발치 후 옥니·어금니 교합 붕괴 재교정 전 치근 길이와 치조골 두께를 정밀 계측합니다.' },
     { label: '담당 의료진', answer: '서울대졸 · 단국대 외래교수 · 교정학 박사 김준헌 병원장 1인 주치의 직접 진료' },
     JAPANESE_ROW,
+    HOURS_ROW,
   ],
   naverKeywords: ['치아교정 재교정', '인비절라인', '교정학 박사', '김준헌 원장', '교정 후기'],
 };
@@ -86,6 +93,7 @@ const AESTHETIC: TreatmentConditionProfile = {
     { label: '고난도 · 재치료', answer: '타 치과 라미네이트의 변색·파절·잇몸 염증은 교합 간섭을 먼저 바로잡은 뒤 재치료합니다.' },
     { label: '담당 의료진', answer: '박선혜 원장(보철·치주) · 이봉진 대표원장 · 김준헌 병원장 3인 원장단 협진' },
     JAPANESE_ROW,
+    HOURS_ROW,
   ],
   naverKeywords: ['라미네이트 재치료', '제로쉘', '최소삭제 라미네이트', '이지화이트', '라미네이트 후기'],
 };
@@ -101,6 +109,7 @@ const GENERAL: TreatmentConditionProfile = {
     { label: '고난도 · 재치료', answer: '신경치료 후에도 통증이 남으면 재신경치료를 우선 시행하고, 어려운 경우 치근단 절제술·치아 재식술을 검토합니다.' },
     { label: '담당 의료진', answer: '이봉진 대표원장 · 박선혜 원장(보건복지부 인증 치주과 전문의) · 김준헌 병원장 3인 원장단 협진' },
     JAPANESE_ROW,
+    HOURS_ROW,
   ],
   naverKeywords: ['재신경치료', '매복 사랑니 발치', '충치치료', '자연치아 살리기', '강남역 치과 후기'],
 };
