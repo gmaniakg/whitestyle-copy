@@ -52,6 +52,30 @@ export default function JapaneseLandingPage() {
               text: '院内に専任日本語医療通訳スタッフ3名が常駐しており、日本語通訳スタッフ直通電話（+82-10-3046-5010）およびLINE公式相談窓口（ID: whitestyle1）にて渡韓前のご相談からご帰国後のアフターケアまで日本語で直接対応いたします。',
             },
           },
+          {
+            '@type': 'Question',
+            name: '他院で受けたラミネートベニアの再治療（変色・破折・歯茎の黒ずみ）や無削除ゼロシェルは可能ですか？',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '天然歯のエナメル質保存を最優先とし、3D精密咬合診断の上で無削除ゼロシェルまたは0.1〜0.2mm最小削除・CAD/CAM短期補綴（最短2〜3回来院）で他院ラミネートの変色・破折・歯肉炎症再治療に朴宣恵院長（歯周科専門医）と李奉珍代表院長が協診対応します。',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '骨が足りないと言われた難症例インプラント（骨移植・サイナスリフト）・他院インプラント再手術・全顎再建にも対応していますか？',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '3D CT骨密度・神経管精密分析と3段階無痛麻酔をもとに、3名院長団協診で他院インプラント再手術・難症例骨造成（GBR・上顎洞挙上術）・無歯顎フルマウス全顎インプラント・カスタムアバットメント補綴まで安全に実施します。',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '他院での歯列矯正後の後戻り（再矯正）やインビザライン・裏側矯正は主治医が変わらず担当しますか？',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '1994年開院以来、ソウル大卒・矯正学博士の金俊憲病院長が3D CT歯根・歯槽骨幅計測のもと、初期診断から装置装着・再矯正・保定まで主治医変更なしで1対1直接担当します。',
+            },
+          },
         ],
       },
     ],
@@ -415,6 +439,61 @@ export default function JapaneseLandingPage() {
                     李奉珍代表院長・朴宣恵専門医・金俊憲病院長3名協診<br />
                     <Link href="/ja/implant" className="text-[#1e3a8a] font-extrabold underline">インプラント詳細ページ →</Link>
                   </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* HIGH-DIFFICULTY LONG-TAIL INDICATION MATRIX (日本語) */}
+        <div className="mt-10 bg-white rounded-3xl border border-[#c5a880]/60 shadow-sm overflow-hidden wb-ka wbka">
+          <div className="px-6 py-5 bg-[#102347] text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b-2 border-[#c5a880]">
+            <h3 className="text-lg sm:text-xl font-extrabold text-[#fde68a] wb-ka wbka">
+              難症例・他院再治療・短期集中 6大専門適応症ガイド（日本語通訳3名常駐・直通 +82-10-3046-5010）
+            </h3>
+            <span className="text-xs text-slate-300 font-semibold">
+              3名院長団協診・カスタム補綴・LINE長期フォロー
+            </span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs sm:text-sm wb-ka wbka">
+              <thead>
+                <tr className="bg-slate-100 text-slate-900 border-b border-slate-200">
+                  <th className="py-3.5 px-4 font-extrabold w-1/4">専門適応症（難症例・再治療）</th>
+                  <th className="py-3.5 px-4 font-extrabold">ホワイトスタイル歯科の協診プロトコル</th>
+                  <th className="py-3.5 px-4 font-extrabold w-1/5">関連詳細ページ</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                <tr>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">1. 他院インプラント再手術・難症例骨造成（GBR・上顎洞挙上術）</td>
+                  <td className="py-3.5 px-4 text-slate-700 leading-[1.8]">3D CT骨質分析と3段階無痛麻酔のもと、朴宣恵（歯周科専門医）×李奉珍（代表院長）×金俊憲（病院長）が炎症除去・骨造成・カスタムアバットメント補綴まで協診対応。</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/implant" className="text-[#1e3a8a] font-bold underline">インプラント専門案内 →</Link></td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-3.5 px-4 font-bold text-slate-900">2. 無歯顎フルマウス全顎インプラント再建＆精密咬合補綴</td>
+                  <td className="py-3.5 px-4 text-slate-700 leading-[1.8]">歯がほとんど無い症例に対し、CAD/CAM精密設計と3名協診で噛む機能・発音・フェイスラインの垂直高径を同時回復。</td>
+                  <td className="py-3.5 px-4"><Link href="/treatments/implant/edentulous" className="text-[#1e3a8a] font-bold underline">全顎再建詳細 →</Link></td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">3. 他院ラミネート再治療・無削除ゼロシェル／0.1〜0.2mm最小削除</td>
+                  <td className="py-3.5 px-4 text-slate-700 leading-[1.8]">変色・欠け・歯茎黒ずみの原因となる咬合干渉を修正し、最短2〜3回来院のCAD/CAM短期オーダーメイドセラミックへ再構築。</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/laminate" className="text-[#1e3a8a] font-bold underline">ラミネート専門案内 →</Link></td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-3.5 px-4 font-bold text-slate-900">4. 他院矯正後の後戻り再矯正・インビザライン・裏側矯正</td>
+                  <td className="py-3.5 px-4 text-slate-700 leading-[1.8]">ソウル大卒・矯正学博士の金俊憲病院長が33年主治医変更なしで直接担当。3D CT歯根計測・歯周科協診×トータルフィー総額制。</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/orthodontics" className="text-[#1e3a8a] font-bold underline">矯正・総額制案内 →</Link></td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">5. 渡韓1DAYオフィスホワイトニング＆スケーリング</td>
+                  <td className="py-3.5 px-4 text-slate-700 leading-[1.8]">来院1回（約60分）でパノラマ検診・歯石除去・歯肉保護・KFDA承認3回照射まで完結。短期ご旅行中にも最適。</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/whitening" className="text-[#1e3a8a] font-bold underline">1DAY美白詳細 →</Link></td>
+                </tr>
+                <tr className="bg-slate-50/60">
+                  <td className="py-3.5 px-4 font-bold text-slate-900">6. 歯周科専門医重度歯周ケア＆3・6・12ヶ月LINE遠隔管理</td>
+                  <td className="py-3.5 px-4 text-slate-700 leading-[1.8]">治療後のインプラント周囲炎や歯肉炎を防ぐため、日本語通訳スタッフ3名（室長イ・ヒョンホ直通 +82-10-3046-5010 / LINE: whitestyle1）が帰国後も定期フォロー。</td>
+                  <td className="py-3.5 px-4"><Link href="/board/notice/1901" className="text-[#1e3a8a] font-bold underline">通訳サポート紹介 →</Link></td>
                 </tr>
               </tbody>
             </table>
