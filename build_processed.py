@@ -20,17 +20,67 @@ if m0 == -1 or m1 == -1:
     exit(1)
 
 hero_video_html = """
+<style>
+.ws-hero-video-banner { position: relative; width: 100%; min-height: 640px; max-height: 840px; aspect-ratio: 16 / 9; background: #0b1118; overflow: hidden; display: flex; align-items: center; justify-content: center; font-family: "Pretendard-Light", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif; box-sizing: border-box; }
+.ws-hero-video-banner * { box-sizing: border-box; }
+.ws-hero-video-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; z-index: 1; pointer-events: none; filter: brightness(0.88) contrast(1.04); }
+.ws-hero-video-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, rgba(8, 13, 20, 0.44) 0%, rgba(8, 13, 20, 0.56) 52%, rgba(8, 13, 20, 0.80) 100%); }
+.ws-hero-video-inner { position: relative; z-index: 3; width: 100%; max-width: 1240px; margin: 0 auto; padding: 56px 28px; text-align: center; color: #f8f6f1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.ws-hero-kicker { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 999px; background: rgba(15, 22, 32, 0.66); border: 1px solid rgba(216, 187, 132, 0.48); color: #ebd29d; font-size: 14px; font-weight: 600; line-height: 1.4; letter-spacing: 0.02em; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.ws-hero-title { margin: 4px 0 0 0; font-family: "Pretendard-Bold", "Pretendard", "Noto Sans KR", sans-serif; font-size: clamp(28px, 4vw, 52px); font-weight: 800; line-height: 1.24; letter-spacing: -0.03em; color: #ffffff; text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45); word-break: keep-all; }
+.ws-hero-title em { font-style: normal; color: #ebd29d; }
+.ws-hero-desc { margin: 0; max-width: 860px; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.68; color: rgba(248, 246, 241, 0.92); font-weight: 400; letter-spacing: -0.01em; word-break: keep-all; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4); }
+.ws-hero-cta-grid { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 10px; width: 100%; max-width: 980px; }
+.ws-hero-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 24px; border-radius: 8px; font-family: "Pretendard-Bold", "Pretendard", "Noto Sans KR", sans-serif; font-size: 15px; font-weight: 700; line-height: 1.2; text-decoration: none !important; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; cursor: pointer; white-space: nowrap; }
+.ws-hero-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35); }
+.ws-hero-btn:active { transform: translateY(0); }
+.ws-hero-btn--naver { background: #03c75a; color: #ffffff !important; border: 1px solid #03c75a; }
+.ws-hero-btn--naver:hover { background: #02b350; }
+.ws-hero-btn--kakao { background: #fee500; color: #191919 !important; border: 1px solid #fee500; }
+.ws-hero-btn--kakao:hover { background: #f2da00; }
+.ws-hero-btn--line { background: rgba(18, 26, 36, 0.82); color: #f8f6f1 !important; border: 1px solid rgba(216, 187, 132, 0.55); backdrop-filter: blur(8px); }
+.ws-hero-btn--line:hover { background: rgba(216, 187, 132, 0.2); border-color: #ebd29d; }
+.ws-hero-btn--tel { background: rgba(255, 255, 255, 0.14); color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.38); backdrop-filter: blur(8px); }
+.ws-hero-btn--tel:hover { background: rgba(255, 255, 255, 0.24); }
+.ws-hero-dept-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 14px; margin-top: 8px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.16); width: 100%; max-width: 780px; }
+.ws-hero-dept-link { color: rgba(248, 246, 241, 0.86) !important; font-size: 14px; font-weight: 500; text-decoration: none !important; padding: 6px 12px; border-radius: 6px; background: rgba(255, 255, 255, 0.07); transition: background 0.2s ease, color 0.2s ease; }
+.ws-hero-dept-link:hover { background: rgba(216, 187, 132, 0.22); color: #ebd29d !important; }
+@media (max-width: 768px) {
+  .ws-hero-video-banner { min-height: 540px; max-height: none; aspect-ratio: auto; padding: 24px 0; }
+  .ws-hero-video-inner { padding: 36px 18px; gap: 14px; }
+  .ws-hero-kicker { font-size: 12px; padding: 6px 14px; }
+  .ws-hero-title { font-size: 26px; line-height: 1.3; }
+  .ws-hero-desc { font-size: 14px; line-height: 1.6; }
+  .ws-hero-cta-grid { flex-direction: column; gap: 9px; max-width: 360px; }
+  .ws-hero-btn { width: 100%; padding: 13px 18px; font-size: 14px; }
+  .ws-hero-dept-nav { gap: 6px; }
+  .ws-hero-dept-link { font-size: 12.5px; padding: 5px 10px; }
+}
+</style>
 <div class="boxsize ez_box_module hero_video_module_wrap posRel" style="margin: 0 auto; width: 100%; overflow: hidden; max-width: 100%; position: relative; background: #000;" id="box_module_Custom_455503_wrap">
-  <div style="width: 100%; max-width: 100%; margin: 0 auto; position: relative;">
-    <video 
-      src="/videos/hero_optimized.mp4" 
-      autoplay 
-      loop 
-      muted 
-      playsinline 
-      preload="auto"
-      style="width: 100%; height: auto; max-height: 820px; object-fit: cover; display: block; margin: 0 auto;"
-    ></video>
+  <div class="ws-hero-video-banner" id="ws-hero-video-section">
+    <video class="ws-hero-video-bg" id="ws-hero-video-el" autoplay loop muted playsinline preload="auto" poster="https://cdn.myreal.co.kr/data/image_assist/3697191616_av7FHwAM_2105632051_dW8lp9JM_20240423_whitedent_ms_ECA689EC8B9CEC8B9DEBA6BDEC9E84ED948CEB9E80ED8AB8_H4_N1.jpg">
+      <source src="/videos/hero_optimized.mp4" type="video/mp4">
+      <source src="https://whinish.com/videos/hero_optimized.mp4" type="video/mp4">
+    </video>
+    <div class="ws-hero-video-scrim"></div>
+    <div class="ws-hero-video-inner">
+      <div class="ws-hero-kicker">1994년 개원 · 강남역 11·12번 출구 도보 1분 · 일본어 전담 코디네이터 3명 상주</div>
+      <h1 class="ws-hero-title">강남역 33년 전통 · <em>3인 원장단 책임 협진</em></h1>
+      <p class="ws-hero-desc">치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(보건복지부 인증 치주과 전문의)이<br>치아교정 · 최소삭제 심미보철 · 3D CT 저통 임플란트를 정밀 진단부터 사후 관리까지 1:1로 책임 진료합니다.</p>
+      <div class="ws-hero-cta-grid">
+        <a class="ws-hero-btn ws-hero-btn--naver" href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener noreferrer">네이버 빠른 예약 (1분 완료)</a>
+        <a class="ws-hero-btn ws-hero-btn--kakao" href="https://pf.kakao.com/_Vtxdwl" target="_blank" rel="noopener noreferrer">카카오톡 1:1 비용·기간 상담</a>
+        <a class="ws-hero-btn ws-hero-btn--line" href="https://line.me/ti/p/~whitestyle1" target="_blank" rel="noopener noreferrer">LINE 日本語直通相談 (ID: whitestyle1)</a>
+        <a class="ws-hero-btn ws-hero-btn--tel" href="tel:1577-7287">대표전화 1577-7287 / 02-569-7528</a>
+      </div>
+      <nav class="ws-hero-dept-nav" aria-label="주요 진료 안내">
+        <a class="ws-hero-dept-link" href="/treatments/orthodontics">치아교정 클리닉</a>
+        <a class="ws-hero-dept-link" href="/treatments/aesthetic/zeroshell">최소삭제 심미보철</a>
+        <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 저통 임플란트</a>
+        <a class="ws-hero-dept-link" href="/ja">日本語診療 안내 (Japanese)</a>
+      </nav>
+    </div>
   </div>
 </div>
 """
@@ -69,6 +119,43 @@ extra_head = (
     '    width: 100%;\n'
     '    height: auto;\n'
     '    display: block;\n'
+    '  }\n'
+    '  /* 메인 하단 공지사항/온라인상담(md_455546) 및 대기실 갤러리 겹침 원천 차단 */\n'
+    '  #content_455546_8_24_32,\n'
+    '  #content_455546_8_24_36 {\n'
+    '    height: auto !important;\n'
+    '    display: inline-block !important;\n'
+    '  }\n'
+    '  #body_content_455546_8_24_32,\n'
+    '  #body_content_455546_8_24_36 {\n'
+    '    height: auto !important;\n'
+    '    align-self: flex-end !important;\n'
+    '  }\n'
+    '  #body_content_455546_8_24_22,\n'
+    '  .ez_asset_68138_68139,\n'
+    '  #body_content_455546_8_24_24,\n'
+    '  .ez_asset_68138 {\n'
+    '    height: auto !important;\n'
+    '    min-height: 0 !important;\n'
+    '    overflow: visible !important;\n'
+    '  }\n'
+    '  #body_ez_box_455546_8_24 {\n'
+    '    height: auto !important;\n'
+    '    align-content: flex-start !important;\n'
+    '    overflow: visible !important;\n'
+    '  }\n'
+    '  #box_module_Image_description_455546_wrap,\n'
+    '  .box_module_Image_description_455546_inner,\n'
+    '  #module_Image_description_455546,\n'
+    '  .Image_description_module_body_455546,\n'
+    '  #object_455546_9 {\n'
+    '    height: auto !important;\n'
+    '    max-height: none !important;\n'
+    '  }\n'
+    '  #ws-park-sung-tae-gallery {\n'
+    '    position: relative !important;\n'
+    '    clear: both !important;\n'
+    '    z-index: 2 !important;\n'
     '  }\n'
     '</style>\n'
 )
@@ -524,7 +611,7 @@ modern_adapter_script = """
     .catch(function(err) {
       console.error('Submission error:', err);
       // Fallback to legacy compatibility endpoint
-      fetch('/_mir.do.sqlexec.php', {
+      fetch('/api/mir-sqlexec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -546,6 +633,92 @@ modern_adapter_script = """
 
     return false;
   }, true);
+
+  // 4. Intercept legacy mir_callDynamicEx / callDynamicEx consultation payloads to avoid [cdyex] alerts
+  function handleLegacyConsultPayload(secuarr2Raw) {
+    if (!secuarr2Raw || String(secuarr2Raw).indexOf('dbinfoAry') === -1) return false;
+    try {
+      var parsed = typeof secuarr2Raw === 'string' ? JSON.parse(secuarr2Raw) : secuarr2Raw;
+      var containers = Array.isArray(parsed) ? parsed : [parsed];
+      var entries = [];
+      for (var i = 0; i < containers.length; i++) {
+        if (containers[i] && Array.isArray(containers[i].dbinfoAry)) {
+          entries = entries.concat(containers[i].dbinfoAry);
+        }
+      }
+      var nameVal = '';
+      var telVal = '';
+      for (var j = 0; j < entries.length; j++) {
+        var fn = String((entries[j] && entries[j].name) || '').toLowerCase();
+        var fv = String((entries[j] && entries[j].value) || '').trim();
+        if (!fv) continue;
+        if (!nameVal && (fn === 'name' || fn.indexOf('[name]') !== -1)) nameVal = fv;
+        else if (!telVal && (fn === 'hpnum' || fn.indexOf('[hpnum]') !== -1 || fn.indexOf('hp') !== -1 || fn.indexOf('tel') !== -1 || fn.indexOf('phone') !== -1)) telVal = fv;
+      }
+      if (!nameVal && !telVal) return false;
+
+      fetch('/api/consult', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: nameVal || '신규신청자',
+          phone: telVal || '미기재',
+          treatment: '빠른상담신청',
+          agreedPrivacy: true,
+          agreedSensitive: true,
+          source: 'quick_bar'
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data && data.success) {
+          alert('화이트스타일치과 빠른상담 신청이 정상 접수되었습니다.\\n전문 상담 실장이 신속히 연락드리겠습니다.');
+          var f = document.getElementById('form_25c77498d12ad9fe80a1bffce2a3ec49') || document;
+          var inputs = f.querySelectorAll('input[type="text"]');
+          for (var k = 0; k < inputs.length; k++) inputs[k].value = '';
+        } else {
+          alert((data && data.message) || '상담 신청 중 오류가 발생하였습니다.');
+        }
+        var btn = document.getElementById('submitbtn_25c77498d12ad9fe80a1bffce2a3ec49');
+        if (btn) btn.classList.remove('submitLock');
+      })
+      .catch(function() {
+        var btn = document.getElementById('submitbtn_25c77498d12ad9fe80a1bffce2a3ec49');
+        if (btn) btn.classList.remove('submitLock');
+      });
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function installDynamicInterceptors() {
+    if (typeof window.mir_callDynamicEx === 'function' && !window.mir_callDynamicEx.__wsWrapped) {
+      var origMir = window.mir_callDynamicEx;
+      var wrappedMir = function(aryData) {
+        if (aryData && aryData.arrset && handleLegacyConsultPayload(aryData.arrset.secuarr2)) {
+          return;
+        }
+        return origMir.apply(this, arguments);
+      };
+      wrappedMir.__wsWrapped = true;
+      window.mir_callDynamicEx = wrappedMir;
+    }
+    if (typeof window.callDynamicEx === 'function' && !window.callDynamicEx.__wsWrapped) {
+      var origCall = window.callDynamicEx;
+      var wrappedCall = function(secukey, arr1, arr2) {
+        if (handleLegacyConsultPayload(arr2)) {
+          return;
+        }
+        return origCall.apply(this, arguments);
+      };
+      wrappedCall.__wsWrapped = true;
+      window.callDynamicEx = wrappedCall;
+    }
+  }
+
+  installDynamicInterceptors();
+  window.addEventListener('load', installDynamicInterceptors);
 })();
 </script>
 """
@@ -583,20 +756,23 @@ old_notice_block = (
 
 new_notice_block = (
     '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/board/notice/32599" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[메가경제] 33년 임플란트 진료, 재수술은 무엇이 다를까</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.19</div></a>'
+    '<a href="/board/notice/32598" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[미디어파인] 임플란트, 사전 진단과 사후관리가 핵심</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.18</div></a>'
     '<a href="/board/notice/32597" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[대학저널] 고령화 시대 임플란트 정밀 진단과 사후관리</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.17</div></a>'
     '<a href="/board/notice/32596" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 박성태 화백 기증 철망 회화 전시 및 구입 문의</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.16</div></a>'
-    '<a href="/board/notice/32595" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[언론보도] 구강건강 치료 확대와 정기검진 중요성 강조</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.15</div></a>'
 )
 
 if old_notice_block in new_html:
     new_html = new_html.replace(old_notice_block, new_notice_block, 1)
-    print("Updated main notice widget with 32597, 32596 & 32595.")
+    print("Updated main notice widget with 32598, 32597 & 32596.")
 
 old_online_block = (
     '<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">'
@@ -609,22 +785,22 @@ old_online_block = (
 new_online_block = (
     '<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">'
     '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 방문 후기] 통증 없이 편안했던 강남역 스케일링</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.19</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 한국스카우트연맹 지정, 강남역 33년 치과</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.18</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 치료 잘 받고 갑니다 강남역 접근성 추천</div>'
     '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.17</div></a>'
     '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[교정 유지장치 수복 후기] 타병원 교정 유지장치 탈락 당일 재부착</div>'
-    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.15</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 방문 후기] 할머니 깨진 치아 세심하게 치료해주셨어요</div>'
-    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.14</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">해외거주자 예약</div>'
-    '<div class="content_455546_8_24_24_ez_widget_board_date">26.09.17</div></a>    </div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.15</div></a>    </div>'
 )
 
 if old_online_block in new_html:
     new_html = new_html.replace(old_online_block, new_online_block, 1)
-    print("Updated main online widget with latest patient reviews (1038317, 1038316, 1038291).")
+    print("Updated main online widget with latest patient reviews (1038318, 1038317, 1038316, 1038291).")
 
 park_section_html = """
 <section id="ws-park-sung-tae-gallery" style="background:#f8fafc;padding:72px 20px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;font-family:'Pretendard','Malgun Gothic',sans-serif;word-break:keep-all;overflow-wrap:break-word;">
@@ -707,6 +883,9 @@ if quick_anchor in new_html:
     print("Injected Park Sung-tae waiting room gallery section before quick menu.")
 else:
     print("WARNING: quick_anchor not found!")
+
+if not new_html.lstrip().upper().startswith('<!DOCTYPE'):
+    new_html = '<!DOCTYPE html>\n' + new_html
 
 # -------------------------------------------------------------
 # 6. Save Targets

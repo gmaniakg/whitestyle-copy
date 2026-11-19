@@ -104,7 +104,7 @@ function printStaff(num, mode) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: {
@@ -126,7 +126,7 @@ function callexecbox(enkey, datakey) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: {
@@ -149,7 +149,7 @@ function addStaff(enkey) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: {
@@ -375,7 +375,7 @@ function mir_request_exec(mode1, mode2, printResult, vnkey, key1, f2, f3) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: {
@@ -416,7 +416,7 @@ function doState(
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: {
@@ -458,7 +458,7 @@ function doStateAST(
   $.ajax({
     type: "POST",
     async: true,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: true,
     data: {
@@ -595,7 +595,7 @@ function callDynamic(secukey, arr1, arr2, cpinfo, node) {
   }
   nodeblock.removeClass("disNone");
 
-  var s_url = atob("L19taXIuZG8uc3FsZXhlYy5waHA=");
+  var s_url = "/api/mir-sqlexec";
   $(".msgsendbox").html("");
   $.ajax({
     type: "POST",
@@ -688,7 +688,7 @@ function callDynamicEx(secukey, arr1, arr2, cpinfo, node, mode) {
     node +
     " 네트워크 속도 문제로 시스템에 일시적인 문제가 발생하였습니다. 이 메세지가 지속되면 고객센터에 문의하여 주시기 바랍니다. 다음키를 복사해 전달주시면 좋습니다 key: " +
     secukey;
-  var s_url = atob("L19taXIuZG8uc3FsZXhlYy5waHA=");
+  var s_url = "/api/mir-sqlexec";
 
   switch (mode) {
     default:
@@ -799,7 +799,7 @@ function mir_callDynamicEx(aryData) {
     "[cdyex] 네트워크 속도 문제로 시스템에 일시적인 문제가 발생하였습니다. 이 메세지가 지속되면 고객센터에 문의하여 주시기 바랍니다.";
   switch (sType) {
     default:
-      var s_url = atob("L19taXIuZG8uc3FsZXhlYy5waHA=");
+      var s_url = "/api/mir-sqlexec";
       break;
   }
 
@@ -1056,7 +1056,7 @@ async function async_mir_callDynamicEx(aryData) {
       "[cdyex] 네트워크 속도 문제로 시스템에 일시적인 문제가 발생하였습니다. 이 메세지가 지속되면 고객센터에 문의하여 주시기 바랍니다.";
     switch (sType) {
       default:
-        var s_url = atob("L19taXIuZG8uc3FsZXhlYy5waHA=");
+        var s_url = "/api/mir-sqlexec";
         break;
     }
 
@@ -1454,7 +1454,7 @@ function sms_loader(num, node, farr1, farr2, farr3) {
   $.ajax({
     type: "POST",
     async: true,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: { sndnum: num, secukey: farr1, secuarr1: farr2, cpinfo: farr3 },
@@ -1493,7 +1493,7 @@ function payhistory(dataresult, node) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: { temper: dataresult, keytype: "payhistory" },
@@ -1526,7 +1526,7 @@ function result_call(num, node, farr1, farr2, farr3) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: { sndnum: num, secukey: farr1, secuarr2: farr2, secuarr3: farr3 },
@@ -1547,7 +1547,7 @@ function mbid_chk(v) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: { reg_mb_id: valmbid, keytype: "id_validate" },
@@ -1595,7 +1595,7 @@ function mbnick_chk(v) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: { reg_mb_nick: valmbid, keytype: "nick_validate" },
@@ -1652,7 +1652,7 @@ function mir_reg_mb_email_check() {
   var valmbid = $("#reg_mb_email").val();
   $.ajax({
     type: "POST",
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     data: {
       reg_mb_email: valmbid,
       keytype: "email_validate_sp"
@@ -1673,7 +1673,7 @@ function mbemail_chk(v) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: { reg_mb_email: valmbid, keytype: "email_validate" },
@@ -1719,7 +1719,7 @@ function mir_reg_mb_hp_check() {
   var valmbhp = $("#reg_mb_hp").val();
   $.ajax({
     type: "POST",
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     data: {
       reg_mb_hp: valmbhp,
       keytype: "hp_validate_sp"
@@ -1740,7 +1740,7 @@ function mbhp_chk(v) {
   $.ajax({
     type: "POST",
     async: false,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: { reg_mb_hp: valmbid, keytype: "hp_validate" },
@@ -2160,7 +2160,7 @@ function MirformAjax(fName, secukey, exeKey) {
 
   $.ajax({
     type: "post",
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     data: {
       secukey: secukey,
       secuStringArr: queryString,
@@ -2600,7 +2600,7 @@ function do_msgBox(md, stk, doexec, doarr, uno, uid) {
   $.ajax({
     type: "POST",
     async: true,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     dataType: "json",
@@ -2634,7 +2634,7 @@ function exeSort(key, doNum) {
   $.ajax({
     type: "POST",
     async: true,
-    url: "/_mir.do.sqlexec.php",
+    url: "/api/mir-sqlexec",
     traditional: true,
     cache: false,
     data: {

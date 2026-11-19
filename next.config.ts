@@ -117,6 +117,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/_mir.do.sqlexec.php",
+        destination: "/api/mir-sqlexec",
+      },
+      {
         source: "/download.css",
         destination: "/ai-pet/download.css",
       },

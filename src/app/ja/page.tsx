@@ -255,6 +255,64 @@ export default function JapaneseLandingPage() {
             <span className="text-xs font-extrabold text-[#1e3a8a]">渡韓ステップを見る →</span>
           </Link>
         </div>
+
+        {/* 2026 Comparison Guide Table for Japanese Patients */}
+        <div id="comparison-guide-2026" className="mt-12 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden wb-ka wbka">
+          <div className="bg-[#091326] text-white px-6 sm:px-8 py-5 border-b-2 border-[#c5a880]">
+            <span className="inline-block px-3 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-extrabold mb-2">
+              2026年 韓国・ソウル江南 歯科比較ガイド
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black wb-ka wbka">
+              韓国・江南 ホワイトスタイル歯科 主要治療・通院回数・日本語サポート比較一覧
+            </h2>
+          </div>
+          <div className="overflow-x-auto p-4 sm:p-6">
+            <table className="w-full text-xs sm:text-sm border-collapse text-slate-800 wb-ka wbka">
+              <thead>
+                <tr className="bg-slate-100 border-b-2 border-slate-300 text-left">
+                  <th className="py-3 px-4 font-extrabold">治療メニュー</th>
+                  <th className="py-3 px-4 font-extrabold">来院回数・期間目安</th>
+                  <th className="py-3 px-4 font-extrabold">料金・保証・安心基準</th>
+                  <th className="py-3 px-4 font-extrabold">日本語相談・詳細</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                <tr>
+                  <td className="py-3.5 px-4 font-extrabold text-[#091326]">1DAYオフィスホワイトニング</td>
+                  <td className="py-3.5 px-4">来院1回・約60分完結</td>
+                  <td className="py-3.5 px-4">パノラマ検診＋歯石除去＋歯肉保護＋KFDA承認薬剤3回照射（観光・短期渡韓向け）</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/whitening" className="text-[#1e3a8a] font-extrabold underline">詳細を見る →</Link></td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 px-4 font-extrabold text-[#091326]">無削除ゼロシェル・最小削除ラミネート</td>
+                  <td className="py-3.5 px-4">最短2〜3回来院（1〜2週）</td>
+                  <td className="py-3.5 px-4">エナメル質保存優先（無削除〜0.1〜0.2mm最小削除）・他院変色/破折再治療も歯周科専門医協診</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/laminate" className="text-[#1e3a8a] font-extrabold underline">比較を見る →</Link></td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 px-4 font-extrabold text-[#091326]">歯列矯正・インビザライン・裏側</td>
+                  <td className="py-3.5 px-4">日本遠隔管理・2〜4ヶ月毎</td>
+                  <td className="py-3.5 px-4">診断費・装置費・毎月の調整料・保定装置代込みトータルフィー総額制／金俊憲病院長1対1専任</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/orthodontics" className="text-[#1e3a8a] font-extrabold underline">総額制を見る →</Link></td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 px-4 font-extrabold text-[#091326]">3D CT短期インプラント・骨造成・再手術</td>
+                  <td className="py-3.5 px-4">最短2〜4回渡韓（溶ける糸）</td>
+                  <td className="py-3.5 px-4">3段階無痛麻酔＋難症例骨移植(GBR・サイナスリフト)＋他院再手術＋3・6・12ヶ月リコール</td>
+                  <td className="py-3.5 px-4"><Link href="/ja/implant" className="text-[#1e3a8a] font-extrabold underline">手順を見る →</Link></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="bg-amber-50/70 px-6 py-4 border-t border-amber-200 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
+            <span className="font-bold text-slate-800">
+              専任日本語通訳3名常駐（直通：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a> ／ LINE ID：whitestyle1）
+            </span>
+            <Link href="/board/notice/1907" className="text-[#1e3a8a] font-extrabold underline">
+              2026年 韓日統合比較ガイド全文を読む →
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* 2. KONEST OFFICIAL ARCHIVE & 125 JAPANESE REVIEWS SECTION */}
