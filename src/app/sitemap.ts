@@ -25,6 +25,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/treatments/implant/bone-graft`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/treatments/implant/edentulous`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/treatments/implant/insurance`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/treatments/general/scaling`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/board/notice/1905`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/treatments/orthodontics`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
@@ -171,25 +201,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // 추출된 포스트 및 상세 진료 페이지 동적 매핑
+  const staticUrls = new Set(staticRoutes.map((r) => r.url));
   let dynamicRoutes: MetadataRoute.Sitemap = [];
   try {
     const posts = getAllPosts().filter(
       (p) => p.type === 'static_page' || p.type === 'board_notice'
     );
-    dynamicRoutes = posts.slice(0, 300).map((p) => {
-      const filename = p.local_path.split('/').pop() ?? '';
-      const fileId = filename.split('_')[0];
-      const urlPath = p.type === 'static_page'
-        ? `/treatments/${fileId}`
-        : `/board/notice/${fileId}`;
+    dynamicRoutes = posts
+      .slice(0, 300)
+      .map((p) => {
+        const filename = p.local_path.split('/').pop() ?? '';
+        const fileId = filename.split('_')[0];
+        const urlPath = p.type === 'static_page'
+          ? `/treatments/${fileId}`
+          : `/board/notice/${fileId}`;
 
-      return {
-        url: `${baseUrl}${urlPath}`,
-        lastModified: p.scraped_at ? new Date(p.scraped_at) : new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-      };
-    });
+        return {
+          url: `${baseUrl}${urlPath}`,
+          lastModified: p.scraped_at ? new Date(p.scraped_at) : new Date(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.7,
+        };
+      })
+      .filter((r) => !staticUrls.has(r.url));
   } catch (err) {
     console.error('sitemap generation error:', err);
   }

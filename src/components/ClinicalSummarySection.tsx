@@ -41,6 +41,10 @@ export default function ClinicalSummarySection({
     name: title,
     url: pageUrl,
     description: leadSentence,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.clinical-lead-sentence', '.clinical-faq-answer'],
+    },
     mainEntity: {
       '@type': 'Dentist',
       name: '화이트스타일치과의원',
@@ -53,6 +57,15 @@ export default function ClinicalSummarySection({
         postalCode: '06134',
         addressCountry: 'KR',
       },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 37.4988802,
+        longitude: 127.0286304,
+      },
+      hasMap: [
+        'https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90+%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C92%EA%B8%B8+17',
+        'https://map.naver.com/p/entry/place/11566039',
+      ],
     },
     reviewedBy: [
       {
@@ -122,7 +135,7 @@ export default function ClinicalSummarySection({
           {title}
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-800 font-semibold leading-[1.95] bg-slate-50 border-l-4 border-[#0f294a] p-5 sm:p-6 rounded-r-2xl mb-8">
+        <p className="clinical-lead-sentence text-base sm:text-lg text-slate-800 font-semibold leading-[1.95] bg-slate-50 border-l-4 border-[#0f294a] p-5 sm:p-6 rounded-r-2xl mb-8">
           {leadSentence}
         </p>
 
@@ -193,7 +206,7 @@ export default function ClinicalSummarySection({
                   <h3 className="text-base sm:text-lg font-extrabold text-[#0f294a] mb-2 leading-snug">
                     Q. {faq.question}
                   </h3>
-                  <p className="text-sm sm:text-base text-slate-700 leading-[1.95]">
+                  <p className="clinical-faq-answer text-sm sm:text-base text-slate-700 leading-[1.95]">
                     {faq.answer}
                   </p>
                 </div>

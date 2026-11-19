@@ -56,7 +56,11 @@ const clinicJsonLd = {
         "latitude": 37.4988802,
         "longitude": 127.0286304
       },
-      "hasMap": "https://map.naver.com/p/entry/place/11566039",
+      "hasMap": [
+        "https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90+%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C92%EA%B8%B8+17",
+        "https://www.google.com/maps?q=37.4988802,127.0286304",
+        "https://map.naver.com/p/entry/place/11566039"
+      ],
       "areaServed": [
         {
           "@type": "AdministrativeArea",
@@ -198,6 +202,8 @@ const clinicJsonLd = {
         "치주과 전문의 중증 잇몸치료 및 잇몸성형",
         "원데이 전문가 치아미백 및 연 1회 건강보험 스케일링",
         "일본 방한 환자 전담 치과 진료 (日本語通訳スタッフ3名常駐)",
+        "만 65세 이상 건강보험 임플란트 (평생 2개 본인부담률 30%) 및 심평원 비급여 정품 보증",
+        "보건복지부 인증 치주과 전문의 박선혜 원장 임플란트 주위염·중증 치주치료 3·6·12개월 정기 리콜",
         "화타펫 (HwataPet · 하야니) 24시간 3D AI 덴탈 케어 프렌드"
       ]
     },
@@ -218,6 +224,15 @@ const clinicJsonLd = {
         "ja",
         "en"
       ],
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1",
+          "h2",
+          ".clinical-lead-sentence",
+          ".clinical-faq-answer"
+        ]
+      },
       "publisher": {
         "@id": "https://whitestyle.com/#org"
       }
