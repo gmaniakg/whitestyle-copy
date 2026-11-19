@@ -1,5 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
+import {
+  getConditionProfile,
+  naverSearchUrl,
+  NAVER_BLOG_URL,
+  NAVER_PLACE_REVIEW_URL,
+  NAVER_PLACE_URL,
+} from './treatmentConditionData';
+
+const LAST_REVIEWED = '2026-11-19';
+const GOOGLE_MAPS_EN =
+  'https://www.google.com/maps/search/?api=1&query=WhiteStyle+Dental+Clinic+17+Gangnam-daero+92-gil+Gangnam-gu+Seoul';
+const GOOGLE_MAPS_JA =
+  'https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97';
 
 export interface ClinicalComparisonRow {
   item: string;
@@ -35,19 +48,43 @@ export default function ClinicalSummarySection({
   faqs,
   pageUrl,
 }: ClinicalSummarySectionProps) {
+  const profile = getConditionProfile(pageUrl);
+
   const medicalPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
+    '@id': `${pageUrl}#webpage`,
     name: title,
     url: pageUrl,
     description: leadSentence,
+    inLanguage: 'ko-KR',
+    lastReviewed: LAST_REVIEWED,
+    medicalAudience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+    isPartOf: { '@id': 'https://whitestyle.com/#website' },
+    ...(profile
+      ? {
+          about: {
+            '@type': 'MedicalProcedure',
+            name: profile.procedureName,
+            procedureType: `https://schema.org/${profile.procedureType}`,
+            howPerformed: profile.conditions
+              .filter((c) => c.label !== '일본어 상담')
+              .map((c) => `${c.label}: ${c.answer}`)
+              .join(' / '),
+            followup: profile.conditions.find((c) => c.label.startsWith('보증'))?.answer,
+          },
+          keywords: profile.naverKeywords.join(', '),
+        }
+      : {}),
     speakable: {
       '@type': 'SpeakableSpecification',
-      cssSelector: ['h1', '.clinical-lead-sentence', '.clinical-faq-answer'],
+      cssSelector: ['h1', '.clinical-lead-sentence', '.clinical-faq-answer', '.clinical-condition-answer'],
     },
     mainEntity: {
       '@type': 'Dentist',
+      '@id': 'https://whitestyle.com/#org',
       name: '화이트스타일치과의원',
+      alternateName: ['WhiteStyle Dental Clinic', 'ホワイトスタイル歯科'],
       telephone: '1577-7287',
       address: {
         '@type': 'PostalAddress',
@@ -64,7 +101,9 @@ export default function ClinicalSummarySection({
       },
       hasMap: [
         'https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90+%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C92%EA%B8%B8+17',
-        'https://map.naver.com/p/entry/place/11566039',
+        GOOGLE_MAPS_EN,
+        GOOGLE_MAPS_JA,
+        NAVER_PLACE_URL,
       ],
     },
     reviewedBy: [
@@ -107,7 +146,7 @@ export default function ClinicalSummarySection({
 
   return (
     <section
-      className="w-full max-w-6xl mx-auto px-4 sm:px-8 pt-10 pb-8"
+      className="wb-ka wbka w-full max-w-6xl mx-auto px-4 sm:px-8 pt-10 pb-8"
       style={{ wordBreak: 'keep-all', overflowWrap: 'break-word', lineHeight: 1.95 }}
     >
       <script
@@ -121,68 +160,68 @@ export default function ClinicalSummarySection({
         />
       )}
 
-      <div className="bg-white border border-slate-200 rounded-3xl shadow-sm p-6 sm:p-10 mb-8">
+      <div className="py-2 sm:py-4 mb-8">
         <div className="flex flex-wrap items-center gap-2.5 mb-5">
-          <span className="inline-block px-3.5 py-1 rounded-full text-xs font-extrabold tracking-wider bg-slate-900 text-amber-200">
+          <span className="inline-block px-3.5 py-1 rounded-full text-sm font-bold bg-ws-ink text-ws-gold">
             {categoryBadge}
           </span>
-          <span className="inline-block px-3.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
-            1994년 개원 33년 전통 · 강남역 11·12번 출구 도보 1분
+          <span className="inline-block px-3.5 py-1 rounded-full text-sm font-semibold bg-ws-panel text-ws-body">
+            1994년 개원 33년 전통, 강남역 11·12번 출구 도보 1분
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl font-black text-slate-900 mb-6 tracking-tight leading-snug">
+        <h1 className="text-2xl sm:text-4xl font-black text-ws-ink mb-6 leading-snug">
           {title}
         </h1>
 
-        <p className="clinical-lead-sentence text-base sm:text-lg text-slate-800 font-semibold leading-[1.95] bg-slate-50 border-l-4 border-[#0f294a] p-5 sm:p-6 rounded-r-2xl mb-8">
+        <p className="clinical-lead-sentence max-w-[72ch] text-base sm:text-lg text-ws-ink font-semibold leading-[1.95] bg-ws-mist border border-ws-rule p-5 sm:p-6 rounded-2xl mb-8">
           {leadSentence}
         </p>
 
         <div className="mb-10">
-          <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-lg sm:text-xl font-extrabold text-ws-ink mb-4">
             핵심 진료 안내 3줄 요약
           </h2>
-          <ul className="space-y-3 bg-[#f8fafc] border border-slate-200 rounded-2xl p-5 sm:p-6">
+          <ol className="space-y-3 bg-ws-mist border border-ws-rule rounded-2xl p-5 sm:p-6">
             {summaryBullets.map((item, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-3 text-slate-700 text-sm sm:text-base leading-[1.95]"
+                className="flex items-start gap-3 text-ws-body text-sm sm:text-base leading-[1.95]"
               >
-                <span className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-[#0f294a] text-white text-xs font-bold flex items-center justify-center">
+                <span className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-ws-navy text-white text-xs font-bold flex items-center justify-center">
                   {idx + 1}
                 </span>
                 <span>{item}</span>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
 
         <div className="mb-10">
-          <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-lg sm:text-xl font-extrabold text-ws-ink mb-4">
             {comparisonTitle}
           </h2>
-          <div className="overflow-x-auto rounded-2xl border border-slate-200">
+          <div className="overflow-x-auto rounded-2xl border border-ws-rule">
             <table className="w-full text-left border-collapse text-sm sm:text-base">
               <thead>
-                <tr className="bg-[#0f294a] text-white">
-                  <th className="py-3.5 px-4 font-bold w-1/4">{comparisonHeaders[0]}</th>
-                  <th className="py-3.5 px-4 font-bold w-2/5 text-amber-200">
+                <tr className="bg-ws-navy text-white">
+                  <th scope="col" className="py-3.5 px-4 font-bold w-1/4">{comparisonHeaders[0]}</th>
+                  <th scope="col" className="py-3.5 px-4 font-bold w-2/5 text-ws-gold">
                     {comparisonHeaders[1]}
                   </th>
-                  <th className="py-3.5 px-4 font-bold w-1/3">{comparisonHeaders[2]}</th>
+                  <th scope="col" className="py-3.5 px-4 font-bold w-1/3">{comparisonHeaders[2]}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200 bg-white">
+              <tbody className="divide-y divide-ws-rule bg-white">
                 {comparisonRows.map((row, idx) => (
-                  <tr key={idx} className={idx % 2 === 1 ? 'bg-slate-50/70' : ''}>
-                    <td className="py-4 px-4 font-bold text-slate-900 align-top">
+                  <tr key={idx} className={idx % 2 === 1 ? 'bg-ws-mist' : ''}>
+                    <th scope="row" className="py-4 px-4 font-bold text-ws-ink align-top">
                       {row.item}
-                    </td>
-                    <td className="py-4 px-4 font-semibold text-slate-800 align-top leading-[1.95]">
+                    </th>
+                    <td className="py-4 px-4 font-semibold text-ws-ink align-top leading-[1.95]">
                       {row.whitestyle}
                     </td>
-                    <td className="py-4 px-4 text-slate-600 align-top leading-[1.95]">
+                    <td className="py-4 px-4 text-ws-muted align-top leading-[1.95]">
                       {row.general}
                     </td>
                   </tr>
@@ -194,19 +233,16 @@ export default function ClinicalSummarySection({
 
         {faqs.length > 0 && (
           <div className="mb-10">
-            <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 mb-4">
+            <h2 className="text-lg sm:text-xl font-extrabold text-ws-ink mb-4">
               자주 묻는 임상 질문 (Q&amp;A)
             </h2>
-            <div className="space-y-4">
+            <div className="divide-y divide-ws-rule border-y border-ws-rule">
               {faqs.map((faq, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6"
-                >
-                  <h3 className="text-base sm:text-lg font-extrabold text-[#0f294a] mb-2 leading-snug">
+                <div key={idx} className="py-5 sm:py-6">
+                  <h3 className="text-base sm:text-lg font-extrabold text-ws-navy mb-2 leading-snug">
                     Q. {faq.question}
                   </h3>
-                  <p className="clinical-faq-answer text-sm sm:text-base text-slate-700 leading-[1.95]">
+                  <p className="clinical-faq-answer max-w-[72ch] text-sm sm:text-base text-ws-body leading-[1.95]">
                     {faq.answer}
                   </p>
                 </div>
@@ -215,22 +251,87 @@ export default function ClinicalSummarySection({
           </div>
         )}
 
-        <div className="border-t border-slate-200 pt-7">
-          <p className="text-xs sm:text-sm text-slate-600 mb-4 font-medium leading-[1.95]">
-            김준헌 병원장(서울대졸 · 단국대 외래교수 · 교정학 박사) · 이봉진 대표원장 · 박선혜 원장(보건복지부 인증 치주과 전문의) 3인 원장단 협진 ｜ 서울특별시 강남구 강남대로92길 17 대승빌딩 B1·1·2층 (06134)
+        {profile && (
+          <div className="mb-10">
+            <h2 className="text-lg sm:text-xl font-extrabold text-ws-ink mb-2">
+              상담 전 많이 확인하시는 진료 조건
+            </h2>
+            <p className="text-sm sm:text-base text-ws-muted mb-4 leading-[1.95]">
+              {profile.procedureName} 진료를 알아보실 때 가장 자주 되묻는 조건을 한눈에 정리했습니다.
+            </p>
+            <dl className="divide-y divide-ws-rule border-y border-ws-rule">
+              {profile.conditions.map((c) => (
+                <div key={c.label} className="grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-1 sm:gap-6 py-4">
+                  <dt className="text-sm sm:text-base font-extrabold text-ws-navy">{c.label}</dt>
+                  <dd className="clinical-condition-answer max-w-[72ch] text-sm sm:text-base text-ws-body leading-[1.95]">
+                    {c.answer}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+
+        {profile && (
+          <div className="mb-10 rounded-2xl border border-naver-line bg-naver-soft p-5 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-extrabold text-ws-ink mb-2">
+              네이버에서 실제 후기로 한 번 더 확인하세요
+            </h2>
+            <p className="text-sm sm:text-base text-ws-body mb-4 leading-[1.95]">
+              아래 키워드로 검색하시면 33년간 강남역 한자리에서 진료받으신 분들의 방문자 후기와 블로그 진료 기록을 그대로 확인하실 수 있습니다.
+            </p>
+            <div className="flex flex-wrap gap-2 mb-5">
+              {profile.naverKeywords.map((kw) => (
+                <a
+                  key={kw}
+                  href={naverSearchUrl(kw)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block px-3.5 py-2 rounded-full bg-white border border-naver-line text-sm font-bold text-ws-ink hover:bg-naver hover:text-ws-ink active:bg-naver-press active:text-ws-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-naver transition-colors"
+                >
+                  #{kw}
+                </a>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {[
+                { href: NAVER_PLACE_REVIEW_URL, label: '네이버 플레이스 방문자 후기' },
+                { href: NAVER_BLOG_URL, label: '공식 네이버 블로그 진료 기록' },
+                { href: NAVER_PLACE_URL, label: '네이버 지도 길찾기 (강남역 도보 1분)' },
+              ].map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="py-3 px-4 rounded-xl bg-white border border-ws-rule hover:border-naver active:bg-naver-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-naver text-ws-ink font-bold text-sm text-center transition-colors"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="border-t border-ws-rule pt-7">
+          <p className="text-sm text-ws-muted mb-1 font-medium leading-[1.95]">
+            김준헌 병원장(서울대졸, 단국대 외래교수, 교정학 박사), 이봉진 대표원장, 박선혜 원장(보건복지부 인증 치주과 전문의) 3인 원장단 협진
+          </p>
+          <p className="text-sm text-ws-muted mb-4 font-medium leading-[1.95]">
+            서울특별시 강남구 강남대로92길 17 대승빌딩 B1·1·2층 (06134)
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <a
               href="https://booking.naver.com/booking/13/bizes/265482"
               target="_blank"
               rel="noreferrer"
-              className="py-3.5 px-4 rounded-xl bg-[#03C75A] hover:bg-[#02b351] text-white font-extrabold text-sm text-center shadow-sm transition-colors"
+              className="py-3.5 px-4 rounded-xl bg-naver hover:bg-naver-hover active:bg-naver-press focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-naver text-ws-ink font-extrabold text-sm text-center transition-colors"
             >
               네이버 빠른 예약 (1분 완료)
             </a>
             <Link
               href="/consult"
-              className="py-3.5 px-4 rounded-xl bg-[#FEE500] hover:bg-[#f5dc00] text-slate-900 font-extrabold text-sm text-center shadow-sm transition-colors"
+              className="py-3.5 px-4 rounded-xl bg-kakao hover:bg-kakao-hover active:bg-kakao-press focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-ink text-ws-ink font-extrabold text-sm text-center transition-colors"
             >
               카카오톡 1:1 비용·기간 상담
             </Link>
@@ -238,13 +339,13 @@ export default function ClinicalSummarySection({
               href="https://line.me/ti/p/~whitestyle1"
               target="_blank"
               rel="noreferrer"
-              className="py-3.5 px-4 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white font-extrabold text-sm text-center shadow-sm transition-colors"
+              className="py-3.5 px-4 rounded-xl bg-line-app hover:bg-line-app-hover active:bg-line-app-press focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-line-app text-ws-ink font-extrabold text-sm text-center transition-colors"
             >
               LINE 日本語直通相談 (ID: whitestyle1)
             </a>
             <a
               href="tel:1577-7287"
-              className="py-3.5 px-4 rounded-xl bg-[#0f294a] hover:bg-[#163a66] text-white font-extrabold text-sm text-center shadow-sm transition-colors"
+              className="py-3.5 px-4 rounded-xl bg-ws-navy hover:bg-ws-navy-hover active:bg-ws-navy-deep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-navy text-white font-extrabold text-sm text-center ws-nowrap transition-colors"
             >
               대표전화 1577-7287 / 02-569-7528
             </a>

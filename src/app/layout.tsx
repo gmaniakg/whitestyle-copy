@@ -21,6 +21,8 @@ const clinicJsonLd = {
         "강남역 화이트스타일치과",
         "강남역 화이트스타일치과의원",
         "ソウル江南 ホワイトスタイル歯科",
+        "ホワイトスタイル歯科",
+        "WhiteStyle Dental Clinic Gangnam",
         "WHINISH Dental Clinic"
       ],
       "foundingDate": "1994-08-09",
@@ -59,6 +61,8 @@ const clinicJsonLd = {
       "hasMap": [
         "https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90+%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C92%EA%B8%B8+17",
         "https://www.google.com/maps?q=37.4988802,127.0286304",
+        "https://www.google.com/maps/search/?api=1&query=WhiteStyle+Dental+Clinic+17+Gangnam-daero+92-gil+Gangnam-gu+Seoul",
+        "https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97",
         "https://map.naver.com/p/entry/place/11566039"
       ],
       "areaServed": [
@@ -512,142 +516,6 @@ const clinicJsonLd = {
       ]
     },
     {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/treatments/orthodontics#webpage",
-      "url": "https://whitestyle.com/treatments/orthodontics",
-      "name": "강남역 화이트스타일치과 1:1 책임 치아교정·재교정 안내",
-      "specialty": "Orthodontics",
-      "inLanguage": "ko",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#procedure-orthodontics" },
-      "reviewedBy": { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-      "description": "서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장이 정밀 진단부터 장치 부착, 고난도 재교정, 사후 유지관리까지 주치의 변경 없이 1:1 직접 책임 진료합니다."
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/treatments/aesthetic#webpage",
-      "url": "https://whitestyle.com/treatments/aesthetic",
-      "name": "강남역 화이트스타일치과 최소삭제·무삭제 심미보철 및 라미네이트 재시술 안내",
-      "specialty": "Prosthodontics",
-      "inLanguage": "ko",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#procedure-prosthodontics" },
-      "reviewedBy": [
-        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
-        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
-      ],
-      "description": "자연치아 법랑질 보존을 최우선 원칙으로 정밀 교합 진단 후 치아 삭제량을 최소화(0.1~0.2mm)하거나 무삭제 방식으로 설계하며, 기존 보철 변색·파절 재시술까지 체계적 사후 보증 관리를 제공합니다."
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/treatments/implant#webpage",
-      "url": "https://whitestyle.com/treatments/implant",
-      "name": "강남역 화이트스타일치과 3D CT 정밀 임플란트·재수술·고난도 뼈이식 안내",
-      "specialty": "OralAndMaxillofacialSurgery",
-      "inLanguage": "ko",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#procedure-implant" },
-      "reviewedBy": [
-        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
-        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
-      ],
-      "description": "3D CT 정밀 진단과 3단계 통증 완화 마취 시스템을 바탕으로 김준헌·이봉진·박선혜(치주과 전문의) 3인 원장단이 임플란트 재수술, 고난도 뼈이식(GBR·상악동거상술), 무치악 전악 재건, 3·6·12개월 정기 사후관리를 협진합니다."
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/ja#webpage",
-      "url": "https://whitestyle.com/ja",
-      "name": "ソウル江南 ホワイトスタイル歯科 公式日本語案内（創業33年・日本語通訳3名常駐）",
-      "specialty": "Dentistry",
-      "inLanguage": "ja",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#org" },
-      "reviewedBy": [
-        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
-        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
-      ],
-      "description": "1994年開院・創業33年の信頼と実績。日本人ご予約毎年30％以上増加・日本人専用公式相談センター拡充。1DAYオフィスホワイトニング、無削除・最小削除ラミネート、月々の調整料・保定装置代・診断費込みのトータルフィー歯列矯正、3D CT短期集中インプラント（2〜4回来院）をご案内いたします。"
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/ja/whitening#webpage",
-      "url": "https://whitestyle.com/ja/whitening",
-      "name": "ソウル江南 ホワイトスタイル歯科 1DAYオフィスホワイトニング＆スケーリング公式案内",
-      "specialty": "Dentistry",
-      "inLanguage": "ja",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#org" },
-      "reviewedBy": [
-        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
-        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
-      ],
-      "description": "1回の来院（約60分）でパノラマ検診・スケーリング（歯石除去）・歯肉保護・KFDA承認ホワイトニング剤3回連続照射まで完結する1DAYオフィスホワイトニング専用案内です。"
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/ja/laminate#webpage",
-      "url": "https://whitestyle.com/ja/laminate",
-      "name": "ソウル江南 ホワイトスタイル歯科 無削除・最小削除ラミネートベニア＆他院再治療案内",
-      "specialty": "Prosthodontics",
-      "inLanguage": "ja",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#procedure-prosthodontics" },
-      "reviewedBy": [
-        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
-        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
-      ],
-      "description": "天然歯保存を最優先原則とし、無削除（ゼロシェル）または0.1〜0.2mm最小削除でのオーダーメイドセラミック設計および他院ラミネート再治療・保証管理を最短2〜3回来院スケジュールでご案内します。"
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/ja/orthodontics#webpage",
-      "url": "https://whitestyle.com/ja/orthodontics",
-      "name": "ソウル江南 ホワイトスタイル歯科 歯列矯正・インビザライン・トータルフィー総額制案内",
-      "specialty": "Orthodontics",
-      "inLanguage": "ja",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#procedure-orthodontics" },
-      "reviewedBy": { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-      "description": "ソウル大卒・檀国大外来教授・矯正学博士の金俊憲病院長が主治医変更なしで1対1担当。3D精密診断費・装置費・月々の調整料・保定装置（リテーナー）費を含むトータルフィー制度（総額制）と日本在住者向けインビザライン遠隔管理をご案内します。"
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/ja/implant#webpage",
-      "url": "https://whitestyle.com/ja/implant",
-      "name": "ソウル江南 ホワイトスタイル歯科 3D CT短期集中インプラント・骨移植・再手術案内",
-      "specialty": "OralAndMaxillofacialSurgery",
-      "inLanguage": "ja",
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#procedure-implant" },
-      "reviewedBy": [
-        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
-        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
-      ],
-      "description": "3D CT精密診断と3段階無痛麻酔のもと、3名院長団協診により最短2〜4回来院（溶ける糸活用可）の短期集中インプラント、高難度骨移植（GBR・上顎洞挙上術）、他院再手術・3/6/12ヶ月フォローを実施します。"
-    },
-    {
-      "@type": "MedicalWebPage",
-      "@id": "https://whitestyle.com/whitebook#webpage",
-      "url": "https://whitestyle.com/whitebook",
-      "name": "화이트스타일치과의원 33년 임상·학술 공식 백서 (WhiteBook)",
-      "specialty": "Dentistry",
-      "inLanguage": ["ko", "ja"],
-      "isPartOf": { "@id": "https://whitestyle.com/#website" },
-      "about": { "@id": "https://whitestyle.com/#org" },
-      "reviewedBy": [
-        { "@id": "https://whitestyle.com/#doctor-kim-junheon" },
-        { "@id": "https://whitestyle.com/#doctor-lee-bongjin" },
-        { "@id": "https://whitestyle.com/#doctor-park-seonhye" }
-      ],
-      "description": "1994년 개원 33년 전통 강남역 화이트스타일치과의원 의료진 약력, 학위 논문, 공신력 수상·인증, 언론보도 및 임상 백서 아카이브입니다."
-    },
-    {
       "@type": "SoftwareApplication",
       "@id": "https://whitestyle.com/#hwatapet",
       "name": "화타펫 (HwataPet · 하야니) — 화이트스타일치과의원 3D AI 덴탈 케어 프렌드",
@@ -798,14 +666,14 @@ export default function RootLayout({
               <p className="text-slate-400 wb-ka wbka">
                 (06134) 서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층 (강남역 11번·12번 출구 도보 1분)
               </p>
-              <p className="text-slate-500 text-[11px] pt-4 border-t border-slate-800 leading-normal">
+              <p className="text-slate-300 text-xs pt-4 border-t border-slate-800 leading-normal">
                 모든 시술 및 수술은 개개인의 체질과 증상에 따라 차이가 있을 수 있으며 출혈, 통증, 감염, 부종 등의 부작용이 발생할 수 있으므로 전문 의료진과 충분한 상담 후 진행하시기 바랍니다.
               </p>
               <p className="text-slate-400 text-[11px] space-x-4">
                 <a href="/privacy" className="hover:text-white underline">개인정보처리방침</a>
                 <a href="/price" className="hover:text-white underline">비급여 진료비 안내</a>
               </p>
-              <p className="text-slate-600 text-[11px]">© 2026 화이트스타일치과의원. All rights reserved.</p>
+              <p className="text-slate-400 text-xs">© 2026 화이트스타일치과의원. All rights reserved.</p>
             </div>
           </footer>
         </Providers>

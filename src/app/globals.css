@@ -23,6 +23,31 @@
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
 }
 
+/* Clinical page tokens — 진료 페이지 요약·조건표·네이버 확인 블록 전용 */
+@theme {
+  --color-ws-navy: #0f294a;
+  --color-ws-navy-deep: #0a1d35;
+  --color-ws-navy-hover: #163a66;
+  --color-ws-ink: #101d30;
+  --color-ws-body: #334155;
+  --color-ws-muted: #475569;
+  --color-ws-rule: #e2e8f0;
+  --color-ws-panel: #f1f5f9;
+  --color-ws-mist: #f6f8fb;
+  --color-ws-gold: #fde68a;
+  --color-naver: #03c75a;
+  --color-naver-hover: #02b351;
+  --color-naver-press: #029a46;
+  --color-naver-soft: #f3fbf6;
+  --color-naver-line: #9ee3bd;
+  --color-kakao: #fee500;
+  --color-kakao-hover: #f5dc00;
+  --color-kakao-press: #e0c900;
+  --color-line-app: #06c755;
+  --color-line-app-hover: #05b34c;
+  --color-line-app-press: #049c42;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-text-main);
@@ -72,3 +97,9 @@ body {
     display: none !important;
   }
 }
+
+/* 줄바꿈 없이 한 줄로 유지할 전화·예약 버튼 라벨 */
+.ws-nowrap {
+  white-space: nowrap;
+}
+

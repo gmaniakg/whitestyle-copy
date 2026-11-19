@@ -78,6 +78,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    ...['endo', 'wisdom-tooth', 'caries'].map((slug) => ({
+      url: `${baseUrl}/treatments/general/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
     {
       url: `${baseUrl}/about/greeting`,
       lastModified: new Date(),
