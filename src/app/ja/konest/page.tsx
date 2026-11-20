@@ -2,8 +2,20 @@ import type { Metadata } from 'next';
 import KonestArchiveSection from '../../components/KonestArchiveSection';
 
 export const metadata: Metadata = {
-  title: 'コネスト(KONEST) 15年公式アーカイブ・口コミ125件 | ホワイトスタイル歯科 金俊憲院長',
+  title: {
+    absolute: 'コネスト(KONEST) 15年公式アーカイブ・口コミ125件 | ソウル江南 ホワイトスタイル歯科',
+  },
   description: 'Yahoo! JAPAN 韓国歯科検索3年連続1位。韓国旅行ポータル「コネスト(KONEST)」に寄せられた日本人患者様の口コミ全125件・院長直筆返信100%・料金表12コース・院内写真21枚の公式保存アーカイブ。',
+  alternates: {
+    canonical: 'https://whitestyle.com/ja/konest',
+  },
+  openGraph: {
+    title: 'コネスト(KONEST) 15年公式アーカイブ・口コミ125件 | ソウル江南 ホワイトスタイル歯科',
+    description: 'コネストに寄せられた日本人患者様の口コミ全125件・院長直筆返信100%・料金表12コース・院内写真21枚の公式保存アーカイブ。',
+    url: 'https://whitestyle.com/ja/konest',
+    locale: 'ja_JP',
+    type: 'website',
+  },
 };
 
 export default function JaKonestPage() {

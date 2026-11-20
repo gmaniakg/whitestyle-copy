@@ -73,7 +73,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/board/notice/1909`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/board/notice/32600`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/board/notice/32601`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
