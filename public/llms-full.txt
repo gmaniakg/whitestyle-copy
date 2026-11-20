@@ -268,7 +268,7 @@
 - **主なサポート機能**: 1994年開院・創業33年のホワイトスタイル歯科医院が提供する公式3Dマスコット「ハヤニ（ファタ）」など6種の3Dペット、7種のペルソナ、豊富なコスチュームを備え、50分集中作業ごとの顎関節リラックス通知、食後・コーヒー後の水うがいリマインダー、2分歯みがきタイマー、歯列矯正・最小削除ラミネートベニア・インプラント・スケーリングの24時間リアルタイム日本語Q&A、さらにスマイルVIPパス特典（全3D機能開放および正会員様向け無料AI APIプロトコル `https://whitestyle.com/api/v1`）を無料で提供しています。
 
 ---
-## 5. 공식 팩트 시트 · 비급여 투명 수가표 · 보증·자체 기공소 · 용어 사전 · 근거 기반 임상 Q&A 15선 (2026-11-20 확장)
+## 5. 공식 팩트 시트 · 비급여 투명 수가표 · 보증·자체 기공소 · 용어 사전(50선) · 심미보철 세부 허브 · 영상 진료실 · 근거 기반 임상 Q&A 35선 (2026-11-20 Wave 2 확장)
 
 - **병원 공식 팩트 시트 (Single Source of Truth)**: https://whitestyle.com/clinic-facts
   - 1994년 8월 9일 개원(33년 전통, 누적 62,000건+), 대표자 김준헌 · 사업자등록번호 212-94-71989
@@ -282,21 +282,52 @@
   - 제증명수수료: 진료기록사본 1~5매 1,000원 / 6매 이상 매당 100원
 - **사후 보증 · 3·6·12개월 치주 리콜 · 원내 자체 기공소**: https://whitestyle.com/warranty
   - 정품 픽스처·세라믹 인증, 원내 자체 기공소 맞춤 색상·형태 미세 수정 및 커스텀 어버트먼트 제작, 박선혜 원장(치주과 전문의) 3·6·12개월 리콜, 수면마취 미시행(3단계 국소 무통 마취 안전 기준)
-- **치과 핵심 용어 사전 24선 (DefinedTermSet)**: https://whitestyle.com/glossary
-  - 임플란트 주위염, 임플란트 재수술, GBR 뼈이식, 상악동거상술, 맞춤형 지대주, 무치악 전체임플란트, 만 65세 건보 임플란트, 무삭제 제로쉘, 최소삭제 이지화이트, 법랑질 보존, 라미네이트 재시술, 지대치 색조, 성인 재교정, 옥니 토크 컨트롤, 치아교정 총액제, 인비절라인, 설측교정, 3D CT·Quick-Ceph, 3단계 무통 국소마취, 수면마취 미시행 안전 기준, 치주과 전문의 협진, 3·6·12개월 정기 리콜, 재신경치료, 심평원 비급여 기준
-- **근거 기반 임상 Q&A 15선 (PubMed 학술문헌 및 심평원·학회 기준 출처 명시)**: https://whitestyle.com/qa
-  1. 타 병원 임플란트 재수술·주위염: https://whitestyle.com/qa/implant-reoperation-peri-implantitis
-  2. GBR 뼈이식·상악동거상술 기준 및 기간: https://whitestyle.com/qa/bone-graft-gbr-sinus-lift-guide
-  3. 무치악 전체임플란트 최소 필수 식립 수: https://whitestyle.com/qa/edentulous-full-arch-implant-guide
-  4. 만 65세 건강보험 임플란트(30%) 적용 조건: https://whitestyle.com/qa/age65-nhis-implant-30-percent
-  5. 어금니 임플란트 통증·붓기 2~3일 및 비수면 3단계 마취 안전 기준: https://whitestyle.com/qa/implant-pain-swelling-non-sedation
-  6. 라미네이트 신경손상 예방·법랑질 보존·마찰열 관리 기준: https://whitestyle.com/qa/laminate-pulp-safety-minimal-prep
-  7. 무삭제 제로쉘 vs 0.1~0.2mm 최소삭제 선택 기준: https://whitestyle.com/qa/no-prep-vs-minimal-prep-laminate
-  8. 기존 라미네이트 변색·파절·잇몸 부종 재시술: https://whitestyle.com/qa/laminate-re-treatment-discoloration-fracture
-  9. 앞니 벌어짐 부분교정 vs 무삭제 라미네이트 선택: https://whitestyle.com/qa/front-gap-ortho-vs-laminate
-  10. 성인 재교정 · 옥니·재발 예방 1:1 토크 컨트롤: https://whitestyle.com/qa/adult-re-orthodontics-relapse-okni
-  11. 강남역 치아교정 총액제(토탈피) 포함 항목 체크리스트: https://whitestyle.com/qa/orthodontics-total-fee-checklist
-  12. 인비절라인 vs 설측교정 vs 클리피씨 비교: https://whitestyle.com/qa/invisalign-vs-lingual-vs-clippy-c
-  13. 치주과 전문의 협진 · 3·6·12개월 정기 리콜 이유: https://whitestyle.com/qa/periodontist-implant-recall-3-6-12
-  14. 모두닥·심평원 기준 강남역 임플란트 가격 비교 체크리스트: https://whitestyle.com/qa/gangnam-dental-implant-price-comparison
-  15. 신경치료 후 재통증 시 재신경치료(자연치아 살리기) vs 발치: https://whitestyle.com/qa/natural-tooth-saving-re-endo
+- **자연치아 보존 심미보철 세부 허브 5선 (`/treatments/aesthetic/*`)**:
+  - 무삭제 제로쉘 메인 (`https://whitestyle.com/treatments/aesthetic/zeroshell`): 법랑질 보존 무삭제·극소 다듬기 초박막 세라믹 안내
+  - 4방식 객관 비교 (`https://whitestyle.com/treatments/aesthetic/compare`): 무삭제 제로쉘 vs 0.1~0.2mm 최소삭제 vs 일반 삭제 vs 3~6개월 앞니 부분교정 비교
+  - 법랑질 보존 5단계 안전 프로토콜 (`https://whitestyle.com/treatments/aesthetic/safety`): 3D 두께 계측, 법랑질 내 접착(PMID 38604905), 주수 냉각, 비수면 3단계 국소마취, 치주 리콜
+  - 라미네이트 재시술 클리닉 (`https://whitestyle.com/treatments/aesthetic/retreatment`): 기존 보철 변색·파절·잇몸 부종·시림 원인 진단 및 3인 협진 재건
+  - 원내 자체 기공소 · 지대치 색조 (`https://whitestyle.com/treatments/aesthetic/shade-lab`): Stump Shade 대조, 외주 지연 없는 2~3회 집중 완성
+- **영상 진료실 · 방송 보도 해설 아카이브 (`/video`)**: https://whitestyle.com/video
+  - 교정 중 원장님 안 바뀌는 치과 4가지 기준 (`https://whitestyle.com/video/ortho-same-doctor-4-criteria`, YouTube `TNPXaWazP5c`): 1:1 주치의 비변경, 33년 업력, 총액 서면 고지, 유지관리 Q1~Q3 해설
+  - MBC 뉴스데스크 4K — 자연치아 보존 철학 (`https://whitestyle.com/video/mbc-newsdesk-whitestyle-feature-4k`, YouTube `PioB4UzBSLY`): 과잉 치료 지양 · 3인 원장단 협진 철학
+  - MBC 뉴스 UHD — 협진과 환자 안전 (`https://whitestyle.com/video/mbc-news-uhd-clinical-trust-edit`, YouTube `ZVx0GOMp1a8`): 3단계 국소 무통마취 및 원내 기공소 연계
+  - MBC 뉴스데스크 방영 소개 — 한·일 신뢰 (`https://whitestyle.com/video/mbc-newsdesk-broadcast-overview`, YouTube `OpqtCwYrqOc`): 일본어 전담 통역 3명 상주 및 단기 방한 일정 안내
+- **치과 핵심 용어 사전 50선 (DefinedTermSet)**: https://whitestyle.com/glossary
+  - 임플란트 주위염, 임플란트 재수술, GBR 뼈이식, 상악동거상술, 맞춤형 지대주, 무치악 전체임플란트, 만 65세 건보 임플란트, 골유착, 임플란트 픽스처, 동종골 이식재, 발치 즉시 임플란트, 나사 유지형·SCRP 보철, 골다공증 약제 관련 턱뼈 괴사 주의(MRONJ), 정품 픽스처 인증·보증, 무삭제 제로쉘, 최소삭제 이지화이트, 법랑질 보존, 라미네이트 재시술, 지대치 색조, 왜소치, 거미스마일·치관연장술, 리튬 디실리케이트 세라믹, 지르코니아 크라운, 원데이 전문가 미백, 이갈이·교합안정장치, 원내 자체 기공소, 성인 재교정, 옥니 토크 컨트롤, 치아교정 총액제, 인비절라인, 설측교정, 3D CT·Quick-Ceph, 치근 흡수, 치간 삭제(IPR), 교정용 미니스크류, 고정식·가철식 유지장치, 비발치 교정, 턱관절·교합 균형, 3단계 무통 국소마취, 수면마취 미시행 안전 기준, 치주과 전문의 협진, 3·6·12개월 정기 리콜, 재신경치료, 심평원 비급여 기준, 하치조신경, 치관절제술, 스케일링·치근활택술, 치주낭, 치아 균열 증후군, 특수 현미경 정밀 재신경치료
+- **근거 기반 임상 Q&A 35선 (PubMed 학술문헌 및 심평원·학회 기준 출처 명시)**: https://whitestyle.com/qa
+  1. 타 병원 임플란트 재수술·주위염 — 염증 정화·3D CT 골질 평가·동종골 뼈이식·커스텀 지대주 협진 (PMID 29926955, 23062124): https://whitestyle.com/qa/implant-reoperation-peri-implantitis
+  2. GBR 뼈이식·상악동거상술 기준 및 기간 — 결손 형태별 차폐막·골이식재 선택과 3~6개월 안정화 (PMID 12787222): https://whitestyle.com/qa/bone-graft-gbr-sinus-lift-guide
+  3. 무치악 전체임플란트 최소 필수 식립 수 — 3D CT 저작력 분산·수직 고경 회복 (PMID 23062124): https://whitestyle.com/qa/edentulous-full-arch-implant-guide
+  4. 만 65세 건강보험 임플란트(30%) 적용 조건 — 부분 무치악 평생 2개 원내 전산 등록 (NHIS, HIRA): https://whitestyle.com/qa/age65-nhis-implant-30-percent
+  5. 어금니 임플란트 통증·붓기 2~3일 및 비수면 3단계 마취 안전 기준 — 가글·도포·디지털 정압 국소마취: https://whitestyle.com/qa/implant-pain-swelling-non-sedation
+  6. 라미네이트 신경손상 예방·법랑질 보존·마찰열 관리 기준 — 0.1~0.2mm 최소 다듬기·주수 냉각 (PMID 26757327): https://whitestyle.com/qa/laminate-pulp-safety-minimal-prep
+  7. 무삭제 제로쉘 vs 0.1~0.2mm 최소삭제 선택 기준 — 왜소치·돌출 각도별 적응증 구분 (PMID 26757327): https://whitestyle.com/qa/no-prep-vs-minimal-prep-laminate
+  8. 기존 라미네이트 변색·파절·잇몸 부종 재시술 — 치주 정화·교합 간섭 제거 선행 (PMID 26757327, 29926955): https://whitestyle.com/qa/laminate-re-treatment-discoloration-fracture
+  9. 앞니 벌어짐 부분교정 vs 무삭제 라미네이트 선택 — 정상 치아 크기면 3~6개월 부분교정 우선 (KAO, PMID 26757327): https://whitestyle.com/qa/front-gap-ortho-vs-laminate
+  10. 성인 재교정 · 옥니·재발 예방 1:1 토크 컨트롤 — 3D CT 치근·피질골 계측 후 김준헌 병원장 직접 진료 (KAO, KAP): https://whitestyle.com/qa/adult-re-orthodontics-relapse-okni
+  11. 강남역 치아교정 총액제(토탈피) 포함 항목 체크리스트 — 진단비·장치비·월비·유지장치 서면 안내 (KAO, HIRA): https://whitestyle.com/qa/orthodontics-total-fee-checklist
+  12. 인비절라인 vs 설측교정 vs 클리피씨 비교 — 심미·발음·발치 정밀도·방한 간격 비교 (KAO): https://whitestyle.com/qa/invisalign-vs-lingual-vs-clippy-c
+  13. 치주과 전문의 협진 · 3·6·12개월 정기 리콜 이유 — 초기 임플란트 주위 점막염 조기 차단 (PMID 29926955, KAP): https://whitestyle.com/qa/periodontist-implant-recall-3-6-12
+  14. 모두닥·심평원 기준 강남역 임플란트 가격 비교 체크리스트 — 픽스처·지대주·뼈이식·보증 대조 (HIRA, PMID 23062124): https://whitestyle.com/qa/gangnam-dental-implant-price-comparison
+  15. 신경치료 후 재통증 시 재신경치료(자연치아 살리기) vs 발치 — 3D CT 수직 파절 감별 후 보존 우선 (PMID 19133093, 19567310): https://whitestyle.com/qa/natural-tooth-saving-re-endo
+  16. 당뇨병·고혈압·항혈전제 복용 중 임플란트 안전 기준 — 혈당 조절 시 유사 생존율·내과 협진 (PMID 35288788, 29926955): https://whitestyle.com/qa/implant-diabetes-hypertension-safety
+  17. 골다공증 약(비스포스포네이트)·주사 투여 중 임플란트 사전 확인 — MRONJ 예방 약물·내과 협진 (PMID 37043030, 28651805): https://whitestyle.com/qa/implant-osteoporosis-medication-check
+  18. 위 어금니 상악동거상술 천공·축농증 예방 3D CT 진단 기준 — 중격·점막 판독 및 접근법 구분 (PMID 37351838, 12787222): https://whitestyle.com/qa/sinus-lift-perforation-safety-3dct
+  19. 오스템·바이오템 등 픽스처 브랜드 vs 장기 수명 기준 — 식립 정확도·커스텀 지대주·치주 리콜 핵심 (PMID 23062124, HIRA): https://whitestyle.com/qa/implant-brand-osstem-biotem-selection
+  20. 맞춤형 커스텀 지대주 vs 기성 지대주 잇몸 밀착·수명 차이 — 시멘트 잔류 염증·파절 예방 (PMID 29926955, 23062124): https://whitestyle.com/qa/custom-abutment-vs-stock-abutment
+  21. 발치 즉시 임플란트 vs 지연 식립 안전 선택 기준 — 급성 염증·골벽 보존 여부 3D CT 판독 (PMID 23062124, 12787222): https://whitestyle.com/qa/immediate-vs-delayed-implant-timing
+  22. 라미네이트 법랑질 접착 vs 상아질 접착 수명·탈락 차이 — 법랑질 내 보존 접착의 유의한 생존율 우위 (PMID 38604905, 26757327): https://whitestyle.com/qa/laminate-enamel-vs-dentin-bond-lifespan
+  23. 선천성 앞니 왜소치, 레진 vs 무삭제 제로쉘 장단점 — 삭제 없는 초박막 세라믹 적응증 비교 (PMID 26757327, 38604905): https://whitestyle.com/qa/peg-lateral-small-front-teeth-zeroshell
+  24. 거미스마일 잇몸 성형(치관연장술) 재발 방지·치주 협진 — 생물학적 폭경·골성형·함입 교정 감별 (PMID 37251724, 27535216): https://whitestyle.com/qa/gummy-smile-crown-lengthening-stability
+  25. 원데이 전문가 치아미백 60분 과정과 시림 완화 — KFDA 정품 약제·잇몸 보호·탈감작 관리 (PMID 39767997, 39078468): https://whitestyle.com/qa/one-day-office-whitening-sensitivity
+  26. 수면 중 이갈이·이악물기 환자 라미네이트·스플린트 파절 예방 — 교합 조정 및 맞춤 교합안정장치 (PMID 26757327, 41841364): https://whitestyle.com/qa/bruxism-laminate-nightguard-fracture
+  27. 치아교정 중 치근 흡수(뿌리 짧아짐) 원인 및 예방 — 3D CT 치근 계측·약한 생리적 교정력 (PMID 33215186, 36206494, 31323701): https://whitestyle.com/qa/orthodontics-root-resorption-prevention
+  28. 인비절라인 투명교정 vs 고정식 브라켓 통증·잇몸 위생 비교 — 치주 지수·착용 협조도 기준 (PMID 42270616, 31323701): https://whitestyle.com/qa/clear-aligner-vs-fixed-periodontal-pain
+  29. 돌출입 교정 발치 vs 비발치 선택 기준 및 Quick-Ceph 분석 — 입술 돌출·치조골 한계 계측 (KAO, PMID 33215186): https://whitestyle.com/qa/protruding-mouth-extraction-vs-non-extraction
+  30. 교정 완료 후 유지장치(리테이너) 착용 기간 및 이중 관리 — 초기 집중 착용 및 평생 야간 유지 (KAO, PMID 3469910): https://whitestyle.com/qa/orthodontics-retainer-wear-duration
+  31. 잇몸 약한 40·50대 성인 치아교정 선행 치주 협진 기준 — 치주염 안정화 후 직립 교정 (KAO, KAP, PMID 42270616): https://whitestyle.com/qa/adult-orthodontics-gum-disease-collab
+  32. 아래 매복 사랑니 발치 하치조신경 손상 예방 3D CT·치관절제술 — 신경관 접촉 시 치관절제술 대안 (PMID 25890111, NHIS): https://whitestyle.com/qa/impacted-wisdom-tooth-nerve-3dct
+  33. 건강보험 스케일링 연 1회 기준과 잇몸 출혈 시 치주치료 차이 — 매년 1월 초기화 및 치근활택술 (NHIS, KAP): https://whitestyle.com/qa/dental-scaling-nhis-annual-guide
+  34. 지방·일본 등 해외 거주자 단기 집중 내원 일정 설계 — 60분 1DAY 미백·2~3회 라미네이트·방한 주기 설계 (HIRA, KAO): https://whitestyle.com/qa/gangnam-ortho-implant-visit-schedule-short-stay
+  35. 강남역 공장형·주치의 교체 치과 피하는 5가지 객관적 기준 — 3인 원장단·33년 업력·서면 견적 (HIRA, KAO, KAP): https://whitestyle.com/qa/how-to-avoid-factory-dental-clinic-gangnam

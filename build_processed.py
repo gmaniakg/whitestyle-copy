@@ -79,7 +79,9 @@ hero_video_html = """
         <a class="ws-hero-dept-link" href="/treatments/aesthetic/zeroshell">무삭제·최소삭제 라미네이트</a>
         <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 임플란트 · 재수술</a>
         <a class="ws-hero-dept-link" href="/price">비급여 수가표 안내</a>
-        <a class="ws-hero-dept-link" href="/qa">임상 Q&amp;A</a>
+        <a class="ws-hero-dept-link" href="/qa">임상 Q&amp;A 35선</a>
+        <a class="ws-hero-dept-link" href="/video">영상 진료실</a>
+        <a class="ws-hero-dept-link" href="/treatments/aesthetic/compare">라미네이트 4방식 비교</a>
         <a class="ws-hero-dept-link" href="/clinic-facts">병원 공식 팩트</a>
         <a class="ws-hero-dept-link" href="/ja">日本語診療 안내</a>
       </nav>
@@ -1159,8 +1161,10 @@ home_editorial_sections = """
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">
-      <a class="ws-home-btn-dark" href="/qa">근거 기반 임상 Q&amp;A 15선 전체 보기 &rarr;</a>
-      <a class="ws-home-btn-light" href="/glossary">치과 핵심 용어 사전 24선 &rarr;</a>
+      <a class="ws-home-btn-dark" href="/qa">근거 기반 임상 Q&amp;A 35선 전체 보기 &rarr;</a>
+      <a class="ws-home-btn-light" href="/glossary">치과 핵심 용어 사전 50선 &rarr;</a>
+      <a class="ws-home-btn-light" href="/video">영상 진료실 · 방송 아카이브 &rarr;</a>
+      <a class="ws-home-btn-light" href="/treatments/aesthetic/compare">라미네이트 4방식 비교 &rarr;</a>
       <a class="ws-home-btn-light" href="/board/notice">임상 칼럼 · 공지 전체 목록 &rarr;</a>
     </div>
   </div>

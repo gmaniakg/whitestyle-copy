@@ -2,10 +2,14 @@
 
 import React from 'react';
 import ClinicalSummarySection from '@/components/ClinicalSummarySection';
+import AestheticSiloNav from '@/components/AestheticSiloNav';
 
 export default function Page() {
   return (
     <div className="w-full min-h-screen bg-[#f8fafc]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-6">
+        <AestheticSiloNav activePath="/treatments/aesthetic/zeroshell" />
+      </div>
       <ClinicalSummarySection
         categoryBadge="무삭제 · 최소삭제 심미보철 · 제로쉘"
         title="강남역 화이트스타일치과 제로쉘 (ZeroShell) 최소삭제 심미보철"

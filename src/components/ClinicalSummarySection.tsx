@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { EVIDENCE_QA_LIST, type EvidenceQaItem } from '@/data/evidenceQa';
 import {
   getConditionProfile,
   naverSearchUrl,
@@ -8,7 +9,14 @@ import {
   NAVER_PLACE_URL,
 } from './treatmentConditionData';
 
-const LAST_REVIEWED = '2026-11-19';
+const LAST_REVIEWED = '2026-11-20';
+
+function resolveQaCategory(pageUrl: string): EvidenceQaItem['category'] {
+  if (pageUrl.includes('/treatments/implant')) return '임플란트·재수술';
+  if (pageUrl.includes('/treatments/aesthetic')) return '라미네이트·심미보철';
+  if (pageUrl.includes('/treatments/orthodontics')) return '치아교정·재교정';
+  return '잇몸·보존·수가';
+}
 const GOOGLE_MAPS_EN =
   'https://www.google.com/maps/search/?api=1&query=WhiteStyle+Dental+Clinic+17+Gangnam-daero+92-gil+Gangnam-gu+Seoul';
 const GOOGLE_MAPS_JA =
@@ -315,6 +323,48 @@ export default function ClinicalSummarySection({
             </div>
           </div>
         )}
+
+        <div className="mb-10 rounded-2xl border border-ws-rule bg-ws-mist p-5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <h2 className="text-lg sm:text-xl font-extrabold text-ws-ink">
+              이 진료의 학술 근거 Q&amp;A · 필수 안내 허브
+            </h2>
+            <Link href="/qa" className="text-xs sm:text-sm font-extrabold text-ws-navy hover:underline">
+              근거 Q&amp;A {EVIDENCE_QA_LIST.length}선 전체 보기 &rarr;
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+            {EVIDENCE_QA_LIST.filter((q) => q.category === resolveQaCategory(pageUrl))
+              .slice(0, 4)
+              .map((q) => (
+                <Link
+                  key={q.slug}
+                  href={`/qa/${q.slug}`}
+                  className="block rounded-xl border border-ws-rule bg-white p-4 hover:border-ws-navy transition-colors"
+                >
+                  <p className="text-sm font-bold text-ws-ink leading-snug mb-1">{q.question}</p>
+                  <p className="text-xs text-ws-muted">근거 문헌 {q.citations.length}건 · 기준표 확인 &rarr;</p>
+                </Link>
+              ))}
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs font-bold">
+            {[
+              { href: '/price', label: '비급여 수가표' },
+              { href: '/warranty', label: '정품 보증 · 자체 기공소' },
+              { href: '/glossary', label: '치과 용어 사전' },
+              { href: '/video', label: '영상 진료실' },
+              { href: '/clinic-facts', label: '병원 공식 팩트' },
+            ].map((hub) => (
+              <Link
+                key={hub.href}
+                href={hub.href}
+                className="px-3 py-1.5 rounded-lg bg-white border border-ws-rule text-ws-navy hover:border-ws-navy transition-colors"
+              >
+                {hub.label} &rarr;
+              </Link>
+            ))}
+          </div>
+        </div>
 
         <div className="border-t border-ws-rule pt-7">
           <p className="text-sm text-ws-muted mb-1 font-medium leading-[1.95]">

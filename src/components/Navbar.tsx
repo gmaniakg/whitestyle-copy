@@ -84,6 +84,10 @@ const MENUS = {
       { name: '심미치료 메인', href: '/treatments/aesthetic' },
       { name: '이지화이트', href: '/treatments/aesthetic/easy-white' },
       { name: '제로쉘 (무삭제)', href: '/treatments/aesthetic/zeroshell' },
+      { name: '라미네이트 4방식 비교', href: '/treatments/aesthetic/compare' },
+      { name: '법랑질 · 신경보호 기준', href: '/treatments/aesthetic/safety' },
+      { name: '라미네이트 재시술', href: '/treatments/aesthetic/retreatment' },
+      { name: '자체 기공소 · 색조', href: '/treatments/aesthetic/shade-lab' },
     ]
   },
   community: {
@@ -92,6 +96,7 @@ const MENUS = {
     items: [
       { name: '임상칼럼 · 공지사항', href: '/board/notice' },
       { name: '근거 기반 임상 Q&A', href: '/qa' },
+      { name: '영상 진료실 · 언론방송', href: '/video' },
       { name: '치과 용어 사전', href: '/glossary' },
     ]
   }
