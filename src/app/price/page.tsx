@@ -77,6 +77,14 @@ export default function PricePage() {
               text: '임플란트는 픽스처 식립 외에 맞춤형 지대주, 상부 크라운 종류, 잇몸뼈 이식(GBR·상악동 거상술) 필요 여부에 따라 최종 계획이 달라지므로 3D CT 진단 후 세부 항목별 견적을 확인하는 것이 정확합니다.',
             },
           },
+          {
+            '@type': 'Question',
+            name: '무치악 전체임플란트나 임플란트 재수술, 무삭제 제로쉘 라미네이트도 사전 견적 비교가 가능한가요?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '네. 무치악 전체임플란트는 잔존 골폭에 맞춘 최소 필수 식립 수와 맞춤형 커스텀 지대주·CAD/CAM 보철 구성을, 무삭제 제로쉘 및 최소삭제 라미네이트는 법랑질 보존 범위와 치아당 세라믹 구성을 3D 진단 후 서면으로 투명하게 안내해 드립니다.',
+            },
+          },
         ],
       },
     ],
@@ -165,6 +173,12 @@ export default function PricePage() {
               className="px-3.5 py-2 rounded-lg bg-white border border-slate-300 text-sky-700 hover:bg-sky-50"
             >
               비급여·치과 비교 가이드 ↗
+            </Link>
+            <Link
+              href="/board/notice/1908"
+              className="px-3.5 py-2 rounded-lg bg-white border border-slate-300 text-sky-700 hover:bg-sky-50"
+            >
+              무삭제 라미네이트·전체임플란트 비교 ↗
             </Link>
           </div>
         </div>
