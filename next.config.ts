@@ -64,6 +64,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.whitestyle.com',
+          },
+        ],
+        destination: 'https://whitestyle.com/:path*',
+        permanent: true,
+      },
+      {
         source: '/',
         has: [
           {
@@ -73,7 +84,7 @@ const nextConfig: NextConfig = {
           },
         ],
         destination: '/ja',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/',
@@ -84,8 +95,8 @@ const nextConfig: NextConfig = {
             value: 'Japanese',
           },
         ],
-        destination: '/about/japan-landing',
-        permanent: false,
+        destination: '/ja',
+        permanent: true,
       },
       {
         source: '/',
@@ -96,9 +107,41 @@ const nextConfig: NextConfig = {
             value: 'japanese',
           },
         ],
-        destination: '/about/japan-landing',
-        permanent: false,
+        destination: '/ja',
+        permanent: true,
       },
+      ...[
+        ['12117', '/about/greeting'],
+        ['12118', '/about/doctors'],
+        ['12119', '/about/tour'],
+        ['12120', '/about/location'],
+        ['12121', '/treatments/implant'],
+        ['12122', '/treatments/implant/bone-graft'],
+        ['12123', '/treatments/implant/edentulous'],
+        ['12125', '/treatments/implant/insurance'],
+        ['12126', '/treatments/orthodontics'],
+        ['12127', '/treatments/orthodontics/types'],
+        ['12128', '/treatments/general'],
+        ['12129', '/treatments/general/caries'],
+        ['12130', '/treatments/general/endo'],
+        ['12131', '/treatments/general/scaling'],
+        ['12132', '/treatments/general/wisdom-tooth'],
+        ['12133', '/treatments/aesthetic/zeroshell'],
+        ['12134', '/treatments/aesthetic/easy-white'],
+        ['16880', '/treatments/implant'],
+        ['17875', '/ja'],
+      ].map(([code, dest]) => ({
+        source: '/',
+        has: [
+          {
+            type: 'query' as const,
+            key: 'mir_code',
+            value: code,
+          },
+        ],
+        destination: dest,
+        permanent: true,
+      })),
     ];
   },
   async headers() {

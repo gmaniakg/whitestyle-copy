@@ -1,8 +1,16 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FadeIn, FadeInStaggerContainer, FadeInStaggerItem } from '@/components/animations/FadeIn';
 import { RevealText } from '@/components/animations/RevealText';
 import { getPostsByType } from '@/lib/api';
+
+export const metadata: Metadata = {
+  title: '병원 소개 · 1994년 개원 33년 전통 강남역 치과',
+  description:
+    '1994년 개원 이래 33년 전통의 강남역 화이트스타일치과의원. 김준헌 병원장·이봉진 대표원장·박선혜 원장(치주과 전문의) 3인 협진, 박성태 화백 기증 대기실 갤러리, 오시는 길 안내.',
+  alternates: { canonical: 'https://whitestyle.com/about' },
+};
 
 export default async function AboutPage() {
   const posts = getPostsByType('static_page').filter(p => {

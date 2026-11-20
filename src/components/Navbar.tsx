@@ -41,9 +41,11 @@ const MENUS = {
     items: [
       { name: '대표원장 인사말', href: '/about/greeting' },
       { name: '의료진소개', href: '/about/doctors' },
+      { name: '병원 공식 팩트', href: '/clinic-facts' },
+      { name: '보증 · 자체 기공소', href: '/warranty' },
       { name: '병원둘러보기', href: '/about/tour' },
       { name: '진료시간/오시는길', href: '/about/location' },
-      { name: '日本語案内 (KONEST公式)', href: '/about/japan-landing' },
+      { name: '日本語案内 (公式)', href: '/ja' },
     ]
   },
   implant: {
@@ -57,11 +59,11 @@ const MENUS = {
     ]
   },
   ortho: {
-    title: '치아교정시스템',
+    title: '치아교정',
     mainHref: '/treatments/orthodontics',
     items: [
       { name: '치아교정시스템', href: '/treatments/orthodontics' },
-      { name: '교정장치 종류', href: '/treatments/orthodontics/types' },
+      { name: '교정장치 종류 · 재교정', href: '/treatments/orthodontics/types' },
     ]
   },
   general: {
@@ -71,7 +73,7 @@ const MENUS = {
       { name: '보존치료시스템', href: '/treatments/general' },
       { name: '충치치료', href: '/treatments/general/caries' },
       { name: '신경치료', href: '/treatments/general/endo' },
-      { name: '스케일링', href: '/treatments/general/scaling' },
+      { name: '스케일링 · 치주치료', href: '/treatments/general/scaling' },
       { name: '사랑니', href: '/treatments/general/wisdom-tooth' },
     ]
   },
@@ -81,14 +83,16 @@ const MENUS = {
     items: [
       { name: '심미치료 메인', href: '/treatments/aesthetic' },
       { name: '이지화이트', href: '/treatments/aesthetic/easy-white' },
-      { name: '제로쉘', href: '/treatments/aesthetic/zeroshell' },
+      { name: '제로쉘 (무삭제)', href: '/treatments/aesthetic/zeroshell' },
     ]
   },
   community: {
-    title: '공지사항',
+    title: '임상칼럼',
     mainHref: '/board/notice',
     items: [
-      { name: '공지사항', href: '/board/notice' },
+      { name: '임상칼럼 · 공지사항', href: '/board/notice' },
+      { name: '근거 기반 임상 Q&A', href: '/qa' },
+      { name: '치과 용어 사전', href: '/glossary' },
     ]
   }
 };
@@ -132,7 +136,7 @@ export default function Navbar() {
                   <KoreanFlag />
                 </span>
               </Link>
-              <Link href="/about/japan-landing" className="flex items-center gap-1 group" title="日本語">
+              <Link href="/ja" className="flex items-center gap-1 group" title="日本語">
                 <span className="border border-slate-200 rounded-full overflow-hidden w-8 h-8 flex items-center justify-center bg-white group-hover:border-red-400 transition-all">
                   <JapaneseFlag />
                 </span>
@@ -196,8 +200,8 @@ export default function Navbar() {
 
       {/* ── DESKTOP HORIZONTAL BLUE NAV BAR (>= 1024px) ── */}
       <div className="desktop-navbar hidden lg:block w-full bg-gradient-to-r from-[#3b5998] via-[#4d70b8] to-[#3b5998] shadow-md">
-        <nav className="w-full px-8 xl:px-24 mx-auto">
-          <ul className="flex justify-between items-center h-[70px] xl:h-[85px]">
+        <nav className="w-full px-6 xl:px-16 max-w-7xl mx-auto">
+          <ul className="flex justify-between items-center h-[68px] xl:h-[78px] gap-3">
             {Object.entries(MENUS).map(([key, menu]) => (
               <li
                 key={key}
@@ -206,35 +210,40 @@ export default function Navbar() {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link href={menu.mainHref}
-                  className="text-white/95 group-hover:text-white font-extrabold text-[19px] xl:text-[22px] tracking-wider h-full flex items-center transition-colors whitespace-nowrap">
+                  className="text-white/95 group-hover:text-white font-extrabold text-[16px] xl:text-[18px] tracking-wide h-full flex items-center transition-colors whitespace-nowrap">
                   {menu.title}
                 </Link>
                 <div className="absolute bottom-0 left-0 w-full h-[4px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                 
-                {/* Dropdown Menu */}
-                <AnimatePresence>
-                  {activeDropdown === key && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[280px] bg-white rounded-2xl shadow-2xl border border-blue-100 p-3 overflow-hidden z-50"
-                    >
-                      {menu.items.map((item, idx) => (
-                        <Link key={idx} href={item.href} className="block px-6 py-3.5 text-base font-bold text-slate-700 hover:bg-blue-50 hover:text-[#1b439c] rounded-xl transition-colors text-center">
-                          {item.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* SSR-Visible Dropdown Menu */}
+                <div
+                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[260px] bg-white rounded-2xl shadow-2xl border border-blue-100 p-2.5 overflow-hidden z-50 transition-all duration-150 ${
+                    activeDropdown === key
+                      ? 'visible opacity-100 translate-y-0 pointer-events-auto'
+                      : 'invisible opacity-0 translate-y-1 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto'
+                  }`}
+                >
+                  {menu.items.map((item, idx) => (
+                    <Link key={idx} href={item.href} className="block px-4 py-3 text-sm font-bold text-slate-700 hover:bg-blue-50 hover:text-[#1b439c] rounded-xl transition-colors text-center">
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
               </li>
             ))}
-            
-            {/* 온라인상담 단독 메뉴 */}
+
             <li className="relative h-full flex items-center">
-              <Link href="/consult" className="text-white font-extrabold text-[19px] xl:text-[22px] tracking-wider h-full flex items-center hover:text-blue-100 transition-colors whitespace-nowrap">
+              <Link href="/price" className="text-white/95 font-extrabold text-[16px] xl:text-[18px] tracking-wide h-full flex items-center hover:text-amber-200 transition-colors whitespace-nowrap">
+                비급여 수가표
+              </Link>
+            </li>
+            <li className="relative h-full flex items-center">
+              <Link href="/qa" className="text-white/95 font-extrabold text-[16px] xl:text-[18px] tracking-wide h-full flex items-center hover:text-blue-100 transition-colors whitespace-nowrap">
+                임상 Q&amp;A
+              </Link>
+            </li>
+            <li className="relative h-full flex items-center">
+              <Link href="/consult" className="text-white font-extrabold text-[16px] xl:text-[18px] tracking-wide h-full flex items-center hover:text-blue-100 transition-colors whitespace-nowrap">
                 온라인상담
               </Link>
             </li>
@@ -345,8 +354,21 @@ export default function Navbar() {
                   );
                 })}
 
-                {/* 온라인상담 단독 */}
-                <div className="pt-3">
+                <div className="pt-3 space-y-1">
+                  <Link
+                    href="/price"
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-3 px-3 rounded-xl text-xl font-black text-slate-800 hover:bg-blue-50 transition-colors"
+                  >
+                    비급여 수가표
+                  </Link>
+                  <Link
+                    href="/qa"
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-3 px-3 rounded-xl text-xl font-black text-slate-800 hover:bg-blue-50 transition-colors"
+                  >
+                    임상 Q&amp;A
+                  </Link>
                   <Link
                     href="/consult"
                     onClick={() => setMobileOpen(false)}

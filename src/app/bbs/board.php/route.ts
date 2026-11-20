@@ -14,14 +14,10 @@ export async function GET(req: NextRequest) {
     case 'online':
     case 'feedback':
     case 'reserve':
-    case 'doc_counsel': {
-      const params = new URLSearchParams();
-      params.set('bo_table', boTable);
-      if (wrId) params.set('wr_id', wrId);
-      destination = `/admin/consultations?${params.toString()}`;
-      statusCode = 307;
+    case 'doc_counsel':
+      destination = '/consult';
+      statusCode = 301;
       break;
-    }
     case 'notice':
       destination = wrId ? `/board/notice/${wrId}` : '/board/notice';
       break;

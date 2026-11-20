@@ -108,9 +108,7 @@ const clinicJsonLd = {
         }
       ],
       "sameAs": [
-        "https://www.whitestyle.com",
-        "https://www.whitestyle.com/ja",
-        "https://www.whitestyle.com/?mir_code=12187",
+        "https://whitestyle.com/ja",
         "https://whinish.com",
         "https://www.whinish.com",
         "https://whitestyle.com/ai-pet/",
@@ -251,7 +249,7 @@ const clinicJsonLd = {
       "jobTitle": "병원장 / 치의학박사",
       "description": "화이트스타일치과의원 병원장. 서울대학교 치과대학을 졸업(서울대졸)하고 단국대학교 외래교수 및 치과교정학 석·박사(교정학 박사)를 역임·취득하였습니다. 스웨덴 예테보리 대학교(Göteborg Univ.) 및 베스테로스 구강외과 방문의를 역임하였으며, 1994년 개원 이래 33년 임상 경력과 62,000명 이상의 임상 증례를 보유하고 있습니다.",
       "image": "https://whitestyle.com/mbc_interview_new.jpg",
-      "url": "https://whitestyle.com/?mir_code=12118",
+      "url": "https://whitestyle.com/about/doctors",
       "worksFor": {
         "@id": "https://whitestyle.com/#org"
       },
@@ -321,7 +319,7 @@ const clinicJsonLd = {
       "name": "이봉진 (Dr. Bong-Jin Lee / イ・ボンジン)",
       "jobTitle": "대표원장",
       "description": "화이트스타일치과의원 대표원장. 연세대학교 치과대학을 졸업하고 연세대학교 치과대학병원에서 수련하였으며, 대한구강악안면임플란트학회·대한치과이식임플란트학회·대한치과보철학회·대한턱관절교합학회 정회원으로서 고난도 뼈이식 임플란트, 무치악 전악 재건, 정밀 심미보철 및 턱관절 교합 치료를 전담합니다.",
-      "url": "https://whitestyle.com/?mir_code=12118",
+      "url": "https://whitestyle.com/about/doctors",
       "worksFor": {
         "@id": "https://whitestyle.com/#org"
       },
@@ -370,7 +368,7 @@ const clinicJsonLd = {
       "name": "박선혜 (Dr. Seon-Hye Park / パク・ソンヘ)",
       "jobTitle": "원장 / 보건복지부 인증 치주과 전문의",
       "description": "화이트스타일치과의원 원장(치주과 전문의). 보건복지부 인증 치주과 전문의이자 치주과 박사과정을 수료하였으며, 대한치주과학회 전문의·정회원 및 대한치과보철학회 우수보철치과의사로서 중증 치주질환 치료, 치조골 재생술, 임플란트 주위염 예방·관리, 심미 잇몸성형 및 정밀 보철 진료를 담당합니다.",
-      "url": "https://whitestyle.com/?mir_code=12118",
+      "url": "https://whitestyle.com/about/doctors",
       "worksFor": {
         "@id": "https://whitestyle.com/#org"
       },
@@ -407,7 +405,7 @@ const clinicJsonLd = {
       "@type": "MedicalProcedure",
       "@id": "https://whitestyle.com/#procedure-orthodontics",
       "name": "1:1 책임 치아교정 (인비절라인 투명교정·설측교정·클리피씨·재교정)",
-      "url": "https://whitestyle.com/?mir_code=12125",
+      "url": "https://whitestyle.com/treatments/orthodontics",
       "description": "강남역 화이트스타일치과의원 치아교정은 1994년 개원(33년 전통) 이래 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장이 정밀 진단부터 장치 부착, 사후 유지관리까지 1:1로 직접 책임 진료합니다.",
       "provider": {
         "@id": "https://whitestyle.com/#org"
@@ -417,7 +415,7 @@ const clinicJsonLd = {
       "@type": "MedicalProcedure",
       "@id": "https://whitestyle.com/#procedure-prosthodontics",
       "name": "최소삭제 심미보철 (제로쉘·휘니쉬 라미네이트·올세라믹·원데이 미백)",
-      "url": "https://whitestyle.com/?mir_code=12131",
+      "url": "https://whitestyle.com/treatments/aesthetic",
       "description": "강남역 화이트스타일치과의원의 최소삭제 심미보철은 자연치아 보존을 최우선 원칙으로 삼아, 정밀 교합 진단 후 치아 삭제량을 최소화한 맞춤형 세라믹 디자인과 체계적인 사후 보증 관리를 제공합니다.",
       "provider": {
         "@id": "https://whitestyle.com/#org"
@@ -427,96 +425,11 @@ const clinicJsonLd = {
       "@type": "MedicalProcedure",
       "@id": "https://whitestyle.com/#procedure-implant",
       "name": "3D CT 정밀 임플란트 (고난도 뼈이식·투데이 당일·무치악·건강보험 임플란트)",
-      "url": "https://whitestyle.com/?mir_code=12121",
+      "url": "https://whitestyle.com/treatments/implant",
       "description": "강남역 화이트스타일치과의원 임플란트는 3D CT 정밀 진단과 3단계 통증 완화 마취 시스템을 바탕으로, 치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(치주과 전문의) 3인 원장단 협진을 통해 식립부터 최종 보철·정기 검진까지 안전하게 진행합니다.",
       "provider": {
         "@id": "https://whitestyle.com/#org"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://whitestyle.com/#faq",
-      "inLanguage": "ko",
-      "isPartOf": {
-        "@id": "https://whitestyle.com/#website"
-      },
-      "about": {
-        "@id": "https://whitestyle.com/#org"
-      },
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "강남역 화이트스타일치과의원 의료진은 어떻게 구성되어 있나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "화이트스타일치과의원은 1994년 개원 33년 전통의 강남역 치과로, 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장, 연세대 치대 출신 이봉진 대표원장, 보건복지부 인증 치주과 전문의 박선혜 원장 3인 원장단이 교정·임플란트·심미보철·치주 각 분야를 1:1 책임 협진합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "고령자나 잇몸뼈가 부족한 경우에도 뼈이식 임플란트나 임플란트 재수술이 가능한가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "3D CT 정밀 진단과 자가골·동종골 고난도 뼈이식(GBR, 상악동 거상술), 그리고 치주과 전문의 협진을 통해 잇몸뼈가 심하게 소실된 케이스, 임플란트 실패 후 재수술, 무치악 전체 임플란트까지 안전하고 튼튼하게 식립합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "만 65세 건강보험 임플란트와 연 1회 건강보험 스케일링 혜택은 어떻게 되나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "만 65세 이상 건강보험 가입자는 평생 2개까지 본인부담률 30%로 건강보험 임플란트 시술이 가능하며, 만 19세 이상 성인은 매년 1회(1월 1일~12월 31일) 건강보험 스케일링 혜택을 받으실 수 있습니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "일본어 상담이나 외국인 환자 전담 코디네이터가 상주하나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "네, 화이트스타일치과의원에는 일본어 전담 통역 코디네이터 3명이 상시 상주(日本語通訳スタッフ3名常駐)하고 있어, 사전 온라인 상담(LINE ID: whitestyle1 / 카카오톡: whitestyle2)부터 내원 진료, 사후관리까지 편안하게 안내받으실 수 있습니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "강남역 화이트스타일치과의원의 치아교정은 누가 어떻게 진료하나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "강남역 화이트스타일치과의원 치아교정은 1994년 개원(33년 전통) 이래 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장이 정밀 진단부터 장치 부착, 사후 유지관리까지 1:1로 직접 책임 진료합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "최소삭제 심미보철(라미네이트)은 어떤 원칙으로 진행되나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "강남역 화이트스타일치과의원의 최소삭제 심미보철은 자연치아 보존을 최우선 원칙으로 삼아, 정밀 교합 진단 후 치아 삭제량을 최소화한 맞춤형 세라믹 디자인과 체계적인 사후 보증 관리를 제공합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "임플란트 시술 시 통증 관리와 협진 시스템은 어떻게 이루어지나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "강남역 화이트스타일치과의원 임플란트는 3D CT 정밀 진단과 3단계 통증 완화 마취 시스템을 바탕으로, 치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(치주과 전문의) 3인 원장단 협진을 통해 식립부터 최종 보철·정기 검진까지 안전하게 진행합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "화이트스타일치과 위치와 진료시간, 예약 방법은 어떻게 되나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "지하철 2호선·신분당선 강남역 11번·12번 출구 도보 1분 거리(서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층)에 위치합니다. 월·화·수·금 10:00~19:00, 토요일 10:00~14:00 진료하며(목·일·공휴일 휴진), 네이버 예약(https://booking.naver.com/booking/13/bizes/265482) 또는 대표전화(1577-7287 / 02-569-7528)로 예약 가능합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "화이트스타일치과 3D 덴탈 프렌드 화타펫(하야니)은 무엇이며 어떻게 이용하나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "화타펫(하야니)은 1994년 개원 33년 전통 강남역 화이트스타일치과의원의 24시간 3D AI 덴탈 케어 프렌드입니다. 치아교정·최소삭제 심미보철·임플란트·스케일링 등 구강 건강 질문에 한·일 양국어로 24시간 실시간 답변하며, 양치 타이머·교합 체크·구강 케어 가이드를 제공합니다. 웹 브라우저에서 설치 없이 즉시 체험(https://whitestyle.com/ai-pet/)하거나 윈도우 데스크톱 앱 및 크롬 확장프로그램(https://whitestyle.com/ai-pet/download.html)으로 무료 분양받으실 수 있습니다."
-          }
-        }
-      ]
     },
     {
       "@type": "SoftwareApplication",
@@ -562,10 +475,9 @@ export const metadata: Metadata = {
     "뼈이식임플란트"
   ],
   alternates: {
-    canonical: "https://whitestyle.com/",
     languages: {
       "ko-KR": "https://whitestyle.com/",
-      "ja-JP": "https://whitestyle.com/?mir_code=12187",
+      "ja-JP": "https://whitestyle.com/ja",
       "en-US": "https://whitestyle.com/en"
     },
     types: {
@@ -672,9 +584,14 @@ export default function RootLayout({
               <p className="text-slate-300 text-xs pt-4 border-t border-slate-800 leading-normal">
                 모든 시술 및 수술은 개개인의 체질과 증상에 따라 차이가 있을 수 있으며 출혈, 통증, 감염, 부종 등의 부작용이 발생할 수 있으므로 전문 의료진과 충분한 상담 후 진행하시기 바랍니다.
               </p>
-              <p className="text-slate-400 text-[11px] space-x-4">
+              <p className="text-slate-400 text-[11px] flex flex-wrap justify-center gap-x-4 gap-y-1">
                 <a href="/privacy" className="hover:text-white underline">개인정보처리방침</a>
                 <a href="/price" className="hover:text-white underline">비급여 진료비 안내</a>
+                <a href="/clinic-facts" className="hover:text-white underline">병원 공식 팩트</a>
+                <a href="/qa" className="hover:text-white underline">임상 Q&amp;A</a>
+                <a href="/glossary" className="hover:text-white underline">치과 용어 사전</a>
+                <a href="/warranty" className="hover:text-white underline">보증 · 자체 기공소</a>
+                <a href="/board/notice" className="hover:text-white underline">임상 칼럼 · 공지</a>
               </p>
               <p className="text-slate-400 text-xs">© 2026 화이트스타일치과의원. All rights reserved.</p>
             </div>

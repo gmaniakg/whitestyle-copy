@@ -1,6 +1,22 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getPostsByType } from '@/lib/api';
+
+export const metadata: Metadata = {
+  title: '임상 칼럼 · 공지사항 · 강남역 치과 가이드',
+  description:
+    '1994년 개원 33년 전통 강남역 화이트스타일치과의원 김준헌·이봉진·박선혜 3인 원장단의 임플란트 재수술, 뼈이식, 성인 재교정, 최소삭제 라미네이트 임상 칼럼과 병원 공식 소식.',
+  alternates: { canonical: 'https://whitestyle.com/board/notice' },
+  openGraph: {
+    title: '임상 칼럼 · 공지사항 | 화이트스타일치과의원',
+    description:
+      '강남역 화이트스타일치과의원 3인 원장단 임상 칼럼, 심평원 비급여 비교 기준 및 고난도 재치료 가이드 모음.',
+    url: 'https://whitestyle.com/board/notice',
+    type: 'website',
+    locale: 'ko_KR',
+  },
+};
 
 export default async function NoticeListPage() {
   // 메타데이터에서 'board_notice' 타입의 게시글 모두 불러오기 (최신 날짜 우선, 동일/미기재 시 ID 내림차순)

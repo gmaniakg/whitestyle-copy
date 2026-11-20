@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "韓国・江南 ホワイトスタイル歯科 | Yahoo! JAPAN 1位・コネスト口コミ125件 (インプラント・歯列矯正・審美治療)",
   description: "ソウル江南駅11・12番出口 徒歩1分。Yahoo! JAPAN 韓国歯科部門 3年連続 第1位・HIRA口腔検診最高S等級。ソウル大学校出身・臨床33年の金俊憲(キム・ジュンホン)代表院長による直接診療。コネスト(KONEST)日本人患者様口コミ125件・専任日本語通訳3名常駐。",
+  alternates: {
+    canonical: "https://whitestyle.com/ja",
+  },
   keywords: [
     "韓国 歯科",
     "韓国 歯科 おすすめ",

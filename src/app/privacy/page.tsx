@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { PRIVACY_DATA } from '@/app/api/_lib/privacy-data';
 
 export const metadata: Metadata = {
-  title: '개인정보처리방침 | 화이트스타일치과의원',
-  description: '화이트스타일치과의원 개인정보처리방침',
+  title: '개인정보처리방침',
+  description: '화이트스타일치과의원 개인정보처리방침 및 환자 정보 보호 기준 안내.',
+  alternates: { canonical: 'https://whitestyle.com/privacy' },
 };
 
 export default function PrivacyPage() {

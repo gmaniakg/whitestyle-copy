@@ -64,10 +64,10 @@ hero_video_html = """
       <source src="https://whinish.com/videos/hero_optimized.mp4" type="video/mp4">
     </video>
     <div class="ws-hero-video-scrim"></div>
-    <div class="ws-hero-video-inner">
-      <div class="ws-hero-kicker">1994년 개원 · 강남역 11·12번 출구 도보 1분 · 일본어 전담 코디네이터 3명 상주</div>
-      <h1 class="ws-hero-title">강남역 33년 전통 · <em>3인 원장단 책임 협진</em></h1>
-      <p class="ws-hero-desc">치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(보건복지부 인증 치주과 전문의)이<br>치아교정 · 최소삭제 심미보철 · 3D CT 저통 임플란트를 정밀 진단부터 사후 관리까지 1:1로 책임 진료합니다.</p>
+    <div class="ws-hero-video-inner wb-ka wbka">
+      <div class="ws-hero-kicker wb-ka wbka">1994년 개원 · 강남역 11·12번 출구 도보 1분 · 일본어 전담 코디네이터 3명 상주</div>
+      <h1 class="ws-hero-title wb-ka wbka">강남역 화이트스타일치과 · <em>33년 전통 3인 원장단 협진</em></h1>
+      <p class="ws-hero-desc wb-ka wbka">치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(보건복지부 인증 치주과 전문의)이<br>임플란트 재수술·뼈이식·전체임플란트 · 1:1 치아교정·재교정 · 무삭제·최소삭제 라미네이트(제로쉘)를 정밀 진단부터 사후 관리까지 책임 진료합니다.</p>
       <div class="ws-hero-cta-grid">
         <a class="ws-hero-btn ws-hero-btn--naver" href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener noreferrer">네이버 빠른 예약 (1분 완료)</a>
         <a class="ws-hero-btn ws-hero-btn--kakao" href="https://pf.kakao.com/_Vtxdwl" target="_blank" rel="noopener noreferrer">카카오톡 1:1 비용·기간 상담</a>
@@ -75,10 +75,13 @@ hero_video_html = """
         <a class="ws-hero-btn ws-hero-btn--tel" href="tel:1577-7287">대표전화 1577-7287 / 02-569-7528</a>
       </div>
       <nav class="ws-hero-dept-nav" aria-label="주요 진료 안내">
-        <a class="ws-hero-dept-link" href="/treatments/orthodontics">치아교정 클리닉</a>
-        <a class="ws-hero-dept-link" href="/treatments/aesthetic/zeroshell">최소삭제 심미보철</a>
-        <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 저통 임플란트</a>
-        <a class="ws-hero-dept-link" href="/ja">日本語診療 안내 (Japanese)</a>
+        <a class="ws-hero-dept-link" href="/treatments/orthodontics">치아교정 · 재교정</a>
+        <a class="ws-hero-dept-link" href="/treatments/aesthetic/zeroshell">무삭제·최소삭제 라미네이트</a>
+        <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 임플란트 · 재수술</a>
+        <a class="ws-hero-dept-link" href="/price">비급여 수가표 안내</a>
+        <a class="ws-hero-dept-link" href="/qa">임상 Q&amp;A</a>
+        <a class="ws-hero-dept-link" href="/clinic-facts">병원 공식 팩트</a>
+        <a class="ws-hero-dept-link" href="/ja">日本語診療 안내</a>
       </nav>
     </div>
   </div>
@@ -89,12 +92,19 @@ new_html = html[:m0] + hero_video_html + html[m1:]
 print("Hero slider replaced.")
 
 # -------------------------------------------------------------
-# 3. Strip Legacy Bogus JSON-LD / Meta & Load Unified Head Snippet
+# 3. Strip Legacy Bogus Meta/Viewport/Scripts & Load Unified Head Snippet
 # -------------------------------------------------------------
 new_html = re.sub(r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>.*?</script>', '', new_html, flags=re.S | re.I)
 new_html = re.sub(r'<link[^>]*rel=["\']canonical["\'][^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<link[^>]*rel=["\']alternate["\'][^>]*hreflang=[^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<meta[^>]*name=["\']description["\'][^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<meta[^>]*name=["\']keywords["\'][^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<meta[^>]*name=["\']viewport["\'][^>]*/?>\s*', '<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n', new_html, flags=re.I)
 new_html = re.sub(r'<meta[^>]*property=["\']og:[^"\']*["\'][^>]*/?>\s*', '', new_html, flags=re.I)
 new_html = re.sub(r'<meta[^>]*name=["\']twitter:[^"\']*["\'][^>]*/?>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<script[^>]*src=["\']https://www\.googletagmanager\.com/gtag/js\?id=G-(?:4K3B5N6HXR|RQ2R1478QZ|826W6CPEM9)[^"\']*["\'][^>]*></script>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<link[^>]*font\.load\.css\.php[^>]*>\s*', '', new_html, flags=re.I)
+new_html = re.sub(r'<noscript>\s*<div[^>]*>\s*-\s*현재 이 브라우저는 스크립트 실행을 할 수 없는 환경이어서.*?</div>\s*</noscript>\s*', '', new_html, flags=re.S | re.I)
 new_html = new_html.replace('<title>화이트스타일치과</title>', '<title>화이트스타일치과의원 | 1994년 개원 33년 전통 강남역 치아교정·심미보철·임플란트 (1577-7287)</title>')
 new_html = new_html.replace('29년이란 시간동안', '33년이란 시간동안')
 new_html = new_html.replace('29년 전통 화이트스타일치과', '33년 전통 화이트스타일치과')
@@ -105,9 +115,143 @@ with open(r'E:\antigravity\marketing-ai\madeinreal_email_attachments\gnu-head-in
 gnu_head_html = re.sub(r'^<!--.*?-->\s*', '', gnu_head_html, count=1, flags=re.S)
 gnu_head_html = gnu_head_html.replace('ws-semantic-aeo-header', 'ws-semantic-clinic-header')
 
+# Clean hidden-text JS injection, hardcoded IFTTT key/emails, legacy hreflang, and JSON-LD inside gnu_head_html
+gnu_head_html = gnu_head_html.replace(
+    '<link rel="alternate" hreflang="ja-JP" href="https://whitestyle.com/?mir_code=12187" />',
+    '<link rel="alternate" hreflang="ja-JP" href="https://whitestyle.com/ja" />',
+)
+gnu_head_html = gnu_head_html.replace(
+    '<link rel="alternate" hreflang="en-US" href="https://whinish.com/en" />',
+    '<link rel="alternate" hreflang="en-US" href="https://whitestyle.com/en" />',
+)
+gnu_head_html = gnu_head_html.replace(
+    '<meta property="og:image" content="https://whinish.com/mbc_interview_new.jpg" />',
+    '<meta property="og:image" content="https://whitestyle.com/mbc_interview_new.jpg" />',
+)
+gnu_head_html = gnu_head_html.replace(
+    '<meta name="twitter:image" content="https://whinish.com/mbc_interview_new.jpg" />',
+    '<meta name="twitter:image" content="https://whitestyle.com/mbc_interview_new.jpg" />',
+)
+gnu_head_html = re.sub(
+    r'if\s*\(!document\.getElementById\("ws-semantic-clinic-header"\).*?document\.body\.insertBefore\(header,\s*document\.body\.firstChild\);\s*\}',
+    '',
+    gnu_head_html,
+    flags=re.S,
+)
+gnu_head_html = re.sub(
+    r'var IFTTT_WEBHOOK_URL\s*=.*?;',
+    '',
+    gnu_head_html,
+    flags=re.S,
+)
+gnu_head_html = re.sub(
+    r'var LEAD_RECIPIENTS\s*=\s*\[.*?\];',
+    'var LEAD_RECIPIENTS = [];',
+    gnu_head_html,
+    flags=re.S,
+)
+gnu_head_html = re.sub(
+    r'try\s*\{\s*var q = new URLSearchParams\(.*?IFTTT_WEBHOOK_URL.*?\}\s*catch\s*\(e\)\s*\{\}',
+    '',
+    gnu_head_html,
+    flags=re.S,
+)
+gnu_head_html = gnu_head_html.replace(
+    'var LEAD_WEBHOOK_URL = "https://whinish.com/api/lead-notify";',
+    'var LEAD_WEBHOOK_URL = "/api/lead-notify";',
+)
+
+def _clean_homepage_jsonld(match):
+    raw_json = match.group(1)
+    data = json.loads(raw_json)
+    graph = data.get('@graph', [])
+    cleaned_graph = []
+    for node in graph:
+        node_type = node.get('@type')
+        if node_type == 'MedicalWebPage':
+            continue
+        node_id = node.get('@id', '')
+        if node_id == 'https://whitestyle.com/#org':
+            node['image'] = 'https://whitestyle.com/mbc_interview_new.jpg'
+            node['telephone'] = ['+82-1577-7287', '+82-2-569-7528', '+82-10-3046-5010']
+            node['hasMap'] = [
+                'https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90+%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C92%EA%B8%B8+17',
+                'https://www.google.com/maps?q=37.4988802,127.0286304',
+                'https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97',
+                'https://map.naver.com/p/entry/place/11566039',
+            ]
+            node['contactPoint'] = [
+                {
+                    '@type': 'ContactPoint',
+                    'telephone': '+82-1577-7287',
+                    'email': 'white@whitestyle.com',
+                    'contactType': 'customer service',
+                    'availableLanguage': ['Korean', 'Japanese', 'English'],
+                },
+                {
+                    '@type': 'ContactPoint',
+                    'telephone': '+82-2-569-7528',
+                    'email': 'white@whitestyle.com',
+                    'contactType': 'reservations',
+                    'availableLanguage': ['Korean', 'Japanese', 'English'],
+                },
+                {
+                    '@type': 'ContactPoint',
+                    'telephone': '+82-10-3046-5010',
+                    'email': 'white@whitestyle.com',
+                    'contactType': 'Japanese Interpreter Direct Hotline',
+                    'availableLanguage': ['Japanese', 'Korean'],
+                },
+            ]
+            same_as = [
+                u for u in node.get('sameAs', [])
+                if u not in ('https://www.whitestyle.com', 'https://www.whitestyle.com/?mir_code=12187')
+            ]
+            for add_u in [
+                'https://whitestyle.com/ja',
+                'https://whitestyle.com/clinic-facts',
+                'https://whitestyle.com/price',
+                'https://whitestyle.com/qa',
+                'https://whitestyle.com/glossary',
+                'https://whitestyle.com/warranty',
+            ]:
+                if add_u not in same_as:
+                    same_as.append(add_u)
+            node['sameAs'] = same_as
+        elif node_id.startswith('https://whitestyle.com/#doctor-'):
+            node['url'] = 'https://whitestyle.com/about/doctors'
+            if node_id == 'https://whitestyle.com/#doctor-kim-junheon':
+                node['image'] = 'https://whitestyle.com/mbc_interview_new.jpg'
+        elif node_id == 'https://whitestyle.com/#procedure-orthodontics':
+            node['url'] = 'https://whitestyle.com/treatments/orthodontics'
+        elif node_id == 'https://whitestyle.com/#procedure-prosthodontics':
+            node['url'] = 'https://whitestyle.com/treatments/aesthetic'
+        elif node_id == 'https://whitestyle.com/#procedure-implant':
+            node['url'] = 'https://whitestyle.com/treatments/implant'
+        elif node_id == 'https://whitestyle.com/#hwatapet':
+            node['url'] = 'https://whitestyle.com/ai-pet/'
+            node['downloadUrl'] = 'https://whitestyle.com/ai-pet/download.html'
+        elif node_id == 'https://whitestyle.com/#faq':
+            for q_item in node.get('mainEntity', []):
+                ans = q_item.get('acceptedAnswer', {}).get('text', '')
+                ans = ans.replace('https://whinish.com/ai-pet/', 'https://whitestyle.com/ai-pet/')
+                if 'acceptedAnswer' in q_item:
+                    q_item['acceptedAnswer']['text'] = ans
+        cleaned_graph.append(node)
+    data['@graph'] = cleaned_graph
+    return '<script type="application/ld+json">\n' + json.dumps(data, ensure_ascii=False, indent=2) + '\n</script>'
+
+gnu_head_html = re.sub(
+    r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+    _clean_homepage_jsonld,
+    gnu_head_html,
+    flags=re.S | re.I,
+)
+
 extra_head = (
     gnu_head_html + '\n'
     '<style>\n'
+    '  .navWrap_div, .content_outwrap { min-width: 0 !important; width: 100% !important; }\n'
     '  .hd_pops, #top_popup, div[id^="hd_pops_"], .modal-backdrop, #pop_layer {\n'
     '    display: none !important;\n'
     '  }\n'
@@ -173,7 +317,7 @@ MIR_CODE_MAP = {
     '12123': '/treatments/implant/edentulous',     # 무치악 임플란트
     '12125': '/treatments/implant/insurance',      # 임플란트 보험
     '12126': '/treatments/orthodontics',          # 치아교정시스템
-    '12127': '/treatments/orthodontics',          # 교정장치 종류 (필요시 /treatments/orthodontics/types)
+    '12127': '/treatments/orthodontics/types',     # 교정장치 종류 · 재교정
     '12128': '/treatments/general',               # 일반진료 / 보존치료시스템
     '12129': '/treatments/general/caries',        # 충치치료
     '12130': '/treatments/general/endo',          # 신경치료
@@ -241,7 +385,7 @@ def map_url_to_nextjs(raw_url: str) -> str:
 
     # 2. 일본어 랜딩
     if qs.get('ld', [''])[0].lower() == 'japanese':
-        return '/about/japan-landing'
+        return '/ja'
 
     # 3. 로그인 / 회원가입
     if path.startswith('/bbs/login.php'):
@@ -740,50 +884,63 @@ new_html = new_html.replace('정성스러운 후기', '정성스러운 말씀')
 new_html = new_html.replace('후기를 남겨주셔서', '의견을 남겨주셔서')
 
 # -------------------------------------------------------------
-# 5.6 Inject Latest Notice (#32596) in Main Notice Widget & Add Park Sung-tae Waiting Room Art Gallery Section
+# 5.6 Fix Legacy NAP / Hours / 30th / Alt Attributes & Update Widgets
 # -------------------------------------------------------------
-old_notice_block = (
-    '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
-    '<a href="/board/notice" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
-    'onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=notice&amp;wr_id=32557\', \'뉴이지 게시판 위젯 클릭\', \'\');">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 비급여 수가표</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.10.14</div></a>'
-    '<a href="/board/notice" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5" '
-    'onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=notice&amp;wr_id=32143\', \'뉴이지 게시판 위젯 클릭\', \'\');">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">나의 치아건강을 지켜라!! 알파버전이 출시!</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">25.12.28</div></a>'
+new_html = new_html.replace('>30th<', '>33rd<')
+new_html = new_html.replace('월/화/수/목/금', '월·화·수·금 (목 휴진)')
+new_html = new_html.replace('※ 일요일, 공휴일 휴진', '※ 목요일·일요일·공휴일 휴진')
+new_html = new_html.replace('사업자등록번호: 220-09-87453', '사업자등록번호: 212-94-71989')
+new_html = new_html.replace(
+    '상호명: 화이트스타일치과의원 | 주소: 서울 강남구 강남대로92길 17 1층, 2층  (역삼동)',
+    '상호명: 화이트스타일치과의원 | 주소: (06134) 서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층 (강남역 11·12번 출구 도보 1분)',
 )
+new_html = new_html.replace(
+    '전화번호 : 02.569.7528',
+    '대표상담 : 1577-7287 / 02-569-7528 | 일본어 통역 직통 : +82-10-3046-5010',
+)
+new_html = new_html.replace('href="/hplock.php"', 'href="/privacy"')
+
+def _ensure_img_alt(match):
+    tag = match.group(0)
+    if re.search(r'\balt\s*=', tag, flags=re.I):
+        return tag
+    if tag.endswith('/>'):
+        return tag[:-2] + ' alt="화이트스타일치과의원 강남역 치과 진료 안내" />'
+    return tag[:-1] + ' alt="화이트스타일치과의원 강남역 치과 진료 안내">'
+
+new_html = re.sub(r'<img\b[^>]*>', _ensure_img_alt, new_html, flags=re.I)
 
 new_notice_block = (
     '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/board/notice/1909" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[임상칼럼] 강남역 치과 비교 기준과 임플란트·교정·라미네이트 재치료 가이드</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.20</div></a>'
+    '<a href="/board/notice/32601" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[HBN뉴스] 아날로그 경험과 디지털 정밀함, 33년 진료 노하우</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.20</div></a>'
     '<a href="/board/notice/32599" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[메가경제] 33년 임플란트 진료, 재수술은 무엇이 다를까</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.19</div></a>'
     '<a href="/board/notice/32598" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[미디어파인] 임플란트, 사전 진단과 사후관리가 핵심</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.18</div></a>'
-    '<a href="/board/notice/32597" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[대학저널] 고령화 시대 임플란트 정밀 진단과 사후관리</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.17</div></a>'
-    '<a href="/board/notice/32596" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[공지] 박성태 화백 기증 철망 회화 전시 및 구입 문의</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.16</div></a>'
+    '</div>'
 )
 
-if old_notice_block in new_html:
-    new_html = new_html.replace(old_notice_block, new_notice_block, 1)
-    print("Updated main notice widget with 32598, 32597 & 32596.")
-
-old_online_block = (
-    '<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1036865\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">해외거주자 예약</div><div class="content_455546_8_24_24_ez_widget_board_date">26.09.17</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1032457\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">정말 양심치과 인증! 원장님 짱</div><div class="content_455546_8_24_24_ez_widget_board_date">26.05.26</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1032455\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">오늘 너무 감사합니다ㅜㅜ</div><div class="content_455546_8_24_24_ez_widget_board_date">26.05.26</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5" onclick="ga(\'send\', \'event\', \'whitestyle.com/bbs/board.php?bo_table=online&amp;wr_id=1032451\', \'뉴이지 게시판 위젯 클릭\', \'\');">    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">앞니 젊어 보이게 만드는  맛집</div><div class="content_455546_8_24_24_ez_widget_board_date">26.05.26</div></a>    </div>'
+new_html, n_notice = re.subn(
+    r'<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">.*?</div>(?=\s*</div>)',
+    new_notice_block,
+    new_html,
+    count=1,
+    flags=re.S,
 )
+print("Notice widget updated:", n_notice)
 
 new_online_block = (
     '<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 치아교정 더블체크, 세심한 사후케어</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.20</div></a>'
     '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 방문 후기] 통증 없이 편안했던 강남역 스케일링</div>'
     '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.19</div></a>'
@@ -793,14 +950,273 @@ new_online_block = (
     '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 치료 잘 받고 갑니다 강남역 접근성 추천</div>'
     '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.17</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[교정 유지장치 수복 후기] 타병원 교정 유지장치 탈락 당일 재부착</div>'
-    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.15</div></a>    </div>'
+    '</div>'
 )
 
-if old_online_block in new_html:
-    new_html = new_html.replace(old_online_block, new_online_block, 1)
-    print("Updated main online widget with latest patient reviews (1038318, 1038317, 1038316, 1038291).")
+new_html, n_online = re.subn(
+    r'<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">.*?</div>(?=\s*</div>)',
+    new_online_block,
+    new_html,
+    count=1,
+    flags=re.S,
+)
+print("Online widget updated:", n_online)
+
+home_editorial_sections = """
+<style>
+  .ws-home-sec { background:#faf9f5; padding:68px 20px; border-top:1px solid #e2dfd7; font-family:Pretendard, 'Malgun Gothic', 'Noto Sans KR', sans-serif; color:#18202c; word-break:keep-all; overflow-wrap:break-word; line-height:1.95; }
+  .ws-home-sec--white { background:#ffffff; }
+  .ws-home-sec * { box-sizing:border-box; word-break:keep-all; overflow-wrap:break-word; }
+  .ws-home-wrap { max-width:1200px; margin:0 auto; }
+  .ws-home-kicker { display:inline-block; font-size:12px; font-weight:800; letter-spacing:0.06em; color:#0c4a6e; background:#e0f2fe; border:1px solid #bae6fd; padding:5px 14px; border-radius:999px; margin-bottom:14px; }
+  .ws-home-h2 { font-size:clamp(24px, 3vw, 34px); font-weight:900; color:#0f172a; line-height:1.35; margin:0 0 16px 0; }
+  .ws-home-lead { font-size:16px; color:#334155; line-height:1.95; margin:0 0 32px 0; max-width:920px; }
+  .ws-home-grid3 { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin-bottom:32px; }
+  .ws-home-card { background:#ffffff; border:1px solid #e2dfd7; border-radius:16px; padding:26px; box-shadow:0 4px 18px rgba(15,23,42,0.04); }
+  .ws-home-card--tint { background:#faf9f5; }
+  .ws-home-card h3 { font-size:19px; font-weight:800; color:#0f172a; margin:0 0 10px 0; line-height:1.4; }
+  .ws-home-card p { font-size:14.5px; color:#334155; margin:0 0 14px 0; line-height:1.9; }
+  .ws-home-link { display:inline-block; font-size:14px; font-weight:800; color:#0369a1 !important; text-decoration:none; }
+  .ws-home-link:hover { text-decoration:underline; }
+  .ws-home-candor { background:#fffbeb; border:1px solid #fde68a; border-left:5px solid #b45309; border-radius:12px; padding:22px 26px; margin:28px 0 34px 0; }
+  .ws-home-candor strong { display:block; font-size:16px; color:#92400e; margin-bottom:8px; }
+  .ws-home-candor p { margin:0; font-size:15px; color:#1e293b; line-height:1.9; }
+  .ws-home-table-wrap { overflow-x:auto; border-radius:14px; border:1px solid #cbd5e1; background:#ffffff; margin-bottom:24px; }
+  .ws-home-table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:640px; }
+  .ws-home-table th { background:#0f172a; color:#ffffff; text-align:left; padding:14px 16px; font-weight:700; border:1px solid #1e293b; }
+  .ws-home-table td { padding:14px 16px; border:1px solid #e2e8f0; color:#1e293b; vertical-align:top; line-height:1.85; }
+  .ws-home-table td:first-child { font-weight:800; background:#f8fafc; color:#0f172a; width:24%; }
+  .ws-home-btns { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+  .ws-home-btn-dark { display:inline-block; background:#0f172a; color:#ffffff !important; padding:13px 22px; border-radius:10px; font-size:14.5px; font-weight:800; text-decoration:none; }
+  .ws-home-btn-light { display:inline-block; background:#ffffff; color:#0f172a !important; border:1px solid #cbd5e1; padding:13px 22px; border-radius:10px; font-size:14.5px; font-weight:800; text-decoration:none; }
+  .ws-home-faq-list { display:grid; grid-template-columns:1fr; gap:18px; }
+  .ws-home-faq-item { background:#ffffff; border:1px solid #e2dfd7; border-radius:14px; padding:24px 26px; }
+  .ws-home-faq-item h3 { font-size:17px; font-weight:800; color:#0f172a; margin:0 0 10px 0; line-height:1.5; }
+  .ws-home-faq-item p { font-size:15px; color:#334155; margin:0; line-height:1.95; }
+  @media (max-width: 768px) {
+    .ws-home-sec { padding:48px 16px; }
+    .ws-home-card, .ws-home-faq-item { padding:20px; }
+  }
+</style>
+
+<section id="ws-home-specialists-matrix" class="ws-home-sec wb-ka wbka">
+  <div class="ws-home-wrap wb-ka wbka">
+    <span class="ws-home-kicker wb-ka wbka">1994년 개원 33년 전통 · 강남역 11·12번 출구 도보 1분</span>
+    <h2 class="ws-home-h2 wb-ka wbka">강남역 33년 전통 · 3인 원장단 분과 책임 협진</h2>
+    <p class="ws-home-lead wb-ka wbka">
+      강남역 화이트스타일치과의원은 서울대학교 치과대학 졸업·단국대 외래교수·치과교정학 박사 <strong>김준헌 병원장</strong>, 연세대학교 치과대학 졸업 <strong>이봉진 대표원장</strong>, 보건복지부 인증 치주과 전문의 <strong>박선혜 원장</strong>이 초진 정밀 진단부터 시술·사후 정기 관리까지 주치의 변경 없이 1:1 협진 체제로 직접 진료합니다.
+    </p>
+
+    <div class="ws-home-grid3 wb-ka wbka">
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">김준헌 병원장 · 치아교정·재교정</h3>
+        <p class="wb-ka wbka">서울대학교 치과대학 졸업, 단국대학교 외래교수, 치과교정학 박사. 인비절라인·설측교정·성인 재교정·옥니 개선을 3D Quick-Ceph 분석 후 1:1 전담합니다.</p>
+        <a class="ws-home-link" href="/treatments/orthodontics">치아교정 · 재교정 자세히 보기 &rarr;</a>
+      </article>
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">이봉진 대표원장 · 3D CT 임플란트</h3>
+        <p class="wb-ka wbka">연세대학교 치과대학 졸업 및 치과병원 수련. 고난도 동종골 뼈이식·상악동거상술·무치악 전체임플란트·임플란트 재수술과 정밀 교합 보철을 담당합니다.</p>
+        <a class="ws-home-link" href="/treatments/implant">3D CT 임플란트 · 재수술 보기 &rarr;</a>
+      </article>
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">박선혜 원장 · 치주과 전문의 협진</h3>
+        <p class="wb-ka wbka">보건복지부 인증 치주과 전문의, 대한치과보철학회 우수보철치과의사. 잇몸뼈 보존, 임플란트 주위염 예방, 무삭제 제로쉘·최소삭제 라미네이트 재시술을 협진합니다.</p>
+        <a class="ws-home-link" href="/treatments/aesthetic/zeroshell">무삭제·최소삭제 라미네이트 보기 &rarr;</a>
+      </article>
+    </div>
+
+    <div class="ws-home-candor wb-ka wbka">
+      <strong class="wb-ka wbka">꼭 필요한 치료만 권하는 정직한 진료 기준 — 안 해도 되는 진료는 권하지 않습니다</strong>
+      <p class="wb-ka wbka">자연치아를 살릴 수 있는 경우 재신경치료·치주치료를 먼저 검토하며, 라미네이트가 불필요하거나 법랑질 삭제 부담이 큰 경우에는 단기간 부분교정이나 미백을 우선 안내합니다. 환자 안전을 위해 의식 소실 위험이 있는 수면마취는 시행하지 않고 3단계 통증 완화 국소마취 시스템만 적용합니다.</p>
+    </div>
+
+    <div class="ws-home-table-wrap wb-ka wbka">
+      <table class="ws-home-table wb-ka wbka">
+        <thead>
+          <tr>
+            <th class="wb-ka wbka">고난도 진료 · 비교 기준</th>
+            <th class="wb-ka wbka">화이트스타일치과의원 33년 협진 프로토콜</th>
+            <th class="wb-ka wbka">상세 페이지</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="wb-ka wbka">임플란트 재수술 · 뼈이식 · 상악동거상술</td>
+            <td class="wb-ka wbka">타 치과 임플란트 흔들림·주위염 원인 3D CT 분석 후 치주과 전문의 염증 정화·동종골 이식(GBR)과 커스텀 지대주 재건 진행</td>
+            <td class="wb-ka wbka"><a class="ws-home-link" href="/treatments/implant/bone-graft">임플란트 재수술·뼈이식 &rarr;</a></td>
+          </tr>
+          <tr>
+            <td class="wb-ka wbka">무치악 전체임플란트 · 만 65세 건강보험(30%)</td>
+            <td class="wb-ka wbka">상·하악 무치악 전악 재건 최소 필수 식립 설계 및 만 65세 이상 평생 2개 본인부담률 30% 원내 건강보험 등록 지원</td>
+            <td class="wb-ka wbka"><a class="ws-home-link" href="/treatments/implant/edentulous">전체임플란트 안내 &rarr;</a> · <a class="ws-home-link" href="/treatments/implant/insurance">건보 30% &rarr;</a></td>
+          </tr>
+          <tr>
+            <td class="wb-ka wbka">성인 재교정 · 옥니·재발 예방 · 총액제</td>
+            <td class="wb-ka wbka">유지장치 탈락 재발·발치 후 옥니 재교정 시 3D CT 치근·잇몸뼈 두께 계측 후 진단비·월비·유지장치 포함 기준 서면 안내</td>
+            <td class="wb-ka wbka"><a class="ws-home-link" href="/treatments/orthodontics/types">성인 재교정·장치 종류 &rarr;</a></td>
+          </tr>
+          <tr>
+            <td class="wb-ka wbka">무삭제 제로쉘 · 0.1~0.2mm 최소삭제 라미네이트 재시술</td>
+            <td class="wb-ka wbka">기존 라미네이트 변색·파절·잇몸 검게 비침 교정·치주 협진 재치료, 법랑질 보존 중심 맞춤 세라믹 2~3회 내원 완성</td>
+            <td class="wb-ka wbka"><a class="ws-home-link" href="/treatments/aesthetic">최소삭제 심미보철 안내 &rarr;</a></td>
+          </tr>
+          <tr>
+            <td class="wb-ka wbka">3단계 무통 국소마취 · 자체 기공소 &amp; 3·6·12개월 리콜</td>
+            <td class="wb-ka wbka">가글·도포·디지털 정압 무통 마취기 적용, 원내 자체 기공소 정밀 보철 맞춤 수정 및 치주과 전문의 정기 검진 보증 관리</td>
+            <td class="wb-ka wbka"><a class="ws-home-link" href="/warranty">보증·자체기공소 안내 &rarr;</a></td>
+          </tr>
+          <tr>
+            <td class="wb-ka wbka">일본어 통역 3명 상주 · 토요일 진료</td>
+            <td class="wb-ka wbka">전담 일본어 통역 코디네이터 3명 상주(직통 +82-10-3046-5010 / LINE: whitestyle1), 월·화·수·금 10:00~19:00 · 토 10:00~14:00 (목·일·공휴일 휴진)</td>
+            <td class="wb-ka wbka"><a class="ws-home-link" href="/clinic-facts">병원 공식 팩트 전체 &rarr;</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="ws-home-price-strip" class="ws-home-sec ws-home-sec--white wb-ka wbka">
+  <div class="ws-home-wrap wb-ka wbka">
+    <span class="ws-home-kicker wb-ka wbka">의료법 제45조 준수 · 건강보험심사평가원(심평원) 비급여 기준</span>
+    <h2 class="ws-home-h2 wb-ka wbka">심평원(HIRA) 비급여 기준 및 투명 진료비 안내</h2>
+    <p class="ws-home-lead wb-ka wbka">
+      치과 치료 비용은 최저가 광고가 아닌 맞춤형 지대주·상부 크라운·뼈이식·월 치료비·유지장치 포함 여부를 서면으로 대조해야 정확합니다. 화이트스타일치과의원은 심평원 비급여 진료비용 기준과 모두닥(3940)·굿닥(43229) 영수증 인증 정보를 투명하게 공개합니다.
+    </p>
+    <div class="ws-home-table-wrap wb-ka wbka">
+      <table class="ws-home-table wb-ka wbka">
+        <thead>
+          <tr>
+            <th class="wb-ka wbka">항목 (심평원 고지 기준)</th>
+            <th class="wb-ka wbka">고지 범위 및 포함 기준</th>
+            <th class="wb-ka wbka">확인 포인트</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="wb-ka wbka">치과임플란트 (1치당)</td>
+            <td class="wb-ka wbka">오스템·바이오템 PFM 1,000,000~1,200,000원 / 지르코니아 1,200,000원 / 골드 1,200,000~1,450,000원</td>
+            <td class="wb-ka wbka">3D CT 진단 후 뼈이식·상악동거상술 필요 여부 별도 서면 고지 (만 65세 이상 건보 30% 적용)</td>
+          </tr>
+          <tr>
+            <td class="wb-ka wbka">치아교정 (총액제 기준)</td>
+            <td class="wb-ka wbka">3D CT·Quick-Ceph 정밀 진단비, 교정 장치비, 매월 조절 치료비, 고정식·가철식 유지장치 포함 범위 사전 서면 안내</td>
+            <td class="wb-ka wbka">인비절라인·설측·클리피씨·부분 재교정별 추가 비용 기준 사전 확인</td>
+          </tr>
+          <tr>
+            <td class="wb-ka wbka">제증명수수료</td>
+            <td class="wb-ka wbka">진료기록사본 1~5매 1,000원 / 6매 이상 매당 100원 (진단서·확인서 심평원 기준 준수)</td>
+            <td class="wb-ka wbka">실손·보험 청구 및 타 기관 소견서 발급 투명 안내</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ws-home-btns wb-ka wbka">
+      <a class="ws-home-btn-dark" href="/price">비급여 상세 수가 기준표 보기 &rarr;</a>
+      <a class="ws-home-btn-light" href="/warranty">사후 보증 · 자체 기공소 확인 &rarr;</a>
+      <a class="ws-home-btn-light" href="https://www.modoodoc.com/hospital/3940/%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90-%EC%84%9C%EC%9A%B8-%EC%97%AD%EC%82%BC%EB%8F%99/" target="_blank" rel="noopener noreferrer">모두닥(3940) 영수증 후기 보기 &#8599;</a>
+    </div>
+  </div>
+</section>
+
+<section id="ws-home-doctor-columns" class="ws-home-sec wb-ka wbka">
+  <div class="ws-home-wrap wb-ka wbka">
+    <span class="ws-home-kicker wb-ka wbka">3인 원장단 직접 검수 · 임상 칼럼 &amp; 근거 기반 Q&amp;A</span>
+    <h2 class="ws-home-h2 wb-ka wbka">강남역 치과 선택 전 꼭 읽어봐야 할 원장단 임상 칼럼</h2>
+    <p class="ws-home-lead wb-ka wbka">
+      치과 진료 전 환자분들이 가장 자주 겪는 고민(재수술, 뼈이식, 재교정, 최소삭제 라미네이트 신경보호, 비용 비교 기준)을 핵심 결론과 숫자 기준으로 정리했습니다.
+    </p>
+    <div class="ws-home-grid3 wb-ka wbka">
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">강남역 치과 비교 6대 기준 &amp; 재치료 가이드</h3>
+        <p class="wb-ka wbka">모두닥·굿닥·심평원 1치당 총액 대조법부터 임플란트·교정·라미네이트 재치료 시 주치의 연속성 확인 기준을 정리했습니다.</p>
+        <a class="ws-home-link" href="/board/notice/1909">칼럼 전문 읽기 (/board/notice/1909) &rarr;</a>
+      </article>
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
+        <p class="wb-ka wbka">기존 임플란트 주위염·흔들림 발생 시 치주과 전문의 염증 제거와 3D CT 기반 골이식 재건 단계를 안내합니다.</p>
+        <a class="ws-home-link" href="/board/notice/1898">칼럼 전문 읽기 (/board/notice/1898) &rarr;</a>
+      </article>
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">무치악 전악 재건 전체임플란트 기준</h3>
+        <p class="wb-ka wbka">상·하악 다수 치아 상실 시 최소 필수 식립 수 설계와 맞춤형 커스텀 지대주 교합 회복 원칙을 설명합니다.</p>
+        <a class="ws-home-link" href="/board/notice/1895">칼럼 전문 읽기 (/board/notice/1895) &rarr;</a>
+      </article>
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">성인 재교정 · 옥니·재발 예방 1:1 진료</h3>
+        <p class="wb-ka wbka">교정 후 틀어짐·옥니 발생 시 3D CT 치근·골폭 확인과 치주과 협진을 통한 안전한 재교정 방법을 다룹니다.</p>
+        <a class="ws-home-link" href="/board/notice/1900">칼럼 전문 읽기 (/board/notice/1900) &rarr;</a>
+      </article>
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">무삭제 제로쉘 · 0.1~0.2mm 최소삭제 재시술</h3>
+        <p class="wb-ka wbka">라미네이트 변색·파절·시림 원인과 법랑질 내 보존 접착을 통한 신경손상 예방 프로토콜을 확인하세요.</p>
+        <a class="ws-home-link" href="/board/notice/1899">칼럼 전문 읽기 (/board/notice/1899) &rarr;</a>
+      </article>
+      <article class="ws-home-card wb-ka wbka">
+        <h3 class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트 &amp; 어금니 통증</h3>
+        <p class="wb-ka wbka">앞니 틈 크기별 부분교정·무삭제 보철 선택 기준과 어금니 임플란트 수술 후 2~3일 붓기 관리법입니다.</p>
+        <a class="ws-home-link" href="/board/notice/1906">칼럼 전문 읽기 (/board/notice/1906) &rarr;</a>
+      </article>
+    </div>
+    <div class="ws-home-btns wb-ka wbka">
+      <a class="ws-home-btn-dark" href="/qa">근거 기반 임상 Q&amp;A 15선 전체 보기 &rarr;</a>
+      <a class="ws-home-btn-light" href="/glossary">치과 핵심 용어 사전 24선 &rarr;</a>
+      <a class="ws-home-btn-light" href="/board/notice">임상 칼럼 · 공지 전체 목록 &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section id="ws-home-visible-faq" class="ws-home-sec ws-home-sec--white wb-ka wbka">
+  <div class="ws-home-wrap wb-ka wbka">
+    <span class="ws-home-kicker wb-ka wbka">내원 전 다빈도 질문 9선</span>
+    <h2 class="ws-home-h2 wb-ka wbka">강남역 화이트스타일치과 자주 묻는 질문 (FAQ)</h2>
+    <p class="ws-home-lead wb-ka wbka">
+      의료진 구성, 임플란트 재수술·뼈이식, 만 65세 건강보험(30%), 치아교정 주치의 연속성, 최소삭제 심미보철, 진료시간 및 예약 방법을 정리했습니다.
+    </p>
+    <div class="ws-home-faq-list wb-ka wbka">
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q1. 강남역 화이트스타일치과의원 의료진은 어떻게 구성되어 있나요?</h3>
+        <p class="wb-ka wbka">화이트스타일치과의원은 1994년 개원 33년 전통의 강남역 치과로, 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장, 연세대 치대 출신 이봉진 대표원장, 보건복지부 인증 치주과 전문의 박선혜 원장 3인 원장단이 교정·임플란트·심미보철·치주 각 분야를 1:1 책임 협진합니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q2. 고령자나 잇몸뼈가 부족한 경우에도 뼈이식 임플란트나 임플란트 재수술이 가능한가요?</h3>
+        <p class="wb-ka wbka">3D CT 정밀 진단과 자가골·동종골 고난도 뼈이식(GBR, 상악동 거상술), 그리고 치주과 전문의 협진을 통해 잇몸뼈가 심하게 소실된 케이스, 임플란트 실패 후 재수술, 무치악 전체 임플란트까지 안전하고 튼튼하게 식립합니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q3. 만 65세 건강보험 임플란트와 연 1회 건강보험 스케일링 혜택은 어떻게 되나요?</h3>
+        <p class="wb-ka wbka">만 65세 이상 건강보험 가입자는 평생 2개까지 본인부담률 30%로 건강보험 임플란트 시술이 가능하며, 만 19세 이상 성인은 매년 1회(1월 1일~12월 31일) 건강보험 스케일링 혜택을 받으실 수 있습니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q4. 일본어 상담이나 외국인 환자 전담 코디네이터가 상주하나요?</h3>
+        <p class="wb-ka wbka">네, 화이트스타일치과의원에는 일본어 전담 통역 코디네이터 3명이 상시 상주(日本語通訳スタッフ3名常駐)하고 있어, 사전 온라인 상담(LINE ID: whitestyle1 / 카카오톡: whitestyle2)부터 내원 진료, 사후관리까지 편안하게 안내받으실 수 있습니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q5. 강남역 화이트스타일치과의원의 치아교정은 누가 어떻게 진료하나요?</h3>
+        <p class="wb-ka wbka">강남역 화이트스타일치과의원 치아교정은 1994년 개원(33년 전통) 이래 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장이 정밀 진단부터 장치 부착, 사후 유지관리까지 1:1로 직접 책임 진료합니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q6. 최소삭제 심미보철(라미네이트)은 어떤 원칙으로 진행되나요?</h3>
+        <p class="wb-ka wbka">강남역 화이트스타일치과의원의 최소삭제 심미보철은 자연치아 보존을 최우선 원칙으로 삼아, 정밀 교합 진단 후 치아 삭제량을 최소화한 맞춤형 세라믹 디자인과 체계적인 사후 보증 관리를 제공합니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q7. 임플란트 시술 시 통증 관리와 협진 시스템은 어떻게 이루어지나요?</h3>
+        <p class="wb-ka wbka">강남역 화이트스타일치과의원 임플란트는 3D CT 정밀 진단과 3단계 통증 완화 마취 시스템을 바탕으로, 치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(치주과 전문의) 3인 원장단 협진을 통해 식립부터 최종 보철·정기 검진까지 안전하게 진행합니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q8. 화이트스타일치과 위치와 진료시간, 예약 방법은 어떻게 되나요?</h3>
+        <p class="wb-ka wbka">지하철 2호선·신분당선 강남역 11번·12번 출구 도보 1분 거리(서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층)에 위치합니다. 월·화·수·금 10:00~19:00, 토요일 10:00~14:00 진료하며(목·일·공휴일 휴진), 네이버 예약(https://booking.naver.com/booking/13/bizes/265482) 또는 대표전화(1577-7287 / 02-569-7528)로 예약 가능합니다.</p>
+      </article>
+      <article class="ws-home-faq-item wb-ka wbka">
+        <h3 class="wb-ka wbka">Q9. 화이트스타일치과 3D 덴탈 프렌드 화타펫(하야니)은 무엇이며 어떻게 이용하나요?</h3>
+        <p class="wb-ka wbka">화타펫(하야니)은 1994년 개원 33년 전통 강남역 화이트스타일치과의원의 24시간 3D 덴탈 케어 프렌드입니다. 치아교정·최소삭제 심미보철·임플란트·스케일링 등 구강 건강 질문에 한·일 양국어로 24시간 실시간 답변하며, 양치 타이머·교합 체크·구강 케어 가이드를 제공합니다. 웹 브라우저에서 설치 없이 즉시 체험(<a class="ws-home-link" href="https://whitestyle.com/ai-pet/">/ai-pet/</a>)하거나 윈도우 데스크톱 앱 및 크롬 확장프로그램(<a class="ws-home-link" href="https://whitestyle.com/ai-pet/download.html">/ai-pet/download.html</a>)으로 무료 분양받으실 수 있습니다.</p>
+      </article>
+    </div>
+    <p class="wb-ka wbka" style="font-size:13px;color:#64748b;margin:22px 0 0 0;line-height:1.85;">
+      ※ 모든 치과 시술 및 수술의 결과와 치료 기간은 개인의 구강 상태, 치조골 밀도, 전신 건강에 따라 달라질 수 있으며 출혈, 부종, 감염, 일시적 시림 등 부작용이 발생할 수 있으므로 3D CT 정밀 진단 후 의료진과 충분히 상의하시기 바랍니다.
+    </p>
+  </div>
+</section>
+"""
 
 park_section_html = """
 <section id="ws-park-sung-tae-gallery" style="background:#f8fafc;padding:72px 20px;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;font-family:'Pretendard','Malgun Gothic',sans-serif;word-break:keep-all;overflow-wrap:break-word;">
@@ -879,8 +1295,8 @@ park_section_html = """
 
 quick_anchor = '<div id="mir_quick_menu_line"></div>'
 if quick_anchor in new_html:
-    new_html = new_html.replace(quick_anchor, park_section_html + '\n' + quick_anchor, 1)
-    print("Injected Park Sung-tae waiting room gallery section before quick menu.")
+    new_html = new_html.replace(quick_anchor, home_editorial_sections + '\n' + park_section_html + '\n' + quick_anchor, 1)
+    print("Injected 4 editorial SSR sections + Park Sung-tae waiting room gallery section before quick menu.")
 else:
     print("WARNING: quick_anchor not found!")
 

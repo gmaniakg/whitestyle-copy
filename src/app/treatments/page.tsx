@@ -1,8 +1,41 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FadeIn, FadeInStaggerContainer, FadeInStaggerItem } from '@/components/animations/FadeIn';
 import { RevealText } from '@/components/animations/RevealText';
 import { getPostsByType } from '@/lib/api';
+
+export const metadata: Metadata = {
+  title: '진료 과목 안내 · 임플란트·치아교정·최소삭제 심미보철',
+  description:
+    '강남역 화이트스타일치과의원 3인 원장단 분과 협진 진료 과목 안내. 3D CT 임플란트·뼈이식·무치악·재수술, 1:1 치아교정·재교정, 무삭제 제로쉘·최소삭제 심미보철, 치주·보존치료.',
+  alternates: { canonical: 'https://whitestyle.com/treatments' },
+  openGraph: {
+    title: '진료 과목 안내 | 화이트스타일치과의원',
+    description:
+      '1994년 개원 33년 전통 강남역 화이트스타일치과의원 임플란트, 치아교정, 최소삭제 라미네이트, 일반·치주진료 안내.',
+    url: 'https://whitestyle.com/treatments',
+    type: 'website',
+    locale: 'ko_KR',
+  },
+};
+
+const SEMANTIC_TREATMENT_HREF: Record<string, string> = {
+  '12121': '/treatments/implant',
+  '12122': '/treatments/implant/bone-graft',
+  '12123': '/treatments/implant/edentulous',
+  '12125': '/treatments/implant/insurance',
+  '12126': '/treatments/orthodontics',
+  '12127': '/treatments/orthodontics/types',
+  '12128': '/treatments/general',
+  '12129': '/treatments/general/caries',
+  '12130': '/treatments/general/endo',
+  '12131': '/treatments/general/scaling',
+  '12132': '/treatments/general/wisdom-tooth',
+  '12133': '/treatments/aesthetic/zeroshell',
+  '12134': '/treatments/aesthetic/easy-white',
+  '16880': '/treatments/implant',
+};
 
 export default async function TreatmentsPage() {
   const posts = getPostsByType('static_page').filter(p => {
@@ -34,9 +67,11 @@ export default async function TreatmentsPage() {
           const id = idMatch ? idMatch[1] : '';
           if (!id) return null;
           
+          const targetHref = SEMANTIC_TREATMENT_HREF[id] || '/treatments';
+          
           return (
             <FadeInStaggerItem key={idx} direction={idx % 3 === 0 ? "left" : idx % 3 === 1 ? "up" : "right"}>
-              <Link href={`/treatments/${id}`} className="group relative block p-8 bg-white rounded-[2rem] hover:bg-blue-600 transition-all duration-500 shadow-md hover:shadow-2xl border border-slate-100 overflow-hidden transform hover:-translate-y-2">
+              <Link href={targetHref} className="group relative block p-8 bg-white rounded-[2rem] hover:bg-blue-600 transition-all duration-500 shadow-md hover:shadow-2xl border border-slate-100 overflow-hidden transform hover:-translate-y-2">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-full -mr-10 -mt-10 group-hover:from-white/20 transition-colors duration-500"></div>
                 
                 <div className="relative z-10">

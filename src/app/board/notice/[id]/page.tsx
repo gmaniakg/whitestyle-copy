@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { getPostByPartialTitle } from '@/lib/api';
@@ -68,6 +69,7 @@ export async function generateMetadata({
   }
 
   const { post, content } = postData;
+  const isColumn = post.url.includes('bo_table=column');
   const cleanTitle = post.title.replace(/_/g, ' ').trim();
   const plainText = stripToPlainText(content);
   const description = buildDescription(plainText, 155) || cleanTitle;
@@ -76,7 +78,7 @@ export async function generateMetadata({
   const imageUrl = extractFirstImageUrl(content);
 
   return {
-    title: `${cleanTitle} | 화이트스타일치과의원 공지·언론보도`,
+    title: isColumn ? `${cleanTitle} · 임상칼럼` : cleanTitle,
     description,
     alternates: { canonical: url },
     openGraph: {
@@ -102,15 +104,7 @@ export default async function NoticeDetailPage({
   const postData = getPostByPartialTitle(id, 'board_notice');
 
   if (!postData) {
-    return (
-      <div className="py-32 text-center">
-        <h2 className="text-2xl font-bold text-slate-800 mb-4">게시글을 찾을 수 없습니다.</h2>
-        <p className="text-slate-500 mb-8">요청하신 공지사항({id})이 삭제되었거나 존재하지 않습니다.</p>
-        <Link href="/board/notice" className="text-blue-600 font-bold hover:underline">
-          목록으로 돌아가기
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   const { post, content } = postData;
