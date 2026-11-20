@@ -5182,5 +5182,29 @@
       "date": "2026-11-20",
       "views": null
     }
+  },
+  {
+    "url": "https://whitestyle.com/bbs/board.php?bo_table=notice&wr_id=32601",
+    "local_path": "posts/notice/32601_HBN뉴스_아날로그_경험과_디지털_정밀함_33년_노하우.md",
+    "title": "[HBN뉴스] 아날로그 경험과 디지털 정밀함, 33년 진료 노하우",
+    "type": "board_notice",
+    "scraped_at": "2026-11-20T10:15:00",
+    "metadata": {
+      "author": "화이트스타일치과",
+      "date": "2026-11-20",
+      "views": null
+    }
+  },
+  {
+    "url": "https://whitestyle.com/bbs/board.php?bo_table=online&wr_id=1038320",
+    "local_path": "posts/online/1038320_네이버_영수증_리뷰_치아교정_더블체크_세심한_사후케어.md",
+    "title": "[네이버 영수증 리뷰] 치아교정 더블체크, 세심한 사후케어",
+    "type": "board_online",
+    "scraped_at": "2026-11-20T10:15:00",
+    "metadata": {
+      "author": "오늘도 감사함으로",
+      "date": "2026-11-20",
+      "views": null
+    }
   }
 ]
