@@ -311,9 +311,9 @@
   13. 치주과 전문의 협진 · 3·6·12개월 정기 리콜 이유 — 초기 임플란트 주위 점막염 조기 차단 (PMID 29926955, KAP): https://whitestyle.com/qa/periodontist-implant-recall-3-6-12
   14. 모두닥·심평원 기준 강남역 임플란트 가격 비교 체크리스트 — 픽스처·지대주·뼈이식·보증 대조 (HIRA, PMID 23062124): https://whitestyle.com/qa/gangnam-dental-implant-price-comparison
   15. 신경치료 후 재통증 시 재신경치료(자연치아 살리기) vs 발치 — 3D CT 수직 파절 감별 후 보존 우선 (PMID 19133093, 19567310): https://whitestyle.com/qa/natural-tooth-saving-re-endo
-  16. 당뇨병·고혈압·항혈전제 복용 중 임플란트 안전 기준 — 혈당 조절 시 유사 생존율·내과 협진 (PMID 35288788, 29926955): https://whitestyle.com/qa/implant-diabetes-hypertension-safety
+  16. 당뇨병·고혈압·항혈전제 복용 중 임플란트 안전 기준 — 혈당 조절 시 유사 생존율·내과 협진 (PMID 36251562, 29926955): https://whitestyle.com/qa/implant-diabetes-hypertension-safety
   17. 골다공증 약(비스포스포네이트)·주사 투여 중 임플란트 사전 확인 — MRONJ 예방 약물·내과 협진 (PMID 37043030, 28651805): https://whitestyle.com/qa/implant-osteoporosis-medication-check
-  18. 위 어금니 상악동거상술 천공·축농증 예방 3D CT 진단 기준 — 중격·점막 판독 및 접근법 구분 (PMID 37351838, 12787222): https://whitestyle.com/qa/sinus-lift-perforation-safety-3dct
+  18. 위 어금니 상악동거상술 천공·축농증 예방 3D CT 진단 기준 — 중격·점막 판독 및 접근법 구분 (PMID 37669518, 12787222): https://whitestyle.com/qa/sinus-lift-perforation-safety-3dct
   19. 오스템·바이오템 등 픽스처 브랜드 vs 장기 수명 기준 — 식립 정확도·커스텀 지대주·치주 리콜 핵심 (PMID 23062124, HIRA): https://whitestyle.com/qa/implant-brand-osstem-biotem-selection
   20. 맞춤형 커스텀 지대주 vs 기성 지대주 잇몸 밀착·수명 차이 — 시멘트 잔류 염증·파절 예방 (PMID 29926955, 23062124): https://whitestyle.com/qa/custom-abutment-vs-stock-abutment
   21. 발치 즉시 임플란트 vs 지연 식립 안전 선택 기준 — 급성 염증·골벽 보존 여부 3D CT 판독 (PMID 23062124, 12787222): https://whitestyle.com/qa/immediate-vs-delayed-implant-timing

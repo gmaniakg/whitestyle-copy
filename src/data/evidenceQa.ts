@@ -94,10 +94,10 @@ const CIT_TORABINEJAD_2009: QaCitation = {
 };
 
 const CIT_DIABETES_IMPLANT_2022: QaCitation = {
-  title: 'Systematic review on diabetes mellitus and dental implants: an update (2022)',
-  source: 'PubMed PMID 35288788',
-  url: 'https://pubmed.ncbi.nlm.nih.gov/35288788/',
-  pmid: '35288788',
+  title: 'Effects of diabetes/hyperglycemia on peri-implant biomarkers and clinical and radiographic outcomes in patients with dental implant restorations: A systematic review and meta-analysis (Clin Oral Implants Res, 2022)',
+  source: 'PubMed PMID 36251562',
+  url: 'https://pubmed.ncbi.nlm.nih.gov/36251562/',
+  pmid: '36251562',
 };
 
 const CIT_OSTEOPOROSIS_IMPLANT_2023: QaCitation = {
@@ -108,17 +108,17 @@ const CIT_OSTEOPOROSIS_IMPLANT_2023: QaCitation = {
 };
 
 const CIT_OSTEOPOROSIS_IMPLANT_2017: QaCitation = {
-  title: 'Dental implants in patients with osteoporosis: a systematic review with meta-analysis (2017)',
+  title: 'Dental implants in patients with osteoporosis: a systematic review with meta-analysis (2018)',
   source: 'PubMed PMID 28651805',
   url: 'https://pubmed.ncbi.nlm.nih.gov/28651805/',
   pmid: '28651805',
 };
 
 const CIT_SINUS_LIFT_2023: QaCitation = {
-  title: 'The Impact of Sinus Floor Elevation Techniques on Sinus Membrane Perforation: A Systematic Review and Network Meta-analysis (2023)',
-  source: 'PubMed PMID 37351838',
-  url: 'https://pubmed.ncbi.nlm.nih.gov/37351838/',
-  pmid: '37351838',
+  title: 'The Impact of Sinus Floor Elevation Techniques on Sinus Membrane Perforation: A Systematic Review and Network Meta-analysis (Int J Oral Maxillofac Implants, 2023)',
+  source: 'PubMed PMID 37669518',
+  url: 'https://pubmed.ncbi.nlm.nih.gov/37669518/',
+  pmid: '37669518',
 };
 
 const CIT_ALQUTAIBI_2025: QaCitation = {
@@ -1000,7 +1000,7 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
     category: '임플란트·재수술',
     question: '당뇨병·고혈압·항혈전제를 복용 중인데 임플란트 수술을 안전하게 받을 수 있나요?',
     shortAnswer:
-      '혈당(당화혈색소)과 혈압이 내과적으로 안정 범위 내에서 조절되고 있다면 비당뇨 환자와 유사한 수준의 임플란트 생존율을 기대할 수 있습니다(PMID 35288788). 다만 치유 지연과 감염 위험을 낮추기 위해 수술 전 복용 약물 확인과 치주과 전문의의 잇몸·골질 평가, 3단계 무통 국소마취 프로토콜을 거치는 것이 안전합니다.',
+      '혈당(당화혈색소)과 혈압이 내과적으로 안정 범위 내에서 조절되고 있다면 비당뇨 환자와 유사한 수준의 임플란트 생존율을 기대할 수 있습니다(PMID 36251562). 다만 치유 지연과 감염 위험을 낮추기 위해 수술 전 복용 약물 확인과 치주과 전문의의 잇몸·골질 평가, 3단계 무통 국소마취 프로토콜을 거치는 것이 안전합니다.',
     summaryPoints: [
       '당뇨병 환자의 임플란트는 혈당이 안정적으로 조절되는 상태에서 치주 관리를 병행하면 안전하게 식립할 수 있습니다.',
       '고혈압 및 항혈전제(아스피린·와파린 등) 복용 환자는 임의로 약을 중단하지 말고 내과 주치의 소견에 따라 지혈 계획을 세웁니다.',
@@ -1094,7 +1094,7 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
     category: '임플란트·재수술',
     question: '위 어금니 상악동거상술 시 상악동 막 천공이나 축농증 부작용은 어떻게 예방하나요?',
     shortAnswer:
-      '위턱 어금니 부위 뼈 높이가 얇을 때 시행하는 상악동거상술은 3D CT로 상악동 내부 격막(중격), 점막 비후·만성 염증 여부, 혈관 주행을 사전에 입체 파악하고 잔존 골 높이에 맞춰 치조정 접근과 측방 접근을 구분해 선택할 때 상악동 막 천공 위험을 크게 줄일 수 있습니다(PMID 37351838).',
+      '위턱 어금니 부위 뼈 높이가 얇을 때 시행하는 상악동거상술은 3D CT로 상악동 내부 격막(중격), 점막 비후·만성 염증 여부, 혈관 주행을 사전에 입체 파악하고 잔존 골 높이에 맞춰 치조정 접근과 측방 접근을 구분해 선택할 때 상악동 막 천공 위험을 크게 줄일 수 있습니다(PMID 37669518).',
     summaryPoints: [
       '수술 전 3D CT 판독으로 상악동 내 뼈 격막 유무와 점막 두께를 미리 확인해 천공 위험을 낮춥니다.',
       '잔존 골 높이에 따라 비교적 덜 침습적인 치조정 접근(Crestal)과 시야 확보가 좋은 측방 접근(Lateral)을 구분 적용합니다.',
