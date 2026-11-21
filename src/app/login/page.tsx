@@ -15,18 +15,18 @@ const ERROR_MESSAGES: Record<string, string> = {
 };
 
 function sanitizeCallbackUrl(raw: string | null): string {
-  if (!raw) return '/admin/consultations';
+  if (!raw) return '/';
   const trimmed = raw.trim();
   if (trimmed.startsWith('/') && !trimmed.startsWith('//')) {
     return trimmed;
   }
-  return '/admin/consultations';
+  return '/';
 }
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [callbackUrl, setCallbackUrl] = useState('/admin/consultations');
+  const [callbackUrl, setCallbackUrl] = useState('/');
   const [errorMsg, setErrorMsg] = useState('');
   const [infoMsg, setInfoMsg] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -99,7 +99,7 @@ export default function LoginPage() {
             로그인
           </h2>
           <p className="mt-3 text-center text-base text-slate-500">
-            이메일(관리자 아이디) 또는 Google 계정으로 로그인하세요.
+            whitestyle.com 계정 또는 Google 계정으로 로그인하세요.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full px-4 py-3.5 border border-slate-300 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-[#1b439c] focus:border-transparent transition-colors"
-              placeholder="whitestyle3@naver.com 또는 whitedent"
+              placeholder="example@email.com"
             />
           </div>
           <div>
@@ -219,7 +219,10 @@ export default function LoginPage() {
           <Link href="/consult" className="text-sm font-medium text-slate-500 hover:text-[#1b439c]">
             상담 안내 보기
           </Link>
-          <Link href="/register" className="text-sm font-bold text-[#1b439c] hover:text-[#15347a]">
+          <Link
+            href={callbackUrl !== '/' ? `/register?callbackUrl=${encodeURIComponent(callbackUrl)}` : '/register'}
+            className="text-sm font-bold text-[#1b439c] hover:text-[#15347a]"
+          >
             회원가입하기
           </Link>
         </div>

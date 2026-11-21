@@ -238,6 +238,11 @@ export default function Navbar() {
             ))}
 
             <li className="relative h-full flex items-center">
+              <Link href="/events/suneung" className="px-3 py-1 rounded-full bg-[#0b1118] text-amber-200 font-extrabold text-[15px] xl:text-[16px] tracking-wide flex items-center hover:bg-[#162235] hover:text-white transition-colors whitespace-nowrap">
+                수능 이벤트
+              </Link>
+            </li>
+            <li className="relative h-full flex items-center">
               <Link href="/price" className="text-white/95 font-extrabold text-[16px] xl:text-[18px] tracking-wide h-full flex items-center hover:text-amber-200 transition-colors whitespace-nowrap">
                 비급여 수가표
               </Link>
@@ -360,6 +365,13 @@ export default function Navbar() {
                 })}
 
                 <div className="pt-3 space-y-1">
+                  <Link
+                    href="/events/suneung"
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-3 px-3 rounded-xl text-xl font-black text-amber-700 bg-amber-50/80 hover:bg-amber-100 transition-colors"
+                  >
+                    2027 수능 수험생 이벤트
+                  </Link>
                   <Link
                     href="/price"
                     onClick={() => setMobileOpen(false)}

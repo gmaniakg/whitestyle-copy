@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
-
-const CORS_HEADERS: Record<string, string> = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers':
-    'Content-Type, Authorization, X-Hwata-Api-Key, X-Hwata-Client, X-Hwata-Pet-Heartbeat',
-};
+import { prisma } from '@/lib/prisma';
+import {
+  buildHwataCorsHeaders,
+  loginRequiredResponse,
+  requireHwataMember,
+} from '@/app/api/_lib/hwata-auth';
 
 const TREATMENT_LABELS: Record<string, string> = {
   ortho_noninsured: '치아교정 (클리피씨 / 인비절라인 / 설측 / 부분교정 등 비급여 교정)',
@@ -38,14 +37,85 @@ function makeHeartbeatLease(seed: string, days = 7): { leaseToken: string; expir
   };
 }
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
+export async function OPTIONS(req: NextRequest) {
+  return new NextResponse(null, { status: 204, headers: buildHwataCorsHeaders(req) });
 }
 
 export async function POST(req: NextRequest) {
+  const CORS_HEADERS = buildHwataCorsHeaders(req);
   try {
     const body = await req.json().catch(() => ({}));
-    const mode = String(body.mode || 'pass').trim();
+    const mode = String(body.mode || '').trim();
+    const rawChartNo = String(body.chartNo || body.chartNumber || body.chart_no || '').trim();
+
+    // -------------------------------------------------------------------------
+    // MODE 0-A: 차트번호 단일 입력 인스턴트 크랙 (whitestyle.com 로그인 필수)
+    // -------------------------------------------------------------------------
+    if (mode === 'crack' || rawChartNo) {
+      const member = await requireHwataMember(req);
+      if (!member) return loginRequiredResponse(req);
+      const chartNo = (rawChartNo || 'VIP-MEMBER').replace(/[^a-zA-Z0-9-]/g, '').slice(0, 20);
+      if (!chartNo || chartNo.length < 3) {
+        return NextResponse.json(
+          {
+            ok: false,
+            message: '치과 진료 차트번호를 3자리 이상 정확히 입력해 주세요. (영수증 또는 알림톡 참조)',
+          },
+          { status: 400, headers: CORS_HEADERS }
+        );
+      }
+
+      const apiKey = makeHmacToken('sk-hwata-cracked-vip', `chart:${chartNo}`, 28);
+      const lease = makeHeartbeatLease(`chart:${chartNo}`, 365);
+      const inviteReferralCode = `HWATA-${chartNo.toUpperCase()}`;
+
+      let invitedCount = 0;
+      let voucherCode: string | null = null;
+      try {
+        const refRecord = await prisma.hwataReferral.upsert({
+          where: { refCode: inviteReferralCode },
+          update: { chartNo },
+          create: {
+            refCode: inviteReferralCode,
+            chartNo,
+            invitedCount: 0,
+            invitedGuests: '[]',
+          },
+        });
+        invitedCount = refRecord.invitedCount;
+        voucherCode = refRecord.voucherCode;
+      } catch (dbErr) {
+        console.warn('[verify-member] hwataReferral upsert fallback:', dbErr);
+      }
+
+      return NextResponse.json(
+        {
+          ok: true,
+          cracked: true,
+          chartNo,
+          grade: '화타치과 33년 VIP 정회원 (ALL UNLOCKED)',
+          apiKey,
+          inviteReferralCode,
+          inviteLink: `https://whitestyle.com/ai-pet?ref=${encodeURIComponent(inviteReferralCode)}#community`,
+          invitedCount,
+          targetCount: 5,
+          remaining: Math.max(0, 5 - invitedCount),
+          voucherCode,
+          rewardLabel: '친구 5명 초대 시 치아미백 1회 무료',
+          unlockedFeatures: [
+            'all_3d_pets',
+            'unlimited_ai_chat',
+            'private_chat_rooms',
+            'doctor_hwata_bot',
+            'vip_priority_booking',
+          ],
+          heartbeatLease: lease.leaseToken,
+          expiresAt: lease.expiresAtIso,
+          message: `🎉 화타치과 차트번호 [${chartNo}] 인증 성공! 모든 기능이 무제한 크랙(해금)되었습니다. 친구 5명 초대 시 치아미백 1회 무료 혜택을 받을 수 있어요!`,
+        },
+        { status: 200, headers: CORS_HEADERS }
+      );
+    }
 
     // -------------------------------------------------------------------------
     // MODE 0: 하야니 동행 하트비트 갱신 (하야니를 계속 써야 본인·배우자·가족·지인 혜택 유지)

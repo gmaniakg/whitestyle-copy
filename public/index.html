@@ -2320,6 +2320,17 @@ url('https://cdn.myreal.co.kr/css/_mir/font/font-nanumlight/1.0/NanumBarunGothic
 .ws-hero-dept-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 14px; margin-top: 8px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.16); width: 100%; max-width: 780px; }
 .ws-hero-dept-link { color: rgba(248, 246, 241, 0.86) !important; font-size: 14px; font-weight: 500; text-decoration: none !important; padding: 6px 12px; border-radius: 6px; background: rgba(255, 255, 255, 0.07); transition: background 0.2s ease, color 0.2s ease; }
 .ws-hero-dept-link:hover { background: rgba(216, 187, 132, 0.22); color: #ebd29d !important; }
+.ws-suneung-strip { position: relative; z-index: 4; width: 100%; background: linear-gradient(90deg, #0b1118 0%, #162235 50%, #0b1118 100%); border-bottom: 1px solid rgba(235, 210, 157, 0.35); color: #f8f6f1; font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif; word-break: keep-all; }
+.ws-suneung-strip-inner { max-width: 1280px; margin: 0 auto; padding: 10px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 18px; }
+.ws-suneung-badge { display: inline-flex; align-items: center; padding: 4px 11px; border-radius: 999px; background: rgba(235, 210, 157, 0.16); border: 1px solid rgba(235, 210, 157, 0.55); color: #ebd29d; font-size: 12px; font-weight: 800; letter-spacing: 0.02em; white-space: nowrap; }
+.ws-suneung-copy { font-size: 14px; font-weight: 600; color: #f8f6f1; line-height: 1.45; margin: 0; text-align: center; }
+.ws-suneung-copy strong { color: #ebd29d; font-weight: 800; }
+.ws-suneung-actions { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.ws-suneung-btn { display: inline-flex; align-items: center; justify-content: center; padding: 6px 14px; border-radius: 6px; font-size: 12.5px; font-weight: 800; text-decoration: none !important; transition: transform 0.18s ease, background-color 0.18s ease; white-space: nowrap; }
+.ws-suneung-btn--gold { background: #ebd29d; color: #0b1118 !important; }
+.ws-suneung-btn--gold:hover { background: #f3dfb3; transform: translateY(-1px); }
+.ws-suneung-btn--naver { background: #03c75a; color: #ffffff !important; }
+.ws-suneung-btn--naver:hover { background: #02b350; transform: translateY(-1px); }
 @media (max-width: 768px) {
   .ws-hero-video-banner { min-height: 540px; max-height: none; aspect-ratio: auto; padding: 24px 0; }
   .ws-hero-video-inner { padding: 36px 18px; gap: 14px; }
@@ -2330,8 +2341,20 @@ url('https://cdn.myreal.co.kr/css/_mir/font/font-nanumlight/1.0/NanumBarunGothic
   .ws-hero-btn { width: 100%; padding: 13px 18px; font-size: 14px; }
   .ws-hero-dept-nav { gap: 6px; }
   .ws-hero-dept-link { font-size: 12.5px; padding: 5px 10px; }
+  .ws-suneung-strip-inner { padding: 10px 14px; gap: 8px; }
+  .ws-suneung-copy { font-size: 13px; }
 }
 </style>
+<div class="ws-suneung-strip wb-ka wbka" role="region" aria-label="2027 수능 수험생 이벤트 안내">
+  <div class="ws-suneung-strip-inner wb-ka wbka">
+    <span class="ws-suneung-badge">2027 수능 수험생 특별 안내</span>
+    <p class="ws-suneung-copy wb-ka wbka">수험표 지참 후 교정 · 최소삭제 라미네이트 · 임플란트 등 비보험(비급여) 진료 시 <strong>치아미백 1회 무료 제공</strong></p>
+    <div class="ws-suneung-actions">
+      <a class="ws-suneung-btn ws-suneung-btn--gold" href="/events/suneung">이벤트 자세히 보기 · 신청</a>
+      <a class="ws-suneung-btn ws-suneung-btn--naver" href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener noreferrer">네이버 빠른 예약</a>
+    </div>
+  </div>
+</div>
 <div class="boxsize ez_box_module hero_video_module_wrap posRel" style="margin: 0 auto; width: 100%; overflow: hidden; max-width: 100%; position: relative; background: #000;" id="box_module_Custom_455503_wrap">
   <div class="ws-hero-video-banner" id="ws-hero-video-section">
     <video class="ws-hero-video-bg" id="ws-hero-video-el" autoplay loop muted playsinline preload="auto" poster="https://cdn.myreal.co.kr/data/image_assist/3697191616_av7FHwAM_2105632051_dW8lp9JM_20240423_whitedent_ms_ECA689EC8B9CEC8B9DEBA6BDEC9E84ED948CEB9E80ED8AB8_H4_N1.jpg">
@@ -2350,6 +2373,7 @@ url('https://cdn.myreal.co.kr/css/_mir/font/font-nanumlight/1.0/NanumBarunGothic
         <a class="ws-hero-btn ws-hero-btn--tel" href="tel:1577-7287">대표전화 1577-7287 / 02-569-7528</a>
       </div>
       <nav class="ws-hero-dept-nav" aria-label="주요 진료 안내">
+        <a class="ws-hero-dept-link" href="/events/suneung">2027 수능 수험생 이벤트</a>
         <a class="ws-hero-dept-link" href="/treatments/orthodontics">치아교정 · 재교정</a>
         <a class="ws-hero-dept-link" href="/treatments/aesthetic/zeroshell">무삭제·최소삭제 라미네이트</a>
         <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 임플란트 · 재수술</a>

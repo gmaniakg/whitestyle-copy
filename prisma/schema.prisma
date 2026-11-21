@@ -35,14 +35,19 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  accounts      Account[]
-  sessions      Session[]
+  id                   String    @id @default(cuid())
+  name                 String?
+  email                String?   @unique
+  emailVerified        DateTime?
+  image                String?
+  password             String?
+  phone                String?
+  agreedPrivacy        Boolean   @default(false)
+  agreedMarketing      Boolean   @default(false)
+  consentAt            DateTime?
+  privacyPolicyVersion String?
+  accounts             Account[]
+  sessions             Session[]
 }
 
 model VerificationToken {
@@ -73,4 +78,52 @@ model Consultation {
   @@index([phone])
   @@index([createdAt])
   @@index([status])
+}
+
+model HwataRoom {
+  id             String         @id @default(cuid())
+  roomId         String         @unique
+  roomName       String
+  description    String         @default("")
+  creator        String         @default("화타치과")
+  creatorChartNo String?
+  inviteCode     String         @unique
+  isDefault      Boolean        @default(false)
+  isPublic       Boolean        @default(true)
+  memberCount    Int            @default(1)
+  topic          String         @default("")
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  messages       HwataMessage[]
+
+  @@index([isPublic, createdAt])
+}
+
+model HwataMessage {
+  id            String    @id @default(cuid())
+  roomId        String
+  room          HwataRoom @relation(fields: [roomId], references: [roomId], onDelete: Cascade)
+  sender        String
+  text          String
+  chartNo       String?
+  isCracked     Boolean   @default(false)
+  avatarSpecies String    @default("dog")
+  avatarEar     String    @default("perk")
+  avatarCostume String    @default("none")
+  avatarBg      String    @default("cream")
+  isBot         Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+
+  @@index([roomId, createdAt])
+}
+
+model HwataReferral {
+  id            String   @id @default(cuid())
+  refCode       String   @unique
+  chartNo       String?
+  invitedCount  Int      @default(0)
+  invitedGuests String   @default("[]")
+  voucherCode   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }

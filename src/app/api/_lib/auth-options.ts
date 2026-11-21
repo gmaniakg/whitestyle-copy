@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
@@ -6,6 +7,7 @@ import NaverProvider from 'next-auth/providers/naver';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { PRIVACY_POLICY_VERSION } from '@/app/api/_lib/admin';
 
 const LOGIN_FAIL_MESSAGE = '이메일(또는 아이디)과 비밀번호가 올바르지 않습니다.';
 
@@ -111,6 +113,34 @@ export const authOptions: AuthOptions = {
         (session.user as { id?: string }).id = String(token.id);
       }
       return session;
+    },
+  },
+  events: {
+    async createUser({ user }) {
+      try {
+        const cookieStore = await cookies();
+        const rawConsent = cookieStore.get('ws_signup_consent')?.value;
+        if (!rawConsent) return;
+        const parsed = JSON.parse(rawConsent);
+        if (parsed && parsed.agreedPrivacy === true && user?.id) {
+          const cleanPhone =
+            typeof parsed.phone === 'string'
+              ? parsed.phone.trim().replace(/[^\d-]/g, '').slice(0, 20)
+              : null;
+          await prisma.user.update({
+            where: { id: user.id },
+            data: {
+              agreedPrivacy: true,
+              agreedMarketing: Boolean(parsed.agreedMarketing),
+              phone: cleanPhone || undefined,
+              consentAt: new Date(),
+              privacyPolicyVersion: PRIVACY_POLICY_VERSION,
+            },
+          });
+        }
+      } catch (err) {
+        console.warn('[auth-options] createUser consent sync skipped:', err);
+      }
     },
   },
   pages: {
