@@ -116,13 +116,16 @@ const GENERAL: TreatmentConditionProfile = {
 
 const PROFILE_BY_PATH: Record<string, TreatmentConditionProfile> = {
   '/treatments/implant': IMPLANT,
+  '/treatments/implant/reoperation': IMPLANT,
   '/treatments/implant/bone-graft': IMPLANT,
   '/treatments/implant/edentulous': IMPLANT,
   '/treatments/implant/insurance': IMPLANT,
   '/treatments/orthodontics': ORTHODONTICS,
+  '/treatments/orthodontics/recorrection': ORTHODONTICS,
   '/treatments/orthodontics/types': ORTHODONTICS,
   '/treatments/aesthetic': AESTHETIC,
   '/treatments/aesthetic/zeroshell': AESTHETIC,
+  '/treatments/aesthetic/retreatment': AESTHETIC,
   '/treatments/aesthetic/easy-white': AESTHETIC,
   '/treatments/general': GENERAL,
   '/treatments/general/caries': GENERAL,

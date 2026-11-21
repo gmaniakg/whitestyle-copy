@@ -272,33 +272,33 @@ export default function JapaneseLandingPage() {
                 <tr className="bg-slate-100 border-b-2 border-slate-300 text-left">
                   <th className="py-3 px-4 font-extrabold">治療メニュー</th>
                   <th className="py-3 px-4 font-extrabold">来院回数・期間目安</th>
-                  <th className="py-3 px-4 font-extrabold">料金・保証・安心基準</th>
+                  <th className="py-3 px-4 font-extrabold">2026年 料金目安・保証・安心基準</th>
                   <th className="py-3 px-4 font-extrabold">日本語相談・詳細</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
                 <tr>
                   <td className="py-3.5 px-4 font-extrabold text-[#091326]">1DAYオフィスホワイトニング</td>
-                  <td className="py-3.5 px-4">来院1回・約60分完結</td>
-                  <td className="py-3.5 px-4">パノラマ検診＋歯石除去＋歯肉保護＋KFDA承認薬剤3回照射（観光・短期渡韓向け）</td>
+                  <td className="py-3.5 px-4">来院1回・約60〜90分完結</td>
+                  <td className="py-3.5 px-4">3セッション照射 275,000ウォン目安／パノラマ検診＋歯石除去＋歯肉保護＋KFDA承認薬剤（短期渡韓向け）</td>
                   <td className="py-3.5 px-4"><Link href="/ja/whitening" className="text-[#1e3a8a] font-extrabold underline">詳細を見る →</Link></td>
                 </tr>
                 <tr>
                   <td className="py-3.5 px-4 font-extrabold text-[#091326]">無削除ゼロシェル・最小削除ラミネート</td>
                   <td className="py-3.5 px-4">最短2〜3回来院（1〜2週）</td>
-                  <td className="py-3.5 px-4">エナメル質保存優先（無削除〜0.1〜0.2mm最小削除）・他院変色/破折再治療も歯周科専門医協診</td>
+                  <td className="py-3.5 px-4">エナメル質保存優先（無削除〜0.1〜0.2mm最小削除）・院内専属歯科技工所精密製作・他院再治療も歯周科専門医協診</td>
                   <td className="py-3.5 px-4"><Link href="/ja/laminate" className="text-[#1e3a8a] font-extrabold underline">比較を見る →</Link></td>
                 </tr>
                 <tr>
                   <td className="py-3.5 px-4 font-extrabold text-[#091326]">歯列矯正・インビザライン・裏側</td>
                   <td className="py-3.5 px-4">日本遠隔管理・2〜4ヶ月毎</td>
-                  <td className="py-3.5 px-4">診断費・装置費・毎月の調整料・保定装置代込みトータルフィー総額制／金俊憲病院長1対1専任</td>
+                  <td className="py-3.5 px-4">精密診断費・装置費・毎月の調整料・保定装置代込みトータルフィー総額制（追加費用なし）／金俊憲病院長1対1専任</td>
                   <td className="py-3.5 px-4"><Link href="/ja/orthodontics" className="text-[#1e3a8a] font-extrabold underline">総額制を見る →</Link></td>
                 </tr>
                 <tr>
                   <td className="py-3.5 px-4 font-extrabold text-[#091326]">3D CT短期インプラント・骨造成・再手術</td>
                   <td className="py-3.5 px-4">最短2〜4回渡韓（溶ける糸）</td>
-                  <td className="py-3.5 px-4">3段階無痛麻酔＋難症例骨移植(GBR・サイナスリフト)＋他院再手術＋3・6・12ヶ月リコール</td>
+                  <td className="py-3.5 px-4">1本100万〜145万ウォン台（HIRA非給与基準・オステム／ジルコニア等）・3段階無痛局所麻酔＋骨移植(GBR)＋他院再手術対応</td>
                   <td className="py-3.5 px-4"><Link href="/ja/implant" className="text-[#1e3a8a] font-extrabold underline">手順を見る →</Link></td>
                 </tr>
               </tbody>
@@ -308,9 +308,14 @@ export default function JapaneseLandingPage() {
             <span className="font-bold text-slate-800">
               専任日本語通訳3名常駐（直通：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a> ／ LINE ID：whitestyle1）
             </span>
-            <Link href="/board/notice/1907" className="text-[#1e3a8a] font-extrabold underline">
-              2026年 韓日統合比較ガイド全文を読む →
-            </Link>
+            <div className="flex flex-wrap gap-4">
+              <Link href="/board/notice/1911" className="text-[#1e3a8a] font-extrabold underline">
+                【2026比較】韓国・江南 歯科おすすめ選定基準 →
+              </Link>
+              <Link href="/board/notice/1907" className="text-[#1e3a8a] font-bold underline">
+                韓日統合ガイド →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
