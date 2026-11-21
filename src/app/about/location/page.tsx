@@ -115,20 +115,20 @@ export default function LocationPage() {
 
             <ul className="space-y-4 text-slate-700 text-sm sm:text-base">
               <li className="flex justify-between items-center py-2 border-b border-slate-50">
-                <span className="font-bold text-slate-900">월 / 화 / 수 / 목 / 금</span>
+                <span className="font-bold text-slate-900">월 / 화 / 수 / 금</span>
                 <span className="font-extrabold text-blue-700">10:00 ~ 19:00</span>
               </li>
               <li className="flex justify-between items-center py-2 border-b border-slate-50">
                 <span className="font-bold text-slate-900">토 요 일</span>
-                <span className="font-extrabold text-blue-700">10:00 ~ 14:00 <span className="text-xs text-slate-400 font-normal">(점심시간 없음)</span></span>
+                <span className="font-extrabold text-blue-700">10:00 ~ 14:00 <span className="text-xs text-slate-500 font-semibold">(점심시간 없음 / 초진 접수 13:30까지)</span></span>
               </li>
               <li className="flex justify-between items-center py-2 border-b border-slate-50">
-                <span className="font-bold text-slate-900">점 심 시 간</span>
+                <span className="font-bold text-slate-900">평일 점심시간</span>
                 <span className="font-bold text-slate-600">13:00 ~ 14:00</span>
               </li>
               <li className="flex justify-between items-center py-2 text-rose-600 font-bold">
-                <span>일요일 / 공휴일</span>
-                <span className="bg-rose-50 px-3 py-1 rounded-full text-xs border border-rose-100">휴 진</span>
+                <span>목요일 / 일요일 / 공휴일</span>
+                <span className="bg-rose-50 px-3 py-1 rounded-full text-xs border border-rose-100">정기 휴진</span>
               </li>
             </ul>
           </div>

@@ -464,7 +464,7 @@ export default function JapaneseLandingPage() {
                 </tr>
                 <tr className="bg-slate-50/60">
                   <td className="py-4 px-5 font-bold text-slate-900">6. 診療時間・休診日・アクセス</td>
-                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">月・火・水・金 10:00〜19:00（昼休み 13:00〜14:00）／ 土曜 10:00〜14:00（木曜・日曜・韓国祝日休診）｜ 江南駅11番・12番出口 徒歩1分</td>
+                  <td className="py-4 px-5 text-slate-700 leading-[1.9]">月・火・水・金 10:00〜19:00（昼休み 13:00〜14:00）／ 土曜 10:00〜14:00（昼休みなし／初診受付は13:30まで / 木曜・日曜・韓国祝日休診）｜ 江南駅11番・12番出口 徒歩1分</td>
                 </tr>
               </tbody>
             </table>
@@ -746,7 +746,7 @@ export default function JapaneseLandingPage() {
               <h3 className="font-extrabold text-slate-900 text-lg mb-3">⏰ 診療時間</h3>
               <ul className="text-sm text-slate-700 space-y-1.5">
                 <li>・ 月〜水・金曜：10:00 〜 19:00（昼休み 13:00〜14:00）</li>
-                <li>・ 土曜日：10:00 〜 14:00（昼休みなし）</li>
+                <li>・ 土曜日：10:00 〜 14:00（昼休みなし／初診受付は13:30まで）</li>
                 <li className="text-rose-700 font-bold">・ 休診日：木曜・日曜・韓国の祝日</li>
               </ul>
             </div>

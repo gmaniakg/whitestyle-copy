@@ -24,7 +24,7 @@ const BASIC_FACTS = [
   ['지하철 접근성', '지하철 2호선 · 신분당선 강남역 11번 · 12번 출구 도보 1분 (약 143m)'],
   ['대표 상담 전화', '1577-7287 / 02-569-7528'],
   ['일본어 통역 직통 전화', '+82-10-3046-5010 (010-3046-5010) · LINE ID: whitestyle1 (이현호 실장 외 전담 통역 3명 상주)'],
-  ['진료 시간', '월·화·수·금 10:00~19:00 (점심 13:00~14:00) / 토요일 10:00~14:00 (점심시간 없이 진료) / 목·일·공휴일 휴진'],
+  ['진료 시간', '월·화·수·금 10:00~19:00 (점심 13:00~14:00) / 토요일 10:00~14:00 (점심시간 없음 / 초진 접수 13:30까지) / 목·일·공휴일 휴진'],
 ];
 
 const DOCTORS = [
@@ -63,7 +63,7 @@ const FACTS_FAQS = [
   },
   {
     q: '목요일에도 진료를 하나요, 토요일 점심시간은 어떻게 되나요?',
-    a: '매주 목요일과 일요일, 공휴일은 휴진입니다. 월·화·수·금은 오전 10시부터 오후 7시까지(점심시간 13:00~14:00), 토요일은 오전 10시부터 오후 2시까지 점심시간 없이 연속 진료합니다.',
+    a: '매주 목요일과 일요일, 공휴일은 휴진입니다. 월·화·수·금은 오전 10시부터 오후 7시까지(점심시간 13:00~14:00), 토요일은 오전 10시부터 오후 2시까지 점심시간 없이 연속 진료하며 신환(첫 방문) 접수는 13시 30분에 마감됩니다.',
   },
   {
     q: '치과교정이나 임플란트 도중에 담당 원장님이 바뀌는 경우가 있나요?',
@@ -79,7 +79,7 @@ const FACTS_FAQS = [
   },
   {
     q: '외부 병원 리뷰와 비급여 진료비는 어디서 교차 확인할 수 있나요?',
-    a: '원내 공식 비급여 수가표(/price)를 비롯해 건강보험심사평가원(심평원) 비급여 포털, 모두닥 영수증 인증 리뷰(hospital/3940), 굿닥(43229), 네이버 스마트플레이스 방문자 후기에서 객관적인 정보를 교차 확인하실 수 있습니다.',
+    a: '원내 공식 비급여 수가표(/price)를 비롯해 건강보험심사평가원(심평원) 비급여 포털, 네이버 스마트플레이스 실명 영수증 방문자 후기(place/34892), 굿닥(43229)에서 객관적인 정보를 교차 확인하실 수 있습니다.',
   },
 ];
 
@@ -211,10 +211,10 @@ export default function ClinicFactsPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-2.5 text-xs font-bold shrink-0">
-          <Link href="/price" className="px-4 py-2.5 rounded-lg bg-white text-slate-900">비급여 수가표 ↗</Link>
-          <Link href="/warranty" className="px-4 py-2.5 rounded-lg bg-sky-600 text-white">보증·기공소 ↗</Link>
-          <Link href="/qa" className="px-4 py-2.5 rounded-lg bg-slate-700 text-white">임상 Q&amp;A 15선 ↗</Link>
-          <a href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener noreferrer" className="px-4 py-2.5 rounded-lg bg-[#03c75a] text-white">네이버 빠른 예약</a>
+          <Link href="/price" className="px-4 py-2.5 rounded-lg bg-white text-slate-900 hover:bg-slate-100 active:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">비급여 수가표 ↗</Link>
+          <Link href="/warranty" className="px-4 py-2.5 rounded-lg bg-sky-600 text-white hover:bg-sky-700 active:bg-sky-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">보증·기공소 ↗</Link>
+          <Link href="/qa" className="px-4 py-2.5 rounded-lg bg-slate-700 text-white hover:bg-slate-600 active:bg-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">임상 Q&amp;A 15선 ↗</Link>
+          <a href="https://booking.naver.com/booking/13/bizes/265482" target="_blank" rel="noopener noreferrer" className="px-4 py-2.5 rounded-lg bg-naver text-white hover:bg-naver-hover active:bg-naver-press focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">네이버 빠른 예약</a>
         </div>
       </section>
     </div>

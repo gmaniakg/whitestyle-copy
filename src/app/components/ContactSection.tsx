@@ -57,7 +57,7 @@ export default function ContactSection({ lang }: { lang: 'ko'|'ja'|'en' }) {
         </div>
         <div style={{ textAlign:'center', color:'var(--text-muted)', fontSize:'0.85rem', marginTop:'2rem', lineHeight: '1.8' }}>
           <span style={{ display: 'inline-block', marginRight: '0.5rem' }}>📍 서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층 (강남역 11번·12번 출구 도보 1분) · 대표상담 1577-7287 / 02-569-7528</span>
-          <span style={{ display: 'inline-block' }}>🕐 평일 10:00–19:00 / 토 10:00–14:00 (일·공휴일 휴진)</span>
+          <span style={{ display: 'inline-block' }}>🕐 월·화·수·금 10:00–19:00 / 토 10:00–14:00 (점심시간 없음 / 초진 접수 13:30까지 / 목·일·공휴일 휴진)</span>
         </div>
       </div>
     </section>

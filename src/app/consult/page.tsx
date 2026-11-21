@@ -208,7 +208,7 @@ export default function ConsultPage() {
             <h3 style={{ fontWeight: 800, fontSize: '18px', marginBottom: '20px', color: '#0f172a' }}>🕐 진료 시간 및 오시는 길</h3>
             {[
               { day: '월 · 화 · 수 · 금', time: '10:00 – 19:00', note: '(점심시간 13:00–14:00)', bg: '#eff6ff' },
-              { day: '토요일', time: '10:00 – 14:00', note: '(점심시간 없이 진료)', bg: '#eff6ff' },
+              { day: '토요일', time: '10:00 – 14:00', note: '(점심시간 없음 / 초진 접수 13:30까지)', bg: '#eff6ff' },
               { day: '목 / 일 / 공휴일', time: '휴진', note: '', bg: '#f8fafc' },
             ].map(h => (
               <div key={h.day} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 18px', borderRadius: '12px', background: h.bg, marginBottom: '8px' }}>
