@@ -309,12 +309,47 @@ export default function JapaneseLandingPage() {
               専任日本語通訳3名常駐（直通：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a> ／ LINE ID：whitestyle1）
             </span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/board/notice/1911" className="text-[#1e3a8a] font-extrabold underline">
-                【2026比較】韓国・江南 歯科おすすめ選定基準 →
+              <Link href="/board/notice/1914" className="text-[#1e3a8a] font-extrabold underline">
+                【2026最新】韓国・江南 歯科おすすめ比較チェックリスト →
+              </Link>
+              <Link href="/board/notice/1911" className="text-[#1e3a8a] font-bold underline">
+                料金・矯正・インプラント比較ガイド →
               </Link>
               <Link href="/board/notice/1907" className="text-[#1e3a8a] font-bold underline">
                 韓日統合ガイド →
               </Link>
+            </div>
+          </div>
+
+          <div className="p-6 sm:p-8 bg-slate-50 border-t border-slate-200 wb-ka wbka">
+            <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-4 wb-ka wbka">
+              韓国・ソウル江南で日本語対応歯科を選ぶ5つのチェック基準【2026年版】
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs sm:text-sm text-slate-700 leading-[1.8] wb-ka wbka">
+              <div className="bg-white p-4 rounded-xl border border-slate-200">
+                <strong className="block text-[#091326] mb-1">1. 専任日本語医療通訳の院内常駐</strong>
+                外部手配ではなく専任通訳3名が院内に常駐し、CT検査・院長診察・LINEアフターケアまで直接サポート（直通 +82-10-3046-5010）。
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200">
+                <strong className="block text-[#091326] mb-1">2. HIRA基準の明朗会計・矯正総額制</strong>
+                追加料金が発生しやすい調整料・保定装置代・診断費まで事前書面提示するトータルフィー総額制。
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200">
+                <strong className="block text-[#091326] mb-1">3. 1泊2日・短期渡韓プログラム</strong>
+                1DAYオフィスホワイトニング（約60分）や最短2〜3回の無削除ラミネート・溶ける糸短期インプラントに対応。
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200">
+                <strong className="block text-[#091326] mb-1">4. 3名院長団協診＆他院再治療</strong>
+                矯正学博士（金俊憲）・インプラント（李奉珍）・歯周科専門医（朴宣恵）が再手術・骨移植・再矯正まで責任対応。
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200">
+                <strong className="block text-[#091326] mb-1">5. 睡眠麻酔なしの3段階無痛局所麻酔</strong>
+                全身リスクを伴う睡眠麻酔は行わず、うがい・表面塗布・デジタル定圧麻酔で痛みの負担を軽減します。
+              </div>
+              <div className="bg-white p-4 rounded-xl border border-slate-200">
+                <strong className="block text-[#091326] mb-1">6. 江南駅徒歩1分＆土曜日診療</strong>
+                江南駅11・12番出口徒歩1分。土曜10:00〜14:00診療で週末の短期渡韓にも便利です。
+              </div>
             </div>
           </div>
         </div>

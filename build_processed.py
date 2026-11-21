@@ -1130,9 +1130,9 @@ home_editorial_sections = """
     </p>
     <div class="ws-home-grid3 wb-ka wbka">
       <article class="ws-home-card wb-ka wbka">
-        <h3 class="wb-ka wbka">고난도 재수술 · 뼈이식 · 재교정 · 재시술 통합 기준</h3>
+        <h3 class="wb-ka wbka">고난도 재수술 · 뼈이식 · 재교정 · 재시술 3인 협진</h3>
         <p class="wb-ka wbka">임플란트 재수술·동종골 뼈이식·무치악 전체임플란트·성인 재교정·최소삭제 라미네이트 재시술의 치주과 전문의 3인 협진 프로토콜을 확인하세요.</p>
-        <a class="ws-home-link" href="/board/notice/1910">고난도 재치료 통합 백서 (/board/notice/1910) &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1913">고난도 협진 최신 백서 (/board/notice/1913) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1910">통합 비교 (/board/notice/1910) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
@@ -1140,24 +1140,24 @@ home_editorial_sections = """
         <a class="ws-home-link" href="/treatments/implant/reoperation">재수술 전담 안내 (/treatments/implant/reoperation) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
-        <h3 class="wb-ka wbka">무치악 전악 재건 전체임플란트 기준</h3>
+        <h3 class="wb-ka wbka">무치악 전악 재건 전체임플란트 · 뼈이식 기준</h3>
         <p class="wb-ka wbka">상·하악 다수 치아 상실 시 최소 필수 식립 수 설계와 맞춤형 커스텀 지대주 교합 회복 원칙을 설명합니다.</p>
-        <a class="ws-home-link" href="/board/notice/1895">칼럼 전문 읽기 (/board/notice/1895) &rarr;</a>
+        <a class="ws-home-link" href="/treatments/implant/edentulous">전체임플란트 (/treatments/implant/edentulous) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1895">칼럼 (/board/notice/1895) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">성인 재교정 · 옥니·재발 예방 1:1 진료</h3>
         <p class="wb-ka wbka">교정 후 틀어짐·옥니 발생 시 3D CT 치근·골폭 확인과 치주과 협진을 통한 안전한 재교정 방법을 다룹니다.</p>
-        <a class="ws-home-link" href="/board/notice/1900">칼럼 전문 읽기 (/board/notice/1900) &rarr;</a>
+        <a class="ws-home-link" href="/treatments/orthodontics/recorrection">성인 재교정 (/treatments/orthodontics/recorrection) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1900">칼럼 (/board/notice/1900) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">무삭제 제로쉘 · 0.1~0.2mm 최소삭제 재시술</h3>
         <p class="wb-ka wbka">라미네이트 변색·파절·시림 원인과 법랑질 내 보존 접착을 통한 신경손상 예방 프로토콜을 확인하세요.</p>
-        <a class="ws-home-link" href="/board/notice/1899">칼럼 전문 읽기 (/board/notice/1899) &rarr;</a>
+        <a class="ws-home-link" href="/treatments/aesthetic/retreatment">라미네이트 재시술 (/treatments/aesthetic/retreatment) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1899">칼럼 (/board/notice/1899) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
-        <h3 class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트 &amp; 어금니 통증</h3>
-        <p class="wb-ka wbka">앞니 틈 크기별 부분교정·무삭제 보철 선택 기준과 어금니 임플란트 수술 후 2~3일 붓기 관리법입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1906">칼럼 전문 읽기 (/board/notice/1906) &rarr;</a>
+        <h3 class="wb-ka wbka">2026 일본어 추천 비교 &amp; 치아 고민별 가이드</h3>
+        <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
+        <a class="ws-home-link" href="/board/notice/1906">증상별 칼럼 (/board/notice/1906) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1914">日本語比較2026 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">
