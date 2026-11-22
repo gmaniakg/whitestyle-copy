@@ -1,7 +1,7 @@
 # Graph Report - whitestyle-copy  (2026-11-22)
 
 ## Corpus Check
-- 234 files · ~1,009,090 words
+- 234 files · ~1,010,981 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 186 file(s) not represented in the graph (top: .woff2 94, .css 43, .woff 13)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e156c502`
+- Built from commit: `e7962536`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -863,17 +863,17 @@ Nodes (4): LAB_WORKFLOW, metadata, WARRANTY_FAQS, WARRANTY_PILLARS
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `G()` connect `.frame` to `Sortable.min.js`, `accessories-fx6.js`, `a`, `.frame`, `splide-extension-video.min.js`?**
-  _High betweenness centrality (0.074) - this node is a cross-community bridge._
+- **Why does `styles()` connect `setAttribute` to `lottie-player.js`?**
+  _High betweenness centrality (0.078) - this node is a cross-community bridge._
 - **What connects `RFC-1321` to the rest of the system?**
   _1 weakly-connected nodes found - possible missing edges._
 - **Should `lottie-player.js` be split into smaller, more focused modules?**
   _Cohesion score 0.012690186698558235 - nodes in this community are weakly interconnected._
-- **Why does `styles()` connect `setAttribute` to `lottie-player.js`?**
-  _High betweenness centrality (0.066) - this node is a cross-community bridge._
+- **Why does `destroy()` connect `setAttribute` to `addClass`, `Slide$1`?**
+  _High betweenness centrality (0.078) - this node is a cross-community bridge._
 - **Should `mir_common.js` be split into smaller, more focused modules?**
   _Cohesion score 0.023529411764705882 - nodes in this community are weakly interconnected._
-- **Why does `destroy()` connect `setAttribute` to `addClass`, `Slide$1`?**
-  _High betweenness centrality (0.066) - this node is a cross-community bridge._
+- **Why does `G()` connect `.frame` to `Sortable.min.js`, `accessories-fx6.js`, `a`, `.frame`, `splide-extension-video.min.js`?**
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
 - **Should `Sortable.min.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11025641025641025 - nodes in this community are weakly interconnected._
