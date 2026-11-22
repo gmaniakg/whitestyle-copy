@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import SearchModal from './SearchModal';
 
 type Lang = 'ko' | 'ja' | 'en';
 
@@ -31,19 +30,19 @@ const withLang = (lang: Lang, href: string) => {
 
 export default function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
   const [open, setOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
-    const openSearch = () => setSearchOpen(true);
     window.addEventListener('scroll', handler, { passive: true });
-    window.addEventListener('open-search', openSearch);
     return () => {
       window.removeEventListener('scroll', handler);
-      window.removeEventListener('open-search', openSearch);
     };
   }, []);
+
+  const openGlobalSearch = () => {
+    window.dispatchEvent(new CustomEvent('open-search'));
+  };
 
   const l = labels[lang];
 
@@ -61,7 +60,7 @@ export default function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lan
             {l.nav.map((item, i) => (
               <li key={i}>
                 {navHrefs[i] === '#search' ? (
-                  <a href="#" onClick={(e) => { e.preventDefault(); setSearchOpen(true); }}>{item}</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); openGlobalSearch(); }}>{item}</a>
                 ) : (
                   <a href={withLang(lang, navHrefs[i])}>{item}</a>
                 )}
@@ -130,7 +129,7 @@ export default function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lan
       <div className={`mobile-menu${open ? ' open' : ''}`}>
         {l.nav.map((item, i) => (
           navHrefs[i] === '#search' ? (
-            <a key={i} href="#" onClick={(e) => { e.preventDefault(); setOpen(false); setSearchOpen(true); }}>{item}</a>
+            <a key={i} href="#" onClick={(e) => { e.preventDefault(); setOpen(false); openGlobalSearch(); }}>{item}</a>
           ) : (
             <a key={i} href={withLang(lang, navHrefs[i])} onClick={() => setOpen(false)}>{item}</a>
           )
@@ -143,7 +142,6 @@ export default function Navbar({ lang, setLang }: { lang: Lang; setLang: (l: Lan
           {l.cta}
         </a>
       </div>
-      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

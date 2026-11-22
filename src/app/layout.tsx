@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
+import FloatingCTA from "@/app/components/FloatingCTA";
+import { SocialIconStrip } from "@/app/components/Footer";
 import "./globals.css";
 
 const clinicJsonLd = {
@@ -583,6 +585,11 @@ export default function RootLayout({
             {children}
           </main>
 
+          {/* Global Bouncing SNS Profile Links (rel="me") */}
+          <div className="border-t border-slate-200 bg-[#f8fafc] py-8 text-center">
+            <SocialIconStrip />
+          </div>
+
           {/* Footer with Medical Law Compliance Disclaimer */}
           <footer className="mt-auto border-t border-slate-200 bg-slate-900 text-slate-400 py-12 px-4 sm:px-8 text-center text-xs leading-relaxed">
             <div className="max-w-5xl mx-auto space-y-3">
@@ -607,6 +614,9 @@ export default function RootLayout({
               <p className="text-slate-400 text-xs">© 2026 화이트스타일치과의원. All rights reserved.</p>
             </div>
           </footer>
+
+          {/* Global Floating Navigation & Consultation CTA */}
+          <FloatingCTA />
         </Providers>
       </body>
     </html>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
+import ShareButtons from '@/app/components/ShareButtons';
 import { getPostByPartialTitle } from '@/lib/api';
 import '../../board-editorial.css';
 
@@ -193,6 +194,8 @@ export default async function NoticeDetailPage({
       </header>
 
       <MarkdownRenderer content={content} />
+
+      <ShareButtons title={cleanTitle} />
 
       <footer className="ws-cta-panel">
         <h2 className="ws-cta-head wb-ka wbka">정밀 진단 및 맞춤 진료 예약 안내</h2>

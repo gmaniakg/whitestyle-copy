@@ -1297,10 +1297,316 @@ park_section_html = """
 </section>
 """
 
+sns_floating_html = r"""
+<section id="ws-home-sns-share-section" style="background:#ffffff;padding:56px 20px 44px;border-top:1px solid #e2e8f0;font-family:'Pretendard','Malgun Gothic','Noto Sans KR',sans-serif;text-align:center;">
+  <style>
+    @keyframes floatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes floatingBounceCTA {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    #ws-home-sns-share-section * { box-sizing: border-box; }
+    #ws-home-sns-share-section .share-icon-bounce {
+      animation: floatBounce 2.5s ease-in-out infinite;
+    }
+    .ws-share-box {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 3rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    .ws-share-title {
+      font-weight: 800;
+      font-size: 1.25rem;
+      margin: 0 0 2rem 0;
+      color: #0f172a;
+    }
+    .ws-share-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .ws-share-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+    }
+    .ws-share-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      color: #ffffff;
+    }
+    .ws-share-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+    .ws-social-strip {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      padding-top: 2.25rem;
+    }
+    .ws-social-circle {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0f172a !important;
+      text-decoration: none !important;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ws-social-circle:hover {
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+    .ws-social-circle--kakao:hover { color: #eab308 !important; border-color: #FEE500 !important; }
+    .ws-social-circle--naver:hover { color: #03C75A !important; border-color: #03C75A !important; }
+    .ws-social-circle--insta:hover { color: #E1306C !important; border-color: #E1306C !important; }
+    .ws-social-circle--youtube:hover { color: #FF0000 !important; border-color: #FF0000 !important; }
+
+    .floating-cta-container {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      font-family: 'Pretendard', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+    }
+    .floating-cta-container.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .ws-float-pill {
+      background: rgba(255, 255, 255, 0.96);
+      color: #0f172a !important;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      border-radius: 999px;
+      padding: 0.8rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none !important;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .ws-float-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+    }
+    .ws-floating-cta-primary {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #ffffff !important;
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4);
+      text-decoration: none !important;
+      white-space: nowrap;
+      animation: floatingBounceCTA 2s ease-in-out infinite;
+    }
+    @media (max-width: 768px) {
+      .floating-cta-container {
+        bottom: 6.2rem;
+        right: 1rem;
+        gap: 0.55rem;
+      }
+      .ws-float-pill, .ws-floating-cta-primary {
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+
+  <div class="ws-share-box">
+    <p class="ws-share-title">이 문서 공유하기</p>
+    <div class="ws-share-row">
+      <button type="button" class="ws-share-btn" title="카카오/기기공유" aria-label="카카오/기기공유" onclick="wsShareKakao()">
+        <div class="share-icon-bounce ws-share-circle" style="background:#FEE500;box-shadow:0 4px 12px #FEE50040;animation-delay:0s;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#3C1E1E" aria-hidden="true">
+            <path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.83 5.4 4.59 6.85l-1.18 4.31c-.13.48.37.83.78.61l5.12-3.41c.54.08 1.1.13 1.69.13 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
+          </svg>
+        </div>
+        <span class="ws-share-label">카카오/기기공유</span>
+      </button>
+
+      <button type="button" class="ws-share-btn" title="네이버 공유" aria-label="네이버 공유" onclick="wsShareNaver()">
+        <div class="share-icon-bounce ws-share-circle" style="background:#03C75A;box-shadow:0 4px 12px #03C75A40;animation-delay:0.15s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+            <path d="M16.5 4H7.5C5.57 4 4 5.57 4 7.5v9C4 18.43 5.57 20 7.5 20h9c1.93 0 3.5-1.57 3.5-3.5v-9C20 5.57 18.43 4 16.5 4zm-1.5 12h-2v-4h-2v4H9V8h2v4h2V8h2v8z"/>
+          </svg>
+        </div>
+        <span class="ws-share-label">네이버</span>
+      </button>
+
+      <button type="button" class="ws-share-btn" title="구글 공유" aria-label="구글 공유" onclick="wsShareGoogle()">
+        <div class="share-icon-bounce ws-share-circle" style="background:#EA4335;box-shadow:0 4px 12px #EA433540;animation-delay:0.3s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <span class="ws-share-label">구글</span>
+      </button>
+
+      <button type="button" class="ws-share-btn" title="페이스북 공유" aria-label="페이스북 공유" onclick="wsShareFacebook()">
+        <div class="share-icon-bounce ws-share-circle" style="background:#1877F2;box-shadow:0 4px 12px #1877F240;animation-delay:0.45s;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </div>
+        <span class="ws-share-label">페이스북</span>
+      </button>
+
+      <button type="button" class="ws-share-btn" title="트위터 공유" aria-label="트위터 공유" onclick="wsShareX()">
+        <div class="share-icon-bounce ws-share-circle" style="background:#000000;box-shadow:0 4px 12px #00000040;animation-delay:0.6s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <span class="ws-share-label">트위터</span>
+      </button>
+
+      <button type="button" class="ws-share-btn" title="링크 복사" aria-label="링크 복사" onclick="wsCopyLink()">
+        <div class="share-icon-bounce ws-share-circle" style="background:#64748b;box-shadow:0 4px 12px #64748b40;animation-delay:0.75s;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+          </svg>
+        </div>
+        <span class="ws-share-label">링크 복사</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="ws-social-strip" aria-label="화이트스타일치과의원 공식 SNS 채널">
+    <a href="https://pf.kakao.com/_Vtxdwl" target="_blank" rel="me noopener noreferrer" aria-label="화이트스타일치과의원 카카오톡 상담 채널" title="카카오톡 상담 채널" class="share-icon-bounce ws-social-circle ws-social-circle--kakao" style="animation-delay:0s;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 3c-5.52 0-10 3.58-10 8 0 2.87 1.83 5.4 4.59 6.85l-1.18 4.31c-.13.48.37.83.78.61l5.12-3.41c.54.08 1.1.13 1.69.13 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
+      </svg>
+    </a>
+    <a href="https://blog.naver.com/whitestyle3" target="_blank" rel="me noopener noreferrer" aria-label="화이트스타일치과의원 공식 네이버 블로그" title="공식 네이버 블로그" class="share-icon-bounce ws-social-circle ws-social-circle--naver" style="animation-delay:0.15s;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/whitestyledentalclinic" target="_blank" rel="me noopener noreferrer" aria-label="화이트스타일치과의원 공식 인스타그램" title="공식 인스타그램" class="share-icon-bounce ws-social-circle ws-social-circle--insta" style="animation-delay:0.3s;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      </svg>
+    </a>
+    <a href="https://www.youtube.com/@whitestyle" target="_blank" rel="me noopener noreferrer" aria-label="화이트스타일치과의원 공식 유튜브 채널" title="공식 유튜브 채널" class="share-icon-bounce ws-social-circle ws-social-circle--youtube" style="animation-delay:0.45s;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M21.58 6.42a2.71 2.71 0 00-1.9-1.92C17.97 4 12 4 12 4s-5.97 0-7.68.5A2.71 2.71 0 002.42 6.42C2 8.12 2 12 2 12s0 3.88.42 5.58a2.71 2.71 0 001.9 1.92c1.71.5 7.68.5 7.68.5s5.97 0 7.68-.5a2.71 2.71 0 001.9-1.92c.42-1.7.42-5.58.42-5.58s0-3.88-.42-5.58zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<div id="ws-floating-cta-container" class="floating-cta-container" aria-label="빠른 이동 및 상담 메뉴">
+  <a href="/" class="ws-float-pill">
+    <span style="font-size:1.2rem;" aria-hidden="true">🏠</span>
+    <span>홈으로</span>
+  </a>
+  <a href="https://whinish.com/insights" target="_blank" rel="noopener noreferrer" class="ws-float-pill">
+    <span style="font-size:1.2rem;" aria-hidden="true">📰</span>
+    <span>월간김준헌</span>
+  </a>
+  <a href="/qa" class="ws-float-pill">
+    <span style="font-size:1.2rem;" aria-hidden="true">🔍</span>
+    <span>통합검색</span>
+  </a>
+  <a href="/consult" class="ws-floating-cta-primary floating-cta-bounce" aria-label="상담예약">
+    <span style="font-size:1.2rem;" aria-hidden="true">📞</span>
+    <span>상담예약</span>
+  </a>
+</div>
+
+<script>
+  function wsShareKakao() {
+    var url = window.location.href;
+    var title = document.title || '화이트스타일치과의원';
+    if (navigator.share) {
+      navigator.share({ title: title, text: '화이트스타일치과의원: ' + title, url: url }).catch(function() {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url);
+      alert('카카오톡 공유를 위해 링크가 복사되었습니다!\n카카오톡 채팅창에 붙여넣기 하여 공유해보세요.');
+    }
+  }
+  function wsShareNaver() {
+    window.open('https://share.naver.com/web/shareView?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent(document.title), '_blank', 'width=600,height=400');
+  }
+  function wsShareGoogle() {
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&su=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=600');
+  }
+  function wsShareFacebook() {
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400');
+  }
+  function wsShareX() {
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400');
+  }
+  function wsCopyLink() {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+    }
+    alert('링크가 복사되었습니다!');
+  }
+  (function() {
+    var el = document.getElementById('ws-floating-cta-container');
+    if (!el) return;
+    function toggleFloating() {
+      if (window.scrollY > 300) {
+        el.classList.add('visible');
+      } else {
+        el.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', toggleFloating, { passive: true });
+    toggleFloating();
+  })();
+</script>
+"""
+
 quick_anchor = '<div id="mir_quick_menu_line"></div>'
 if quick_anchor in new_html:
-    new_html = new_html.replace(quick_anchor, home_editorial_sections + '\n' + park_section_html + '\n' + quick_anchor, 1)
-    print("Injected 4 editorial SSR sections + Park Sung-tae waiting room gallery section before quick menu.")
+    new_html = new_html.replace(quick_anchor, home_editorial_sections + '\n' + park_section_html + '\n' + sns_floating_html + '\n' + quick_anchor, 1)
+    print("Injected 4 editorial SSR sections + Park Sung-tae waiting room gallery + SNS share/floating CTA before quick menu.")
 else:
     print("WARNING: quick_anchor not found!")
 

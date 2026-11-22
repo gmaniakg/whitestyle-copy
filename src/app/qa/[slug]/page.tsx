@@ -7,6 +7,7 @@ import {
   getEvidenceQaBySlug,
 } from '@/data/evidenceQa';
 import { DENTAL_GLOSSARY_TERMS } from '@/data/dentalGlossary';
+import ShareButtons from '@/app/components/ShareButtons';
 
 export function generateStaticParams() {
   return EVIDENCE_QA_LIST.map((item) => ({ slug: item.slug }));
@@ -237,6 +238,10 @@ export default async function QaDetailPage({
           </div>
         </section>
       )}
+
+      <div className="mb-10">
+        <ShareButtons title={item.question} />
+      </div>
 
       <section className="bg-slate-900 text-white rounded-2xl p-7 mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>

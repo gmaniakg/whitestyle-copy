@@ -6,6 +6,7 @@ import {
   getClinicalVideoBySlug,
 } from '@/data/videoArchive';
 import { DOCTOR_DIRECTORY, getEvidenceQaBySlug } from '@/data/evidenceQa';
+import ShareButtons from '@/app/components/ShareButtons';
 
 export function generateStaticParams() {
   return CLINICAL_VIDEO_ARTICLES.map((item) => ({ slug: item.slug }));
@@ -210,6 +211,10 @@ export default async function VideoDetailPage({
           </div>
         )}
       </section>
+
+      <div className="mb-10">
+        <ShareButtons title={item.title} />
+      </div>
 
       <div className="bg-slate-900 text-white rounded-2xl p-7 flex flex-wrap items-center justify-between gap-4">
         <div>

@@ -4,7 +4,6 @@ import '../whitebook.css';
 import { useLangRoute } from '../components/useLangRoute';
 import Navbar from '../components/Navbar';
 import ContactSection from '../components/ContactSection';
-import FloatingCTA from '../components/FloatingCTA';
 import Footer from '../components/Footer';
 import FaqJsonLd from '../components/FaqJsonLd';
 import KonestArchiveSection from '../components/KonestArchiveSection';
@@ -587,7 +586,6 @@ export default function Home({ initialLang = 'ko' }: { initialLang?: Lang }) {
       <ContactSection lang={lang} />
 
       <Footer />
-      <FloatingCTA />
     </main>
   );
 }

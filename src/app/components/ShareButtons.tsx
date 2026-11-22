@@ -13,8 +13,10 @@ const bounceStyles = `
 
 const ShareIcon = ({ name, color, svg, onClick, index = 0 }: { name: string, color: string, svg: React.ReactNode, onClick: () => void, index?: number }) => (
   <button 
+    type="button"
     onClick={onClick}
     title={`${name} 공유`}
+    aria-label={`${name} 공유`}
     style={{
       display: 'flex',
       flexDirection: 'column',
@@ -35,7 +37,7 @@ const ShareIcon = ({ name, color, svg, onClick, index = 0 }: { name: string, col
     }}>
       {svg}
     </div>
-    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)' }}>{name}</span>
+    <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted, #64748b)' }}>{name}</span>
   </button>
 );
 
@@ -56,7 +58,7 @@ export default function ShareButtons({ title }: { title: string }) {
       try {
         await navigator.share({
           title: title,
-          text: '화이트스타일치과 김준헌 원장 백서: ' + title,
+          text: '화이트스타일치과의원: ' + title,
           url: url,
         });
       } catch (error) {
@@ -85,9 +87,9 @@ export default function ShareButtons({ title }: { title: string }) {
   };
 
   return (
-    <div style={{ marginTop: '4rem', padding: '3rem 0', borderTop: '1px solid var(--card-border)', borderBottom: '1px solid var(--card-border)', textAlign: 'center' }}>
+    <div style={{ marginTop: '4rem', padding: '3rem 0', borderTop: '1px solid var(--card-border, #e2e8f0)', borderBottom: '1px solid var(--card-border, #e2e8f0)', textAlign: 'center' }}>
       <style>{bounceStyles}</style>
-      <p style={{ fontWeight: 800, fontSize: '1.25rem', marginBottom: '2rem', color: 'var(--text-main)' }}>이 문서 공유하기</p>
+      <p style={{ fontWeight: 800, fontSize: '1.25rem', marginBottom: '2rem', color: 'var(--text-main, #0f172a)' }}>이 문서 공유하기</p>
       
       <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
         

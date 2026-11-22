@@ -15,6 +15,15 @@
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.5);
   --glass-shadow: 0 8px 32px 0 rgba(0, 86, 179, 0.05);
+
+  /* Global Floating & Share Button Tokens */
+  --accent: #2563eb;
+  --accent2: #7c3aed;
+  --bg-color: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(148, 163, 184, 0.25);
 }
 
 @theme inline {
@@ -102,4 +111,45 @@ body {
 .ws-nowrap {
   white-space: nowrap;
 }
+
+/* Global Bouncing Animations & Floating CTA */
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.share-icon-bounce {
+  animation: floatBounce 2.5s ease-in-out infinite;
+}
+
+@keyframes floatingBounceCTA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.floating-cta-bounce {
+  animation: floatingBounceCTA 2s ease-in-out infinite;
+}
+
+.floating-cta {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.floating-cta:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(234, 88, 12, 0.5);
+  color: #ffffff;
+}
+.floating-cta-icon {
+  font-size: 1.2rem;
+}
+
 

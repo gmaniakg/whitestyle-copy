@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import ShareButtons from '@/app/components/ShareButtons';
 import { EVIDENCE_QA_LIST, type EvidenceQaItem } from '@/data/evidenceQa';
 import {
   getConditionProfile,
@@ -365,6 +366,8 @@ export default function ClinicalSummarySection({
             ))}
           </div>
         </div>
+
+        <ShareButtons title={title} />
 
         <div className="border-t border-ws-rule pt-7">
           <p className="text-sm text-ws-muted mb-1 font-medium leading-[1.95]">
