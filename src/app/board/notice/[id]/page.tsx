@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import { getPostByPartialTitle } from '@/lib/api';
+import '../../board-editorial.css';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,7 +46,7 @@ function resolveDate(metadata: Record<string, unknown> | undefined, scrapedAt: s
 }
 
 function extractFirstImageUrl(raw: string): string | undefined {
-  const htmlMatch = raw.match(/<img[^>]+src="([^"]+)"/i);
+  const htmlMatch = raw.match(new RegExp('<' + 'img[^>]+src="([^"]+)"', 'i'));
   const mdMatch = raw.match(/!\[[^\]]*\]\(([^\s)]+)/);
   const src = htmlMatch?.[1] || mdMatch?.[1];
   if (!src) return undefined;
@@ -78,7 +79,7 @@ export async function generateMetadata({
   const imageUrl = extractFirstImageUrl(content);
 
   return {
-    title: isColumn ? `${cleanTitle} · 임상칼럼` : cleanTitle,
+    title: isColumn ? `${cleanTitle} | 임상칼럼` : cleanTitle,
     description,
     alternates: { canonical: url },
     openGraph: {
@@ -99,8 +100,6 @@ export default async function NoticeDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-
-  // URL이나 파일명에 id(예: 30713)가 포함된 게시글 찾기
   const postData = getPostByPartialTitle(id, 'board_notice');
 
   if (!postData) {
@@ -119,6 +118,13 @@ export default async function NoticeDetailPage({
     /언론보도|뉴스|일보|경제|타임스|저널|소셜밸류|라포르시안|세정신문|크리스천투데이|비즈니스워치|bnt|TV|뉴스데스크/i.test(
       cleanTitle
     ) || plainText.includes('[언론보도 전문]');
+
+  const categoryLabel = isColumn ? '임상칼럼' : isPress ? '언론보도' : '공지사항';
+  const badgeClass = isColumn
+    ? 'ws-cat-badge ws-cat-badge--column'
+    : isPress
+      ? 'ws-cat-badge ws-cat-badge--press'
+      : 'ws-cat-badge';
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -160,48 +166,77 @@ export default async function NoticeDetailPage({
   };
 
   return (
-    <article className="py-24 px-4 sm:px-8 lg:px-12 max-w-5xl w-full mx-auto min-h-[100dvh]" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+    <article className="ws-board-shell wb-ka wbka">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* 백버튼 */}
-      <Link href="/board/notice" className="inline-flex items-center text-sm font-bold text-slate-400 hover:text-blue-600 mb-10 transition-colors">
-        <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+      <Link href="/board/notice" className="ws-back-link">
+        <svg className="ws-back-link-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
-        목록으로
+        임상칼럼 및 공지사항 목록
       </Link>
 
-      {/* 게시글 헤더 */}
-      <header className="mb-12 border-b border-slate-200 pb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <span className={`text-xs font-bold px-3 py-1 rounded-full ${isColumn ? 'text-emerald-600 bg-emerald-50' : 'text-blue-500 bg-blue-50'}`}>
-            {isColumn ? '임상칼럼' : '공지사항'}
-          </span>
-          <span className="text-sm text-slate-400 font-medium">
+      <header className="ws-article-header">
+        <div className="ws-meta-row">
+          <span className={badgeClass}>{categoryLabel}</span>
+          <time dateTime={date} className="ws-meta-date">
             {date}
-          </span>
+          </time>
+          <span className="ws-meta-clinic">1994년 개원 33년 전통, 3인 원장단 책임 협진</span>
         </div>
-        <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight wb-ka wbka">
+        <h1 className="ws-article-title wb-ka wbka">
           {cleanTitle}
         </h1>
       </header>
 
-      {/* 게시글 본문 (크롤링된 마크다운 데이터) */}
-      <div className="bg-white/50 p-8 md:p-12 rounded-[2rem] border border-slate-100 shadow-[inset_0_1px_1px_rgba(255,255,255,1)] ring-1 ring-black/5">
-        <MarkdownRenderer content={content} />
-      </div>
+      <MarkdownRenderer content={content} />
 
-      {/* 하단 네비게이션 영역 */}
-      <div className="mt-12 text-center">
-        <Link 
-          href="/board/notice" 
-          className="inline-flex items-center justify-center px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-blue-600 transition-colors duration-300 shadow-xl shadow-slate-200 hover:shadow-blue-500/20 transform hover:-translate-y-1"
-        >
-          목록 보기
-        </Link>
-      </div>
+      <footer className="ws-cta-panel">
+        <h2 className="ws-cta-head wb-ka wbka">정밀 진단 및 맞춤 진료 예약 안내</h2>
+        <p className="ws-cta-meta">
+          김준헌 병원장(서울대졸, 단국대 외래교수, 교정학 박사), 이봉진 대표원장, 박선혜 원장(보건복지부 인증 치주과 전문의) 3인 원장단 협진
+        </p>
+        <p className="ws-cta-meta">
+          서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1, 1, 2층 (06134, 강남역 11번, 12번 출구 도보 1분)
+        </p>
+        <p className="ws-cta-meta">
+          일본어 전담 통역 스태프 3명 상주, 일본어 통역 직통 +82-10-3046-5010
+        </p>
+
+        <div className="ws-cta-grid">
+          <a
+            href="https://booking.naver.com/booking/13/bizes/265482"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ws-btn ws-btn-naver whitespace-nowrap"
+          >
+            네이버 빠른 예약 (1분 완료)
+          </a>
+          <Link href="/consult" className="ws-btn ws-btn-kakao whitespace-nowrap">
+            카카오톡 1:1 비용 상담
+          </Link>
+          <a
+            href="https://line.me/ti/p/~whitestyle1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ws-btn ws-btn-line whitespace-nowrap"
+          >
+            LINE 日本語直通相談 (ID: whitestyle1)
+          </a>
+          <a href="tel:1577-7287" className="ws-btn ws-btn-phone whitespace-nowrap">
+            대표전화 1577-7287 / 02-569-7528
+          </a>
+        </div>
+
+        <div className="ws-footer-nav">
+          <Link href="/board/notice" className="ws-list-return-btn">
+            전체 목록 보기
+          </Link>
+        </div>
+      </footer>
     </article>
   );
 }

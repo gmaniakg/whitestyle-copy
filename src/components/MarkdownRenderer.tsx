@@ -5,45 +5,134 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 import rehypeRaw from 'rehype-raw';
-import Image from 'next/image';
+import '../app/board/board-editorial.css';
 
 interface MarkdownRendererProps {
   content: string;
 }
 
-const SafeImage = ({ src, alt, isIcon }: { src: string; alt?: string; isIcon: boolean }) => {
+function addClassToOpeningTag(tag: string, extraClass: string): string {
+  if (/class="([^"]*)"/i.test(tag)) {
+    return tag.replace(/class="([^"]*)"/i, (full, existing: string) => {
+      const tokens = existing.split(/\s+/).filter(Boolean);
+      if (tokens.includes(extraClass)) return full;
+      return `class="${existing} ${extraClass}"`;
+    });
+  }
+  if (/class='([^']*)'/i.test(tag)) {
+    return tag.replace(/class='([^']*)'/i, (full, existing: string) => {
+      const tokens = existing.split(/\s+/).filter(Boolean);
+      if (tokens.includes(extraClass)) return full;
+      return `class='${existing} ${extraClass}'`;
+    });
+  }
+  return tag.replace(/^(<[a-z0-9-]+)/i, `$1 class="${extraClass}"`);
+}
+
+function normalizeLegacyBoardHtml(raw: string): string {
+  let html = raw;
+
+  html = html.replace(
+    /<div\b[^>]*style="[^"]*(?:background:#FAF9F5|background-color:#ffffff;border:1px solid #cbd5e1|max-width:860px;margin:0 auto)[^"]*"[^>]*>/gi,
+    (tag) => addClassToOpeningTag(tag, 'ws-legacy-root')
+  );
+
+  html = html.replace(
+    /<div\b[^>]*style="padding:3[68]px;?"[^>]*>/gi,
+    (tag) => addClassToOpeningTag(tag, 'ws-legacy-inner')
+  );
+
+  html = html.replace(
+    /<div\b[^>]*style="[^"]*background(?:-color)?:\s*#(?:0f172a|091326|1e293b)[^"]*"[^>]*>/gi,
+    (tag) => addClassToOpeningTag(tag, 'ws-lead-banner')
+  );
+
+  html = html.replace(
+    /<span\b[^>]*style="[^"]*background(?:-color)?:\s*#(?:38bdf8|fde68a)[^"]*"[^>]*>/gi,
+    (tag) => addClassToOpeningTag(tag, 'ws-lead-chip')
+  );
+
+  html = html.replace(
+    /<div\b[^>]*style="[^"]*(?:border:2px solid #(?:0284c7|1e3a8a)|border-left:5px solid #0284c7|border-left:4px solid #0f172a)[^"]*"[^>]*>/gi,
+    (tag) => addClassToOpeningTag(tag, 'ws-summary-box')
+  );
+
+  html = html.replace(
+    /<div\b[^>]*style="[^"]*background(?:-color)?:\s*#ffffff;border:1px solid #cbd5e1;padding:28px 30px[^"]*"[^>]*>/gi,
+    (tag) => addClassToOpeningTag(tag, 'ws-qa-box')
+  );
+
+  html = html.replace(
+    /<div\b[^>]*\blang="ja"[^>]*>/gi,
+    (tag) => {
+      if (tag.includes('ws-legacy-root') || tag.includes('ws-lead-banner')) {
+        return tag;
+      }
+      return addClassToOpeningTag(tag, 'ws-ja-section');
+    }
+  );
+
+  html = html.replace(
+    /<h[23]\b[^>]*style="[^"]*border-left:5px solid #(?:0284c7|1e3a8a)[^"]*"[^>]*>/gi,
+    (tag) => addClassToOpeningTag(tag, 'ws-section-head')
+  );
+
+  html = html.replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi, (tableBlock) => {
+    if (!/<thead\b/i.test(tableBlock)) {
+      return tableBlock;
+    }
+    return tableBlock.replace(/^<table\b[^>]*>/i, (openTag) =>
+      addClassToOpeningTag(openTag, 'ws-data-table')
+    );
+  });
+
+  return html;
+}
+
+const SafeImage = ({
+  src,
+  alt,
+  isIcon,
+  style,
+  className,
+}: {
+  src: string;
+  alt?: string;
+  isIcon: boolean;
+  style?: React.CSSProperties;
+  className?: string;
+}) => {
   const [error, setError] = React.useState(false);
 
   if (error) return null;
 
-  if (isIcon) {
+  if (isIcon || (style && style.width && style.height)) {
     return (
       <img
         src={src}
-        alt={alt || "아이콘"}
-        loading="lazy"
-        className="inline-block object-contain align-middle"
+        alt={alt || '임상 아이콘'}
+        style={style}
+        className={className ? `${className} ws-article-icon` : 'ws-article-icon'}
         onError={() => setError(true)}
       />
     );
   }
 
   return (
-    <span className="block relative w-full h-auto my-4 text-center">
+    <span className="ws-article-img-wrap">
       <img
         src={src}
-        alt={alt || "이미지"}
-        loading="lazy"
-        className="max-w-[1400px] w-full h-auto object-contain mx-auto"
+        alt={alt || '화이트스타일치과의원 안내 이미지'}
+        style={style}
+        className={className ? `${className} ws-article-img` : 'ws-article-img'}
         onError={() => setError(true)}
       />
-      {alt && alt !== "image" && <span className="block text-center text-sm text-gray-500 mt-2">{alt}</span>}
+      {alt && alt !== 'image' && <span className="ws-article-figcaption">{alt}</span>}
     </span>
   );
 };
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  // 크롤러가 생성한 메타데이터(카테고리, 작성자, URL 등) 및 '## 본문' 제거
   let cleanContent = content;
   if (cleanContent.includes('## 본문')) {
     cleanContent = cleanContent.split('## 본문')[1].trim();
@@ -52,85 +141,83 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
     cleanContent = parts.slice(1).join('---').trim();
   }
 
-  // 텍스트가 완전히 비어있는 경우 Fallback 처리
   const isEmptyOrPlaceholder = !cleanContent || cleanContent.trim().length === 0;
 
   if (isEmptyOrPlaceholder) {
     return (
-      <div className="text-center py-10 bg-blue-50/50 rounded-xl border border-blue-100/50">
-        <p className="text-blue-800 font-bold mb-2">내용이 없습니다.</p>
+      <div className="ws-empty-state">
+        <p>내용이 없습니다.</p>
       </div>
     );
   }
 
+  const normalizedContent = normalizeLegacyBoardHtml(cleanContent);
+
   return (
-    <div className="prose max-w-none text-left prose-p:text-[#333] prose-h2:text-[#333] prose-h3:text-[#333] prose-img:mx-auto prose-img:my-8 prose-p:my-4 prose-p:leading-relaxed prose-h2:font-bold prose-h3:font-bold break-words wb-ka wbka" style={{ fontFamily: 'Dotum, sans-serif', wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+    <div className="ws-article-body wb-ka wbka">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkBreaks]}
         rehypePlugins={[rehypeRaw]}
         components={{
-          // SEO 및 퍼포먼스 최적화를 위해 img 태그를 next/image로 대체
-          img: ({ src, alt }) => {
+          img: ({ src, alt, style, className }) => {
             if (!src || typeof src !== 'string') return null;
-            // 크롤러가 생성한 상대 경로(../assets/...) 및 구형 도메인 경로를 로컬 경로로 변환
             const fixedSrc = src
               .replace(/^.*\/assets\//, '/images/')
               .replace(/^https?:\/\/(?:www\.)?whitestyle\.com(?::443)?\/data\//i, '/data/')
               .replace(/^https?:\/\/cdn\.myreal\.co\.kr\/data\//i, '/data/');
             const lowerSrc = fixedSrc.toLowerCase();
-            
-            
-            // 글로벌 UI 요소 필터링을 제거하여 본문에 포함된 정상적인 이미지가 누락되지 않도록 수정
-            
-            // 파일명에 'icon'이 포함되어 있으면 작은 아이콘으로 처리
             const isIcon = lowerSrc.includes('icon');
-            
-            return <SafeImage src={fixedSrc} alt={alt} isIcon={isIcon} />;
+
+            return (
+              <SafeImage
+                src={fixedSrc}
+                alt={alt}
+                isIcon={isIcon}
+                style={style}
+                className={className}
+              />
+            );
           },
-          // GEO 최적화용 Table (자연어 검색 대비 데이터 구조화)
-          table: ({ children }) => (
-            <div className="overflow-x-auto my-8">
-              <table className="min-w-full divide-y divide-gray-200 border">
-                {children}
-              </table>
-            </div>
-          ),
-          th: ({ children }) => (
-            <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              {children}
-            </th>
-          ),
-          td: ({ children }) => (
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border-b">
-              {children}
-            </td>
-          ),
-          // 깨진 구형 게시판 뷰어 링크(view_image.php 등)를 비활성화하여 이미지 클릭 시 404 오류 차단
-          a: ({ href, children }) => {
-            if (!href) return <span>{children}</span>;
+          table: ({ className, style, children }) => {
+            const isDataTable = Boolean(className?.includes('ws-data-table')) || !style;
+            if (!isDataTable) {
+              return (
+                <table className={className} style={style}>
+                  {children}
+                </table>
+              );
+            }
+            return (
+              <div className="ws-table-scroll">
+                <table
+                  className={className ? `${className} ws-data-table` : 'ws-data-table'}
+                  style={style}
+                >
+                  {children}
+                </table>
+              </div>
+            );
+          },
+          a: ({ href, children, className, style }) => {
+            if (!href) return <span className={className} style={style}>{children}</span>;
             if (href.includes('view_image.php') || href.includes('board.php')) {
               return <>{children}</>;
             }
             return (
-              <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              <a
+                href={href}
+                style={style}
+                className={className ? `${className} ws-article-link` : 'ws-article-link'}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
                 {children}
               </a>
             );
           },
-          // H2/H3 (질문형 헤딩) 강조 처리
-          h2: ({ children }) => (
-            <h2 className="!text-2xl md:!text-3xl !leading-snug !font-bold text-gray-900 mt-12 mb-6 pb-4 border-b-2 border-blue-100">
-              {children}
-            </h2>
-          ),
-          h3: ({ children }) => (
-            <h3 className="!text-xl md:!text-2xl !leading-snug !font-bold text-gray-800 mt-8 mb-4">
-              {children}
-            </h3>
-          )
         }}
       >
-        {cleanContent}
+        {normalizedContent}
       </ReactMarkdown>
     </div>
   );
