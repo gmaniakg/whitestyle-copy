@@ -1,5 +1,12 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/_lib/auth-options';
+import {
+  DEFAULT_OWNER_ADMIN_EMAILS,
+  getOwnerAdminEmails,
+  isOwnerAdminEmail,
+} from '@/app/api/_lib/owner-config';
+
+export { DEFAULT_OWNER_ADMIN_EMAILS, getOwnerAdminEmails, isOwnerAdminEmail };
 
 /** 환경변수 ADMIN_EMAILS(콤마 구분)에 등록된 이메일만 관리자. 미설정 시 모두 거부. */
 export function getAdminEmails(): string[] {
@@ -21,6 +28,13 @@ export async function requireAdmin(): Promise<string | null> {
   const session = await getServerSession(authOptions);
   const email = session?.user?.email;
   return isAdminEmail(email) ? email! : null;
+}
+
+/** 서버측 원장님 단독 소유자 세션 확인 */
+export async function requireOwnerAdmin(): Promise<string | null> {
+  const session = await getServerSession(authOptions);
+  const email = session?.user?.email;
+  return isOwnerAdminEmail(email) ? email!.trim().toLowerCase() : null;
 }
 
 /** 클라이언트 IP: Vercel 헤더 우선 */

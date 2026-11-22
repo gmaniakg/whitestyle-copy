@@ -3,6 +3,7 @@ import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
 import FloatingCTA from "@/app/components/FloatingCTA";
+import HwataMessengerDock from "@/components/HwataMessengerDock";
 import { SocialIconStrip } from "@/app/components/Footer";
 import ShareButtons from "@/app/components/ShareButtons";
 import "./globals.css";
@@ -542,6 +543,7 @@ export default function RootLayout({
         <meta name="naver-site-verification" content="bc60fd58e9ad9f8e263b4db3d0d677345804f240" />
         <meta name="naver-site-verification" content="8366a25e553ae84c803854c45f2de0e67ec064ea" />
         <meta name="naver-site-verification" content="21eb68fa3eb1e75dcbe818fc7a24f4ff29b03bb7" />
+        <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="llms-txt" href="https://whitestyle.com/llms.txt" title="WhiteStyle Dental Clinic Summary" />
         <link rel="llms-full-txt" href="https://whitestyle.com/llms-full.txt" title="WhiteStyle Dental Clinic Full Knowledge Bundle" />
         <link rel="stylesheet" href="/fonts/pretendard/pretendardvariable-dynamic-subset.css" />
@@ -623,6 +625,7 @@ export default function RootLayout({
 
           {/* Global Floating Navigation & Consultation CTA */}
           <FloatingCTA />
+          <HwataMessengerDock />
         </Providers>
       </body>
     </html>

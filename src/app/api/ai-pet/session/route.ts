@@ -22,10 +22,10 @@ export async function GET(req: NextRequest) {
         authenticated: false,
         user: null,
         token: null,
-        loginUrl: '/login?callbackUrl=%2Fai-pet%23community',
-        registerUrl: '/register?callbackUrl=%2Fai-pet%23community',
+        loginUrl: '/login?callbackUrl=%2Fmessenger',
+        registerUrl: '/register?callbackUrl=%2Fmessenger',
       },
-      { status: 200, headers: corsHeaders }
+      { status: 200, headers: { ...corsHeaders, 'Cache-Control': 'no-store' } }
     );
   }
 
@@ -34,6 +34,13 @@ export async function GET(req: NextRequest) {
     email: member.email,
     name: member.name,
   });
+
+  let petAvatar = null;
+  try {
+    petAvatar = member.petAvatarJson ? JSON.parse(member.petAvatarJson) : null;
+  } catch {
+    petAvatar = null;
+  }
 
   return NextResponse.json(
     {
@@ -44,9 +51,16 @@ export async function GET(req: NextRequest) {
         name: member.name,
         email: member.email,
         agreedMarketing: member.agreedMarketing,
+        isOwnerAdmin: member.isOwnerAdmin,
+        isVerifiedNonInsured: member.isVerifiedNonInsured,
+        verifiedTreatment: member.verifiedTreatment,
+        chartNo: member.chartNo,
+        handle: member.handle,
+        statusMessage: member.statusMessage,
+        petAvatar,
       },
       token,
     },
-    { status: 200, headers: corsHeaders }
+    { status: 200, headers: { ...corsHeaders, 'Cache-Control': 'no-store' } }
   );
 }

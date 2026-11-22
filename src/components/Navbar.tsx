@@ -114,6 +114,17 @@ export default function Navbar() {
     setExpandedMobileCategory(expandedMobileCategory === key ? null : key);
   };
 
+  const sessionUser = session?.user as
+    | {
+        name?: string | null;
+        email?: string | null;
+        isOwnerAdmin?: boolean;
+        isVerifiedNonInsured?: boolean;
+      }
+    | undefined;
+  const isOwnerAdmin = Boolean(sessionUser?.isOwnerAdmin);
+  const isVerifiedPet = Boolean(sessionUser?.isVerifiedNonInsured);
+
   return (
     <header className="w-full flex flex-col bg-white shadow-sm relative z-50 sticky top-0">
 
@@ -160,17 +171,36 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             
             {/* Desktop Auth (Desktop only >= 1024px) */}
-            <div className="desktop-auth hidden lg:flex items-center gap-3">
+            <div className="desktop-auth hidden lg:flex items-center gap-2.5">
               {session ? (
                 <>
-                  <span className="text-[15px] font-bold text-slate-700 flex items-center">
-                    <span className="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-2 text-xs font-black">
+                  <Link
+                    href="/messenger"
+                    className="px-3.5 py-2 rounded-lg text-sm font-bold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition-colors whitespace-nowrap"
+                  >
+                    화타톡
+                  </Link>
+                  {isOwnerAdmin && (
+                    <Link
+                      href="/admin/members"
+                      className="px-3.5 py-2 rounded-lg text-sm font-bold bg-[#0f294a] text-white hover:bg-[#163a66] transition-colors whitespace-nowrap"
+                    >
+                      회원관리
+                    </Link>
+                  )}
+                  <span className="text-[14px] font-bold text-slate-700 flex items-center whitespace-nowrap">
+                    <span className="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-1.5 text-xs font-black">
                       {session.user?.name?.[0] || 'U'}
                     </span>
                     {session.user?.name}님
+                    {isVerifiedPet && (
+                      <span className="ml-1.5 px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-200 text-amber-950">
+                        인증 화타펫
+                      </span>
+                    )}
                   </span>
                   <button onClick={() => signOut()}
-                    className="px-4 py-2 border-2 border-slate-200 rounded-lg text-sm font-bold text-slate-600 hover:border-red-500 hover:text-red-500 transition-colors bg-white shadow-sm">
+                    className="px-3.5 py-2 border-2 border-slate-200 rounded-lg text-sm font-bold text-slate-600 hover:border-red-500 hover:text-red-500 transition-colors bg-white shadow-sm whitespace-nowrap">
                     로그아웃
                   </button>
                 </>
@@ -285,25 +315,52 @@ export default function Navbar() {
               className="lg:hidden overflow-hidden bg-white border-b-2 border-blue-600 shadow-2xl relative z-50 max-h-[85vh] flex flex-col"
             >
               {/* Drawer User Banner */}
-              <div className="bg-slate-900 text-white p-5 flex items-center justify-between">
+              <div className="bg-slate-900 text-white p-5 flex flex-col gap-3">
                 {session ? (
-                  <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-3">
-                      <span className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-lg">
-                        {session.user?.name?.[0] || 'U'}
-                      </span>
-                      <div>
-                        <p className="font-bold text-base text-white">{session.user?.name}님 환영합니다</p>
-                        <p className="text-xs text-slate-400">{session.user?.email}</p>
+                  <>
+                    <div className="flex items-center justify-between w-full">
+                      <div className="flex items-center gap-3">
+                        <span className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-lg">
+                          {session.user?.name?.[0] || 'U'}
+                        </span>
+                        <div>
+                          <p className="font-bold text-base text-white flex items-center gap-2">
+                            <span>{session.user?.name}님 환영합니다</span>
+                            {isVerifiedPet && (
+                              <span className="px-2 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-300 text-slate-950">
+                                인증 화타펫
+                              </span>
+                            )}
+                          </p>
+                          <p className="text-xs text-slate-400">{session.user?.email}</p>
+                        </div>
                       </div>
+                      <button
+                        onClick={() => { signOut(); setMobileOpen(false); }}
+                        className="px-4 py-2 bg-red-600/90 text-white rounded-lg text-xs font-bold hover:bg-red-700"
+                      >
+                        로그아웃
+                      </button>
                     </div>
-                    <button
-                      onClick={() => { signOut(); setMobileOpen(false); }}
-                      className="px-4 py-2 bg-red-600/90 text-white rounded-lg text-xs font-bold hover:bg-red-700"
-                    >
-                      로그아웃
-                    </button>
-                  </div>
+                    <div className="flex items-center gap-2">
+                      <Link
+                        href="/messenger"
+                        onClick={() => setMobileOpen(false)}
+                        className="flex-1 text-center py-2.5 bg-amber-400 text-slate-950 rounded-xl text-sm font-extrabold hover:bg-amber-300"
+                      >
+                        화타톡 메신저 열기
+                      </Link>
+                      {isOwnerAdmin && (
+                        <Link
+                          href="/admin/members"
+                          onClick={() => setMobileOpen(false)}
+                          className="flex-1 text-center py-2.5 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-500"
+                        >
+                          회원관리 (전용)
+                        </Link>
+                      )}
+                    </div>
+                  </>
                 ) : (
                   <div className="flex items-center gap-3 w-full">
                     <Link

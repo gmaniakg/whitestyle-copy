@@ -19,6 +19,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [phone, setPhone] = useState('');
+  const [website, setWebsite] = useState('');
   const [agreedPrivacy, setAgreedPrivacy] = useState(false);
   const [agreedMarketing, setAgreedMarketing] = useState(false);
   const [callbackUrl, setCallbackUrl] = useState('/');
@@ -26,6 +27,7 @@ export default function RegisterPage() {
   const [infoMsg, setInfoMsg] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [providers, setProviders] = useState<Record<string, unknown>>({});
+  const [providersLoaded, setProvidersLoaded] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -34,7 +36,8 @@ export default function RegisterPage() {
       .then((res) => {
         if (res) setProviders(res as Record<string, unknown>);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setProvidersLoaded(true));
   }, []);
 
   const allAgreed = agreedPrivacy && agreedMarketing;
@@ -75,6 +78,7 @@ export default function RegisterPage() {
           phone: phone.trim(),
           agreedPrivacy,
           agreedMarketing,
+          website,
         }),
       });
 
@@ -224,6 +228,18 @@ export default function RegisterPage() {
 
         {/* 이메일 가입 폼 */}
         <form onSubmit={handleEmailRegister} className="space-y-4">
+          <div style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }} aria-hidden="true">
+            <label htmlFor="ws-register-website">Website</label>
+            <input
+              id="ws-register-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </div>
           <div>
             <label className="block text-sm font-semibold text-slate-700 mb-1">이름 또는 닉네임 (선택)</label>
             <input
@@ -318,25 +334,51 @@ export default function RegisterPage() {
 
           <button
             type="button"
-            disabled={submitting}
+            disabled={submitting || (providersLoaded && !providers.kakao)}
+            aria-disabled={providersLoaded && !providers.kakao}
             onClick={() => handleSocialRegister('kakao', '카카오톡')}
-            className="w-full flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-bold rounded-xl text-black bg-[#FEE500] hover:bg-[#FEE500]/90 disabled:opacity-60 transition-all shadow-sm"
+            className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 border border-transparent text-base font-bold rounded-xl transition-all shadow-sm ${
+              providersLoaded && !providers.kakao
+                ? 'bg-slate-100 text-slate-500 cursor-not-allowed opacity-80'
+                : 'text-black bg-[#FEE500] hover:bg-[#FEE500]/90 disabled:opacity-60'
+            }`}
           >
-            <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 3c-5.52 0-10 3.532-10 7.886 0 2.827 1.83 5.305 4.605 6.643l-1.196 4.385c-.104.381.334.66.657.426l5.068-3.393c.285.027.575.041.866.041 5.52 0 10-3.532 10-7.886C22 6.532 17.52 3 12 3z" />
             </svg>
-            카카오톡 가입
+            <span>카카오톡 가입</span>
+            {providersLoaded && !providers.kakao && (
+              <span className="ml-auto text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">
+                연동 준비중
+              </span>
+            )}
           </button>
 
           <button
             type="button"
-            disabled={submitting}
+            disabled={submitting || (providersLoaded && !providers.naver)}
+            aria-disabled={providersLoaded && !providers.naver}
             onClick={() => handleSocialRegister('naver', '네이버')}
-            className="w-full flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-bold rounded-xl text-white bg-[#03C75A] hover:bg-[#03C75A]/90 disabled:opacity-60 transition-all shadow-sm"
+            className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 border border-transparent text-base font-bold rounded-xl transition-all shadow-sm ${
+              providersLoaded && !providers.naver
+                ? 'bg-slate-100 text-slate-500 cursor-not-allowed opacity-80'
+                : 'text-white bg-[#03C75A] hover:bg-[#03C75A]/90 disabled:opacity-60'
+            }`}
           >
-            <span className="text-xl font-black mr-3 leading-none">N</span>
-            네이버 가입
+            <span className="text-xl font-black leading-none">N</span>
+            <span>네이버 가입</span>
+            {providersLoaded && !providers.naver && (
+              <span className="ml-auto text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">
+                연동 준비중
+              </span>
+            )}
           </button>
+
+          {providersLoaded && (!providers.kakao || !providers.naver) && (
+            <p className="text-xs text-center text-slate-500 pt-1">
+              이메일 또는 Google 계정으로 바로 가입·로그인하실 수 있습니다.
+            </p>
+          )}
         </div>
 
         <div className="mt-6 pt-5 border-t border-slate-100 flex items-center justify-center">

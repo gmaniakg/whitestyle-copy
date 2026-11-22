@@ -7,9 +7,12 @@ import NaverProvider from 'next-auth/providers/naver';
 import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { PRIVACY_POLICY_VERSION } from '@/app/api/_lib/admin';
+import { generateDefaultHandle, isOwnerAdminEmail } from '@/app/api/_lib/owner-config';
+import { sendWelcomeSeasonalEmail } from '@/lib/seasonal-email';
 
 const LOGIN_FAIL_MESSAGE = '이메일(또는 아이디)과 비밀번호가 올바르지 않습니다.';
+const BLOCKED_MESSAGE = '이용이 제한된 계정입니다. 병원으로 문의해 주세요.';
+const PRIVACY_POLICY_VERSION = '2026-10-15';
 
 const ADMIN_ID_ALIAS: Record<string, string> = {
   whitedent: 'whitedent@whitestyle.com',
@@ -35,11 +38,14 @@ function buildProviders(): AuthOptions['providers'] {
     );
   }
 
-  if (isConfiguredEnv(process.env.KAKAO_CLIENT_ID) && isConfiguredEnv(process.env.KAKAO_CLIENT_SECRET)) {
+  if (
+    isConfiguredEnv(process.env.KAKAO_CLIENT_ID) &&
+    (isConfiguredEnv(process.env.KAKAO_CLIENT_SECRET) || process.env.KAKAO_ALLOW_NO_SECRET === 'true')
+  ) {
     providers.push(
       KakaoProvider({
         clientId: process.env.KAKAO_CLIENT_ID!,
-        clientSecret: process.env.KAKAO_CLIENT_SECRET!,
+        clientSecret: process.env.KAKAO_CLIENT_SECRET || '',
       })
     );
   }
@@ -77,6 +83,10 @@ function buildProviders(): AuthOptions['providers'] {
           throw new Error(LOGIN_FAIL_MESSAGE);
         }
 
+        if (user.isBlocked) {
+          throw new Error(BLOCKED_MESSAGE);
+        }
+
         const isValid = await bcrypt.compare(rawPassword, user.password);
         if (!isValid) {
           throw new Error(LOGIN_FAIL_MESSAGE);
@@ -84,7 +94,7 @@ function buildProviders(): AuthOptions['providers'] {
 
         return {
           id: user.id,
-          name: user.name || '관리자',
+          name: user.name || '회원',
           email: user.email,
         };
       },
@@ -102,44 +112,166 @@ export const authOptions: AuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30일 세션 유지
   },
   callbacks: {
+    async signIn({ user }) {
+      try {
+        const email = typeof user?.email === 'string' ? user.email.trim().toLowerCase() : '';
+        if (email) {
+          const dbUser = await prisma.user.findUnique({
+            where: { email },
+            select: { isBlocked: true },
+          });
+          if (dbUser?.isBlocked) {
+            return false;
+          }
+        }
+      } catch (err) {
+        console.warn('[auth-options] signIn check skipped:', err);
+      }
+      return true;
+    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        if (user.email) token.email = user.email.trim().toLowerCase();
       }
+      const userId = typeof token.id === 'string' ? token.id : undefined;
+      const email = typeof token.email === 'string' ? token.email.trim().toLowerCase() : undefined;
+
+      if (userId || email) {
+        try {
+          const dbUser = await prisma.user.findUnique({
+            where: userId ? { id: userId } : { email: email! },
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              role: true,
+              handle: true,
+              isBlocked: true,
+              isVerifiedNonInsured: true,
+              verifiedTreatment: true,
+              chartNo: true,
+              petAvatarJson: true,
+            },
+          });
+          if (dbUser) {
+            token.id = dbUser.id;
+            token.name = dbUser.name;
+            token.email = dbUser.email;
+            token.role = dbUser.role;
+            token.handle = dbUser.handle;
+            token.isBlocked = dbUser.isBlocked;
+            token.isVerifiedNonInsured = dbUser.isVerifiedNonInsured;
+            token.verifiedTreatment = dbUser.verifiedTreatment;
+            token.chartNo = dbUser.chartNo;
+            token.petAvatarJson = dbUser.petAvatarJson;
+          }
+        } catch (err) {
+          console.warn('[auth-options] jwt db sync skipped:', err);
+        }
+      }
+
+      token.isOwnerAdmin = isOwnerAdminEmail(typeof token.email === 'string' ? token.email : null);
       return token;
     },
     async session({ session, token }) {
-      if (session.user && token.id) {
-        (session.user as { id?: string }).id = String(token.id);
+      if (session.user) {
+        const u = session.user as Record<string, unknown>;
+        if (token.id) u.id = String(token.id);
+        u.isOwnerAdmin = Boolean(token.isOwnerAdmin);
+        u.isVerifiedNonInsured = Boolean(token.isVerifiedNonInsured);
+        u.verifiedTreatment = (token.verifiedTreatment as string) || null;
+        u.chartNo = (token.chartNo as string) || null;
+        u.handle = (token.handle as string) || null;
+        u.role = (token.role as string) || 'MEMBER';
+        try {
+          u.petAvatar = token.petAvatarJson ? JSON.parse(String(token.petAvatarJson)) : null;
+        } catch {
+          u.petAvatar = null;
+        }
       }
       return session;
     },
   },
   events: {
+    async signIn({ user }) {
+      if (!user?.id) return;
+      try {
+        const existing = await prisma.user.findUnique({
+          where: { id: user.id },
+          select: { id: true, handle: true, email: true },
+        });
+        if (!existing) return;
+        const now = new Date();
+        await prisma.user.update({
+          where: { id: user.id },
+          data: {
+            lastLoginAt: now,
+            lastSeenAt: now,
+            ...(!existing.handle ? { handle: generateDefaultHandle(existing.email || user.id) } : {}),
+          },
+        });
+      } catch (err) {
+        console.warn('[auth-options] signIn event update skipped:', err);
+      }
+    },
     async createUser({ user }) {
       try {
         const cookieStore = await cookies();
         const rawConsent = cookieStore.get('ws_signup_consent')?.value;
-        if (!rawConsent) return;
-        const parsed = JSON.parse(rawConsent);
-        if (parsed && parsed.agreedPrivacy === true && user?.id) {
-          const cleanPhone =
-            typeof parsed.phone === 'string'
-              ? parsed.phone.trim().replace(/[^\d-]/g, '').slice(0, 20)
-              : null;
-          await prisma.user.update({
-            where: { id: user.id },
-            data: {
-              agreedPrivacy: true,
-              agreedMarketing: Boolean(parsed.agreedMarketing),
-              phone: cleanPhone || undefined,
-              consentAt: new Date(),
-              privacyPolicyVersion: PRIVACY_POLICY_VERSION,
-            },
-          });
+        let agreedPrivacy = false;
+        let agreedMarketing = false;
+        let cleanPhone: string | null = null;
+
+        if (rawConsent) {
+          try {
+            const parsed = JSON.parse(rawConsent);
+            if (parsed && parsed.agreedPrivacy === true) {
+              agreedPrivacy = true;
+              agreedMarketing = Boolean(parsed.agreedMarketing);
+              cleanPhone =
+                typeof parsed.phone === 'string'
+                  ? parsed.phone.trim().replace(/[^\d-]/g, '').slice(0, 20) || null
+                  : null;
+            }
+          } catch {
+            // ignore invalid cookie
+          }
+        }
+
+        const updatedUser = await prisma.user.update({
+          where: { id: user.id },
+          data: {
+            handle: generateDefaultHandle(user.email || user.id),
+            lastLoginAt: new Date(),
+            lastSeenAt: new Date(),
+            ...(agreedPrivacy
+              ? {
+                  agreedPrivacy: true,
+                  agreedMarketing,
+                  phone: cleanPhone || undefined,
+                  consentAt: new Date(),
+                  privacyPolicyVersion: PRIVACY_POLICY_VERSION,
+                }
+              : {}),
+          },
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            agreedMarketing: true,
+            isVerifiedNonInsured: true,
+            verifiedTreatment: true,
+          },
+        });
+
+        if (updatedUser.email) {
+          await sendWelcomeSeasonalEmail(updatedUser, { kind: 'WELCOME_SEASONAL' }).catch((e) =>
+            console.warn('[auth-options] welcome email failed:', e)
+          );
         }
       } catch (err) {
-        console.warn('[auth-options] createUser consent sync skipped:', err);
+        console.warn('[auth-options] createUser sync skipped:', err);
       }
     },
   },

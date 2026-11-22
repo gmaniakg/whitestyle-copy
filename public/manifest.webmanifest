@@ -1,0 +1,23 @@
+{
+  "name": "화타톡 · 화이트스타일치과의원",
+  "short_name": "화타톡",
+  "description": "1994년 개원 33년 전통 화이트스타일치과의원 회원 및 인증된 화타펫 지인 메신저",
+  "start_url": "/messenger",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0f294a",
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "/ai-pet/assets3d/hwata_3d_idle.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

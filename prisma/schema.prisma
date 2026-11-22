@@ -46,8 +46,83 @@ model User {
   agreedMarketing      Boolean   @default(false)
   consentAt            DateTime?
   privacyPolicyVersion String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @default(now()) @updatedAt
+  lastLoginAt          DateTime?
+  lastSeenAt           DateTime?
+  role                 String    @default("MEMBER")
+  handle               String?
+  statusMessage        String?
+  adminMemo            String?
+  isBlocked            Boolean   @default(false)
+  isVerifiedNonInsured Boolean   @default(false)
+  verifiedTreatment    String?
+  chartNo              String?
+  verifiedAt           DateTime?
+  verifiedBy           String?
+  petAvatarJson        String?
+  welcomeEmailSentAt   DateTime?
+  lastPromoEmailSentAt DateTime?
   accounts             Account[]
   sessions             Session[]
+  emailLogs            EmailLog[]
+  roomMemberships      HwataRoomMember[]
+  sentMessages         HwataMessage[]
+  attachments          HwataAttachment[]
+  reactions            HwataReaction[]
+  friendshipsSent      HwataFriend[]     @relation("FriendRequester")
+  friendshipsReceived  HwataFriend[]     @relation("FriendAddressee")
+
+  @@index([handle])
+}
+
+model HwataVerificationCode {
+  id            String    @id @default(cuid())
+  code          String    @unique
+  patientName   String?
+  chartNo       String?
+  treatmentType String
+  issuedBy      String
+  maxUses       Int       @default(1)
+  usedCount     Int       @default(0)
+  usedByUserId  String?
+  expiresAt     DateTime?
+  createdAt     DateTime  @default(now())
+}
+
+model SeasonalCampaign {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  seasonKey        String
+  title            String
+  subject          String
+  headline         String
+  bodyHtml         String
+  ctaLabel         String
+  ctaUrl           String
+  startMonth       Int
+  endMonth         Int
+  isActiveOverride Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model EmailLog {
+  id                String   @id @default(cuid())
+  userId            String?
+  user              User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  recipientEmail    String
+  campaignSlug      String?
+  kind              String
+  subject           String
+  provider          String
+  status            String
+  providerMessageId String?
+  errorMessage      String?
+  createdAt         DateTime @default(now())
+
+  @@index([recipientEmail, createdAt])
+  @@index([status, createdAt])
 }
 
 model VerificationToken {
@@ -81,40 +156,133 @@ model Consultation {
 }
 
 model HwataRoom {
-  id             String         @id @default(cuid())
-  roomId         String         @unique
-  roomName       String
-  description    String         @default("")
-  creator        String         @default("화타치과")
-  creatorChartNo String?
-  inviteCode     String         @unique
-  isDefault      Boolean        @default(false)
-  isPublic       Boolean        @default(true)
-  memberCount    Int            @default(1)
-  topic          String         @default("")
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
-  messages       HwataMessage[]
+  id              String            @id @default(cuid())
+  roomId          String            @unique
+  roomName        String
+  description     String            @default("")
+  creator         String            @default("화타치과")
+  creatorChartNo  String?
+  inviteCode      String            @unique
+  isDefault       Boolean           @default(false)
+  isPublic        Boolean           @default(true)
+  memberCount     Int               @default(1)
+  topic           String            @default("")
+  roomType        String            @default("GROUP")
+  creatorUserId   String?
+  allowFileUpload Boolean           @default(true)
+  lastMessageAt   DateTime          @default(now())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  messages        HwataMessage[]
+  members         HwataRoomMember[]
+  attachments     HwataAttachment[]
+  signals         HwataSignal[]
 
   @@index([isPublic, createdAt])
 }
 
+model HwataRoomMember {
+  id         String    @id @default(cuid())
+  roomId     String
+  room       HwataRoom @relation(fields: [roomId], references: [roomId], onDelete: Cascade)
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role       String    @default("MEMBER")
+  nickname   String?
+  muted      Boolean   @default(false)
+  pinned     Boolean   @default(false)
+  lastReadAt DateTime  @default(now())
+  joinedAt   DateTime  @default(now())
+
+  @@unique([roomId, userId])
+  @@index([userId])
+}
+
 model HwataMessage {
-  id            String    @id @default(cuid())
+  id            String            @id @default(cuid())
   roomId        String
-  room          HwataRoom @relation(fields: [roomId], references: [roomId], onDelete: Cascade)
+  room          HwataRoom         @relation(fields: [roomId], references: [roomId], onDelete: Cascade)
+  userId        String?
+  user          User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
   sender        String
   text          String
   chartNo       String?
-  isCracked     Boolean   @default(false)
-  avatarSpecies String    @default("dog")
-  avatarEar     String    @default("perk")
-  avatarCostume String    @default("none")
-  avatarBg      String    @default("cream")
-  isBot         Boolean   @default(false)
-  createdAt     DateTime  @default(now())
+  isCracked     Boolean           @default(false)
+  avatarSpecies String            @default("dog")
+  avatarEar     String            @default("perk")
+  avatarCostume String            @default("none")
+  avatarBg      String            @default("cream")
+  isBot         Boolean           @default(false)
+  messageType   String            @default("TEXT")
+  replyToId     String?
+  stickerCode   String?
+  isDeleted     Boolean           @default(false)
+  createdAt     DateTime          @default(now())
+  attachments   HwataAttachment[]
+  reactions     HwataReaction[]
 
   @@index([roomId, createdAt])
+}
+
+model HwataAttachment {
+  id               String        @id @default(cuid())
+  roomId           String
+  room             HwataRoom     @relation(fields: [roomId], references: [roomId], onDelete: Cascade)
+  messageId        String?
+  message          HwataMessage? @relation(fields: [messageId], references: [id], onDelete: SetNull)
+  uploaderId       String
+  uploader         User          @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+  fileName         String
+  mimeType         String
+  sizeBytes        BigInt
+  storageProvider  String
+  blobUrl          String?
+  blobPathname     String?
+  inlineDataBase64 String?
+  width            Int?
+  height           Int?
+  createdAt        DateTime      @default(now())
+
+  @@index([roomId, createdAt])
+}
+
+model HwataReaction {
+  id        String       @id @default(cuid())
+  messageId String
+  message   HwataMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  emoji     String
+  createdAt DateTime     @default(now())
+
+  @@unique([messageId, userId, emoji])
+}
+
+model HwataFriend {
+  id          String   @id @default(cuid())
+  requesterId String
+  requester   User     @relation("FriendRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  addresseeId String
+  addressee   User     @relation("FriendAddressee", fields: [addresseeId], references: [id], onDelete: Cascade)
+  status      String   @default("ACCEPTED")
+  createdAt   DateTime @default(now())
+
+  @@unique([requesterId, addresseeId])
+}
+
+model HwataSignal {
+  id         String    @id @default(cuid())
+  roomId     String
+  room       HwataRoom @relation(fields: [roomId], references: [roomId], onDelete: Cascade)
+  fromUserId String
+  toUserId   String
+  transferId String
+  signalType String
+  payload    String
+  consumed   Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+
+  @@index([roomId, toUserId, consumed, createdAt])
 }
 
 model HwataReferral {

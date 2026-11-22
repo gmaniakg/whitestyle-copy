@@ -267,6 +267,20 @@ export default function AdminConsultationsPage() {
           </h1>
         </div>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <a
+            href="/admin/members"
+            style={{
+              padding: '10px 18px',
+              background: '#0f294a',
+              color: '#fff',
+              borderRadius: '10px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              fontSize: '14px',
+            }}
+          >
+            회원관리 (원장 전용)
+          </a>
           <button
             onClick={fetchLeads}
             style={{

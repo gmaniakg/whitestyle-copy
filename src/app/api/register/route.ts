@@ -3,6 +3,8 @@ import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { getClientIp, PRIVACY_POLICY_VERSION } from '@/app/api/_lib/admin';
 import { checkRateLimit } from '@/app/api/_lib/rate-limit';
+import { generateDefaultHandle } from '@/app/api/_lib/owner-config';
+import { sendWelcomeSeasonalEmail } from '@/lib/seasonal-email';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -22,7 +24,13 @@ export async function POST(req: Request) {
       );
     }
 
-    const { name, email, password, phone, agreedPrivacy, agreedMarketing } = await req.json();
+    const body = await req.json();
+    const { name, email, password, phone, agreedPrivacy, agreedMarketing, website } = body || {};
+
+    // 스팸 봇 허니팟 필드 차단
+    if (typeof website === 'string' && website.trim().length > 0) {
+      return errorJson('잘못된 회원가입 요청입니다.', 400);
+    }
 
     if (agreedPrivacy !== true) {
       return errorJson('서비스 이용약관 및 개인정보 수집·이용에 동의해 주셔야 회원가입이 가능합니다.', 400);
@@ -41,11 +49,10 @@ export async function POST(req: Request) {
     }
 
     const cleanPhone = typeof phone === 'string' ? phone.trim().replace(/[^\d-]/g, '').slice(0, 20) : '';
-
     const normalizedEmail = email.trim().toLowerCase();
 
     const existingUser = await prisma.user.findUnique({
-      where: { email: normalizedEmail }
+      where: { email: normalizedEmail },
     });
 
     if (existingUser) {
@@ -54,29 +61,62 @@ export async function POST(req: Request) {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
+    let candidateHandle = generateDefaultHandle(normalizedEmail.split('@')[0]);
+    const handleExists = await prisma.user.findFirst({ where: { handle: candidateHandle }, select: { id: true } });
+    if (handleExists) {
+      candidateHandle = generateDefaultHandle();
+    }
+
+    const now = new Date();
     const user = await prisma.user.create({
       data: {
-        name: typeof name === 'string' && name.trim() ? name.trim().slice(0, 50) : normalizedEmail.split('@')[0].slice(0, 50),
+        name:
+          typeof name === 'string' && name.trim()
+            ? name.trim().slice(0, 50)
+            : normalizedEmail.split('@')[0].slice(0, 50),
         email: normalizedEmail,
         password: hashedPassword,
         phone: cleanPhone || null,
+        handle: candidateHandle,
+        lastLoginAt: now,
+        lastSeenAt: now,
         agreedPrivacy: true,
         agreedMarketing: Boolean(agreedMarketing),
-        consentAt: new Date(),
+        consentAt: now,
         privacyPolicyVersion: PRIVACY_POLICY_VERSION,
-      }
+      },
     });
+
+    let welcomeEmailSent = false;
+    try {
+      const emailResult = await sendWelcomeSeasonalEmail(
+        {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          agreedMarketing: user.agreedMarketing,
+          isVerifiedNonInsured: user.isVerifiedNonInsured,
+          verifiedTreatment: user.verifiedTreatment,
+        },
+        { kind: 'WELCOME_SEASONAL' }
+      );
+      welcomeEmailSent = emailResult.ok;
+    } catch (mailErr) {
+      console.warn('[register] welcome email skipped:', mailErr);
+    }
 
     return NextResponse.json(
       {
         message: '회원가입이 완료되었습니다.',
+        welcomeEmailSent,
         user: {
           id: user.id,
           name: user.name,
           email: user.email,
+          handle: user.handle,
           agreedPrivacy: user.agreedPrivacy,
           agreedMarketing: user.agreedMarketing,
-        }
+        },
       },
       { status: 201 }
     );

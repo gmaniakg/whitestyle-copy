@@ -2,6 +2,7 @@ import crypto from 'crypto';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '@/app/api/_lib/auth-options';
+import { isOwnerAdminEmail } from '@/app/api/_lib/owner-config';
 import { prisma } from '@/lib/prisma';
 
 const SESSION_SECRET =
@@ -29,7 +30,7 @@ export function buildHwataCorsHeaders(req?: NextRequest | Request | null): Recor
     (STATIC_ALLOWED_ORIGINS.has(origin) || origin.startsWith('chrome-extension://'));
 
   const headers: Record<string, string> = {
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
     'Access-Control-Allow-Headers':
       'Content-Type, Authorization, X-Hwata-Api-Key, X-Hwata-Client, X-Hwata-Chart-No, X-Hwata-Pet-Heartbeat',
     Vary: 'Origin',
@@ -50,6 +51,14 @@ export interface HwataMemberUser {
   email: string;
   name: string | null;
   agreedMarketing: boolean;
+  isVerifiedNonInsured: boolean;
+  verifiedTreatment: string | null;
+  chartNo: string | null;
+  handle: string | null;
+  petAvatarJson: string | null;
+  statusMessage: string | null;
+  isBlocked: boolean;
+  isOwnerAdmin: boolean;
 }
 
 export function signHwataSessionToken(user: {
@@ -109,8 +118,52 @@ export function verifyHwataSessionToken(
   }
 }
 
+const MEMBER_SELECT = {
+  id: true,
+  email: true,
+  name: true,
+  agreedMarketing: true,
+  isVerifiedNonInsured: true,
+  verifiedTreatment: true,
+  chartNo: true,
+  handle: true,
+  petAvatarJson: true,
+  statusMessage: true,
+  isBlocked: true,
+} as const;
+
+function toMemberUser(user: {
+  id: string;
+  email: string | null;
+  name: string | null;
+  agreedMarketing: boolean;
+  isVerifiedNonInsured: boolean;
+  verifiedTreatment: string | null;
+  chartNo: string | null;
+  handle: string | null;
+  petAvatarJson: string | null;
+  statusMessage: string | null;
+  isBlocked: boolean;
+} | null): HwataMemberUser | null {
+  if (!user || !user.email || user.isBlocked) return null;
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    agreedMarketing: user.agreedMarketing,
+    isVerifiedNonInsured: user.isVerifiedNonInsured,
+    verifiedTreatment: user.verifiedTreatment,
+    chartNo: user.chartNo,
+    handle: user.handle,
+    petAvatarJson: user.petAvatarJson,
+    statusMessage: user.statusMessage,
+    isBlocked: user.isBlocked,
+    isOwnerAdmin: isOwnerAdminEmail(user.email),
+  };
+}
+
 /**
- * 웹(NextAuth 세션 쿠키) 또는 확장프로그램(Bearer hwata-auth Token) 인증을 확인해
+ * 웹(NextAuth 세션 쿠키) 또는 모바일/확장프로그램(Bearer hwata-auth Token) 인증을 확인해
  * DB 상에 실존하는 whitestyle.com 회원 정보를 반환합니다.
  */
 export async function requireHwataMember(
@@ -122,16 +175,10 @@ export async function requireHwataMember(
     if (sessionEmail) {
       const user = await prisma.user.findUnique({
         where: { email: sessionEmail },
-        select: { id: true, email: true, name: true, agreedMarketing: true },
+        select: MEMBER_SELECT,
       });
-      if (user?.email) {
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          agreedMarketing: user.agreedMarketing,
-        };
-      }
+      const member = toMemberUser(user);
+      if (member) return member;
     }
 
     const authHeader = req.headers.get('authorization') || '';
@@ -141,16 +188,10 @@ export async function requireHwataMember(
       if (verified) {
         const user = await prisma.user.findUnique({
           where: { id: verified.uid },
-          select: { id: true, email: true, name: true, agreedMarketing: true },
+          select: MEMBER_SELECT,
         });
-        if (user?.email) {
-          return {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            agreedMarketing: user.agreedMarketing,
-          };
-        }
+        const member = toMemberUser(user);
+        if (member) return member;
       }
     }
   } catch (err) {
@@ -166,8 +207,8 @@ export function loginRequiredResponse(req: NextRequest) {
       ok: false,
       code: 'LOGIN_REQUIRED',
       message: 'whitestyle.com 로그인 후 화타펫 실시간 통신을 시작할 수 있습니다.',
-      loginUrl: 'https://whitestyle.com/login?callbackUrl=%2Fai-pet%23community',
-      registerUrl: 'https://whitestyle.com/register?callbackUrl=%2Fai-pet%23community',
+      loginUrl: 'https://whitestyle.com/login?callbackUrl=%2Fmessenger',
+      registerUrl: 'https://whitestyle.com/register?callbackUrl=%2Fmessenger',
     },
     { status: 401, headers: buildHwataCorsHeaders(req) }
   );
