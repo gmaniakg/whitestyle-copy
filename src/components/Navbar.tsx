@@ -45,6 +45,7 @@ const MENUS = {
       { name: '보증 · 자체 기공소', href: '/warranty' },
       { name: '병원둘러보기', href: '/about/tour' },
       { name: '진료시간/오시는길', href: '/about/location' },
+      { name: '비급여 진료비 안내', href: '/price' },
       { name: '日本語案内 (公式)', href: '/ja' },
     ]
   },
@@ -94,6 +95,7 @@ const MENUS = {
     title: '임상칼럼',
     mainHref: '/board/notice',
     items: [
+      { name: '2027 수능 수험생 이벤트', href: '/events/suneung' },
       { name: '임상칼럼 · 공지사항', href: '/board/notice' },
       { name: '근거 기반 임상 Q&A', href: '/qa' },
       { name: '영상 진료실 · 언론방송', href: '/video' },

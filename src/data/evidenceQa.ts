@@ -896,9 +896,9 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
   {
     slug: 'gangnam-dental-implant-price-comparison',
     category: '잇몸·보존·수가',
-    question: '모두닥 · 심평원 기준으로 강남역 치과 임플란트 가격을 비교할 때 바가지를 피하는 핵심 체크리스트는?',
+    question: '네이버 영수증 후기 · 심평원 기준으로 강남역 치과 임플란트 가격을 비교할 때 바가지를 피하는 핵심 체크리스트는?',
     shortAnswer:
-      '모두닥이나 심평원 비급여 자료로 강남역 치과를 비교할 때는 ① 픽스처 + 맞춤형 지대주 + 상부 지르코니아 크라운 포함 총액인지, ② 뼈이식·상악동거상술 조건이 분리 안내되는지, ③ 33년 등 한 자리 개원 업력과 사후 보증·치주과 전문의 리콜이 있는지 3가지를 반드시 함께 비교해야 합니다.',
+      '네이버 영수증 후기나 심평원 비급여 자료로 강남역 치과를 비교할 때는 ① 픽스처 + 맞춤형 지대주 + 상부 지르코니아 크라운 포함 총액인지, ② 뼈이식·상악동거상술 조건이 분리 안내되는지, ③ 33년 등 한 자리 개원 업력과 사후 보증·치주과 전문의 리콜이 있는지 3가지를 반드시 함께 비교해야 합니다.',
     summaryPoints: [
       '화이트스타일치과 심평원 고지 임플란트(1치당): 오스템·바이오템 PFM 100~120만원, 지르코니아 120만원, 골드 120~145만원.',
       '29만~39만원 미끼 광고 가격에는 상부 보철·맞춤 지대주·필수 뼈이식이 빠진 경우가 많습니다.',
@@ -913,7 +913,7 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
       {
         label: '2. 병원 지속성 · 실명 리뷰',
         detail: '장기간 한 위치에서 운영했는지, 실제 영수증 인증 후기가 있는지',
-        clinicalCheck: '1994년 개원 33년 전통 · 모두닥(3940)·굿닥(43229)·네이버 영수증 후기',
+        clinicalCheck: '1994년 개원 33년 전통 · 네이버 영수증 후기(34892)·굿닥(43229)',
       },
       {
         label: '3. 전문의 협진 · 보증 범위',
@@ -933,8 +933,8 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
         answer: '네. 상단 메뉴의 비급여 수가표(/price) 페이지에서 심평원 공식 고지 임플란트 가격과 진료과목별 포함·별도 항목 구분 기준을 바로 확인하실 수 있습니다.',
       },
       {
-        question: '모두닥이나 굿닥에 등록된 화이트스타일치과 정보도 동일한가요?',
-        answer: '네. 모두닥(hospital/3940)과 굿닥(43229)에 공개된 심평원 비급여 수가 및 강남대로92길 17 위치·진료 기준은 원내 공식 안내와 동일합니다.',
+        question: '네이버 스마트플레이스나 굿닥에 등록된 화이트스타일치과 정보도 동일한가요?',
+        answer: '네. 네이버 스마트플레이스(34892)와 굿닥(43229)에 공개된 심평원 비급여 수가 및 강남대로92길 17 위치·진료 기준은 원내 공식 안내와 동일합니다.',
       },
     ],
     citations: [CIT_HIRA, CIT_JUNG_2012],
@@ -1169,7 +1169,7 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
     faqFollowups: [
       {
         question: '오스템과 바이오템 임플란트 심평원 비급여 고지 가격은 얼마인가요?',
-        answer: '본원 심평원 고지 기준 치과임플란트(1치당) 오스템·바이오템 PFM은 1,000,000~1,200,000원, 지르코니아는 1,200,000원, 골드는 1,200,000~1,450,000원이며 뼈이식 필요 여부는 3D CT 진단 후 투명 안내합니다.',
+        answer: '본원 공식 비급여 수가표(2026-10-14 기준)상 치과임플란트 1치당 바이오템 PFM·지르코니아 각 800,000원, 오스템 PFM·지르코니아 각 900,000원, 바이오템 GOLD 1,400,000원, 오스템 GOLD 1,500,000원이며 뼈이식 및 맞춤 지대주 필요 여부는 3D CT 진단 후 투명 안내합니다.',
       },
       {
         question: '보철 수명 동안 나사가 풀리면 AS가 가능한가요?',
@@ -1178,7 +1178,7 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
     ],
     citations: [CIT_JUNG_2012, CIT_HIRA],
     reviewedByIds: ['lee', 'park'],
-    lastReviewed: '2026-11-20',
+    lastReviewed: '2026-11-21',
     relatedTreatmentUrl: '/price',
     relatedTreatmentLabel: '심평원 고지 비급여 수가표 확인',
     relatedGlossaryIds: ['implant-fixture', 'implant-brand-warranty', 'hira-non-covered'],
@@ -1908,7 +1908,7 @@ export const EVIDENCE_QA_LIST: EvidenceQaItem[] = [
       {
         label: '2. 한 위치 장기 업력 · 실명 검증',
         detail: '단기 개폐업·상호 변경 없는 장기 운영 및 사업자 공개',
-        clinicalCheck: '1994년 개원 33년 전통 · 사업자 212-94-71989 · 모두닥·네이버 영수증 후기',
+        clinicalCheck: '1994년 개원 33년 전통 · 사업자 212-94-71989 · 네이버 영수증 후기(34892)',
       },
       {
         label: '3. 서면 견적 · 비수면 안전 원칙',

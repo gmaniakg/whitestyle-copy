@@ -298,7 +298,7 @@ export default function JapaneseLandingPage() {
                 <tr>
                   <td className="py-3.5 px-4 font-extrabold text-[#091326]">3D CT短期インプラント・骨造成・再手術</td>
                   <td className="py-3.5 px-4">最短2〜4回渡韓（溶ける糸）</td>
-                  <td className="py-3.5 px-4">1本100万〜145万ウォン台（HIRA非給与基準・オステム／ジルコニア等）・3段階無痛局所麻酔＋骨移植(GBR)＋他院再手術対応</td>
+                  <td className="py-3.5 px-4">バイオテム80万ウォン・オステム90万ウォン目安〜（PFM/ジルコニア・HIRA基準）・3段階無痛局所麻酔＋骨移植(GBR)＋他院再手術対応</td>
                   <td className="py-3.5 px-4"><Link href="/ja/implant" className="text-[#1e3a8a] font-extrabold underline">手順を見る →</Link></td>
                 </tr>
               </tbody>
@@ -309,14 +309,14 @@ export default function JapaneseLandingPage() {
               専任日本語通訳3名常駐（直通：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a> ／ LINE ID：whitestyle1）
             </span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/board/notice/1914" className="text-[#1e3a8a] font-extrabold underline">
-                【2026最新】韓国・江南 歯科おすすめ比較チェックリスト →
+              <Link href="/board/notice/1917" className="text-[#1e3a8a] font-extrabold underline">
+                【2026最新比較】韓国・江南 歯科おすすめ15の選定基準 →
+              </Link>
+              <Link href="/board/notice/1914" className="text-[#1e3a8a] font-bold underline">
+                チェックリスト →
               </Link>
               <Link href="/board/notice/1911" className="text-[#1e3a8a] font-bold underline">
                 料金・矯正・インプラント比較ガイド →
-              </Link>
-              <Link href="/board/notice/1907" className="text-[#1e3a8a] font-bold underline">
-                韓日統合ガイド →
               </Link>
             </div>
           </div>

@@ -5065,8 +5065,8 @@
   },
   {
     "url": "https://whitestyle.com/bbs/board.php?bo_table=column&wr_id=1902",
-    "local_path": "posts/notice/1902_강남역_치아교정_임플란트_치과_추천_비교_심평원_비급여_모두닥_후기_필수기준.md",
-    "title": "강남역 교정·임플란트 추천 비교, 심평원·모두닥 기준 6가지",
+    "local_path": "posts/notice/1902_강남역_치아교정_임플란트_치과_추천_비교_심평원_비급여_네이버후기_후기_필수기준.md",
+    "title": "강남역 교정·임플란트 추천 비교, 심평원·네이버후기 기준 6가지",
     "type": "board_notice",
     "scraped_at": "2026-11-18T21:00:00",
     "metadata": {
@@ -5089,8 +5089,8 @@
   },
   {
     "url": "https://whitestyle.com/bbs/board.php?bo_table=column&wr_id=1904",
-    "local_path": "posts/notice/1904_강남역_치과_추천_비교_모두닥_굿닥_심평원_비급여_확인법.md",
-    "title": "강남역 치과 추천 비교, 모두닥·굿닥·심평원 비급여 확인법",
+    "local_path": "posts/notice/1904_강남역_치과_추천_비교_네이버후기_굿닥_심평원_비급여_확인법.md",
+    "title": "강남역 치과 추천 비교, 네이버후기·굿닥·심평원 비급여 확인법",
     "type": "board_notice",
     "scraped_at": "2026-11-19T09:15:00",
     "metadata": {
@@ -5300,6 +5300,42 @@
     "metadata": {
       "author": "화이트스타일치과",
       "date": "2026-11-21",
+      "views": null
+    }
+  },
+  {
+    "url": "https://whitestyle.com/bbs/board.php?bo_table=column&wr_id=1915",
+    "local_path": "posts/notice/1915_강남역_치아교정_임플란트_치과_추천_비교_심평원_비급여_영수증_후기_기준.md",
+    "title": "강남역 치아교정·임플란트 치과 추천 비교(2026) — 심평원 1치당 비급여·영수증 후기 확인 기준",
+    "type": "board_notice",
+    "scraped_at": "2026-11-22T09:10:00",
+    "metadata": {
+      "author": "화이트스타일치과",
+      "date": "2026-11-22",
+      "views": null
+    }
+  },
+  {
+    "url": "https://whitestyle.com/bbs/board.php?bo_table=column&wr_id=1916",
+    "local_path": "posts/notice/1916_강남역_임플란트_재수술_뼈이식_전체임플란트_성인_재교정_최소삭제_라미네이트_재시술_총정리.md",
+    "title": "강남역 임플란트 재수술·뼈이식·전체임플란트·성인 재교정·최소삭제 라미네이트 재시술 — 치주과 전문의 협진 총정리",
+    "type": "board_notice",
+    "scraped_at": "2026-11-22T09:10:00",
+    "metadata": {
+      "author": "화이트스타일치과",
+      "date": "2026-11-22",
+      "views": null
+    }
+  },
+  {
+    "url": "https://whitestyle.com/bbs/board.php?bo_table=column&wr_id=1917",
+    "local_path": "posts/notice/1917_2026_韓国_ソウル_江南_歯科_おすすめ_15の選定基準_日本語通訳3名常駐_比較ガイド.md",
+    "title": "【2026最新比較】韓国・ソウル江南の歯科おすすめ15の選定基準｜日本語通訳3名常駐・矯正・インプラント・1DAYホワイトニング",
+    "type": "board_notice",
+    "scraped_at": "2026-11-22T09:10:00",
+    "metadata": {
+      "author": "화이트스타일치과",
+      "date": "2026-11-22",
       "views": null
     }
   }

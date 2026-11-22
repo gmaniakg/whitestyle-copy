@@ -1,17 +1,17 @@
-# Graph Report - whitestyle-copy  (2026-11-19)
+# Graph Report - whitestyle-copy  (2026-11-22)
 
 ## Corpus Check
-- 188 files · ~949,855 words
+- 234 files · ~1,009,090 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 185 file(s) not represented in the graph (top: .woff2 94, .css 42, .woff 13)
+- Unclassified: 186 file(s) not represented in the graph (top: .woff2 94, .css 43, .woff 13)
 
 ## Summary
-- 2898 nodes · 5431 edges · 215 communities (141 shown, 74 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 638 edges (avg confidence: 0.85)
+- 3139 nodes · 5812 edges · 234 communities (150 shown, 84 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 636 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e3f3106e`
+- Built from commit: `e156c502`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,13 +30,13 @@
 - jquery.dataTables.js
 - splide-extension-video.min.js
 - splide_core.js
-- MarkdownRenderer.tsx
+- ReportClient.tsx
 - common.js
 - FadeIn
 - socket.io.js
 - mir-md5.js
 - _asyncToGenerator
-- next-auth
+- auth-options.ts
 - newUtil
 - AwardsView.tsx
 - EventInterface
@@ -47,9 +47,9 @@
 - initiateExpression
 - toyplay5.js
 - compilerOptions
-- Arrows
+- setAttribute
 - dom-to-image.js
-- forEach
+- Elements
 - .frame
 - a
 - N
@@ -60,8 +60,8 @@
 - md5.js
 - EventBinder
 - Controller
-- jquery.dataTables.js
-- download.js
+- Za
+- initCommunityApp
 - _classCheckPrivateStaticAccess
 - mir_collectContainerForm
 - update_ez_module
@@ -74,8 +74,8 @@
 - build_processed.py
 - LazyLoad
 - Navbar.tsx
-- ClinicalSummarySection.tsx
-- setAttribute
+- evidenceQa.ts
+- Slide$1
 - _typeof
 - _getDecoratorsApi
 - PetRenderer
@@ -89,14 +89,14 @@
 - Backoff
 - _typeof
 - Emitter
-- Autoplay
+- Move
 - Sync
 - seo.ts
 - seedRandom
 - KonestArchiveSection.tsx
 - triggerChange
 - newInliner
-- scripts
+- mir-sqlexec/route.ts
 - isEqual
 - get_add_on_content_list
 - common/js/index.js
@@ -147,7 +147,7 @@
 - snez_active_removal_click_another_area
 - _setPrototypeOf
 - HomeView.tsx
-- Elements
+- addClass
 - callDynamicEx
 - formatCostNumber
 - initCustomScroll
@@ -163,7 +163,7 @@
 - buildInputObject
 - deep_copy_html_el
 - _extends
-- mir-sqlexec/route.ts
+- AestheticSiloNav
 - createNS
 - initTabSlider
 - accessories-star.js
@@ -174,67 +174,86 @@
 - motions.js
 - .px
 - .px
-- consultation-db.ts
+- qa/[slug]/page.tsx
 - accessories-7.js
 - toyplay3.js
 - completions/route.ts
 - chat/route.ts
 - article/[id]/page.tsx
-- privacy-data.ts
+- suneung/page.tsx
 - accessories-sets6.js
 - accessories-workshop-b.js
 - .frame
-- verify-member/route.ts
+- room/route.ts
 - game/page.tsx
 - hwata-free-ai-protocol.mjs
 - accessories-back6.js
 - accessories-fx6.js
 - friends.js
 - pixelart.js
-- app/components/Navbar.tsx
+- Autoplay
 - accessories-head6.js
 - accessories-workshop-c.js
 - RequestInterval
-- ref_fs
+- videoArchive.ts
 - accessories-hand6.js
 - accessories-workshop-a.js
-- Scroll
+- register/route.ts
 - lead-notify/route.ts
-- app/components/KonestArchiveSection.tsx
+- P
 - getProjectingAngle
+- lounge/page.tsx
 - ImplantCaseFinder.tsx
-- login/page.tsx
 - __asyncValues
 - _typeof$6
+- clinic-facts/page.tsx
+- ref_fs
+- privacy-data.ts
+- PriceDirectoryClient.tsx
+- app/components/Navbar.tsx
+- glossary/page.tsx
+- qa/page.tsx
+- warranty/page.tsx
+- location/layout.tsx
+- doctors/layout.tsx
+- admin/layout.tsx
+- board.php/route.ts
+- login.php/route.ts
+- tour/layout.tsx
+- general/layout.tsx
+- wisdom-tooth/layout.tsx
+- implant/layout.tsx
+- login/layout.tsx
+- types/layout.tsx
 
 ## God Nodes (most connected - your core abstractions)
-1. `PetRenderer` - 72 edges
+1. `next` - 97 edges
 2. `PetRenderer` - 72 edges
-3. `next` - 56 edges
-4. `react` - 56 edges
-5. `a$1` - 35 edges
-6. `EventInterface()` - 28 edges
-7. `setAttribute()` - 27 edges
-8. `Drag()` - 23 edges
-9. `step()` - 22 edges
-10. `a()` - 21 edges
+3. `PetRenderer` - 72 edges
+4. `react` - 59 edges
+5. `ClinicalSummarySection()` - 36 edges
+6. `a$1` - 35 edges
+7. `EventInterface()` - 28 edges
+8. `setAttribute()` - 27 edges
+9. `Drag()` - 23 edges
+10. `initCommunityApp()` - 23 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `destroy()` --indirect_call--> `styles()`  [INFERRED]
-  public/legacy_assets/dev/plugin/splide_core.js → public/legacy_assets/js/_mir/lottie/lottie-player.js
 - `tube()` --indirect_call--> `K()`  [INFERRED]
   public/ai-pet/engine/accessories-star.js → public/legacy_assets/js/_mir/jquery.dataTables.js
 - `st()` --indirect_call--> `K()`  [INFERRED]
   public/legacy_assets/js/_mir/jquery.1.9.1.min.js → public/legacy_assets/js/_mir/jquery.dataTables.js
+- `Pb()` --indirect_call--> `k()`  [INFERRED]
+  public/legacy_assets/js/_mir/jquery.dataTables.js → public/legacy_assets/js/_mir/jquery.1.9.1.min.js
+- `Pb()` --indirect_call--> `m()`  [INFERRED]
+  public/legacy_assets/js/_mir/jquery.dataTables.js → public/legacy_assets/js/_mir/mir-md5.js
 - `ya()` --indirect_call--> `z()`  [INFERRED]
   public/legacy_assets/js/_mir/jquery.dataTables.js → public/legacy_assets/dev/plugin/Sortable.min.js
-- `U()` --indirect_call--> `it()`  [INFERRED]
-  public/legacy_assets/dev/plugin/Sortable.min.js → public/legacy_assets/dev/plugin/splide-extension-video.min.js
 
 ## Import Cycles
-- None detected.
+- 2-file cycle: `src/app/api/_lib/admin.ts -> src/app/api/_lib/auth-options.ts -> src/app/api/_lib/admin.ts`
 
-## Communities (215 total, 74 thin omitted)
+## Communities (234 total, 84 thin omitted)
 
 ### Community 0 - "lottie-player.js"
 Cohesion: 0.01
@@ -248,37 +267,41 @@ Nodes (28): a(), b(), Bt(), C(), D(), e(), f(), Ft() (+20 more)
 Cohesion: 0.16
 Nodes (28): Drag(), computeDestination(), computeVelocity(), constrain(), coordOf(), diffCoord(), diffTime(), disable() (+20 more)
 
+### Community 5 - "a$1"
+Cohesion: 0.05
+Nodes (7): a$1, H, I, k(), M, S, x()
+
 ### Community 6 - "jquery.1.9.1.min.js"
-Cohesion: 0.06
-Nodes (33): an(), bt(), dt(), er(), F(), Fn(), ft(), gn() (+25 more)
+Cohesion: 0.07
+Nodes (31): an(), bt(), dt(), er(), F(), ft(), gn(), gt() (+23 more)
 
 ### Community 7 - "ez_layout/js/index.js"
 Cohesion: 0.04
 Nodes (7): add_selected_struct_categories_item(), asset_move_icon_build(), create_selected_struct_categories_item(), ez_config_wrap, ez_config_wrap_close(), on_close_sidebar(), on_move_asset()
 
 ### Community 8 - "package.json"
-Cohesion: 0.06
-Nodes (46): dependencies, @auth/prisma-adapter@^2.11.2, bcryptjs@^3.0.3, framer-motion@^12.40.0, lucide-react@^1.27.0, next@16.2.9, react@19.2.4, react-dom@19.2.4 (+38 more)
+Cohesion: 0.05
+Nodes (51): dependencies, @auth/prisma-adapter@^2.11.2, framer-motion@^12.40.0, next@16.2.9, next-auth@^4.24.14, @next-auth/prisma-adapter@^1.0.7, react@19.2.4, react-dom@19.2.4 (+43 more)
 
 ### Community 9 - "consult/route.ts"
-Cohesion: 0.14
-Nodes (24): dynamic, encryptLeadPayload(), GET(), isTrue(), maxDuration, PATCH(), POST(), VALID_STATUSES (+16 more)
+Cohesion: 0.16
+Nodes (20): @prisma/client@^5.22.0, @prisma/client, dynamic, encryptLeadPayload(), GET(), isTrue(), maxDuration, PATCH() (+12 more)
 
 ### Community 10 - "next"
-Cohesion: 0.04
-Nodes (16): next, metadata, metadata, CORS_HEADERS, dynamic, dynamic, metadata, metadata (+8 more)
+Cohesion: 0.03
+Nodes (23): next, metadata, metadata, CORS_HEADERS, metadata, metadata, metadata, metadata (+15 more)
 
 ### Community 11 - "react"
 Cohesion: 0.06
-Nodes (7): react, Consultation, SOURCE_LABELS, STATUS_OPTIONS, ConsultPage(), FAQItem(), faqs
+Nodes (41): react, Page(), AestheticTreatmentPage(), Page(), Page(), Page(), Page(), Page() (+33 more)
 
 ### Community 12 - "Layout"
-Cohesion: 0.13
-Nodes (39): onAnimationFrame(), Layout(), cssHeight(), cssPadding(), cssSlideHeight(), cssSlideSize(), cssSlideWidth(), cssTrackHeight() (+31 more)
+Cohesion: 0.23
+Nodes (22): onAnimationFrame(), Layout(), cssHeight(), cssPadding(), cssSlideHeight(), cssSlideSize(), cssSlideWidth(), cssTrackHeight() (+14 more)
 
 ### Community 13 - "jquery.dataTables.js"
-Cohesion: 0.16
-Nodes (25): $a(), Aa(), Ba(), ca(), da(), F(), Gb(), Ha() (+17 more)
+Cohesion: 0.12
+Nodes (34): $a(), Aa(), Ba(), ca(), da(), F(), fc(), Gb() (+26 more)
 
 ### Community 14 - "splide-extension-video.min.js"
 Cohesion: 0.14
@@ -286,19 +309,19 @@ Nodes (35): a(), c(), i(), n(), d(), e(), et(), f() (+27 more)
 
 ### Community 15 - "splide_core.js"
 Cohesion: 0.11
-Nodes (32): assert(), assign(), child(), children(), closest(), _createClass(), _defineProperties(), Direction() (+24 more)
+Nodes (29): assert(), assign(), child(), children(), closest(), _createClass(), _defineProperties(), Direction() (+21 more)
 
-### Community 16 - "MarkdownRenderer.tsx"
-Cohesion: 0.24
-Nodes (9): InstagramModal(), InstagramModalProps, mockPosts, Post, MarkdownRenderer(), MarkdownRendererProps, SafeImage(), ReportClient() (+1 more)
+### Community 16 - "ReportClient.tsx"
+Cohesion: 0.19
+Nodes (11): TREATMENT_META_MAP, TreatmentPage(), InstagramModal(), InstagramModalProps, mockPosts, Post, MarkdownRenderer(), MarkdownRendererProps (+3 more)
 
 ### Community 17 - "common.js"
 Cohesion: 0.08
 Nodes (31): check_field(), clear_field(), delete_cookie(), error_field(), font_resize(), get_cookie(), popup_formmail(), popup_window() (+23 more)
 
 ### Community 18 - "FadeIn"
-Cohesion: 0.21
-Nodes (18): framer-motion, doctors, DoctorsPage(), LocationPage(), AboutPage(), allImages, TourPage(), NoticeListPage() (+10 more)
+Cohesion: 0.17
+Nodes (22): framer-motion, doctors, DoctorsPage(), LocationPage(), AboutPage(), metadata, allImages, TourPage() (+14 more)
 
 ### Community 19 - "socket.io.js"
 Cohesion: 0.11
@@ -306,27 +329,27 @@ Nodes (9): _arrayLikeToArray(), _createClass(), _createForOfIteratorHelper(), _d
 
 ### Community 20 - "mir-md5.js"
 Cohesion: 0.22
-Nodes (21): k(), Cb(), Db(), Fb(), Kb(), Pb(), Wb(), a() (+13 more)
+Nodes (21): Fn(), k(), _n(), Cb(), Db(), Fb(), Kb(), a() (+13 more)
 
 ### Community 21 - "_asyncToGenerator"
 Cohesion: 0.11
 Nodes (22): _asyncToGenerator(), _attachEventListeners(), destroy(), disconnectedCallback(), firstUpdated(), freeze(), fromURL(), _handleSeekChange() (+14 more)
 
-### Community 22 - "next-auth"
+### Community 22 - "auth-options.ts"
 Cohesion: 0.13
-Nodes (13): next-auth@^4.24.14, @next-auth/prisma-adapter@^1.0.7, @prisma/client@^5.22.0, next-auth, @next-auth/prisma-adapter, @prisma/client, ADMIN_ID_ALIAS, authOptions (+5 more)
+Nodes (14): next-auth, getAdminEmails(), isAdminEmail(), PRIVACY_POLICY_VERSION, ADMIN_ID_ALIAS, authOptions, buildProviders(), isConfiguredEnv() (+6 more)
 
 ### Community 23 - "newUtil"
 Cohesion: 0.13
 Nodes (12): newUtil(), canvasToBlob(), escape(), height(), mimes(), mimeType(), parseExtension(), px() (+4 more)
 
 ### Community 24 - "AwardsView.tsx"
-Cohesion: 0.19
-Nodes (14): metadata, metadata, Footer(), SocialIcon(), ShareButtons(), ShareIcon(), Lang, localizedPath() (+6 more)
+Cohesion: 0.34
+Nodes (10): Footer(), SocialIcon(), ShareButtons(), ShareIcon(), Lang, localizedPath(), useLangRoute(), AwardsPage() (+2 more)
 
 ### Community 25 - "EventInterface"
-Cohesion: 0.18
-Nodes (18): apply(), Cover(), cover(), mount(), toggle(), EventInterface(), Fade(), init() (+10 more)
+Cohesion: 0.22
+Nodes (14): apply(), Cover(), cover(), mount(), toggle(), EventInterface(), Fade(), init() (+6 more)
 
 ### Community 26 - "vimeo.player.js"
 Cohesion: 0.26
@@ -356,25 +379,25 @@ Nodes (44): act(), best(), bop(), boxAt(), boxH(), butterfly(), caught(), cheer(
 Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
-### Community 33 - "Arrows"
-Cohesion: 0.40
-Nodes (10): Arrows(), createArrow(), createArrows(), destroy(), go(), init(), listen(), mount() (+2 more)
+### Community 33 - "setAttribute"
+Cohesion: 0.16
+Nodes (27): append(), Arrows(), createArrow(), createArrows(), destroy(), go(), init(), listen() (+19 more)
 
 ### Community 34 - "dom-to-image.js"
 Cohesion: 0.20
 Nodes (13): cloneNode(), cloneChildren(), cloneChildrenInOrder(), copyOptions(), draw(), embedFonts(), inlineImages(), makeSvgDataUri() (+5 more)
 
-### Community 35 - "forEach"
-Cohesion: 0.22
-Nodes (16): append(), before(), Clones(), cloneDeep(), computeCloneCount(), destroy(), generate(), mount() (+8 more)
+### Community 35 - "Elements"
+Cohesion: 0.20
+Nodes (18): addClass(), Clones(), cloneDeep(), computeCloneCount(), destroy(), generate(), mount(), observe() (+10 more)
 
 ### Community 37 - "a"
 Cohesion: 0.07
 Nodes (46): a(), c(), e(), i(), r(), t(), _applyDecoratedDescriptor(), _asyncGeneratorDelegate() (+38 more)
 
 ### Community 38 - "N"
-Cohesion: 0.06
-Nodes (9): E, H, I, k(), M, N, S, V (+1 more)
+Cohesion: 0.14
+Nodes (3): E, N, V
 
 ### Community 39 - "_unsupportedIterableToArray"
 Cohesion: 0.17
@@ -398,19 +421,19 @@ Nodes (13): RFC-1321, wa(), b(), add(), cmn(), ff(), gg(), hh() (+5 more)
 
 ### Community 44 - "EventBinder"
 Cohesion: 0.24
-Nodes (12): EventBinder(), bind(), forEachEvent(), unbind(), Media(), destroy(), reduce(), register() (+4 more)
+Nodes (13): EventBinder(), bind(), forEachEvent(), unbind(), Media(), destroy(), reduce(), register() (+5 more)
 
 ### Community 45 - "Controller"
 Cohesion: 0.22
 Nodes (20): between(), clamp(), Controller(), computeDestIndex(), computeMovableDestIndex(), getAdjacent(), getEnd(), go() (+12 more)
 
-### Community 46 - "jquery.dataTables.js"
-Cohesion: 0.11
-Nodes (28): Ab(), ac(), $b(), bc(), E(), Eb(), fc(), Ga() (+20 more)
+### Community 46 - "Za"
+Cohesion: 0.23
+Nodes (13): ac(), $b(), bc(), Eb(), hb(), Q(), Rb(), Sb() (+5 more)
 
-### Community 47 - "download.js"
-Cohesion: 0.10
-Nodes (36): appendCdMsg(), appendMonitorScenarioInstant(), askZodiacSign(), attachPetDragPhysics(), releasePet(), computeDailyFortune(), copyTextSafe(), dropTreatInPlayStage() (+28 more)
+### Community 47 - "initCommunityApp"
+Cohesion: 0.15
+Nodes (29): addJoinedRoom(), assetUrl(), buildAvatarInnerHtml(), createAvatarEl(), escapeHtml(), getJoinedRooms(), getLabel(), getOrCreateGuestId() (+21 more)
 
 ### Community 48 - "_classCheckPrivateStaticAccess"
 Cohesion: 0.21
@@ -449,24 +472,24 @@ Cohesion: 0.17
 Nodes (12): afterCopyCallback(), checkPasswordMatch(), copyTextAndRun(), handleInput(), mir_minialertbox(), mir_Nickname_Check(), mir_Password_Check(), mirFormChecker() (+4 more)
 
 ### Community 57 - "build_processed.py"
-Cohesion: 0.27
-Nodes (5): map_url_to_nextjs(), replace_js_location_href(), replace_js_window_open(), replace_tag_href(), replace_tag_src()
+Cohesion: 0.24
+Nodes (7): _clean_homepage_jsonld(), _ensure_img_alt(), map_url_to_nextjs(), replace_js_location_href(), replace_js_window_open(), replace_tag_href(), replace_tag_src()
 
 ### Community 58 - "LazyLoad"
-Cohesion: 0.42
-Nodes (10): display(), empty(), LazyLoad(), check(), init(), load(), loadNext(), mount() (+2 more)
+Cohesion: 0.38
+Nodes (11): display(), empty(), getAttribute(), LazyLoad(), check(), init(), load(), loadNext() (+3 more)
 
 ### Community 59 - "Navbar.tsx"
 Cohesion: 0.23
 Nodes (8): clinicJsonLd, metadata, RootLayout(), JapaneseFlag(), KoreanFlag(), MENUS, Navbar(), Providers()
 
-### Community 60 - "ClinicalSummarySection.tsx"
-Cohesion: 0.23
-Nodes (9): Page(), AestheticTreatmentPage(), Page(), Page(), Page(), ClinicalComparisonRow, ClinicalFaqItem, ClinicalSummarySection() (+1 more)
+### Community 60 - "evidenceQa.ts"
+Cohesion: 0.07
+Nodes (29): CIT_ALIGNER_RESORPTION_2019, CIT_ALIGNERS_VS_FIXED, CIT_ALQUTAIBI_2025, CIT_BERGLUNDH_2018, CIT_BRUXISM_ALIGNER, CIT_CORONECTOMY_REVIEW, CIT_CROWN_LENGTH_2016, CIT_CROWN_LENGTH_2023 (+21 more)
 
-### Community 61 - "setAttribute"
-Cohesion: 0.15
-Nodes (30): addClass(), create(), focus(), format(), hasClass(), Pagination(), createPagination(), destroy() (+22 more)
+### Community 61 - "Slide$1"
+Cohesion: 0.31
+Nodes (13): format(), hasClass(), Slide$1(), initNavigation(), isActive(), isVisible(), listen(), mount() (+5 more)
 
 ### Community 62 - "_typeof"
 Cohesion: 0.36
@@ -504,25 +527,25 @@ Nodes (8): deconstructPacket(), hasBinary(), isBinary(), lookup(), Manager(), re
 Cohesion: 0.29
 Nodes (4): Emitter(), mixin(), on(), destroy()
 
-### Community 75 - "Autoplay"
-Cohesion: 0.64
-Nodes (8): Autoplay(), autoToggle(), listen(), mount(), onMove(), pause(), play(), update()
+### Community 75 - "Move"
+Cohesion: 0.29
+Nodes (17): Move(), cancel(), canShift(), exceededLimit(), getLimit(), getPosition(), jump(), loop() (+9 more)
 
 ### Community 76 - "Sync"
 Cohesion: 0.21
 Nodes (16): Keyboard(), destroy(), init(), mount(), onKeydown(), onMove(), normalizeKey(), Sync() (+8 more)
 
 ### Community 77 - "seo.ts"
-Cohesion: 0.11
-Nodes (14): metadata, ALL_PAGES, COPY, HREFLANG, Lang, OG_LOCALE, PageKey, pageMetadata() (+6 more)
+Cohesion: 0.09
+Nodes (17): metadata, metadata, ALL_PAGES, COPY, HREFLANG, Lang, OG_LOCALE, PageKey (+9 more)
 
 ### Community 78 - "seedRandom"
 Cohesion: 0.29
 Nodes (6): initialize$2(), seedRandom(), c(), f(), p(), _typeof$1()
 
 ### Community 79 - "KonestArchiveSection.tsx"
-Cohesion: 0.39
-Nodes (4): JapaneseLandingPage(), JapaneseLandingPage(), KonestArchiveSection(), TabKey
+Cohesion: 0.32
+Nodes (3): JapaneseLandingPage(), KonestArchiveSection(), TabKey
 
 ### Community 80 - "triggerChange"
 Cohesion: 0.29
@@ -532,9 +555,9 @@ Nodes (7): mir_common_select_option_select(), mir_range_input_active(), on_mir_n
 Cohesion: 0.43
 Nodes (6): newInliner(), inline(), inlineAll(), nothingToInline(), readUrls(), shouldProcess()
 
-### Community 82 - "scripts"
-Cohesion: 0.33
-Nodes (6): scripts, build, dev, lint, postinstall, start
+### Community 82 - "mir-sqlexec/route.ts"
+Cohesion: 0.19
+Nodes (13): dynamic, maxDuration, maskName(), CORS_HEADERS, DbInfoEntry, dynamic, extractDbInfoConsult(), forwardToLegacyOrigin() (+5 more)
 
 ### Community 84 - "get_add_on_content_list"
 Cohesion: 0.33
@@ -577,8 +600,8 @@ Cohesion: 0.14
 Nodes (27): art(), best(), boost(), bounce(), btnText(), clearUi(), down(), draw() (+19 more)
 
 ### Community 96 - "Slides"
-Cohesion: 0.22
-Nodes (11): Slides(), destroy(), forEach$1(), get(), getIn(), init(), mount(), observeImages() (+3 more)
+Cohesion: 0.24
+Nodes (10): Slides(), destroy(), forEach$1(), get(), getIn(), init(), mount(), register() (+2 more)
 
 ### Community 97 - "mrw_loadJS"
 Cohesion: 0.40
@@ -645,24 +668,24 @@ Cohesion: 0.13
 Nodes (23): back(), bubbles(), circlePts(), disc(), discSpans(), dotAt(), drawPlaced(), front() (+15 more)
 
 ### Community 122 - "api.ts"
-Cohesion: 0.16
-Nodes (18): buildDescription(), dynamic, extractFirstImageUrl(), generateMetadata(), NoticeDetailPage(), resolveDate(), stripToPlainText(), sitemap() (+10 more)
+Cohesion: 0.17
+Nodes (17): buildDescription(), dynamic, extractFirstImageUrl(), generateMetadata(), NoticeDetailPage(), resolveDate(), stripToPlainText(), SITE_LAST_MODIFIED (+9 more)
 
 ### Community 123 - "mir_callDynamicEx"
 Cohesion: 0.67
 Nodes (3): async_mir_callDynamicEx(), mir_assist_callDynamicEx(), mir_callDynamicEx()
 
 ### Community 137 - "HomeView.tsx"
-Cohesion: 0.18
-Nodes (10): ContactSection(), FaqJsonLd(), FloatingCTA(), awards, HERO_ENTITY, Home(), Lang, pressItems (+2 more)
+Cohesion: 0.12
+Nodes (13): ContactSection(), FaqJsonLd(), FloatingCTA(), KonestArchiveSection(), TabKey, metadata, metadata, awards (+5 more)
 
-### Community 138 - "Elements"
-Cohesion: 0.57
-Nodes (7): Elements(), destroy(), getClasses(), init(), mount(), setup(), update()
+### Community 138 - "addClass"
+Cohesion: 0.36
+Nodes (11): focus(), Pagination(), createPagination(), destroy(), getAt(), getDirection(), mount(), onClick() (+3 more)
 
-### Community 165 - "mir-sqlexec/route.ts"
-Cohesion: 0.19
-Nodes (11): dynamic, maxDuration, CORS_HEADERS, DbInfoEntry, dynamic, extractDbInfoConsult(), forwardToLegacyOrigin(), GET() (+3 more)
+### Community 165 - "AestheticSiloNav"
+Cohesion: 0.11
+Nodes (19): AestheticComparePage(), COMPARE_ROWS, FAQS, metadata, AestheticRetreatmentPage(), CAUSES, FAQS, metadata (+11 more)
 
 ### Community 166 - "createNS"
 Cohesion: 0.17
@@ -673,7 +696,7 @@ Cohesion: 0.23
 Nodes (16): area(), back(), bigStar(), cape(), flame(), front(), glint(), glow() (+8 more)
 
 ### Community 175 - ".drawCat"
-Cohesion: 0.24
+Cohesion: 0.22
 Nodes (4): anchorsOf(), holoColor(), metaOf(), runsOf()
 
 ### Community 176 - "toyplay2.js"
@@ -681,7 +704,7 @@ Cohesion: 0.20
 Nodes (12): bodyX(), click(), crumble(), draw(), endPerch(), hopOff(), perchLift(), pick() (+4 more)
 
 ### Community 177 - ".drawCat"
-Cohesion: 0.22
+Cohesion: 0.24
 Nodes (4): anchorsOf(), holoColor(), metaOf(), runsOf()
 
 ### Community 178 - "accessories.js"
@@ -692,9 +715,9 @@ Nodes (11): auraRing(), back(), bolt(), brimHat(), front(), heldPaw(), outlined(
 Cohesion: 0.17
 Nodes (5): back(), holyLift(), loopPath(), pose(), step()
 
-### Community 182 - "consultation-db.ts"
-Cohesion: 0.32
-Nodes (9): ConsultationRecord, createConsultation(), DATA_FILE, ensureStorage(), getConsultations(), getPrisma(), readLocalRecords(), updateConsultationStatus() (+1 more)
+### Community 182 - "qa/[slug]/page.tsx"
+Cohesion: 0.29
+Nodes (7): generateMetadata(), QaDetailPage(), generateMetadata(), VideoDetailPage(), DOCTOR_DIRECTORY, getEvidenceQaBySlug(), getClinicalVideoBySlug()
 
 ### Community 183 - "accessories-7.js"
 Cohesion: 0.38
@@ -716,9 +739,9 @@ Nodes (10): buildSmartClinicalReply(), buildSystemInstruction(), checkRateLimit(
 Cohesion: 0.30
 Nodes (9): ArticlePage(), generateMetadata(), Article, articleDescription(), articleJsonLd(), CLINIC_ID, DOCTOR_ID, getArticle() (+1 more)
 
-### Community 188 - "privacy-data.ts"
-Cohesion: 0.28
-Nodes (4): PRIVACY_POLICY_VERSION, PRIVACY_DATA, dynamic, metadata
+### Community 188 - "suneung/page.tsx"
+Cohesion: 0.22
+Nodes (7): DOCTORS, ELIGIBLE_ROWS, FAQ_ITEMS, metadata, SuneungEventPage(), SuneungConsultForm(), TREATMENTS
 
 ### Community 189 - "accessories-sets6.js"
 Cohesion: 0.46
@@ -729,12 +752,12 @@ Cohesion: 0.43
 Nodes (7): back(), bigHood(), capeArea(), ddakji(), front(), marble(), tieBow()
 
 ### Community 191 - ".frame"
-Cohesion: 0.20
+Cohesion: 0.18
 Nodes (4): earStage(), tint(), tint(), G()
 
-### Community 192 - "verify-member/route.ts"
-Cohesion: 0.32
-Nodes (5): CORS_HEADERS, makeHeartbeatLease(), makeHmacToken(), POST(), TREATMENT_LABELS
+### Community 192 - "room/route.ts"
+Cohesion: 0.11
+Nodes (32): AvatarConfig, buildRuleBasedReply(), DEFAULT_ROOMS_SEED, ensureSeeded(), formatMessage(), generateDoctorHwataReply(), GET(), OPTIONS() (+24 more)
 
 ### Community 193 - "game/page.tsx"
 Cohesion: 0.25
@@ -756,69 +779,101 @@ Nodes (6): back(), dizzy(), faded(), fly(), front(), ghost()
 Cohesion: 0.80
 Nodes (4): build(), draw(), full(), hit()
 
-### Community 199 - "app/components/Navbar.tsx"
-Cohesion: 0.27
-Nodes (8): ArticleNavbar(), labels, Lang, Navbar(), navHrefs, withLang(), SearchModal(), pressItems
+### Community 199 - "Autoplay"
+Cohesion: 0.64
+Nodes (8): Autoplay(), autoToggle(), listen(), mount(), onMove(), pause(), play(), update()
 
 ### Community 200 - "accessories-head6.js"
 Cohesion: 0.83
 Nodes (3): feather(), front(), straw()
 
 ### Community 202 - "RequestInterval"
-Cohesion: 0.29
-Nodes (7): raf(), RequestInterval(), cancel(), pause(), start(), update(), Throttle()
+Cohesion: 0.18
+Nodes (16): approximatelyEqual(), raf(), RequestInterval(), cancel(), pause(), start(), update(), Scroll() (+8 more)
 
-### Community 203 - "ref_fs"
-Cohesion: 0.22
-Nodes (3): nextConfig, fs, dynamic
+### Community 203 - "videoArchive.ts"
+Cohesion: 0.24
+Nodes (7): metadata, CELEBRITY_VISIT_VIDEOS, CLINICAL_VIDEO_ARTICLES, ClinicalVideoArticle, ClinicVisitVideo, VideoChapter, VideoQa
 
-### Community 206 - "Scroll"
-Cohesion: 0.44
-Nodes (9): approximatelyEqual(), Scroll(), cancel(), clear(), easing(), mount(), onEnd(), scroll() (+1 more)
+### Community 206 - "register/route.ts"
+Cohesion: 0.17
+Nodes (14): bcryptjs@^3.0.3, bcryptjs, dynamic, inMemoryLeads, isTrue(), POST(), getClientIp(), maskPhone() (+6 more)
 
 ### Community 207 - "lead-notify/route.ts"
 Cohesion: 0.29
 Nodes (5): buildLeadHtml(), CORS_HEADERS, DEFAULT_RECIPIENTS, LeadPayload, POST()
 
-### Community 208 - "app/components/KonestArchiveSection.tsx"
-Cohesion: 0.38
-Nodes (4): KonestArchiveSection(), TabKey, JaKonestPage(), metadata
+### Community 208 - "P"
+Cohesion: 0.25
+Nodes (8): Ab(), E(), Ga(), ma(), P(), X(), Xa(), zb()
 
 ### Community 209 - "getProjectingAngle"
 Cohesion: 0.40
 Nodes (5): getPerpendicularVector(), getProjectingAngle(), setPoint(), zigZagCorner(), zigZagSegment()
 
-### Community 210 - "ImplantCaseFinder.tsx"
-Cohesion: 0.40
-Nodes (3): NodeId, questions, results
+### Community 210 - "lounge/page.tsx"
+Cohesion: 0.25
+Nodes (8): BG_COLOR_MAP, ChatterAvatar(), dynamic, FALLBACK_ROOMS, HwataLoungePage(), LoungeMessage, LoungeRoom, metadata
 
-### Community 211 - "login/page.tsx"
-Cohesion: 0.67
-Nodes (3): ERROR_MESSAGES, LoginPage(), sanitizeCallbackUrl()
+### Community 211 - "ImplantCaseFinder.tsx"
+Cohesion: 0.13
+Nodes (9): Consultation, SOURCE_LABELS, STATUS_OPTIONS, ConsultPage(), FAQItem(), faqs, NodeId, questions (+1 more)
 
 ### Community 212 - "__asyncValues"
 Cohesion: 0.67
 Nodes (3): __asyncValues(), i(), __values()
 
+### Community 215 - "clinic-facts/page.tsx"
+Cohesion: 0.29
+Nodes (5): BASIC_FACTS, DOCTORS, FACILITY_AND_SAFETY, FACTS_FAQS, metadata
+
+### Community 216 - "ref_fs"
+Cohesion: 0.22
+Nodes (3): nextConfig, fs, dynamic
+
+### Community 217 - "privacy-data.ts"
+Cohesion: 0.32
+Nodes (3): PRIVACY_DATA, dynamic, metadata
+
+### Community 218 - "PriceDirectoryClient.tsx"
+Cohesion: 0.16
+Nodes (12): lucide-react@^1.27.0, lucide-react, metadata, NON_COVERED_CRITERIA, PRICE_FAQS, PricePage(), CATEGORIES, FeeCategory (+4 more)
+
+### Community 219 - "app/components/Navbar.tsx"
+Cohesion: 0.23
+Nodes (10): ArticleNavbar(), labels, Lang, Navbar(), navHrefs, withLang(), SearchModal(), awardCategories (+2 more)
+
+### Community 220 - "glossary/page.tsx"
+Cohesion: 0.38
+Nodes (4): CATEGORIES, metadata, DENTAL_GLOSSARY_TERMS, DentalGlossaryTerm
+
+### Community 221 - "qa/page.tsx"
+Cohesion: 0.33
+Nodes (4): CATEGORIES, metadata, EVIDENCE_QA_LIST, EvidenceQaItem
+
+### Community 222 - "warranty/page.tsx"
+Cohesion: 0.33
+Nodes (4): LAB_WORKFLOW, metadata, WARRANTY_FAQS, WARRANTY_PILLARS
+
 ## Knowledge Gaps
 - **1 isolated node(s):** `RFC-1321`
-  These have ≤1 connection - possible missing edges. (Counts symbols only; 958 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **74 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges. (Counts symbols only; 1098 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **84 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `G()` connect `.frame` to `Sortable.min.js`, `accessories-fx6.js`, `a`, `.frame`, `splide-extension-video.min.js`?**
-  _High betweenness centrality (0.102) - this node is a cross-community bridge._
+  _High betweenness centrality (0.074) - this node is a cross-community bridge._
 - **What connects `RFC-1321` to the rest of the system?**
   _1 weakly-connected nodes found - possible missing edges._
 - **Should `lottie-player.js` be split into smaller, more focused modules?**
   _Cohesion score 0.012690186698558235 - nodes in this community are weakly interconnected._
 - **Why does `styles()` connect `setAttribute` to `lottie-player.js`?**
-  _High betweenness centrality (0.099) - this node is a cross-community bridge._
+  _High betweenness centrality (0.066) - this node is a cross-community bridge._
 - **Should `mir_common.js` be split into smaller, more focused modules?**
   _Cohesion score 0.023529411764705882 - nodes in this community are weakly interconnected._
+- **Why does `destroy()` connect `setAttribute` to `addClass`, `Slide$1`?**
+  _High betweenness centrality (0.066) - this node is a cross-community bridge._
 - **Should `Sortable.min.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11025641025641025 - nodes in this community are weakly interconnected._
-- **Should `mir_common_new.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.0273972602739726 - nodes in this community are weakly interconnected._

@@ -82,10 +82,10 @@
 
 .se-h1 {
   margin: 0 0 16px;
-  font-size: clamp(30px, 3.6vw, 44px);
+  font-size: clamp(28px, 3.1vw, 39px);
   font-weight: 800;
   line-height: 1.24;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--se-ink);
   overflow-wrap: break-word;
   min-width: 0;
@@ -180,7 +180,7 @@
   width: 100%;
   height: 360px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
 }
 
 .se-hero-caption {

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: 'https://whitestyle.com/events/suneung',
     type: 'website',
     locale: 'ko_KR',
-    images: [{ url: 'https://whitestyle.com/images/hero_smile.png' }],
+    images: [{ url: 'https://whitestyle.com/images/suneung-students-smile.jpg' }],
   },
 };
 
@@ -174,11 +174,11 @@ export default function SuneungEventPage() {
             <div className="se-hero-media">
               <div className="se-hero-frame">
                 <img
-                  src="/images/hero_smile.png"
-                  alt="화이트스타일치과의원 2027 수능 수험생 미소 케어 안내"
+                  src="/images/suneung-students-smile.jpg"
+                  alt="화이트스타일치과의원 2027 수능 수험생 남녀 고교생 환한 미소 안내"
                 />
                 <div className="se-hero-caption">
-                  김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(치주과 전문의) 3인 책임 협진
+                  김준헌 병원장, 이봉진 대표원장, 박선혜 원장(치주과 전문의) 3인 책임 협진
                 </div>
               </div>
             </div>

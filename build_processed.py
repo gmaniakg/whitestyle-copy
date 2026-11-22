@@ -1083,7 +1083,7 @@ home_editorial_sections = """
     <span class="ws-home-kicker wb-ka wbka">의료법 제45조 준수 · 건강보험심사평가원(심평원) 비급여 기준</span>
     <h2 class="ws-home-h2 wb-ka wbka">심평원(HIRA) 비급여 기준 및 투명 진료비 안내</h2>
     <p class="ws-home-lead wb-ka wbka">
-      치과 치료 비용은 최저가 광고가 아닌 맞춤형 지대주·상부 크라운·뼈이식·월 치료비·유지장치 포함 여부를 서면으로 대조해야 정확합니다. 화이트스타일치과의원은 심평원 비급여 진료비용 기준과 모두닥(3940)·굿닥(43229) 영수증 인증 정보를 투명하게 공개합니다.
+      치과 치료 비용은 최저가 광고가 아닌 맞춤형 지대주·상부 크라운·뼈이식·월 치료비·유지장치 포함 여부를 서면으로 대조해야 정확합니다. 화이트스타일치과의원은 심평원 비급여 진료비용 기준과 네이버 실명 영수증 방문자 후기(34892) 및 공식 수가 정보를 투명하게 공개합니다.
     </p>
     <div class="ws-home-table-wrap wb-ka wbka">
       <table class="ws-home-table wb-ka wbka">
@@ -1097,7 +1097,7 @@ home_editorial_sections = """
         <tbody>
           <tr>
             <td class="wb-ka wbka">치과임플란트 (1치당)</td>
-            <td class="wb-ka wbka">오스템·바이오템 PFM 1,000,000~1,200,000원 / 지르코니아 1,200,000원 / 골드 1,200,000~1,450,000원</td>
+            <td class="wb-ka wbka">바이오템 PFM·지르코니아 각 800,000원 / 오스템 PFM·지르코니아 각 900,000원 / 바이오템 GOLD 1,400,000원 / 오스템 GOLD 1,500,000원</td>
             <td class="wb-ka wbka">3D CT 진단 후 뼈이식·상악동거상술 필요 여부 별도 서면 고지 (만 65세 이상 건보 30% 적용)</td>
           </tr>
           <tr>
@@ -1116,7 +1116,7 @@ home_editorial_sections = """
     <div class="ws-home-btns wb-ka wbka">
       <a class="ws-home-btn-dark" href="/price">비급여 상세 수가 기준표 보기 &rarr;</a>
       <a class="ws-home-btn-light" href="/warranty">사후 보증 · 자체 기공소 확인 &rarr;</a>
-      <a class="ws-home-btn-light" href="https://www.modoodoc.com/hospital/3940/%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90-%EC%84%9C%EC%9A%B8-%EC%97%AD%EC%82%BC%EB%8F%99/" target="_blank" rel="noopener noreferrer">모두닥(3940) 영수증 후기 보기 &#8599;</a>
+      <a class="ws-home-btn-light" href="https://m.place.naver.com/hospital/34892/review/visitor" target="_blank" rel="noopener noreferrer">네이버 영수증 후기 보기 &#8599;</a>
     </div>
   </div>
 </section>
@@ -1132,7 +1132,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">고난도 재수술 · 뼈이식 · 재교정 · 재시술 3인 협진</h3>
         <p class="wb-ka wbka">임플란트 재수술·동종골 뼈이식·무치악 전체임플란트·성인 재교정·최소삭제 라미네이트 재시술의 치주과 전문의 3인 협진 프로토콜을 확인하세요.</p>
-        <a class="ws-home-link" href="/board/notice/1913">고난도 협진 최신 백서 (/board/notice/1913) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1910">통합 비교 (/board/notice/1910) &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1916">고난도 협진 총정리 (/board/notice/1916) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1915">2026 가격·후기 비교 (/board/notice/1915) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
@@ -1157,7 +1157,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1906">증상별 칼럼 (/board/notice/1906) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1914">日本語比較2026 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1906">증상별 칼럼 (/board/notice/1906) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1917">日本語比較15基準 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">
