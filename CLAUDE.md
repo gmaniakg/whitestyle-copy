@@ -1,3 +1,7 @@
+## Project Handover (필독)
+
+- `whitestyle.com` 운영 구조, 공식 플랫폼 ID(네이버 플레이스 `11533882`, 카카오 `_Vtxdwl`), 33년 진료·의료진 팩트 SSOT, `git push origin master` 자동 배포 및 롤백 방법, `exFAT` Git 관리 규칙, 404/디자인 함정 체크리스트는 **[handover.md](./handover.md)**를 작업 전 최우선으로 읽고 따르세요.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
