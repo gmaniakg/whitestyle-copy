@@ -29,12 +29,36 @@ const CORE_CLINIC_PAGES = [
     color: '#0891b2',
   },
   {
-    type: '진료비 안내',
-    title: '심평원(HIRA) 기준 비급여 진료비 안내',
-    desc: '임플란트, 치아교정 총액제, 라미네이트, 제증명수수료 등 투명한 공식 비급여 수가 디렉토리',
-    keywords: '가격 비용 수가 비급여 가격표 임플란트비용 교정비용 라미네이트비용',
-    link: '/price',
+    type: '진료 안내',
+    title: '원데이 전문가 치아미백 · 이지화이트 심미치료',
+    desc: '식약처 인증 미백 시스템과 정밀 쉐이드 진단으로 시림 부담을 낮추고 자연스럽고 밝은 미소를 완성하는 1:1 맞춤 치아미백',
+    keywords: '치아미백 미백 원데이미백 전문가미백 이지화이트 변색 밝기 심미치료',
+    link: '/treatments/aesthetic/easy-white',
+    color: '#0284c7',
+  },
+  {
+    type: '진료 안내',
+    title: '자연치아 보존 신경치료 · 미세현미경 재신경치료',
+    desc: '3D CT와 특수 현미경 확대 진료로 미세 근관과 균열을 정밀 진단하여 발치 없이 자연치아를 끝까지 살리는 4단계 보존 신경치료',
+    keywords: '신경치료 재신경치료 치수염 근관치료 치근단절제술 자연치아보존 통증 크라운',
+    link: '/treatments/general/endo',
+    color: '#0d9488',
+  },
+  {
+    type: '진료 안내',
+    title: '초기 충치 최소삭제 레진치료 · 자연치아 보존 충치치료',
+    desc: '법랑질·상아질 초기 충치 부위만 최소한으로 정밀 제거한 뒤 자연 치아 색상과 조화되는 고강도 심미 레진으로 당일 수복합니다',
+    keywords: '레진치료 레진 충치치료 초기충치 치아색 인레이 어금니충치 앞니레진',
+    link: '/treatments/general/caries',
     color: '#059669',
+  },
+  {
+    type: '진료 안내',
+    title: '고강도 지르코니아 크라운 · 맞춤 심미 보철치료',
+    desc: '넓은 충치나 신경치료 후 보강이 필요한 치아를 자연치아에 가까운 투명도와 높은 파절 저항성을 갖춘 맞춤 지르코니아로 정밀 수복합니다',
+    keywords: '지르코니아치료 지르코니아 지르코니아크라운 크라운 보철 인레이 충치치료 신경치료보철',
+    link: '/treatments/general/caries',
+    color: '#4f46e5',
   },
   {
     type: '임상칼럼',
@@ -242,7 +266,7 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
 
         <input
           type="text"
-          placeholder="검색어를 입력하세요 (예: 임플란트, 교정, 제로쉘, 수가표, Q&A...)"
+          placeholder="검색어를 입력하세요 (예: 임플란트, 치아교정, 제로쉘, 치아미백, 신경치료, 레진, 지르코니아...)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           autoFocus
@@ -261,7 +285,7 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
 
         {q.length === 0 && (
           <div style={{ marginTop: '1.25rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {['임플란트', '치아교정', '제로쉘', '수가표', '뼈이식', '재교정', '일본어'].map((chip) => (
+            {['임플란트', '치아교정', '제로쉘', '치아미백', '신경치료', '레진치료', '지르코니아치료', '뼈이식', '재교정', '일본어'].map((chip) => (
               <button
                 key={chip}
                 type="button"
