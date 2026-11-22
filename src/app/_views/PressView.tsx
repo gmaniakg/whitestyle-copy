@@ -4,7 +4,6 @@ import '../whitebook.css';
 import { pressItems } from '../data';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ShareButtons from '../components/ShareButtons';
 import React from 'react';
 import { useLangRoute, type Lang } from '../components/useLangRoute';
 export default function PressPage({ initialLang = 'ko' }: { initialLang?: Lang }) {
@@ -105,10 +104,6 @@ export default function PressPage({ initialLang = 'ko' }: { initialLang?: Lang }
           </div>
         </section>
       ))}
-
-      <div className="container" style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '3rem' }}>
-        <ShareButtons title="화이트스타일치과 김준헌 원장 - 언론 보도 및 의학 칼럼 아카이브" />
-      </div>
 
       <Footer />
     </main>

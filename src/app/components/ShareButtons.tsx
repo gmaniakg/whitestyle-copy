@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const bounceStyles = `
   @keyframes floatBounce {
@@ -41,53 +42,67 @@ const ShareIcon = ({ name, color, svg, onClick, index = 0 }: { name: string, col
   </button>
 );
 
-export default function ShareButtons({ title }: { title: string }) {
+export default function ShareButtons({ title }: { title?: string }) {
+  const pathname = usePathname();
   const [url, setUrl] = useState('');
 
   useEffect(() => {
     setUrl(window.location.href);
-  }, []);
+  }, [pathname]);
+
+  const getShareContext = () => {
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : url;
+    const currentTitle =
+      title || (typeof document !== 'undefined' ? document.title : '') || '화이트스타일치과의원';
+    return { currentUrl, currentTitle };
+  };
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(url);
+    const { currentUrl } = getShareContext();
+    navigator.clipboard.writeText(currentUrl);
     alert('링크가 복사되었습니다!');
   };
 
   const shareKakao = async () => {
+    const { currentUrl, currentTitle } = getShareContext();
     if (navigator.share) {
       try {
         await navigator.share({
-          title: title,
-          text: '화이트스타일치과의원: ' + title,
-          url: url,
+          title: currentTitle,
+          text: '화이트스타일치과의원: ' + currentTitle,
+          url: currentUrl,
         });
       } catch (error) {
         console.error('공유 실패:', error);
       }
     } else {
-      navigator.clipboard.writeText(url);
+      navigator.clipboard.writeText(currentUrl);
       alert('카카오톡 공유를 위해 링크가 복사되었습니다!\n카카오톡 채팅창에 붙여넣기 하여 공유해보세요.');
     }
   };
 
   const shareNaver = () => {
-    window.open(`https://share.naver.com/web/shareView?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`, '_blank', 'width=600,height=400');
+    const { currentUrl, currentTitle } = getShareContext();
+    window.open(`https://share.naver.com/web/shareView?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(currentTitle)}`, '_blank', 'width=600,height=400');
   };
 
   const shareGoogle = () => {
-    window.open(`https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`, '_blank', 'width=600,height=600');
+    const { currentUrl, currentTitle } = getShareContext();
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(currentTitle)}&body=${encodeURIComponent(currentUrl)}`, '_blank', 'width=600,height=600');
   };
 
   const shareFacebook = () => {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'width=600,height=400');
+    const { currentUrl } = getShareContext();
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`, '_blank', 'width=600,height=400');
   };
 
   const shareX = () => {
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank', 'width=600,height=400');
+    const { currentUrl, currentTitle } = getShareContext();
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(currentTitle)}&url=${encodeURIComponent(currentUrl)}`, '_blank', 'width=600,height=400');
   };
 
   return (
-    <div style={{ marginTop: '4rem', padding: '3rem 0', borderTop: '1px solid var(--card-border, #e2e8f0)', borderBottom: '1px solid var(--card-border, #e2e8f0)', textAlign: 'center' }}>
+    <div style={{ marginTop: title ? '4rem' : '0', padding: '3rem 0', borderTop: '1px solid var(--card-border, #e2e8f0)', borderBottom: '1px solid var(--card-border, #e2e8f0)', textAlign: 'center' }}>
       <style>{bounceStyles}</style>
       <p style={{ fontWeight: 800, fontSize: '1.25rem', marginBottom: '2rem', color: 'var(--text-main, #0f172a)' }}>이 문서 공유하기</p>
       

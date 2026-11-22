@@ -3,7 +3,6 @@ import '../whitebook.css';
 import { career } from '../data';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ShareButtons from '../components/ShareButtons';
 import React from 'react';
 import { useLangRoute, type Lang } from '../components/useLangRoute';
 
@@ -119,10 +118,6 @@ export default function CareerPage({ initialLang = 'ko' }: { initialLang?: Lang 
           </div>
         </section>
       ))}
-
-      <div className="container" style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '3rem' }}>
-        <ShareButtons title="화이트스타일치과 김준헌 원장 - 33년 진료 철학과 경력 타임라인" />
-      </div>
 
       <Footer />
     </main>

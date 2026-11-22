@@ -4,7 +4,6 @@ import '../whitebook.css';
 import { awardCategories } from '../data';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ShareButtons from '../components/ShareButtons';
 import React from 'react';
 import { useLangRoute, type Lang } from '../components/useLangRoute';
 export default function AwardsPage({ initialLang = 'ko' }: { initialLang?: Lang }) {
@@ -80,10 +79,6 @@ export default function AwardsPage({ initialLang = 'ko' }: { initialLang?: Lang 
           </div>
         </section>
       ))}
-
-      <div className="container" style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '3rem' }}>
-        <ShareButtons title="화이트스타일치과 김준헌 원장 - 수상 및 인증 갤러리" />
-      </div>
 
       <Footer />
     </main>

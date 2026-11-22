@@ -1,5 +1,4 @@
 import React from 'react';
-import ShareButtons from '@/app/components/ShareButtons';
 import { FadeIn, FadeInStaggerContainer, FadeInStaggerItem } from './animations/FadeIn';
 import { RevealText } from './animations/RevealText';
 
@@ -138,8 +137,6 @@ export default function TreatmentLayout({
           </div>
         </section>
       )}
-
-      <ShareButtons title={title} />
     </article>
   );
 }

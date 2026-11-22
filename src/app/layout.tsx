@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
 import FloatingCTA from "@/app/components/FloatingCTA";
 import { SocialIconStrip } from "@/app/components/Footer";
+import ShareButtons from "@/app/components/ShareButtons";
 import "./globals.css";
 
 const clinicJsonLd = {
@@ -585,9 +586,14 @@ export default function RootLayout({
             {children}
           </main>
 
-          {/* Global Bouncing SNS Profile Links (rel="me") */}
-          <div className="border-t border-slate-200 bg-[#f8fafc] py-8 text-center">
-            <SocialIconStrip />
+          {/* Global Bouncing Share Buttons ("이 문서 공유하기") & Official SNS Profile Links */}
+          <div className="bg-[#f8fafc] px-4 pt-4 pb-8 text-center">
+            <div className="max-w-3xl mx-auto">
+              <ShareButtons />
+            </div>
+            <div className="pt-6">
+              <SocialIconStrip />
+            </div>
           </div>
 
           {/* Footer with Medical Law Compliance Disclaimer */}
