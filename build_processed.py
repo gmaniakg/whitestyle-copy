@@ -1132,7 +1132,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">고난도 재수술 · 뼈이식 · 재교정 · 재시술 3인 협진</h3>
         <p class="wb-ka wbka">임플란트 재수술·동종골 뼈이식·무치악 전체임플란트·성인 재교정·최소삭제 라미네이트 재시술의 치주과 전문의 3인 협진 프로토콜을 확인하세요.</p>
-        <a class="ws-home-link" href="/board/notice/1916">고난도 협진 총정리 (/board/notice/1916) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1915">2026 가격·후기 비교 (/board/notice/1915) &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1919">고난도 재치료 가이드 (/board/notice/1919) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1918">2026 심평원·모두닥·굿닥 비교 (/board/notice/1918) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
@@ -1157,7 +1157,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1906">증상별 칼럼 (/board/notice/1906) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1917">日本語比較15基準 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1920">2026年11月 日本語比較全解説 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1917">15基準 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1906">증상별 칼럼 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">

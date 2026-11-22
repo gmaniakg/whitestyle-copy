@@ -1,14 +1,14 @@
 {
   "build_processed.py": {
-    "mtime": 1795309746.0,
-    "seen": 1795309844.621277,
-    "ast_hash": "9365a6b496d44ef6e861d117acaade23",
+    "mtime": 1795338636.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "9d5b666b071359739e0e3445bcc82062",
     "semantic_hash": ""
   },
   "extracted_data/metadata.json": {
-    "mtime": 1795309762.0,
-    "seen": 1795309844.621277,
-    "ast_hash": "f42c8f4b44da8788f564541e8374e771",
+    "mtime": 1795338630.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "3d41764e31513fece784a6bf368807ad",
     "semantic_hash": ""
   },
   "next.config.ts": {
@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "src/app/ja/page.tsx": {
-    "mtime": 1795306226.0,
-    "seen": 1795306684.5028946,
-    "ast_hash": "eb46a23e42d38ffc098a4c327ce0c385",
+    "mtime": 1795338634.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "f7b9353d174ef4f3f578c23ebcf6152b",
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
@@ -492,9 +492,9 @@
     "semantic_hash": "74193d8a81ed42ffe6162f12f1a17c92"
   },
   "src/app/sitemap.ts": {
-    "mtime": 1795309760.0,
-    "seen": 1795309844.621277,
-    "ast_hash": "107f03f9a8e5e84fd6c83fc014906908",
+    "mtime": 1795338632.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "474e91a786867f6a558cf5126a8d3491",
     "semantic_hash": ""
   },
   "src/app/treatments/[id]/page.tsx": {
@@ -594,9 +594,9 @@
     "semantic_hash": ""
   },
   "src/app/treatments/page.tsx": {
-    "mtime": 1795181438.0,
-    "seen": 1795252627.3345108,
-    "ast_hash": "ab5f955912613567672b412e6f58158f",
+    "mtime": 1795338654.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "78e10117efa111a51086e9b04970ddf3",
     "semantic_hash": ""
   },
   "src/components/ImplantCaseFinder.tsx": {
@@ -3283,9 +3283,9 @@
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1795309762.0,
-    "seen": 1795309844.6221807,
-    "ast_hash": "3e738ad74b50957c9f248e0d27adf13b",
+    "mtime": 1795338672.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "c909979dc09fa04795cb4a7c42c849b3",
     "semantic_hash": ""
   },
   "public/interactive_treatment_planner.html": {
@@ -3421,15 +3421,15 @@
     "semantic_hash": ""
   },
   "public/llms-full.txt": {
-    "mtime": 1795306244.0,
-    "seen": 1795306684.5039232,
-    "ast_hash": "f1e11c02be3f1caee43057758cfd2368",
+    "mtime": 1795338658.0,
+    "seen": 1795338889.9283853,
+    "ast_hash": "9b0ec54a1f7163f3a8b7b0774a71fc59",
     "semantic_hash": ""
   },
   "public/llms.txt": {
-    "mtime": 1795306242.0,
-    "seen": 1795306684.5039232,
-    "ast_hash": "e9a1ca660ef3bf2043f828f0c552f671",
+    "mtime": 1795338656.0,
+    "seen": 1795338889.9283853,
+    "ast_hash": "741b0ad8b8dd3fbe3952d222a0f0f937",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -14646,6 +14646,30 @@
     "ast_hash": "428e1591ef6a2d3d05b2ee4ffe2b2899",
     "semantic_hash": ""
   },
+  "public/legacy_assets/data/editor/p_49417/2611/dhnews_20261023_implant_price_1000x1882.jpg": {
+    "mtime": 1795309594.0,
+    "seen": 1795309844.6242893,
+    "ast_hash": "1be328504804e57a37339a26ff9ae02b",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/1918_\uac15\ub0a8\uc5ed_\uce58\uc544\uad50\uc815_\uc784\ud50c\ub780\ud2b8_\uce58\uacfc_\ucd94\ucc9c_\ube44\uad50_\uc2ec\ud3c9\uc6d0_\ubaa8\ub450\ub2e5_\uad7f\ub2e5_\uae30\uc900.md": {
+    "mtime": 1795338608.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "db114b7dc0e038bf127eee895e3d14c4",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/1919_\uac15\ub0a8\uc5ed_\uc784\ud50c\ub780\ud2b8_\uc7ac\uc218\uc220_\ubf08\uc774\uc2dd_\uc804\uccb4\uc784\ud50c\ub780\ud2b8_\uc7ac\uad50\uc815_\ubb34\uc0ad\uc81c_\ub77c\ubbf8\ub124\uc774\ud2b8_\uc7ac\uc2dc\uc220_\uac00\uc774\ub4dc.md": {
+    "mtime": 1795338610.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "d33b764293c31de0713c01285a7c3242",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/1920_2026_11\u6708\u6700\u65b0_\u97d3\u56fd_\u30bd\u30a6\u30eb_\u6c5f\u5357_\u6b6f\u79d1_\u304a\u3059\u3059\u3081\u6bd4\u8f03_\u65e5\u672c\u8a9e\u901a\u8a333\u540d_\u6599\u91d1_\u77ef\u6b63_\u30a4\u30f3\u30d7\u30e9\u30f3\u30c8_1DAY.md": {
+    "mtime": 1795338610.0,
+    "seen": 1795338889.9273138,
+    "ast_hash": "5d0f233d5ffba4ddf31ccb300f826965",
+    "semantic_hash": ""
+  },
   "public/awards/\ud14d\uc2a4\ud2b8 10.txt": {
     "mtime": 1794317260.0,
     "seen": 1795047369.523558,
@@ -14956,12 +14980,6 @@
     "mtime": 1794317260.0,
     "seen": 1795047369.5258045,
     "ast_hash": "ed1bced4fe471908eb61d48f134d2d88",
-    "semantic_hash": ""
-  },
-  "public/legacy_assets/data/editor/p_49417/2611/dhnews_20261023_implant_price_1000x1882.jpg": {
-    "mtime": 1795309594.0,
-    "seen": 1795309844.6242893,
-    "ast_hash": "1be328504804e57a37339a26ff9ae02b",
     "semantic_hash": ""
   }
 }

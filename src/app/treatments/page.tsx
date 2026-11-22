@@ -59,6 +59,23 @@ export default async function TreatmentsPage() {
         <p className="text-slate-600 max-w-3xl text-base sm:text-lg leading-[1.95]">
           강남역 11·12번 출구 도보 1분 거리의 화이트스타일치과의원은 1994년 개원(33년 전통) 이래 서울대졸 · 단국대 외래교수 · 교정학 박사 김준헌 병원장, 이봉진 대표원장, 박선혜 원장(보건복지부 인증 치주과 전문의) 3인 원장단 협진과 3단계 통증 완화 마취 시스템을 바탕으로 치아교정·최소삭제 심미보철·임플란트를 책임 진료합니다.
         </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link href="/treatments/implant/reoperation" className="px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-blue-700 transition-colors">
+            임플란트 재수술 센터 &rarr;
+          </Link>
+          <Link href="/treatments/orthodontics/recorrection" className="px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-blue-700 transition-colors">
+            성인 치아교정 재교정 &rarr;
+          </Link>
+          <Link href="/treatments/aesthetic/retreatment" className="px-5 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-blue-700 transition-colors">
+            라미네이트 재시술 클리닉 &rarr;
+          </Link>
+          <Link href="/board/notice/1919" className="px-5 py-2.5 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-sm font-bold hover:bg-blue-100 transition-colors">
+            고난도 재치료 6대 가이드 &rarr;
+          </Link>
+          <Link href="/board/notice/1918" className="px-5 py-2.5 rounded-xl bg-blue-50 text-blue-800 border border-blue-200 text-sm font-bold hover:bg-blue-100 transition-colors">
+            2026 심평원·모두닥·굿닥 비교 기준 &rarr;
+          </Link>
+        </div>
       </FadeIn>
 
       <FadeInStaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.15}>

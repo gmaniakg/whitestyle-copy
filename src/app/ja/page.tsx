@@ -309,8 +309,11 @@ export default function JapaneseLandingPage() {
               専任日本語通訳3名常駐（直通：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a> ／ LINE ID：whitestyle1）
             </span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/board/notice/1917" className="text-[#1e3a8a] font-extrabold underline">
-                【2026最新比較】韓国・江南 歯科おすすめ15の選定基準 →
+              <Link href="/board/notice/1920" className="text-[#1e3a8a] font-extrabold underline">
+                【2026年11月最新比較】韓国・江南 歯科おすすめ全解説 →
+              </Link>
+              <Link href="/board/notice/1917" className="text-[#1e3a8a] font-bold underline">
+                おすすめ15の選定基準 →
               </Link>
               <Link href="/board/notice/1914" className="text-[#1e3a8a] font-bold underline">
                 チェックリスト →
