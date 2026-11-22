@@ -219,12 +219,12 @@ export default function PricePage() {
           </p>
           <div className="flex flex-wrap gap-2.5 text-sm font-bold">
             <a
-              href="https://m.place.naver.com/hospital/34892/review/visitor"
+              href="https://m.place.naver.com/hospital/11533882/review/visitor"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3.5 py-2 rounded-lg bg-white border border-ws-rule text-ws-navy hover:bg-ws-panel active:bg-ws-rule focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-navy transition-colors"
             >
-              네이버 영수증 후기 (34892) ↗
+              네이버 영수증 후기 (11533882) ↗
             </a>
             <a
               href="https://www.goodoc.co.kr/hospitals/43229"

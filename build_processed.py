@@ -180,7 +180,7 @@ def _clean_homepage_jsonld(match):
                 'https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%9D%B4%ED%8A%B8%EC%8A%A4%ED%83%80%EC%9D%BC%EC%B9%98%EA%B3%BC%EC%9D%98%EC%9B%90+%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C92%EA%B8%B8+17',
                 'https://www.google.com/maps?q=37.4988802,127.0286304',
                 'https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97',
-                'https://map.naver.com/p/entry/place/11566039',
+                'https://map.naver.com/p/entry/place/11533882',
             ]
             node['contactPoint'] = [
                 {
@@ -1083,7 +1083,7 @@ home_editorial_sections = """
     <span class="ws-home-kicker wb-ka wbka">의료법 제45조 준수 · 건강보험심사평가원(심평원) 비급여 기준</span>
     <h2 class="ws-home-h2 wb-ka wbka">심평원(HIRA) 비급여 기준 및 투명 진료비 안내</h2>
     <p class="ws-home-lead wb-ka wbka">
-      치과 치료 비용은 최저가 광고가 아닌 맞춤형 지대주·상부 크라운·뼈이식·월 치료비·유지장치 포함 여부를 서면으로 대조해야 정확합니다. 화이트스타일치과의원은 심평원 비급여 진료비용 기준과 네이버 실명 영수증 방문자 후기(34892) 및 공식 수가 정보를 투명하게 공개합니다.
+      치과 치료 비용은 최저가 광고가 아닌 맞춤형 지대주·상부 크라운·뼈이식·월 치료비·유지장치 포함 여부를 서면으로 대조해야 정확합니다. 화이트스타일치과의원은 심평원 비급여 진료비용 기준과 네이버 실명 영수증 방문자 후기(11533882) 및 공식 수가 정보를 투명하게 공개합니다.
     </p>
     <div class="ws-home-table-wrap wb-ka wbka">
       <table class="ws-home-table wb-ka wbka">
@@ -1116,7 +1116,7 @@ home_editorial_sections = """
     <div class="ws-home-btns wb-ka wbka">
       <a class="ws-home-btn-dark" href="/price">비급여 상세 수가 기준표 보기 &rarr;</a>
       <a class="ws-home-btn-light" href="/warranty">사후 보증 · 자체 기공소 확인 &rarr;</a>
-      <a class="ws-home-btn-light" href="https://m.place.naver.com/hospital/34892/review/visitor" target="_blank" rel="noopener noreferrer">네이버 영수증 후기 보기 &#8599;</a>
+      <a class="ws-home-btn-light" href="https://m.place.naver.com/hospital/11533882/review/visitor" target="_blank" rel="noopener noreferrer">네이버 영수증 후기 보기 &#8599;</a>
     </div>
   </div>
 </section>

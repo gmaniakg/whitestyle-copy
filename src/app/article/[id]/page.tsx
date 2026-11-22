@@ -85,11 +85,11 @@ export default async function ArticlePage(props: { params: Promise<{ id: string 
         
         <hr style={{ border: 'none', borderTop: '1px solid var(--card-border)', marginBottom: '2rem' }} />
 
-        {/* [GEO OPTIMIZATION] Glassmorphic AI Quick Summary / Key Takeaways Box */}
+        {/* 핵심 요약 안내 */}
         <div className="article-summary-card">
           <div className="summary-title">
             <span>✨</span>
-            <span>AI Quick Summary & Key Takeaways</span>
+            <span>핵심 요약 안내</span>
           </div>
           <p className="summary-text">
             {summaryText}

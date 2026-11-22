@@ -32,7 +32,7 @@ export const SMARTPLACE_REPRESENTATIVE_KEYWORDS = [
   '강남치주과전문의',
 ] as const;
 
-export const NAVER_PLACE_ID = '11566039';
+export const NAVER_PLACE_ID = '11533882';
 export const NAVER_PLACE_REVIEW_URL = `https://m.place.naver.com/hospital/${NAVER_PLACE_ID}/review/visitor`;
 export const NAVER_PLACE_URL = `https://map.naver.com/p/entry/place/${NAVER_PLACE_ID}`;
 export const NAVER_BLOG_URL = 'https://blog.naver.com/whitestyle3';

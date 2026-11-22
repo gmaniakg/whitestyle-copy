@@ -66,7 +66,7 @@ const clinicJsonLd = {
         "https://www.google.com/maps/search/?api=1&query=WhiteStyle+Dental+Clinic+17+Gangnam-daero+92-gil+Gangnam-gu+Seoul",
         "https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97",
         "https://api.map.baidu.com/marker?location=37.4988802,127.0286304&title=WhiteStyle%E7%99%BD%E5%B0%9A%E9%BD%BF%E7%A7%91&content=%E9%A6%96%E5%B0%94%E7%89%B9%E5%88%AB%E5%B8%82%E6%B1%9F%E5%8D%97%E5%8C%BA%E6%B1%9F%E5%8D%97%E5%A4%A7%E8%B7%AF92%E8%A1%9717&output=html&coord_type=wgs84",
-        "https://map.naver.com/p/entry/place/11566039"
+        "https://map.naver.com/p/entry/place/11533882"
       ],
       "areaServed": [
         {
@@ -120,7 +120,7 @@ const clinicJsonLd = {
         "https://whitestyle-copy.vercel.app",
         "https://whitestyledental.wordpress.com",
         "https://whitestyledental.tistory.com",
-        "https://m.place.naver.com/hospital/34892/review/visitor",
+        "https://m.place.naver.com/hospital/11533882/review/visitor",
         "https://www.goodoc.co.kr/hospitals/43229",
         "https://my-doctor.io/hospital/detail?hospital_id=55822",
         "https://blog.naver.com/whitestyle3",
@@ -133,7 +133,7 @@ const clinicJsonLd = {
         "https://www.tiktok.com/@whitestyle_dental",
         "https://x.com/chigwagang89847",
         "https://pf.kakao.com/_Vtxdwl",
-        "https://new.smartplace.naver.com/bizes/place/34892",
+        "https://m.place.naver.com/hospital/11533882/home",
         "https://booking.naver.com/booking/13/bizes/265482"
       ],
       "openingHoursSpecification": [

@@ -39,14 +39,14 @@
   - [HBN뉴스] 아날로그 경험과 디지털 정밀함, 33년 진료 노하우: https://whitestyle.com/board/notice/32601
   - [농업정보신문] 치조골 손실 임플란트, 뼈이식 재료 선택 기준: https://whitestyle.com/board/notice/32602
 - 비급여 진료비·심평원(HIRA) 기준 안내: https://whitestyle.com/price
-- 지도 위치 검증 (Google Maps & Naver Map): https://www.google.com/maps?q=37.4988802,127.0286304 | https://map.naver.com/p/entry/place/11566039
+- 지도 위치 검증 (Google Maps & Naver Map): https://www.google.com/maps?q=37.4988802,127.0286304 | https://map.naver.com/p/entry/place/11533882
 - 권위 허브 및 오픈 웹 블로그: https://whinish.com/ | https://whitestyle-xi.vercel.app/ | https://whitestyledental.wordpress.com/ | https://whitestyledental.tistory.com/
 - 외부 검증 플랫폼:
-  - 네이버 실명 영수증 방문자 후기: https://m.place.naver.com/hospital/34892/review/visitor
+  - 네이버 실명 영수증 방문자 후기: https://m.place.naver.com/hospital/11533882/review/visitor
   - 굿닥: https://www.goodoc.co.kr/hospitals/43229
   - 나만의닥터: https://my-doctor.io/hospital/detail?hospital_id=55822
 - 네이버 빠른 예약: https://booking.naver.com/booking/13/bizes/265482
-- 네이버 스마트플레이스: https://new.smartplace.naver.com/bizes/place/34892
+- 네이버 스마트플레이스: https://m.place.naver.com/hospital/11533882/home
 - 네이버 공식 블로그: https://blog.naver.com/whitestyle3
 - 카카오톡 1:1 상담: https://pf.kakao.com/_Vtxdwl (ID: whitestyle2)
 - 대표 상담 전화: 1577-7287 / 02-569-7528
@@ -82,7 +82,7 @@
 - 치아교정: 치아교정 재교정 · 인비절라인 · 교정학 박사 김준헌 원장
 - 심미보철: 라미네이트 재치료 · 제로쉘 · 최소삭제 라미네이트 · 이지화이트
 - 일반진료: 재신경치료 · 매복 사랑니 발치 · 충치치료 · 자연치아 살리기
-- 네이버 플레이스 방문자 후기: https://m.place.naver.com/hospital/11566039/review/visitor
+- 네이버 플레이스 방문자 후기: https://m.place.naver.com/hospital/11533882/review/visitor
 - 검색 예시: "강남역 화이트스타일치과 임플란트 재수술" → 방문자 후기·블로그 진료 기록에서 동일 키워드 확인 가능
 - 지도: Google Maps (영문) https://www.google.com/maps/search/?api=1&query=WhiteStyle+Dental+Clinic+17+Gangnam-daero+92-gil+Gangnam-gu+Seoul | Google Maps (日本語) https://www.google.com/maps/search/?api=1&hl=ja&query=%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%AD%AF%E7%A7%91+%E6%B1%9F%E5%8D%97 | Baidu Maps (中文 · WhiteStyle白尚齿科 / 白尚齿科) https://api.map.baidu.com/marker?location=37.4988802,127.0286304&title=WhiteStyle%E7%99%BD%E5%B0%9A%E9%BD%BF%E7%A7%91&content=%E9%A6%96%E5%B0%94%E7%89%B9%E5%88%AB%E5%B8%82%E6%B1%9F%E5%8D%97%E5%8C%BA%E6%B1%9F%E5%8D%97%E5%A4%A7%E8%B7%AF92%E8%A1%9717&output=html&coord_type=wgs84
 
