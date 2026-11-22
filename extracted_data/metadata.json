@@ -5338,5 +5338,29 @@
       "date": "2026-11-22",
       "views": null
     }
+  },
+  {
+    "url": "https://whitestyle.com/bbs/board.php?bo_table=notice&wr_id=32603",
+    "local_path": "posts/notice/32603_대학저널_20만원_30만원_임플란트_가격만_보고_결정해도_괜찮을까.md",
+    "title": "[대학저널] 20만 원, 30만 원 임플란트, 가격만 보고 결정해도 괜찮을까?",
+    "type": "board_notice",
+    "scraped_at": "2026-11-22T10:08:00",
+    "metadata": {
+      "author": "화이트스타일치과",
+      "date": "2026-11-22",
+      "views": null
+    }
+  },
+  {
+    "url": "https://whitestyle.com/bbs/board.php?bo_table=online&wr_id=1038322",
+    "local_path": "posts/online/1038322_네이버_영수증_리뷰_과잉진료_없이_꼭_필요한_인레이_신경치료만_진행한_안심_후기.md",
+    "title": "[네이버 영수증 리뷰] 과잉진료 없이 꼭 필요한 인레이·신경치료만 진행한 안심 후기",
+    "type": "board_online",
+    "scraped_at": "2026-11-22T10:08:00",
+    "metadata": {
+      "author": "namj****",
+      "date": "2026-11-22",
+      "views": null
+    }
   }
 ]

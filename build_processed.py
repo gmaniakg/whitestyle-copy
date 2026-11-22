@@ -914,18 +914,18 @@ new_html = re.sub(r'<img\b[^>]*>', _ensure_img_alt, new_html, flags=re.I)
 
 new_notice_block = (
     '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
+    '<a href="/board/notice/32603" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[대학저널] 20만 원, 30만 원 임플란트, 가격만 보고 결정해도 괜찮을까?</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.22</div></a>'
+    '<a href="/board/notice/32602" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[농업정보신문] 치조골 손실 임플란트, 뼈이식 재료 선택 기준</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.21</div></a>'
     '<a href="/board/notice/1909" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[임상칼럼] 강남역 치과 비교 기준과 임플란트·교정·라미네이트 재치료 가이드</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.20</div></a>'
     '<a href="/board/notice/32601" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[HBN뉴스] 아날로그 경험과 디지털 정밀함, 33년 진료 노하우</div>'
     '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.20</div></a>'
-    '<a href="/board/notice/32599" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[메가경제] 33년 임플란트 진료, 재수술은 무엇이 다를까</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.19</div></a>'
-    '<a href="/board/notice/32598" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[미디어파인] 임플란트, 사전 진단과 사후관리가 핵심</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.18</div></a>'
     '</div>'
 )
 
@@ -941,17 +941,17 @@ print("Notice widget updated:", n_notice)
 new_online_block = (
     '<div class="content_455546_8_24_24_ez_widget_board_list disFlex gap10 flex_column">'
     '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 과잉진료 없이 꼭 필요한 인레이·신경치료만 진행한 안심 후기</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.22</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 인레이 탈락 당일 무통 충치치료·교정 추천</div>'
+    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.21</div></a>'
+    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 치아교정 더블체크, 세심한 사후케어</div>'
     '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.20</div></a>'
     '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
     '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 방문 후기] 통증 없이 편안했던 강남역 스케일링</div>'
     '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.19</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 한국스카우트연맹 지정, 강남역 33년 치과</div>'
-    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.18</div></a>'
-    '<a href="/consult" class="content_455546_8_24_24_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_24_ez_widget_board_title flex_1 ez_translate_target">[네이버 영수증 리뷰] 치료 잘 받고 갑니다 강남역 접근성 추천</div>'
-    '<div class="content_455546_8_24_24_ez_widget_board_date">26.11.17</div></a>'
     '</div>'
 )
 
