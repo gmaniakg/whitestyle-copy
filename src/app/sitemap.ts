@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/api';
 import { EVIDENCE_QA_LIST } from '@/data/evidenceQa';
 import { CLINICAL_VIDEO_ARTICLES } from '@/data/videoArchive';
 
-const SITE_LAST_MODIFIED = new Date('2026-11-22T18:10:00+09:00');
+const SITE_LAST_MODIFIED = new Date('2026-11-23T22:05:00+09:00');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://whitestyle.com';
@@ -197,6 +197,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.99,
     },
     {
+      url: `${baseUrl}/board/notice/1921`,
+      lastModified: SITE_LAST_MODIFIED,
+      changeFrequency: 'daily',
+      priority: 0.99,
+    },
+    {
       url: `${baseUrl}/board/notice/32600`,
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: 'weekly',
@@ -385,8 +391,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/ja`,
       lastModified: SITE_LAST_MODIFIED,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      changeFrequency: 'daily',
+      priority: 0.99,
     },
     {
       url: `${baseUrl}/ja/whitening`,

@@ -1396,8 +1396,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, true);
 
-  /* 6) 화타펫(하야니) 독립 플로팅 3D 덴탈 & 화타톡 지인 메신저 위젯 */
-  var HWATA_CHAT_API = "/api/chat";
+  /* 6) 화타펫(하야니) 독립 플로팅 3D 덴탈 위젯 (#hd_pops_5975 탈출 + 투명 68px 3D 펫 + 인라인 Q&A) */
+  var HWATA_CHAT_API = "https://whinish.com/api/chat";
   var hwataStartTime = Date.now();
   var hwataInteractions = 0;
 
@@ -1471,10 +1471,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     hideLegacyPopup5975();
 
-    var IDLE_IMG = "/ai-pet/assets3d/hwata_3d_idle.png";
-    var WAVE_IMG = "/ai-pet/assets3d/hwata_3d_wave.png";
-    var CROWN_IMG = "/ai-pet/assets3d/hwata_3d_costume_crown.png";
-    try { new Image().src = IDLE_IMG; new Image().src = WAVE_IMG; new Image().src = CROWN_IMG; } catch (e) {}
+    var IDLE_IMG = "https://whinish.com/ai-pet/assets3d/hwata_3d_idle.png";
+    var WAVE_IMG = "https://whinish.com/ai-pet/assets3d/hwata_3d_wave.png";
+    try { new Image().src = IDLE_IMG; new Image().src = WAVE_IMG; } catch (e) {}
 
     var COPY = isJaMode ? {
       petAlt: "ホワイトスタイル歯科 ハヤニ 3D歯科アシスタント",
@@ -1492,28 +1491,28 @@ document.addEventListener("DOMContentLoaded", function () {
       thinking: "回答を準備しています…",
       fallback: "ただいま接続が混み合っています。急ぎのご相談は代表電話（+82-2-569-7528 / LINE ID: whitestyle1・日本語通訳3名常駐）にてご案内いたします。",
       links: [
-        { label: "화타톡", href: "/messenger" },
-        { label: "3D体験", href: "/ai-pet/ja/" },
+        { label: "3D体験", href: "https://whinish.com/ai-pet/ja/" },
+        { label: "無料導入", href: "https://whinish.com/ai-pet/download.html" },
         { label: "来院予約", href: "https://booking.naver.com/booking/13/bizes/265482" }
       ]
     } : {
       petAlt: "화이트스타일치과 하야니 3D 덴탈 마스코트",
-      petAria: "화타톡 지인 톡 및 치과 Q&A 열기",
-      pillText: "지인들과 화타톡 대화 · 치과 궁금증 바로 물어보세요",
-      title: "화타톡 · 하야니 24시",
+      petAria: "하야니 치과 Q&A 열기",
+      pillText: "교정·임플란트 궁금증, 하야니에게 바로 물어보세요",
+      title: "하야니 24시 덴탈 Q&A",
       subtitle: "1994년 개원 33년 전통 화이트스타일치과",
-      welcome: "안녕하세요. 치아교정·심미보철·임플란트·연말 스케일링 궁금증을 아래에서 고르시거나 한 줄로 바로 물어보세요.",
-      chips: ["연말 스케일링?", "교정 기간/비용?", "무통 마취?"],
+      welcome: "안녕하세요. 치아교정·심미보철·임플란트 궁금증을 아래에서 고르시거나 한 줄로 바로 물어보세요.",
+      chips: ["교정 기간/비용?", "무통 마취?", "일본어 상담?"],
       placeholder: "궁금한 점을 한 줄로 입력하세요",
       send: "질문",
       minLabel: "작게 접기",
       hideLabel: "오늘 숨기기",
-      restoreAria: "화타펫 다시 열기",
+      restoreAria: "하야니 다시 열기",
       thinking: "답변을 정리하고 있어요…",
       fallback: "잠시 연결이 원활하지 않습니다. 빠른 상담은 네이버 예약 또는 대표전화 1577-7287 / 02-569-7528로 바로 도와드리겠습니다.",
       links: [
-        { label: "화타톡 전체화면", href: "/messenger" },
-        { label: "3D 아바타", href: "/ai-pet/" },
+        { label: "3D 웹 체험", href: "https://whinish.com/ai-pet/" },
+        { label: "무료 분양", href: "https://whinish.com/ai-pet/download.html" },
         { label: "네이버 예약", href: "https://booking.naver.com/booking/13/bizes/265482" }
       ]
     };
@@ -1573,24 +1572,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ".hwp-paw-btn:hover{opacity:1;transform:scale(1.06);}",
       ".hwp-wrap.is-hidden .hwp-dock,.hwp-wrap.is-hidden .hwp-drawer{display:none!important;}",
       ".hwp-wrap.is-hidden .hwp-paw-btn{display:inline-flex;}",
-      ".hwp-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.12);background:rgba(2,6,23,0.35);}",
-      ".hwp-tab{flex:1;padding:8px 6px;border:0;background:transparent;color:#94A3B8;font-size:12px;font-weight:700;cursor:pointer;border-bottom:2px solid transparent;}",
-      ".hwp-tab.is-active{color:#FFFFFF;border-bottom-color:#38BDF8;background:rgba(255,255,255,0.06);}",
-      ".hwp-talk-pane{display:none;flex-direction:column;flex:1 1 auto;min-height:0;}",
-      ".hwp-talk-pane.is-active{display:flex;}",
-      ".hwp-ai-pane{display:none;flex-direction:column;flex:1 1 auto;min-height:0;}",
-      ".hwp-ai-pane.is-active{display:flex;}",
-      ".hwp-talk-room{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;gap:6px;align-items:center;}",
-      ".hwp-talk-sel{flex:1;min-width:0;height:30px;padding:0 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(15,23,42,0.85);color:#FFFFFF;font-size:11.5px;outline:none;}",
-      ".hwp-talk-gate{padding:18px 14px;text-align:center;display:flex;flex-direction:column;gap:10px;font-size:12px;line-height:1.65;color:#E2E8F0;}",
-      ".hwp-talk-gate-acts{display:flex;gap:6px;justify-content:center;}",
-      ".hwp-gate-btn{padding:8px 13px;border-radius:9px;background:#0284C7;color:#FFFFFF;font-size:12px;font-weight:700;text-decoration:none;border:0;cursor:pointer;}",
-      ".hwp-gate-btn.alt{background:rgba(255,255,255,0.14);}",
-      ".hwp-file-btn{height:34px;padding:0 9px;border:1px solid rgba(255,255,255,0.22);border-radius:10px;background:rgba(255,255,255,0.08);color:#F8FAFC;font-size:11.5px;font-weight:700;cursor:pointer;flex-shrink:0;}",
-      ".hwp-badge{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#DC2626;color:#FFFFFF;font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center;border:2px solid #FFFFFF;}",
-      ".hwp-badge.is-visible{display:inline-flex;}",
-      ".hwp-msg-sender{font-size:10.5px;font-weight:700;color:#93C5FD;margin-bottom:2px;}",
-      ".hwp-msg-file{display:block;margin-top:4px;font-size:11px;color:#FDE68A;text-decoration:underline;}",
       "@media (max-width:480px){.hwp-pill{white-space:normal;left:74px;max-width:calc(100vw - 98px);font-size:12px;}}"
     ].join("");
     root.appendChild(styleEl);
@@ -1695,74 +1676,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     drawer.appendChild(hdr);
-
-    var tabsEl = document.createElement("div");
-    tabsEl.className = "hwp-tabs";
-    var tabTalkBtn = document.createElement("button");
-    tabTalkBtn.type = "button";
-    tabTalkBtn.className = "hwp-tab is-active";
-    tabTalkBtn.textContent = "지인 톡";
-    var tabAiBtn = document.createElement("button");
-    tabAiBtn.type = "button";
-    tabAiBtn.className = "hwp-tab";
-    tabAiBtn.textContent = "닥터 화타 AI";
-    tabsEl.appendChild(tabTalkBtn);
-    tabsEl.appendChild(tabAiBtn);
-    drawer.appendChild(tabsEl);
-
-    var talkPane = document.createElement("div");
-    talkPane.className = "hwp-talk-pane is-active";
-    var talkGateEl = document.createElement("div");
-    talkGateEl.className = "hwp-talk-gate";
-    talkGateEl.innerHTML = '<div><strong>로그인 후 지인들과 화타톡 대화</strong></div><div>비보험 진료 인증 시 지인 방 개설과 최대 500MB · P2P 무제한 파일 전송이 가능합니다.</div><div class="hwp-talk-gate-acts"><a class="hwp-gate-btn" href="/login?callbackUrl=%2F">로그인</a><a class="hwp-gate-btn alt" href="/register?callbackUrl=%2F">회원가입</a></div>';
-
-    var talkActiveWrap = document.createElement("div");
-    talkActiveWrap.style.cssText = "display:none;flex-direction:column;flex:1 1 auto;min-height:0;";
-    var talkRoomBar = document.createElement("div");
-    talkRoomBar.className = "hwp-talk-room";
-    var talkRoomSelect = document.createElement("select");
-    talkRoomSelect.className = "hwp-talk-sel";
-    talkRoomBar.appendChild(talkRoomSelect);
-
-    var talkLogEl = document.createElement("div");
-    talkLogEl.className = "hwp-log";
-
-    var talkFormEl = document.createElement("form");
-    talkFormEl.className = "hwp-form";
-    var talkFileInput = document.createElement("input");
-    talkFileInput.type = "file";
-    talkFileInput.style.display = "none";
-    var talkFileBtn = document.createElement("button");
-    talkFileBtn.type = "button";
-    talkFileBtn.className = "hwp-file-btn";
-    talkFileBtn.textContent = "파일";
-    var talkInp = document.createElement("input");
-    talkInp.type = "text";
-    talkInp.className = "hwp-inp wb-ka wbka";
-    talkInp.placeholder = "지인에게 메시지...";
-    talkInp.setAttribute("autocomplete", "off");
-    var talkSendBtn = document.createElement("button");
-    talkSendBtn.type = "submit";
-    talkSendBtn.className = "hwp-send";
-    talkSendBtn.textContent = "전송";
-    talkFormEl.appendChild(talkFileBtn);
-    talkFormEl.appendChild(talkInp);
-    talkFormEl.appendChild(talkSendBtn);
-    talkFormEl.appendChild(talkFileInput);
-
-    talkActiveWrap.appendChild(talkRoomBar);
-    talkActiveWrap.appendChild(talkLogEl);
-    talkActiveWrap.appendChild(talkFormEl);
-    talkPane.appendChild(talkGateEl);
-    talkPane.appendChild(talkActiveWrap);
-    drawer.appendChild(talkPane);
-
-    var aiPane = document.createElement("div");
-    aiPane.className = "hwp-ai-pane";
-    aiPane.appendChild(logEl);
-    aiPane.appendChild(chipsEl);
-    aiPane.appendChild(formEl);
-    drawer.appendChild(aiPane);
+    drawer.appendChild(logEl);
+    drawer.appendChild(chipsEl);
+    drawer.appendChild(formEl);
     drawer.appendChild(linksEl);
 
     var dock = document.createElement("div");
@@ -1775,10 +1691,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var petImg = document.createElement("img");
     petImg.src = IDLE_IMG;
     petImg.alt = COPY.petAlt;
-    var badgeEl = document.createElement("span");
-    badgeEl.className = "hwp-badge";
     petBtn.appendChild(petImg);
-    petBtn.appendChild(badgeEl);
 
     var pillBtn = document.createElement("button");
     pillBtn.type = "button";
@@ -1804,191 +1717,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var isBusy = false;
     var pillTimer = null;
     var autoPillShown = false;
-    var activeTab = "talk";
-    var wsSessionUser = null;
-    var currentTalkRoomId = "room_jaw_stretch";
-
-    function switchTab(nextTab) {
-      activeTab = nextTab;
-      tabTalkBtn.classList.toggle("is-active", nextTab === "talk");
-      tabAiBtn.classList.toggle("is-active", nextTab === "ai");
-      talkPane.classList.toggle("is-active", nextTab === "talk");
-      aiPane.classList.toggle("is-active", nextTab === "ai");
-      if (nextTab === "talk" && wsSessionUser && isOpen) {
-        loadTalkMessages();
-      }
-    }
-    tabTalkBtn.addEventListener("click", function () { switchTab("talk"); });
-    tabAiBtn.addEventListener("click", function () { switchTab("ai"); });
-
-    function syncHeaderLoginBar(user) {
-      var box = document.getElementById("content_header_1_rt_12_ez_button_set");
-      if (!box || !user) return;
-      var displayName = (user.name || (user.email || "").split("@")[0] || "회원").slice(0, 12);
-      var html =
-        '<a class="ez_button ez_button_set_item login" href="/messenger" style="background:#0f294a;color:#ffffff;border-color:#0f294a;"><span>' +
-        displayName.replace(/</g, "&lt;") + '님 · 화타톡</span></a>' +
-        '<a class="ez_button ez_button_set_item mypage" href="/api/auth/signout?callbackUrl=%2F"><span>로그아웃</span></a>';
-      if (user.isOwnerAdmin) {
-        html += '<a class="ez_button ez_button_set_item" href="/admin/members" style="grid-column:span 2;background:#fffbeb;color:#92400e;border-color:#fcd34d;"><span>회원관리 (원장 전용)</span></a>';
-      }
-      box.innerHTML = html;
-    }
-
-    function loadTalkBootstrap() {
-      if (!wsSessionUser) return;
-      fetch("/api/messenger/v1/bootstrap", { credentials: "same-origin", cache: "no-store" })
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (data) {
-          if (!data || !data.ok) return;
-          var rooms = data.rooms || [];
-          var unread = 0;
-          var prevVal = talkRoomSelect.value || currentTalkRoomId;
-          talkRoomSelect.innerHTML = "";
-          rooms.forEach(function (rm) {
-            unread += rm.unreadCount || 0;
-            var opt = document.createElement("option");
-            opt.value = rm.roomId;
-            opt.textContent = rm.roomName + (rm.unreadCount > 0 ? " (" + rm.unreadCount + ")" : "");
-            talkRoomSelect.appendChild(opt);
-          });
-          if (rooms.some(function (rm) { return rm.roomId === prevVal; })) {
-            currentTalkRoomId = prevVal;
-          } else if (rooms[0]) {
-            currentTalkRoomId = rooms[0].roomId;
-          }
-          talkRoomSelect.value = currentTalkRoomId;
-          if (unread > 0) {
-            badgeEl.textContent = String(unread);
-            badgeEl.classList.add("is-visible");
-          } else {
-            badgeEl.classList.remove("is-visible");
-          }
-        })
-        .catch(function () {});
-    }
-
-    function loadTalkMessages() {
-      if (!wsSessionUser || !currentTalkRoomId) return;
-      fetch("/api/messenger/v1/rooms/" + encodeURIComponent(currentTalkRoomId) + "/messages", {
-        credentials: "same-origin",
-        cache: "no-store"
-      })
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (data) {
-          if (!data || !data.ok) return;
-          talkLogEl.innerHTML = "";
-          var msgs = (data.messages || []).slice(-30);
-          msgs.forEach(function (m) {
-            var isMe = !m.isBot && wsSessionUser && m.userId === wsSessionUser.id;
-            var div = document.createElement("div");
-            div.className = "hwp-msg wb-ka wbka " + (isMe ? "user" : "bot");
-            if (!isMe) {
-              var senderEl = document.createElement("div");
-              senderEl.className = "hwp-msg-sender";
-              senderEl.textContent = m.sender + (m.isCracked && !m.isBot ? " [인증]" : "");
-              div.appendChild(senderEl);
-            }
-            var txtEl = document.createElement("div");
-            txtEl.textContent = m.text || "";
-            div.appendChild(txtEl);
-            if (Array.isArray(m.attachments)) {
-              m.attachments.forEach(function (att) {
-                var a = document.createElement("a");
-                a.className = "hwp-msg-file";
-                a.href = att.url + "?download=1";
-                a.textContent = att.fileName + " 다운로드";
-                div.appendChild(a);
-              });
-            }
-            talkLogEl.appendChild(div);
-          });
-          talkLogEl.scrollTop = talkLogEl.scrollHeight;
-        })
-        .catch(function () {});
-    }
-
-    talkRoomSelect.addEventListener("change", function () {
-      currentTalkRoomId = talkRoomSelect.value;
-      loadTalkMessages();
-    });
-
-    talkFormEl.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var txt = (talkInp.value || "").trim();
-      if (!txt || !wsSessionUser) return;
-      talkInp.value = "";
-      fetch("/api/messenger/v1/rooms/" + encodeURIComponent(currentTalkRoomId) + "/messages", {
-        method: "POST",
-        credentials: "same-origin",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: txt, messageType: "TEXT" })
-      })
-        .then(function () { loadTalkMessages(); })
-        .catch(function () {});
-    });
-
-    talkFileBtn.addEventListener("click", function () {
-      talkFileInput.click();
-    });
-
-    talkFileInput.addEventListener("change", function () {
-      var f = talkFileInput.files && talkFileInput.files[0];
-      talkFileInput.value = "";
-      if (!f || !wsSessionUser) return;
-      if (f.size > 3.5 * 1024 * 1024) {
-        if (confirm("3.5MB 초과 대용량 파일은 전체화면 화타톡(최대 500MB · P2P 무제한)에서 바로 전송할 수 있습니다. 이동할까요?")) {
-          window.location.href = "/messenger?room=" + encodeURIComponent(currentTalkRoomId);
-        }
-        return;
-      }
-      var fd = new FormData();
-      fd.append("roomId", currentTalkRoomId);
-      fd.append("file", f);
-      fetch("/api/messenger/v1/upload/fallback", {
-        method: "POST",
-        credentials: "same-origin",
-        body: fd
-      })
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (data && data.ok && data.attachment && data.attachment.id) {
-            return fetch("/api/messenger/v1/rooms/" + encodeURIComponent(currentTalkRoomId) + "/messages", {
-              method: "POST",
-              credentials: "same-origin",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                text: f.name,
-                messageType: f.type && f.type.indexOf("image/") === 0 ? "IMAGE" : "FILE",
-                attachmentIds: [data.attachment.id]
-              })
-            });
-          }
-        })
-        .then(function () { loadTalkMessages(); })
-        .catch(function () {});
-    });
-
-    fetch("/api/ai-pet/session", { credentials: "same-origin", cache: "no-store" })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (data && data.authenticated && data.user) {
-          wsSessionUser = data.user;
-          syncHeaderLoginBar(data.user);
-          talkGateEl.style.display = "none";
-          talkActiveWrap.style.display = "flex";
-          if (data.user.isVerifiedNonInsured) {
-            ava.src = CROWN_IMG;
-            if (!isOpen) petImg.src = CROWN_IMG;
-          }
-          loadTalkBootstrap();
-          setInterval(function () {
-            loadTalkBootstrap();
-            if (isOpen && activeTab === "talk") loadTalkMessages();
-          }, 4000);
-        }
-      })
-      .catch(function () {});
 
     try {
       if (window.sessionStorage && window.sessionStorage.getItem(STORAGE_HIDE_KEY) === "1") {
@@ -2004,9 +1732,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isOpen) {
         petImg.src = WAVE_IMG;
         hidePill();
-        if (activeTab === "talk" && wsSessionUser) loadTalkMessages();
       } else {
-        petImg.src = (wsSessionUser && wsSessionUser.isVerifiedNonInsured) ? CROWN_IMG : IDLE_IMG;
+        petImg.src = IDLE_IMG;
       }
       updateDockPosition();
     }
@@ -2149,7 +1876,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     petBtn.addEventListener("mouseleave", function () {
       if (!isOpen) {
-        petImg.src = (wsSessionUser && wsSessionUser.isVerifiedNonInsured) ? CROWN_IMG : IDLE_IMG;
+        petImg.src = IDLE_IMG;
         if (pillBtn.classList.contains("is-visible")) {
           showPill(1200);
         }
@@ -4192,7 +3919,7 @@ url('https://cdn.myreal.co.kr/css/_mir/font/roboto/Roboto-Light.ttf')format('tru
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1920">2026年11月 日本語比較全解説 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1917">15基準 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1906">증상별 칼럼 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1921">2026徹底比較完全ガイド &rarr;</a> · <a class="ws-home-link" href="/board/notice/1920">11月比較 &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">

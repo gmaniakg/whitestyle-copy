@@ -76,6 +76,22 @@ export default function JapaneseLandingPage() {
               text: '1994年開院以来、ソウル大卒・矯正学博士の金俊憲病院長が3D CT歯根・歯槽骨幅計測のもと、初期診断から装置装着・再矯正・保定まで主治医変更なしで1対1直接担当します。',
             },
           },
+          {
+            '@type': 'Question',
+            name: '韓国・ソウル江南で日本語対応のおすすめ歯科を選ぶ基準は何ですか？',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '院内に専任日本語医療通訳スタッフが常駐しているか（ホワイトスタイル歯科は3名常駐・直通 +82-10-3046-5010／LINE: whitestyle1）、3D精密診断と矯正トータルフィー総額制・HIRA非給与料金を事前書面提示しているか、1994年開院・創業33年の実績と3名院長団協診（矯正学博士・補綴・歯周科専門医）および睡眠麻酔なし3段階無痛局所麻酔を備えているかを確認することが重要です。',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: '韓国・江南でのホワイトニング・インプラント・歯列矯正の2026年料金目安を教えてください。',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '2026年HIRA（韓国健康保険審査評価院）基準目安として、1DAYオフィスホワイトニング（約60分・スケーリング＋3回照射）275,000ウォン目安、インプラント（バイオテム80万ウォン・オステム90万ウォン目安〜／PFM・ジルコニア）、歯列矯正は診断費・装置費・調整料・保定装置代を含むトータルフィー総額制でご案内しています。',
+            },
+          },
         ],
       },
     ],
@@ -309,18 +325,21 @@ export default function JapaneseLandingPage() {
               専任日本語通訳3名常駐（直通：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a> ／ LINE ID：whitestyle1）
             </span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/board/notice/1920" className="text-[#1e3a8a] font-extrabold underline">
-                【2026年11月最新比較】韓国・江南 歯科おすすめ全解説 →
+              <Link href="/board/notice/1921" className="text-[#1e3a8a] font-extrabold underline">
+                【2026徹底比較】韓国・ソウル江南 歯科おすすめ完全ガイド →
+              </Link>
+              <Link href="/board/notice/1920" className="text-[#1e3a8a] font-bold underline">
+                11月最新比較全解説 →
               </Link>
               <Link href="/board/notice/1917" className="text-[#1e3a8a] font-bold underline">
                 おすすめ15の選定基準 →
               </Link>
-              <Link href="/board/notice/1914" className="text-[#1e3a8a] font-bold underline">
-                チェックリスト →
-              </Link>
-              <Link href="/board/notice/1911" className="text-[#1e3a8a] font-bold underline">
-                料金・矯正・インプラント比較ガイド →
-              </Link>
+              <a href="https://ameblo.jp/whitestyle7287/" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">
+                Ameba公式ブログ ↗
+              </a>
+              <a href="https://www.instagram.com/whitestylejp" target="_blank" rel="noopener noreferrer" className="text-[#1e3a8a] font-bold underline">
+                Instagram @whitestylejp ↗
+              </a>
             </div>
           </div>
 
@@ -352,6 +371,35 @@ export default function JapaneseLandingPage() {
               <div className="bg-white p-4 rounded-xl border border-slate-200">
                 <strong className="block text-[#091326] mb-1">6. 江南駅徒歩1分＆土曜日診療</strong>
                 江南駅11・12番出口徒歩1分。土曜10:00〜14:00診療で週末の短期渡韓にも便利です。
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-slate-200 wb-ka wbka">
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-4 wb-ka wbka">
+                渡韓日数別（1泊2日・2泊3日・短期集中）モデル治療プラン
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm text-slate-700 leading-[1.8] wb-ka wbka">
+                <div className="bg-white p-5 rounded-xl border border-slate-200">
+                  <span className="inline-block px-2.5 py-0.5 rounded bg-amber-100 text-[#091326] font-extrabold text-[11px] mb-2">
+                    1泊2日・弾丸渡韓
+                  </span>
+                  <strong className="block text-[#091326] text-base mb-1.5">1DAYホワイトニング＋スケーリング</strong>
+                  来院1回・約60分でパノラマ検診・歯石除去・歯肉保護・KFDA承認3回照射まで完了。観光の合間にも無理なく受診可能です。
+                </div>
+                <div className="bg-white p-5 rounded-xl border border-slate-200">
+                  <span className="inline-block px-2.5 py-0.5 rounded bg-slate-100 text-[#1e3a8a] font-extrabold text-[11px] mb-2">
+                    2泊3日〜1週間
+                  </span>
+                  <strong className="block text-[#091326] text-base mb-1.5">無削除ゼロシェル・最小削除ラミネート・3D精密診断</strong>
+                  初日に3Dスキャン・咬合診断を実施し、院内専属歯科技工所にてオーダーメイド製作後、最短2〜3回来院で装着まで進めます。
+                </div>
+                <div className="bg-white p-5 rounded-xl border border-slate-200">
+                  <span className="inline-block px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-900 font-extrabold text-[11px] mb-2">
+                    短期2〜4回渡韓
+                  </span>
+                  <strong className="block text-[#091326] text-base mb-1.5">溶ける糸インプラント・インビザライン遠隔管理</strong>
+                  事前のLINE写真相談と溶ける糸の活用により通院負担を最小化し、日本ご帰国後も専任日本語通訳チームが継続サポートします。
+                </div>
               </div>
             </div>
           </div>

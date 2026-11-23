@@ -1157,7 +1157,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1920">2026年11月 日本語比較全解説 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1917">15基準 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1906">증상별 칼럼 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1921">2026徹底比較完全ガイド &rarr;</a> · <a class="ws-home-link" href="/board/notice/1920">11月比較 &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">

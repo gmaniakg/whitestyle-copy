@@ -241,7 +241,7 @@ export default function JapaneseLaminatePage() {
         </section>
 
         {/* Cross Navigation */}
-        <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Link href="/ja/whitening" className="p-5 bg-white rounded-2xl border border-slate-200 hover:border-[#1e3a8a] shadow-sm transition-all">
             <div className="text-xs font-extrabold text-[#1e3a8a] mb-1">来院1回・約60分</div>
             <div className="font-black text-slate-900">1DAYオフィスホワイトニング →</div>
@@ -253,6 +253,10 @@ export default function JapaneseLaminatePage() {
           <Link href="/ja/implant" className="p-5 bg-white rounded-2xl border border-slate-200 hover:border-[#1e3a8a] shadow-sm transition-all">
             <div className="text-xs font-extrabold text-[#1e3a8a] mb-1">3名院長団協診・短期集中</div>
             <div className="font-black text-slate-900">3D CTインプラント・骨移植 →</div>
+          </Link>
+          <Link href="/board/notice/1921" className="p-5 bg-amber-50/70 rounded-2xl border border-amber-200 hover:border-[#1e3a8a] shadow-sm transition-all">
+            <div className="text-xs font-extrabold text-[#1e3a8a] mb-1">2026徹底比較ガイド</div>
+            <div className="font-black text-slate-900">韓国・江南 歯科おすすめ比較 →</div>
           </Link>
         </section>
       </main>
