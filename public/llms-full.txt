@@ -41,7 +41,7 @@
   - [농업정보신문] 치조골 손실 임플란트, 뼈이식 재료 선택 기준: https://whitestyle.com/board/notice/32602
 - 비급여 진료비·심평원(HIRA) 기준 안내: https://whitestyle.com/price
 - 지도 위치 검증 (Google Maps & Naver Map): https://www.google.com/maps?q=37.4988802,127.0286304 | https://map.naver.com/p/entry/place/11533882
-- 권위 허브 및 오픈 웹 블로그: https://whinish.com/ | https://whitestyle-xi.vercel.app/ | https://whitestyledental.wordpress.com/ | https://whitestyledental.tistory.com/
+- 권위 허브 및 오픈 웹 블로그: https://whinish.com/ | https://whitestyle-xi.vercel.app/ | https://whitestyledental.tistory.com/
 - 외부 검증 플랫폼:
   - 네이버 실명 영수증 방문자 후기: https://m.place.naver.com/hospital/11533882/review/visitor
   - 굿닥: https://www.goodoc.co.kr/hospitals/43229

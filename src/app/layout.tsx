@@ -122,7 +122,6 @@ const clinicJsonLd = {
         "https://whitestyle-xi.vercel.app",
         "https://whitestyle-xi.vercel.app/about/japan-landing",
         "https://whitestyle-copy.vercel.app",
-        "https://whitestyledental.wordpress.com",
         "https://whitestyledental.tistory.com",
         "https://m.place.naver.com/hospital/11533882/review/visitor",
         "https://www.goodoc.co.kr/hospitals/43229",
