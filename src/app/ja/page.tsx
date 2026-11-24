@@ -119,9 +119,9 @@ export default function JapaneseLandingPage() {
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.15] mb-6">
-            <span className="block text-slate-100 mb-2">1994年開院・創業33年の信頼と実績が証明する</span>
-            <span className="text-[#fde68a]">韓国・江南 ホワイトスタイル歯科</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.15] mb-6 wb-ka wbka">
+            <span className="block text-slate-100 mb-2">韓国・ソウル江南 歯科おすすめ比較｜創業33年・日本語対応3名常駐</span>
+            <span className="text-[#fde68a]">ホワイトスタイル歯科医院（矯正・インプラント・1DAYホワイトニング）</span>
           </h1>
 
           <p className="text-base sm:text-xl md:text-2xl text-slate-200 max-w-3xl mb-10 leading-relaxed font-medium">
@@ -325,8 +325,11 @@ export default function JapaneseLandingPage() {
               専任日本語通訳3名常駐（直通：<a href="tel:+82-10-3046-5010" className="text-[#1e3a8a] font-extrabold underline">+82-10-3046-5010</a> ／ LINE ID：whitestyle1）
             </span>
             <div className="flex flex-wrap gap-4">
-              <Link href="/board/notice/1923" className="text-[#1e3a8a] font-extrabold underline">
-                【2026年11月最新】江南歯科おすすめ15選 比較基準 →
+              <Link href="/board/notice/1925" className="text-[#1e3a8a] font-extrabold underline">
+                【2026最新比較】江南歯科おすすめ15基準・料金・通訳ガイド →
+              </Link>
+              <Link href="/board/notice/1923" className="text-[#1e3a8a] font-bold underline">
+                11月最新15選比較 →
               </Link>
               <Link href="/board/notice/1921" className="text-[#1e3a8a] font-bold underline">
                 2026徹底比較完全ガイド →

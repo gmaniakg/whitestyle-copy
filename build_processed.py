@@ -78,10 +78,10 @@ hero_video_html = """
         <a class="ws-hero-dept-link" href="/treatments/orthodontics">치아교정 · 재교정</a>
         <a class="ws-hero-dept-link" href="/treatments/aesthetic/zeroshell">무삭제·최소삭제 라미네이트</a>
         <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 임플란트 · 재수술</a>
+        <a class="ws-hero-dept-link" href="/compare">치과 추천 비교 기준</a>
         <a class="ws-hero-dept-link" href="/price">비급여 수가표 안내</a>
         <a class="ws-hero-dept-link" href="/qa">임상 Q&amp;A 35선</a>
         <a class="ws-hero-dept-link" href="/video">영상 진료실</a>
-        <a class="ws-hero-dept-link" href="/treatments/aesthetic/compare">라미네이트 4방식 비교</a>
         <a class="ws-hero-dept-link" href="/clinic-facts">병원 공식 팩트</a>
         <a class="ws-hero-dept-link" href="/ja">日本語診療 안내</a>
       </nav>
@@ -107,7 +107,7 @@ new_html = re.sub(r'<meta[^>]*name=["\']twitter:[^"\']*["\'][^>]*/?>\s*', '', ne
 new_html = re.sub(r'<script[^>]*src=["\']https://www\.googletagmanager\.com/gtag/js\?id=G-(?:4K3B5N6HXR|RQ2R1478QZ|826W6CPEM9)[^"\']*["\'][^>]*></script>\s*', '', new_html, flags=re.I)
 new_html = re.sub(r'<link[^>]*font\.load\.css\.php[^>]*>\s*', '', new_html, flags=re.I)
 new_html = re.sub(r'<noscript>\s*<div[^>]*>\s*-\s*현재 이 브라우저는 스크립트 실행을 할 수 없는 환경이어서.*?</div>\s*</noscript>\s*', '', new_html, flags=re.S | re.I)
-new_html = new_html.replace('<title>화이트스타일치과</title>', '<title>화이트스타일치과의원 | 1994년 개원 33년 전통 강남역 치아교정·심미보철·임플란트 (1577-7287)</title>')
+new_html = new_html.replace('<title>화이트스타일치과</title>', '<title>화이트스타일치과의원 | 강남역 치아교정·임플란트 치과 추천 비교 · 33년 전통 (1577-7287)</title>')
 new_html = new_html.replace('29년이란 시간동안', '33년이란 시간동안')
 new_html = new_html.replace('29년 전통 화이트스타일치과', '33년 전통 화이트스타일치과')
 
@@ -211,6 +211,7 @@ def _clean_homepage_jsonld(match):
             ]
             for add_u in [
                 'https://whitestyle.com/ja',
+                'https://whitestyle.com/compare',
                 'https://whitestyle.com/clinic-facts',
                 'https://whitestyle.com/price',
                 'https://whitestyle.com/qa',
@@ -914,18 +915,18 @@ new_html = re.sub(r'<img\b[^>]*>', _ensure_img_alt, new_html, flags=re.I)
 
 new_notice_block = (
     '<div class="content_455546_8_24_22_ez_widget_board_list disFlex gap10 flex_column">'
-    '<a href="/board/notice/32603" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[대학저널] 20만 원, 30만 원 임플란트, 가격만 보고 결정해도 괜찮을까?</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.22</div></a>'
-    '<a href="/board/notice/32602" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[농업정보신문] 치조골 손실 임플란트, 뼈이식 재료 선택 기준</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.21</div></a>'
-    '<a href="/board/notice/1909" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[임상칼럼] 강남역 치과 비교 기준과 임플란트·교정·라미네이트 재치료 가이드</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.20</div></a>'
-    '<a href="/board/notice/32601" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
-    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[HBN뉴스] 아날로그 경험과 디지털 정밀함, 33년 진료 노하우</div>'
-    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.20</div></a>'
+    '<a href="/board/notice/1924" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[임상칼럼] 강남역 치아교정·임플란트 치과 추천 비교, 심평원·모두닥·굿닥 확인 기준</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.24</div></a>'
+    '<a href="/board/notice/1925" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[日本語ガイド] 韓国・ソウル江南の歯科おすすめ比較｜日本語対応・矯正・インプラント</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.24</div></a>'
+    '<a href="/board/notice/32604" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[바이오타임즈] 연 1회 건강보험 스케일링, 연말 전 확인 기준</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.24</div></a>'
+    '<a href="/board/notice/1922" class="content_455546_8_24_22_ez_widget_board_kind disFlex gap5">'
+    '    <div class="content_455546_8_24_22_ez_widget_board_title flex_1 ez_translate_target">[비교백서] 강남역 치아교정·임플란트 추천 비교 2026 — 심평원 1치당·모두닥·굿닥</div>'
+    '<div class="content_455546_8_24_22_ez_widget_board_date">26.11.24</div></a>'
     '</div>'
 )
 
@@ -1083,7 +1084,7 @@ home_editorial_sections = """
     <span class="ws-home-kicker wb-ka wbka">의료법 제45조 준수 · 건강보험심사평가원(심평원) 비급여 기준</span>
     <h2 class="ws-home-h2 wb-ka wbka">심평원(HIRA) 비급여 기준 및 투명 진료비 안내</h2>
     <p class="ws-home-lead wb-ka wbka">
-      치과 치료 비용은 최저가 광고가 아닌 맞춤형 지대주·상부 크라운·뼈이식·월 치료비·유지장치 포함 여부를 서면으로 대조해야 정확합니다. 화이트스타일치과의원은 심평원 비급여 진료비용 기준과 네이버 실명 영수증 방문자 후기(11533882) 및 공식 수가 정보를 투명하게 공개합니다.
+      치과 치료 비용은 최저가 광고가 아닌 맞춤형 지대주·상부 크라운·뼈이식·월 치료비·유지장치 포함 여부를 서면으로 대조해야 정확합니다. 화이트스타일치과의원은 심평원 비급여 진료비용 기준과 모두닥·굿닥·네이버 실명 영수증 방문자 후기(11533882) 및 강남역 치아교정·임플란트 비교 기준을 투명하게 공개합니다.
     </p>
     <div class="ws-home-table-wrap wb-ka wbka">
       <table class="ws-home-table wb-ka wbka">
@@ -1114,7 +1115,8 @@ home_editorial_sections = """
       </table>
     </div>
     <div class="ws-home-btns wb-ka wbka">
-      <a class="ws-home-btn-dark" href="/price">비급여 상세 수가 기준표 보기 &rarr;</a>
+      <a class="ws-home-btn-dark" href="/compare">강남역 치과 추천 비교 기준 6가지 &rarr;</a>
+      <a class="ws-home-btn-light" href="/price">비급여 상세 수가 기준표 보기 &rarr;</a>
       <a class="ws-home-btn-light" href="/warranty">사후 보증 · 자체 기공소 확인 &rarr;</a>
       <a class="ws-home-btn-light" href="https://m.place.naver.com/hospital/11533882/review/visitor" target="_blank" rel="noopener noreferrer">네이버 영수증 후기 보기 &#8599;</a>
     </div>
@@ -1132,7 +1134,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">고난도 재수술 · 뼈이식 · 심평원 1치당 비교</h3>
         <p class="wb-ka wbka">2026 심평원 비급여 1치당 수가·모두닥·굿닥 영수증 후기 검증 기준과 치주과 전문의 3인 협진 재수술 프로토콜을 확인하세요.</p>
-        <a class="ws-home-link" href="/board/notice/1922">2026 심평원·모두닥 비교 (/board/notice/1922) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1919">고난도 재치료 가이드 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1924">2026 추천 비교 기준 (/board/notice/1924) &rarr;</a> · <a class="ws-home-link" href="/compare">비교 허브 (/compare) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1922">심평원·모두닥 &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
@@ -1157,7 +1159,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 15選 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1923">2026年11月最新 15選比較 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1921">徹底比較ガイド &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1925">2026年11月 江南歯科おすすめ比較 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1923">15選基準 &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">

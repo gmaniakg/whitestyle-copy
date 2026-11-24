@@ -3,14 +3,14 @@ import Link from 'next/link';
 import PriceDirectoryClient from './PriceDirectoryClient';
 
 export const metadata: Metadata = {
-  title: '비급여 진료비·심평원 기준 안내 · 투명 수가표',
+  title: '강남역 치과 비급여 진료비·심평원·모두닥·굿닥 비교 기준 및 투명 수가표',
   description:
-    '의료법 제45조 및 건강보험심사평가원(심평원) 비급여 기준에 따른 강남역 화이트스타일치과의원 임플란트·보철(인레이·크라운)·레진·제증명수수료 전체 고지 수가표와 만 65세 건강보험(30%), 치아교정 총액제 포함 항목 안내.',
+    '의료법 제45조 및 건강보험심사평가원(심평원) 비급여 기준에 따른 강남역 화이트스타일치과의원 임플란트 1치당(바이오템 80만·오스템 90만)·보철(인레이·크라운)·치아교정 총액제·모두닥·굿닥 비교 기준 안내.',
   alternates: { canonical: 'https://whitestyle.com/price' },
   openGraph: {
-    title: '비급여 진료비·심평원 기준 안내 · 투명 수가표 | 화이트스타일치과의원',
+    title: '강남역 치과 비급여 진료비·심평원·모두닥·굿닥 비교 기준 | 화이트스타일치과의원',
     description:
-      '1994년 개원 33년 전통. 심평원 비급여 전체 고지 수가(2026-10-14 기준) 및 항목 검색, 치아교정 총액제·임플란트·심미보철 포함/별도 항목 투명 안내.',
+      '1994년 개원 33년 전통. 심평원 비급여 전체 고지 수가(2026-10-14 기준), 치아교정 총액제, 임플란트 1치당 및 모두닥·굿닥 영수증 후기 비교 기준 안내.',
     url: 'https://whitestyle.com/price',
     type: 'website',
     locale: 'ko_KR',
@@ -245,6 +245,18 @@ export default function PricePage() {
               className="px-3.5 py-2 rounded-lg bg-white border border-ws-rule text-ws-navy hover:bg-ws-panel active:bg-ws-rule focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-navy transition-colors"
             >
               병원 공식 팩트 ↗
+            </Link>
+            <Link
+              href="/compare"
+              className="px-3.5 py-2 rounded-lg bg-ws-navy text-white hover:bg-ws-navy-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-navy transition-colors"
+            >
+              강남역 치과 추천 비교 기준 6가지 (/compare) ↗
+            </Link>
+            <Link
+              href="/board/notice/1924"
+              className="px-3.5 py-2 rounded-lg bg-white border border-ws-rule text-ws-navy hover:bg-ws-panel active:bg-ws-rule focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-navy transition-colors"
+            >
+              2026 모두닥·굿닥 비교 가이드 ↗
             </Link>
             <Link
               href="/board/notice/1922"
