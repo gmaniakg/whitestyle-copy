@@ -28,9 +28,9 @@ const COPY: Record<PageKey, Record<Lang, { title: string; description: string }>
         'Yahoo! JAPAN韓国歯科部門3年連続第1位、コネスト口コミ125件。江南駅12番出口すぐ、ソウル大学歯学部卒・歯学博士 金俊憲院長（33年臨床、62,000症例以上）の歯科矯正・ホワイトニング・ラミネート・インプラント専門クリニック公式ホワイトブック。',
     },
     en: {
-      title: 'WhiteStyle Dental Clinic · Dr. Jun-Heon Kim | Orthodontics & Implants, Gangnam Seoul',
+      title: 'WhiteStyle Dental Clinic (ホワイトスタイル歯科医院) | Gangnam Seoul Orthodontics & Implants · Est. 1994',
       description:
-        'Official white book of WhiteStyle Dental Clinic, Gangnam Station Exit 12, Seoul. Led by Dr. Jun-Heon Kim (SNU graduate, Ph.D. in Orthodontics, 33+ years of experience, 62,000+ cases) — orthodontics and dental implants.',
+        'WhiteStyle Dental Clinic (화이트스타일치과의원 / ホワイトスタイル歯科医院), Gangnam Station Exit 11 & 12, Seoul. Founded 1994 (33 years). Led by Dr. Jun-Heon Kim (SNU DDS, Ph.D. in Orthodontics), Dr. Bong-Jin Lee & Dr. Seon-Hye Park (Periodontist). 3 Japanese coordinators (+82-10-3046-5010), 125+ Konest reviews, #1 Yahoo Japan.',
     },
   },
   press: {

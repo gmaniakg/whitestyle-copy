@@ -82,7 +82,7 @@ export default function PricePage() {
         name: '강남역 화이트스타일치과의원 비급여 진료비 및 심평원 기준 안내',
         inLanguage: 'ko-KR',
         specialty: 'Dentistry',
-        lastReviewed: '2026-11-21',
+        lastReviewed: '2026-11-24',
         description:
           '의료법 제45조 및 건강보험심사평가원(심평원) 비급여 진료비용 기준(2026-10-14 고지)에 따라 임플란트·인레이·크라운·레진·제증명수수료 전체 항목과 만 65세 건강보험(30%), 치아교정 총액제, 최소삭제 라미네이트의 포함·별도 항목을 투명하게 안내합니다.',
         reviewedBy: [
@@ -247,6 +247,12 @@ export default function PricePage() {
               병원 공식 팩트 ↗
             </Link>
             <Link
+              href="/board/notice/1922"
+              className="px-3.5 py-2 rounded-lg bg-white border border-ws-rule text-ws-navy hover:bg-ws-panel active:bg-ws-rule focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-navy transition-colors"
+            >
+              2026 심평원·모두닥 비교 칼럼 ↗
+            </Link>
+            <Link
               href="/board/notice/1909"
               className="px-3.5 py-2 rounded-lg bg-white border border-ws-rule text-ws-navy hover:bg-ws-panel active:bg-ws-rule focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ws-navy transition-colors"
             >
@@ -288,7 +294,7 @@ export default function PricePage() {
 
       <ul className="text-xs text-ws-muted space-y-1.5 list-disc pl-4 leading-relaxed">
         <li>실제 진료비는 환자의 구강 구조, 치조골 밀도, 뼈이식·치주치료 동반 여부 및 치료 계획에 따라 달라지며, 3D CT 정밀 진단 후 상세 안내됩니다.</li>
-        <li>원내 비치된 비급여 진료비용 고지 책자 및 상담 데스크에서도 전체 세부 항목을 열람하실 수 있습니다. (비급여 고지 기준일: 2026-10-14 / 최종 의료진 검토일: 2026-11-21 / 검수: 김준헌 병원장, 이봉진 대표원장, 박선혜 원장)</li>
+        <li>원내 비치된 비급여 진료비용 고지 책자 및 상담 데스크에서도 전체 세부 항목을 열람하실 수 있습니다. (비급여 고지 기준일: 2026-10-14 / 최종 의료진 검토일: 2026-11-24 / 검수: 김준헌 병원장, 이봉진 대표원장, 박선혜 원장)</li>
       </ul>
     </div>
   );
