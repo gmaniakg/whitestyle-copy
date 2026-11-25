@@ -139,7 +139,7 @@ const SEED_MESSAGES_BY_ROOM: Record<
     },
     {
       sender: '강남직장인_은지',
-      text: '은~ 발음 해보니까 진짜 턱에 힘 빠지네요! 단톡방 친구들 5명 모아서 치아미백 1회 무료 혜택도 같이 받으려고요 ㅎㅎ',
+      text: '은~ 발음 해보니까 진짜 턱에 힘 빠지네요! 3D 화타펫 아바타 꾸미고 화타톡 메신저도 써보려고요 ㅎㅎ',
       isBot: false,
       isCracked: true,
       avatar: { species: 'cat', ear: 'perk', costume: 'none', bg: 'peach' },
@@ -251,7 +251,7 @@ async function generateDoctorHwataReply(text: string, sender = '익명'): Promis
       const sys = [
         '너는 강남역 11·12번 출구 도보 1분 대승빌딩 B1·1·2층(강남대로92길 17, 1577-7287 / 02-569-7528)에 위치한 1994년 개원 33년 전통 화이트스타일치과의원(서울대졸·단국대 외래교수·교정학 박사 김준헌 병원장, 이봉진 대표원장, 박선혜 치주과 전문의 원장 3인 협진, 3단계 통증 완화 마취)의 단톡방 상주 AI 닥터 화타야.',
         '2027 수능 수험생 이벤트: 수험표 지참 시 교정·라미네이트 등 비급여(비보험) 진료 진행 수험생에게 전문가 치아미백 1회를 무료 제공하며 상세 안내는 https://whitestyle.com/events/suneung 에 있어(건강보험 급여 단독 진료 제외).',
-        '2~3문장 이내로 다정하고 전문적인 치의학 임상 답변을 해줘. 비급여 보상은 친구 5명 초대 시 치아미백 1회 무료 혜택 및 2027 수능 수험표 지참 비급여 진료 시 치아미백 1회 무료 혜택을 정확히 안내해.',
+        '2~3문장 이내로 다정하고 전문적인 치의학 임상 답변을 해줘. 원내 정회원 인증 시 화타톡 메신저 프라이빗 방·대용량 파일 전송 기능과 2027 수능 수험표 지참 비급여 진료 시 치아미백 1회 무료 혜택을 정확히 안내해.',
       ].join(' ');
       const res = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`,
@@ -306,7 +306,7 @@ export async function GET(req: NextRequest) {
           invitedCount,
           targetCount: 5,
           remaining: Math.max(0, 5 - invitedCount),
-          rewardLabel: '친구 5명 초대 시 치아미백 1회 무료',
+          rewardLabel: '지인 5명 초대 시 VIP 스페셜 아바타 패스 해금',
           voucherCode: ref?.voucherCode ?? null,
         },
         { headers: corsHeaders }
@@ -446,7 +446,7 @@ export async function POST(req: NextRequest) {
         data: {
           roomId,
           sender: '🐾 닥터 화타 (화이트스타일 AI)',
-          text: `환영합니다! ${hostNickname}님의 단톡방이 개설되었습니다 🎉 [친구 초대 링크 복사]를 눌러 친구들을 불러보세요. 친구 5명 초대 시 치아미백 1회 무료 혜택을 받으실 수 있으며, 궁금할 땐 '@화타'를 부르면 바로 답변해 드려요!`,
+          text: `환영합니다! ${hostNickname}님의 단톡방이 개설되었습니다 🎉 [친구 초대 링크 복사]를 눌러 지인들을 불러보세요. 지인 5명 초대 시 스페셜 VIP 아바타 패스가 해금되며, 궁금할 땐 '@화타'를 부르면 바로 답변해 드려요!`,
           isBot: true,
           isCracked: false,
           avatarSpecies: 'dog',
@@ -558,7 +558,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 3. 리퍼럴 친구 초대 확인 (referral — 친구 5명 초대 시 치아미백 1회 무료 단일화)
+    // 3. 리퍼럴 지인 초대 확인 (referral — 지인 5명 초대 시 VIP 스페셜 아바타 패스)
     if (action === 'referral') {
       const refCode = String(body.refCode || body.ref || '').trim().toUpperCase().slice(0, 32);
       const guestId = String(body.guestId || member.id).trim().slice(0, 64);
@@ -596,7 +596,7 @@ export async function POST(req: NextRequest) {
         const newCount = record.invitedCount + 1;
         let voucherCode = record.voucherCode;
         if (newCount >= 5 && !voucherCode) {
-          voucherCode = `WS-WHITEN-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+          voucherCode = `WS-VIP-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
         }
 
         record = await prisma.hwataReferral.update({
@@ -619,12 +619,12 @@ export async function POST(req: NextRequest) {
           invitedCount: record.invitedCount,
           targetCount: 5,
           remaining,
-          rewardLabel: '친구 5명 초대 시 치아미백 1회 무료',
+          rewardLabel: '지인 5명 초대 시 VIP 스페셜 아바타 패스 해금',
           voucherCode: record.voucherCode,
           message:
             record.invitedCount >= 5
-              ? `🎉 축하합니다! 친구 5명 초대 달성으로 [치아미백 1회 무료] 쿠폰(${record.voucherCode})이 발급되었습니다!`
-              : `🎉 친구 합류 완료! 현재 ${record.invitedCount}/5명 (치아미백 1회 무료까지 ${remaining}명 남음)`,
+              ? `🎉 축하합니다! 지인 5명 초대 달성으로 [VIP 스페셜 아바타 패스](${record.voucherCode})가 발급되었습니다!`
+              : `🎉 지인 합류 완료! 현재 ${record.invitedCount}/5명 (VIP 아바타 패스까지 ${remaining}명 남음)`,
         },
         { headers: corsHeaders }
       );

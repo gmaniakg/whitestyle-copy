@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
     const rawChartNo = String(body.chartNo || body.chartNumber || body.chart_no || '').trim();
 
     // -------------------------------------------------------------------------
-    // MODE 0-A: 차트번호 단일 입력 인스턴트 크랙 (whitestyle.com 로그인 필수)
+    // MODE 0-A: 차트번호 단일 입력 정회원 즉시 인증 (whitestyle.com 로그인 필수)
     // -------------------------------------------------------------------------
     if (mode === 'crack' || rawChartNo) {
       const member = await requireHwataMember(req);
@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
           targetCount: 5,
           remaining: Math.max(0, 5 - invitedCount),
           voucherCode,
-          rewardLabel: '친구 5명 초대 시 치아미백 1회 무료',
+          rewardLabel: '지인 5명 초대 시 VIP 스페셜 아바타 패스 해금',
           unlockedFeatures: [
             'all_3d_pets',
             'unlimited_ai_chat',
@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
           ],
           heartbeatLease: lease.leaseToken,
           expiresAt: lease.expiresAtIso,
-          message: `🎉 화타치과 차트번호 [${chartNo}] 인증 성공! 모든 기능이 무제한 크랙(해금)되었습니다. 친구 5명 초대 시 치아미백 1회 무료 혜택을 받을 수 있어요!`,
+          message: `🎉 화이트스타일치과 차트번호 [${chartNo}] 정회원 인증 완료! 프라이빗 단톡방 개설과 모든 3D 아바타 기능이 해금되었습니다.`,
         },
         { status: 200, headers: CORS_HEADERS }
       );

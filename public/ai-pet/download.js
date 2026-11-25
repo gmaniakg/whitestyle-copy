@@ -173,12 +173,12 @@
       },
       {
         uName: '치즈냥 유저',
-        uText: '친구 5명 단톡방 초대 완료! 치아미백 혜택 어떻게 써요?',
-        pText: '발급된 무료 쿠폰(WS-WHITEN)을 데스크나 네이버 예약 메모에 남겨주시면 바로 적용됩니다!',
+        uText: '비보험 진료 인증코드 등록했더니 화타톡 대용량 파일 전송까지 바로 열리네요!',
+        pText: '인증된 화타펫 정회원이 되신 것을 환영합니다! 프라이빗 단톡방과 화타톡 메신저를 자유롭게 이용해 보세요.',
       },
       {
         uName: '코코아 아바타',
-        uText: '차트번호 입력했더니 단톡방 바로 열리네요 ㅋㅋ @화타 교정 아픈 건 며칠 가요?',
+        uText: '정회원 인증 완료! @화타 교정 월치료 후 뻐근한 건 며칠 정도 가나요?',
         pText: '와이어 교체 후 3~4일차가 정점이며 5일차부터 서서히 편해집니다. 찬물 가글을 권장해요!',
       },
     ];
@@ -439,7 +439,7 @@
       if (voucherDisplayBox) {
         if (voucherCode) {
           voucherDisplayBox.hidden = false;
-          voucherDisplayBox.innerHTML = `<span class="voucher-box">🎉 치아미백 1회 무료 쿠폰 발급 완료: ${escapeHtml(voucherCode)}</span>`;
+          voucherDisplayBox.innerHTML = `<span class="voucher-box">🎉 VIP 스페셜 아바타 & 프라이빗 패스 발급 완료: ${escapeHtml(voucherCode)}</span>`;
         } else {
           voucherDisplayBox.hidden = true;
         }
@@ -464,21 +464,21 @@
       } catch {}
     }
 
-    // 차트번호 크랙 UI 상태 반영
+    // 차트번호 정회원 인증 UI 상태 반영
     function applyCrackedState(chartNo, data) {
       myChartNo = chartNo;
       isCracked = true;
       if (chartCrackInput) chartCrackInput.value = chartNo;
-      if (crackStatusPill) crackStatusPill.textContent = '👑 VIP 해금 완료';
+      if (crackStatusPill) crackStatusPill.textContent = '👑 정회원 인증 완료';
       if (crackResultBox) {
         crackResultBox.hidden = false;
         const refCode = data?.inviteReferralCode || getMyRefCode();
         const msg =
           data?.message ||
-          `[${chartNo}] 화타치과 33년 VIP 정회원 크랙 완료! 프라이빗 단톡방 개설이 해금되었습니다.`;
+          `[${chartNo}] 화이트스타일치과 33년 VIP 정회원 인증 완료! 프라이빗 단톡방 개설이 해금되었습니다.`;
         crackResultBox.innerHTML =
           `🎉 <b>${escapeHtml(msg)}</b><br>` +
-          `<small>내 추천인 코드: <b>${escapeHtml(refCode)}</b> · 친구 5명 초대 시 치아미백 1회 무료!</small>`;
+          `<small>내 초대 코드: <b>${escapeHtml(refCode)}</b> · 지인 5명 초대 시 VIP 아바타 패스 해금!</small>`;
       }
       if (data && typeof data.invitedCount === 'number') {
         updateReferralUI(data.invitedCount, data.voucherCode);
@@ -499,7 +499,7 @@
         }
 
         chartCrackBtn.disabled = true;
-        chartCrackBtn.textContent = '해금 중...';
+        chartCrackBtn.textContent = '인증 중...';
 
         try {
           const res = await fetch('/api/ai-pet/verify-member', {
@@ -527,7 +527,7 @@
           alert('서버와 통신 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
         } finally {
           chartCrackBtn.disabled = false;
-          chartCrackBtn.textContent = '1초 크랙 & 전체 해금';
+          chartCrackBtn.textContent = '정회원 인증 & 전체 해금';
         }
       });
     }
@@ -754,7 +754,7 @@
       shareRoomInviteBtn.addEventListener('click', () => {
         copyWithFallback(
           buildInviteUrl(),
-          '🔗 단톡방 친구 초대 링크가 복사되었습니다!\n친구 5명이 입장하면 치아미백 1회 무료 쿠폰이 자동 발급됩니다.'
+          '🔗 단톡방 지인 초대 링크가 복사되었습니다!\n지인들에게 링크를 공유해 함께 대화해 보세요.'
         );
       });
     }
@@ -763,7 +763,7 @@
       copyMyReferralBtn.addEventListener('click', () => {
         copyWithFallback(
           buildInviteUrl(),
-          `🎁 내 초대 링크(${getMyRefCode()})가 복사되었습니다!\n친구 5명 초대 시 화이트스타일치과 치아미백 1회 무료 쿠폰이 발급됩니다.`
+          `🎁 내 초대 링크(${getMyRefCode()})가 복사되었습니다!\n지인 5명 초대 시 VIP 스페셜 아바타 패스가 자동 해금됩니다.`
         );
       });
     }

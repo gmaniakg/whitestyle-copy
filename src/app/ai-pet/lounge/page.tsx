@@ -295,10 +295,10 @@ export default async function HwataLoungePage() {
         mainEntity: [
           {
             '@type': 'Question',
-            name: '화타펫 단톡방에 참여하고 친구 5명 초대 시 치아미백 1회 무료 혜택을 받으려면 어떻게 하나요?',
+            name: '화타펫 단톡방과 정회원 인증(인증된 화타펫)은 어떻게 이용하나요?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: '화타펫 단톡방(https://whitestyle.com/ai-pet)에서 차트번호를 입력하거나 바로 입장해 친구 초대 링크를 복사한 뒤, 친구 5명이 합류하면 치아미백 1회 무료 쿠폰 코드가 즉시 발급됩니다.',
+              text: 'whitestyle.com 로그인 후 화타펫 단톡방(https://whitestyle.com/ai-pet)에서 3D 아바타와 닥터 화타 실시간 구강 Q&A를 이용할 수 있으며, 원내 차트번호 또는 비보험 진료 인증코드 등록 시 인증된 화타펫으로 승급되어 화타톡(/messenger) 프라이빗 방과 대용량 파일 전송 기능이 해금됩니다.',
             },
           },
           {
@@ -416,10 +416,10 @@ export default async function HwataLoungePage() {
         <div className="rounded-2xl bg-emerald-50 border-2 border-emerald-600 p-6 flex flex-wrap items-center justify-between gap-4">
           <div>
             <h2 className="text-lg font-extrabold text-emerald-950">
-              친구 5명 초대 시 치아미백 1회 무료 혜택을 받아보세요
+              인증된 화타펫 정회원 전용 화타톡 메신저 &amp; 프라이빗 단톡방
             </h2>
             <p className="text-sm text-emerald-900 mt-1">
-              차트번호만 입력하면 1초 만에 프라이빗 친구 단톡방 개설과 초대 링크 공유가 가능합니다.
+              whitestyle.com 로그인 후 원내 정회원 인증으로 프라이빗 지인 단톡방 개설과 화타톡(/messenger) 대용량 파일 전송을 이용해 보세요.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -429,6 +429,12 @@ export default async function HwataLoungePage() {
             >
               화타펫 단톡방 열기
             </a>
+            <Link
+              href="/messenger"
+              className="px-5 py-3 rounded-xl font-bold text-slate-900 bg-white border border-slate-300 hover:bg-slate-100"
+            >
+              화타톡 메신저 열기
+            </Link>
             <Link
               href="/qa"
               className="px-5 py-3 rounded-xl font-bold text-slate-900 bg-white border border-slate-300 hover:bg-slate-100"
