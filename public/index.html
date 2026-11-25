@@ -1449,7 +1449,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 45000);
 
   function mountHwataFloatingWidget() {
-    if (!document.body || document.getElementById("hwatapet_floating_root")) return;
+    if (!document.body || document.getElementById("hwatapet_floating_root") || document.getElementById("hwatapet-3d-root")) return;
 
     var isJaMode = isJP ||
       search.indexOf("ld=Japanese") !== -1 ||
@@ -1525,6 +1525,22 @@ document.addEventListener("DOMContentLoaded", function () {
     host.setAttribute("aria-live", "polite");
     host.style.cssText = "position:fixed;left:20px;bottom:24px;z-index:99995;background:transparent;pointer-events:none;font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR','Yu Gothic','Meiryo',sans-serif;";
     document.body.appendChild(host);
+
+    if (typeof MutationObserver === "function") {
+      var extGuard = new MutationObserver(function () {
+        if (document.getElementById("hwatapet-3d-root")) {
+          host.style.setProperty("display", "none", "important");
+          extGuard.disconnect();
+        }
+      });
+      extGuard.observe(document.documentElement, { childList: true, subtree: true });
+      setTimeout(function () {
+        if (document.getElementById("hwatapet-3d-root")) {
+          host.style.setProperty("display", "none", "important");
+        }
+        extGuard.disconnect();
+      }, 6000);
+    }
 
     var root = host.attachShadow ? host.attachShadow({ mode: "open" }) : host;
     var styleEl = document.createElement("style");
