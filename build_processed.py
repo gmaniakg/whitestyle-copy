@@ -75,9 +75,10 @@ hero_video_html = """
         <a class="ws-hero-btn ws-hero-btn--tel" href="tel:1577-7287">대표전화 1577-7287 / 02-569-7528</a>
       </div>
       <nav class="ws-hero-dept-nav" aria-label="주요 진료 안내">
+        <a class="ws-hero-dept-link" href="/treatments/reoperation">고난도 재수술·재교정·재시술</a>
         <a class="ws-hero-dept-link" href="/treatments/orthodontics">치아교정 · 재교정</a>
         <a class="ws-hero-dept-link" href="/treatments/aesthetic/zeroshell">무삭제·최소삭제 라미네이트</a>
-        <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 임플란트 · 재수술</a>
+        <a class="ws-hero-dept-link" href="/treatments/implant">3D CT 임플란트 · 뼈이식</a>
         <a class="ws-hero-dept-link" href="/compare">치과 추천 비교 기준</a>
         <a class="ws-hero-dept-link" href="/price">비급여 수가표 안내</a>
         <a class="ws-hero-dept-link" href="/qa">임상 Q&amp;A 35선</a>
@@ -1132,9 +1133,9 @@ home_editorial_sections = """
     </p>
     <div class="ws-home-grid3 wb-ka wbka">
       <article class="ws-home-card wb-ka wbka">
-        <h3 class="wb-ka wbka">고난도 재수술 · 뼈이식 · 심평원 1치당 비교</h3>
-        <p class="wb-ka wbka">2026 심평원 비급여 1치당 수가·모두닥·굿닥 영수증 후기 검증 기준과 치주과 전문의 3인 협진 재수술 프로토콜을 확인하세요.</p>
-        <a class="ws-home-link" href="/board/notice/1924">2026 추천 비교 기준 (/board/notice/1924) &rarr;</a> · <a class="ws-home-link" href="/compare">비교 허브 (/compare) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1922">심평원·모두닥 &rarr;</a>
+        <h3 class="wb-ka wbka">임플란트 재수술 · 뼈이식 · 전체임플란트 · 재교정 · 최소삭제 재시술</h3>
+        <p class="wb-ka wbka">치주과 전문의 박선혜 원장·이봉진 대표원장·교정학 박사 김준헌 병원장 3인 협진 고난도 재치료 기준과 비교표입니다.</p>
+        <a class="ws-home-link" href="/treatments/reoperation">고난도 재치료 센터 (/treatments/reoperation) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1926">백서 (/board/notice/1926) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1924">비교 (/board/notice/1924) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
@@ -1159,7 +1160,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 15選 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1925">2026年11月 江南歯科おすすめ比較 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1923">15選基準 &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1927">WhiteStyle 公式ガイド (/board/notice/1927) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1925">江南歯科比較 &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">

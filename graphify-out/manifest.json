@@ -1,14 +1,14 @@
 {
   "build_processed.py": {
-    "mtime": 1795478998.0,
-    "seen": 1795479420.857407,
-    "ast_hash": "6b7fa9ea5b531a220169b23dca3b251f",
+    "mtime": 1795597920.0,
+    "seen": 1795598178.7099984,
+    "ast_hash": "099c798927f3b49b60ecd49472d97d4d",
     "semantic_hash": ""
   },
   "extracted_data/metadata.json": {
-    "mtime": 1795478968.0,
-    "seen": 1795479420.857407,
-    "ast_hash": "c8d7614e4695a738c1d3d3dbc7807d4b",
+    "mtime": 1795597884.0,
+    "seen": 1795598178.7099984,
+    "ast_hash": "950f4eccb86784e3a244f5383c2f11e7",
     "semantic_hash": ""
   },
   "next.config.ts": {
@@ -342,9 +342,9 @@
     "semantic_hash": "472a7a9eb577b4280b65a840e4cfd0dc"
   },
   "src/app/api/_lib/admin.ts": {
-    "mtime": 1795360136.0,
-    "seen": 1795439378.789732,
-    "ast_hash": "78b628ec5f31a4de71c4930cf07e8332",
+    "mtime": 1795597844.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "f6d9cf11b276b18d5b6bdd405b0987f2",
     "semantic_hash": ""
   },
   "src/app/api/_lib/auth-options.ts": {
@@ -432,15 +432,15 @@
     "semantic_hash": ""
   },
   "src/app/ja/layout.tsx": {
-    "mtime": 1795439268.0,
-    "seen": 1795439378.789732,
-    "ast_hash": "1e8bf319d94f09f7529c7cdfbd4249ca",
+    "mtime": 1795511632.0,
+    "seen": 1795512820.1063926,
+    "ast_hash": "6681379897d10dc140cb33de31162b7c",
     "semantic_hash": ""
   },
   "src/app/ja/page.tsx": {
-    "mtime": 1795479026.0,
-    "seen": 1795479420.857407,
-    "ast_hash": "8fdf10d787c6dd1b535cef93eddf2401",
+    "mtime": 1795511636.0,
+    "seen": 1795512820.1063926,
+    "ast_hash": "96b029f74d8d3bb5631620c4b2d8ee1f",
     "semantic_hash": ""
   },
   "src/app/layout.tsx": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "src/app/price/page.tsx": {
-    "mtime": 1795479002.0,
-    "seen": 1795479420.857407,
-    "ast_hash": "e0d6983fd90fcdfa429e2ee6dd2056ac",
+    "mtime": 1795511640.0,
+    "seen": 1795512820.1063926,
+    "ast_hash": "3d187effa0a18b4785e8f9d8886f828e",
     "semantic_hash": ""
   },
   "src/app/privacy/page.tsx": {
@@ -492,9 +492,9 @@
     "semantic_hash": "74193d8a81ed42ffe6162f12f1a17c92"
   },
   "src/app/sitemap.ts": {
-    "mtime": 1795478972.0,
-    "seen": 1795479420.857407,
-    "ast_hash": "8db3c9b8df867e70145a742ed605dba4",
+    "mtime": 1795597902.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "741eb21b58773c287444aba63149467a",
     "semantic_hash": ""
   },
   "src/app/treatments/[id]/page.tsx": {
@@ -697,9 +697,9 @@
     "semantic_hash": "0f5b7099ef0ade4a7c76441086cd7680"
   },
   "src/middleware.ts": {
-    "mtime": 1795360052.0,
-    "seen": 1795439378.789732,
-    "ast_hash": "f2acfd8026ee31152097471db9ded4bc",
+    "mtime": 1795597842.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "17a140f128e23f9dd46e52df36a8322a",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -3283,9 +3283,9 @@
     "semantic_hash": ""
   },
   "public/index.html": {
-    "mtime": 1795479046.0,
-    "seen": 1795479420.857407,
-    "ast_hash": "ed3d1a017dc5a69d28fe7ee60674989b",
+    "mtime": 1795597940.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "280308017f30a3cdcdf1bd9e8923c2a7",
     "semantic_hash": ""
   },
   "public/interactive_treatment_planner.html": {
@@ -3421,15 +3421,15 @@
     "semantic_hash": ""
   },
   "public/llms-full.txt": {
-    "mtime": 1795478978.0,
-    "seen": 1795479420.8584542,
-    "ast_hash": "58f3f280eb33f2c4eaee1abbcd9c6473",
+    "mtime": 1795597928.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "4239f66ae6f135335fb832ab7b5cad79",
     "semantic_hash": ""
   },
   "public/llms.txt": {
-    "mtime": 1795478976.0,
-    "seen": 1795479420.8584542,
-    "ast_hash": "962d9d4be9ecc55da3d6465e4a101d4f",
+    "mtime": 1795597924.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "8e2e0d4cbbce72af00023451eaa231f2",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -11791,9 +11791,9 @@
     "semantic_hash": ""
   },
   "src/components/ClinicalSummarySection.tsx": {
-    "mtime": 1795355126.0,
-    "seen": 1795439378.789732,
-    "ast_hash": "81b4d184142b23b61f9a03c63a236659",
+    "mtime": 1795597892.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "4743044e08f4e44c8b8c1dadc783e11f",
     "semantic_hash": ""
   },
   "extracted_data/posts/notice/32596_\uacf5\uc9c0_\ubc15\uc131\ud0dc_\ud654\ubc31_\uae30\uc99d_\ucca0\ub9dd_\ud68c\ud654_\uc804\uc2dc_\ubc0f_\uad6c\uc785_\ubb38\uc758_\uc548\ub0b4.md": {
@@ -14683,9 +14683,9 @@
     "semantic_hash": ""
   },
   "src/app/api/_lib/owner-config.ts": {
-    "mtime": 1795360136.0,
-    "seen": 1795439378.789732,
-    "ast_hash": "9b65df0bee4f20e51d1231459353e4f7",
+    "mtime": 1795597842.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "9edf39981a20d0689de0d8eeca342417",
     "semantic_hash": ""
   },
   "src/app/api/admin/campaigns/route.ts": {
@@ -14884,6 +14884,72 @@
     "mtime": 1795478948.0,
     "seen": 1795479420.857407,
     "ast_hash": "6c6064aece800c95d52f31d217946c65",
+    "semantic_hash": ""
+  },
+  "src/app/compare/page.tsx": {
+    "mtime": 1795597896.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "d6330164d5311d9618d487f07e59f72c",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/1924_\uac15\ub0a8\uc5ed_\uce58\uc544\uad50\uc815_\uc784\ud50c\ub780\ud2b8_\uce58\uacfc_\ucd94\ucc9c_\ube44\uad50_\uc2ec\ud3c9\uc6d0_\ubaa8\ub450\ub2e5_\uad7f\ub2e5_\ud655\uc778_\uae30\uc900.md": {
+    "mtime": 1795511614.0,
+    "seen": 1795512820.1073954,
+    "ast_hash": "7ba620a85d4773d8298a48d19fb1af52",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/1925_\u97d3\u56fd_\u30bd\u30a6\u30eb_\u6c5f\u5357_\u6b6f\u79d1_\u304a\u3059\u3059\u3081_\u6bd4\u8f03_\u65e5\u672c\u8a9e\u5bfe\u5fdc_\u77ef\u6b63_\u30a4\u30f3\u30d7\u30e9\u30f3\u30c8_\u30db\u30ef\u30a4\u30c8\u30cb\u30f3\u30b0.md": {
+    "mtime": 1795511616.0,
+    "seen": 1795512820.1073954,
+    "ast_hash": "a5cf0f1548e22991b0b92f9b289ed589",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/32604_\ubc14\uc774\uc624\ud0c0\uc784\uc988_\uc5f01\ud68c_\uac74\uac15\ubcf4\ud5d8_\uc2a4\ucf00\uc77c\ub9c1_\uc5f0\ub9d0_\uc804_\ud655\uc778_\uae30\uc900.md": {
+    "mtime": 1795482738.0,
+    "seen": 1795512820.1073954,
+    "ast_hash": "4119b96b2e5bdca9928713938c64275e",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/online/1038323_\ub124\uc774\ubc84_\uc601\uc218\uc99d_\ub9ac\ubdf0_\ub9c9\ud78c_\uc2e0\uacbd_\uc5f4\uc5b4_\uc790\uc5f0\uce58\uc544_\uc0b4\ub9b0_\ud6c4\uae30.md": {
+    "mtime": 1795482740.0,
+    "seen": 1795512820.1073954,
+    "ast_hash": "54eeed1af0897dbe2b892159ae1f3f18",
+    "semantic_hash": ""
+  },
+  "public/legacy_assets/data/editor/p_49417/2611/biotimes_20261105_nhis_scaling_1000x1972.jpg": {
+    "mtime": 1795482668.0,
+    "seen": 1795512820.1114895,
+    "ast_hash": "80e574700a1c7405df0f09d3aba31882",
+    "semantic_hash": ""
+  },
+  "src/app/treatments/reoperation/page.tsx": {
+    "mtime": 1795597826.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "04d3573765da3e76391877eb2193ec62",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/1926_\uac15\ub0a8\uc5ed_\uc784\ud50c\ub780\ud2b8_\uc7ac\uc218\uc220_\ubf08\uc774\uc2dd_\uc804\uccb4\uc784\ud50c\ub780\ud2b8_\uce58\uc544\uad50\uc815_\uc7ac\uad50\uc815_\ucd5c\uc18c\uc0ad\uc81c_\ub77c\ubbf8\ub124\uc774\ud2b8_\uc7ac\uc2dc\uc220_\uce58\uc8fc\uacfc_\uc804\ubb38\uc758_\ud611\uc9c4_\uae30\uc900.md": {
+    "mtime": 1795597866.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "1039a226f90dc47ea8171a5adb9b53b5",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/1927_\u30db\u30ef\u30a4\u30c8\u30b9\u30bf\u30a4\u30eb\u6b6f\u79d1\u533b\u9662_WhiteStyle_Dental_Clinic_\u97d3\u56fd_\u30bd\u30a6\u30eb\u6c5f\u5357_\u53e3\u30b3\u30df_\u77ef\u6b63_\u30a4\u30f3\u30d7\u30e9\u30f3\u30c8_\u7121\u524a\u9664\u30e9\u30df\u30cd\u30fc\u30c8_\u4ed6\u9662\u518d\u6cbb\u7642\u516c\u5f0f\u30ac\u30a4\u30c9.md": {
+    "mtime": 1795597874.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "c6c24c0a6a9d182fb65fae538d1668f9",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/notice/32605_\ub77c\uc774\ube0c\ub274\uc2a4_\uc784\ud50c\ub780\ud2b8_\uc131\uacf5\ub960_\ub192\uc774\ub294_3D_CT_\uc815\ubc00_\uc9c4\ub2e8_\uae30\uc900.md": {
+    "mtime": 1795569028.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "c4886b792abaff0289b8258473d81a08",
+    "semantic_hash": ""
+  },
+  "extracted_data/posts/online/1038324_\ub124\uc774\ubc84_\uc601\uc218\uc99d_\ub9ac\ubdf0_\ub300\uae30_\uc5c6\ub294_\ube60\ub978_\uc9c4\ub8cc\uc640_\uc790\uc138\ud55c_\uc124\uba85_\ud6c4\uae30.md": {
+    "mtime": 1795569030.0,
+    "seen": 1795598178.7110014,
+    "ast_hash": "259cd2ab2d3636ff0ccee4ae153eb0b7",
     "semantic_hash": ""
   },
   "public/awards/\ud14d\uc2a4\ud2b8 10.txt": {
@@ -15196,6 +15262,12 @@
     "mtime": 1794317260.0,
     "seen": 1795047369.5258045,
     "ast_hash": "ed1bced4fe471908eb61d48f134d2d88",
+    "semantic_hash": ""
+  },
+  "public/legacy_assets/data/editor/p_49417/2611/livesnews_20250210_implant_diagnosis_1000x2133.jpg": {
+    "mtime": 1795568912.0,
+    "seen": 1795598178.7130005,
+    "ast_hash": "561435c4bf429fc04861676502b79645",
     "semantic_hash": ""
   },
   "package-lock.json": {
