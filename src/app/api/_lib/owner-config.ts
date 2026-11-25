@@ -1,6 +1,5 @@
 export const DEFAULT_OWNER_ADMIN_EMAILS = [
-  'gmmaniakgm@gmail.com',
-  'ymaniak3@gmail.com',
+  'whitestyle3@naver.com',
 ];
 
 export function getOwnerAdminEmails(): string[] {

@@ -8,12 +8,13 @@ import {
 
 export { DEFAULT_OWNER_ADMIN_EMAILS, getOwnerAdminEmails, isOwnerAdminEmail };
 
-/** 환경변수 ADMIN_EMAILS(콤마 구분)에 등록된 이메일만 관리자. 미설정 시 모두 거부. */
+/** 환경변수 ADMIN_EMAILS(콤마 구분)에 등록된 이메일만 관리자. 미설정 시 소유자 관리자 기본값 사용. */
 export function getAdminEmails(): string[] {
-  return (process.env.ADMIN_EMAILS || '')
+  const list = (process.env.ADMIN_EMAILS || '')
     .split(',')
     .map((e) => e.trim().toLowerCase())
     .filter(Boolean);
+  return list.length > 0 ? list : DEFAULT_OWNER_ADMIN_EMAILS;
 }
 
 export function isAdminEmail(email?: string | null): boolean {

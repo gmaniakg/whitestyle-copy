@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 
-const DEFAULT_OWNER_ADMINS = ['gmmaniakgm@gmail.com', 'ymaniak3@gmail.com'];
+const DEFAULT_OWNER_ADMINS = ['whitestyle3@naver.com'];
 
 function parseEmails(raw: string | undefined, fallback: string[] = []): string[] {
   const list = (raw || '')
@@ -48,7 +48,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const admins = parseEmails(process.env.ADMIN_EMAILS, []);
+  const admins = parseEmails(process.env.ADMIN_EMAILS, DEFAULT_OWNER_ADMINS);
   if (!token || !email || !admins.includes(email)) {
     const url = req.nextUrl.clone();
     const callbackTarget = `${pathname}${search}`;
