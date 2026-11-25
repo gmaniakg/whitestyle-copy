@@ -19,39 +19,16 @@
     return './assets3d/' + file;
   }
 
-  const SPECIES_LIST = [
-    { key: 'dog', label: '하야니' },
-    { key: 'cat', label: '치즈냥' },
-    { key: 'elephant', label: '코코' },
-    { key: 'dino', label: '디노' },
-    { key: 'parrot', label: '코코아' },
-    { key: 'python', label: '파이' },
-  ];
-
-  const EAR_LIST = [
-    { key: 'perk', label: '쫑긋 귀' },
-    { key: 'fold', label: '접힌 귀' },
-    { key: 'round', label: '둥근 귀' },
-    { key: 'pointy', label: '뾰족 귀' },
-    { key: 'small', label: '아기 귀' },
-    { key: 'fox', label: '여우 귀' },
-    { key: 'lynx', label: '스라소니' },
-    { key: 'mismatch', label: '짝짝이' },
-    { key: 'outtilt', label: '옆뻗 귀' },
-    { key: 'intilt', label: '안기울 귀' },
-    { key: 'darktip', label: '초코끝' },
-    { key: 'whitetip', label: '하얀끝' },
-    { key: 'tnr', label: '컷팅 귀' },
+  const MODE_LIST = [
+    { key: 'clean', label: '클린 미니멀', shortLabel: '클린' },
+    { key: 'pixel', label: '8비트 도트', shortLabel: '8비트' },
+    { key: 'sd', label: '케이게임 캐릭터', shortLabel: '캐주얼' },
   ];
 
   const COSTUME_LIST = [
-    { key: 'none', label: '내 귀 유지' },
-    { key: 'doctor', label: '의사 가운' },
+    { key: 'none', label: '기본 하야니' },
+    { key: 'doctor', label: '닥터 가운' },
     { key: 'crown', label: 'VIP 왕관' },
-    { key: 'angel', label: '수호천사' },
-    { key: 'beret', label: '베레모' },
-    { key: 'coder', label: '개발자' },
-    { key: 'hygiene', label: '위생사' },
   ];
 
   const BG_LIST = [
@@ -60,44 +37,74 @@
     { key: 'peach', label: '피치', hex: '#fce5dc' },
     { key: 'sky', label: '스카이', hex: '#e1f0fa' },
     { key: 'lavender', label: '라벤더', hex: '#ece6fa' },
-    { key: 'gold', label: '골드', hex: '#f9e498' },
+    { key: 'gold', label: '골드', hex: '#fef08a' },
   ];
+
+  function getValidMode(val) {
+    return val === 'pixel' || val === 'sd' ? val : 'clean';
+  }
+
+  function loadSavedMode() {
+    try {
+      return getValidMode(localStorage.getItem('hwata_style_mode'));
+    } catch {
+      return 'clean';
+    }
+  }
+
+  let currentStyleMode = loadSavedMode();
+  document.documentElement.dataset.hwataMode = currentStyleMode;
 
   function getLabel(list, key) {
     const found = list.find((item) => item.key === key);
     return found ? found.label : key;
   }
 
+  function normalizeCostume(c) {
+    if (c === 'doctor' || c === 'hygiene') return 'doctor';
+    if (c === 'crown' || c === 'angel' || c === 'beret') return 'crown';
+    return 'none';
+  }
+
   function sanitizeAvatar(raw) {
     const obj = raw && typeof raw === 'object' ? raw : {};
+    const detectedMode =
+      obj.mode === 'clean' || obj.mode === 'pixel' || obj.mode === 'sd'
+        ? obj.mode
+        : obj.ear === 'clean' || obj.ear === 'pixel' || obj.ear === 'sd'
+          ? obj.ear
+          : currentStyleMode;
     return {
-      species: SPECIES_LIST.some((s) => s.key === obj.species) ? obj.species : 'dog',
-      ear: EAR_LIST.some((e) => e.key === obj.ear) ? obj.ear : 'perk',
-      costume: COSTUME_LIST.some((c) => c.key === obj.costume) ? obj.costume : 'none',
+      species: 'dog',
+      ear: detectedMode,
+      mode: detectedMode,
+      costume: normalizeCostume(obj.costume),
       bg: BG_LIST.some((b) => b.key === obj.bg) ? obj.bg : 'cream',
     };
   }
 
-  function buildAvatarInnerHtml(cfg) {
-    const a = sanitizeAvatar(cfg);
-    if (a.species === 'dog' && a.costume === 'none') {
-      return (
-        `<img src="${assetUrl('hwata_3d_idle.png')}" class="hw-av-layer" alt="">` +
-        `<img src="${assetUrl('hwata_3d_ear_' + a.ear + '.png')}" class="hw-av-layer hw-av-ear" alt="">`
-      );
-    }
-    if (a.species === 'dog' && a.costume !== 'none') {
-      return `<img src="${assetUrl('hwata_3d_costume_' + a.costume + '.png')}" class="hw-av-layer" alt="">`;
-    }
-    return `<img src="${assetUrl('hwata_3d_species_' + a.species + '.png')}" class="hw-av-layer" alt="">`;
+  function getModeImageFile(mode, costume, isWave) {
+    const m = getValidMode(mode);
+    const c = normalizeCostume(costume);
+    if (c === 'doctor') return `hwata_mode_${m}_doctor.png`;
+    if (c === 'crown') return `hwata_mode_${m}_crown.png`;
+    if (isWave) return `hwata_mode_${m}_wave.png`;
+    return `hwata_mode_${m}.png`;
   }
 
-  function createAvatarEl(cfg, sizeClass = '', isBot = false) {
+  function buildAvatarInnerHtml(cfg, forceMode) {
+    const a = sanitizeAvatar(cfg);
+    const m = forceMode ? getValidMode(forceMode) : a.mode;
+    const file = getModeImageFile(m, a.costume, false);
+    return `<img src="${assetUrl(file)}" class="hw-av-layer" alt="">`;
+  }
+
+  function createAvatarEl(cfg, sizeClass = '', isBot = false, forceMode) {
     const a = sanitizeAvatar(cfg);
     const el = document.createElement('div');
     el.className = `hw-avatar ${sizeClass} hw-bg-${a.bg}${isBot ? ' bot' : ''}`.trim().replace(/\s+/g, ' ');
     el.setAttribute('aria-hidden', 'true');
-    el.innerHTML = buildAvatarInnerHtml(a);
+    el.innerHTML = buildAvatarInnerHtml(a, forceMode);
     return el;
   }
 
@@ -167,19 +174,19 @@
     if (!box) return;
     const demos = [
       {
-        uName: '여우귀 하야니',
-        uText: '모니터 보다가 어금니 꽉 깨물었어 @화타 어떡해?',
-        pText: '윗니와 아랫니 사이 2~3mm 틈을 두고 "은~" 발음으로 턱 힘을 빼주세요!',
+        uName: '교정 6개월차 환자',
+        uText: '@화타 월치료 다녀온 지 3일짼데 딱딱한 거 언제부터 먹을 수 있나요?',
+        pText: '와이어 교체 후 3~4일차가 정점이며 5일차부터 서서히 편해집니다. 미지근한 연두부·계란찜을 드시고 찬물 가글이 도움이 됩니다!',
       },
       {
-        uName: '치즈냥 유저',
+        uName: '강남직장인_은지',
+        uText: '컴퓨터하다 보면 어금니 꽉 깨무는데 턱이 뻐근해요 @화타 어떡하죠?',
+        pText: '평소 윗니와 아랫니 사이에 2~3mm 틈을 두고 "은~" 발음으로 턱 힘을 빼보세요. 통증 시 3D 진단을 권장합니다.',
+      },
+      {
+        uName: '스마일러 (VIP 정회원)',
         uText: '비보험 진료 인증코드 등록했더니 화타톡 대용량 파일 전송까지 바로 열리네요!',
         pText: '인증된 화타펫 정회원이 되신 것을 환영합니다! 프라이빗 단톡방과 화타톡 메신저를 자유롭게 이용해 보세요.',
-      },
-      {
-        uName: '코코아 아바타',
-        uText: '정회원 인증 완료! @화타 교정 월치료 후 뻐근한 건 며칠 정도 가나요?',
-        pText: '와이어 교체 후 3~4일차가 정점이며 5일차부터 서서히 편해집니다. 찬물 가글을 권장해요!',
       },
     ];
     let idx = 0;
@@ -187,9 +194,121 @@
       idx = (idx + 1) % demos.length;
       const d = demos[idx];
       box.innerHTML =
-        `<div class="m u"><b>${escapeHtml(d.uName)}</b><span>${escapeHtml(d.uText)}</span></div>` +
-        `<div class="m p"><b>🐾 닥터 화타</b><span>${escapeHtml(d.pText)}</span></div>`;
+        `<div class="sw-mini-msg"><b>${escapeHtml(d.uName)}</b><span>${escapeHtml(d.uText)}</span></div>` +
+        `<div class="sw-mini-msg pet"><b>닥터 화타 (33년 협진 자문)</b><span>${escapeHtml(d.pText)}</span></div>`;
     }, 5500);
+  }
+
+  let heroFrameIndex = 0;
+  function updateHeroStageVisual() {
+    const badge = document.getElementById('heroModeBadge');
+    const img = document.getElementById('heroDioramaImg');
+    const angleLabel = document.getElementById('heroAngleLabel');
+    const range = document.getElementById('heroTurntableRange');
+
+    if (badge) {
+      badge.textContent =
+        currentStyleMode === 'pixel'
+          ? '8비트 도트 모드'
+          : currentStyleMode === 'sd'
+            ? '케이게임 캐릭터 모드'
+            : '클린 미니멀 모드';
+    }
+    document.querySelectorAll('[data-brand-avatar]').forEach((el) => {
+      el.setAttribute('src', assetUrl(getModeImageFile(currentStyleMode, 'none', false)));
+    });
+    document.querySelectorAll('[data-style-mode]').forEach((btn) => {
+      btn.classList.toggle('is-active', btn.getAttribute('data-style-mode') === currentStyleMode);
+    });
+
+    const f = Math.max(0, Math.min(11, Number(heroFrameIndex || 0)));
+    if (range && Number(range.value) !== f) range.value = String(f);
+    if (angleLabel) {
+      const degLabels = ['정면', '+10°', '+22°', '+32°', '+20°', '+8°', '정면', '-10°', '-22°', '-32°', '-20°', '-8°'];
+      angleLabel.textContent = degLabels[f] || '정면';
+    }
+    if (img) {
+      if (f === 0) {
+        img.src = assetUrl(getModeImageFile(currentStyleMode, 'none', false));
+        img.style.transform = '';
+      } else if (currentStyleMode === 'pixel') {
+        const poseFile = f % 2 === 1 ? 'hwata_mode_pixel_wave.png' : 'hwata_mode_pixel.png';
+        img.src = assetUrl(poseFile);
+        const tilt = ((f - 6) * 2).toFixed(1);
+        img.style.transform = `rotate(${tilt}deg)`;
+      } else {
+        const pad = String(f).padStart(2, '0');
+        img.src = assetUrl(`hwata_3d_turn_${pad}.png`);
+        img.style.transform = currentStyleMode === 'sd' ? 'scale(1.06)' : '';
+      }
+    }
+  }
+
+  function initHeroDioramaStage() {
+    const viewport = document.getElementById('heroDioramaViewport');
+    const range = document.getElementById('heroTurntableRange');
+
+    if (range) {
+      range.addEventListener('input', () => {
+        heroFrameIndex = Number(range.value || 0);
+        updateHeroStageVisual();
+      });
+    }
+
+    if (viewport) {
+      let dragging = false;
+      let startX = 0;
+      let startFrame = 0;
+
+      viewport.addEventListener('pointerdown', (e) => {
+        if (e.target && e.target.tagName === 'INPUT') return;
+        dragging = true;
+        startX = e.clientX;
+        startFrame = heroFrameIndex;
+        try { viewport.setPointerCapture(e.pointerId); } catch {}
+      });
+      viewport.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        const step = Math.round(dx / 24);
+        heroFrameIndex = ((startFrame + step) % 12 + 12) % 12;
+        updateHeroStageVisual();
+      });
+      const stopDrag = () => { dragging = false; };
+      viewport.addEventListener('pointerup', stopDrag);
+      viewport.addEventListener('pointercancel', stopDrag);
+    }
+
+    updateHeroStageVisual();
+  }
+
+  let globalModeChangeHook = null;
+
+  function setGlobalStyleMode(nextMode) {
+    currentStyleMode = getValidMode(nextMode);
+    document.documentElement.dataset.hwataMode = currentStyleMode;
+    try {
+      localStorage.setItem('hwata_style_mode', currentStyleMode);
+    } catch {}
+    updateHeroStageVisual();
+    if (typeof globalModeChangeHook === 'function') {
+      globalModeChangeHook(currentStyleMode);
+    }
+  }
+
+  function initGlobalModeButtons() {
+    document.querySelectorAll('[data-style-mode]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const next = btn.getAttribute('data-style-mode');
+        if (next) setGlobalStyleMode(next);
+      });
+    });
+    window.addEventListener('storage', (ev) => {
+      if (ev.key === 'hwata_style_mode' && ev.newValue) {
+        setGlobalStyleMode(ev.newValue);
+      }
+    });
+    updateHeroStageVisual();
   }
 
   function initCommunityApp() {
@@ -201,7 +320,7 @@
     let roomPollTimer = null;
     let refPollTimer = null;
     let currentNickname = '';
-    let myAvatar = { species: 'dog', ear: 'perk', costume: 'none', bg: 'cream' };
+    let myAvatar = { species: 'dog', ear: currentStyleMode, mode: currentStyleMode, costume: 'none', bg: 'cream' };
 
     try {
       myChartNo = localStorage.getItem('hwata_chart_no') || '';
@@ -209,7 +328,11 @@
       currentNickname =
         localStorage.getItem('hwata_user_nickname') || '화타_' + Math.floor(Math.random() * 900 + 100);
       const savedAvatar = localStorage.getItem('hwata_avatar_v1');
-      if (savedAvatar) myAvatar = sanitizeAvatar(JSON.parse(savedAvatar));
+      if (savedAvatar) {
+        myAvatar = sanitizeAvatar(JSON.parse(savedAvatar));
+        myAvatar.mode = currentStyleMode;
+        myAvatar.ear = currentStyleMode;
+      }
     } catch {
       currentNickname = '화타_' + Math.floor(Math.random() * 900 + 100);
     }
@@ -261,9 +384,7 @@
     const chatterNicknameInput = document.getElementById('chatterNicknameInput');
     const toggleAvatarStudioBtn = document.getElementById('toggleAvatarStudioBtn');
     const avatarStudioPanel = document.getElementById('avatarStudioPanel');
-    const speciesPickerGrid = document.getElementById('speciesPickerGrid');
-    const earPickerGroup = document.getElementById('earPickerGroup');
-    const earPickerGrid = document.getElementById('earPickerGrid');
+    const modePickerGrid = document.getElementById('modePickerGrid');
     const costumePickerGroup = document.getElementById('costumePickerGroup');
     const costumePickerGrid = document.getElementById('costumePickerGrid');
     const bgPickerGrid = document.getElementById('bgPickerGrid');
@@ -291,68 +412,38 @@
 
     // 아바타 스튜디오 & 미리보기 렌더링
     function renderMyAvatarPreview() {
+      myAvatar.mode = currentStyleMode;
+      myAvatar.ear = currentStyleMode;
       if (myAvatarPreview) {
         myAvatarPreview.className = `hw-avatar lg hw-bg-${myAvatar.bg}`;
-        myAvatarPreview.innerHTML = buildAvatarInnerHtml(myAvatar);
+        myAvatarPreview.innerHTML = buildAvatarInnerHtml(myAvatar, currentStyleMode);
       }
       if (myAvatarSummaryText) {
-        const spLabel = getLabel(SPECIES_LIST, myAvatar.species);
+        const modeLabel = getLabel(MODE_LIST, currentStyleMode);
+        const roleLabel = getLabel(COSTUME_LIST, myAvatar.costume);
         const bgLabel = getLabel(BG_LIST, myAvatar.bg);
-        if (myAvatar.species === 'dog') {
-          const detail =
-            myAvatar.costume === 'none'
-              ? getLabel(EAR_LIST, myAvatar.ear)
-              : getLabel(COSTUME_LIST, myAvatar.costume);
-          myAvatarSummaryText.textContent = `${spLabel} (${detail} / ${bgLabel})`;
-        } else {
-          myAvatarSummaryText.textContent = `${spLabel} (${bgLabel})`;
-        }
+        myAvatarSummaryText.textContent = `${modeLabel} · ${roleLabel} (${bgLabel})`;
       }
-      if (earPickerGroup) earPickerGroup.hidden = myAvatar.species !== 'dog';
-      if (costumePickerGroup) costumePickerGroup.hidden = myAvatar.species !== 'dog';
+      if (costumePickerGroup) costumePickerGroup.hidden = false;
     }
 
     function renderAvatarStudioOptions() {
-      if (speciesPickerGrid) {
-        speciesPickerGrid.innerHTML = '';
-        SPECIES_LIST.forEach((sp) => {
+      if (modePickerGrid) {
+        modePickerGrid.innerHTML = '';
+        MODE_LIST.forEach((md) => {
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'studio-opt-btn' + (myAvatar.species === sp.key ? ' active' : '');
-          btn.appendChild(createAvatarEl({ species: sp.key, ear: myAvatar.ear, costume: 'none', bg: myAvatar.bg }, 'sm'));
+          btn.className = 'studio-opt-btn' + (currentStyleMode === md.key ? ' active' : '');
+          btn.appendChild(
+            createAvatarEl({ mode: md.key, costume: myAvatar.costume, bg: myAvatar.bg }, 'sm', false, md.key)
+          );
           const lbl = document.createElement('span');
-          lbl.textContent = sp.label;
+          lbl.textContent = md.label;
           btn.appendChild(lbl);
           btn.addEventListener('click', () => {
-            myAvatar.species = sp.key;
-            saveAvatar();
-            renderMyAvatarPreview();
-            renderAvatarStudioOptions();
+            setGlobalStyleMode(md.key);
           });
-          speciesPickerGrid.appendChild(btn);
-        });
-      }
-
-      if (earPickerGrid) {
-        earPickerGrid.innerHTML = '';
-        EAR_LIST.forEach((er) => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className =
-            'studio-opt-btn' + (myAvatar.costume === 'none' && myAvatar.ear === er.key ? ' active' : '');
-          btn.appendChild(createAvatarEl({ species: 'dog', ear: er.key, costume: 'none', bg: myAvatar.bg }, 'sm'));
-          const lbl = document.createElement('span');
-          lbl.textContent = er.label;
-          btn.appendChild(lbl);
-          btn.addEventListener('click', () => {
-            myAvatar.species = 'dog';
-            myAvatar.costume = 'none';
-            myAvatar.ear = er.key;
-            saveAvatar();
-            renderMyAvatarPreview();
-            renderAvatarStudioOptions();
-          });
-          earPickerGrid.appendChild(btn);
+          modePickerGrid.appendChild(btn);
         });
       }
 
@@ -362,12 +453,13 @@
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'studio-opt-btn' + (myAvatar.costume === cs.key ? ' active' : '');
-          btn.appendChild(createAvatarEl({ species: 'dog', ear: myAvatar.ear, costume: cs.key, bg: myAvatar.bg }, 'sm'));
+          btn.appendChild(
+            createAvatarEl({ mode: currentStyleMode, costume: cs.key, bg: myAvatar.bg }, 'sm', false, currentStyleMode)
+          );
           const lbl = document.createElement('span');
           lbl.textContent = cs.label;
           btn.appendChild(lbl);
           btn.addEventListener('click', () => {
-            myAvatar.species = 'dog';
             myAvatar.costume = cs.key;
             saveAvatar();
             renderMyAvatarPreview();
@@ -415,12 +507,22 @@
         const isOpen = !avatarStudioPanel.hidden;
         avatarStudioPanel.hidden = isOpen;
         toggleAvatarStudioBtn.setAttribute('aria-expanded', String(!isOpen));
-        toggleAvatarStudioBtn.textContent = isOpen ? '아바타 꾸미기 열기' : '아바타 꾸미기 닫기';
+        toggleAvatarStudioBtn.textContent = isOpen ? '모드 & 스타일 변경' : '닫기';
       });
     }
 
     renderMyAvatarPreview();
     renderAvatarStudioOptions();
+
+    globalModeChangeHook = () => {
+      myAvatar.mode = currentStyleMode;
+      myAvatar.ear = currentStyleMode;
+      saveAvatar();
+      renderMyAvatarPreview();
+      renderAvatarStudioOptions();
+      lastMsgSignature = '';
+      if (isAuthenticated) loadMessages(false);
+    };
 
     // 리퍼럴 보상 5칸 스탬프 UI 업데이트
     function updateReferralUI(invitedCount, voucherCode) {
@@ -627,9 +729,10 @@
         row.className = `chat-row ${isBot ? 'bot' : isMe ? 'me' : 'other'}`;
 
         const avEl = createAvatarEl(
-          m.avatar || { species: 'dog', ear: 'perk', costume: isBot ? 'doctor' : 'none', bg: isBot ? 'gold' : 'cream' },
+          m.avatar || { mode: currentStyleMode, costume: isBot ? 'doctor' : 'none', bg: isBot ? 'gold' : 'cream' },
           '',
-          isBot
+          isBot,
+          currentStyleMode
         );
         row.appendChild(avEl);
 
@@ -894,6 +997,8 @@
   }
 
   initViewToggle();
+  initGlobalModeButtons();
+  initHeroDioramaStage();
   initHeroMonitorLoop();
   initCommunityApp();
 })();

@@ -16,6 +16,10 @@
       if (/Android|iPhone|iPad|iPod|Mobile/i.test(u) || (/Mac/.test(u) && navigator.maxTouchPoints > 1)) d.dataset.phone = '1';
       var set = function(){ d.dataset.view = s === 'mobile' || s === 'desktop' ? s : (Math.min(innerWidth||9999, screen.width||9999) <= 760 ? 'mobile' : 'desktop'); };
       set();
+      var savedMode = 'clean';
+      try { savedMode = localStorage.getItem('hwata_style_mode') || 'clean'; } catch(e){}
+      if (savedMode !== 'clean' && savedMode !== 'pixel' && savedMode !== 'sd') savedMode = 'clean';
+      d.dataset.hwataMode = savedMode;
       if (d.dataset.view === 'desktop' && screen.width && screen.width <= 760) {
         var m = document.querySelector('meta[name=viewport]');
         if (m) m.content = 'width=1100';
@@ -23,44 +27,27 @@
       if (!s) addEventListener('resize', set);
     })();
   </script>
-  <title>ファタペット (HwataPet) &amp; ファタトーク : 3Dアバター歯科Q&amp;A・正会員メッセンジャー | ホワイトスタイル歯科医院</title>
-  <meta name="description" content="江南駅11番・12番出口徒歩1分、1994年開院・創業33年の伝統を誇るホワイトスタイル歯科医院公式3Dデンタルケアコミュニティ「ファタペット」＆専用メッセンジャー「ファタトーク」。日本語通訳スタッフ3名常駐（直通 +82-10-3046-5010 / LINE: whitestyle1）。">
-  <meta property="og:title" content="ファタペット (HwataPet) &amp; ファタトーク : 3Dアバター歯科Q&amp;A・正会員メッセンジャー">
-  <meta property="og:description" content="1994年開院・創業33年のホワイトスタイル歯科医院公式コミュニティ。6種3Dアバターとドクターファタ24時間歯科Q&amp;A、院内正会員認証でファタトークの大容量ファイル転送まで利用できます。">
-  <meta property="og:image" content="https://whitestyle.com/ai-pet/assets3d/hwata_3d_costume_crown.png">
+  <title>ファタペット (HwataPet) &amp; ファタトーク : 歯科Q&amp;Aルーム・正会員メッセンジャー | ホワイトスタイル歯科医院</title>
+  <meta name="description" content="江南駅11番・12番出口徒歩1分、1994年開院・創業33年のホワイトスタイル歯科医院公式コミュニティ。クリーンミニマル・8bitドット・韓国ゲームSDの3種モード切り替え対応。日本語通訳スタッフ3名常駐（直通 +82-10-3046-5010 / LINE: whitestyle1）。">
+  <meta property="og:title" content="ファタペット (HwataPet) &amp; ファタトーク : 歯科Q&amp;Aルーム・正会員メッセンジャー">
+  <meta property="og:description" content="1994年開院・創業33年のホワイトスタイル歯科医院公式コミュニティ。3つのデザインモードでドクターファタ24時間歯科Q&amp;Aやファタトークをご利用いただけます。">
+  <meta property="og:image" content="https://whitestyle.com/ai-pet/assets3d/hwata_mode_clean_crown.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://whitestyle.com/ai-pet/ja">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="ファタペット (HwataPet) / ホワイトスタイル歯科医院">
-  <meta name="theme-color" content="#f4f6f3">
+  <meta name="theme-color" content="#f8fafc">
   <link rel="canonical" href="https://whitestyle.com/ai-pet/ja">
   <link rel="alternate" hreflang="ko" href="https://whitestyle.com/ai-pet">
   <link rel="alternate" hreflang="ja" href="https://whitestyle.com/ai-pet/ja">
-  <link rel="icon" href="../assets3d/hwata_3d_idle.png">
+  <link rel="icon" href="../assets3d/hwata_mode_clean.png">
   <link rel="dns-prefetch" href="https://whitestyle.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css">
-  <link rel="stylesheet" href="../download.css?v=20261121">
-  <style>
-    body.ja-pet {
-      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
-      word-break: keep-all;
-      overflow-wrap: break-word;
-    }
-    .step-badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      background: var(--mint-light);
-      color: var(--mint);
-      margin-bottom: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="../download.css?v=20261126">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -136,33 +123,33 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "ファタペットの3DアバターQ&Aと院内正会員認証はどのように利用できますか？",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "whitestyle.comにメールまたはGoogleアカウントでログインすると、6種の3D動物アバターと24時間歯科Q&Aルームをご利用いただけます。ホワイトスタイル歯科医院でご診療を受けられた会員様は、カルテ番号や院内自由診療認証コードをご入力いただくことで「認証済みファタペット」正会員へアップグレードできます。"
+              "name": "ファタペットのデザインモード切替と院内正会員認証はどのように利用できますか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "whitestyle.comにメールまたはGoogleアカウントでログインすると、クリーンミニマル・8bitドット・韓国ゲームSDの3つのデザインモードを選びながら24時間歯科Q&Aルームをご利用いただけます。ホワイトスタイル歯科医院でご診療を受けられた会員様は、カルテ番号や自由診療認証コードをご入力いただくことで「認証済みファタペット」正会員へアップグレードできます。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "認証済みファタペット正会員になるとファタトーク(/messenger)で何が使えるようになりますか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "認証済みファタペット正会員様は、専用メッセンジャー「ファタトーク（/messenger）」および画面フローティングドックにて、プライベートチャットルームの作成、知人招待、最大500MBクラウドおよびP2P無制限ダイレクトファイル転送、VIP王冠スタイルをご利用いただけます。"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "日本語での事前相談や来院予約はどのように進められますか？",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "日本語専任通訳スタッフ3名が常駐しております。日本語通訳スタッフ直通電話（+82-10-3046-5010）またはLINE日本語直通相談（ID: whitestyle1）にて、ご来院前の治療期間・費用のご案内からご来院後のアフターケアまで1対1で丁寧にサポートいたします。"
+              }
             }
-          },
-          {
-            "@type": "Question",
-            "name": "認証済みファタペット正会員になるとファタトーク(/messenger)で何が使えるようになりますか？",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "認証済みファタペット正会員様は、専用メッセンジャー「ファタトーク（/messenger）」および画面右下のフローティングドックにて、プライベートチャットルームの作成、知人招待、最大500MBのクラウドファイル送信およびWebRTC P2P無制限ダイレクトファイル転送、スペシャル3Dコスチュームをご利用いただけます。"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "日本語での事前相談や来院予約はどのように進められますか？",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "日本語専任通訳スタッフ3名が常駐しております。日本語通訳スタッフ直通電話（+82-10-3046-5010）またはLINE日本語直通相談（ID: whitestyle1）にて、ご来院前の治療期間・費用のご案内からご来院後のアフターケアまで1対1で丁寧にサポートいたします。"
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="wb-ka ja-pet">
 
@@ -170,12 +157,12 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="./index.html">
-      <img src="../assets3d/hwata_3d_idle.png" alt="ファタペット マスコット ハヤニ">
+      <img src="../assets3d/hwata_mode_clean.png" data-ja-brand-avatar alt="ファタペット マスコット ハヤニ">
       <span>ファタペット (HwataPet)</span>
       <span class="brand-badge">1994年開院 創業33年</span>
     </a>
     <nav class="nav" aria-label="メインメニュー">
-      <a href="#steps" class="nav-badge">ご利用手順</a>
+      <a href="#steps" class="nav-badge">3種モード紹介</a>
       <a href="/messenger">ファタトーク</a>
       <a href="/ai-pet/#community">公開相談ルーム</a>
       <a href="#download">拡張機能</a>
@@ -198,22 +185,31 @@
     <div class="hero-grid">
       <div>
         <a class="news" href="/messenger">
-          <b>NEW v3.2</b>
-          <span>認証済みファタペット専用メッセンジャー「ファタトーク」＆3Dアバター歯科Q&amp;A公開</span>
+          <b>v3.3 公開</b>
+          <span>クリーンミニマル、8bitドット、韓国カジュアルの3種デザインモードとファタトーク</span>
         </a>
-        <h1>3Dアバターで楽しく口腔ケア、<br>ファタペット相談ルーム &amp; ファタトーク</h1>
+        <h1>お好みのスタイルで口腔ケア相談、<br>ファタペット &amp; ファタトーク</h1>
         <span class="eyebrow">江南駅11番・12番出口徒歩1分 ・ 1994年開院 創業33年 ホワイトスタイル歯科医院公式コミュニティ</span>
         <p class="lead">
-          <code>whitestyle.com</code> にログイン後、6種の3D動物アバター・13種の耳スタイル・7種のコスチュームでリアルタイム歯科Q&amp;A相談ルームにご参加いただけます。<br>
-          院内診療のカルテ番号または自由診療認証コードをご登録いただくと<strong>認証済みファタペット</strong>へ昇格し、<strong>ファタトーク（/messenger）のプライベートチャットや大容量ファイル送信（500MBクラウド・P2P無制限）</strong>がすぐにご利用いただけます。
+          複雑なカスタマイズなしで、ワンクリックで <strong>クリーンミニマル、8bitたまごっち風ドット、韓国ゲームキャラクター</strong> の3つのスタイルを切り替えながら、矯正・最小削除ラミネート・インプラントのご質問を日本語でお気軽にご相談いただけます。<br>
+          院内診療のカルテ番号または自由診療認証コードをご登録いただくと<strong>認証済みファタペット</strong>へ昇格し、<strong>ファタトーク（/messenger）のプライベートチャットや大容量ファイル送信</strong>がすぐにご利用いただけます。
         </p>
+
+        <div class="hero-mode-row">
+          <span class="hero-mode-label">デザインモード切替:</span>
+          <div class="mode-switcher-wrap" role="group" aria-label="デザインモード選択">
+            <button type="button" class="mode-sw-btn is-active" data-ja-mode="clean">クリーン (標準)</button>
+            <button type="button" class="mode-sw-btn" data-ja-mode="pixel">8bitドット</button>
+            <button type="button" class="mode-sw-btn" data-ja-mode="sd">韓国キャラクター</button>
+          </div>
+        </div>
 
         <div class="ctas">
           <a class="btn primary" href="/messenger">
             ファタトーク メッセンジャー <small>(大容量ファイル・知人トーク)</small>
           </a>
           <a class="cta-link" href="/ai-pet/#community">
-            3Dアバター相談ルームへ
+            歯科Q&amp;A相談ルームへ
           </a>
           <a class="cta-link" href="https://whitestyle.com/ja">
             日本語診療案内を見る
@@ -231,91 +227,75 @@
         </p>
       </div>
 
-      <!-- 右側: ファタペット 3Dアバター相談ルーム プレビュー -->
+      <!-- 右側: 360°立体ターンテーブル＆相談ルームプレビュー -->
       <div>
-        <div class="monitor">
-          <div class="mon-screen">
-            <div class="app">
-              <div class="bar">
-                <i></i><i></i><i></i>
-                <span>ファタペット 24時間歯科Q&amp;A・ファタトーク プレビュー</span>
-              </div>
-              <div class="app-body">
-                <div class="app-side">
-                  <b>ルーム一覧</b>
-                  <span>顎関節リラックス</span>
-                  <span>歯科矯正お悩み</span>
-                  <span>最小削除ラミネート</span>
-                  <span>ファタトーク知人室</span>
-                </div>
-                <div class="app-main">
-                  <div class="app-head">
-                    <span>日本からの来院・矯正＆審美補綴 相談ルーム</span>
-                    <small>@ファタ 常駐</small>
-                  </div>
-                  <div class="app-msgs">
-                    <div class="m u">
-                      <b>キツネ耳ハヤニ</b>
-                      <span>最小削除ラミネートと矯正、日本語通訳スタッフに事前相談できますか？</span>
-                    </div>
-                    <div class="m p">
-                      <b>ドクターファタ</b>
-                      <span>日本語通訳スタッフ3名が常駐しております。LINE（whitestyle1）または直通電話（+82-10-3046-5010）ですぐにご相談いただけます。</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="sw-hero-stage-card">
+          <div class="sw-stage-top">
+            <span>ハヤニ 360° プレビューステージ</span>
+            <span class="sw-stage-pill" id="jaModeBadge">クリーンミニマル</span>
+          </div>
+          <div class="sw-diorama-viewport" id="jaDioramaViewport" title="左右にドラッグしてアングルを回転できます">
+            <div class="sw-diorama-stage-bg">
+              <img src="../assets3d/hwata_mode_clean.png" id="jaDioramaImg" class="sw-diorama-img" alt="ハヤニ 3Dプレビュー">
             </div>
-            <div class="taskbar" aria-hidden="true">
-              <i></i><i></i><i></i>
-              <span>ファタペット相談ルーム v3.2</span>
-              <span class="taskbar-status">日本語通訳3名常駐</span>
+            <div class="sw-diorama-controls">
+              <span>角度回転</span>
+              <input type="range" id="jaTurntableRange" class="sw-scrub-range" min="0" max="11" value="0" aria-label="360度視点スライダー">
+              <span id="jaAngleLabel">正面</span>
             </div>
           </div>
-          <div class="mon-neck" aria-hidden="true"></div>
-          <div class="mon-foot" aria-hidden="true"></div>
+          <div class="sw-mini-chat">
+            <div class="sw-mini-msg">
+              <b>日本からのご相談者様</b>
+              <span>最小削除ラミネートと矯正、日本語通訳スタッフに事前相談できますか？</span>
+            </div>
+            <div class="sw-mini-msg pet">
+              <b>ドクターファタ（33年院長団監修）</b>
+              <span>日本語専任通訳スタッフ3名が常駐しております。LINE（whitestyle1）または直通電話（+82-10-3046-5010）ですぐにご案内いたします。</span>
+            </div>
+          </div>
         </div>
-        <p class="hint"><b>ご案内:</b> 6種の3Dアバター（ハヤニ・チーズ・ココ・ディノ・ココア・パイ）とともに歯のお悩みを気軽にご相談ください</p>
+        <p class="hint"><b>ご案内:</b> 上のボタンで クリーン、8bitドット、韓国キャラクター を今すぐ切り替えられます</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 2. 3ステップ ご利用ガイド -->
+<!-- 2. 3種デザインモード・ご利用ガイド -->
 <section class="alt" id="steps">
   <div class="wrap center">
-    <h2>ファタペット &amp; ファタトーク 3ステップご利用ガイド</h2>
-    <span class="eyebrow">ログインから正会員認証、大容量P2Pメッセンジャー解禁まで</span>
+    <h2>選べる3つのデザインスタイル &amp; ご利用ガイド</h2>
+    <span class="eyebrow">病院らしい清潔感からレトロドット、可愛い韓国ゲーム風キャラクターまで自由に切替</span>
     <p class="lead">
-      どなたでもWebブラウザからすぐに始められ、ホワイトスタイル歯科医院で自由診療を受けられた会員様には専用メッセンジャー機能が開放されます。
+      初めてご来院を検討される方にも安心感のある「クリーンミニマル」を標準採用し、お好みに応じていつでもワンクリックでデザインを変更できます。
     </p>
 
     <div class="grid g3">
       <div class="card feature">
         <figure class="sp-box">
-          <img src="../assets3d/hwata_3d_idle.png" alt="whitestyle.com ログイン">
+          <img src="../assets3d/hwata_mode_clean.png" alt="クリーンミニマルモード">
         </figure>
-        <span class="step-badge">STEP 1</span>
-        <h3>whitestyle.com ログイン</h3>
-        <p>メールまたはGoogleアカウントで <code>whitestyle.com</code> にログインすると、セキュリティ保護されたリアルタイム通信セッションが開始されます。</p>
+        <h3>クリーンミニマル</h3>
+        <span class="step-badge">標準スタイル</span>
+        <p>白とエメラルドミントを基調とした清潔感あふれるデザインです。20代〜50代のどの世代の方にも読みやすく、信頼感のある病院公式案内UIをお届けします。</p>
       </div>
 
       <div class="card feature">
         <figure class="sp-box">
-          <img src="../assets3d/hwata_3d_costume_doctor.png" alt="6種3Dアバターと歯科Q&A">
+          <img src="../assets3d/hwata_mode_pixel_doctor.png" style="image-rendering:pixelated;" alt="8bitドットモード">
         </figure>
-        <span class="step-badge">STEP 2</span>
-        <h3>6種3Dアバター &amp; ドクターファタQ&amp;A</h3>
-        <p>6種の動物、13種の耳スタイル、7種のコスチュームを組み合わせて自分だけの3Dハヤニを作成し、24時間いつでも歯科相談を行えます。</p>
+        <h3>8bitドット（たまごっち風）</h3>
+        <span class="step-badge">レトロスタイル</span>
+        <p>日本の患者様にも大人気のレトロドットグラフィックでハヤニが登場します。画面隅でぴょこぴょこ動く親しみやすいピクセルスタイルです。</p>
       </div>
 
       <div class="card feature">
         <figure class="sp-box">
-          <img src="../assets3d/hwata_3d_costume_crown.png" alt="院内正会員認証でファタトーク解禁">
+          <img src="../assets3d/hwata_mode_sd_crown.png" alt="韓国キャラクターモード">
         </figure>
-        <span class="step-badge">STEP 3</span>
-        <h3>院内正会員認証でファタトーク解禁</h3>
-        <p>ご来院時のカルテ番号や自由診療認証コードを入力すると「認証済みファタペット」へ昇格し、ファタトーク（/messenger）で500MBクラウド＆P2P無制限ファイル送信が可能になります。</p>
+        <h3>韓国ゲームキャラクター</h3>
+        <span class="step-badge">ポップキャラクター</span>
+        <p>トレンドの韓国モバイルゲーム風2頭身ちびキャラとパステルブルーのポップなUIです。院内正会員認証で王冠スタイルも楽しめます。</p>
       </div>
     </div>
   </div>
@@ -327,12 +307,12 @@
     <h2>ブラウザでも拡張機能でも、いつでもそばにハヤニが待機</h2>
     <span class="eyebrow">Webブラウザならインストール不要 ・ Google Chrome ウェブストア公式認証拡張機能 1クリック追加</span>
     <p class="lead">
-      ご自身の3Dファタペットアバターとファタトーク新着通知を、毎日のWebブラウジング中でもワンクリックで確認できます。
+      ご自身のファタペットとファタトーク新着通知を、毎日のWebブラウジング中でもワンクリックで確認できます。
     </p>
 
     <div class="dl-grid" style="max-width:780px; margin:28px auto 0;">
       <div class="dl-card" id="dl-card-ext">
-        <h3>Google Chrome ウェブストア公式拡張 (Chrome · Edge · Whale)</h3>
+        <h3>Google Chrome ウェブストア公式拡張 (Chrome, Edge, Whale 対応)</h3>
         <ol>
           <li>下の「Chrome ウェブストアから1クリック追加」ボタンをクリックします。</li>
           <li>右上の <b>Chrome に追加</b> を押すと数秒で安全にインストールが完了します。</li>
@@ -462,16 +442,92 @@
   </div>
 </footer>
 
+<script src="../scroll-world/scrub-engine.js?v=20261126"></script>
 <script>
 (function(){
   var btn = document.querySelector('[data-view-toggle]');
-  if (!btn) return;
-  btn.addEventListener('click', function(){
-    var d = document.documentElement;
-    var next = d.dataset.view === 'mobile' ? 'desktop' : 'mobile';
-    d.dataset.view = next;
-    try { localStorage.setItem('hwata-view', next); } catch(e) {}
+  if (btn) {
+    btn.addEventListener('click', function(){
+      var d = document.documentElement;
+      var next = d.dataset.view === 'mobile' ? 'desktop' : 'mobile';
+      d.dataset.view = next;
+      try { localStorage.setItem('hwata-view', next); } catch(e) {}
+    });
+  }
+
+  function validMode(v){ return (v === 'pixel' || v === 'sd') ? v : 'clean'; }
+  var curMode = validMode(document.documentElement.dataset.hwataMode);
+  var frameIdx = 0;
+
+  function renderJaStage(){
+    var img = document.getElementById('jaDioramaImg');
+    var badge = document.getElementById('jaModeBadge');
+    var lbl = document.getElementById('jaAngleLabel');
+    var rng = document.getElementById('jaTurntableRange');
+    if (badge) {
+      badge.textContent = curMode === 'pixel' ? '8bitドット' : curMode === 'sd' ? '韓国キャラクター' : 'クリーンミニマル';
+    }
+    document.querySelectorAll('[data-ja-brand-avatar]').forEach(function(el){
+      el.setAttribute('src', '../assets3d/hwata_mode_' + curMode + '.png');
+    });
+    document.querySelectorAll('[data-ja-mode]').forEach(function(b){
+      b.classList.toggle('is-active', b.getAttribute('data-ja-mode') === curMode);
+    });
+    var f = Math.max(0, Math.min(11, Number(frameIdx || 0)));
+    if (rng && Number(rng.value) !== f) rng.value = String(f);
+    if (lbl) {
+      var degs = ['正面', '+10°', '+22°', '+32°', '+20°', '+8°', '正面', '-10°', '-22°', '-32°', '-20°', '-8°'];
+      lbl.textContent = degs[f] || '正面';
+    }
+    if (img) {
+      if (f === 0) {
+        img.src = '../assets3d/hwata_mode_' + curMode + '.png';
+        img.style.transform = '';
+      } else if (curMode === 'pixel') {
+        img.src = '../assets3d/' + (f % 2 === 1 ? 'hwata_mode_pixel_wave.png' : 'hwata_mode_pixel.png');
+        img.style.transform = 'rotate(' + ((f - 6) * 2).toFixed(1) + 'deg)';
+      } else {
+        var pad = String(f).padStart(2, '0');
+        img.src = '../assets3d/hwata_3d_turn_' + pad + '.png';
+        img.style.transform = curMode === 'sd' ? 'scale(1.06)' : '';
+      }
+    }
+  }
+
+  document.querySelectorAll('[data-ja-mode]').forEach(function(b){
+    b.addEventListener('click', function(){
+      curMode = validMode(b.getAttribute('data-ja-mode'));
+      document.documentElement.dataset.hwataMode = curMode;
+      try { localStorage.setItem('hwata_style_mode', curMode); } catch(e) {}
+      renderJaStage();
+    });
   });
+
+  var rngEl = document.getElementById('jaTurntableRange');
+  if (rngEl) {
+    rngEl.addEventListener('input', function(){
+      frameIdx = Number(rngEl.value || 0);
+      renderJaStage();
+    });
+  }
+  var vpEl = document.getElementById('jaDioramaViewport');
+  if (vpEl) {
+    var dragging = false, sx = 0, sf = 0;
+    vpEl.addEventListener('pointerdown', function(e){
+      if (e.target && e.target.tagName === 'INPUT') return;
+      dragging = true; sx = e.clientX; sf = frameIdx;
+      try { vpEl.setPointerCapture(e.pointerId); } catch(err) {}
+    });
+    vpEl.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      frameIdx = ((sf + Math.round((e.clientX - sx) / 24)) % 12 + 12) % 12;
+      renderJaStage();
+    });
+    var stop = function(){ dragging = false; };
+    vpEl.addEventListener('pointerup', stop);
+    vpEl.addEventListener('pointercancel', stop);
+  }
+  renderJaStage();
 })();
 </script>
 </body>

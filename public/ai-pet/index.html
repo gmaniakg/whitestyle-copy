@@ -16,6 +16,10 @@
       if (/Android|iPhone|iPad|iPod|Mobile/i.test(u) || (/Mac/.test(u) && navigator.maxTouchPoints > 1)) d.dataset.phone = '1';
       var set = function(){ d.dataset.view = s === 'mobile' || s === 'desktop' ? s : (Math.min(innerWidth||9999, screen.width||9999) <= 760 ? 'mobile' : 'desktop'); };
       set();
+      var savedMode = 'clean';
+      try { savedMode = localStorage.getItem('hwata_style_mode') || 'clean'; } catch(e){}
+      if (savedMode !== 'clean' && savedMode !== 'pixel' && savedMode !== 'sd') savedMode = 'clean';
+      d.dataset.hwataMode = savedMode;
       if (d.dataset.view === 'desktop' && screen.width && screen.width <= 760) {
         var m = document.querySelector('meta[name=viewport]');
         if (m) m.content = 'width=1100';
@@ -23,25 +27,25 @@
       if (!s) addEventListener('resize', set);
     })();
   </script>
-  <title>화타펫 (HwataPet) &amp; 화타톡: 3D 아바타 구강 Q&amp;A 단톡방 · 정회원 메신저 | 화이트스타일치과의원</title>
-  <meta name="description" content="강남역 11·12번 출구 도보 1분, 1994년 개원 33년 전통 화이트스타일치과의원 공식 3D 덴탈 케어 커뮤니티 화타펫 &amp; 화타톡. whitestyle.com 로그인 후 6종 3D 아바타 단톡방과 닥터 화타 실시간 구강 Q&amp;A를 이용하고, 원내 정회원 인증으로 프라이빗 지인 메신저와 대용량 파일 전송 기능을 해금하세요.">
-  <meta property="og:title" content="화타펫 (HwataPet) &amp; 화타톡: 3D 아바타 구강 Q&amp;A 단톡방 · 정회원 메신저">
-  <meta property="og:description" content="1994년 개원 33년 전통 강남역 화이트스타일치과의원 공식 화타펫 단톡방 &amp; 화타톡 메신저. 3D 아바타로 구강 고민을 나누고 원내 정회원 인증으로 프라이빗 지인 메신저를 이용하세요.">
-  <meta property="og:image" content="/ai-pet/assets3d/hwata_3d_costume_crown.png">
+  <title>화타펫 (HwataPet) &amp; 화타톡: AI 치과 Q&amp;A 단톡방 · 정회원 메신저 | 화이트스타일치과의원</title>
+  <meta name="description" content="강남역 11·12번 출구 도보 1분, 1994년 개원 33년 전통 화이트스타일치과의원 공식 덴탈 케어 커뮤니티 화타펫 &amp; 화타톡. whitestyle.com 로그인 후 클린 미니멀·8비트 도트·K-게임 SD 3가지 스타일의 하야니와 실시간 구강 Q&amp;A를 이용하고, 원내 정회원 인증으로 프라이빗 지인 메신저를 해금하세요.">
+  <meta property="og:title" content="화타펫 (HwataPet) &amp; 화타톡: AI 치과 Q&amp;A 단톡방 · 정회원 메신저">
+  <meta property="og:description" content="1994년 개원 33년 전통 강남역 화이트스타일치과의원 공식 화타펫 단톡방 &amp; 화타톡 메신저. 원하는 캐릭터 모드로 구강 고민을 나누고 원내 정회원 인증으로 프라이빗 지인 메신저를 이용하세요.">
+  <meta property="og:image" content="/ai-pet/assets3d/hwata_mode_clean_crown.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://whitestyle.com/ai-pet">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:site_name" content="화타펫 (HwataPet) / 화이트스타일치과의원">
-  <meta name="theme-color" content="#f4f6f3">
+  <meta name="theme-color" content="#f8fafc">
   <link rel="canonical" href="https://whitestyle.com/ai-pet">
   <link rel="alternate" hreflang="ko" href="https://whitestyle.com/ai-pet">
   <link rel="alternate" hreflang="ja" href="https://whitestyle.com/ai-pet/ja">
-  <link rel="icon" href="./assets3d/hwata_3d_idle.png">
+  <link rel="icon" href="./assets3d/hwata_mode_clean.png">
   <link rel="dns-prefetch" href="https://whitestyle.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css">
-  <link rel="stylesheet" href="./download.css?v=20261121">
+  <link rel="stylesheet" href="./download.css?v=20261126">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -79,7 +83,7 @@
       },
       {
         "@type": "SoftwareApplication",
-        "name": "화타펫 (HwataPet) & 화타톡: 3D 아바타 구강 Q&A 단톡방 · 정회원 메신저",
+        "name": "화타펫 (HwataPet) & 화타톡: 덴탈 AI Q&A 단톡방 · 정회원 메신저",
         "operatingSystem": "Web Browser, Chrome Extension, Edge, Whale",
         "applicationCategory": "SocialNetworkingApplication",
         "offers": {
@@ -99,7 +103,7 @@
             "name": "화타펫 단톡방과 정회원 인증(인증된 화타펫)은 어떻게 이용하나요?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "whitestyle.com에 이메일 또는 Google 계정으로 로그인하시면 실시간 3D 아바타 공개 단톡방과 닥터 화타 구강 Q&A를 즉시 이용하실 수 있습니다. 강남역 화이트스타일치과의원에서 진료를 받으신 회원님은 차트번호 또는 원내 비보험 진료 인증코드를 입력해 '인증된 화타펫' 정회원으로 승급하실 수 있습니다."
+              "text": "whitestyle.com에 이메일 또는 Google 계정으로 로그인하시면 클린 미니멀·8비트 도트·K-게임 SD 3종 스타일의 하야니와 함께 실시간 구강 Q&A 단톡방을 즉시 이용하실 수 있습니다. 강남역 화이트스타일치과의원에서 진료를 받으신 회원님은 차트번호 또는 원내 비보험 진료 인증코드를 입력해 '인증된 화타펫' 정회원으로 승급하실 수 있습니다."
             }
           },
           {
@@ -107,7 +111,7 @@
             "name": "인증된 화타펫 정회원이 되면 화타톡 메신저에서 어떤 기능을 쓸 수 있나요?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "인증된 화타펫 정회원은 전용 지인 메신저 화타톡(/messenger)과 우측 하단 플로팅 독에서 프라이빗 대화방 개설, 지인 초대, 최대 500MB 클라우드 파일 전송 및 WebRTC P2P 무제한 직접 파일 전송, 스페셜 3D 코스튬 아바타를 모두 이용하실 수 있습니다."
+              "text": "인증된 화타펫 정회원은 전용 지인 메신저 화타톡(/messenger)과 화면 좌측 하단 플로팅 독에서 프라이빗 대화방 개설, 지인 초대, 최대 500MB 클라우드 파일 전송 및 P2P 무제한 직접 파일 전송, VIP 왕관 하야니 스타일을 모두 이용하실 수 있습니다."
             }
           },
           {
@@ -130,13 +134,13 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="./index.html">
-      <img src="./assets3d/hwata_3d_idle.png" alt="화타펫 마스코트 하야니">
+      <img src="./assets3d/hwata_mode_clean.png" data-brand-avatar alt="화타펫 마스코트 하야니">
       <span>화타펫 (HwataPet)</span>
       <span class="brand-badge">1994년 개원 33년 전통</span>
     </a>
     <nav class="nav" aria-label="메인 메뉴">
       <a href="#community" class="nav-badge">단톡방</a>
-      <a href="#avatar-studio">아바타 꾸미기</a>
+      <a href="#avatar-studio">테마·스타일</a>
       <a href="#chart-crack">정회원 인증</a>
       <a href="/messenger">화타톡 메신저</a>
       <a href="#download">확장 받기</a>
@@ -159,15 +163,24 @@
     <div class="hero-grid">
       <div>
         <a class="news" href="/messenger">
-          <b>NEW v3.2</b>
-          <span>인증된 화타펫 전용 지인 메신저 '화타톡' &amp; 3D 아바타 구강 Q&amp;A 단톡방 오픈</span>
+          <b>v3.3 업데이트</b>
+          <span>클린 미니멀, 8비트 도트, 케이게임 캐릭터 3종 테마와 화타톡 메신저</span>
         </a>
-        <h1>3D 아바타로 함께하는 구강 케어,<br>화타펫 단톡방 &amp; 화타톡 메신저</h1>
+        <h1>나만의 하야니와 함께하는 구강 케어,<br>화타펫 단톡방 &amp; 화타톡 메신저</h1>
         <span class="eyebrow">강남역 11·12번 출구 도보 1분 · 1994년 개원 33년 전통 화이트스타일치과의원 공식 커뮤니티</span>
         <p class="lead">
-          <code>whitestyle.com</code> 로그인 후 6종 동물·13종 귀 모양·7종 코스튬 3D 화타펫 아바타로 실시간 구강 Q&amp;A 단톡방에서 소통하고, 치아나 턱관절이 궁금할 땐 <code>@화타</code>에게 바로 물어보세요.<br>
+          복잡한 설정 없이 클릭 한 번으로 <strong>클린 미니멀, 8비트 도트, 케이게임 캐릭터</strong> 3가지 디자인 모드를 자유롭게 전환하고, 치아교정과 임플란트 및 라미네이트가 궁금할 땐 <code>@화타</code>에게 바로 물어보세요.<br>
           원내 진료 차트번호 또는 비보험 진료 인증코드를 등록하면 <strong>인증된 화타펫</strong>으로 승급되어 <strong>화타톡(/messenger) 프라이빗 지인 메신저와 대용량 파일 전송(최대 500MB 클라우드·P2P 무제한)</strong>이 즉시 해금됩니다.
         </p>
+
+        <div class="hero-mode-row">
+          <span class="hero-mode-label">화면 디자인 모드:</span>
+          <div class="mode-switcher-wrap" role="group" aria-label="디자인 모드 선택">
+            <button type="button" class="mode-sw-btn is-active" data-style-mode="clean">클린 (기본)</button>
+            <button type="button" class="mode-sw-btn" data-style-mode="pixel">8비트 도트</button>
+            <button type="button" class="mode-sw-btn" data-style-mode="sd">케이게임 캐릭터</button>
+          </div>
+        </div>
 
         <div class="ctas">
           <a class="btn primary" href="/messenger">
@@ -189,51 +202,35 @@
         </p>
       </div>
 
-      <!-- 오른쪽: 화타펫 3D 아바타 단톡방 미리보기 모니터 -->
+      <!-- 오른쪽: 360° 인터랙티브 디오라마 스테이지 & 단톡방 미리보기 -->
       <div>
-        <div class="monitor">
-          <div class="mon-screen">
-            <div class="app">
-              <div class="bar">
-                <i></i><i></i><i></i>
-                <span>화타펫 실시간 단톡방 미리보기</span>
-              </div>
-              <div class="app-body">
-                <div class="app-side">
-                  <b>단톡방 목록</b>
-                  <span>턱관절 탈출방</span>
-                  <span>치아교정 고민방</span>
-                  <span>라미네이트, 미백 방</span>
-                  <span>내 친구 단톡방</span>
-                </div>
-                <div class="app-main">
-                  <div class="app-head">
-                    <span>강남 직장인 턱관절 &amp; 이갈이 탈출방</span>
-                    <small>@화타 상주</small>
-                  </div>
-                  <div class="app-msgs" id="hero-demo-msgs">
-                    <div class="m u">
-                      <b>여우귀 하야니</b>
-                      <span>모니터 보다가 어금니 꽉 깨물었어 @화타 어떡해?</span>
-                    </div>
-                    <div class="m p">
-                      <b>닥터 화타</b>
-                      <span>윗니와 아랫니 사이 2~3mm 틈을 두고 "은~" 발음으로 턱 힘을 빼주세요!</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div class="sw-hero-stage-card" id="heroStageCard">
+          <div class="sw-stage-top">
+            <span>하야니 360° 인터랙티브 프리뷰</span>
+            <span class="sw-stage-pill" id="heroModeBadge">클린 미니멀 모드</span>
+          </div>
+          <div class="sw-diorama-viewport" id="heroDioramaViewport" title="좌우로 드래그하여 하야니 각도를 돌려보세요">
+            <div class="sw-diorama-stage-bg">
+              <img src="./assets3d/hwata_mode_clean.png" id="heroDioramaImg" class="sw-diorama-img" alt="하야니 인터랙티브 3D 프리뷰">
             </div>
-            <div class="taskbar" aria-hidden="true">
-              <i></i><i></i><i></i>
-              <span>화타펫 단톡방 v3.2</span>
-              <span class="taskbar-status">정회원 인증 지원</span>
+            <div class="sw-diorama-controls">
+              <span>시점 회전</span>
+              <input type="range" id="heroTurntableRange" class="sw-scrub-range" min="0" max="11" value="0" aria-label="하야니 360도 시점 스크럽">
+              <span id="heroAngleLabel">정면</span>
             </div>
           </div>
-          <div class="mon-neck" aria-hidden="true"></div>
-          <div class="mon-foot" aria-hidden="true"></div>
+          <div class="sw-mini-chat" id="hero-demo-msgs">
+            <div class="sw-mini-msg">
+              <b>교정 6개월차 환자</b>
+              <span>@화타 월치료 다녀온 지 3일짼데 딱딱한 거 언제부터 먹을 수 있나요?</span>
+            </div>
+            <div class="sw-mini-msg pet">
+              <b>닥터 화타 (33년 협진 자문)</b>
+              <span>와이어 교체 후 3~4일차가 정점이며 5일차부터 서서히 편해집니다. 미지근한 연두부·계란찜을 드시고 찬물 가글이 도움이 됩니다!</span>
+            </div>
+          </div>
         </div>
-        <p class="hint"><b>Tip:</b> 아래 단톡방에서 내 화타펫 아바타(종류+귀모양)를 고르고 친구를 초대해 보세요</p>
+        <p class="hint"><b>안내:</b> 위 버튼으로 클린, 8비트 도트, 케이게임 모드를 바로 바꿔보세요</p>
       </div>
     </div>
   </div>
@@ -245,10 +242,10 @@
 
     <!-- 0. whitestyle.com 로그인 필수 게이트 -->
     <div id="hwataLoginGate" class="hw-login-gate">
-      <div class="hw-login-gate-badge">whitestyle.com 회원 전용 실시간 통신</div>
       <h2>whitestyle.com 로그인 후 화타펫 단톡방 통신을 시작하세요</h2>
+      <div class="hw-login-gate-badge">whitestyle.com 회원 전용 실시간 통신</div>
       <p>
-        실시간 3D 아바타 단톡방 입장, 닥터 화타 구강 Q&amp;A, 원내 정회원 인증(인증된 화타펫) 및 화타톡 프라이빗 지인 메신저는
+        실시간 아바타 단톡방 입장, 닥터 화타 구강 Q&amp;A, 원내 정회원 인증(인증된 화타펫) 및 화타톡 프라이빗 지인 메신저는
         <strong>whitestyle.com 로그인 후</strong> 안전하게 이용하실 수 있습니다.
       </p>
       <div class="hw-login-gate-actions">
@@ -285,39 +282,35 @@
       <div id="crackResultBox" class="crack-result" hidden></div>
     </div>
 
-    <!-- B. 내 채터 프로필 & 화타펫 아바타 스튜디오 -->
+    <!-- B. 내 채터 프로필 & 화타펫 테마·스타일 스튜디오 -->
     <div class="avatar-studio-card" id="avatar-studio">
       <div class="avatar-summary-bar">
         <div class="avatar-identity-wrap">
           <div id="myAvatarPreview" class="hw-avatar lg hw-bg-cream" aria-label="내 화타펫 아바타 미리보기"></div>
           <div class="avatar-profile-fields">
-            <label for="chatterNicknameInput" class="avatar-profile-label">단톡방 닉네임 &amp; 내 화타펫 아바타</label>
+            <label for="chatterNicknameInput" class="avatar-profile-label">단톡방 닉네임 &amp; 하야니 디자인 모드</label>
             <div class="nickname-row">
               <input type="text" id="chatterNicknameInput" class="nickname-input" placeholder="닉네임 입력" maxlength="20">
-              <span id="myAvatarSummaryText" style="font-size:13px; color:var(--muted); font-weight:700;">하야니 (쫑긋 귀 / 크림)</span>
+              <span id="myAvatarSummaryText" style="font-size:13px; color:var(--muted); font-weight:700;">클린 미니멀, 기본 하야니 (크림)</span>
             </div>
           </div>
         </div>
         <button type="button" id="toggleAvatarStudioBtn" class="avatar-toggle-btn" aria-expanded="false">
-          아바타 꾸미기 열기
+          모드 &amp; 스타일 변경
         </button>
       </div>
 
       <div id="avatarStudioPanel" class="avatar-studio-panel" hidden>
         <div>
-          <div class="studio-group-title">1단계. 펫 종류 선택 (6종)</div>
-          <div class="studio-grid" id="speciesPickerGrid"></div>
-        </div>
-        <div id="earPickerGroup">
-          <div class="studio-group-title">2단계. 강아지 귀 모양 선택 (13종)</div>
-          <div class="studio-grid" id="earPickerGrid"></div>
+          <div class="studio-group-title">1단계. 디자인 모드 선택 (3종 · 화면 테마 동시 전환)</div>
+          <div class="studio-grid" id="modePickerGrid"></div>
         </div>
         <div id="costumePickerGroup">
-          <div class="studio-group-title">3단계. 스페셜 코스튬 선택 (7종)</div>
+          <div class="studio-group-title">2단계. 하야니 역할 스타일 (3종)</div>
           <div class="studio-grid" id="costumePickerGrid"></div>
         </div>
         <div>
-          <div class="studio-group-title">4단계. 아바타 배경 컬러 (6종)</div>
+          <div class="studio-group-title">3단계. 아바타 배경 컬러 (6종)</div>
           <div class="studio-grid" id="bgPickerGrid"></div>
         </div>
       </div>
@@ -419,7 +412,7 @@
 
     <div class="dl-grid" style="max-width:780px; margin:28px auto 0;">
       <div class="dl-card" id="dl-card-ext">
-        <h3>Google Chrome 웹 스토어 공식 확장 (Chrome · Edge · Whale)</h3>
+        <h3>Google Chrome 웹 스토어 공식 확장 (Chrome, Edge, Whale 지원)</h3>
         <ol>
           <li>아래 [Chrome 웹 스토어에서 설치] 버튼을 클릭하세요.</li>
           <li>우측 상단 <b>Chrome에 추가</b> 버튼을 누르면 3초 만에 안전하게 설치됩니다.</li>
@@ -512,8 +505,8 @@
       </details>
 
       <details class="faq-item">
-        <summary>채팅창에서 내 화타펫 아바타를 바꿀 수 있나요?</summary>
-        <p>네! [아바타 꾸미기] 버튼을 누르면 6종의 펫(강아지 하야니·고양이·코끼리·공룡·앵무새·파이톤), 13가지 강아지 귀 모양, 7가지 코스튬, 6가지 배경 컬러를 조합해 채팅창 옆에 바로 띄울 수 있습니다.</p>
+        <summary>채팅창에서 하야니 디자인 모드를 바꿀 수 있나요?</summary>
+        <p>네, 클린 미니멀 기본 모드와 8비트 도트, 케이게임 캐릭터 모드 중 마음에 드는 디자인 모드를 고르면 캐릭터 그래픽과 창 테마가 즉시 전환되며 닥터 가운과 왕관 스타일 및 배경 컬러도 손쉽게 변경하실 수 있습니다.</p>
       </details>
 
       <details class="faq-item">
@@ -549,6 +542,7 @@
   </div>
 </footer>
 
-<script src="./download.js?v=20261126"></script>
+<script src="./scroll-world/scrub-engine.js?v=20261126"></script>
+<script src="./download.js?v=20261126b"></script>
 </body>
 </html>

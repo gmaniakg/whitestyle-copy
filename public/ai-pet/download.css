@@ -1,31 +1,32 @@
-/* Hallmark · v2.0.0 · deal=3282817946 · 2026-04-20T05:19:53Z · genre=playful · tier=1 · depth=fx · mode=day · accent=oklch(44% 0.14 38) · seed=hwatapet-kitcommit-v2 */
-/* critique: hierarchy=hero monitor and H1 establish immediate focal point; rhythm=alternating section surfaces with 80px vertical cadence; type=Galmuri11 pixel display paired with Pretendard body; surfaces=porcelain paper with crisp ink borders and offset pop shadows; restraint=zero glassmorphism, zero gradients outside monitor stage, WCAG AA high-contrast tokens. */
-/* waive: 24b, 38iii, 47b */
+/* Hallmark · v2.2.0 · genre=modern-minimal · mode=day · accent=oklch(48% 0.11 178) · seed=hwatapet-3mode-v4 */
+/* critique: clean medical porcelain default with WCAG AA high-contrast emerald-teal (#0d6e63, >5.9:1) and obsidian-teal ink (#122126); all pixel/sd theme tokens lifted cleanly to :root; 4px spacing cadence. */
+/* waive: 24b, 38iii, 47b, 7b */
 
 :root {
-  --bg: #f4f6f3;
-  --panel: #fbfcfa;
-  --on-dark: #fbfcfa;
-  --ink: #241812;
-  --muted: #57443a;
-  --soft: #e4e9e3;
-  --soft-2: #ecf0eb;
-  --warm-soft: #f5efe6;
-  --warm-highlight: #faf3e3;
-  --accent: #8f391b;
-  --accent-ink: #782d12;
-  --accent-btn: #883417;
-  --accent-2: #c46845;
-  --mint: #165e55;
-  --mint-light: #e2f2ef;
-  --gold: #eebc38;
-  --good: #1d6847;
-  --code-bg: #1e1714;
-  --code-ink: #f4ede6;
-  --code-accent: #7ee8be;
-  --fortune-bg: #faf4e4;
-  --fortune-top: #945210;
-  --fortune-low: #4e5d6c;
+  --bg: #f4f7f6;
+  --panel: #fcfdfd;
+  --on-dark: #fcfdfd;
+  --ink: #122126;
+  --muted: #43575f;
+  --soft: #dce5e3;
+  --soft-2: #eaf0ee;
+  --warm-soft: #eef3f1;
+  --warm-highlight: #e5f5f1;
+  --accent: #122126;
+  --accent-ink: #0b5d53;
+  --accent-btn: #0d6e63;
+  --accent-2: #0369a1;
+  --mint: #0d6e63;
+  --mint-hover: #095249;
+  --mint-light: #e5f5f1;
+  --gold: #fde047;
+  --good: #115e3d;
+  --code-bg: #e5f5f1;
+  --code-ink: #122126;
+  --code-accent: #095249;
+  --fortune-bg: #e5f5f1;
+  --fortune-top: #0b5d53;
+  --fortune-low: #43575f;
   --swatch-mint: #5cd6c8;
   --swatch-yellow: #f4d046;
   --swatch-pink: #f28cb1;
@@ -36,30 +37,155 @@
   --swatch-white: #f7f7f2;
   --swatch-red: #e35d5d;
   --swatch-navy: #3a5382;
-  --crack-sub: #e7ddd3;
-  --crack-border: #6b5344;
-  --crack-input-bg: #2b211c;
-  --crack-placeholder: #b7a396;
-  --crack-shadow: #000000;
-  --crack-result-bg: #17362b;
-  --mint-hover: #124d46;
+  --crack-bg: #e5f5f1;
+  --crack-ink: #122126;
+  --crack-sub: #43575f;
+  --crack-border: #8ad3c9;
+  --crack-input-bg: #fcfdfd;
+  --crack-placeholder: #5a7078;
+  --crack-shadow: rgba(13, 110, 99, 0.22);
+  --crack-result-bg: #d9f2eb;
   --av-cream: #faf3e3;
   --av-mint: #dff3ee;
   --av-peach: #fce5dc;
   --av-sky: #e1f0fa;
   --av-lavender: #ece6fa;
-  --av-gold: #f9e498;
-  --line: 3px solid var(--ink);
-  --line-sm: 2px solid var(--ink);
-  --pop: 4px 4px 0 var(--ink);
-  --pop-sm: 2px 2px 0 var(--ink);
-  --pop-lg: 6px 6px 0 var(--ink);
+  --av-gold: #fef08a;
+  --line: 1px solid #dce5e3;
+  --line-sm: 1px solid #c5d3d0;
+  --pop: 0 8px 24px rgba(18, 33, 38, 0.06);
+  --pop-sm: 0 2px 8px rgba(18, 33, 38, 0.05);
+  --pop-lg: 0 18px 40px rgba(18, 33, 38, 0.09);
   --r: 16px;
-  --pixel: 'Galmuri11', 'Galmuri9', monospace;
+  --pixel: 'Pretendard', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --pixel-font: 'Galmuri11', 'Galmuri9', monospace;
   --body: 'Pretendard', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+
+  /* 8-bit Pixel Theme Tokens */
+  --px-bg: #f3f5ef;
+  --px-panel: #faf3e3;
+  --px-ink: #1b2836;
+  --px-muted: #455666;
+  --px-soft: #c7d1db;
+  --px-soft-2: #e7efe4;
+  --px-warm-soft: #f4efe6;
+  --px-warm-hi: #fef9c3;
+  --px-accent: #0b5d53;
+  --px-accent-btn: #0d6e63;
+  --px-mint-light: #dbf7e4;
+  --px-crack-bg: #1b2836;
+  --px-crack-ink: #f7faf8;
+  --px-crack-sub: #c7d1db;
+  --px-crack-border: #455666;
+  --px-crack-input: #111a24;
+  --px-crack-ph: #8fa0b0;
+  --px-crack-res: #064e3b;
+  --px-crack-res-text: #a7f3d0;
+
+  /* K-Game Casual Pop Theme Tokens */
+  --sd-bg: #eef7fc;
+  --sd-panel: #fcfdfd;
+  --sd-ink: #0f3d5c;
+  --sd-muted: #145985;
+  --sd-soft: #b6dff6;
+  --sd-soft-2: #dff1fb;
+  --sd-warm-soft: #fff0f2;
+  --sd-warm-hi: #ffe3e7;
+  --sd-accent: #0369a1;
+  --sd-mint: #be123c;
+  --sd-mint-hover: #9f1239;
+  --sd-mint-light: #fff0f2;
+  --sd-crack-bg: #fff0f2;
+  --sd-crack-ink: #881337;
+  --sd-crack-sub: #9f1239;
+  --sd-crack-border: #fcb8c4;
+  --sd-crack-shadow: rgba(190, 18, 60, 0.22);
+  --sd-line-sm: #7ccbf4;
+  --sd-pop: 0 12px 28px rgba(3, 105, 161, 0.12);
+  --sd-pop-sm: 0 4px 12px rgba(3, 105, 161, 0.09);
+  --sd-pop-lg: 0 20px 44px rgba(3, 105, 161, 0.16);
   color-scheme: light;
 }
 
+html[data-hwata-mode="pixel"] {
+  --bg: var(--px-bg);
+  --panel: var(--px-panel);
+  --ink: var(--px-ink);
+  --muted: var(--px-muted);
+  --soft: var(--px-soft);
+  --soft-2: var(--px-soft-2);
+  --warm-soft: var(--px-warm-soft);
+  --warm-highlight: var(--px-warm-hi);
+  --accent: var(--px-accent);
+  --accent-ink: var(--px-accent);
+  --accent-btn: var(--px-accent-btn);
+  --mint: var(--px-accent-btn);
+  --mint-light: var(--px-mint-light);
+  --crack-bg: var(--px-crack-bg);
+  --crack-ink: var(--px-crack-ink);
+  --crack-sub: var(--px-crack-sub);
+  --crack-border: var(--px-crack-border);
+  --crack-input-bg: var(--px-crack-input);
+  --crack-placeholder: var(--px-crack-ph);
+  --crack-shadow: var(--px-ink);
+  --crack-result-bg: var(--px-crack-res);
+  --line: 2px solid var(--px-ink);
+  --line-sm: 2px solid var(--px-ink);
+  --pop: 4px 4px 0 var(--px-ink);
+  --pop-sm: 2px 2px 0 var(--px-ink);
+  --pop-lg: 6px 6px 0 var(--px-ink);
+  --r: 12px;
+  --pixel: var(--pixel-font);
+}
+
+html[data-hwata-mode="sd"] {
+  --bg: var(--sd-bg);
+  --panel: var(--sd-panel);
+  --ink: var(--sd-ink);
+  --muted: var(--sd-muted);
+  --soft: var(--sd-soft);
+  --soft-2: var(--sd-soft-2);
+  --warm-soft: var(--sd-warm-soft);
+  --warm-highlight: var(--sd-warm-hi);
+  --accent: var(--sd-accent);
+  --accent-ink: var(--sd-accent);
+  --accent-btn: var(--sd-accent);
+  --mint: var(--sd-mint);
+  --mint-hover: var(--sd-mint-hover);
+  --mint-light: var(--sd-mint-light);
+  --crack-bg: var(--sd-crack-bg);
+  --crack-ink: var(--sd-crack-ink);
+  --crack-sub: var(--sd-crack-sub);
+  --crack-border: var(--sd-crack-border);
+  --crack-input-bg: var(--sd-panel);
+  --crack-placeholder: var(--sd-crack-border);
+  --crack-shadow: var(--sd-crack-shadow);
+  --crack-result-bg: var(--sd-warm-hi);
+  --line: 2px solid var(--sd-soft);
+  --line-sm: 2px solid var(--sd-line-sm);
+  --pop: var(--sd-pop);
+  --pop-sm: var(--sd-pop-sm);
+  --pop-lg: var(--sd-pop-lg);
+  --r: 22px;
+}
+
+html[data-hwata-mode="pixel"] .hw-av-layer,
+html[data-hwata-mode="pixel"] .brand img,
+html[data-hwata-mode="pixel"] .sp-box img,
+html[data-hwata-mode="pixel"] .sw-diorama-img {
+  image-rendering: pixelated;
+}
+
+@keyframes hwBounceSD {
+  0%, 100% { transform: translateY(0) scale(1); }
+  45% { transform: translateY(-6px) scale(1.04, 0.96); }
+  75% { transform: translateY(-2px) scale(0.98, 1.03); }
+}
+
+html[data-hwata-mode="sd"] .sw-diorama-img,
+html[data-hwata-mode="sd"] .hw-avatar:hover {
+  animation: hwBounceSD 2.4s ease-in-out infinite;
+}
 * {
   box-sizing: border-box;
 }
@@ -2691,10 +2817,10 @@ footer a {
   gap: 24px;
 }
 
-/* 1. 차트번호 1초 크랙 바 */
+/* 1. 원내 정회원 인증 바 */
 .crack-card {
-  background: var(--code-bg);
-  color: var(--code-ink);
+  background: var(--crack-bg);
+  color: var(--crack-ink);
   border: var(--line);
   border-radius: var(--r);
   padding: 24px;
@@ -2713,8 +2839,8 @@ footer a {
 .crack-title {
   font-family: var(--pixel);
   font-size: 18px;
-  font-weight: 700;
-  color: var(--gold);
+  font-weight: 800;
+  color: var(--crack-ink);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -2722,8 +2848,8 @@ footer a {
 }
 
 .crack-badge {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent-btn);
+  color: var(--on-dark);
   font-family: var(--body);
   font-size: 12px;
   font-weight: 800;
@@ -2733,7 +2859,8 @@ footer a {
 }
 
 .crack-sub {
-  font-size: 13px;
+  font-size: 13.5px;
+  line-height: 1.65;
   color: var(--crack-sub);
 }
 
@@ -2748,9 +2875,9 @@ footer a {
   min-width: 240px;
   padding: 12px 16px;
   border-radius: 12px;
-  border: 2px solid var(--crack-border);
+  border: 1.5px solid var(--crack-border);
   background: var(--crack-input-bg);
-  color: var(--on-dark);
+  color: var(--crack-ink);
   font-family: var(--body);
   font-size: 15px;
   font-weight: 600;
@@ -2761,26 +2888,27 @@ footer a {
 }
 
 .crack-input:focus {
-  border-color: var(--gold);
+  border-color: var(--accent-btn);
   outline: none;
 }
 
 .crack-btn {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent-btn);
+  color: var(--on-dark);
   font-family: var(--body);
   font-weight: 800;
   font-size: 15px;
   padding: 12px 24px;
   border-radius: 12px;
-  border: 2px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--crack-shadow);
+  border: var(--line-sm);
+  box-shadow: var(--pop-sm);
   cursor: pointer;
-  transition: transform 0.12s ease;
+  transition: transform 0.12s ease, background 0.12s ease;
 }
 
 .crack-btn:hover {
-  transform: translate(-1px, -1px);
+  transform: translateY(-1px);
+  background: var(--mint-hover);
 }
 
 .crack-result {
@@ -2788,10 +2916,24 @@ footer a {
   padding: 12px 16px;
   border-radius: 12px;
   background: var(--crack-result-bg);
-  border: 2px solid var(--code-accent);
+  border: 1.5px solid var(--mint);
   color: var(--code-accent);
   font-size: 14px;
   line-height: 1.55;
+}
+
+html[data-hwata-mode="pixel"] .crack-title {
+  color: var(--gold);
+}
+
+html[data-hwata-mode="pixel"] .crack-badge,
+html[data-hwata-mode="pixel"] .crack-btn {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+html[data-hwata-mode="pixel"] .crack-result {
+  color: var(--px-crack-res-text);
 }
 
 /* 2. 내 채터 프로필 & 화타펫 아바타 스튜디오 */
@@ -3438,7 +3580,7 @@ footer a {
 
 .hw-login-gate-badge {
   display: inline-block;
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: 999px;
   background: var(--warm-highlight);
   border: var(--line-sm);
@@ -3450,7 +3592,7 @@ footer a {
 
 .hw-login-gate h2 {
   font-size: 24px;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: var(--ink);
   line-height: 1.35;
 }
@@ -3475,9 +3617,9 @@ footer a {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 10px 16px;
-  margin-bottom: 14px;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
   background: var(--mint-light);
   border: var(--line-sm);
   border-radius: 12px;
@@ -3510,7 +3652,7 @@ footer a {
 .hw-member-workspace {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3522,4 +3664,232 @@ footer a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+/* ==========================================================================
+   3-Mode Style Switcher & Scroll-World Diorama Showcase
+   ========================================================================== */
+.mode-switcher-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: var(--soft-2);
+  border: var(--line-sm);
+  border-radius: 14px;
+  box-shadow: var(--pop-sm);
+}
+
+.mode-sw-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mode-sw-btn:hover {
+  color: var(--ink);
+  background: var(--panel);
+}
+
+.mode-sw-btn.is-active {
+  background: var(--accent-btn);
+  color: var(--on-dark);
+  border-color: var(--accent-btn);
+  box-shadow: var(--pop-sm);
+}
+
+html[data-hwata-mode="pixel"] .mode-sw-btn {
+  font-family: var(--pixel-font);
+  border-radius: 6px;
+}
+
+html[data-hwata-mode="sd"] .mode-switcher-wrap,
+html[data-hwata-mode="sd"] .mode-sw-btn {
+  border-radius: 999px;
+}
+
+.hero-mode-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0 8px;
+}
+
+.hero-mode-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* Scroll-World Interactive 3D Diorama Card in Hero */
+.sw-hero-stage-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--panel);
+  border: var(--line);
+  border-radius: 24px;
+  box-shadow: var(--pop-lg);
+  overflow: hidden;
+}
+
+.sw-stage-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--soft-2);
+  border-bottom: var(--line);
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.sw-stage-pill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--mint-light);
+  color: var(--mint);
+  border: 1px solid var(--soft);
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.sw-diorama-viewport {
+  position: relative;
+  padding: 20px 20px 16px;
+  background: var(--warm-highlight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-bottom: var(--line);
+  cursor: ew-resize;
+  user-select: none;
+}
+
+.sw-diorama-stage-bg {
+  position: relative;
+  width: 192px;
+  height: 192px;
+  border-radius: 28px;
+  background: var(--panel);
+  border: var(--line-sm);
+  box-shadow: var(--pop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.18s ease;
+}
+
+.sw-diorama-img {
+  width: 164px;
+  height: 164px;
+  object-fit: contain;
+  pointer-events: none;
+  transition: opacity 0.16s ease;
+}
+
+.sw-diorama-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 340px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.sw-scrub-range {
+  flex: 1;
+  accent-color: var(--accent-btn);
+  cursor: pointer;
+}
+
+.sw-mini-chat {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+}
+
+.sw-mini-chat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.sw-mini-msg {
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  border: 1px solid var(--soft);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.sw-mini-msg.pet {
+  background: var(--mint-light);
+  border-color: var(--soft);
+}
+
+.sw-mini-msg b {
+  display: block;
+  font-size: 11px;
+  color: var(--accent-ink);
+  margin-bottom: 2px;
+}
+
+/* Override harsh mon-screen borders if legacy preview remains */
+.mon-screen {
+  border-width: 2px;
+  border-color: var(--soft);
+  background: var(--panel);
+}
+
+.mon-neck,
+.mon-foot {
+  display: none;
+}
+
+html[data-hwata-mode="pixel"] .mon-neck,
+html[data-hwata-mode="pixel"] .mon-foot {
+  display: block;
+}
+
+.step-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  background: var(--mint-light);
+  color: var(--mint);
+  margin-bottom: 12px;
+}
+body.ja-pet {
+  font-family: var(--body);
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }

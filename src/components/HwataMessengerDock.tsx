@@ -28,6 +28,123 @@ interface AiChatMsg {
   text: string;
 }
 
+type HwataStyleMode = 'clean' | 'pixel' | 'sd';
+
+const STYLE_MODE_OPTIONS: Array<{ id: HwataStyleMode; label: string }> = [
+  { id: 'clean', label: '✨ 클린' },
+  { id: 'pixel', label: '👾 8비트' },
+  { id: 'sd', label: '🎀 K-게임 SD' },
+];
+
+const DOCK_THEMES: Record<
+  HwataStyleMode,
+  {
+    cardBg: string;
+    cardBorder: string;
+    cardRadius: string;
+    cardShadow: string;
+    hdrBg: string;
+    hdrBorder: string;
+    hdrText: string;
+    subText: string;
+    avaBg: string;
+    avaBorder: string;
+    modeBarBg: string;
+    tabActiveText: string;
+    tabActiveBorder: string;
+    primaryBg: string;
+    primaryText: string;
+    chipBg: string;
+    chipBorder: string;
+    chipText: string;
+    feedBg: string;
+    fabBorder: string;
+    fabBg: string;
+    fabRadius: string;
+    fabShadow: string;
+  }
+> = {
+  clean: {
+    cardBg: '#ffffff',
+    cardBorder: '1px solid #e2e8f0',
+    cardRadius: '20px',
+    cardShadow: '0 18px 40px rgba(15, 23, 42, 0.12)',
+    hdrBg: '#f8fafc',
+    hdrBorder: '1px solid #e2e8f0',
+    hdrText: '#0f172a',
+    subText: '#64748b',
+    avaBg: '#f0fdf9',
+    avaBorder: '1px solid #99f6e4',
+    modeBarBg: '#ffffff',
+    tabActiveText: '#0d9488',
+    tabActiveBorder: '#0d9488',
+    primaryBg: '#0d9488',
+    primaryText: '#ffffff',
+    chipBg: '#f0fdf9',
+    chipBorder: '#99f6e4',
+    chipText: '#0f766e',
+    feedBg: '#f8fafc',
+    fabBorder: '2px solid #ffffff',
+    fabBg: 'rgba(255,255,255,0.95)',
+    fabRadius: '999px',
+    fabShadow: '0 10px 24px rgba(15, 23, 42, 0.14)',
+  },
+  pixel: {
+    cardBg: '#faf3e3',
+    cardBorder: '2px solid #1e293b',
+    cardRadius: '10px',
+    cardShadow: '4px 4px 0 #1e293b',
+    hdrBg: '#fde047',
+    hdrBorder: '2px solid #1e293b',
+    hdrText: '#1e293b',
+    subText: '#334155',
+    avaBg: '#ffffff',
+    avaBorder: '2px solid #1e293b',
+    modeBarBg: '#f4efe6',
+    tabActiveText: '#1e293b',
+    tabActiveBorder: '#1e293b',
+    primaryBg: '#1e293b',
+    primaryText: '#ffffff',
+    chipBg: '#ffffff',
+    chipBorder: '#1e293b',
+    chipText: '#1e293b',
+    feedBg: '#e8f0e5',
+    fabBorder: '2px solid #1e293b',
+    fabBg: '#faf3e3',
+    fabRadius: '14px',
+    fabShadow: '3px 3px 0 #1e293b',
+  },
+  sd: {
+    cardBg: '#ffffff',
+    cardBorder: '2px solid #bae6fd',
+    cardRadius: '24px',
+    cardShadow: '0 20px 44px rgba(2, 132, 199, 0.16)',
+    hdrBg: '#e0f2fe',
+    hdrBorder: '1.5px solid #bae6fd',
+    hdrText: '#0c4a6e',
+    subText: '#0369a1',
+    avaBg: '#fff1f2',
+    avaBorder: '2px solid #fda4af',
+    modeBarBg: '#f0f9ff',
+    tabActiveText: '#0284c7',
+    tabActiveBorder: '#0284c7',
+    primaryBg: '#0284c7',
+    primaryText: '#ffffff',
+    chipBg: '#fff1f2',
+    chipBorder: '#fecdd3',
+    chipText: '#be123c',
+    feedBg: '#f8fafc',
+    fabBorder: '2.5px solid #7dd3fc',
+    fabBg: '#ffffff',
+    fabRadius: '999px',
+    fabShadow: '0 12px 28px rgba(2, 132, 199, 0.22)',
+  },
+};
+
+function sanitizeStyleMode(val: string | null | undefined): HwataStyleMode {
+  return val === 'pixel' || val === 'sd' ? val : 'clean';
+}
+
 export default function HwataMessengerDock() {
   const pathname = usePathname() || '/';
   const { data: session, status } = useSession();
@@ -37,6 +154,7 @@ export default function HwataMessengerDock() {
     pathname.startsWith('/admin');
 
   const [open, setOpen] = useState(false);
+  const [styleMode, setStyleMode] = useState<HwataStyleMode>('clean');
   const [tab, setTab] = useState<'talk' | 'ai'>('talk');
   const [rooms, setRooms] = useState<DockRoom[]>([]);
   const [roomId, setRoomId] = useState('room_jaw_stretch');
@@ -108,6 +226,31 @@ export default function HwataMessengerDock() {
       // ignore
     }
   }, [isAuthed, open, tab, roomId, shouldHide]);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem('hwata_style_mode');
+      if (saved) setStyleMode(sanitizeStyleMode(saved));
+    } catch {
+      // ignore
+    }
+    const onStorage = (ev: StorageEvent) => {
+      if (ev.key === 'hwata_style_mode') {
+        setStyleMode(sanitizeStyleMode(ev.newValue));
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, []);
+
+  const handleChangeMode = (nextMode: HwataStyleMode) => {
+    setStyleMode(nextMode);
+    try {
+      window.localStorage.setItem('hwata_style_mode', nextMode);
+    } catch {
+      // ignore
+    }
+  };
 
   useEffect(() => {
     loadBootstrap();
@@ -233,6 +376,18 @@ export default function HwataMessengerDock() {
     }
   };
 
+  const theme = DOCK_THEMES[styleMode];
+  const petImgSrc = open
+    ? `/ai-pet/assets3d/hwata_mode_${styleMode}_wave.png`
+    : isVerified
+      ? `/ai-pet/assets3d/hwata_mode_${styleMode}_crown.png`
+      : `/ai-pet/assets3d/hwata_mode_${styleMode}.png`;
+  const hdrAvaSrc = isVerified
+    ? `/ai-pet/assets3d/hwata_mode_${styleMode}_crown.png`
+    : `/ai-pet/assets3d/hwata_mode_${styleMode}.png`;
+  const imgPixelStyle: React.CSSProperties =
+    styleMode === 'pixel' ? { imageRendering: 'pixelated' } : {};
+
   return (
     <div
       style={{
@@ -250,13 +405,13 @@ export default function HwataMessengerDock() {
           style={{
             width: '350px',
             maxWidth: 'calc(100vw - 28px)',
-            height: '500px',
+            height: '520px',
             maxHeight: 'calc(100vh - 120px)',
             marginBottom: '10px',
-            background: '#ffffff',
-            border: '1px solid #cbd5e1',
-            borderRadius: '18px',
-            boxShadow: '0 18px 42px rgba(15, 23, 42, 0.24)',
+            background: theme.cardBg,
+            border: theme.cardBorder,
+            borderRadius: theme.cardRadius,
+            boxShadow: theme.cardShadow,
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
@@ -264,8 +419,9 @@ export default function HwataMessengerDock() {
         >
           <div
             style={{
-              background: '#0f294a',
-              color: '#ffffff',
+              background: theme.hdrBg,
+              color: theme.hdrText,
+              borderBottom: theme.hdrBorder,
               padding: '11px 14px',
               display: 'flex',
               alignItems: 'center',
@@ -273,18 +429,26 @@ export default function HwataMessengerDock() {
               gap: '8px',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '9px', minWidth: 0 }}>
               <img
-                src={isVerified ? '/ai-pet/assets3d/hwata_3d_costume_crown.png' : '/ai-pet/assets3d/hwata_3d_idle.png'}
+                src={hdrAvaSrc}
                 alt=""
-                style={{ width: '28px', height: '28px', objectFit: 'contain' }}
+                style={{
+                  width: '30px',
+                  height: '30px',
+                  objectFit: 'contain',
+                  background: theme.avaBg,
+                  border: theme.avaBorder,
+                  borderRadius: styleMode === 'pixel' ? '6px' : '999px',
+                  ...imgPixelStyle,
+                }}
               />
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: '13px', fontWeight: 800 }}>
+                <div style={{ fontSize: '13px', fontWeight: 800, color: theme.hdrText }}>
                   화타톡 {isVerified ? '· 인증 화타펫' : ''}
                 </div>
-                <div style={{ fontSize: '11px', color: '#cbd5e1' }}>
-                  1994년 개원 화이트스타일치과
+                <div style={{ fontSize: '11px', color: theme.subText }}>
+                  1994년 개원 33년 전통 화이트스타일치과
                 </div>
               </div>
             </div>
@@ -293,9 +457,9 @@ export default function HwataMessengerDock() {
                 href="/messenger"
                 style={{
                   padding: '4px 9px',
-                  borderRadius: '8px',
-                  background: '#fbbf24',
-                  color: '#0f172a',
+                  borderRadius: styleMode === 'pixel' ? '6px' : '8px',
+                  background: theme.primaryBg,
+                  color: theme.primaryText,
                   fontSize: '11px',
                   fontWeight: 800,
                   textDecoration: 'none',
@@ -310,11 +474,12 @@ export default function HwataMessengerDock() {
                 style={{
                   width: '26px',
                   height: '26px',
-                  borderRadius: '8px',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  background: 'transparent',
-                  color: '#ffffff',
+                  borderRadius: styleMode === 'pixel' ? '6px' : '8px',
+                  border: '1px solid rgba(15,23,42,0.16)',
+                  background: '#ffffff',
+                  color: '#334155',
                   cursor: 'pointer',
+                  fontWeight: 700,
                 }}
               >
                 ×
@@ -322,7 +487,42 @@ export default function HwataMessengerDock() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', borderBottom: '1px solid #e2e8f0', background: '#f8fafc' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+              gap: '4px',
+              padding: '7px 10px',
+              background: theme.modeBarBg,
+              borderBottom: '1px solid #e2e8f0',
+            }}
+          >
+            {STYLE_MODE_OPTIONS.map((opt) => {
+              const active = styleMode === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => handleChangeMode(opt.id)}
+                  style={{
+                    padding: '5px 4px',
+                    borderRadius: styleMode === 'pixel' ? '5px' : styleMode === 'sd' ? '999px' : '8px',
+                    border: active ? `1px solid ${theme.primaryBg}` : '1px solid #cbd5e1',
+                    background: active ? theme.primaryBg : '#ffffff',
+                    color: active ? theme.primaryText : '#475569',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div style={{ display: 'flex', borderBottom: '1px solid #e2e8f0', background: theme.modeBarBg }}>
             <button
               type="button"
               onClick={() => setTab('talk')}
@@ -334,8 +534,8 @@ export default function HwataMessengerDock() {
                 border: 'none',
                 cursor: 'pointer',
                 background: tab === 'talk' ? '#ffffff' : 'transparent',
-                color: tab === 'talk' ? '#0f294a' : '#64748b',
-                borderBottom: tab === 'talk' ? '2px solid #0f294a' : '2px solid transparent',
+                color: tab === 'talk' ? theme.tabActiveText : '#64748b',
+                borderBottom: tab === 'talk' ? `2px solid ${theme.tabActiveBorder}` : '2px solid transparent',
               }}
             >
               지인 톡 {totalUnread > 0 ? `(${totalUnread})` : ''}
@@ -351,8 +551,8 @@ export default function HwataMessengerDock() {
                 border: 'none',
                 cursor: 'pointer',
                 background: tab === 'ai' ? '#ffffff' : 'transparent',
-                color: tab === 'ai' ? '#0f294a' : '#64748b',
-                borderBottom: tab === 'ai' ? '2px solid #0f294a' : '2px solid transparent',
+                color: tab === 'ai' ? theme.tabActiveText : '#64748b',
+                borderBottom: tab === 'ai' ? `2px solid ${theme.tabActiveBorder}` : '2px solid transparent',
               }}
             >
               닥터 화타 AI
@@ -361,7 +561,7 @@ export default function HwataMessengerDock() {
 
           {tab === 'talk' ? (
             !isAuthed ? (
-              <div style={{ padding: '24px 18px', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '12px' }}>
+              <div style={{ padding: '24px 18px', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '12px', background: theme.feedBg }}>
                 <div style={{ fontSize: '15px', fontWeight: 800, color: '#0f172a' }}>
                   로그인 후 홈페이지를 켜 놓고 지인들과 대화하세요
                 </div>
@@ -374,8 +574,8 @@ export default function HwataMessengerDock() {
                     style={{
                       padding: '10px 16px',
                       borderRadius: '10px',
-                      background: '#0f294a',
-                      color: '#ffffff',
+                      background: theme.primaryBg,
+                      color: theme.primaryText,
                       fontSize: '13px',
                       fontWeight: 700,
                       textDecoration: 'none',
@@ -388,7 +588,8 @@ export default function HwataMessengerDock() {
                     style={{
                       padding: '10px 16px',
                       borderRadius: '10px',
-                      background: '#f1f5f9',
+                      background: '#ffffff',
+                      border: '1px solid #cbd5e1',
                       color: '#0f172a',
                       fontSize: '13px',
                       fontWeight: 700,
@@ -401,7 +602,7 @@ export default function HwataMessengerDock() {
               </div>
             ) : (
               <>
-                <div style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0', display: 'flex', gap: '6px' }}>
+                <div style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0', display: 'flex', gap: '6px', background: '#ffffff' }}>
                   <select
                     value={roomId}
                     onChange={(e) => setRoomId(e.target.value)}
@@ -428,7 +629,7 @@ export default function HwataMessengerDock() {
                     flex: 1,
                     overflowY: 'auto',
                     padding: '10px',
-                    background: '#f4f7fb',
+                    background: theme.feedBg,
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '8px',
@@ -442,17 +643,17 @@ export default function HwataMessengerDock() {
                         style={{
                           alignSelf: isMe ? 'flex-end' : 'flex-start',
                           maxWidth: '86%',
-                          background: isMe ? '#0f294a' : m.isBot ? '#fffbeb' : '#ffffff',
-                          color: isMe ? '#ffffff' : '#0f172a',
+                          background: isMe ? theme.primaryBg : m.isBot ? '#fffbeb' : '#ffffff',
+                          color: isMe ? theme.primaryText : '#0f172a',
                           border: isMe ? 'none' : '1px solid #e2e8f0',
-                          borderRadius: '12px',
+                          borderRadius: styleMode === 'pixel' ? '6px' : '14px',
                           padding: '8px 10px',
                           fontSize: '12.5px',
                           lineHeight: 1.5,
                         }}
                       >
                         {!isMe && (
-                          <div style={{ fontSize: '11px', fontWeight: 800, marginBottom: '2px', color: m.isBot ? '#b45309' : '#1b439c' }}>
+                          <div style={{ fontSize: '11px', fontWeight: 800, marginBottom: '2px', color: m.isBot ? '#b45309' : theme.tabActiveText }}>
                             {m.sender}
                           </div>
                         )}
@@ -466,7 +667,7 @@ export default function HwataMessengerDock() {
                               marginTop: '4px',
                               fontSize: '11px',
                               textDecoration: 'underline',
-                              color: isMe ? '#fde68a' : '#1b439c',
+                              color: isMe ? '#fde68a' : theme.tabActiveText,
                             }}
                           >
                             {a.fileName} 다운로드
@@ -492,6 +693,7 @@ export default function HwataMessengerDock() {
                   style={{
                     padding: '8px 10px',
                     borderTop: '1px solid #e2e8f0',
+                    background: '#ffffff',
                     display: 'flex',
                     gap: '6px',
                     alignItems: 'center',
@@ -533,8 +735,8 @@ export default function HwataMessengerDock() {
                       padding: '7px 12px',
                       borderRadius: '8px',
                       border: 'none',
-                      background: '#0f294a',
-                      color: '#ffffff',
+                      background: theme.primaryBg,
+                      color: theme.primaryText,
                       fontSize: '12px',
                       fontWeight: 700,
                       cursor: 'pointer',
@@ -552,7 +754,7 @@ export default function HwataMessengerDock() {
                   flex: 1,
                   overflowY: 'auto',
                   padding: '10px',
-                  background: '#f4f7fb',
+                  background: theme.feedBg,
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
@@ -564,10 +766,10 @@ export default function HwataMessengerDock() {
                     style={{
                       alignSelf: m.role === 'user' ? 'flex-end' : 'flex-start',
                       maxWidth: '88%',
-                      background: m.role === 'user' ? '#0f294a' : '#ffffff',
-                      color: m.role === 'user' ? '#ffffff' : '#0f172a',
+                      background: m.role === 'user' ? theme.primaryBg : '#ffffff',
+                      color: m.role === 'user' ? theme.primaryText : '#0f172a',
                       border: m.role === 'user' ? 'none' : '1px solid #e2e8f0',
-                      borderRadius: '12px',
+                      borderRadius: styleMode === 'pixel' ? '6px' : '14px',
                       padding: '8px 10px',
                       fontSize: '12.5px',
                       lineHeight: 1.55,
@@ -577,18 +779,18 @@ export default function HwataMessengerDock() {
                   </div>
                 ))}
               </div>
-              <div style={{ padding: '6px 10px', display: 'flex', flexWrap: 'wrap', gap: '4px', borderTop: '1px solid #e2e8f0' }}>
+              <div style={{ padding: '6px 10px', display: 'flex', flexWrap: 'wrap', gap: '4px', borderTop: '1px solid #e2e8f0', background: '#ffffff' }}>
                 {['연말 스케일링?', '교정 기간/비용?', '무통 마취?'].map((chip) => (
                   <button
                     key={chip}
                     type="button"
                     onClick={() => askAi(chip)}
                     style={{
-                      padding: '4px 8px',
-                      borderRadius: '999px',
-                      border: '1px solid #bfdbfe',
-                      background: '#eff6ff',
-                      color: '#1b439c',
+                      padding: '4px 9px',
+                      borderRadius: styleMode === 'pixel' ? '5px' : '999px',
+                      border: `1px solid ${theme.chipBorder}`,
+                      background: theme.chipBg,
+                      color: theme.chipText,
                       fontSize: '11px',
                       fontWeight: 700,
                       cursor: 'pointer',
@@ -603,7 +805,7 @@ export default function HwataMessengerDock() {
                   e.preventDefault();
                   askAi(aiInput);
                 }}
-                style={{ padding: '8px 10px', borderTop: '1px solid #e2e8f0', display: 'flex', gap: '6px' }}
+                style={{ padding: '8px 10px', borderTop: '1px solid #e2e8f0', background: '#ffffff', display: 'flex', gap: '6px' }}
               >
                 <input
                   value={aiInput}
@@ -624,8 +826,8 @@ export default function HwataMessengerDock() {
                     padding: '7px 12px',
                     borderRadius: '8px',
                     border: 'none',
-                    background: '#0f294a',
-                    color: '#ffffff',
+                    background: theme.primaryBg,
+                    color: theme.primaryText,
                     fontSize: '12px',
                     fontWeight: 700,
                     cursor: 'pointer',
@@ -648,10 +850,10 @@ export default function HwataMessengerDock() {
           width: '68px',
           height: '68px',
           padding: 0,
-          borderRadius: '999px',
-          border: isVerified ? '2px solid #f59e0b' : '1px solid rgba(15,41,74,0.18)',
-          background: 'rgba(255,255,255,0.92)',
-          boxShadow: '0 8px 20px rgba(15, 23, 42, 0.22)',
+          borderRadius: theme.fabRadius,
+          border: isVerified ? '2px solid #f59e0b' : theme.fabBorder,
+          background: theme.fabBg,
+          boxShadow: theme.fabShadow,
           cursor: 'pointer',
           display: 'inline-flex',
           alignItems: 'center',
@@ -659,15 +861,9 @@ export default function HwataMessengerDock() {
         }}
       >
         <img
-          src={
-            open
-              ? '/ai-pet/assets3d/hwata_3d_wave.png'
-              : isVerified
-                ? '/ai-pet/assets3d/hwata_3d_costume_crown.png'
-                : '/ai-pet/assets3d/hwata_3d_idle.png'
-          }
+          src={petImgSrc}
           alt="화타펫"
-          style={{ width: '58px', height: '58px', objectFit: 'contain' }}
+          style={{ width: '58px', height: '58px', objectFit: 'contain', ...imgPixelStyle }}
         />
         {totalUnread > 0 && (
           <span

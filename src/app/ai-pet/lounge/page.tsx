@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
+import LoungeClientView, { type SerializedLoungeRoom } from './LoungeClientView';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,15 +40,6 @@ interface LoungeRoom {
   memberCount: number;
   messages: LoungeMessage[];
 }
-
-const BG_COLOR_MAP: Record<string, string> = {
-  cream: '#faf3e3',
-  mint: '#dff3ee',
-  peach: '#fce5dc',
-  sky: '#e1f0fa',
-  lavender: '#ece6fa',
-  gold: '#f9e498',
-};
 
 const FALLBACK_ROOMS: LoungeRoom[] = [
   {
@@ -151,54 +142,6 @@ const FALLBACK_ROOMS: LoungeRoom[] = [
     ],
   },
 ];
-
-function ChatterAvatar({ msg }: { msg: LoungeMessage }) {
-  const bg = BG_COLOR_MAP[msg.avatarBg] || BG_COLOR_MAP.cream;
-  const isDogPlain = msg.avatarSpecies === 'dog' && (!msg.avatarCostume || msg.avatarCostume === 'none');
-  const isDogCostume = msg.avatarSpecies === 'dog' && msg.avatarCostume && msg.avatarCostume !== 'none';
-
-  return (
-    <div
-      className="relative shrink-0 rounded-full overflow-hidden border-2"
-      style={{
-        width: 44,
-        height: 44,
-        backgroundColor: bg,
-        borderColor: msg.isBot ? '#8f391b' : '#241812',
-      }}
-      aria-hidden="true"
-    >
-      {isDogPlain && (
-        <>
-          <img
-            src="/ai-pet/assets3d/hwata_3d_idle.png"
-            alt=""
-            className="absolute inset-0 w-full h-full object-contain"
-          />
-          <img
-            src={`/ai-pet/assets3d/hwata_3d_ear_${msg.avatarEar || 'perk'}.png`}
-            alt=""
-            className="absolute inset-0 w-full h-full object-contain"
-          />
-        </>
-      )}
-      {isDogCostume && (
-        <img
-          src={`/ai-pet/assets3d/hwata_3d_costume_${msg.avatarCostume}.png`}
-          alt=""
-          className="absolute inset-0 w-full h-full object-contain"
-        />
-      )}
-      {!isDogPlain && !isDogCostume && (
-        <img
-          src={`/ai-pet/assets3d/hwata_3d_species_${msg.avatarSpecies || 'dog'}.png`}
-          alt=""
-          className="absolute inset-0 w-full h-full object-contain"
-        />
-      )}
-    </div>
-  );
-}
 
 export default async function HwataLoungePage() {
   let rooms: LoungeRoom[] = [];
@@ -314,141 +257,31 @@ export default async function HwataLoungePage() {
     ],
   };
 
+  const serializedRooms: SerializedLoungeRoom[] = rooms.map((r) => ({
+    roomId: r.roomId,
+    roomName: r.roomName,
+    description: r.description,
+    topic: r.topic,
+    memberCount: r.memberCount,
+    messages: r.messages.map((m) => ({
+      id: m.id,
+      sender: m.sender,
+      text: m.text,
+      isCracked: m.isCracked,
+      avatarCostume: m.avatarCostume,
+      avatarBg: m.avatarBg,
+      isBot: m.isBot,
+      createdAtIso: m.createdAt.toISOString(),
+    })),
+  }));
+
   return (
-    <div
-      className="max-w-5xl mx-auto px-5 py-16 text-slate-900 wb-ka wbka"
-      style={{ wordBreak: 'keep-all', overflowWrap: 'break-word', lineHeight: 1.85 }}
-    >
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      <header className="mb-10 pb-8 border-b-2 border-slate-200">
-        <p className="text-sm font-bold text-amber-800 mb-2">
-          1994년 개원 33년 전통 · 강남역 11번, 12번 출구 도보 1분 화이트스타일치과의원
-        </p>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-950 mb-4">
-          화타펫 실시간 구강 고민 Q&amp;A 라운지
-        </h1>
-        <p className="text-base text-slate-700 mb-6">
-          화타펫 공개 단톡방에서 실제 사용자들이 나눈 턱관절, 치아교정, 라미네이트, 치아미백 고민과
-          3인 원장단 자문 기반 닥터 화타의 실시간 답변을 한눈에 모아볼 수 있습니다.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="/ai-pet#community"
-            className="inline-flex items-center px-5 py-3 rounded-xl font-bold text-white bg-amber-800 hover:bg-amber-900 transition"
-          >
-            화타펫 단톡방 참여 &amp; 아바타 꾸미기
-          </a>
-          <a
-            href="https://booking.naver.com/booking/13/bizes/265482"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-5 py-3 rounded-xl font-bold text-white bg-emerald-700 hover:bg-emerald-800 transition"
-          >
-            네이버 빠른 예약 (1분 완료)
-          </a>
-          <a
-            href="tel:1577-7287"
-            className="inline-flex items-center px-5 py-3 rounded-xl font-bold text-slate-900 bg-slate-100 border border-slate-300 hover:bg-slate-200 transition"
-          >
-            대표전화 1577-7287 / 02-569-7528
-          </a>
-        </div>
-      </header>
-
-      <div className="space-y-10">
-        {rooms.map((room) => (
-          <section
-            key={room.roomId}
-            className="rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-sm"
-          >
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-slate-100">
-              <div>
-                <h2 className="text-xl font-extrabold text-slate-950">{room.roomName}</h2>
-                <p className="text-sm text-slate-600 mt-1">{room.description}</p>
-              </div>
-              <a
-                href={`/ai-pet?room=${encodeURIComponent(room.roomId)}#community`}
-                className="px-4 py-2 rounded-lg text-sm font-bold text-white bg-slate-900 hover:bg-slate-800"
-              >
-                이 단톡방에 참여하기
-              </a>
-            </div>
-
-            <div className="space-y-4">
-              {room.messages.map((m) => (
-                <article
-                  key={m.id}
-                  className={`flex items-start gap-3 p-4 rounded-xl border ${
-                    m.isBot
-                      ? 'bg-amber-50 border-amber-300'
-                      : 'bg-slate-50 border-slate-200'
-                  }`}
-                >
-                  <ChatterAvatar msg={m} />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="text-sm font-bold text-slate-900">{m.sender}</span>
-                      {m.isCracked && !m.isBot && (
-                        <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-300 text-slate-950">
-                          VIP 정회원
-                        </span>
-                      )}
-                      {m.isBot && (
-                        <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-800 text-white">
-                          닥터 화타
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-slate-800 whitespace-pre-line">{m.text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-
-      <footer className="mt-14 pt-8 border-t-2 border-slate-200">
-        <div className="rounded-2xl bg-emerald-50 border-2 border-emerald-600 p-6 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h2 className="text-lg font-extrabold text-emerald-950">
-              인증된 화타펫 정회원 전용 화타톡 메신저 &amp; 프라이빗 단톡방
-            </h2>
-            <p className="text-sm text-emerald-900 mt-1">
-              whitestyle.com 로그인 후 원내 정회원 인증으로 프라이빗 지인 단톡방 개설과 화타톡(/messenger) 대용량 파일 전송을 이용해 보세요.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="/ai-pet#community"
-              className="px-5 py-3 rounded-xl font-bold text-white bg-emerald-700 hover:bg-emerald-800"
-            >
-              화타펫 단톡방 열기
-            </a>
-            <Link
-              href="/messenger"
-              className="px-5 py-3 rounded-xl font-bold text-slate-900 bg-white border border-slate-300 hover:bg-slate-100"
-            >
-              화타톡 메신저 열기
-            </Link>
-            <Link
-              href="/qa"
-              className="px-5 py-3 rounded-xl font-bold text-slate-900 bg-white border border-slate-300 hover:bg-slate-100"
-            >
-              임상 Q&amp;A 더보기
-            </Link>
-          </div>
-        </div>
-        <p className="text-xs text-slate-600 mt-6">
-          서울특별시 강남구 강남대로92길 17 (역삼동 819-10) 대승빌딩 B1·1·2층 화이트스타일치과의원 (우편번호 06134) /
-          김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(치주과 전문의) 3인 협진 /
-          대표전화 1577-7287, 02-569-7528 / 일본어 통역 직통 +82-10-3046-5010
-        </p>
-      </footer>
-    </div>
+      <LoungeClientView rooms={serializedRooms} />
+    </>
   );
 }
