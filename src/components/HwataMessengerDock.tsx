@@ -149,9 +149,8 @@ export default function HwataMessengerDock() {
   const pathname = usePathname() || '/';
   const { data: session, status } = useSession();
 
-  const shouldHide =
-    pathname.startsWith('/messenger') ||
-    pathname.startsWith('/admin');
+  // 홈페이지 메인('/')에서만 플로팅 펫 표시 — 서브페이지(/ja, 진료안내, 칼럼 등)에서는 숨김
+  const shouldHide = pathname !== '/';
 
   const [open, setOpen] = useState(false);
   const [styleMode, setStyleMode] = useState<HwataStyleMode>('clean');
@@ -179,12 +178,13 @@ export default function HwataMessengerDock() {
   const [fabWave, setFabWave] = useState(false);
 
   useEffect(() => {
+    if (shouldHide) return;
     const t = setInterval(() => {
       setFabWave(true);
       setTimeout(() => setFabWave(false), 1500);
     }, 6800);
     return () => clearInterval(t);
-  }, []);
+  }, [shouldHide]);
 
   const sessionUser = session?.user as
     | { id?: string; name?: string | null; isVerifiedNonInsured?: boolean }
