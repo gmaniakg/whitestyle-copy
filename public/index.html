@@ -680,6 +680,7 @@ $(document).ready(function(){
 <link rel="alternate" hreflang="x-default" href="https://whitestyle.com/" />
 <link rel="llms-txt" href="https://whitestyle.com/llms.txt" title="WhiteStyle Dental Clinic Summary" />
 <link rel="llms-full-txt" href="https://whitestyle.com/llms-full.txt" title="WhiteStyle Dental Clinic Full Knowledge Bundle" />
+<style id="ws-suppress-ext-pet">#hwatapet-3d-root{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;width:0!important;height:0!important;overflow:hidden!important;}</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYRZ7V9HEK"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -1459,7 +1460,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!document.getElementById("hwatapet-hide-legacy-style")) {
       var hideStyle = document.createElement("style");
       hideStyle.id = "hwatapet-hide-legacy-style";
-      hideStyle.textContent = "#hd_pops_5975{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;width:0!important;height:0!important;overflow:hidden!important;}";
+      hideStyle.textContent = "#hd_pops_5975,#hwatapet-3d-root{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;width:0!important;height:0!important;overflow:hidden!important;}";
       (document.head || document.documentElement).appendChild(hideStyle);
     }
 

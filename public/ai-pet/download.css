@@ -3994,3 +3994,15 @@ body.ja-pet {
   }
   .chat-messages { scroll-behavior: auto; }
 }
+
+/* Suppress duplicate corner extension pet inside dedicated pet lounge & download pages */
+#hwatapet-3d-root {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
