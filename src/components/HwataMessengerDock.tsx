@@ -428,22 +428,21 @@ export default function HwataMessengerDock() {
     >
       <style>{`
         @keyframes hwDockBobLook {
-          0%, 100% { transform: perspective(200px) translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(1); }
-          18% { transform: perspective(200px) translate3d(0, -3px, 0) rotateY(-12deg) rotateZ(-3deg) scale(1.03, 0.98); }
-          36% { transform: perspective(200px) translate3d(-1.5px, -1px, 0) rotateY(-16deg) rotateZ(-4deg) scale(1); }
-          52% { transform: perspective(200px) translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(0.99, 1.02); }
-          70% { transform: perspective(200px) translate3d(0, -3px, 0) rotateY(12deg) rotateZ(3deg) scale(1.03, 0.98); }
-          86% { transform: perspective(200px) translate3d(1.5px, -1px, 0) rotateY(16deg) rotateZ(4deg) scale(1); }
+          0%, 100% { transform: translate3d(0, 1.5px, 0) rotate(0deg) scale(1.06, 0.93); }
+          15% { transform: translate3d(0, -5.5px, 0) rotate(0deg) scale(0.95, 1.06); }
+          30%, 40% { transform: translate3d(-4.5px, -1px, 0) rotate(-11deg) scale(1.02, 0.98); }
+          52% { transform: translate3d(0, 1.5px, 0) rotate(0deg) scale(1.06, 0.93); }
+          67% { transform: translate3d(0, -5.5px, 0) rotate(0deg) scale(0.95, 1.06); }
+          82%, 90% { transform: translate3d(4.5px, -1px, 0) rotate(11deg) scale(1.02, 0.98); }
         }
         @keyframes hwDockEyelid {
           0%, 84%, 91%, 94%, 99%, 100% { opacity: 0; transform: scaleY(0); }
-          86%, 89% { opacity: 1; transform: scaleY(1); }
-          96%, 97.5% { opacity: 1; transform: scaleY(1); }
+          86%, 89%, 96%, 97.5% { opacity: 1; transform: scaleY(1); }
         }
         @keyframes hwDockHoverHop {
-          0%, 100% { transform: translateY(0) scale(1); }
-          40% { transform: translateY(-5px) scale(1.06, 0.96); }
-          70% { transform: translateY(-1px) scale(0.98, 1.02); }
+          0%, 100% { transform: translateY(1px) scale(1.05, 0.94); }
+          45% { transform: translateY(-7px) scale(0.96, 1.06); }
+          75% { transform: translateY(-2px) scale(1.03, 0.98); }
         }
         .hw-dock-pet-actor {
           position: relative;
@@ -451,11 +450,12 @@ export default function HwataMessengerDock() {
           align-items: center;
           justify-content: center;
           transform-origin: center 82%;
-          animation: hwDockBobLook 5.2s ease-in-out infinite;
+          transition: none !important;
+          animation: hwDockBobLook 2.5s ease-in-out infinite !important;
           will-change: transform;
         }
         .hw-dock-fab-btn:hover .hw-dock-pet-actor {
-          animation: hwDockHoverHop 0.75s ease-in-out infinite;
+          animation: hwDockHoverHop 0.7s ease-in-out infinite !important;
         }
         .hw-dock-eyelid {
           position: absolute;
@@ -468,13 +468,11 @@ export default function HwataMessengerDock() {
           transform-origin: top center;
           opacity: 0;
           pointer-events: none;
-          animation: hwDockEyelid 4.2s ease-in-out infinite;
+          transition: none !important;
+          animation: hwDockEyelid 3.6s ease-in-out infinite !important;
         }
         .hw-dock-eyelid.is-left { left: 34.8%; }
         .hw-dock-eyelid.is-right { left: 56.8%; }
-        @media (prefers-reduced-motion: reduce) {
-          .hw-dock-pet-actor, .hw-dock-eyelid { animation: none !important; }
-        }
       `}</style>
       {open && (
         <section

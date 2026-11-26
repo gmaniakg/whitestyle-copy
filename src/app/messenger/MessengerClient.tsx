@@ -235,6 +235,56 @@ function AvatarBadge({
   );
 }
 
+type StageFrame = {
+  body: string;
+  ear: string;
+  x: number;
+  y: number;
+  rot: number;
+  flipX?: boolean;
+  label: string;
+};
+
+const STAGE_PLAYBOOK: StageFrame[] = [
+  // 왼쪽으로 아장아장 산책하며 두리번
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_a.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: -2, y: 0, rot: -2, label: '왼쪽으로 아장아장 살피는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_b.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: -6, y: -3, rot: -4, label: '왼쪽으로 아장아장 살피는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_a.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: -10, y: 0, rot: -3, label: '왼쪽을 두리번거리는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_blink.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: -11, y: -1, rot: -6, label: '깜빡깜빡 두리번거리는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_b.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: -7, y: -3, rot: 2, label: '중앙으로 돌아오는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_a.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: -3, y: 0, rot: 0, label: '중앙으로 돌아오는 중' },
+  // 정면 위아래 통통 출렁 & 갸우뚱
+  { body: '/ai-pet/assets3d/hwata_3d_sit.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: 2, rot: 0, label: '통통 뛰어오를 준비 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_idle.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: -4, rot: -10, label: '위아래로 통통 출렁이는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_sit.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: 2, rot: 0, label: '위아래로 통통 출렁이는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_idle.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: -4, rot: 10, label: '고개 갸우뚱 두리번거리는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_blink.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: 0, rot: 0, label: '눈 깜빡이며 경청 중' },
+  // 오른쪽으로 아장아장 산책하며 두리번 (좌우 반전)
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_a.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: 3, y: 0, rot: 2, flipX: true, label: '오른쪽으로 아장아장 살피는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_b.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: 7, y: -3, rot: 4, flipX: true, label: '오른쪽으로 아장아장 살피는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_a.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: 11, y: 0, rot: 3, flipX: true, label: '오른쪽을 두리번거리는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_blink.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: 11, y: -1, rot: 6, flipX: true, label: '깜빡깜빡 두리번거리는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_b.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: 6, y: -3, rot: -2, flipX: true, label: '중앙으로 돌아오는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_stand4_a.png', ear: '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png', x: 2, y: 0, rot: 0, flipX: true, label: '중앙으로 돌아오는 중' },
+  // 정면 손 흔들며 인사
+  { body: '/ai-pet/assets3d/hwata_3d_wave.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: -4, rot: -6, label: '반갑게 손 흔드는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_wave.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: 1, rot: 6, label: '반갑게 손 흔드는 중' },
+  { body: '/ai-pet/assets3d/hwata_3d_wave.png', ear: '/ai-pet/assets3d/hwata_3d_ear_round.png', x: 0, y: -3, rot: -4, label: '언제든 @화타 질문 대기 중' },
+];
+
+const STAGE_PRELOAD_ASSETS = [
+  '/ai-pet/assets3d/hwata_3d_stand4_a.png',
+  '/ai-pet/assets3d/hwata_3d_stand4_b.png',
+  '/ai-pet/assets3d/hwata_3d_stand4_blink.png',
+  '/ai-pet/assets3d/hwata_3d_ear_stand4_round.png',
+  '/ai-pet/assets3d/hwata_3d_sit.png',
+  '/ai-pet/assets3d/hwata_3d_idle.png',
+  '/ai-pet/assets3d/hwata_3d_blink.png',
+  '/ai-pet/assets3d/hwata_3d_wave.png',
+  '/ai-pet/assets3d/hwata_3d_ear_round.png',
+  '/ai-pet/assets3d/hwata_3d_motion_smile.png',
+];
+
 function LiveHwataPetStage({
   thinking,
   happy,
@@ -244,42 +294,31 @@ function LiveHwataPetStage({
   happy: boolean;
   onPet: () => void;
 }) {
-  const [pose, setPose] = useState<'idle' | 'blink' | 'wave'>('idle');
-  const [statusLabel, setStatusLabel] = useState('눈 깜빡이며 대기 중');
+  const [tickIdx, setTickIdx] = useState(0);
 
   useEffect(() => {
-    if (thinking || happy) return;
-    let step = 0;
-    const states: Array<{ pose: 'idle' | 'blink' | 'wave'; label: string; ms: number }> = [
-      { pose: 'idle', label: '눈 깜빡이며 경청 중', ms: 2600 },
-      { pose: 'blink', label: '깜빡깜빡 살펴보는 중', ms: 260 },
-      { pose: 'idle', label: '주변을 두리번거리는 중', ms: 2400 },
-      { pose: 'wave', label: '반갑게 인사하는 중', ms: 1600 },
-      { pose: 'idle', label: '언제든 @화타 질문 대기 중', ms: 2800 },
-      { pose: 'blink', label: '눈 깜빡이며 대기 중', ms: 240 },
-    ];
-    let timer: ReturnType<typeof setTimeout> | null = null;
-    const tick = () => {
-      const cur = states[step % states.length];
-      setPose(cur.pose);
-      setStatusLabel(cur.label);
-      step += 1;
-      timer = setTimeout(tick, cur.ms);
-    };
-    tick();
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, [thinking, happy]);
+    for (const src of STAGE_PRELOAD_ASSETS) {
+      const im = new window.Image();
+      im.src = src;
+    }
+    const id = setInterval(() => {
+      setTickIdx((n) => (n + 1) % STAGE_PLAYBOOK.length);
+    }, 200);
+    return () => clearInterval(id);
+  }, []);
 
+  const step = STAGE_PLAYBOOK[tickIdx];
   const effectiveStatus = thinking
     ? '질문을 읽고 맞춤 답변 작성 중'
     : happy
       ? '답변 완료! 반갑게 손 흔드는 중'
-      : statusLabel;
+      : step.label;
 
-  const isWave = happy || (!thinking && pose === 'wave');
-  const isBlink = !thinking && !happy && pose === 'blink';
+  const walkerTransform = thinking
+    ? `translate3d(${tickIdx % 2 === 0 ? -5 : 5}px, ${tickIdx % 2 === 0 ? -4 : 1}px, 0) rotate(${tickIdx % 2 === 0 ? -9 : 9}deg)`
+    : happy
+      ? `translate3d(0px, ${tickIdx % 2 === 0 ? -5 : 1}px, 0) rotate(${tickIdx % 2 === 0 ? -8 : 8}deg)`
+      : `translate3d(${step.x}px, ${step.y}px, 0) rotate(${step.rot}deg) scaleX(${step.flipX ? -1 : 1})`;
 
   return (
     <button
@@ -289,33 +328,37 @@ function LiveHwataPetStage({
       title="클릭하면 닥터 화타가 손을 흔들며 반가워해요!"
     >
       <div className="ht-live-pet-stage-box" aria-hidden="true">
-        <div className="ht-live-pet-stage-actor">
-          {thinking ? (
-            <img
-              src="/ai-pet/assets3d/hwata_3d_motion_smile.png"
-              alt=""
-              className="ht-avatar-img"
-            />
-          ) : (
-            <>
+        <div
+          className="ht-live-pet-stage-walker"
+          style={{ transform: walkerTransform }}
+        >
+          <div className="ht-live-pet-stage-actor">
+            {thinking ? (
               <img
-                src={
-                  isWave
-                    ? '/ai-pet/assets3d/hwata_3d_wave.png'
-                    : isBlink
-                      ? '/ai-pet/assets3d/hwata_3d_blink.png'
-                      : '/ai-pet/assets3d/hwata_3d_idle.png'
-                }
+                src="/ai-pet/assets3d/hwata_3d_motion_smile.png"
                 alt=""
                 className="ht-avatar-img"
               />
-              <img
-                src="/ai-pet/assets3d/hwata_3d_ear_round.png"
-                alt=""
-                className="ht-avatar-img ht-avatar-ear"
-              />
-            </>
-          )}
+            ) : happy ? (
+              <>
+                <img
+                  src="/ai-pet/assets3d/hwata_3d_wave.png"
+                  alt=""
+                  className="ht-avatar-img"
+                />
+                <img
+                  src="/ai-pet/assets3d/hwata_3d_ear_round.png"
+                  alt=""
+                  className="ht-avatar-img ht-avatar-ear"
+                />
+              </>
+            ) : (
+              <>
+                <img src={step.body} alt="" className="ht-avatar-img" />
+                <img src={step.ear} alt="" className="ht-avatar-img ht-avatar-ear" />
+              </>
+            )}
+          </div>
         </div>
       </div>
       <div style={{ minWidth: 0 }}>
