@@ -309,10 +309,10 @@ function LiveHwataPetStage({
 
   const step = STAGE_PLAYBOOK[tickIdx];
   const effectiveStatus = thinking
-    ? '질문을 읽고 맞춤 답변 작성 중'
+    ? '맞춤 답변 작성하는 중...'
     : happy
-      ? '답변 완료! 반갑게 손 흔드는 중'
-      : step.label;
+      ? '반갑게 인사하는 중!'
+      : '@화타 질문 상시 대기 중';
 
   const walkerTransform = thinking
     ? `translate3d(${tickIdx % 2 === 0 ? -5 : 5}px, ${tickIdx % 2 === 0 ? -4 : 1}px, 0) rotate(${tickIdx % 2 === 0 ? -9 : 9}deg)`
@@ -361,11 +361,11 @@ function LiveHwataPetStage({
           </div>
         </div>
       </div>
-      <div style={{ minWidth: 0 }}>
-        <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--ht-navy)', whiteSpace: 'nowrap' }}>
+      <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
+        <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--ht-navy)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           닥터 화타 LIVE
         </div>
-        <div style={{ fontSize: '11px', color: 'var(--ht-muted)', whiteSpace: 'nowrap' }}>
+        <div style={{ fontSize: '11px', color: 'var(--ht-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {effectiveStatus}
         </div>
       </div>
