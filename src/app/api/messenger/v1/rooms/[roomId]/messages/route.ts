@@ -342,11 +342,46 @@ export async function POST(
     const hasDentalQuestion =
       access.room.isPublic &&
       /[?？]/.test(text) &&
-      /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|미백/.test(text);
+      /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|시린|미백|수능|수험생|수험표|충치|사랑니|잇몸|신경치료|치실|치간칫솔|보철/.test(
+        text
+      );
 
-    if (isDoctorCall || hasDentalQuestion) {
-      const botReply = await generateDoctorHwataReply(text, displayName);
-      await prisma.hwataMessage.create({
+    let isReplyToBot = false;
+    if (replyToId && !isDoctorCall && !hasDentalQuestion) {
+      const targetMsg = await prisma.hwataMessage.findUnique({
+        where: { id: replyToId },
+        select: { isBot: true },
+      });
+      if (targetMsg?.isBot) isReplyToBot = true;
+    }
+
+    let createdBotMsg: {
+      id: string;
+      roomId: string;
+      userId: string | null;
+      sender: string;
+      text: string;
+      isBot: boolean;
+      isCracked: boolean;
+      messageType: string;
+      stickerCode: string | null;
+      avatarSpecies: string;
+      avatarEar: string;
+      avatarCostume: string;
+      avatarBg: string;
+      createdAt: Date;
+    } | null = null;
+
+    if (isDoctorCall || hasDentalQuestion || isReplyToBot) {
+      const priorMessages = await prisma.hwataMessage.findMany({
+        where: { roomId, isDeleted: false, id: { not: saved.id } },
+        orderBy: { createdAt: 'desc' },
+        take: 5,
+        select: { sender: true, text: true, isBot: true },
+      });
+      const recentContext = priorMessages.reverse();
+      const botReply = await generateDoctorHwataReply(text, displayName, recentContext);
+      createdBotMsg = await prisma.hwataMessage.create({
         data: {
           roomId,
           sender: '닥터 화타',
@@ -377,10 +412,42 @@ export async function POST(
               userId: fullMsg.userId,
               sender: fullMsg.sender,
               text: fullMsg.text,
+              isBot: false,
+              isCracked: fullMsg.isCracked || member.isVerifiedNonInsured,
+              verifiedTreatment: member.verifiedTreatment || null,
               messageType: fullMsg.messageType,
               stickerCode: fullMsg.stickerCode,
+              replyTo: null,
+              unreadCount: 0,
+              avatar,
               attachments: fullMsg.attachments.map(formatAttachment),
+              reactions: [],
               createdAt: fullMsg.createdAt.toISOString(),
+            }
+          : null,
+        botReply: createdBotMsg
+          ? {
+              id: createdBotMsg.id,
+              roomId: createdBotMsg.roomId,
+              userId: createdBotMsg.userId,
+              sender: createdBotMsg.sender,
+              text: createdBotMsg.text,
+              isBot: true,
+              isCracked: false,
+              verifiedTreatment: null,
+              messageType: createdBotMsg.messageType,
+              stickerCode: createdBotMsg.stickerCode,
+              replyTo: null,
+              unreadCount: 0,
+              avatar: {
+                species: createdBotMsg.avatarSpecies,
+                ear: createdBotMsg.avatarEar,
+                costume: createdBotMsg.avatarCostume,
+                bg: createdBotMsg.avatarBg,
+              },
+              attachments: [],
+              reactions: [],
+              createdAt: createdBotMsg.createdAt.toISOString(),
             }
           : null,
       },

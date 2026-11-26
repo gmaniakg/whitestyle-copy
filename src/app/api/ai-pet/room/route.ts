@@ -5,6 +5,7 @@ import {
   loginRequiredResponse,
   requireHwataMember,
 } from '@/app/api/_lib/hwata-auth';
+import { generateDoctorHwataReply } from '@/lib/messenger/server';
 
 export const VALID_SPECIES = ['dog', 'cat', 'elephant', 'dino', 'parrot', 'python'] as const;
 export const VALID_EARS = [
@@ -217,65 +218,6 @@ async function ensureSeeded() {
     })();
   }
   return seedPromise;
-}
-
-function buildRuleBasedReply(text: string, sender = '익명'): string {
-  const q = String(text || '').trim();
-
-  if (/턱|소리|딱|뻐근|이갈이|턱관절|악관절|보톡스|개구/.test(q)) {
-    return `멍멍! ${sender}님, 턱관절에서 소리가 나거나 뻐근할 땐 윗니·아랫니를 2~3mm 살짝 띄우는 '이완 자세'가 필수입니다 🐾 턱을 괴거나 단단한 음식을 피하시고, 온찜질을 10분간 해주세요. 증상이 지속되면 강남역 화이트스타일치과(1577-7287)에서 3D 정밀 진단을 권장합니다.`;
-  }
-  if (/교정|철사|와이어|통증|클리피씨|투명|인비절라인|유지장치|발치/.test(q)) {
-    return `치아교정학 박사 김준헌 병원장님의 임상 팁 🦷 와이어 교체 초기 3~4일은 치근막 압박으로 뻐근한 것이 정상적인 치아이동 반응입니다. 찬물 가글이 일시적 완화에 좋으며, 장치가 찔리거나 탈락했을 땐 치과 전용 왁스를 붙이고 본원(02-569-7528)으로 연락해 주세요!`;
-  }
-  if (/수능|수험생|수험표/.test(q)) {
-    return `수능 끝! 고생 많으셨어요 🎉 강남역 화이트스타일치과 2027 수능 수험생 이벤트 진행 중입니다! 수험표 지참 후 치아교정·최소삭제 라미네이트·지르코니아 등 비급여(비보험) 진료를 받으시면 식약처 허가 전문가 치아미백 1회를 무료로 제공해 드려요(자세히 보기: https://whitestyle.com/events/suneung / 1577-7287).`;
-  }
-  if (/미백|하얗|누런|착색|라미네이트|앞니|벌어|깨짐|커피|시림/.test(q)) {
-    return `자연치아 보존 심미보철 · 미백 원칙 ✨ 치아미백은 시술 직후 일시적으로 시릴 수 있으나 1~2일 내 자연 완화되며, 48시간 동안 커피·카레·와인 등 착색 음식을 피하면 효과가 오래갑니다. 라미네이트는 0.1~0.3mm 최소삭제 또는 무삭제를 원칙으로 합니다! (2027 수능 수험표 지참 비급여 진료 시 치아미백 1회 무료 혜택도 진행 중입니다.)`;
-  }
-  if (/임플란트|잇몸|피|발치|뼈이식|마취|상악동/.test(q)) {
-    return `보건복지부 인증 치주과 전문의 박선혜 원장님 협진 가이드 🐾 임플란트 후 잇몸 출혈이나 붓기는 3단계 통증 완화 마취와 냉찜질(48시간)로 안전하게 가라앉힐 수 있습니다. 술·담배는 골유착을 방해하므로 최소 3주간 금연·금주가 필수입니다!`;
-  }
-  if (/스케일링|건보|보험|치석|치태|잇몸치료/.test(q)) {
-    return `연 1회 건강보험 스케일링 안내 🪥 만 19세 이상 대한민국 국민이라면 매년 1월 1일~12월 31일 사이 건강보험 적용 스케일링을 받으실 수 있습니다. 연말에 예약이 몰리기 전에 강남역 화이트스타일치과(1577-7287)에서 미리 체크하세요!`;
-  }
-
-  return `멍멍! ${sender}님, 화타펫 단톡방에 오신 것을 환영해요 🐾 강남역 11·12번 출구 도보 1분 화이트스타일치과의원(1994년 개원 33년 전통 · 김준헌·이봉진·박선혜 3인 원장단 협진)의 닥터 화타가 언제든 치아 고민을 상담해 드립니다!`;
-}
-
-async function generateDoctorHwataReply(text: string, sender = '익명'): Promise<string> {
-  const apiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '').trim();
-  if (apiKey) {
-    try {
-      const sys = [
-        '너는 강남역 11·12번 출구 도보 1분 대승빌딩 B1·1·2층(강남대로92길 17, 1577-7287 / 02-569-7528)에 위치한 1994년 개원 33년 전통 화이트스타일치과의원(서울대졸·단국대 외래교수·교정학 박사 김준헌 병원장, 이봉진 대표원장, 박선혜 치주과 전문의 원장 3인 협진, 3단계 통증 완화 마취)의 단톡방 상주 AI 닥터 화타야.',
-        '2027 수능 수험생 이벤트: 수험표 지참 시 교정·라미네이트 등 비급여(비보험) 진료 진행 수험생에게 전문가 치아미백 1회를 무료 제공하며 상세 안내는 https://whitestyle.com/events/suneung 에 있어(건강보험 급여 단독 진료 제외).',
-        '2~3문장 이내로 다정하고 전문적인 치의학 임상 답변을 해줘. 원내 정회원 인증 시 화타톡 메신저 프라이빗 방·대용량 파일 전송 기능과 2027 수능 수험표 지참 비급여 진료 시 치아미백 1회 무료 혜택을 정확히 안내해.',
-      ].join(' ');
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(apiKey)}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          signal: AbortSignal.timeout(4000),
-          body: JSON.stringify({
-            systemInstruction: { parts: [{ text: sys }] },
-            contents: [{ role: 'user', parts: [{ text: `[질문자: ${sender}] ${text}` }] }],
-            generationConfig: { temperature: 0.5, maxOutputTokens: 240 },
-          }),
-        }
-      );
-      if (res.ok) {
-        const json = await res.json();
-        const candidate = json?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-        if (candidate) return candidate;
-      }
-    } catch (e) {
-      console.warn('[room] Gemini fallback to rule-based reply:', e);
-    }
-  }
-  return buildRuleBasedReply(text, sender);
 }
 
 export async function OPTIONS(req: NextRequest) {
@@ -521,10 +463,19 @@ export async function POST(req: NextRequest) {
       let savedBot = null;
       const isDoctorCall = text.includes('@화타') || text.includes('화타야') || text.includes('닥터화타');
       const hasDentalQuestion =
-        /[?？]/.test(text) && /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|미백|수능|수험생|수험표/.test(text);
+        /[?？]/.test(text) &&
+        /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|시린|미백|수능|수험생|수험표|충치|사랑니|잇몸|신경치료|치실|치간칫솔|보철/.test(
+          text
+        );
 
       if (isDoctorCall || hasDentalQuestion) {
-        const botText = await generateDoctorHwataReply(text, sender);
+        const priorMessages = await prisma.hwataMessage.findMany({
+          where: { roomId, id: { not: savedUser.id } },
+          orderBy: { createdAt: 'desc' },
+          take: 5,
+          select: { sender: true, text: true, isBot: true },
+        });
+        const botText = await generateDoctorHwataReply(text, sender, priorMessages.reverse());
         savedBot = await prisma.hwataMessage.create({
           data: {
             roomId,

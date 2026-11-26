@@ -175,6 +175,16 @@ export default function HwataMessengerDock() {
 
   const fileRef = useRef<HTMLInputElement | null>(null);
   const logRef = useRef<HTMLDivElement | null>(null);
+  const aiLogRef = useRef<HTMLDivElement | null>(null);
+  const [fabWave, setFabWave] = useState(false);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setFabWave(true);
+      setTimeout(() => setFabWave(false), 1500);
+    }, 6800);
+    return () => clearInterval(t);
+  }, []);
 
   const sessionUser = session?.user as
     | { id?: string; name?: string | null; isVerifiedNonInsured?: boolean }
@@ -356,16 +366,32 @@ export default function HwataMessengerDock() {
     if (!q || aiBusy) return;
     setAiBusy(true);
     setAiInput('');
-    setAiMessages((prev) => [...prev, { role: 'user', text: q }, { role: 'bot', text: '답변을 정리하고 있어요…' }]);
+    setAiMessages((prev) => [...prev, { role: 'user', text: q }, { role: 'bot', text: '질문을 확인하고 답변을 정리하고 있어요…' }]);
+    setTimeout(() => {
+      if (aiLogRef.current) aiLogRef.current.scrollTo({ top: aiLogRef.current.scrollHeight, behavior: 'smooth' });
+    }, 30);
     try {
+      const historyCtx = aiMessages.slice(-4).map((m) => ({
+        role: m.role === 'bot' ? 'assistant' : 'user',
+        content: m.text,
+      }));
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: q, persona: 'angel', species: 'dog', lang: 'ko' }),
+        body: JSON.stringify({
+          message: q,
+          messages: [...historyCtx, { role: 'user', content: q }],
+          persona: 'angel',
+          species: 'dog',
+          lang: 'ko',
+        }),
       });
       const data = await res.json().catch(() => null);
       const reply = (data && (data.reply || data.content || data.text)) || '대표전화 1577-7287 / 02-569-7528로 문의해 주세요.';
       setAiMessages((prev) => [...prev.slice(0, -1), { role: 'bot', text: String(reply) }]);
+      setTimeout(() => {
+        if (aiLogRef.current) aiLogRef.current.scrollTo({ top: aiLogRef.current.scrollHeight, behavior: 'smooth' });
+      }, 40);
     } catch {
       setAiMessages((prev) => [
         ...prev.slice(0, -1),
@@ -377,7 +403,7 @@ export default function HwataMessengerDock() {
   };
 
   const theme = DOCK_THEMES[styleMode];
-  const petImgSrc = open
+  const petImgSrc = open || fabWave || aiBusy
     ? `/ai-pet/assets3d/hwata_mode_${styleMode}_wave.png`
     : isVerified
       ? `/ai-pet/assets3d/hwata_mode_${styleMode}_crown.png`
@@ -387,6 +413,7 @@ export default function HwataMessengerDock() {
     : `/ai-pet/assets3d/hwata_mode_${styleMode}.png`;
   const imgPixelStyle: React.CSSProperties =
     styleMode === 'pixel' ? { imageRendering: 'pixelated' } : {};
+  const showDockEyelids = styleMode !== 'pixel' && !isVerified;
 
   return (
     <div
@@ -399,6 +426,56 @@ export default function HwataMessengerDock() {
         wordBreak: 'keep-all',
       }}
     >
+      <style>{`
+        @keyframes hwDockBobLook {
+          0%, 100% { transform: perspective(200px) translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(1); }
+          18% { transform: perspective(200px) translate3d(0, -3px, 0) rotateY(-12deg) rotateZ(-3deg) scale(1.03, 0.98); }
+          36% { transform: perspective(200px) translate3d(-1.5px, -1px, 0) rotateY(-16deg) rotateZ(-4deg) scale(1); }
+          52% { transform: perspective(200px) translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(0.99, 1.02); }
+          70% { transform: perspective(200px) translate3d(0, -3px, 0) rotateY(12deg) rotateZ(3deg) scale(1.03, 0.98); }
+          86% { transform: perspective(200px) translate3d(1.5px, -1px, 0) rotateY(16deg) rotateZ(4deg) scale(1); }
+        }
+        @keyframes hwDockEyelid {
+          0%, 84%, 91%, 94%, 99%, 100% { opacity: 0; transform: scaleY(0); }
+          86%, 89% { opacity: 1; transform: scaleY(1); }
+          96%, 97.5% { opacity: 1; transform: scaleY(1); }
+        }
+        @keyframes hwDockHoverHop {
+          0%, 100% { transform: translateY(0) scale(1); }
+          40% { transform: translateY(-5px) scale(1.06, 0.96); }
+          70% { transform: translateY(-1px) scale(0.98, 1.02); }
+        }
+        .hw-dock-pet-actor {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transform-origin: center 82%;
+          animation: hwDockBobLook 5.2s ease-in-out infinite;
+          will-change: transform;
+        }
+        .hw-dock-fab-btn:hover .hw-dock-pet-actor {
+          animation: hwDockHoverHop 0.75s ease-in-out infinite;
+        }
+        .hw-dock-eyelid {
+          position: absolute;
+          top: 33.8%;
+          width: 8.6%;
+          height: 10%;
+          background: #e2e3e4;
+          border-bottom: 2px solid #452e23;
+          border-radius: 50% 50% 42% 42%;
+          transform-origin: top center;
+          opacity: 0;
+          pointer-events: none;
+          animation: hwDockEyelid 4.2s ease-in-out infinite;
+        }
+        .hw-dock-eyelid.is-left { left: 34.8%; }
+        .hw-dock-eyelid.is-right { left: 56.8%; }
+        @media (prefers-reduced-motion: reduce) {
+          .hw-dock-pet-actor, .hw-dock-eyelid { animation: none !important; }
+        }
+      `}</style>
       {open && (
         <section
           aria-label="화타펫 지인 톡 및 치과 상담"
@@ -430,19 +507,35 @@ export default function HwataMessengerDock() {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '9px', minWidth: 0 }}>
-              <img
-                src={hdrAvaSrc}
-                alt=""
+              <div
+                className="hw-dock-pet-actor"
                 style={{
                   width: '30px',
                   height: '30px',
-                  objectFit: 'contain',
                   background: theme.avaBg,
                   border: theme.avaBorder,
                   borderRadius: styleMode === 'pixel' ? '6px' : '999px',
-                  ...imgPixelStyle,
+                  overflow: 'hidden',
+                  flexShrink: 0,
                 }}
-              />
+              >
+                <img
+                  src={hdrAvaSrc}
+                  alt=""
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    ...imgPixelStyle,
+                  }}
+                />
+                {showDockEyelids && (
+                  <>
+                    <span className="hw-dock-eyelid is-left" />
+                    <span className="hw-dock-eyelid is-right" />
+                  </>
+                )}
+              </div>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: '13px', fontWeight: 800, color: theme.hdrText }}>
                   화타톡 {isVerified ? '· 인증 화타펫' : ''}
@@ -628,6 +721,7 @@ export default function HwataMessengerDock() {
                   style={{
                     flex: 1,
                     overflowY: 'auto',
+                    overscrollBehavior: 'contain',
                     padding: '10px',
                     background: theme.feedBg,
                     display: 'flex',
@@ -750,9 +844,11 @@ export default function HwataMessengerDock() {
           ) : (
             <>
               <div
+                ref={aiLogRef}
                 style={{
                   flex: 1,
                   overflowY: 'auto',
+                  overscrollBehavior: 'contain',
                   padding: '10px',
                   background: theme.feedBg,
                   display: 'flex',
@@ -843,6 +939,7 @@ export default function HwataMessengerDock() {
 
       <button
         type="button"
+        className="hw-dock-fab-btn"
         onClick={() => setOpen((v) => !v)}
         aria-label="화타펫 지인 톡 열기"
         style={{
@@ -860,11 +957,19 @@ export default function HwataMessengerDock() {
           justifyContent: 'center',
         }}
       >
-        <img
-          src={petImgSrc}
-          alt="화타펫"
-          style={{ width: '58px', height: '58px', objectFit: 'contain', ...imgPixelStyle }}
-        />
+        <div className="hw-dock-pet-actor" style={{ width: '58px', height: '58px' }}>
+          <img
+            src={petImgSrc}
+            alt="화타펫"
+            style={{ width: '58px', height: '58px', objectFit: 'contain', ...imgPixelStyle }}
+          />
+          {showDockEyelids && (
+            <>
+              <span className="hw-dock-eyelid is-left" />
+              <span className="hw-dock-eyelid is-right" />
+            </>
+          )}
+        </div>
         {totalUnread > 0 && (
           <span
             style={{

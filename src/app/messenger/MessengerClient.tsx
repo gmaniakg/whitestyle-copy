@@ -154,50 +154,179 @@ function formatBytes(bytes: number): string {
   return `${(bytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
 }
 
+function getSeededDelaySec(seed?: string): string {
+  if (!seed) return '0s';
+  let h = 0;
+  for (let i = 0; i < seed.length; i += 1) {
+    h = (h * 31 + seed.charCodeAt(i)) | 0;
+  }
+  const offset = (Math.abs(h) % 42) * 0.1;
+  return `-${offset.toFixed(1)}s`;
+}
+
 function AvatarBadge({
   avatar,
   verified,
   large,
+  seed,
+  thinking,
 }: {
   avatar: AvatarConfig;
   verified?: boolean;
   large?: boolean;
+  seed?: string;
+  thinking?: boolean;
 }) {
   const isDogPlain = avatar.species === 'dog' && (!avatar.costume || avatar.costume === 'none');
   const isDogCostume = avatar.species === 'dog' && avatar.costume && avatar.costume !== 'none';
+  const showEyelids = isDogCostume || avatar.species === 'cat';
+  const delayStyle = { '--pet-delay': getSeededDelaySec(seed) } as React.CSSProperties;
 
   return (
     <div
       className={`ht-avatar-frame bg-${avatar.bg || 'cream'}${large ? ' is-lg' : ''}${
         verified ? ' is-verified' : ''
-      }`}
+      }${thinking ? ' is-thinking' : ''}`}
+      style={delayStyle}
       aria-hidden="true"
     >
-      {isDogPlain && (
-        <>
-          <img src="/ai-pet/assets3d/hwata_3d_idle.png" alt="" className="ht-avatar-img" />
+      <div className="ht-avatar-motion-wrap">
+        {isDogPlain && (
+          <>
+            <img
+              src="/ai-pet/assets3d/hwata_3d_idle.png"
+              alt=""
+              className="ht-avatar-img ht-avatar-base-frame"
+            />
+            <img
+              src="/ai-pet/assets3d/hwata_3d_blink.png"
+              alt=""
+              className="ht-avatar-img ht-avatar-blink-frame"
+            />
+            <img
+              src={`/ai-pet/assets3d/hwata_3d_ear_${avatar.ear || 'perk'}.png`}
+              alt=""
+              className="ht-avatar-img ht-avatar-ear"
+            />
+          </>
+        )}
+        {isDogCostume && (
           <img
-            src={`/ai-pet/assets3d/hwata_3d_ear_${avatar.ear || 'perk'}.png`}
+            src={`/ai-pet/assets3d/hwata_3d_costume_${avatar.costume}.png`}
             alt=""
             className="ht-avatar-img"
           />
-        </>
-      )}
-      {isDogCostume && (
-        <img
-          src={`/ai-pet/assets3d/hwata_3d_costume_${avatar.costume}.png`}
-          alt=""
-          className="ht-avatar-img"
-        />
-      )}
-      {!isDogPlain && !isDogCostume && (
-        <img
-          src={`/ai-pet/assets3d/hwata_3d_species_${avatar.species || 'dog'}.png`}
-          alt=""
-          className="ht-avatar-img"
-        />
-      )}
+        )}
+        {!isDogPlain && !isDogCostume && (
+          <img
+            src={`/ai-pet/assets3d/hwata_3d_species_${avatar.species || 'dog'}.png`}
+            alt=""
+            className="ht-avatar-img"
+          />
+        )}
+        {showEyelids && (
+          <>
+            <span className="ht-avatar-eyelid is-left" />
+            <span className="ht-avatar-eyelid is-right" />
+          </>
+        )}
+      </div>
     </div>
+  );
+}
+
+function LiveHwataPetStage({
+  thinking,
+  happy,
+  onPet,
+}: {
+  thinking: boolean;
+  happy: boolean;
+  onPet: () => void;
+}) {
+  const [pose, setPose] = useState<'idle' | 'blink' | 'wave'>('idle');
+  const [statusLabel, setStatusLabel] = useState('눈 깜빡이며 대기 중');
+
+  useEffect(() => {
+    if (thinking || happy) return;
+    let step = 0;
+    const states: Array<{ pose: 'idle' | 'blink' | 'wave'; label: string; ms: number }> = [
+      { pose: 'idle', label: '눈 깜빡이며 경청 중', ms: 2600 },
+      { pose: 'blink', label: '깜빡깜빡 살펴보는 중', ms: 260 },
+      { pose: 'idle', label: '주변을 두리번거리는 중', ms: 2400 },
+      { pose: 'wave', label: '반갑게 인사하는 중', ms: 1600 },
+      { pose: 'idle', label: '언제든 @화타 질문 대기 중', ms: 2800 },
+      { pose: 'blink', label: '눈 깜빡이며 대기 중', ms: 240 },
+    ];
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const tick = () => {
+      const cur = states[step % states.length];
+      setPose(cur.pose);
+      setStatusLabel(cur.label);
+      step += 1;
+      timer = setTimeout(tick, cur.ms);
+    };
+    tick();
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [thinking, happy]);
+
+  const effectiveStatus = thinking
+    ? '질문을 읽고 맞춤 답변 작성 중'
+    : happy
+      ? '답변 완료! 반갑게 손 흔드는 중'
+      : statusLabel;
+
+  const isWave = happy || (!thinking && pose === 'wave');
+  const isBlink = !thinking && !happy && pose === 'blink';
+
+  return (
+    <button
+      type="button"
+      onClick={onPet}
+      className={`ht-live-pet-stage${thinking ? ' is-thinking' : ''}${happy ? ' is-happy' : ''}`}
+      title="클릭하면 닥터 화타가 손을 흔들며 반가워해요!"
+    >
+      <div className="ht-live-pet-stage-box" aria-hidden="true">
+        <div className="ht-live-pet-stage-actor">
+          {thinking ? (
+            <img
+              src="/ai-pet/assets3d/hwata_3d_motion_smile.png"
+              alt=""
+              className="ht-avatar-img"
+            />
+          ) : (
+            <>
+              <img
+                src={
+                  isWave
+                    ? '/ai-pet/assets3d/hwata_3d_wave.png'
+                    : isBlink
+                      ? '/ai-pet/assets3d/hwata_3d_blink.png'
+                      : '/ai-pet/assets3d/hwata_3d_idle.png'
+                }
+                alt=""
+                className="ht-avatar-img"
+              />
+              <img
+                src="/ai-pet/assets3d/hwata_3d_ear_round.png"
+                alt=""
+                className="ht-avatar-img ht-avatar-ear"
+              />
+            </>
+          )}
+        </div>
+      </div>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--ht-navy)', whiteSpace: 'nowrap' }}>
+          닥터 화타 LIVE
+        </div>
+        <div style={{ fontSize: '11px', color: 'var(--ht-muted)', whiteSpace: 'nowrap' }}>
+          {effectiveStatus}
+        </div>
+      </div>
+    </button>
   );
 }
 
@@ -277,12 +406,28 @@ export default function MessengerClient() {
   const [isDragOver, setIsDragOver] = useState(false);
   const [p2pTargetUserId, setP2PTargetUserId] = useState('');
   const [showP2PPicker, setShowP2PPicker] = useState(false);
+  const [isDoctorTyping, setIsDoctorTyping] = useState(false);
+  const [isPetHappy, setIsPetHappy] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const p2pInputRef = useRef<HTMLInputElement | null>(null);
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
+  const composerTextareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const happyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastTopMsgIdRef = useRef<string>('');
   const handledUrlParamsRef = useRef(false);
+
+  const scrollChatToBottom = useCallback((behavior: ScrollBehavior = 'smooth') => {
+    const el = messagesContainerRef.current;
+    if (!el) return;
+    el.scrollTo({ top: el.scrollHeight, behavior });
+  }, []);
+
+  const triggerPetHappy = useCallback(() => {
+    setIsPetHappy(true);
+    if (happyTimerRef.current) clearTimeout(happyTimerRef.current);
+    happyTimerRef.current = setTimeout(() => setIsPetHappy(false), 2600);
+  }, []);
 
   const currentRoom = useMemo(
     () => rooms.find((r) => r.roomId === currentRoomId) || rooms[0] || null,
@@ -325,16 +470,21 @@ export default function MessengerClient() {
       if (data?.ok) {
         const list: MessageItem[] = data.messages || [];
         const newestId = list.length ? list[list.length - 1].id : '';
+        const box = messagesContainerRef.current;
+        const wasNearBottom = box
+          ? box.scrollHeight - box.scrollTop - box.clientHeight < 110
+          : true;
+
         if (lastTopMsgIdRef.current && newestId && newestId !== lastTopMsgIdRef.current) {
           const newest = list[list.length - 1];
           if (soundEnabled && newest.userId !== me?.id) {
             playGentleChime();
           }
-          if (scroll) {
-            setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 60);
+          if (scroll || wasNearBottom) {
+            setTimeout(() => scrollChatToBottom('smooth'), 40);
           }
         } else if (scroll) {
-          setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'auto' }), 40);
+          setTimeout(() => scrollChatToBottom('auto'), 40);
         }
         lastTopMsgIdRef.current = newestId;
         setMessages(list);
@@ -342,7 +492,7 @@ export default function MessengerClient() {
         setP2POffers(data.p2pOffers || []);
       }
     },
-    [currentRoomId, msgSearchQuery, soundEnabled, me?.id]
+    [currentRoomId, msgSearchQuery, soundEnabled, me?.id, scrollChatToBottom]
   );
 
   const loadRoomFiles = useCallback(async () => {
@@ -433,27 +583,80 @@ export default function MessengerClient() {
     const currentReply = replyTo;
     setReplyTo(null);
 
-    const res = await fetch(
-      `/api/messenger/v1/rooms/${encodeURIComponent(currentRoomId)}/messages`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          text,
-          messageType: opts?.messageType || 'TEXT',
-          stickerCode: opts?.stickerCode,
-          replyToId: currentReply?.id || null,
-          attachmentIds,
-        }),
-      }
+    const isDoctorCall =
+      text.includes('@화타') || text.includes('화타야') || text.includes('닥터화타');
+    const hasDentalQuestion =
+      Boolean(currentRoom?.isPublic) &&
+      /[?？]/.test(text) &&
+      /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|시린|미백|수능|수험생|수험표|충치|사랑니|잇몸|신경치료|치실|치간칫솔|보철/.test(
+        text
+      );
+    const replyTargetsBot = Boolean(
+      currentReply &&
+        messages.some((msg) => msg.id === currentReply.id && msg.isBot)
     );
-    const data = await res.json().catch(() => null);
-    if (!res.ok) {
-      setNotice(data?.message || '메시지 전송에 실패했습니다.');
-      return;
+    const expectsDoctorReply = isDoctorCall || hasDentalQuestion || replyTargetsBot;
+
+    const tempId = `temp-${Date.now()}`;
+    if (me && attachmentIds.length === 0) {
+      const optimisticMsg: MessageItem = {
+        id: tempId,
+        roomId: currentRoomId,
+        userId: me.id,
+        sender: me.name || me.email.split('@')[0] || '회원',
+        text,
+        isBot: false,
+        isCracked: me.isVerifiedNonInsured,
+        verifiedTreatment: me.verifiedTreatment,
+        messageType: opts?.messageType || 'TEXT',
+        stickerCode: opts?.stickerCode || null,
+        replyTo: currentReply,
+        unreadCount: 0,
+        avatar: me.petAvatar,
+        attachments: [],
+        reactions: [],
+        createdAt: new Date().toISOString(),
+      };
+      setMessages((prev) => [...prev, optimisticMsg]);
+      setTimeout(() => scrollChatToBottom('smooth'), 20);
     }
-    await loadMessages(true);
-    if (showFilesDrawer && attachmentIds.length > 0) loadRoomFiles();
+
+    if (expectsDoctorReply) {
+      setIsDoctorTyping(true);
+      setTimeout(() => scrollChatToBottom('smooth'), 50);
+    }
+
+    try {
+      const res = await fetch(
+        `/api/messenger/v1/rooms/${encodeURIComponent(currentRoomId)}/messages`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text,
+            messageType: opts?.messageType || 'TEXT',
+            stickerCode: opts?.stickerCode,
+            replyToId: currentReply?.id || null,
+            attachmentIds,
+          }),
+        }
+      );
+      const data = await res.json().catch(() => null);
+      if (!res.ok) {
+        setMessages((prev) => prev.filter((m) => m.id !== tempId));
+        setNotice(data?.message || '메시지 전송에 실패했습니다.');
+        return;
+      }
+
+      if (data?.botReply) {
+        triggerPetHappy();
+      }
+      await loadMessages(true);
+      if (showFilesDrawer && attachmentIds.length > 0) loadRoomFiles();
+    } finally {
+      setIsDoctorTyping(false);
+      composerTextareaRef.current?.focus({ preventScroll: true });
+    }
   };
 
   const handleFileUpload = async (files: FileList | File[]) => {
@@ -771,7 +974,7 @@ export default function MessengerClient() {
           {me && (
             <div className="ht-me-box">
               <div className="ht-me-row">
-                <AvatarBadge avatar={me.petAvatar} verified={me.isVerifiedNonInsured} large />
+                <AvatarBadge avatar={me.petAvatar} verified={me.isVerifiedNonInsured} large seed={me.id} />
                 <div style={{ minWidth: 0, flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                     <strong style={{ fontSize: '15px' }}>{me.name}</strong>
@@ -919,7 +1122,7 @@ export default function MessengerClient() {
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
-                      <AvatarBadge avatar={f.petAvatar} verified={f.isVerifiedNonInsured} />
+                      <AvatarBadge avatar={f.petAvatar} verified={f.isVerifiedNonInsured} seed={f.id} />
                       <div style={{ minWidth: 0 }}>
                         <div style={{ fontSize: '13px', fontWeight: 700 }}>{f.name}</div>
                         <div style={{ fontSize: '11px', color: f.isOnline ? 'var(--ht-green)' : 'var(--ht-muted)' }}>
@@ -979,7 +1182,12 @@ export default function MessengerClient() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+              <LiveHwataPetStage
+                thinking={isDoctorTyping}
+                happy={isPetHappy}
+                onPet={triggerPetHappy}
+              />
               <button
                 type="button"
                 onClick={() => {
@@ -1064,7 +1272,7 @@ export default function MessengerClient() {
             </div>
           )}
 
-          <div className="ht-messages" aria-live="polite">
+          <div ref={messagesContainerRef} className="ht-messages" aria-live="polite">
             {messages.map((m) => {
               const isMe = !m.isBot && m.userId === me?.id;
               const stickerDef = m.stickerCode ? stickers.find((s) => s.code === m.stickerCode) : null;
@@ -1073,7 +1281,7 @@ export default function MessengerClient() {
                   key={m.id}
                   className={`ht-msg-row${isMe ? ' is-me' : ''}${m.isBot ? ' is-bot' : ''}`}
                 >
-                  <AvatarBadge avatar={m.avatar} verified={m.isCracked && !m.isBot} />
+                  <AvatarBadge avatar={m.avatar} verified={m.isCracked && !m.isBot} seed={m.id} />
                   <div className="ht-msg-col">
                     <div className="ht-msg-meta">
                       <strong style={{ color: 'var(--ht-ink)' }}>{m.sender}</strong>
@@ -1202,7 +1410,29 @@ export default function MessengerClient() {
                 </div>
               );
             })}
-            <div ref={messagesEndRef} />
+            {isDoctorTyping && (
+              <div className="ht-msg-row is-bot">
+                <AvatarBadge
+                  avatar={{ species: 'dog', ear: 'round', costume: 'doctor', bg: 'gold' }}
+                  seed="doctor-typing"
+                  thinking
+                />
+                <div className="ht-msg-col">
+                  <div className="ht-msg-meta">
+                    <strong style={{ color: 'var(--ht-ink)' }}>닥터 화타</strong>
+                    <span className="ht-badge-verified">닥터 화타</span>
+                  </div>
+                  <div className="ht-bubble">
+                    <span>질문을 꼼꼼히 읽고 맞춤 임상 답변을 정리하고 있어요</span>
+                    <span className="ht-typing-dots" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="ht-composer">
@@ -1320,7 +1550,10 @@ export default function MessengerClient() {
               </button>
               <button
                 type="button"
-                onClick={() => setComposerText((t) => (t.startsWith('@화타') ? t : `@화타 ${t}`))}
+                onClick={() => {
+                  setComposerText((t) => (t.startsWith('@화타') ? t : `@화타 ${t}`));
+                  composerTextareaRef.current?.focus({ preventScroll: true });
+                }}
                 className="ht-btn"
               >
                 @화타 질문
@@ -1329,6 +1562,7 @@ export default function MessengerClient() {
 
             <div className="ht-composer-row">
               <textarea
+                ref={composerTextareaRef}
                 rows={2}
                 className="ht-textarea"
                 value={composerText}

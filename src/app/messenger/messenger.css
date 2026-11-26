@@ -52,7 +52,8 @@
 .ht-shell {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
-  min-height: 78vh;
+  height: min(780px, calc(100dvh - 110px));
+  min-height: 540px;
   max-height: 86vh;
   background: var(--ht-surface);
   border: 1px solid var(--ht-border);
@@ -68,8 +69,9 @@
   .ht-shell,
   .ht-shell.has-drawer {
     grid-template-columns: minmax(0, 1fr);
-    max-height: none;
-    min-height: 82vh;
+    height: calc(100dvh - 110px);
+    max-height: calc(100dvh - 110px);
+    min-height: 500px;
   }
   .ht-sidebar.is-hidden-mobile {
     display: none;
@@ -132,6 +134,280 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  pointer-events: none;
+}
+
+/* 살아있는 화타펫 모션 (위아래 출렁거림 · 좌우 두리번 · 눈깜박임 · 귀 쫑긋) */
+@keyframes htPetBobAndLook {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1);
+  }
+  16% {
+    transform: translate3d(0, -2.5px, 0) rotate(-1.5deg) scale(1.02, 0.98);
+  }
+  30% {
+    transform: translate3d(-1.5px, -1px, 0) rotate(-6deg) scale(1, 1);
+  }
+  44% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.99, 1.02);
+  }
+  60% {
+    transform: translate3d(0, -2.5px, 0) rotate(1.5deg) scale(1.02, 0.98);
+  }
+  74% {
+    transform: translate3d(1.5px, -1px, 0) rotate(6deg) scale(1, 1);
+  }
+  88% {
+    transform: translate3d(0, -1px, 0) rotate(0deg) scale(1.01, 0.99);
+  }
+}
+
+@keyframes htPetEarTwitch {
+  0%, 38%, 54%, 100% {
+    transform: rotate(0deg) scaleY(1);
+  }
+  42% {
+    transform: rotate(-3.5deg) scaleY(1.04);
+  }
+  46% {
+    transform: rotate(2deg) scaleY(0.98);
+  }
+  50% {
+    transform: rotate(-2deg) scaleY(1.03);
+  }
+}
+
+@keyframes htPetBaseHideOnBlink {
+  0%, 84%, 91%, 94%, 99%, 100% {
+    opacity: 1;
+  }
+  85%, 90% {
+    opacity: 0;
+  }
+  95%, 98% {
+    opacity: 0;
+  }
+}
+
+@keyframes htPetBlinkShow {
+  0%, 84%, 91%, 94%, 99%, 100% {
+    opacity: 0;
+  }
+  85%, 90% {
+    opacity: 1;
+  }
+  95%, 98% {
+    opacity: 1;
+  }
+}
+
+@keyframes htPetEyelidSquint {
+  0%, 84%, 91%, 94%, 99%, 100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  86%, 89% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  96%, 97.5% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes htPetStageLook3D {
+  0%, 100% {
+    transform: perspective(240px) translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(1, 1);
+  }
+  15% {
+    transform: perspective(240px) translate3d(0, -4px, 0) rotateY(0deg) rotateZ(0deg) scale(1.03, 0.97);
+  }
+  28% {
+    transform: perspective(240px) translate3d(-2px, -1px, 0) rotateY(-16deg) rotateZ(-4deg) scale(1, 1);
+  }
+  45% {
+    transform: perspective(240px) translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(0.98, 1.02);
+  }
+  62% {
+    transform: perspective(240px) translate3d(0, -4px, 0) rotateY(0deg) rotateZ(0deg) scale(1.03, 0.97);
+  }
+  76% {
+    transform: perspective(240px) translate3d(2px, -1px, 0) rotateY(16deg) rotateZ(4deg) scale(1, 1);
+  }
+}
+
+@keyframes htPetStageThinking {
+  0%, 100% {
+    transform: perspective(240px) translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+  25% {
+    transform: perspective(240px) translate3d(-2.5px, -5px, 0) rotateY(-18deg) rotateZ(-5deg) scale(1.04, 0.97);
+  }
+  50% {
+    transform: perspective(240px) translate3d(0, -1px, 0) rotateY(0deg) rotateZ(0deg) scale(0.99, 1.02);
+  }
+  75% {
+    transform: perspective(240px) translate3d(2.5px, -5px, 0) rotateY(18deg) rotateZ(5deg) scale(1.04, 0.97);
+  }
+}
+
+@keyframes htPetStageHappy {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate3d(0, -6px, 0) rotate(-6deg) scale(1.06, 0.96);
+  }
+  40% {
+    transform: translate3d(0, 0, 0) rotate(4deg) scale(0.97, 1.03);
+  }
+  60% {
+    transform: translate3d(0, -5px, 0) rotate(-4deg) scale(1.05, 0.97);
+  }
+  80% {
+    transform: translate3d(0, 0, 0) rotate(2deg) scale(1);
+  }
+}
+
+@keyframes htTypingDots {
+  0%, 80%, 100% {
+    opacity: 0.28;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.ht-avatar-motion-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: center 82%;
+  animation: htPetBobAndLook 5.2s ease-in-out infinite;
+  animation-delay: var(--pet-delay, 0s);
+  will-change: transform;
+}
+
+.ht-avatar-frame:hover .ht-avatar-motion-wrap {
+  animation: htPetStageHappy 0.85s ease-in-out infinite;
+}
+
+.ht-avatar-base-frame {
+  animation: htPetBaseHideOnBlink 4.3s steps(1, end) infinite;
+  animation-delay: var(--pet-delay, 0s);
+}
+
+.ht-avatar-blink-frame {
+  opacity: 0;
+  animation: htPetBlinkShow 4.3s steps(1, end) infinite;
+  animation-delay: var(--pet-delay, 0s);
+}
+
+.ht-avatar-ear {
+  transform-origin: center 35%;
+  animation: htPetEarTwitch 3.8s ease-in-out infinite;
+  animation-delay: var(--pet-delay, 0s);
+}
+
+.ht-avatar-eyelid {
+  position: absolute;
+  top: 31.8%;
+  width: 9%;
+  height: 10.2%;
+  background: #e2e3e4;
+  border-bottom: 2px solid #452e23;
+  border-radius: 50% 50% 42% 42%;
+  transform-origin: top center;
+  opacity: 0;
+  pointer-events: none;
+  animation: htPetEyelidSquint 4.3s ease-in-out infinite;
+  animation-delay: var(--pet-delay, 0s);
+}
+
+.ht-avatar-eyelid.is-left {
+  left: 34.4%;
+}
+
+.ht-avatar-eyelid.is-right {
+  left: 56.8%;
+}
+
+.ht-live-pet-stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 14px;
+  border: 1px solid var(--ht-gold-border);
+  background: var(--ht-surface-warm);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.ht-live-pet-stage:hover {
+  border-color: var(--ht-gold);
+  background: var(--ht-gold-bg);
+}
+
+.ht-live-pet-stage.is-thinking {
+  border-color: var(--ht-blue);
+  background: var(--ht-blue-soft);
+}
+
+.ht-live-pet-stage-box {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 35%, #ffffff 0%, #fef3c7 100%);
+  border: 2px solid var(--ht-gold);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ht-live-pet-stage-actor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: center 80%;
+  animation: htPetStageLook3D 5.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ht-live-pet-stage.is-thinking .ht-live-pet-stage-actor {
+  animation: htPetStageThinking 1.9s ease-in-out infinite;
+}
+
+.ht-live-pet-stage.is-happy .ht-live-pet-stage-actor {
+  animation: htPetStageHappy 0.85s ease-in-out infinite;
+}
+
+.ht-typing-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+}
+
+.ht-typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ht-gold);
+  display: inline-block;
+  animation: htTypingDots 1.2s ease-in-out infinite;
+}
+
+.ht-typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ht-typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
 .ht-badge-verified {
@@ -318,7 +594,10 @@
 
 .ht-messages {
   flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -489,7 +768,18 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ht-btn,
-  .ht-room-item {
+  .ht-room-item,
+  .ht-avatar-motion-wrap,
+  .ht-avatar-base-frame,
+  .ht-avatar-blink-frame,
+  .ht-avatar-ear,
+  .ht-avatar-eyelid,
+  .ht-live-pet-stage-actor,
+  .ht-typing-dots span {
     transition: none;
+    animation: none !important;
+  }
+  .ht-messages {
+    scroll-behavior: auto;
   }
 }

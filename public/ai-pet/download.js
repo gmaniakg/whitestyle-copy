@@ -96,13 +96,26 @@
     const a = sanitizeAvatar(cfg);
     const m = forceMode ? getValidMode(forceMode) : a.mode;
     const file = getModeImageFile(m, a.costume, false);
-    return `<img src="${assetUrl(file)}" class="hw-av-layer" alt="">`;
+    const eyelids =
+      m !== 'pixel'
+        ? '<span class="hw-av-eyelid is-left"></span><span class="hw-av-eyelid is-right"></span>'
+        : '';
+    return `<div class="hw-av-motion-wrap"><img src="${assetUrl(file)}" class="hw-av-layer" alt="">${eyelids}</div>`;
   }
 
-  function createAvatarEl(cfg, sizeClass = '', isBot = false, forceMode) {
+  function getDelayFromSeed(seed) {
+    if (!seed) return '0s';
+    let h = 0;
+    const s = String(seed);
+    for (let i = 0; i < s.length; i += 1) h = (h * 31 + s.charCodeAt(i)) | 0;
+    return `-${((Math.abs(h) % 40) * 0.1).toFixed(1)}s`;
+  }
+
+  function createAvatarEl(cfg, sizeClass = '', isBot = false, forceMode, seed) {
     const a = sanitizeAvatar(cfg);
     const el = document.createElement('div');
     el.className = `hw-avatar ${sizeClass} hw-bg-${a.bg}${isBot ? ' bot' : ''}`.trim().replace(/\s+/g, ' ');
+    el.style.setProperty('--hw-delay', getDelayFromSeed(seed));
     el.setAttribute('aria-hidden', 'true');
     el.innerHTML = buildAvatarInnerHtml(a, forceMode);
     return el;
@@ -200,6 +213,8 @@
   }
 
   let heroFrameIndex = 0;
+  let heroIsDragging = false;
+  let heroIdleWave = false;
   function updateHeroStageVisual() {
     const badge = document.getElementById('heroModeBadge');
     const img = document.getElementById('heroDioramaImg');
@@ -228,8 +243,9 @@
       angleLabel.textContent = degLabels[f] || '정면';
     }
     if (img) {
+      img.classList.toggle('is-idle-alive', !heroIsDragging && f === 0);
       if (f === 0) {
-        img.src = assetUrl(getModeImageFile(currentStyleMode, 'none', false));
+        img.src = assetUrl(getModeImageFile(currentStyleMode, 'none', heroIdleWave));
         img.style.transform = '';
       } else if (currentStyleMode === 'pixel') {
         const poseFile = f % 2 === 1 ? 'hwata_mode_pixel_wave.png' : 'hwata_mode_pixel.png';
@@ -256,28 +272,42 @@
     }
 
     if (viewport) {
-      let dragging = false;
       let startX = 0;
       let startFrame = 0;
 
       viewport.addEventListener('pointerdown', (e) => {
         if (e.target && e.target.tagName === 'INPUT') return;
-        dragging = true;
+        heroIsDragging = true;
         startX = e.clientX;
         startFrame = heroFrameIndex;
+        updateHeroStageVisual();
         try { viewport.setPointerCapture(e.pointerId); } catch {}
       });
       viewport.addEventListener('pointermove', (e) => {
-        if (!dragging) return;
+        if (!heroIsDragging) return;
         const dx = e.clientX - startX;
         const step = Math.round(dx / 24);
         heroFrameIndex = ((startFrame + step) % 12 + 12) % 12;
         updateHeroStageVisual();
       });
-      const stopDrag = () => { dragging = false; };
+      const stopDrag = () => {
+        heroIsDragging = false;
+        updateHeroStageVisual();
+      };
       viewport.addEventListener('pointerup', stopDrag);
       viewport.addEventListener('pointercancel', stopDrag);
     }
+
+    setInterval(() => {
+      if (!heroIsDragging && heroFrameIndex === 0) {
+        heroIdleWave = true;
+        updateHeroStageVisual();
+        setTimeout(() => {
+          heroIdleWave = false;
+          updateHeroStageVisual();
+        }, 1500);
+      }
+    }, 6400);
 
     updateHeroStageVisual();
   }
@@ -732,7 +762,8 @@
           m.avatar || { mode: currentStyleMode, costume: isBot ? 'doctor' : 'none', bg: isBot ? 'gold' : 'cream' },
           '',
           isBot,
-          currentStyleMode
+          currentStyleMode,
+          m.id || m.createdAt
         );
         row.appendChild(avEl);
 
@@ -770,7 +801,7 @@
       });
 
       if (scrollToBottom) {
-        chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        chatMessagesContainer.scrollTo({ top: chatMessagesContainer.scrollHeight, behavior: 'smooth' });
       }
     }
 
@@ -784,6 +815,40 @@
 
       if (typeof overrideText !== 'string') chatMessageInput.value = '';
       if (sendChatBtn) sendChatBtn.disabled = true;
+
+      const isDoctorCall = text.includes('@화타') || text.includes('화타야') || text.includes('닥터화타');
+      const hasDentalQuestion =
+        /[?？]/.test(text) &&
+        /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|시린|미백|수능|수험생|수험표|충치|사랑니|잇몸|신경치료|치실|치간칫솔|보철/.test(
+          text
+        );
+
+      if (chatMessagesContainer) {
+        const tempRow = document.createElement('div');
+        tempRow.className = 'chat-row me';
+        tempRow.appendChild(createAvatarEl(myAvatar, '', false, currentStyleMode, 'me-temp'));
+        const tempCol = document.createElement('div');
+        tempCol.className = 'chat-msg-col';
+        tempCol.innerHTML = `<div class="chat-sender-row"><span>${escapeHtml(currentNickname)}</span></div><div class="chat-bubble">${escapeHtml(text)}</div>`;
+        tempRow.appendChild(tempCol);
+        chatMessagesContainer.appendChild(tempRow);
+
+        if (isDoctorCall || hasDentalQuestion) {
+          const typingRow = document.createElement('div');
+          typingRow.className = 'chat-row bot';
+          typingRow.appendChild(
+            createAvatarEl({ mode: currentStyleMode, costume: 'doctor', bg: 'gold' }, '', true, currentStyleMode, 'doc-temp')
+          );
+          const typingCol = document.createElement('div');
+          typingCol.className = 'chat-msg-col';
+          typingCol.innerHTML =
+            '<div class="chat-sender-row"><span>닥터 화타</span></div>' +
+            '<div class="chat-bubble">질문을 꼼꼼히 읽고 맞춤 임상 답변을 정리하고 있어요<span class="hw-typing-dots"><span></span><span></span><span></span></span></div>';
+          typingRow.appendChild(typingCol);
+          chatMessagesContainer.appendChild(typingRow);
+        }
+        chatMessagesContainer.scrollTo({ top: chatMessagesContainer.scrollHeight, behavior: 'smooth' });
+      }
 
       try {
         const res = await fetch('/api/ai-pet/room', {
@@ -817,7 +882,7 @@
       } catch {
       } finally {
         if (sendChatBtn) sendChatBtn.disabled = false;
-        chatMessageInput.focus();
+        chatMessageInput.focus({ preventScroll: true });
       }
     }
 

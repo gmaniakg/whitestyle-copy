@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { buildRuleBasedDentalReply } from '@/lib/messenger/server';
 
 const CORS_HEADERS: Record<string, string> = {
   'Access-Control-Allow-Origin': '*',
@@ -93,76 +94,30 @@ function buildSystemInstruction(persona: string, species: string, lang: string):
     "7. 2027 수능 수험생 이벤트: 2027학년도 수능 수험표를 지참하고 치아교정·최소삭제 라미네이트·세라믹 보철·임플란트 등 비급여(비보험) 진료를 받으시면 식약처 허가 전문가 치아미백 1회를 무료 제공합니다 (상세 안내: https://whitestyle.com/events/suneung, 건강보험 급여 단독 진료 제외).",
     "",
     "[답변 작성 원칙]",
-    "- 2~4문장 이내(공백 포함 160~280자 내외)로 읽기 편하고 다정하게 한국어로만 답변해.",
+    "- 친근한 주치의 파트너 톤으로, 첫 문장에서 질문자가 물어본 핵심을 바로 정확하게 답한 뒤 1~2문장으로 임상 근거·관리법을 설명해.",
+    "- **굵게** 같은 마크다운 기호 없이 읽기 편한 자연스러운 평문(2~4문장, 130~260자 내외)으로 한국어로만 답변해. 필요할 때만 마지막에 상담 전화(1577-7287)를 짧게 덧붙여.",
   ].join('\n');
 }
 
 function buildSmartClinicalReply(
   query: string,
   persona: string = 'angel',
-  species: string = 'dog',
+  _species: string = 'dog',
   lang: string = 'ko'
 ): string {
   const q = (query || '').trim();
 
   if (lang === 'ja') {
+    if (/矯正|歯並び|インビザライン|出っ歯/.test(q) && /いつ|時期|年齢|大人|子供/.test(q)) {
+      return '歯科矯正は永久歯が生えそろう小学校高学年〜中学生頃が効率的ですが、大人の方も歯ぐきや骨が健康であればいつでも始められます。江南駅徒歩1分のホワイトスタイル歯科医院では、矯正学博士キム・ジュンホン病院長が1対1で最適な開始時期をご案内します。日本語通訳スタッフ3名常駐（LINE: whitestyle1）ですので安心してご相談ください。';
+    }
     if (/矯正|歯並び|インビザライン|出っ歯/.test(q)) {
       return '歯並びのご相談ですね！江南駅11番・12番出口徒歩1分のホワイトスタイル歯科医院では、1994年開院（創業33年）以来、ソウル大卒、檀国大外来教授、矯正学博士のキム・ジュンホン病院長が精密診断から保定管理まで主治医変更なしで1対1で直接責任診療いたします。日本語通訳スタッフ3名が常駐しておりますので、LINE（ID: whitestyle1）からいつでもお気軽にご相談くださいね🐾';
     }
     return 'ワンワン！今日もお仕事お疲れさまです🐾 集中している時は奥歯の力をふっと抜いて、お水をひと口飲んでリフレッシュしてくださいね。江南駅徒歩1分・創業33年のホワイトスタイル歯科医院（日本語通訳スタッフ3名常駐 / LINE: whitestyle1）が、あなたの輝く笑顔をいつでも応援しています！';
   }
 
-  const prefixMap: Record<string, string> = {
-    angel: '멍멍! 다정하게 알려드릴게요 🐾 ',
-    tsundere: '흥, 딱히 네 치아가 걱정돼서 알려주는 건 아니지만 잘 들어둬! ',
-    playful: '크앙! 반짝반짝 미소 특급 힌트 나간다~! ✨ ',
-    doctor: '반갑습니다. 33년 임상 기준으로 설명해 드리겠습니다. ',
-    hygiene: '꼼꼼 구강케어 팁 알려드릴게요! 🪥 ',
-    sage: '허허, 치아를 아끼는 지혜를 하나 들려주겠네. ',
-    python: '/* Smile Care Patch v2.1 */ 솔루션 리포트입니다: ',
-  };
-  const prefix = prefixMap[persona] || '';
-
-  if (/수능|수험생|수험표/.test(q)) {
-    return (
-      prefix +
-      '수능 보시느라 정말 고생 많으셨습니다! 강남역 화이트스타일치과의원에서 2027학년도 수능 수험표를 지참하시고 치아교정·최소삭제 라미네이트·세라믹 보철 등 비급여(비보험) 진료를 진행하시면 전문가 치아미백 1회를 무료로 제공해 드립니다. 자세한 안내는 https://whitestyle.com/events/suneung 또는 대표전화 1577-7287에서 바로 확인하실 수 있어요!'
-    );
-  }
-  if (/교정|덧니|돌출|투명교정|인비절라인|클리피|부정교합/.test(q)) {
-    return (
-      prefix +
-      '강남역 화이트스타일치과의원 치아교정은 1994년 개원(33년 전통) 이래 서울대졸, 단국대 외래교수, 교정학 박사 김준헌 병원장님이 정밀 진단부터 장치 부착, 사후 유지관리까지 주치의 변경 없이 1:1로 직접 책임 진료하십니다. 화타 스마일 VIP 패스나 네이버 빠른 예약(1분)으로 편하게 정밀 진단을 받아보세요!'
-    );
-  }
-  if (/라미네이트|심미|보철|앞니|미백|하얗게|변색|착색/.test(q)) {
-    return (
-      prefix +
-      '밝고 가지런한 미소가 고민이시군요! 강남역 화이트스타일치과의원의 최소삭제 심미보철은 자연치아 보존을 최우선 원칙으로 삼아, 정밀 교합 진단 후 치아 삭제량을 최소화한 맞춤형 세라믹 디자인과 체계적인 사후 보증 관리를 제공합니다. 평소 커피 후 맑은 물 가글도 잊지 마세요!'
-    );
-  }
-  if (/임플란트|통증|아프|무서|마취|치주|잇몸|발치|사랑니|시려|시린/.test(q)) {
-    return (
-      prefix +
-      '치과 치료가 긴장되실 때일수록 안심 시스템이 중요해요! 강남역 화이트스타일치과의원은 3D CT 정밀 진단과 3단계 통증 완화 마취 시스템(가글·도포·컴퓨터 제어 저통 마취)을 바탕으로, 치의학박사 김준헌 병원장 · 이봉진 대표원장 · 박선혜 원장(치주과 전문의) 3인 원장단 협진으로 편안하고 안전하게 진료해 드립니다.'
-    );
-  }
-  if (/커피|탄산|콜라|음료|식사|점심|저녁|양치|칫솔|치실|가글/.test(q)) {
-    return (
-      prefix +
-      '커피나 탄산음료 같은 산성 식음료를 드신 직후에는 바로 강한 칫솔질을 하기보다, 맑은 물로 먼저 입안을 가볍게 헹구고 20~30분 뒤에 부드럽게 양치하시는 것이 치아 법랑질 보호와 착색 예방에 가장 좋습니다!'
-    );
-  }
-  if (/코딩|야근|밤샘|새벽|턱|어금니|이갈이|스트레스|피곤|졸려/.test(q)) {
-    return (
-      prefix +
-      '집중해서 코딩이나 문서 작업을 할 때는 무의식중에 어금니를 꽉 깨물기 쉬워요. 지금 입술은 가볍게 다물고 위아래 치아 사이를 2~3mm 살짝 띄우며 어깨와 턱관절 힘을 스르륵 풀어보세요!'
-    );
-  }
-  return (
-    prefix +
-    '오늘도 반짝이는 하루 보내고 계시네요! 작업 중간중간 어금니에 들어간 힘을 살짝 빼고 시원한 물 한 모금으로 미소를 충전해 보세요. 치아교정·최소삭제 심미보철·임플란트·스케일링이 궁금하실 땐 강남역 도보 1분, 1994년 개원 33년 전통 화이트스타일치과의원(1577-7287)과 제가 늘 곁에서 도와드릴게요!'
-  );
+  return buildRuleBasedDentalReply(q || '안녕', persona === 'doctor' ? '회원' : '회원');
 }
 
 export async function OPTIONS() {
@@ -173,8 +128,8 @@ export async function GET() {
   return NextResponse.json(
     {
       ok: true,
-      service: 'WhiteStyle HwataPet Gemini 2.5 Flash-Lite Engine',
-      model: 'gemini-2.5-flash-lite',
+      service: 'WhiteStyle HwataPet Gemini 3.5 Flash-Lite Engine',
+      model: 'gemini-3.5-flash-lite',
       status: 'online',
       clinic: '화이트스타일치과의원 (1994년 개원 · 33년 전통)',
       timestamp: new Date().toISOString(),
@@ -230,7 +185,7 @@ export async function POST(req: NextRequest) {
           reply: defaultGreeting,
           content: defaultGreeting,
           text: defaultGreeting,
-          model: 'gemini-2.5-flash-lite',
+          model: 'gemini-3.5-flash-lite',
           persona,
           species,
           lang,
@@ -254,7 +209,7 @@ export async function POST(req: NextRequest) {
           reply: fallbackReply,
           content: fallbackReply,
           text: fallbackReply,
-          model: 'gemini-2.5-flash-lite',
+          model: 'gemini-3.5-flash-lite',
           rateLimited: true,
           persona,
           species,
@@ -277,15 +232,16 @@ export async function POST(req: NextRequest) {
 
     if (apiKey) {
       const candidateModels = [
-        'gemini-2.5-flash-lite',
         'gemini-3.5-flash-lite',
+        'gemini-3.5-flash',
+        'gemini-flash-lite-latest',
         'gemini-2.5-flash',
       ];
 
       for (const modelName of candidateModels) {
         try {
           const ctl = new AbortController();
-          const timer = setTimeout(() => ctl.abort(), 4200);
+          const timer = setTimeout(() => ctl.abort(), 5500);
           const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(apiKey)}`;
           const res = await fetch(url, {
             method: 'POST',
@@ -294,8 +250,8 @@ export async function POST(req: NextRequest) {
               systemInstruction: { parts: [{ text: systemText }] },
               contents,
               generationConfig: {
-                maxOutputTokens: 320,
-                temperature: 0.65,
+                maxOutputTokens: 420,
+                temperature: 0.55,
               },
             }),
             signal: ctl.signal,
@@ -308,6 +264,8 @@ export async function POST(req: NextRequest) {
             const replyText = parts
               .map((p: any) => p?.text || '')
               .join('')
+              .replace(/\*\*(.*?)\*\*/g, '$1')
+              .replace(/^#{1,6}\s+/gm, '')
               .trim();
             if (replyText) {
               return NextResponse.json(
@@ -316,7 +274,7 @@ export async function POST(req: NextRequest) {
                   reply: replyText,
                   content: replyText,
                   text: replyText,
-                  model: 'gemini-2.5-flash-lite',
+                  model: modelName,
                   upstreamModel: modelName,
                   persona,
                   species,
@@ -340,7 +298,7 @@ export async function POST(req: NextRequest) {
         reply: smartReply,
         content: smartReply,
         text: smartReply,
-        model: 'gemini-2.5-flash-lite',
+        model: 'gemini-3.5-flash-lite',
         persona,
         species,
         lang,
@@ -356,7 +314,7 @@ export async function POST(req: NextRequest) {
         reply: emergencyReply,
         content: emergencyReply,
         text: emergencyReply,
-        model: 'gemini-2.5-flash-lite',
+        model: 'gemini-3.5-flash-lite',
         persona: 'angel',
         species: 'dog',
         lang: 'ko',
