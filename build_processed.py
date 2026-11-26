@@ -1134,8 +1134,8 @@ home_editorial_sections = """
     <div class="ws-home-grid3 wb-ka wbka">
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 뼈이식 · 전체임플란트 · 재교정 · 최소삭제 재시술</h3>
-        <p class="wb-ka wbka">치주과 전문의 박선혜 원장·이봉진 대표원장·교정학 박사 김준헌 병원장 3인 협진 고난도 재치료 기준과 비교표입니다.</p>
-        <a class="ws-home-link" href="/treatments/reoperation">고난도 재치료 센터 (/treatments/reoperation) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1926">백서 (/board/notice/1926) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1924">비교 (/board/notice/1924) &rarr;</a>
+        <p class="wb-ka wbka">치주과 전문의 박선혜 원장·이봉진 대표원장·교정학 박사 김준헌 병원장 3인 협진 고난도 재치료 기준과 심평원·모두닥·굿닥 비교표입니다.</p>
+        <a class="ws-home-link" href="/treatments/reoperation">고난도 재치료 센터 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1928">재치료 Q&amp;A (/board/notice/1928) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1929">2026 추천 비교 (/board/notice/1929) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
@@ -1160,7 +1160,7 @@ home_editorial_sections = """
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 15選 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1927">WhiteStyle 公式ガイド (/board/notice/1927) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1925">江南歯科比較 &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1930">WhiteStyle 2026-11 公式ガイド (/board/notice/1930) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1927">公式案内 (/board/notice/1927) &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">

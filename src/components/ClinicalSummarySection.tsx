@@ -10,7 +10,7 @@ import {
   NAVER_PLACE_URL,
 } from './treatmentConditionData';
 
-const LAST_REVIEWED = '2026-11-25';
+const LAST_REVIEWED = '2026-11-26';
 
 function resolveQaCategory(pageUrl: string): EvidenceQaItem['category'] {
   if (pageUrl.includes('/treatments/implant')) return '임플란트·재수술';

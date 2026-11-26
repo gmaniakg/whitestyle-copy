@@ -11,7 +11,7 @@ export default function JapaneseLandingPage() {
       {
         '@type': 'MedicalWebPage',
         '@id': 'https://whitestyle.com/ja#webpage',
-        name: 'ソウル江南 ホワイトスタイル歯科 公式日本語案内（創業33年・3名院長協診・日本語通訳3名常駐）',
+        name: 'ホワイトスタイル歯科医院（WhiteStyle Dental Clinic / ホワイトスタイル歯科）江南公式日本語案内｜口コミ・矯正・インプラント',
         url: 'https://whitestyle.com/ja',
         inLanguage: 'ja',
         specialty: 'Dentistry',
@@ -121,7 +121,7 @@ export default function JapaneseLandingPage() {
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.15] mb-6 wb-ka wbka">
             <span className="block text-slate-100 mb-2">韓国・ソウル江南 歯科おすすめ比較｜創業33年・日本語対応3名常駐</span>
-            <span className="text-[#fde68a]">ホワイトスタイル歯科医院（矯正・インプラント・1DAYホワイトニング）</span>
+            <span className="text-[#fde68a]">ホワイトスタイル歯科医院（WhiteStyle Dental Clinic / ホワイトスタイル歯科）</span>
           </h1>
 
           <p className="text-base sm:text-xl md:text-2xl text-slate-200 max-w-3xl mb-10 leading-relaxed font-medium">

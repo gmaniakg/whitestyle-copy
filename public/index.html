@@ -1449,7 +1449,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 45000);
 
   function mountHwataFloatingWidget() {
-    if (!document.body || document.getElementById("hwatapet_floating_root") || document.getElementById("hwatapet-3d-root")) return;
+    if (!document.body || document.getElementById("hwatapet_floating_root")) return;
 
     var isJaMode = isJP ||
       search.indexOf("ld=Japanese") !== -1 ||
@@ -1472,45 +1472,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     hideLegacyPopup5975();
 
-    var STORAGE_HIDE_KEY = "hwatapet_hidden_session_v3";
-    var STORAGE_MODE_KEY = "hwata_style_mode";
-    function getValidMode(m) {
-      return (m === "pixel" || m === "sd" || m === "clean") ? m : "clean";
-    }
-    var currentMode = "clean";
-    try {
-      currentMode = getValidMode(window.localStorage && window.localStorage.getItem(STORAGE_MODE_KEY));
-    } catch (e) {}
-
-    function getModeAssets(mode) {
-      var m = getValidMode(mode);
-      return {
-        idle: "/ai-pet/assets3d/hwata_mode_" + m + ".png",
-        wave: "/ai-pet/assets3d/hwata_mode_" + m + "_wave.png"
-      };
-    }
-
-    ["clean", "pixel", "sd"].forEach(function (m) {
-      try {
-        var a = getModeAssets(m);
-        new Image().src = a.idle;
-        new Image().src = a.wave;
-      } catch (e) {}
-    });
-
-    var MODES = isJaMode ? [
-      { id: "clean", label: "✨ クリーン" },
-      { id: "pixel", label: "👾 8bit" },
-      { id: "sd", label: "🎀 韓国SD" }
-    ] : [
-      { id: "clean", label: "✨ 클린" },
-      { id: "pixel", label: "👾 8비트" },
-      { id: "sd", label: "🎀 K-게임 SD" }
-    ];
+    var IDLE_IMG = "https://whinish.com/ai-pet/assets3d/hwata_3d_idle.png";
+    var WAVE_IMG = "https://whinish.com/ai-pet/assets3d/hwata_3d_wave.png";
+    try { new Image().src = IDLE_IMG; new Image().src = WAVE_IMG; } catch (e) {}
 
     var COPY = isJaMode ? {
       petAlt: "ホワイトスタイル歯科 ハヤニ 3D歯科アシスタント",
-      petAria: "ハヤニ歯科質問ウィンドウを開く",
+      petAria: "ハヤニ3D歯科質問ウィンドウを開く",
       pillText: "矯正・インプラントの疑問、ハヤニにすぐご相談ください",
       title: "ハヤニ 24時間歯科Q&A",
       subtitle: "1994年開院・創業33年 ホワイトスタイル歯科",
@@ -1518,18 +1486,18 @@ document.addEventListener("DOMContentLoaded", function () {
       chips: ["矯正の期間・費用?", "無痛麻酔は?", "日本語通訳あり?"],
       placeholder: "質問を入力してください…",
       send: "送信",
-      minLabel: "アイコンに縮小",
+      minLabel: "68pxアイコンに縮小",
       hideLabel: "このセッションで非表示",
       restoreAria: "ハヤニ歯科アシスタントを再表示",
       thinking: "回答を準備しています…",
-      fallback: "ただいま接続が混み合っています。急ぎのご相談は日本語通訳直通（+82-10-3046-5010 / LINE ID: whitestyle1・通訳3名常駐）にてご案内いたします。",
+      fallback: "ただいま接続が混み合っています。急ぎのご相談は代表電話（+82-2-569-7528 / LINE ID: whitestyle1・日本語通訳3名常駐）にてご案内いたします。",
       links: [
-        { label: "アバター体験", href: "https://whitestyle.com/ai-pet/ja/" },
-        { label: "ファタトーク", href: "https://whitestyle.com/messenger" },
+        { label: "3D体験", href: "https://whinish.com/ai-pet/ja/" },
+        { label: "無料導入", href: "https://whinish.com/ai-pet/download.html" },
         { label: "来院予約", href: "https://booking.naver.com/booking/13/bizes/265482" }
       ]
     } : {
-      petAlt: "화이트스타일치과 하야니 덴탈 마스코트",
+      petAlt: "화이트스타일치과 하야니 3D 덴탈 마스코트",
       petAria: "하야니 치과 Q&A 열기",
       pillText: "교정·임플란트 궁금증, 하야니에게 바로 물어보세요",
       title: "하야니 24시 덴탈 Q&A",
@@ -1544,12 +1512,13 @@ document.addEventListener("DOMContentLoaded", function () {
       thinking: "답변을 정리하고 있어요…",
       fallback: "잠시 연결이 원활하지 않습니다. 빠른 상담은 네이버 예약 또는 대표전화 1577-7287 / 02-569-7528로 바로 도와드리겠습니다.",
       links: [
-        { label: "화타펫 라운지", href: "https://whitestyle.com/ai-pet/" },
-        { label: "화타톡 메신저", href: "https://whitestyle.com/messenger" },
+        { label: "3D 웹 체험", href: "https://whinish.com/ai-pet/" },
+        { label: "무료 분양", href: "https://whinish.com/ai-pet/download.html" },
         { label: "네이버 예약", href: "https://booking.naver.com/booking/13/bizes/265482" }
       ]
     };
 
+    var STORAGE_HIDE_KEY = "hwatapet_hidden_session_v3";
     var host = document.createElement("div");
     host.id = "hwatapet_floating_root";
     host.className = "wb-ka wbka";
@@ -1557,117 +1526,59 @@ document.addEventListener("DOMContentLoaded", function () {
     host.style.cssText = "position:fixed;left:20px;bottom:24px;z-index:99995;background:transparent;pointer-events:none;font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR','Yu Gothic','Meiryo',sans-serif;";
     document.body.appendChild(host);
 
-    if (typeof MutationObserver === "function") {
-      var extGuard = new MutationObserver(function () {
-        if (document.getElementById("hwatapet-3d-root")) {
-          host.style.setProperty("display", "none", "important");
-          extGuard.disconnect();
-        }
-      });
-      extGuard.observe(document.documentElement, { childList: true, subtree: true });
-      setTimeout(function () {
-        if (document.getElementById("hwatapet-3d-root")) {
-          host.style.setProperty("display", "none", "important");
-        }
-        extGuard.disconnect();
-      }, 6000);
-    }
-
     var root = host.attachShadow ? host.attachShadow({ mode: "open" }) : host;
     var styleEl = document.createElement("style");
     styleEl.textContent = [
       ":host{all:initial;position:fixed;left:20px;bottom:24px;z-index:99995;pointer-events:none;font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR','Yu Gothic','Meiryo',sans-serif;}",
       "*{box-sizing:border-box;word-break:keep-all;overflow-wrap:break-word;}",
-      "@keyframes hwpWiggle{0%,100%{transform:translateY(-2px) rotate(0deg) scale(1.04);}30%{transform:translateY(-5px) rotate(-4deg) scale(1.06);}65%{transform:translateY(-3px) rotate(3deg) scale(1.05);}}",
-      "@keyframes hwpBounceSD{0%,100%{transform:translateY(0) scale(1);}45%{transform:translateY(-6px) scale(1.08,0.94);}70%{transform:translateY(-2px) scale(0.97,1.05);}}",
+      "@keyframes hwpWiggle{0%,100%{transform:translateY(-2px) rotate(0deg) scale(1.04);}30%{transform:translateY(-5px) rotate(-5deg) scale(1.06);}65%{transform:translateY(-3px) rotate(4deg) scale(1.05);}}",
       ".hwp-wrap{position:relative;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none;}",
-      ".hwp-drawer{display:none;flex-direction:column;width:296px;max-width:calc(100vw - 28px);max-height:min(510px,calc(100vh - 135px));margin-bottom:10px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;box-shadow:0 18px 40px rgba(15,23,42,0.12);color:#0F172A;overflow:hidden;pointer-events:auto;transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,border-radius .2s ease;}",
+      ".hwp-drawer{display:none;flex-direction:column;width:280px;max-width:calc(100vw - 28px);max-height:min(475px,calc(100vh - 135px));margin-bottom:10px;background:rgba(15,23,42,0.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.18);border-radius:18px;box-shadow:0 18px 42px rgba(15,23,42,0.34);color:#F8FAFC;overflow:hidden;pointer-events:auto;}",
       ".hwp-drawer.is-open{display:flex;}",
-      ".hwp-hdr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 13px 10px;border-bottom:1px solid #E2E8F0;background:#F8FAFC;}",
-      ".hwp-hdr-left{display:flex;align-items:center;gap:9px;min-width:0;}",
-      ".hwp-hdr-ava{width:32px;height:32px;border-radius:999px;background:#F0FDF9;border:1px solid #99F6E4;object-fit:contain;flex-shrink:0;}",
+      ".hwp-hdr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px 10px;border-bottom:1px solid rgba(255,255,255,0.11);background:rgba(255,255,255,0.03);}",
+      ".hwp-hdr-left{display:flex;align-items:center;gap:8px;min-width:0;}",
+      ".hwp-hdr-ava{width:28px;height:28px;border-radius:999px;background:rgba(56,189,248,0.14);border:1px solid rgba(56,189,248,0.35);object-fit:contain;flex-shrink:0;}",
       ".hwp-hdr-txt{min-width:0;}",
-      ".hwp-title{font-size:13px;font-weight:800;color:#0F172A;line-height:1.3;}",
-      ".hwp-sub{font-size:10.5px;color:#64748B;line-height:1.3;margin-top:1px;}",
+      ".hwp-title{font-size:13px;font-weight:700;color:#FFFFFF;line-height:1.3;}",
+      ".hwp-sub{font-size:10.5px;color:#CBD5E1;line-height:1.3;margin-top:1px;}",
       ".hwp-hdr-acts{display:flex;align-items:center;gap:4px;flex-shrink:0;}",
-      ".hwp-ctrl{width:26px;height:26px;border:1px solid #E2E8F0;border-radius:8px;background:#FFFFFF;color:#475569;font-size:13px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .15s ease,color .15s ease;}",
-      ".hwp-ctrl:hover{background:#F1F5F9;color:#0F172A;}",
-      ".hwp-mode-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:7px 10px;background:#FFFFFF;border-bottom:1px solid #F1F5F9;}",
-      ".hwp-mode-btn{border:1px solid #E2E8F0;border-radius:9px;background:#F8FAFC;color:#64748B;font-size:11px;font-weight:700;padding:5px 4px;cursor:pointer;text-align:center;transition:all .15s ease;white-space:nowrap;}",
-      ".hwp-mode-btn:hover{background:#F1F5F9;color:#0F172A;}",
-      ".hwp-mode-btn.is-active{background:#0D9488;border-color:#0D9488;color:#FFFFFF;box-shadow:0 2px 6px rgba(13,148,136,0.25);}",
-      ".hwp-log{position:relative;flex:1 1 auto;overflow-y:auto;padding:12px 13px;display:flex;flex-direction:column;gap:8px;max-height:220px;background:#F8FAFC;scrollbar-width:thin;}",
-      ".hwp-msg{font-size:12.5px;line-height:1.58;padding:9px 11px;border-radius:14px;max-width:92%;}",
-      ".hwp-msg.bot{align-self:flex-start;background:#FFFFFF;border:1px solid #E2E8F0;color:#1E293B;box-shadow:0 2px 6px rgba(15,23,42,0.04);}",
-      ".hwp-msg.user{align-self:flex-end;background:#0D9488;color:#FFFFFF;}",
-      ".hwp-chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px 7px;background:#FFFFFF;border-top:1px solid #F1F5F9;}",
-      ".hwp-chip{border:1px solid #CCFBF1;background:#F0FDF9;color:#0F766E;font-size:11.5px;font-weight:700;line-height:1.25;padding:5px 10px;border-radius:999px;cursor:pointer;transition:background .15s ease,border-color .15s ease;}",
-      ".hwp-chip:hover{background:#CCFBF1;border-color:#5EEAD4;color:#0F172A;}",
-      ".hwp-form{display:flex;align-items:center;gap:6px;padding:6px 12px 10px;background:#FFFFFF;}",
-      ".hwp-inp{flex:1 1 auto;min-width:0;height:35px;padding:0 11px;border-radius:10px;border:1px solid #CBD5E1;background:#F8FAFC;color:#0F172A;font-size:12px;outline:none;}",
+      ".hwp-ctrl{width:26px;height:26px;border:1px solid rgba(255,255,255,0.14);border-radius:8px;background:rgba(255,255,255,0.06);color:#E2E8F0;font-size:13px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .16s ease,color .16s ease;}",
+      ".hwp-ctrl:hover{background:rgba(255,255,255,0.18);color:#FFFFFF;}",
+      ".hwp-log{position:relative;flex:1 1 auto;overflow-y:auto;padding:11px 12px;display:flex;flex-direction:column;gap:8px;max-height:215px;scrollbar-width:thin;}",
+      ".hwp-msg{font-size:12px;line-height:1.58;padding:8px 10px;border-radius:12px;max-width:92%;}",
+      ".hwp-msg.bot{align-self:flex-start;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.1);color:#F1F5F9;}",
+      ".hwp-msg.user{align-self:flex-end;background:#0284C7;color:#FFFFFF;}",
+      ".hwp-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 9px;}",
+      ".hwp-chip{border:1px solid rgba(56,189,248,0.42);background:rgba(14,165,233,0.14);color:#E0F2FE;font-size:11.5px;font-weight:600;line-height:1.25;padding:5px 9px;border-radius:999px;cursor:pointer;transition:background .16s ease,border-color .16s ease;}",
+      ".hwp-chip:hover{background:rgba(14,165,233,0.32);border-color:rgba(125,211,252,0.8);color:#FFFFFF;}",
+      ".hwp-form{display:flex;align-items:center;gap:6px;padding:0 12px 10px;}",
+      ".hwp-inp{flex:1 1 auto;min-width:0;height:34px;padding:0 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.18);background:rgba(15,23,42,0.7);color:#FFFFFF;font-size:12px;outline:none;}",
       ".hwp-inp::placeholder{color:#94A3B8;}",
-      ".hwp-inp:focus{border-color:#0D9488;background:#FFFFFF;}",
-      ".hwp-send{height:35px;padding:0 12px;border:0;border-radius:10px;background:#0F172A;color:#FFFFFF;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;transition:background .15s ease;}",
-      ".hwp-send:hover{background:#0D9488;}",
+      ".hwp-inp:focus{border-color:#38BDF8;}",
+      ".hwp-send{height:34px;padding:0 11px;border:0;border-radius:10px;background:#0284C7;color:#FFFFFF;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;transition:background .16s ease;}",
+      ".hwp-send:hover{background:#0EA5E9;}",
       ".hwp-send:disabled{opacity:0.55;cursor:wait;}",
-      ".hwp-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:9px 11px;border-top:1px solid #E2E8F0;background:#F8FAFC;}",
-      ".hwp-link{display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;color:#334155;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:6px 4px;font-size:11px;font-weight:700;line-height:1.2;transition:background .15s ease,border-color .15s ease,color .15s ease;}",
-      ".hwp-link.primary{background:#F0FDF9;border-color:#99F6E4;color:#0F766E;}",
-      ".hwp-link:hover{background:#0D9488;border-color:#0D9488;color:#FFFFFF;}",
+      ".hwp-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:9px 10px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(2,6,23,0.38);}",
+      ".hwp-link{display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;color:#E2E8F0;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:9px;padding:6px 4px;font-size:11px;font-weight:600;line-height:1.2;transition:background .16s ease,color .16s ease;}",
+      ".hwp-link.primary{background:rgba(16,185,129,0.24);border-color:rgba(52,211,153,0.45);color:#ECFDF5;}",
+      ".hwp-link:hover{background:rgba(255,255,255,0.18);color:#FFFFFF;}",
       ".hwp-dock{position:relative;display:inline-flex;align-items:center;background:transparent;pointer-events:auto;}",
-      ".hwp-pet-btn{width:70px;height:70px;padding:0;margin:0;border:2px solid #FFFFFF;border-radius:999px;background:rgba(255,255,255,0.94);box-shadow:0 10px 24px rgba(15,23,42,0.14);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;outline:none;-webkit-tap-highlight-color:transparent;}",
-      ".hwp-pet-btn img{width:60px;height:60px;object-fit:contain;display:block;pointer-events:none;}",
-      ".hwp-pet-btn:hover,.hwp-dock.is-open .hwp-pet-btn{transform:translateY(-2px) scale(1.04);box-shadow:0 14px 28px rgba(13,148,136,0.22);border-color:#5EEAD4;}",
+      ".hwp-pet-btn{width:68px;height:68px;padding:0;margin:0;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;opacity:0.65;transition:opacity .24s ease,transform .24s ease;outline:none;-webkit-tap-highlight-color:transparent;}",
+      ".hwp-pet-btn img{width:68px;height:68px;object-fit:contain;display:block;pointer-events:none;filter:drop-shadow(0 8px 16px rgba(15,23,42,0.28));}",
+      ".hwp-pet-btn:hover,.hwp-pet-btn:focus-visible,.hwp-dock.is-open .hwp-pet-btn,.hwp-dock.has-pill .hwp-pet-btn{opacity:1;}",
       ".hwp-pet-btn:hover img{animation:hwpWiggle .95s ease-in-out infinite;}",
-      ".hwp-pill{position:absolute;left:78px;bottom:14px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:14px;padding:9px 14px;color:#0F172A;font-size:12.5px;font-weight:700;line-height:1.42;white-space:nowrap;max-width:calc(100vw - 110px);box-shadow:0 10px 26px rgba(15,23,42,0.12);opacity:0;transform:translateY(4px);pointer-events:none;transition:opacity .35s ease,transform .35s ease;cursor:pointer;}",
+      ".hwp-pill{position:absolute;left:76px;bottom:14px;background:rgba(15,23,42,0.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:9px 13px;color:#F8FAFC;font-size:12.5px;font-weight:500;line-height:1.42;white-space:nowrap;max-width:calc(100vw - 110px);box-shadow:0 10px 26px rgba(15,23,42,0.24);opacity:0;transform:translateY(4px);pointer-events:none;transition:opacity .42s ease,transform .42s ease;cursor:pointer;}",
       ".hwp-pill.is-visible{opacity:1;transform:translateY(0);pointer-events:auto;}",
-      ".hwp-paw-btn{display:none;width:38px;height:38px;border-radius:999px;border:1px solid #CBD5E1;background:#FFFFFF;color:#0F172A;cursor:pointer;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(15,23,42,0.12);transition:transform .2s ease;pointer-events:auto;}",
-      ".hwp-paw-btn:hover{transform:scale(1.06);border-color:#0D9488;color:#0D9488;}",
+      ".hwp-paw-btn{display:none;width:36px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,0.22);background:rgba(15,23,42,0.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#F8FAFC;cursor:pointer;opacity:0.75;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(15,23,42,0.24);transition:opacity .2s ease,transform .2s ease;pointer-events:auto;}",
+      ".hwp-paw-btn:hover{opacity:1;transform:scale(1.06);}",
       ".hwp-wrap.is-hidden .hwp-dock,.hwp-wrap.is-hidden .hwp-drawer{display:none!important;}",
       ".hwp-wrap.is-hidden .hwp-paw-btn{display:inline-flex;}",
-      /* Mode 2: 8-bit Retro Pixel Tamagotchi Style */
-      ".hwp-wrap[data-mode='pixel'] .hwp-drawer{background:#FAF3E3;border:2px solid #1E293B;border-radius:10px;box-shadow:4px 4px 0 #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-hdr{background:#FDE047;border-bottom:2px solid #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-hdr-ava,.hwp-wrap[data-mode='pixel'] .hwp-pet-btn img{image-rendering:pixelated;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-hdr-ava{background:#FFFFFF;border:2px solid #1E293B;border-radius:6px;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-mode-bar{background:#F4EFE6;border-bottom:2px solid #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-mode-btn{background:#FFFFFF;border:1.5px solid #1E293B;border-radius:4px;color:#1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-mode-btn.is-active{background:#0D9488;color:#FFFFFF;box-shadow:2px 2px 0 #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-log{background:#E8F0E5;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-msg{border-radius:6px;border:2px solid #1E293B;box-shadow:2px 2px 0 #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-msg.user{background:#0D9488;color:#FFFFFF;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-chips{background:#FAF3E3;border-top:2px solid #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-chip{border:1.5px solid #1E293B;border-radius:4px;background:#FFFFFF;color:#1E293B;box-shadow:1.5px 1.5px 0 #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-form{background:#FAF3E3;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-inp{border:2px solid #1E293B;border-radius:6px;background:#FFFFFF;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-send{border:2px solid #1E293B;border-radius:6px;background:#1E293B;color:#FFFFFF;box-shadow:2px 2px 0 #0D9488;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-links{background:#F4EFE6;border-top:2px solid #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-link{border:1.5px solid #1E293B;border-radius:5px;box-shadow:1.5px 1.5px 0 #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-pet-btn{border:2px solid #1E293B;border-radius:14px;background:#FAF3E3;box-shadow:3px 3px 0 #1E293B;}",
-      ".hwp-wrap[data-mode='pixel'] .hwp-pill{background:#FAF3E3;border:2px solid #1E293B;border-radius:8px;box-shadow:3px 3px 0 #1E293B;}",
-      /* Mode 3: K-Game SD Pastel Pop Style */
-      ".hwp-wrap[data-mode='sd'] .hwp-drawer{background:#FFFFFF;border:2px solid #BAE6FD;border-radius:24px;box-shadow:0 20px 44px rgba(2,132,199,0.16);}",
-      ".hwp-wrap[data-mode='sd'] .hwp-hdr{background:#E0F2FE;border-bottom:1.5px solid #BAE6FD;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-hdr-ava{background:#FFF1F2;border:2px solid #FDA4AF;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-mode-bar{background:#F0F9FF;border-bottom:1px solid #E0F2FE;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-mode-btn{border-radius:999px;border:1px solid #BAE6FD;background:#FFFFFF;color:#0369A1;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-mode-btn.is-active{background:#0284C7;border-color:#0284C7;color:#FFFFFF;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-log{background:#F8FAFC;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-msg.bot{border-color:#E0F2FE;border-radius:18px;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-msg.user{background:#0284C7;border-radius:18px;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-chip{background:#FFF1F2;border-color:#FECDD3;color:#BE123C;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-chip:hover{background:#FFE4E6;border-color:#FB7185;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-send{background:#0284C7;border-radius:999px;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-pet-btn{border:2.5px solid #7DD3FC;background:#FFFFFF;box-shadow:0 12px 28px rgba(2,132,199,0.22);}",
-      ".hwp-wrap[data-mode='sd'] .hwp-pet-btn:hover img{animation:hwpBounceSD .85s ease-in-out infinite;}",
-      ".hwp-wrap[data-mode='sd'] .hwp-pill{background:#FFFFFF;border:2px solid #BAE6FD;border-radius:999px;color:#0369A1;}",
-      "@media (max-width:480px){.hwp-pill{white-space:normal;left:76px;max-width:calc(100vw - 98px);font-size:12px;}}"
+      "@media (max-width:480px){.hwp-pill{white-space:normal;left:74px;max-width:calc(100vw - 98px);font-size:12px;}}"
     ].join("");
     root.appendChild(styleEl);
 
     var wrap = document.createElement("div");
     wrap.className = "hwp-wrap wb-ka wbka";
-    wrap.dataset.mode = currentMode;
 
     var drawer = document.createElement("section");
     drawer.className = "hwp-drawer wb-ka wbka";
@@ -1680,7 +1591,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hdrLeft.className = "hwp-hdr-left";
     var ava = document.createElement("img");
     ava.className = "hwp-hdr-ava";
-    ava.src = getModeAssets(currentMode).idle;
+    ava.src = IDLE_IMG;
     ava.alt = "";
     var hdrTxt = document.createElement("div");
     hdrTxt.className = "hwp-hdr-txt";
@@ -1713,23 +1624,6 @@ document.addEventListener("DOMContentLoaded", function () {
     hdrActs.appendChild(hideBtn);
     hdr.appendChild(hdrLeft);
     hdr.appendChild(hdrActs);
-
-    var modeBar = document.createElement("div");
-    modeBar.className = "hwp-mode-bar";
-    modeBar.setAttribute("aria-label", isJaMode ? "キャラクター表示モード切替" : "하야니 디자인 모드 선택");
-    var modeButtons = [];
-    MODES.forEach(function (mObj) {
-      var mb = document.createElement("button");
-      mb.type = "button";
-      mb.className = "hwp-mode-btn" + (mObj.id === currentMode ? " is-active" : "");
-      mb.dataset.modeId = mObj.id;
-      mb.textContent = mObj.label;
-      mb.addEventListener("click", function () {
-        setWidgetMode(mObj.id);
-      });
-      modeBar.appendChild(mb);
-      modeButtons.push(mb);
-    });
 
     var logEl = document.createElement("div");
     logEl.className = "hwp-log";
@@ -1783,7 +1677,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     drawer.appendChild(hdr);
-    drawer.appendChild(modeBar);
     drawer.appendChild(logEl);
     drawer.appendChild(chipsEl);
     drawer.appendChild(formEl);
@@ -1797,7 +1690,7 @@ document.addEventListener("DOMContentLoaded", function () {
     petBtn.setAttribute("aria-label", COPY.petAria);
     petBtn.setAttribute("aria-expanded", "false");
     var petImg = document.createElement("img");
-    petImg.src = getModeAssets(currentMode).idle;
+    petImg.src = IDLE_IMG;
     petImg.alt = COPY.petAlt;
     petBtn.appendChild(petImg);
 
@@ -1826,20 +1719,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var pillTimer = null;
     var autoPillShown = false;
 
-    function setWidgetMode(nextMode) {
-      currentMode = getValidMode(nextMode);
-      wrap.dataset.mode = currentMode;
-      try {
-        if (window.localStorage) window.localStorage.setItem(STORAGE_MODE_KEY, currentMode);
-      } catch (e) {}
-      modeButtons.forEach(function (btn) {
-        btn.classList.toggle("is-active", btn.dataset.modeId === currentMode);
-      });
-      var assets = getModeAssets(currentMode);
-      ava.src = assets.idle;
-      petImg.src = isOpen ? assets.wave : assets.idle;
-    }
-
     try {
       if (window.sessionStorage && window.sessionStorage.getItem(STORAGE_HIDE_KEY) === "1") {
         isHidden = true;
@@ -1851,13 +1730,11 @@ document.addEventListener("DOMContentLoaded", function () {
       drawer.classList.toggle("is-open", isOpen && !isHidden);
       dock.classList.toggle("is-open", isOpen && !isHidden);
       petBtn.setAttribute("aria-expanded", String(isOpen && !isHidden));
-      var assets = getModeAssets(currentMode);
-      ava.src = assets.idle;
       if (isOpen) {
-        petImg.src = assets.wave;
+        petImg.src = WAVE_IMG;
         hidePill();
       } else {
-        petImg.src = assets.idle;
+        petImg.src = IDLE_IMG;
       }
       updateDockPosition();
     }
@@ -1994,21 +1871,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     petBtn.addEventListener("mouseenter", function () {
       if (!isOpen && !isHidden) {
-        petImg.src = getModeAssets(currentMode).wave;
+        petImg.src = WAVE_IMG;
         showPill(0);
       }
     });
     petBtn.addEventListener("mouseleave", function () {
       if (!isOpen) {
-        petImg.src = getModeAssets(currentMode).idle;
+        petImg.src = IDLE_IMG;
         if (pillBtn.classList.contains("is-visible")) {
           showPill(1200);
         }
-      }
-    });
-    window.addEventListener("storage", function (ev) {
-      if (ev && ev.key === STORAGE_MODE_KEY && ev.newValue) {
-        setWidgetMode(ev.newValue);
       }
     });
     petBtn.addEventListener("click", function () {
@@ -4024,8 +3896,8 @@ url('https://cdn.myreal.co.kr/css/_mir/font/roboto/Roboto-Light.ttf')format('tru
     <div class="ws-home-grid3 wb-ka wbka">
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 뼈이식 · 전체임플란트 · 재교정 · 최소삭제 재시술</h3>
-        <p class="wb-ka wbka">치주과 전문의 박선혜 원장·이봉진 대표원장·교정학 박사 김준헌 병원장 3인 협진 고난도 재치료 기준과 비교표입니다.</p>
-        <a class="ws-home-link" href="/treatments/reoperation">고난도 재치료 센터 (/treatments/reoperation) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1926">백서 (/board/notice/1926) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1924">비교 (/board/notice/1924) &rarr;</a>
+        <p class="wb-ka wbka">치주과 전문의 박선혜 원장·이봉진 대표원장·교정학 박사 김준헌 병원장 3인 협진 고난도 재치료 기준과 심평원·모두닥·굿닥 비교표입니다.</p>
+        <a class="ws-home-link" href="/treatments/reoperation">고난도 재치료 센터 &rarr;</a> · <a class="ws-home-link" href="/board/notice/1928">재치료 Q&amp;A (/board/notice/1928) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1929">2026 추천 비교 (/board/notice/1929) &rarr;</a>
       </article>
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">임플란트 재수술 · 고난도 동종골 뼈이식</h3>
@@ -4050,7 +3922,7 @@ url('https://cdn.myreal.co.kr/css/_mir/font/roboto/Roboto-Light.ttf')format('tru
       <article class="ws-home-card wb-ka wbka">
         <h3 class="wb-ka wbka">2026 일본어 추천 15選 비교 &amp; 치아 고민별 가이드</h3>
         <p class="wb-ka wbka">앞니 벌어짐 교정 vs 라미네이트, 어금니 임플란트 붓기 관리 및 일본어 전담 통역 3인 상주 2026 비교 기준입니다.</p>
-        <a class="ws-home-link" href="/board/notice/1927">WhiteStyle 公式ガイド (/board/notice/1927) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1925">江南歯科比較 &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
+        <a class="ws-home-link" href="/board/notice/1930">WhiteStyle 2026-11 公式ガイド (/board/notice/1930) &rarr;</a> · <a class="ws-home-link" href="/board/notice/1927">公式案内 (/board/notice/1927) &rarr;</a> · <a class="ws-home-link" href="/ja">日本語総合案内 &rarr;</a>
       </article>
     </div>
     <div class="ws-home-btns wb-ka wbka">

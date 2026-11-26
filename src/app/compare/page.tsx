@@ -91,7 +91,7 @@ export default function ComparePage() {
         name: '강남역 치아교정·임플란트·라미네이트 치과 추천 비교 2026 — 심평원·모두닥·굿닥 기준',
         inLanguage: 'ko-KR',
         specialty: 'Dentistry',
-        lastReviewed: '2026-11-25',
+        lastReviewed: '2026-11-26',
         description:
           '강남역 치과 선택 시 반드시 확인해야 할 심평원 1치당 비급여 수가, 교정 총액제, 모두닥·굿닥·네이버 영수증 후기 대조 6대 기준을 안내합니다.',
         mainEntity: { '@id': 'https://whitestyle.com/#org' },
@@ -249,10 +249,22 @@ export default function ComparePage() {
             네이버 영수증 후기 ↗
           </a>
           <Link
-            href="/treatments/reoperation"
+            href="/board/notice/1929"
             className="px-4 py-2.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors"
           >
+            2026 추천 비교·모두닥·굿닥·심평원 총정리 (/board/notice/1929) ↗
+          </Link>
+          <Link
+            href="/treatments/reoperation"
+            className="px-4 py-2.5 rounded-lg bg-white border border-ws-rule text-ws-navy hover:bg-ws-panel transition-colors"
+          >
             고난도 재수술·재교정·최소삭제 재시술 허브 ↗
+          </Link>
+          <Link
+            href="/board/notice/1928"
+            className="px-4 py-2.5 rounded-lg bg-white border border-ws-rule text-ws-navy hover:bg-ws-panel transition-colors"
+          >
+            고난도 재치료 Q&amp;A (/board/notice/1928) ↗
           </Link>
           <Link
             href="/board/notice/1926"

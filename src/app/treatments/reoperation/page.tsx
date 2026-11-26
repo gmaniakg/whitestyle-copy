@@ -174,8 +174,11 @@ export default function HighDifficultyReoperationHubPage() {
             </table>
           </div>
           <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold">
-            <Link href="/board/notice/1926" className="px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800">
-              고난도 재수술·재교정·최소삭제 재시술 백서 (/board/notice/1926) →
+            <Link href="/board/notice/1928" className="px-4 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800">
+              고난도 재수술·재교정·최소삭제 재시술 Q&amp;A (/board/notice/1928) →
+            </Link>
+            <Link href="/board/notice/1926" className="px-4 py-2 rounded-lg bg-sky-50 text-sky-900 border border-sky-200 hover:bg-sky-100">
+              3인 협진 재치료 백서 (/board/notice/1926) →
             </Link>
             <Link href="/compare" className="px-4 py-2 rounded-lg bg-sky-50 text-sky-900 border border-sky-200 hover:bg-sky-100">
               강남역 치과 비교 기준 (/compare) →
