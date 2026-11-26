@@ -12,6 +12,7 @@ import {
   parseAvatarJson,
   PET_STICKERS,
   sanitizeAvatar,
+  shouldDoctorAutoReply,
 } from '@/lib/messenger/server';
 
 export const dynamic = 'force-dynamic';
@@ -337,23 +338,24 @@ export async function POST(
       data: { lastMessageAt: now },
     });
 
-    const isDoctorCall =
-      text.includes('@화타') || text.includes('화타야') || text.includes('닥터화타');
-    const hasDentalQuestion =
-      access.room.isPublic &&
-      /[?？]/.test(text) &&
-      /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|시린|미백|수능|수험생|수험표|충치|사랑니|잇몸|신경치료|치실|치간칫솔|보철/.test(
-        text
-      );
-
     let isReplyToBot = false;
-    if (replyToId && !isDoctorCall && !hasDentalQuestion) {
+    if (replyToId) {
       const targetMsg = await prisma.hwataMessage.findUnique({
         where: { id: replyToId },
         select: { isBot: true },
       });
       if (targetMsg?.isBot) isReplyToBot = true;
     }
+
+    const roomMemberTotal = access.room.isPublic
+      ? access.room.memberCount
+      : await prisma.hwataRoomMember.count({ where: { roomId } });
+
+    const triggerBot = shouldDoctorAutoReply(text, {
+      isPublicRoom: access.room.isPublic,
+      roomMemberCount: roomMemberTotal,
+      replyTargetsBot: isReplyToBot,
+    });
 
     let createdBotMsg: {
       id: string;
@@ -372,7 +374,7 @@ export async function POST(
       createdAt: Date;
     } | null = null;
 
-    if (isDoctorCall || hasDentalQuestion || isReplyToBot) {
+    if (triggerBot) {
       const priorMessages = await prisma.hwataMessage.findMany({
         where: { roomId, isDeleted: false, id: { not: saved.id } },
         orderBy: { createdAt: 'desc' },

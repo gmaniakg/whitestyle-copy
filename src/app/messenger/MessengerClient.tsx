@@ -626,12 +626,12 @@ export default function MessengerClient() {
     const currentReply = replyTo;
     setReplyTo(null);
 
-    const isDoctorCall =
-      text.includes('@화타') || text.includes('화타야') || text.includes('닥터화타');
+    const isDoctorCall = /(@화타|화타야|닥터\s*화타|화타펫|화타톡)/.test(text);
+    const isSoloOrPublic = Boolean(currentRoom?.isPublic) || (currentRoom?.memberCount !== undefined && currentRoom.memberCount <= 1);
     const hasDentalQuestion =
-      Boolean(currentRoom?.isPublic) &&
-      /[?？]/.test(text) &&
-      /치과|치아|턱|교정|이빨|라미네이트|임플란트|스케일링|마취|통증|시려|시린|미백|수능|수험생|수험표|충치|사랑니|잇몸|신경치료|치실|치간칫솔|보철/.test(
+      isSoloOrPublic &&
+      (/[?？]/.test(text) || /(얼마|어떻게|언제|가능|할\s*수\s*있|추천|알려|궁금|뭐야|효과|기간|비용|가격|수가)/.test(text)) &&
+      /치과|치아|턱|교정|앞니|이빨|어금니|라미네이트|임플란트|스케일링|마취|통증|시려|시린|미백|수능|수험생|수험표|충치|사랑니|잇몸|신경치료|치실|치간칫솔|보철|화타펫|화타톡|레진|인레이|크라운/.test(
         text
       );
     const replyTargetsBot = Boolean(
